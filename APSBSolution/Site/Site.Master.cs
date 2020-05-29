@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Diagnostics;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Web;
@@ -17,6 +19,7 @@ namespace Site
         private const string AntiXsrfTokenKey = "__AntiXsrfToken";
         private const string AntiXsrfUserNameKey = "__AntiXsrfUserName";
         private string _antiXsrfTokenValue;
+        private string _debug = ConfigurationManager.AppSettings["debug"];
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -59,14 +62,16 @@ namespace Site
                 ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
 
                 //Criar usuário Administrador
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var result = manager.FindByName("administrador");
-                if (result == null)
+                if (ConfigurationManager.AppSettings["debug"] == _debug)
                 {
-                    var user = new ApplicationUser() { UserName = "administrador@apsb.com.br", Email = "administrador@apsb.com.br" };
-                    manager.Create(user, "Pa$$w0rd");
+                    var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    var result = manager.FindByName("administrador");
+                    if (result == null)
+                    {
+                        var user = new ApplicationUser() { UserName = "administrador@apsb.com.br", Email = "administrador@apsb.com.br" };
+                        manager.Create(user, "Pa$$w0rd");
+                    }
                 }
-
             }
             else
             {
@@ -81,7 +86,8 @@ namespace Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Request.IsAuthenticated && Page.Title != "Logon")
+            
+            if (!Request.IsAuthenticated && Page.Title != "Logon" && _debug == "false")
             {
                 Response.Redirect(@"~\Account\Login");
             }
