@@ -7,6 +7,8 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Site.Models;
 
 namespace Site
 {
@@ -55,6 +57,16 @@ namespace Site
                 // Configurar o token Anti-XSRF
                 ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
                 ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
+
+                //Criar usuário Administrador
+                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                var result = manager.FindByName("administrador");
+                if (result == null)
+                {
+                    var user = new ApplicationUser() { UserName = "administrador@apsb.com.br", Email = "administrador@apsb.com.br" };
+                    manager.Create(user, "Pa$$w0rd");
+                }
+
             }
             else
             {
@@ -69,7 +81,10 @@ namespace Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Request.IsAuthenticated && Page.Title != "Logon")
+            {
+                Response.Redirect(@"~\Account\Login");
+            }
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

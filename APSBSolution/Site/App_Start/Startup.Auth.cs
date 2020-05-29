@@ -21,6 +21,9 @@ namespace Site
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
+            //Criar usuário Administrador
+            
+
             // Ativar o aplicativo para usar um cookie e armazenar informações para o usuário conectado
             // e usar um cookie para armazenar temporariamente informações sobre um logon de usuário com um provedor de logon terceirizado
             // Configure o cookie de entrada
