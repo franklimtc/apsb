@@ -62,7 +62,7 @@ namespace Site
                 ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
 
                 //Criar usuário Administrador
-                if (ConfigurationManager.AppSettings["debug"] == _debug)
+                if (_debug=="false")
                 {
                     var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
                     var result = manager.FindByName("administrador");

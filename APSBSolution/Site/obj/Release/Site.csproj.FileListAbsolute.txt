@@ -74,6 +74,8 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Microsoft.ScriptManager.W
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Newtonsoft.Json.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Owin.dll
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Simple.Data.Ado.dll
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Simple.Data.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\System.Web.Optimization.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\WebGrease.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\EntityFramework.xml
@@ -106,8 +108,8 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Fr
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csprojAssemblyReference.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csproj.CopyComplete
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.pdb
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csprojAssemblyReference.cache
