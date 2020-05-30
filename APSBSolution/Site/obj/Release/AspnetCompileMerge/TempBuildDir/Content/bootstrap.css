@@ -214,8 +214,8 @@ caption {
   caption-side: bottom;
 }
 
-th {
-  text-align: inherit;
+th , td{
+  text-align: center;
 }
 
 label {
@@ -6797,7 +6797,12 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-  background-color: #343a40 !important;
+    /*    background-color: #343a40 !important;*/
+    background-color: darkcyan !important;
+}
+
+.bg-cadet {
+    background-color: cadetblue !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
