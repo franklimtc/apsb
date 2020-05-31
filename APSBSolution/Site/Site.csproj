@@ -190,8 +190,11 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Icons\build-outline.svg" />
+    <Content Include="Content\Icons\business-outline.svg" />
+    <Content Include="Content\Icons\cash-outline.svg" />
     <Content Include="Content\Icons\create-outline.svg" />
     <Content Include="Content\Icons\desktop-outline.svg" />
+    <Content Include="Content\Icons\home-outline.svg" />
     <Content Include="Content\Icons\medkit-outline.svg" />
     <Content Include="Content\Icons\person-outline.svg" />
     <Content Include="Content\Icons\save-outline.svg" />
