@@ -11,6 +11,10 @@
             </div>
             <div class="col-md-4"></div>
         </div>
+        <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar">
+                    <asp:button text="Novo Médico" runat="server" CssClass="btn btn-secondary" />
+        </asp:LinkButton>
+        <br />
         <div class="row">
             <div class="col-md-12">
                 <%--<asp:GridView runat="server" ID="gvClinicas"></asp:GridView>--%>
@@ -79,7 +83,7 @@
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
                                 <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="moradiaModalExcluir" OnClientClick="confirm('Deseja excluir o registro?')" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
@@ -312,7 +316,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
                 </div>
             </div>
         </div>
@@ -346,10 +350,10 @@
                                 <asp:TextBox runat="server" ID="tbCep" CssClass="form-control" placeholder="digite..." />
                             </div>
                         </div>
-                         <div class="row">
+                        <div class="row">
                             <div class="col-md-3">
                                 <label for="dpEnderecoUF">UF</label>
-                                 <select id="dpEnderecoUF" class="form-control">
+                                <select id="dpEnderecoUF" class="form-control">
                                     <option selected>Selecione...</option>
                                     <option>AL</option>
                                     <option>CE</option>
@@ -365,7 +369,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
                 </div>
             </div>
         </div>
@@ -424,8 +428,8 @@
                             <asp:TableCell>112233</asp:TableCell>
                             <asp:TableCell>001</asp:TableCell>
                             <asp:TableCell>
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server"/>
+                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar"/>&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -434,8 +438,8 @@
                             <asp:TableCell>034301</asp:TableCell>
                             <asp:TableCell>001</asp:TableCell>
                             <asp:TableCell>
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server"/>
+                                  <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar" />&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -444,8 +448,8 @@
                             <asp:TableCell>332211</asp:TableCell>
                             <asp:TableCell>001</asp:TableCell>
                             <asp:TableCell>
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server"/>
+                                  <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar" />&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -454,15 +458,15 @@
                             <asp:TableCell>001</asp:TableCell>
                             <asp:TableCell>001</asp:TableCell>
                             <asp:TableCell>
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server"/>
+                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar" />&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
                 </div>
             </div>
         </div>

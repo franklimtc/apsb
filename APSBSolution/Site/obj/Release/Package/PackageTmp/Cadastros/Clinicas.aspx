@@ -11,10 +11,15 @@
             </div>
             <div class="col-md-4"></div>
         </div>
+        <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
+                    <asp:button text="Nova Clínica" runat="server" CssClass="btn btn-secondary" />
+        </asp:LinkButton>
+        <br />
         <div class="row">
             <div class="col-md-12">
                 <%--<asp:GridView runat="server" ID="gvClinicas"></asp:GridView>--%>
                 <br />
+
                 <asp:Table runat="server" ID="gvClinicas" CssClass="table table-hover table-striped table-sm">
                     <asp:TableHeaderRow>
                         <asp:TableHeaderCell>ID</asp:TableHeaderCell>
@@ -110,7 +115,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="dpBancoClinica">Banco</label>
-                                <select id="dpBancoClinica"  class="form-control">
+                                <select id="dpBancoClinica" class="form-control">
                                     <option selected="selected">Selecione..</option>
                                     <option>Banco do Brasil</option>
                                     <option>Bradesco</option>
@@ -119,11 +124,17 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="tbObsClinica">Observações</label>
+                                <asp:TextBox runat="server" ID="tbObsClinica" CssClass="form-control" TextMode="MultiLine" placeholder="..." />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
                 </div>
             </div>
         </div>
