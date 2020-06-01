@@ -6797,9 +6797,9 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-    /*    background-color: #343a40 !important;*/
-    background-color: darkcyan !important;
+        background-color: #343a40 !important;
 }
+
 
 .bg-cadet {
     background-color: cadetblue !important;

@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Meu aplicativo ASP.NET</title>
+    <title><%: Page.Title %> - APSB</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -38,7 +38,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-darkcyan">
             <a class="navbar-brand" runat="server" href="~/Dashboard">APSB</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -46,7 +46,7 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="nav navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="~/Dashboard" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros
+                        <a class="nav-link dropdown-toggle" href="~/Dashboard" id="navbarDropdownCadastro" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" runat="server" href="~/Cadastros/Clinicas">Clínicas</a>
@@ -55,7 +55,7 @@
                     </li>
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/Operacoes">Operações</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRelatorio" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" runat="server" href="~/Reports/Report1">Relatório 1</a>

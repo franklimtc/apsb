@@ -36,3 +36,7 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-darkcyan{
+    background-color:darkcyan;
+}

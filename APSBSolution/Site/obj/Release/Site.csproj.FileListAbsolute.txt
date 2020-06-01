@@ -112,4 +112,3 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csproj.CoreC
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csproj.CopyComplete
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.pdb
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csprojAssemblyReference.cache
