@@ -190,6 +190,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Icons\archive-outline.svg" />
+    <Content Include="Content\Icons\battery-dead-outline.svg" />
+    <Content Include="Content\Icons\battery-full-outline.svg" />
+    <Content Include="Content\Icons\battery-half-outline.svg" />
     <Content Include="Content\Icons\build-outline.svg" />
     <Content Include="Content\Icons\business-outline.svg" />
     <Content Include="Content\Icons\cash-outline.svg" />

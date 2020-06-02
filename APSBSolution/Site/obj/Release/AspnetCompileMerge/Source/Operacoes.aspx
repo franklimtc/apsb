@@ -11,7 +11,6 @@
                 <br />
             </div>
             <div class="col-md-4"></div>
-            <span><b>Solicitação => Emissão => Recebimento => Repasse</b></span>
 
         </div>
         <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
@@ -30,16 +29,78 @@
                         <asp:TableHeaderCell>Emissão</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Recebimento</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Repasse</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Status</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                     <asp:TableRow>
+                        <asp:TableCell>1235</asp:TableCell>
+                        <asp:TableCell>MEDLAR</asp:TableCell>
+                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-dead-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell>
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
+                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>1235</asp:TableCell>
+                        <asp:TableCell>MEDLAR</asp:TableCell>
+                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
+                        <asp:TableCell>5918</asp:TableCell>
+                        <asp:TableCell>09/03/2020</asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-dead-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell>
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
+                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>1236</asp:TableCell>
+                        <asp:TableCell>MEDLAR</asp:TableCell>
+                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
+                        <asp:TableCell>5919</asp:TableCell>
+                        <asp:TableCell>09/03/2020</asp:TableCell>
+                        <asp:TableCell>09/03/2020</asp:TableCell>
+                        <asp:TableCell></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-half-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell>
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
+                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
                         <asp:TableCell>1234</asp:TableCell>
                         <asp:TableCell>MEDLAR</asp:TableCell>
-                        <asp:TableCell>R$ 2.744,00</asp:TableCell>
-                        <asp:TableCell>5917</asp:TableCell>
+                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
+                        <asp:TableCell>5920</asp:TableCell>
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell>09/03/2020</asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-full-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
@@ -56,7 +117,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Example-->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -98,9 +159,8 @@
                                 <select id="dpSelectProfissional" class="form-control">
                                     <option>Selecionar...</option>
                                     <option>Adriana Alves De Almeida</option>
-                                    <option>
-                                    Adriane De Fátima Silva De Assumção/option>
-                                        <option>Adriano Ferreira Da Silva</option>
+                                    <option>Adriane De Fátima Silva De Assumção</option>
+                                    <option>Adriano Ferreira Da Silva</option>
                                     <option>Carlos Henrique Pereira Macedo</option>
                                     <option>Carolina Coelho Rodrigues</option>
                                     <option>Clara Bandeira De Mello Parente Lobato</option>
@@ -111,19 +171,31 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <asp:Table ID="gvRepasseMedico" runat="server" CssClass="table-responsive-sm">
+                            <input type="button" id="tbAdicionarProfissional" name="name" value="Adicionar" class="btn btn-secondary" onclick="alert('Registro adicionado com sucesso!')" />
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel..." readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <br />
+                            <asp:Table ID="gvRepasseMedico" runat="server" CssClass="table table-hover table-striped table-sm">
                                 <asp:TableHeaderRow>
                                     <asp:TableCell>ID</asp:TableCell>
                                     <asp:TableCell>Profissional</asp:TableCell>
                                     <asp:TableCell>Valor</asp:TableCell>
-                                    <asp:TableCell>Data</asp:TableCell>
                                     <asp:TableCell>Ações</asp:TableCell>
                                 </asp:TableHeaderRow>
                                 <asp:TableRow>
                                     <asp:TableCell>12343</asp:TableCell>
-                                    <asp:TableCell>CARLOS HENRIQUE</asp:TableCell>
+                                    <asp:TableCell>Carlos Henrique</asp:TableCell>
                                     <asp:TableCell>R$ 1.000,00</asp:TableCell>
-                                    <asp:TableCell><input type="text" name="name" value="<%DateTime.Now.ToString("dd/mm/yyyy"); %>" class="form-control" style="width:130px" /></asp:TableCell>
                                     <asp:TableCell>
                                         <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
@@ -131,9 +203,8 @@
                                 </asp:TableRow>
                                 <asp:TableRow>
                                     <asp:TableCell>12343</asp:TableCell>
-                                    <asp:TableCell>CARLOS HENRIQUE</asp:TableCell>
+                                    <asp:TableCell>Carolina Coelho</asp:TableCell>
                                     <asp:TableCell>R$ 1.000,00</asp:TableCell>
-                                    <asp:TableCell><input type="text" name="name" value="<%DateTime.Now.ToShortDateString(); %>" class="form-control" style="width:130px" /></asp:TableCell>
                                     <asp:TableCell>
                                         <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
@@ -141,9 +212,8 @@
                                 </asp:TableRow>
                                 <asp:TableRow>
                                     <asp:TableCell>12343</asp:TableCell>
-                                    <asp:TableCell>CARLOS HENRIQUE</asp:TableCell>
+                                    <asp:TableCell>Clara Bandeira</asp:TableCell>
                                     <asp:TableCell>R$ 1.000,00</asp:TableCell>
-                                    <asp:TableCell><input type="text" name="name" value="<%DateTime.Now.ToShortDateString(); %>" class="form-control" style="width:130px"/></asp:TableCell>
                                     <asp:TableCell>
                                         <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
@@ -155,7 +225,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>
                 </div>
             </div>
         </div>
@@ -275,6 +345,7 @@
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         //Click Despesa
         $("#btDespesa").click(function () {
