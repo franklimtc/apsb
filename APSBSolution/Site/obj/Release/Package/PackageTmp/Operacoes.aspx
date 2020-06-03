@@ -40,7 +40,7 @@
                         <asp:TableCell></asp:TableCell>
                         <asp:TableCell></asp:TableCell>
                         <asp:TableCell></asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-dead-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-zero.svg" runat="server" Height="1.5em" /></asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
@@ -60,7 +60,7 @@
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell></asp:TableCell>
                         <asp:TableCell></asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-dead-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-one.svg" runat="server" Height="1.5em" /></asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
@@ -80,7 +80,7 @@
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell></asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-half-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-two.svg" runat="server" Height="1.5em" /></asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
@@ -100,7 +100,7 @@
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell>09/03/2020</asp:TableCell>
                         <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/battery-full-outline.svg" runat="server" Height="1.5em" /></asp:TableCell>
+                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-three.svg" runat="server" Height="1.5em" /></asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
@@ -292,10 +292,8 @@
                                 </div>
                             </div>
                         </div>
-
                         <hr />
                         <div id="divDespesas" class="d-none">
-
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for="tbDespesaDataNF">Data</label>
@@ -313,7 +311,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="divReceitas">
                             <div class="row">
                                 <div class="col-sm-6">
@@ -333,6 +330,28 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNFValorPG">Valor Pago</label>
                                     <input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <label for="tbReceitaDesconto">Desconto</label>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
+                                        </div>
+                                        <div class="col-sm-6"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="tbReceitaObs">Observações</label>
+                                    <input type="text" id="tbReceitaObs" name="tbReceitaObs" class="form-control" placeholder="..." style="height: 100px" />
                                 </div>
                             </div>
                         </div>
@@ -407,5 +426,15 @@
             }
         }
 
+        //Ativar disconto
+        function EnableDiscount() {
+            if ($("#tbReceitaDesconto").attr("readonly") == undefined) {
+                $("#tbReceitaDesconto").attr("readonly", "readonly");
+                console.log($("#tbReceitaDesconto").attr("readonly"));
+            } else {
+                $("#tbReceitaDesconto").removeAttr('readonly')
+                console.log($("#tbReceitaDesconto").attr("readonly"));
+            }
+        }
     </script>
 </asp:Content>
