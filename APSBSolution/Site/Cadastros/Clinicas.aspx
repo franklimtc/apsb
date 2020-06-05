@@ -23,7 +23,7 @@
                 <asp:Table runat="server" ID="gvClinicas" CssClass="table table-hover table-striped table-sm">
                     <asp:TableHeaderRow>
                         <asp:TableHeaderCell>ID</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Descrição</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Clínica</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Email</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
@@ -102,11 +102,16 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
-                                <label for="tbClinicaNome">Clinica</label>
-                                <asp:TextBox runat="server" ID="tbClinicaNome" CssClass="form-control" placeholder="..." />
+                                <label for="tbRazaoSocial">Razão Social</label>
+                                <asp:TextBox runat="server" ID="tbRazaoSocial" CssClass="form-control" placeholder="..." />
                             </div>
                         </div>
-
+                        <div class="row">
+                            <div class="col">
+                                <label for="tbClinicaNomeFantasia">Nome Fantasia</label>
+                                <asp:TextBox runat="server" ID="tbClinicaNomeFantasia" CssClass="form-control" placeholder="..." />
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="row">

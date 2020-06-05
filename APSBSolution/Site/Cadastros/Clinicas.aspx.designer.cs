@@ -24,13 +24,22 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.Table gvClinicas;
 
         /// <summary>
-        /// Controle tbClinicaNome.
+        /// Controle tbRazaoSocial.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbClinicaNome;
+        protected global::System.Web.UI.WebControls.TextBox tbRazaoSocial;
+
+        /// <summary>
+        /// Controle tbClinicaNomeFantasia.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbClinicaNomeFantasia;
 
         /// <summary>
         /// Controle tbDescontos.

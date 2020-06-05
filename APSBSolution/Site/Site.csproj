@@ -223,6 +223,7 @@
     <Content Include="assets\js\plugins\nouislider.min.js" />
     <Content Include="assets\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="assets\js\plugins\sweetalert2.js" />
+    <Content Include="Autocadastro.aspx" />
     <Content Include="Cadastros\Clinicas.aspx" />
     <Content Include="Cadastros\Medicos.aspx" />
     <Content Include="Contact.aspx" />
@@ -694,6 +695,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Autocadastro.aspx.cs">
+      <DependentUpon>Autocadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Autocadastro.aspx.designer.cs">
+      <DependentUpon>Autocadastro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\Clinicas.aspx.cs">
       <DependentUpon>Clinicas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
