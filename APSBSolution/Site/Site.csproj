@@ -104,6 +104,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -244,8 +245,10 @@
     <Content Include="Content\Icons\chart-three.svg" />
     <Content Include="Content\Icons\chart-two.svg" />
     <Content Include="Content\Icons\chart-zero.svg" />
+    <Content Include="Content\Icons\cloud-download-outline.svg" />
     <Content Include="Content\Icons\create-outline.svg" />
     <Content Include="Content\Icons\desktop-outline.svg" />
+    <Content Include="Content\Icons\file-tray-full-outline.svg" />
     <Content Include="Content\Icons\home-outline.svg" />
     <Content Include="Content\Icons\medkit-outline.svg" />
     <Content Include="Content\Icons\person-outline.svg" />

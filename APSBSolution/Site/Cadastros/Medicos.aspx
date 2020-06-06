@@ -1,13 +1,18 @@
 ﻿<%@ Page Title="Médicos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Medicos.aspx.cs" Inherits="Site.Cadastros.Medicos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <style>
+        #fileLoader {
+            display: none;
+        }
+    </style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
                 <h2>Cadastro de Médicos</h2>
-                <spam class="alert-danger">Definir quais as colunas devem fazer parte dessa lista!</spam>
             </div>
             <div class="col-md-4"></div>
         </div>
@@ -24,12 +29,14 @@
                         <asp:TableHeaderCell>ID</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Nome</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Email</asp:TableHeaderCell>
+                        <asp:TableHeaderCell>Observações</asp:TableHeaderCell>
                         <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
                     </asp:TableHeaderRow>
                     <asp:TableRow>
                         <asp:TableCell>01</asp:TableCell>
                         <asp:TableCell>Médico A</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
+                        <asp:TableCell>medico@dominio.com</asp:TableCell>
+                        <asp:TableCell>...</asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
@@ -42,6 +49,9 @@
                             </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
                                 <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
                             <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
                         </asp:TableCell>
@@ -49,7 +59,8 @@
                     <asp:TableRow>
                         <asp:TableCell>02</asp:TableCell>
                         <asp:TableCell>Médico B</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
+                        <asp:TableCell>medico@dominio.com</asp:TableCell>
+                        <asp:TableCell>...</asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
@@ -62,6 +73,9 @@
                             </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
                                 <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
                             <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
                         </asp:TableCell>
@@ -69,7 +83,8 @@
                     <asp:TableRow>
                         <asp:TableCell>03</asp:TableCell>
                         <asp:TableCell>Médico C</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
+                        <asp:TableCell>medico@dominio.com</asp:TableCell>
+                        <asp:TableCell>...</asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
@@ -83,13 +98,17 @@
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
                                 <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="moradiaModalExcluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow>
                         <asp:TableCell>04</asp:TableCell>
                         <asp:TableCell>Médico D</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
+                        <asp:TableCell>medico@dominio.com</asp:TableCell>
+                        <asp:TableCell>...</asp:TableCell>
                         <asp:TableCell>
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
@@ -102,6 +121,9 @@
                             </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
                                 <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                            </asp:LinkButton>&nbsp&nbsp
+                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
                             <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
                         </asp:TableCell>
@@ -132,6 +154,83 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Arquivos -->
+    <div class="modal fade" id="arquivosModal" tabindex="-1" role="dialog" aria-labelledby="arquivosModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="arquivosModalLabel">Arquivos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <input type="file" id="myfile" name="myfile" class="btn"><br>
+                            <br>
+                        </div>
+                        <div class="col-sm-3">
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <asp:Table runat="server" CssClass="table table-hover table-striped table-sm">
+                                <asp:TableHeaderRow>
+                                    <asp:TableHeaderCell>ID</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Arquivo</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Data</asp:TableHeaderCell>
+                                    <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
+                                </asp:TableHeaderRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>01</asp:TableCell>
+                                    <asp:TableCell>Contrato</asp:TableCell>
+                                    <asp:TableCell>01/01/2020</asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:imagebutton imageurl="~/Content/Icons/cloud-download-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" />&nbsp&nbsp
+                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>02</asp:TableCell>
+                                    <asp:TableCell>Comprovante de residência</asp:TableCell>
+                                    <asp:TableCell>01/01/2020</asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:imagebutton imageurl="~/Content/Icons/cloud-download-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" />&nbsp&nbsp
+                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                                <asp:TableRow>
+                                    <asp:TableCell>03</asp:TableCell>
+                                    <asp:TableCell>Contrato</asp:TableCell>
+                                    <asp:TableCell>01/01/2020</asp:TableCell>
+                                    <asp:TableCell>
+                                         <asp:imagebutton imageurl="~/Content/Icons/cloud-download-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" />&nbsp&nbsp
+                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                                    </asp:TableCell>
+                                </asp:TableRow>
+                            </asp:Table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Modal Médico - Dados Pessoais -->
     <div class="modal fade" id="medicoModal" tabindex="-1" role="dialog" aria-labelledby="medicoModalLabel" aria-hidden="true">
@@ -472,4 +571,7 @@
         </div>
     </div>
 
+    <script>
+
+</script>
 </asp:Content>

@@ -24,6 +24,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.Table gvClinicas;
 
         /// <summary>
+        /// Controle tbApelido.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbApelido;
+
+        /// <summary>
         /// Controle tbRazaoSocial.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,24 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbClinicaNomeFantasia;
+
+        /// <summary>
+        /// Controle tbClinicaEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbClinicaEmail;
+
+        /// <summary>
+        /// Controle tbClinicaISS.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbClinicaISS;
 
         /// <summary>
         /// Controle tbDescontos.

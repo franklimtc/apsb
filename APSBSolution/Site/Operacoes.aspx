@@ -7,7 +7,6 @@
 
             <div class="col-md-4">
                 <h2>Cadastro de Operações</h2>
-                <span class="alert-danger">Definir quais as colunas devem fazer parte dessa lista!</span>
                 <br />
             </div>
             <div class="col-md-4"></div>
@@ -171,6 +170,13 @@
                     </div>
                     <div class="row">
                         <div class="col">
+                            <label for="tbObsprofissional">Observações</label>
+                            <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height:100px;" readonly="readonly"/>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
                             <input type="button" id="tbAdicionarProfissional" name="name" value="Adicionar" class="btn btn-secondary" onclick="alert('Registro adicionado com sucesso!')" />
                         </div>
                         <div class="col">
@@ -178,7 +184,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
-                                <input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel..." readonly="readonly">
+                                <input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel...">
                             </div>
                         </div>
                     </div>
@@ -266,7 +272,8 @@
 
                         <div class="row">
                             <div class="col">
-                                <label class="text-danger">Mapear regras para lançamento de receitas/despesas.</label><br />
+                                <%--<label class="text-danger">Mapear regras para lançamento de receitas/despesas.</label>--%>
+                                <br />
 
                                 <label for="search">Clínica | Hospital | Despesa</label>
                                 <div>
@@ -299,7 +306,7 @@
                                     <label for="tbDespesaDataNF">Data</label>
                                     <input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />
                                 </div>
-                                <div class="col-sm-6">
+                                <div id="divNF" class="col-sm-6">
                                     <label for="tbDespesaNF">NF</label>
                                     <input type="text" id="tbNumNF" name="tbNumNF" class="form-control" />
                                 </div>
@@ -379,6 +386,8 @@
             //tbValorOperacao
             $("#tbValorOperacao").removeClass("text-success").addClass("text-danger");
 
+            //divNF
+            $("#divNF").addClass("d-none");
         });
 
         //Click Receita
@@ -393,6 +402,9 @@
             $("#tbValorOperacao").removeClass("text-danger").addClass("text-success");
 
             $("#operacaoModalLabel").text("Cadastro de Receita")
+
+            //divNF
+            $("#divNF").removeClass("d-none");
 
         });
 
