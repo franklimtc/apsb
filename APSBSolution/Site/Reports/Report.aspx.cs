@@ -7,14 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace Site.Reports
 {
-    public partial class Report1 : System.Web.UI.Page
+    public partial class Report : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btExportar_Click(object sender, EventArgs e)
         {
 
         }

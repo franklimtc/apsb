@@ -108,8 +108,9 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Fr
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csprojAssemblyReference.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csproj.CopyComplete
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.pdb
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\RdlCompile.cache
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\RdlCompile.compiled
