@@ -9,67 +9,21 @@
     </div>
     <div class="row">
         <div class="col">
-            <asp:Button ID="btExportar" Text="Exportar" runat="server" CssClass="btn btn-Secondary" OnClick="btExportar_Click" />
+            <asp:Button ID="btExportar" Text="Exportar" runat="server" CssClass="btn btn-secondary" OnClick="btExportar_Click" />
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <asp:Table runat="server" CssClass="table">
-                <asp:TableHeaderRow>
-                    <asp:TableHeaderCell>Col1</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Col2</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Col3</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Col4</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Col5</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Col6</asp:TableHeaderCell>
-                    <asp:TableHeaderCell>Col7</asp:TableHeaderCell>
-                </asp:TableHeaderRow>
-                <asp:TableRow>
-                    <asp:TableCell>Item1</asp:TableCell>
-                    <asp:TableCell>Item2</asp:TableCell>
-                    <asp:TableCell>Item3</asp:TableCell>
-                    <asp:TableCell>Item4</asp:TableCell>
-                    <asp:TableCell>Item5</asp:TableCell>
-                    <asp:TableCell>Item6</asp:TableCell>
-                    <asp:TableCell>Item7</asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Item1</asp:TableCell>
-                    <asp:TableCell>Item2</asp:TableCell>
-                    <asp:TableCell>Item3</asp:TableCell>
-                    <asp:TableCell>Item4</asp:TableCell>
-                    <asp:TableCell>Item5</asp:TableCell>
-                    <asp:TableCell>Item6</asp:TableCell>
-                    <asp:TableCell>Item7</asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Item1</asp:TableCell>
-                    <asp:TableCell>Item2</asp:TableCell>
-                    <asp:TableCell>Item3</asp:TableCell>
-                    <asp:TableCell>Item4</asp:TableCell>
-                    <asp:TableCell>Item5</asp:TableCell>
-                    <asp:TableCell>Item6</asp:TableCell>
-                    <asp:TableCell>Item7</asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Item1</asp:TableCell>
-                    <asp:TableCell>Item2</asp:TableCell>
-                    <asp:TableCell>Item3</asp:TableCell>
-                    <asp:TableCell>Item4</asp:TableCell>
-                    <asp:TableCell>Item5</asp:TableCell>
-                    <asp:TableCell>Item6</asp:TableCell>
-                    <asp:TableCell>Item7</asp:TableCell>
-                </asp:TableRow>
-                <asp:TableRow>
-                    <asp:TableCell>Item1</asp:TableCell>
-                    <asp:TableCell>Item2</asp:TableCell>
-                    <asp:TableCell>Item3</asp:TableCell>
-                    <asp:TableCell>Item4</asp:TableCell>
-                    <asp:TableCell>Item5</asp:TableCell>
-                    <asp:TableCell>Item6</asp:TableCell>
-                    <asp:TableCell>Item7</asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
+            <br />
+             <asp:GridView ID="gvMedicos" runat="server" DataSourceID="dsMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false">
+                 <Columns>
+                     <asp:BoundField DataField="cvIdProfissional" HeaderText="ID" />
+                     <asp:BoundField DataField="cvTelCelular" HeaderText="Fone" />
+                     <asp:BoundField DataField="ccNome" HeaderText="Nome" />
+                     <asp:BoundField DataField="ccEmail" HeaderText="Email" />
+                 </Columns>
+             </asp:GridView>
+             <asp:ObjectDataSource ID="dsMedico" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Profissional"></asp:ObjectDataSource>
         </div>
     </div>
 </asp:Content>

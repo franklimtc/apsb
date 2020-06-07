@@ -31,6 +31,7 @@
                         <a class="nav-link dropdown-toggle" href="~/Dashboard" id="navbarDropdownCadastro" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" runat="server" href="~/Cadastros/Autocadastro">Autocadastro</a>
                             <a class="dropdown-item" runat="server" href="~/Cadastros/Clinicas">Clínicas</a>
                             <a class="dropdown-item" runat="server" href="~/Cadastros/Medicos">Médicos</a>
                         </div>
