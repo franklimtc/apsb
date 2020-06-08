@@ -283,16 +283,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Default.aspx" />
-    <Content Include="examples\dashboard.html" />
-    <Content Include="examples\icons.html" />
-    <Content Include="examples\map.html" />
-    <Content Include="examples\maps.html" />
-    <Content Include="examples\notifications.html" />
-    <Content Include="examples\rtl.html" />
-    <Content Include="examples\tables.html" />
-    <Content Include="examples\typography.html" />
-    <Content Include="examples\upgrade.html" />
-    <Content Include="examples\user.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
