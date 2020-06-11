@@ -40,9 +40,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRelatorio" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" runat="server" href="~/Reports/Report1">Relatório 1</a>
-                            <a class="dropdown-item" runat="server" href="~/Reports/Report2">Relatório 2</a>
+                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" runat="server" href="~/Reports/Clinicas">Lista de Clínicas</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Profissionais">Lista de Profissionais</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Despesas">Relatório de Despesas</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Vendas">Relatório de Vendas</a>
                         </div>
                     </li>
                 </ul>
@@ -61,7 +63,7 @@
         <div class="wrapper">
             <div class="content">
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row d-none">
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="card card-stats">
                                 <div class="card-header card-header-success card-header-icon">
@@ -136,9 +138,9 @@
                                     <div class="ct-chart" id="dailySalesChart"></div>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">Receitas efetivadas</h4>
+                                    <h4 class="card-title">Faturamento bruto</h4>
                                     <p class="card-category">
-                                        <%--<span class="text-success"><i class="fa fa-long-arrow-up"></i>55% </span>increase in today sales.--%>
+                                        Notas fiscais emitidas.
                                     </p>
                                 </div>
                                 <div class="card-footer">
@@ -155,8 +157,8 @@
                                     <div class="ct-chart" id="websiteViewsChart"></div>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">Receitas pendentes</h4>
-                                    <%--<p class="card-category">Last Campaign Performance</p>--%>
+                                    <h4 class="card-title">Faturamento efetivado</h4>
+                                    <p class="card-category">(Notas fiscais recebidas)</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -172,8 +174,8 @@
                                     <div class="ct-chart" id="completedTasksChart"></div>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">Despesas</h4>
-                                    <%--<p class="card-category">Last Campaign Performance</p>--%>
+                                    <h4 class="card-title">Receita bruta</h4>
+                                    <p class="card-category">(Taxa dos associados)</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -189,8 +191,8 @@
                                     <div class="ct-chart" id="completedTasksChart2"></div>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="card-title">Repasses pendentes</h4>
-                                    <%--<p class="card-category">Last Campaign Performance</p>--%>
+                                    <h4 class="card-title">Receita líquida</h4>
+                                    <p class="card-category">(RB - Impostos)</p>
                                 </div>
                                 <div class="card-footer">
                                     <div class="stats">
@@ -202,10 +204,82 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-3">
+                            <div class="card card-chart">
+                                <div class="card-header card-header-success">
+                                    <div class="ct-chart" id="dailySalesChart2"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Despesas</h4>
+                                    <p class="card-category">
+                                       ...
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> updated 4 minutes ago
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card card-chart">
+                                <div class="card-header card-header-warning">
+                                    <div class="ct-chart" id="websiteViewsChart2"></div>
+                                </div>
+                                <div class="card-body">
+                                    <h4 class="card-title">Qtd Notas emitidas</h4>
+                                    <p class="card-category">...</p>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">access_time</i> campaign sent 2 days ago
+                 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-info card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">attach_money</i>
+                                    </div>
+                                    <p class="card-category">Repasses pendentes</p>
+                                    <h3 class="card-title">0.5M</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">update</i>atualizado às 20:28
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="card card-stats">
+                                <div class="card-header card-header-warning card-header-icon">
+                                    <div class="card-icon">
+                                        <i class="material-icons">attach_money</i>
+                                    </div>
+                                    <p class="card-category">Faturamento pendente</p>
+                                    <h3 class="card-title">0.5M</h3>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="stats">
+                                        <i class="material-icons">update</i>atualizado às 20:28
+                                   
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-warning">
-                                    <h4 class="card-title">Top 10 Pagamentos</h4>
+                                    <h4 class="card-title">Top 10 Receita Líquida</h4>
                                     <%--<p class="card-category">New employees on 15th September, 2016</p>--%>
                                 </div>
                                 <div class="card-body table-responsive">
@@ -249,7 +323,7 @@
                         <div class="col-lg-6 col-md-12">
                             <div class="card">
                                 <div class="card-header card-header-danger">
-                                    <h4 class="card-title">Top 10 Despesas</h4>
+                                    <h4 class="card-title">Top 10 Faturamento Bruto</h4>
                                     <%--<p class="card-category">New employees on 15th September, 2016</p>--%>
                                 </div>
                                 <div class="card-body table-responsive">
@@ -546,6 +620,19 @@
 
         // start animation for the Completed Tasks Chart - Line Chart
         md.startAnimationForLineChart(completedTasksChart2);
-  </script>
+
+        //dataDailySalesChart
+
+        var dailySalesChart2 = new Chartist.Line('#dailySalesChart2', datacompletedTasksChart2, optionscompletedTasksChart2);
+        md.startAnimationForLineChart(dailySalesChart2);
+
+        //websiteViewsChart2
+
+        var websiteViewsChart2 = new Chartist.Line('#websiteViewsChart2', datacompletedTasksChart2, optionscompletedTasksChart2);
+        md.startAnimationForLineChart(websiteViewsChart2);
+
+
+
+    </script>
 </body>
 </html>

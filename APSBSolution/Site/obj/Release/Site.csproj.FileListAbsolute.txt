@@ -196,3 +196,4 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\zh-CHS\Microsoft.ReportVi
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Reports\Rep01.rdlc
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Reports\Report3.rdlc
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Release\Site.csprojAssemblyReference.cache

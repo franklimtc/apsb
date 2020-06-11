@@ -27,6 +27,10 @@ demo = {
             var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
             var animationHeaderChart = new Chartist.Line('#websiteViewsChart', dataDailySalesChart, optionsDailySalesChart);
+
+            var dailySalesChart2 = new Chartist.Line('#dailySalesChart2', dataDailySalesChart, optionsDailySalesChart);
+
+            var animationHeaderChart2 = new Chartist.Line('#websiteViewsChart2', dataDailySalesChart, optionsDailySalesChart);
         }
     },
 
@@ -60,6 +64,11 @@ demo = {
             var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
             md.startAnimationForLineChart(dailySalesChart);
+
+            var dailySalesChart2 = new Chartist.Line('#dailySalesChart2', dataDailySalesChart, optionsDailySalesChart);
+
+            md.startAnimationForLineChart(dailySalesChart2);
+
 
 
 
