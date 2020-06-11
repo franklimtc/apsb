@@ -13,5 +13,9 @@ namespace Site.Reports
         {
 
         }
+        protected void btExportar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(@"Report.aspx?report=report04");
+        }
     }
 }

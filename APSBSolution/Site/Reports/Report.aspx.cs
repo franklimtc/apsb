@@ -39,6 +39,22 @@ namespace Site.Reports
                     repv01.DataBind();
                     
                     break;
+                case "report03":
+                    repv01.LocalReport.ReportPath = @"Reports\RepVendas.rdlc";
+                    repv01.LocalReport.DisplayName = "Relatório de Vendas";
+                    repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsVendas";
+
+                    repv01.DataBind();
+
+                    break;
+                case "report04":
+                    repv01.LocalReport.ReportPath = @"Reports\RepDespesas.rdlc";
+                    repv01.LocalReport.DisplayName = "Relatório de Despesas";
+                    repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsDespesas";
+
+                    repv01.DataBind();
+
+                    break;
                 default:
                     break;
             }
