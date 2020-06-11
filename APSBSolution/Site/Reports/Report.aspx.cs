@@ -26,12 +26,14 @@ namespace Site.Reports
                 case "report01":
                     repv01.LocalReport.ReportPath = @"Reports\Rep01.rdlc";
                     repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsReport01";
+                    repv01.LocalReport.DisplayName = "Lista de Profissionais";
 
                     repv01.DataBind();
 
                     break;
                 case "report02":
                     repv01.LocalReport.ReportPath = @"Reports\Report3.rdlc";
+                    repv01.LocalReport.DisplayName = "Lista de Clínicas";
                     repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsReport02";
 
                     repv01.DataBind();

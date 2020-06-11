@@ -62,8 +62,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRelatorio" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Relatórios
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" runat="server" href="~/Reports/Report1">Relatório 1</a>
-                            <a class="dropdown-item" runat="server" href="~/Reports/Report2">Relatório 2</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Clinicas">Lista de Clínicas</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Profissionais">Lista de Profissionais</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Despesas">Relatório de Despesas</a>
+                            <a class="dropdown-item" runat="server" href="~/Reports/Vendas">Relatório de Vendas</a>
                         </div>
                     </li>
                 </ul>

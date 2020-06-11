@@ -106,7 +106,6 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Fr
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.EntityFramework.resources.dll
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csprojAssemblyReference.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CopyComplete
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.dll
@@ -197,3 +196,4 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.compiled
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Reports\Rep01.rdlc
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Reports\Report3.rdlc
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csprojAssemblyReference.cache
