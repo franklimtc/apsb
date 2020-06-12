@@ -13,14 +13,5 @@ namespace Site.Cadastros
 
     public partial class Autocadastro
     {
-
-        /// <summary>
-        /// Controle gvAutocadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table gvAutocadastro;
     }
 }

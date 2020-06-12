@@ -24,90 +24,97 @@
                 <%--<asp:GridView runat="server" ID="gvClinicas"></asp:GridView>--%>
                 <br />
 
-                <asp:Table runat="server" ID="gvClinicas" CssClass="table table-hover table-striped table-sm">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>ID</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Apelido</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Email</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>ISS</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Desconto</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Banco</asp:TableHeaderCell>
-                        <asp:TableHeaderCell Width="200px">Observações</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                    <asp:TableRow>
-                        <asp:TableCell>01</asp:TableCell>
-                        <asp:TableCell>Clinica A</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
-                        <asp:TableCell>2,0%</asp:TableCell>
-                        <asp:TableCell>6,5%</asp:TableCell>
-                        <asp:TableCell>CAIXA</asp:TableCell>
-                        <asp:TableCell>..</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
+                <table id="gvClinicas" class="table table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th hidden="hidden">ID</th>
+                            <th>Apelido</th>
+                            <th>Email</th>
+                            <th>ISS</th>
+                            <th>Desconto</th>
+                            <th>Banco</th>
+                            <th>Observações</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td hidden="hidden">01</td>
+                            <td>Clinica B</td>
+                            <td>clinica@dominio.com</td>
+                            <td>2,0%</td>
+                            <td>6,5%</td>
+                            <td>CAIXA</td>
+                            <td>..</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')"/>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>02</asp:TableCell>
-                        <asp:TableCell>Clinica B</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
-                        <asp:TableCell>2,0%</asp:TableCell>
-                        <asp:TableCell>6,5%</asp:TableCell>
-                        <asp:TableCell>Banco do Brasil</asp:TableCell>
-                        <asp:TableCell>..</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td hidden="hidden">01</td>
+                            <td>Clinica C</td>
+                            <td>clinica@dominio.com</td>
+                            <td>2,0%</td>
+                            <td>6,5%</td>
+                            <td>CAIXA</td>
+                            <td>..</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')"/>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>03</asp:TableCell>
-                        <asp:TableCell>Clinica C</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
-                        <asp:TableCell>2,0%</asp:TableCell>
-                        <asp:TableCell>6,5%</asp:TableCell>
-                        <asp:TableCell>Itaú</asp:TableCell>
-                        <asp:TableCell>..</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td hidden="hidden">01</td>
+                            <td>Clinica E</td>
+                            <td>clinica@dominio.com</td>
+                            <td>2,0%</td>
+                            <td>6,5%</td>
+                            <td>CAIXA</td>
+                            <td>..</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')"/>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>04</asp:TableCell>
-                        <asp:TableCell>Clinica D</asp:TableCell>
-                        <asp:TableCell>clinica@dominio.com</asp:TableCell>
-                        <asp:TableCell>2,0%</asp:TableCell>
-                        <asp:TableCell>6,5%</asp:TableCell>
-                        <asp:TableCell>Bradesco</asp:TableCell>
-                        <asp:TableCell>..</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td hidden="hidden">01</td>
+                            <td>Clinica D</td>
+                            <td>clinica@dominio.com</td>
+                            <td>2,0%</td>
+                            <td>6,5%</td>
+                            <td>CAIXA</td>
+                            <td>..</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
                             </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')"/>
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -241,7 +248,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="tbObsProfissional">Observações</label>
-                            <input type="text" id="tbObsProfissional" name="tbObsProfissional" value="" placeholder="Observações do profissional" style="height:100px;" class="form-control"/>
+                            <input type="text" id="tbObsProfissional" name="tbObsProfissional" value="" placeholder="Observações do profissional" style="height: 100px;" class="form-control" />
                         </div>
                     </div>
                     <div class="row">
@@ -292,7 +299,25 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+
     <script type="text/javascript">
+        //Datatables (gvClinicas)
+        //DataTables
+
+        $(document).ready(function () {
+            $('#gvClinicas').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+        });
+
         function filterProfissional() {
             var keyword = document.getElementById("tbRepasseProfissional").value;
             var select = document.getElementById("dpSelectProfissional");

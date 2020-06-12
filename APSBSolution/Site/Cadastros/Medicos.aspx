@@ -24,111 +24,115 @@
             <div class="col-md-12">
                 <%--<asp:GridView runat="server" ID="gvClinicas"></asp:GridView>--%>
                 <br />
-                <asp:Table runat="server" ID="gvClinicas" CssClass="table table-hover table-striped table-sm">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>ID</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Nome</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Email</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Observações</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                    <asp:TableRow>
-                        <asp:TableCell>01</asp:TableCell>
-                        <asp:TableCell>Médico A</asp:TableCell>
-                        <asp:TableCell>medico@dominio.com</asp:TableCell>
-                        <asp:TableCell>...</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>02</asp:TableCell>
-                        <asp:TableCell>Médico B</asp:TableCell>
-                        <asp:TableCell>medico@dominio.com</asp:TableCell>
-                        <asp:TableCell>...</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>03</asp:TableCell>
-                        <asp:TableCell>Médico C</asp:TableCell>
-                        <asp:TableCell>medico@dominio.com</asp:TableCell>
-                        <asp:TableCell>...</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>04</asp:TableCell>
-                        <asp:TableCell>Médico D</asp:TableCell>
-                        <asp:TableCell>medico@dominio.com</asp:TableCell>
-                        <asp:TableCell>...</asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
+                <table ID="gvClinicas" class="table table-hover table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Observações</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>Médico A</td>
+                            <td>medico@dominio.com</td>
+                            <td>...</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
+                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
+                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>Médico B</td>
+                            <td>medico@dominio.com</td>
+                            <td>...</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
+                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
+                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>Médico C</td>
+                            <td>medico@dominio.com</td>
+                            <td>...</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
+                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
+                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>Médico D</td>
+                            <td>medico@dominio.com</td>
+                            <td>...</td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
+                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
+                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
+                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
+                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
+                                </asp:LinkButton>&nbsp&nbsp
+                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -230,7 +234,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Modal Médico - Dados Pessoais -->
     <div class="modal fade" id="medicoModal" tabindex="-1" role="dialog" aria-labelledby="medicoModalLabel" aria-hidden="true">
@@ -570,8 +573,22 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
 
     <script>
+//DataTables
 
-</script>
+        $(document).ready(function () {
+            $('#gvClinicas').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+        });
+    </script>
 </asp:Content>

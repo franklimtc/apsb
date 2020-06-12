@@ -19,99 +19,108 @@
         <div class="row">
             <div class="col-md-12">
                 <br />
-                <asp:Table ID="gvOperacoes" runat="server" CssClass="table table-hover table-striped table-sm">
-                    <asp:TableHeaderRow>
-                        <asp:TableHeaderCell>ID</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Descrição</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Valor</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Nota</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Emissão</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Recebimento</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Repasse</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Status</asp:TableHeaderCell>
-                        <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
-                    </asp:TableHeaderRow>
-                    <asp:TableRow>
-                        <asp:TableCell>1235</asp:TableCell>
-                        <asp:TableCell>MEDLAR</asp:TableCell>
-                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-zero.svg" runat="server" Height="1.5em" /></asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                <table id="gvOperacoes" class="table table-hover table-striped table-xl">
+                    <thead>
+                        <tr>
+                            <th hidden="hidden">ID</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Nota</th>
+                            <th>Emissão</th>
+                            <th>Recebimento</th>
+                            <th>Repasse</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td hidden="hidden">1230</td>
+                            <td>Abc</td>
+                            <td>R$ 2.000,00</td>
+                            <td>12</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <asp:Image ImageUrl="~/Content/Icons/chart-zero.svg" runat="server" Height="1.5em" /></td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>1235</asp:TableCell>
-                        <asp:TableCell>MEDLAR</asp:TableCell>
-                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
-                        <asp:TableCell>5918</asp:TableCell>
-                        <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-one.svg" runat="server" Height="1.5em" /></asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                             </asp:LinkButton>&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td hidden="hidden">1231</td>
+                            <td>Def</td>
+                            <td>R$ 1.000,00</td>
+                            <td>67</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <asp:Image ImageUrl="~/Content/Icons/chart-one.svg" runat="server" Height="1.5em" /></td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>1236</asp:TableCell>
-                        <asp:TableCell>MEDLAR</asp:TableCell>
-                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
-                        <asp:TableCell>5919</asp:TableCell>
-                        <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell></asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-two.svg" runat="server" Height="1.5em" /></asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                             </asp:LinkButton>&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td hidden="hidden">1232</td>
+                            <td>Abd</td>
+                            <td>R$ 3.000,00</td>
+                            <td>98</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <asp:Image ImageUrl="~/Content/Icons/chart-two.svg" runat="server" Height="1.5em" /></td>
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>1234</asp:TableCell>
-                        <asp:TableCell>MEDLAR</asp:TableCell>
-                        <asp:TableCell>R$ 3.000,00</asp:TableCell>
-                        <asp:TableCell>5920</asp:TableCell>
-                        <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell>09/03/2020</asp:TableCell>
-                        <asp:TableCell><asp:image imageurl="~/Content/Icons/chart-three.svg" runat="server" Height="1.5em" /></asp:TableCell>
-                        <asp:TableCell>
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
+                             </asp:LinkButton>&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td hidden="hidden">1234</td>
+                            <td>Gef</td>
+                            <td>R$ 1.000,00</td>
+                            <td>66</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <asp:Image ImageUrl="~/Content/Icons/chart-three.svg" runat="server" Height="1.5em" /></td>
+
+                            <td>
+                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
+                                </asp:LinkButton>&nbsp&nbsp
                              <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                </asp:Table>
+                             </asp:LinkButton>&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -171,7 +180,7 @@
                     <div class="row">
                         <div class="col">
                             <label for="tbObsprofissional">Observações</label>
-                            <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height:100px;" readonly="readonly"/>
+                            <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height: 100px;" readonly="readonly" />
                         </div>
                     </div>
                     <hr />
@@ -371,8 +380,24 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
+        //DataTables
+
+        $(document).ready(function () {
+            $('#gvOperacoes').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+        });
+
+
         //Click Despesa
         $("#btDespesa").click(function () {
             $("#btDespesa").removeClass("btn-light").addClass("btn-danger");

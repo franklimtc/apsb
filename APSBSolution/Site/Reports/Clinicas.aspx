@@ -34,4 +34,24 @@
              <asp:ObjectDataSource ID="dsClinica" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Clinica"></asp:ObjectDataSource>
         </div>
     </div>
+
+     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+
+    <script>
+        //DataTables
+
+        $(document).ready(function () {
+            $('#MainContent_gvClinicas').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+        });
+
+    </script>
 </asp:Content>
