@@ -21,10 +21,29 @@
         <br />
         <div class="row">
             <div class="col-md-12">
-                <%--<asp:GridView runat="server" ID="gvClinicas"></asp:GridView>--%>
                 <br />
+                <asp:GridView runat="server" ID="gvClinicas" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" OnPreRender="gvClinicas_PreRender">
+                        <Columns>
+                        <asp:BoundField DataField="ccApelido" HeaderText="Apelido" SortExpression="ccApelido" />
+                        <asp:BoundField DataField="ccRazaoSocial" HeaderText="ccRazaoSocial" SortExpression="ccRazaoSocial" Visible="false" />
+                        <asp:BoundField DataField="ccNomeFantasia" HeaderText="ccNomeFantasia" SortExpression="ccNomeFantasia" Visible="false" />
+                        <asp:BoundField DataField="cvCNPJ" HeaderText="cvCNPJ" SortExpression="cvCNPJ" Visible="false"/>
+                        <asp:BoundField DataField="ccContato" HeaderText="ccContato" SortExpression="ccContato" Visible="false"/>
+                        <asp:BoundField DataField="cvTelefone" HeaderText="cvTelefone" SortExpression="cvTelefone" Visible="false"/>
+                        <asp:BoundField DataField="ccEmail" HeaderText="Email" SortExpression="ccEmail" />
+                        <asp:BoundField DataField="ccUF" HeaderText="ccUF" SortExpression="ccUF" Visible="false"/>
+                        <asp:BoundField DataField="ccCidade" HeaderText="ccCidade" SortExpression="ccCidade" Visible="false"/>
+                        <asp:BoundField DataField="cvISS" HeaderText="ISS" SortExpression="cvISS" />
+                        <asp:BoundField DataField="cvImpostos" HeaderText="Desconto" SortExpression="cvImpostos" />
+                        <asp:BoundField DataField="cbTaxaVariavel" HeaderText="cbTaxaVariavel" SortExpression="cbTaxaVariavel" Visible="false" />
+                        <asp:BoundField DataField="ccObs" HeaderText="Observações" SortExpression="ccObs" />
+                        <asp:BoundField DataField="cvIdClinica" HeaderText="cvIdClinica" SortExpression="cvIdClinica" Visible="false" />
 
-                <table id="gvClinicas" class="table table-hover table-striped table-sm">
+                    </Columns>
+                </asp:GridView>
+                <br />
+                <%--<asp:ObjectDataSource runat="server" ID="dsClinicas" SelectMethod="Listar" TypeName="Site.Classes.Clinica"></asp:ObjectDataSource>--%>
+               <%-- <table id="gvClinicas" class="table table-hover table-striped table-sm">
                     <thead>
                         <tr>
                             <th hidden="hidden">ID</th>
@@ -114,7 +133,8 @@
 
 
                     </tbody>
-                </table>
+                </table>--%>
+
             </div>
         </div>
     </div>
@@ -306,7 +326,7 @@
         //DataTables
 
         $(document).ready(function () {
-            $('#gvClinicas').DataTable({
+            $('#MainContent_gvClinicas').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
                     "zeroRecords": "Nenhum registro encontrado.",

@@ -1,0 +1,9 @@
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Release\Database.dacpac
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Release\Database.dll
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Release\Database.pdb
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Release\Model.xml
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Release\refactor.xml
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Release\postdeploy.sql
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Release\predeploy.sql
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Release\Database.dll
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Release\Database.pdb

@@ -15,6 +15,15 @@ namespace Site.Cadastros
     {
 
         /// <summary>
+        /// Controle gvClinicas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvClinicas;
+
+        /// <summary>
         /// Controle tbApelido.
         /// </summary>
         /// <remarks>

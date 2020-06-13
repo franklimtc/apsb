@@ -1,0 +1,6 @@
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Debug\Database.dacpac
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Debug\Database.dll
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Debug\Database.pdb
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Database.dll
+C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Database.pdb

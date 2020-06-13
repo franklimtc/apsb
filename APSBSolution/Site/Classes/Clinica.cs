@@ -18,6 +18,7 @@ namespace Site.Classes
         public string ccUF { get; set; }
         public string ccCidade { get; set; }
         public double cvImpostos { get; set; }
+        public double cvISS { get; set; }
         public string cbTaxaVariavel { get; set; }
         public string ccObs { get; set; }
 
@@ -44,12 +45,20 @@ namespace Site.Classes
             this.ccObs = _obs;
         }
 
-        public List<Clinica> Listar()
+        public static List<Clinica> Listar()
         {
             List<Clinica> Lista = new List<Clinica>();
-            Lista.Add(new Clinica(1, "Clinica", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
-            Lista.Add(new Clinica(1, "Clinica", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, true));
-            Lista.Add(new Clinica(1, "Clinica", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
+            Lista.Add(new Clinica(1, "ABC", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
+            Lista.Add(new Clinica(1, "DEF", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, true));
+            Lista.Add(new Clinica(1, "GHI", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
+
+            Lista.Add(new Clinica(1, "ABC", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
+            Lista.Add(new Clinica(1, "DEF", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, true));
+            Lista.Add(new Clinica(1, "GHI", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
+
+            Lista.Add(new Clinica(1, "ABC", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
+            Lista.Add(new Clinica(1, "DEF", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, true));
+            Lista.Add(new Clinica(1, "GHI", "Clinica social", "Clinica fantasia", "8323434312343", "Nome Contato", "4511234343", "contato@email.com", "DF", "Brasília", 6.5, false));
             return Lista;
         }
     }

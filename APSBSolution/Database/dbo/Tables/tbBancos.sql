@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[tbBancos]
+(
+	[IdBanco] INT IDENTITY(1,1) NOT NULL PRIMARY KEY
+	, ccBanco VARCHAR(100) NOT NULL
+	, cvCodBanco SMALLINT NOT NULL
+	, cvStatus SMALLINT NOT NULL DEFAULT (1)
+)
