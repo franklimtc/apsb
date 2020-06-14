@@ -202,10 +202,6 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="App_Data\apsb.mdf" />
-    <Content Include="App_Data\apsb_log.ldf">
-      <DependentUpon>apsb.mdf</DependentUpon>
-    </Content>
     <Content Include="assets\css\material-dashboard-rtl.css" />
     <Content Include="assets\css\material-dashboard.css" />
     <Content Include="assets\css\material-dashboard.min.css" />
@@ -1093,7 +1089,9 @@
     <Compile Include="Cadastros\Medicos.aspx.designer.cs">
       <DependentUpon>Medicos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Banco.cs" />
     <Compile Include="Classes\Clinica.cs" />
+    <Compile Include="Classes\DAO.cs" />
     <Compile Include="Classes\Profissional.cs" />
     <Compile Include="Classes\RelDespesas.cs" />
     <Compile Include="Classes\RelVendas.cs" />
@@ -1196,7 +1194,9 @@
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />

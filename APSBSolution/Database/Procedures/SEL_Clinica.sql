@@ -11,7 +11,7 @@ AS BEGIN
 	, tbc.ccEmail
 	, tbc.cvISS
 	, tbc.cvDescontos
-	, tbc.cbDescontoVariavel
+	, CASE WHEN tbc.cbDescontoVariavel = 1 THEN 'Sim' ELSE 'Não' END cbDescontoVariavel
 	, tbb.ccBanco
 	, tbObs.observacao
 	FROM tbClinicas tbc

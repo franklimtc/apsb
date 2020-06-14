@@ -69,6 +69,7 @@
     <Build Include="Procedures\SEL_Clinica.sql" />
     <Build Include="Procedures\UPD_Clinica.sql" />
     <Build Include="Procedures\EXC_Clinica.sql" />
+    <Build Include="Procedures\SEL_Bancos.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />
