@@ -15,6 +15,15 @@ namespace Site.Cadastros
     {
 
         /// <summary>
+        /// Controle idHiddenClinica.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idHiddenClinica;
+
+        /// <summary>
         /// Controle btNovaClinica.
         /// </summary>
         /// <remarks>
@@ -139,6 +148,42 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField tbIdClinica;
+
+        /// <summary>
+        /// Controle tbValorRepasse.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbValorRepasse;
+
+        /// <summary>
+        /// Controle dpSelectProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpSelectProfissional;
+
+        /// <summary>
+        /// Controle tbObsProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbObsProfissional;
+
+        /// <summary>
+        /// Controle btAdicionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btAdicionar;
 
         /// <summary>
         /// Controle tbProfissionalClinica.

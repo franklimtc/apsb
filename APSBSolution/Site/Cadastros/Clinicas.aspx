@@ -6,6 +6,10 @@
             padding-left: 5px;
         }
     </style>
+    <%--Hidden Filds--%>
+    <asp:HiddenField runat="server" ID="idHiddenClinica" />
+
+    <%--Hidden Filds--%>
 
 
     <div class="container-fluid">
@@ -40,16 +44,19 @@
                         <asp:BoundField DataField="ccTaxaVariavel" HeaderText="ccTaxaVariavel" SortExpression="ccTaxaVariavel" Visible="false" />
                         <asp:BoundField DataField="ccObservacao" HeaderText="Observações" SortExpression="ccObservacao" />
                         <asp:BoundField DataField="IdClinica" HeaderText="ID" SortExpression="IdClinica" />
-                        
+
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="btEditarGrid" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar" CssClass="btEditar">
+                                <%--<asp:LinkButton  runat="server" ID="LinkButton1" ToolTip="Editar" CssClass="btEditar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnCommand="btEditarGrid_Command"  data-toggle="modal" data-target="#clinicaModal" >--%>
+                                <%--<asp:LinkButton  runat="server" ID="btEditarGrid" ToolTip="Editar" CssClass="btEditar"  CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnCommand="btEditarGrid_Command">
                                 <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
                                 </asp:LinkButton>&nbsp&nbsp
                             <asp:LinkButton runat="server" ID="btAssociarGrid" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
                                 <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                                <asp:ImageButton runat="server" id="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  Height="1.5em" ToolTip="Excluir" />
+                            </asp:LinkButton>&nbsp&nbsp--%>
+                                <asp:ImageButton runat="server" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                                <asp:ImageButton runat="server" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
+                                <asp:ImageButton runat="server" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -132,7 +139,7 @@
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" />
-                    <asp:HiddenField runat="server" id="tbIdClinica" />
+                    <asp:HiddenField runat="server" ID="tbIdClinica" />
                 </div>
             </div>
         </div>
@@ -161,34 +168,25 @@
                                 <div class="col-sm-4">
                                     <label for="tbValorRepasse">Percentual</label>
                                     <div>
-                                        <input type="text" id="tbValorRepasse" class="form-control" placeholder="Filtrar..." name="search" value="10%">
+                                        <asp:TextBox runat="server" ID="tbValorRepasse" CssClass="form-control" Text="10%"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <select id="dpSelectProfissional" class="form-control">
-                                    <option>Selecionar...</option>
-                                    <option>Adriana Alves De Almeida</option>
-                                    <option>Adriane De Fátima Silva De Assumção</option>
-                                    <option>Adriano Ferreira Da Silva</option>
-                                    <option>Carlos Henrique Pereira Macedo</option>
-                                    <option>Carolina Coelho Rodrigues</option>
-                                    <option>Clara Bandeira De Mello Parente Lobato</option>
-                                    <option>Sara Da Rocha Viana</option>
-                                </select>
+                                <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="tbObsProfissional">Observações</label>
-                            <input type="text" id="tbObsProfissional" name="tbObsProfissional" value="" placeholder="Observações do profissional" style="height: 100px;" class="form-control" />
+                            <asp:TextBox runat="server" ID="tbObsProfissional" CssClass="form-control" placeholder="Observações do profissional" TextMode="MultiLine"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <input type="button" name="tbAdicionar" value="Adicionar" class="btn btn-secondary" />
+                            <asp:Button ID="btAdicionar" Text="Adicionar" runat="server" CssClass="btn btn-secondary"  />
                         </div>
                     </div>
                     <hr />
@@ -234,7 +232,7 @@
             </div>
         </div>
     </div>
-    
+
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
 
     <script type="text/javascript">
@@ -257,7 +255,7 @@
 
         function filterProfissional() {
             var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("dpSelectProfissional");
+            var select = document.getElementById("MainContent_dpSelectProfissional");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
@@ -280,11 +278,12 @@
             $("#MainContent_chDescontoVariavel").prop("checked", false);
         }
 
-        function BuscarClinica(idClinica) {
-            alert('Buscar Clinica de id' + idClinica);
-        }
-        $(".btEditar").click(function () {
-            alert('botao pressionado!');
-        });
+        //function BuscarClinica(idClinica) {
+        //    alert('Buscar Clinica de id' + idClinica);
+        //}
+        //$(".btEditar").click(function () {
+        //    alert('botao pressionado!');
+        //});
+
     </script>
 </asp:Content>
