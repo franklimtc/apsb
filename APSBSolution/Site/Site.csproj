@@ -202,10 +202,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="App_Data\apsb.mdf" />
-    <Content Include="App_Data\apsb_log.ldf">
-      <DependentUpon>apsb.mdf</DependentUpon>
-    </Content>
+    <Content Include="Cadastros\Clinicas.asmx" />
     <Content Include="assets\css\material-dashboard-rtl.css" />
     <Content Include="assets\css\material-dashboard.css" />
     <Content Include="assets\css\material-dashboard.min.css" />
@@ -447,6 +444,7 @@
     <Content Include="Reports\Profissionais.aspx" />
     <Content Include="Reports\Clinicas.aspx" />
     <Content Include="Reports\Vendas.aspx" />
+    <Content Include="Scripts\api.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -811,6 +809,7 @@
     <Content Include="Content\DataTables\media\images\Sorting icons.psd" />
     <Content Include="Content\DataTables\extensions\Buttons\css\mixins.scss" />
     <Content Include="Content\DataTables\extensions\Buttons\css\common.scss" />
+    <Content Include="App_Data\SQLCampare.scmp" />
     <None Include="Properties\PublishProfiles\apptest20201 - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apptest20201 - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apptest20201 - Web Deploy.pubxml" />
@@ -1047,6 +1046,10 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\Clinicas.asmx.cs">
+      <DependentUpon>Clinicas.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -1228,6 +1231,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepVendas.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="api\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

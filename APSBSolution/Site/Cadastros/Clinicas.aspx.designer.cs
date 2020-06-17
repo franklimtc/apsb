@@ -114,6 +114,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.ObjectDataSource dsBancos;
 
         /// <summary>
+        /// Controle tbPgtoDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPgtoDias;
+
+        /// <summary>
         /// Controle chDescontoVariavel.
         /// </summary>
         /// <remarks>
@@ -139,15 +148,6 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSalvar;
-
-        /// <summary>
-        /// Controle tbIdClinica.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField tbIdClinica;
 
         /// <summary>
         /// Controle tbValorRepasse.
@@ -177,21 +177,12 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbObsProfissional;
 
         /// <summary>
-        /// Controle btAdicionar.
+        /// Controle gvProfissionalClinica.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAdicionar;
-
-        /// <summary>
-        /// Controle tbProfissionalClinica.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tbProfissionalClinica;
+        protected global::System.Web.UI.WebControls.GridView gvProfissionalClinica;
     }
 }

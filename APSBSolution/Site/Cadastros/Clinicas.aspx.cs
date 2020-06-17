@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
@@ -60,7 +61,6 @@ namespace Site.Cadastros
 
         protected void btNovaClinica_Click(object sender, EventArgs e)
         {
-           
         }
 
         protected void btSalvar_Click(object sender, EventArgs e)
@@ -91,12 +91,14 @@ namespace Site.Cadastros
             c.cvIdBanco = int.Parse(dpBancoClinica.SelectedValue);
             c.cbDescontoVariavel = chDescontoVariavel.Checked;
             c.ccObservacao = tbObsClinica.Text;
-            if (tbIdClinica.Value.IsNullOrWhiteSpace())
+
+            if (idHiddenClinica.Value.IsNullOrWhiteSpace())
             {
                 result = c.Adicionar("Franklim");
             }
             else
             {
+                c.idClinica = int.Parse(idHiddenClinica.Value);
                 result = c.Salvar("Franklim");
             }
 
@@ -133,20 +135,64 @@ namespace Site.Cadastros
                     }
                     break;
                 case "Editar":
-                    string clinicaModal = @"$('#clinicaModal').modal('show')";
-                    Clinica c = Clinica.ListarPorID(idClinica);
-                    tbApelido.Text = c.ccApelido;
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", clinicaModal, true);
+                    CarregarModalClinica(idClinica);
+                  
                     break;
                 case "Associar":
-                    string profissionalModal = @"$('#profissionalModal').modal('show')";
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", profissionalModal, true);
+                    CarregarModalRelacao(idClinica);
+                    
                     break;
                 default:
                     break;
             }
 
            
+        }
+
+        private void CarregarModalRelacao(int idClinica)
+        {
+            dpSelectProfissional.DataSource = Profissional.ListaDropDown();
+            dpSelectProfissional.DataValueField = "idProfissional";
+            dpSelectProfissional.DataTextField = "ccNome";
+
+
+            List<ClinicaProfissional> lista = ClinicaProfissional.Listar(idClinica);
+            if (lista.Count == 0)
+            {
+                lista.Add(new ClinicaProfissional());
+            }
+            gvProfissionalClinica.DataSource = lista;
+            gvProfissionalClinica.DataBind();
+
+            string profissionalModal = @"$('#profissionalModal').modal('show')";
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", profissionalModal, true);
+        }
+
+        private void CarregarModalClinica(int idClinica)
+        {
+            string clinicaModal = @"$('#clinicaModal').modal('show')";
+            Clinica c = Clinica.ListarPorID(idClinica);
+            tbApelido.Text = c.ccApelido;
+            tbRazaoSocial.Text = c.ccRazaoSocial;
+            tbClinicaNomeFantasia.Text = c.ccNomeFantasia;
+            tbClinicaEmail.Text = c.ccEmail;
+            tbClinicaISS.Text = c.cvISS.ToString();
+            tbDescontos.Text = c.cvDescontos.ToString();
+            dpBancoClinica.ClearSelection();
+            dpBancoClinica.Items.FindByText(c.ccBanco).Selected = true;
+            tbPgtoDias.Text = c.cvPgtoDias.ToString();
+            if (c.ccDescontoVariavel == "Sim")
+            {
+                chDescontoVariavel.Checked = true;
+            }
+            else
+            {
+                chDescontoVariavel.Checked = false;
+            }
+            tbObsClinica.Text = c.ccObservacao;
+
+
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", clinicaModal, true);
         }
 
         protected void AdicionarRelacao(string user)
@@ -163,6 +209,21 @@ namespace Site.Cadastros
             }
         }
 
-       
+        protected void btSalvarRelacao_Click(object sender, EventArgs e)
+        {
+            if (idHiddenClinica.Value != "")
+            {
+                foreach (GridViewRow r in gvProfissionalClinica.Rows)
+                {
+                    string status = r.Cells[3].Text;
+                }
+            }
+        }
+
+        [WebMethod]
+        public static string OnSubmit()
+        {
+            return "Hello";
+        }
     }
 }

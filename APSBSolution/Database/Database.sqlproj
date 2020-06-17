@@ -59,6 +59,7 @@
     <Folder Include="Procedures" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Procedures\INS_Clinica.sql" />
@@ -72,6 +73,7 @@
     <Build Include="Procedures\SEL_Bancos.sql" />
     <Build Include="Procedures\SEL_ProfissionaisDP.sql" />
     <Build Include="Procedures\INS_ClinicaProfissional.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ClinicaProfissional.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />
@@ -82,5 +84,8 @@
     <Build Include="dbo\Tables\tbProfissionaisBancos.sql" />
     <Build Include="dbo\Tables\tbProfissionaisDados.sql" />
     <Build Include="dbo\Tables\tbTelefones.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Insert_Bancos.sql" />
   </ItemGroup>
 </Project>

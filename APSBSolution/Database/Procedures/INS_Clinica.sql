@@ -8,6 +8,7 @@
 	, @cvISS DECIMAL(10,2)
 	, @cvDescontos DECIMAL(10,2)
 	, @idBanco INT
+	, @cvPgtoDias INT
 	, @cbDescontoVariavel DECIMAL(10,2)
 	, @observacoes VARCHAR(MAX)
 )
@@ -21,8 +22,8 @@ AS BEGIN
 	END
 
 	BEGIN TRY		
-		INSERT INTO tbClinicas(ccApelido, ccRazaoSocial, ccNomeFantasia, ccEmail, cvISS, cvDescontos, cbDescontoVariavel, idObservacao, idBanco, ccCriadoPor)
-		VALUES(@ccApelido, @ccRazaoSocial, @ccNomeFantasia, @ccEmail, @cvISS, @cvDescontos, @cbDescontoVariavel, @idObservacao, @idBanco, @UserName);
+		INSERT INTO tbClinicas(ccApelido, ccRazaoSocial, ccNomeFantasia, ccEmail, cvISS, cvDescontos, cbDescontoVariavel, idObservacao, idBanco, ccCriadoPor, cvPgtoDias)
+		VALUES(@ccApelido, @ccRazaoSocial, @ccNomeFantasia, @ccEmail, @cvISS, @cvDescontos, @cbDescontoVariavel, @idObservacao, @idBanco, @UserName, @cvPgtoDias);
 		SET @Result = 1;
 	END TRY
 	BEGIN CATCH
