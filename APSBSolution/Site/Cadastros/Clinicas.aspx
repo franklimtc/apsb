@@ -8,7 +8,6 @@
     </style>
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="idHiddenClinica" />
-
     <%--Hidden Filds--%>
 
 
@@ -93,7 +92,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbClinicaEmail">Email</label>
-                                <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." />
+                                <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." TextMode ="Email" />
                             </div>
                         </div>
                     </div>
@@ -101,11 +100,11 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="tbClinicaISS">ISS</label>
-                                <asp:TextBox runat="server" ID="tbClinicaISS" CssClass="form-control" Text="2,0" placeholder="..."/>
+                                <asp:TextBox runat="server" ID="tbClinicaISS" CssClass="form-control" Text="2,0" />
                             </div>
                             <div class="col-md-4">
                                 <label for="tbDescontos">Descontos</label>
-                                <asp:TextBox runat="server" ID="tbDescontos" CssClass="form-control" Text="6,5" placeholder="..."/>
+                                <asp:TextBox runat="server" ID="tbDescontos" CssClass="form-control" Text="6,5"  />
                             </div>
                             <div class="col-md-5">
                                 <label for="dpBancoClinica">Banco</label>
@@ -171,7 +170,7 @@
 
                             <div>
                                 <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control"></asp:DropDownList>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -185,33 +184,33 @@
                         <div class="col-sm-3">
                             <%--<asp:Button ID="btAdicionar" Text="Adicionar" runat="server" CssClass="btn btn-secondary"  />--%>
                             <%--<asp:LinkButton ID="btAdicionarRelacao" Text="Adicinar" runat="server" OnClick="btAdicionarRelacao_Click"  CssClass="btn btn-secondary" />--%>
-                            <input type="button" ID="btAdicionarRelacao"  value="Adicionar" class="btn btn-secondary" onclick="AdicionarRelacao()" />
+                            <input type="button" id="btAdicionarRelacao" value="Adicionar" class="btn btn-secondary" onclick="SalvarRelacao()" />
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col">
-                             <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false">
-                            <Columns>
-                                 <asp:BoundField DataField="IdClinicaProfissional" HeaderText="ID"/>
-                                 <asp:BoundField DataField="ccNomeProfissional" HeaderText="Nome"/>
-                                 <asp:BoundField DataField="cvTaxaProfissional" HeaderText="Taxa"/>
-                                 <asp:BoundField DataField="cvStatus" HeaderText="Status"/>
-                                 <asp:BoundField DataField="ccObservacao" HeaderText="Observações"/>
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+                            <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalClinica_RowCommand">
+                                <Columns>
+                                    <asp:BoundField DataField="IdClinicaProfissional" HeaderText="ID" />
+                                    <asp:BoundField DataField="ccNomeProfissional" HeaderText="Nome" />
+                                    <asp:BoundField DataField="cvTaxaProfissional" HeaderText="Taxa" />
+                                    <asp:BoundField DataField="cvStatus" HeaderText="Status" />
+                                    <asp:BoundField DataField="ccObservacao" HeaderText="Observações" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btExcluirRelacao" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                         </div>
-                       
+
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="SalvarRelacao()">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary" onclick="SalvarRelacao()">Salvar</button>--%>
                     <%--<asp:Button Text="Salvar" runat="server" ID="btSalvarRelacao" CssClass="btn btn-primary" OnClick="btSalvarRelacao_Click" />--%>
                 </div>
             </div>
@@ -219,7 +218,7 @@
     </div>
 
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" src="../Scripts/api.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Clinica.js"></script>
 
     <script type="text/javascript">
         //Datatables (gvClinicas)
@@ -237,6 +236,8 @@
                     }
                 }
             });
+
+
         });
 
         function filterProfissional() {
@@ -259,32 +260,12 @@
             $("#MainContent_tbClinicaEmail").val("");
             $("#MainContent_tbClinicaISS").val("2,0");
             $("#MainContent_tbPgtoDias").val("5");
-            
+
             $("#MainContent_tbDescontos").val("6,5");
             $("#MainContent_tbObsClinica").val("");
             $("#MainContent_idHiddenClinica").val("");
             $("#MainContent_chDescontoVariavel").prop("checked", false);
         }
-
-        //function BuscarClinica(idClinica) {
-        //    alert('Buscar Clinica de id' + idClinica);
-        //}
-        //$(".btEditar").click(function () {
-        //    alert('botao pressionado!');
-        //});
-
-        function AdicionarRelacao() {
-            //CONCLUIR FUNÇÃO DE ADIÇÃO
-
-            var idProfissional = $("#MainContent_dpSelectProfissional").children("option:selected").val();
-            var nomeProfissional = $("#MainContent_dpSelectProfissional").children("option:selected").text();
-            var taxa = $("#MainContent_tbValorRepasse").val();
-            var obs = $("#MainContent_tbObsProfissional").val();
-
-            if (idProfissional != "Selecionar..." && nomeProfissional != "Selecionar..." && taxa != "") {
-                $('#MainContent_gvProfissionalClinica').append('<tr><td>' + idProfissional + '</td><td>' + nomeProfissional + '</td><td>' + taxa + '</td><td>Adicionar</td><td>' + obs + '</td><td></td></tr>');
-            }
-        };
 
     </script>
 </asp:Content>

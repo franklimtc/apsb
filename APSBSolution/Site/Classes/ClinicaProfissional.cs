@@ -89,5 +89,27 @@ namespace Site.Classes
 
             return Lista;
         }
+
+        internal static bool Excluir(string Usuario, int idRelacao)
+        {
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@idClinicaProfissional", idRelacao });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"EXC_ClinicaProfissional @UserName = @UserName, @idClinicaProfissional = @idClinicaProfissional;", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
     }
 }

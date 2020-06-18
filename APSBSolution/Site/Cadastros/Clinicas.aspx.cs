@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
 using Microsoft.Reporting.Map.WebForms.BingMaps;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using Simple.Data;
 using Site.Classes;
 
@@ -164,6 +165,11 @@ namespace Site.Cadastros
             gvProfissionalClinica.DataSource = lista;
             gvProfissionalClinica.DataBind();
 
+            dpSelectProfissional.ClearSelection();
+            dpSelectProfissional.Items.FindByValue("Selecionar...").Selected = true;
+            tbObsProfissional.Text = "";
+            tbValorRepasse.Text = "10";
+
             string profissionalModal = @"$('#profissionalModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", profissionalModal, true);
         }
@@ -195,35 +201,79 @@ namespace Site.Cadastros
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", clinicaModal, true);
         }
 
-        protected void AdicionarRelacao(string user)
-        {
-            ClinicaProfissional cp = new ClinicaProfissional(int.Parse(idHiddenClinica.Value), int.Parse(dpSelectProfissional.SelectedValue), double.Parse(tbValorRepasse.Text), tbObsProfissional.Text);
-            bool result = cp.Adicionar(user);
-            if (result)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
-            }
-        }
-
-        protected void btSalvarRelacao_Click(object sender, EventArgs e)
-        {
-            if (idHiddenClinica.Value != "")
-            {
-                foreach (GridViewRow r in gvProfissionalClinica.Rows)
-                {
-                    string status = r.Cells[3].Text;
-                }
-            }
-        }
-
         [WebMethod]
         public static string OnSubmit()
         {
             return "Hello";
         }
+
+        [WebMethod]
+        public static bool SalvarRelacao(string idClinica, string idProfissional, string taxa, string observacao)
+        {
+            //strin user = User.Identity.Name;
+            string user = "Franklim";
+
+            if (taxa.Contains("."))
+            {
+                taxa = taxa.Replace(".", ",");
+            }
+
+            ClinicaProfissional cp = new ClinicaProfissional(int.Parse(idClinica), int.Parse(idProfissional), double.Parse(taxa), observacao);
+            bool result = cp.Adicionar(user);
+            return result;
+        }
+
+        protected void gvProfissionalClinica_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var obj = e.CommandArgument;
+            int idRelacao = int.Parse(gvProfissionalClinica.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+            string user = "Franklim";
+
+            bool result = false;
+
+            switch (e.CommandName)
+            {
+                case "Excluir":
+                    result = ClinicaProfissional.Excluir(user, idRelacao);
+                    if (result)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao excluir o registro!');", true);
+                    }
+                    break;
+               
+                default:
+                    break;
+            }
+        }
+
+
+        //protected void AdicionarRelacao(string user)
+        //{
+        //    ClinicaProfissional cp = new ClinicaProfissional(int.Parse(idHiddenClinica.Value), int.Parse(dpSelectProfissional.SelectedValue), double.Parse(tbValorRepasse.Text), tbObsProfissional.Text);
+        //    bool result = cp.Adicionar(user);
+        //    if (result)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+        //    }
+        //    else
+        //    {
+        //        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+        //    }
+        //}
+
+        //protected void btSalvarRelacao_Click(object sender, EventArgs e)
+        //{
+        //    if (idHiddenClinica.Value != "")
+        //    {
+        //        foreach (GridViewRow r in gvProfissionalClinica.Rows)
+        //        {
+        //            string status = r.Cells[3].Text;
+        //        }
+        //    }
+        //}
     }
 }
