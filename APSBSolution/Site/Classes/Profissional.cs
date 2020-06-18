@@ -9,6 +9,7 @@ namespace Site.Classes
     public class Profissional
     {
         #region Campos
+
         public int cvIdProfissional { get; set; }
         public int cvTelCelular { get; set; }
         public string ccNome { get; set; }
@@ -48,6 +49,11 @@ namespace Site.Classes
         public string ccAgencia { get; set; }
         public string ccContaCorrente { get; set; }
         public string ccOperacao { get; set; }
+        public string ccObservacoes { get; set; }
+        public List<Documento> Documentos { get; set; }
+        public List<Banco> Bancos { get; set; }
+        public List<Endereco> Enderecos { get; set; }
+        public List<Arquivo> Arquivos { get; set; }
         #endregion
 
         public Profissional()
@@ -68,22 +74,33 @@ namespace Site.Classes
             this.ccEmail = _email;
         }
 
-        public List<Profissional> Listar()
+        public Profissional(int _id, string _nome, string _email, string _observacoes)
+        {
+            this.cvIdProfissional = _id;
+            this.ccNome = _nome;
+            this.ccEmail = _email;
+            this.ccObservacoes = _observacoes;
+        }
+
+        public static List<Profissional> Listar()
         {
             List<Profissional> Lista = new List<Profissional>();
-            Lista.Add(new Profissional(1, 991919191, "Antonio", "antonio@email.com"));
-            Lista.Add(new Profissional(2, 991919191, "Maria", "maria@email.com"));
-            Lista.Add(new Profissional(3, 991919191, "Jose", "jose@email.com"));
+            DataTable dt = DAO.RetornaDT("SEL_Profissionais");
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow p in dt.Rows)
+                {
+                    Lista.Add(new Profissional(int.Parse(p["IdProfissional"].ToString())
+                        , p["ccNome"].ToString()
+                        , p["ccEmail"].ToString()
+                        , p["observacao"].ToString()
+                        ));
+                }
+            }
             return Lista;
         }
         public static List<Profissional> ListaDropDown()
         {
-            //List<Profissional> Lista = new List<Profissional>();
-            //Lista.Add(new Profissional(1, 991919191, "Antonio", "antonio@email.com"));
-            //Lista.Add(new Profissional(2, 991919191, "Maria", "maria@email.com"));
-            //Lista.Add(new Profissional(3, 991919191, "Jose", "jose@email.com"));
-            //return Lista;
-
             DataTable dt = DAO.RetornaDT("SEL_ProfissionaisDP");
             List<Profissional> Lista = new List<Profissional>();
             if (dt.Rows.Count > 0)
@@ -96,6 +113,28 @@ namespace Site.Classes
             }
 
             return Lista;
+        }
+
+        internal static bool Excluir(string Usuario, int idProfissional)
+        {
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@idProfissional", idProfissional });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"EXC_Profissional @UserName = @UserName, @idProfissional = @idProfissional;", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
         }
     }
 }

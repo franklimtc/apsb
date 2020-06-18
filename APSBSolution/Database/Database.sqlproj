@@ -75,6 +75,8 @@
     <Build Include="Procedures\INS_ClinicaProfissional.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ClinicaProfissional.sql" />
     <Build Include="dbo\Stored Procedures\EXC_ClinicaProfissional.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Profissionais.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Profissional.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

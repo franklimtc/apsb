@@ -1094,10 +1094,13 @@
     <Compile Include="Cadastros\Medicos.aspx.designer.cs">
       <DependentUpon>Medicos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Arquivo.cs" />
     <Compile Include="Classes\Banco.cs" />
     <Compile Include="Classes\Clinica.cs" />
     <Compile Include="Classes\ClinicaProfissional.cs" />
     <Compile Include="Classes\DAO.cs" />
+    <Compile Include="Classes\Documento.cs" />
+    <Compile Include="Classes\Endereco.cs" />
     <Compile Include="Classes\Profissional.cs" />
     <Compile Include="Classes\RelDespesas.cs" />
     <Compile Include="Classes\RelVendas.cs" />
