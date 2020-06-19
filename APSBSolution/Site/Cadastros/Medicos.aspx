@@ -24,8 +24,7 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-        <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar">
-                    <asp:button text="Novo Médico" runat="server" CssClass="btn btn-secondary" />
+        <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-secondary" OnClientClick="LimparForm()">Novo Médico
         </asp:LinkButton>
         <br />
         <div class="row">
@@ -33,132 +32,23 @@
                 <br />
                 <asp:GridView runat="server" ID="gvMedicos" CssClass="table table-hover table-striped table-sm" OnPreRender="gvMedicos_PreRender" AutoGenerateColumns="false" OnRowCommand="gvMedicos_RowCommand">
                     <Columns>
-                        <asp:BoundField DataField="cvIdProfissional" HeaderText="ID" />
+                        <asp:BoundField DataField="IdProfissional" HeaderText="ID" />
                         <asp:BoundField DataField="ccNome" HeaderText="Nome" />
                         <asp:BoundField DataField="ccEmail" HeaderText="Email" />
-                        <asp:BoundField DataField="ccObservacoes" HeaderText="Observações" />
+                        <asp:BoundField DataField="Observacoes" HeaderText="Observações" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Dados Pessoais" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Dados Bancários" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" />&nbsp&nbsp
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Dados Pessoais" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Dados Bancários" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
                 <br />
-               <%-- <table ID="gvClinicas" class="table table-hover table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Observações</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>01</td>
-                            <td>Médico A</td>
-                            <td>medico@dominio.com</td>
-                            <td>...</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>02</td>
-                            <td>Médico B</td>
-                            <td>medico@dominio.com</td>
-                            <td>...</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>03</td>
-                            <td>Médico C</td>
-                            <td>medico@dominio.com</td>
-                            <td>...</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Médico D</td>
-                            <td>medico@dominio.com</td>
-                            <td>...</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Dados Pessoais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Dados Profissionais">
-                                    <asp:imagebutton imageurl="~/Content/Icons/medkit-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#moradiaModal" ToolTip="Endereço">
-                                    <asp:imagebutton imageurl="~/Content/Icons/home-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                 <asp:LinkButton runat="server" data-toggle="modal" data-target="#bancoModal" ToolTip="Dados bancários">
-                                    <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#arquivosModal" ToolTip="Arquivos">
-                                    <asp:imagebutton imageurl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>--%>
             </div>
         </div>
     </div>
@@ -279,23 +169,44 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
-                                <label for="tbSexo">Sexo</label>
-                                <select id="tbSexo" class="form-control">
-                                    <option selected>Selecione...</option>
-                                    <option>Masculino</option>
-                                    <option>Feminino</option>
-                                    <option>Outro</option>
-                                </select>
-                                <%--<asp:TextBox runat="server" ID="tbSexo" CssClass="form-control" placeholder="Sexo" />--%>
+                                <label for="dpSexo">Sexo</label>
+                                <asp:DropDownList runat="server" ID="dpSexo"  CssClass="form-control" >
+                                    <asp:ListItem Text="Masculino" Value="M" Selected="True" />
+                                    <asp:ListItem Text="Feminino" Value="F" />
+                                </asp:DropDownList>
                             </div>
                             <div class="col">
-                                <label for="tbNaturalidade">Nat.(UF)</label>
-                                <select id="dpUF" class="form-control">
-                                    <option selected>Selecione...</option>
-                                    <option>AL</option>
-                                    <option>CE</option>
-                                    <option>MA</option>
-                                </select>
+                                <label for="dpNaturalidade">Nat.(UF)</label>
+                                <asp:DropDownList runat="server" ID="dpNaturalidade"  CssClass="form-control" >
+                                     <asp:ListItem Text="Selecionar..." Value="00"/>
+                                     <asp:ListItem Text="Acre" Value="AC" />
+                                     <asp:ListItem Text="Alagoas " Value="AL" />
+                                     <asp:ListItem Text="Amapá " Value="AP" />
+                                     <asp:ListItem Text="Amazonas " Value="AM" />
+                                     <asp:ListItem Text="Bahia " Value="BA" />
+                                     <asp:ListItem Text="Ceará " Value="CE" />
+                                     <asp:ListItem Text="Distrito Federal " Value="DF" />
+                                     <asp:ListItem Text="Espírito Santo " Value="ES" />
+                                     <asp:ListItem Text="Goiás " Value="GO" />
+                                     <asp:ListItem Text="Maranhão " Value="MA" />
+                                     <asp:ListItem Text="Mato Grosso " Value="MT" />
+                                     <asp:ListItem Text="Mato Grosso do Sul " Value="MS" />
+                                     <asp:ListItem Text="Minas Gerais " Value="MG" />
+                                     <asp:ListItem Text="Pará " Value="PA" />
+                                     <asp:ListItem Text="Paraíba " Value="PB" />
+                                     <asp:ListItem Text="Paraná " Value="PR" />
+                                     <asp:ListItem Text="Pernambuco " Value="PE" />
+                                     <asp:ListItem Text="Piauí " Value="PI" />
+                                     <asp:ListItem Text="Rio de Janeiro " Value="RJ" />
+                                     <asp:ListItem Text="Rio Grande do Norte " Value="RN" />
+                                     <asp:ListItem Text="Rio Grande do Sul " Value="RS" />
+                                     <asp:ListItem Text="Rondônia " Value="RO" />
+                                     <asp:ListItem Text="Roraima " Value="RR" />
+                                     <asp:ListItem Text="Santa Catarina " Value="SC" />
+                                     <asp:ListItem Text="São Paulo " Value="SP" />
+                                     <asp:ListItem Text="Sergipe " Value="SE" />
+                                     <asp:ListItem Text="Tocantins " Value="TO" />
+                                </asp:DropDownList>
                             </div>
                             <div class="col">
                                 <label for="tbCidade">Nat. (Cidade)</label>
@@ -307,13 +218,12 @@
                     <hr />
 
                     <div class="form-group">
-                        <label for="tbEstCivil">Estado Civil</label>
-                        <select id="tbEstCivil" class="form-control">
-                            <option selected>Selecione...</option>
-                            <option>Casado</option>
-                            <option>Solteiro</option>
-                            <option>Outro</option>
-                        </select>
+                        <label for="dpEstCivil">Estado Civil</label>
+                        <asp:DropDownList runat="server" ID="dpEstCivil"  CssClass="form-control" >
+                            <asp:ListItem Text="Casado" Value="C" Selected="true" />
+                            <asp:ListItem Text="Solteiro" Value="S" />
+                            <asp:ListItem Text="Outro" Value="O" />
+                        </asp:DropDownList>
                     </div>
                     <div class="form-group">
                         <label for="tbNomePai">Nome do pai</label>
@@ -331,7 +241,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbRG">RG</label>
-                                <asp:TextBox runat="server" ID="tbRG" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbRG" CssClass="form-control number" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbEmissorRG">Órgão Emissor</label>
@@ -339,13 +249,13 @@
                             </div>
                             <div class="col">
                                 <label for="tbdtEmissaoRG">Data de Emissão</label>
-                                <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control date" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="tbCPF">CPF</label>
-                                <asp:TextBox runat="server" ID="tbCPF" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbCPF" CssClass="form-control cpf" placeholder="digite..." />
                             </div>
                             <div class="col-md-8">
                                 <label for="tbEmail">Email</label>
@@ -355,18 +265,24 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbTelefone">Telefone</label>
-                                <asp:TextBox runat="server" ID="tbTelefone" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbTelefone" CssClass="form-control phone_with_ddd" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbCelular">Celular</label>
-                                <asp:TextBox runat="server" ID="tbCelular" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbCelular" CssClass="form-control phone_with_ddd" placeholder="digite..." />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="tbObservacoes">Observações</label>
+                                <asp:TextBox runat="server" ID="tbObservacoes" CssClass="form-control" TextMode="MultiLine" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
+                    <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()"/>
                 </div>
             </div>
         </div>
@@ -599,10 +515,13 @@
             </div>
         </div>
     </div>
+    
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/Site.js"></script>
 
     <script>
-//DataTables
+
 
         $(document).ready(function () {
             $('#MainContent_gvMedicos').DataTable({
@@ -616,5 +535,40 @@
                 }
             });
         });
+
+        function LimparForm() {
+            //alert("limpando form!");
+
+            $("#MainContent_tbNome").val("").attr("required","required");
+            $("#MainContent_tbCidade").val("");
+            $("#MainContent_tbNomePai").val("");
+            $("#MainContent_tbNomeMae").val("");
+            $("#MainContent_tbNomeConjuge").val("");
+            $("#MainContent_tbRG").val("").attr("required", "required");
+            $("#MainContent_tbEmissorRG").val("");
+            $("#MainContent_tbdtEmissao").val("");
+            $("#MainContent_tbCPF").val("").attr("required", "required");
+            $("#MainContent_tbEmail").val("");
+            $("#MainContent_tbTelefone").val("");
+            $("#MainContent_tbCelular").val("").attr("required", "required");
+            $("#MainContent_idHiddenMedico").val("");
+            $("#MainContent_dpSexo ").val("M").change();
+            $("#MainContent_dpNaturalidade").val("00").change();
+            $("#MainContent_dpEstCivil").val("C").change();
+            $("#MainContent_tbObservacoes").val("");
+            
+
+        }
+
+        $(document).ready(function () {
+            $(".imgButton").click(function () {
+                $("#MainContent_tbNome").removeAttr("required");
+                $("#MainContent_tbRG").removeAttr("required");
+                $("#MainContent_tbCPF").removeAttr("required");
+                $("#MainContent_tbCelular").removeAttr("required");
+            });
+        });
+
+       
     </script>
 </asp:Content>

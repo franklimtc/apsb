@@ -42,6 +42,24 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbNome;
 
         /// <summary>
+        /// Controle dpSexo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpSexo;
+
+        /// <summary>
+        /// Controle dpNaturalidade.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpNaturalidade;
+
+        /// <summary>
         /// Controle tbCidade.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCidade;
+
+        /// <summary>
+        /// Controle dpEstCivil.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpEstCivil;
 
         /// <summary>
         /// Controle tbNomePai.
@@ -139,6 +166,24 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCelular;
+
+        /// <summary>
+        /// Controle tbObservacoes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbObservacoes;
+
+        /// <summary>
+        /// Controle btSalvar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btSalvar;
 
         /// <summary>
         /// Controle tbFormacao.

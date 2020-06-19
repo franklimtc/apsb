@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using Microsoft.Ajax.Utilities;
+using Simple.Data;
 using Site.Classes;
 
 
@@ -50,7 +52,7 @@ namespace Site.Cadastros
             switch (e.CommandName)
             {
                 case "Editar":
-                    CarregarModalPessoal();
+                    CarregarModalPessoal(idProfissional);
                     break;
                 case "EdProfissionais":
                     CarregarModalProfissional();
@@ -116,14 +118,82 @@ namespace Site.Cadastros
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        private void CarregarModalPessoal()
+        private void CarregarModalPessoal(int idProfissional)
         {
             //medicoModal
+            Profissional editProf = Profissional.ListarPorID(idProfissional);
+            tbNome.Text = editProf.ccNome;
+            dpSexo.ClearSelection();
+            dpSexo.Items.FindByValue(editProf.ccSexo).Selected = true;
+            dpNaturalidade.ClearSelection();
+            dpNaturalidade.Items.FindByValue(editProf.ccNaturalUF).Selected = true;
+            tbCidade.Text = editProf.ccNaturalCidade;
+            dpEstCivil.ClearSelection();
+            dpEstCivil.Items.FindByValue(editProf.ccEstadoCivil).Selected = true;
+            tbNomePai.Text = editProf.nomePai;
+            tbNomeMae.Text = editProf.nomeMae;
+            tbNomeConjuge.Text = editProf.nomeConjuge;
+            tbRG.Text = editProf.RGNum.ToString();
+            tbEmissorRG.Text = editProf.RGEmissor;
+            tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("dd/MM/yyyy");
+            tbCPF.Text = editProf.CPFNum.ToString();
+            tbEmail.Text = editProf.ccEmail;
+            tbTelefone.Text = editProf.cvTelefone.ToString();
+            tbCelular.Text = editProf.cvCelular.ToString();
+            tbObservacoes.Text = editProf.Observacoes;
 
             string scriptModal = @"$('#medicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
         #endregion
+        protected void btSalvar_Click(object sender, EventArgs e)
+        {
+            bool result = false;
+            //string user = User.Identity.Name;
+            string user = "Franklim";
 
+            Profissional pNew = new Profissional();
+            pNew.ccNome = tbNome.Text;
+            pNew.ccSexo = dpSexo.SelectedValue;
+            pNew.ccNaturalUF = dpNaturalidade.SelectedValue;
+            pNew.ccNaturalCidade = tbCidade.Text;
+            pNew.ccEstadoCivil = dpEstCivil.SelectedValue;
+            pNew.nomePai = tbNomePai.Text;
+            pNew.nomeMae = tbNomeMae.Text;
+            pNew.nomeConjuge = tbNomeConjuge.Text;
+            if (!tbRG.Text.IsNullOrWhiteSpace())
+                pNew.RGNum = long.Parse(tbRG.Text);
+            pNew.RGEmissor = tbEmissorRG.Text;
+            if (!tbdtEmissaoRG.Text.IsNullOrWhiteSpace())
+                pNew.RGdtEmissao = DateTime.Parse(tbdtEmissaoRG.Text);
+            pNew.CPFNum = long.Parse(tbCPF.Text);
+            pNew.ccEmail = tbEmail.Text;
+            if (!tbTelefone.Text.IsNullOrWhiteSpace())
+                pNew.cvTelefone = long.Parse(tbTelefone.Text);
+            if (!tbCelular.Text.IsNullOrWhiteSpace())
+                pNew.cvCelular = long.Parse(tbCelular.Text);
+            pNew.Observacoes = tbObservacoes.Text;
+
+
+            if (idHiddenMedico.Value.IsNullOrWhiteSpace())
+            {
+                result = pNew.Adicionar(user);
+            }
+            else
+            {
+                pNew.IdProfissional = int.Parse(idHiddenMedico.Value);
+                result = pNew.Salvar(user);
+            }
+
+            if (result)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+            }
+
+        }
     }
 }

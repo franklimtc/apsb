@@ -177,9 +177,8 @@ namespace Site.Classes
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"UPD_Clinica @UserName=@UserName, @ccApelido=@ccApelido, @ccRazaoSocial=@ccRazaoSocial
-, @ccNomeFantasia=@ccNomeFantasia, @ccEmail=@ccEmail, @cvISS=@cvISS, @cvDescontos=@cvDescontos, @idBanco=@idBanco, @cvPgtoDias=@cvPgtoDias
-, @cbDescontoVariavel=@cbDescontoVariavel, @observacoes=@observacoes, @idClinica=@idClinica", parametros);
+                object retorno = DAO.ExecuteScalar(@"UPD_Profissional @ccNome, @ccSexo, @ccNaturalUF, @ccNaturalCidade, @ccEstadoCivil, @ccEmail
+, @UserName, @observacoes, @RGNum, @RGEmissor, @RGdtEmissao, @CPFNum, @cvTelefone, @cvCelular, @nomePai, @nomeMae, @nomeConjuge, @IdProfissional", parametros);
 
                 if (bool.Parse(retorno.ToString()) == true)
                 {
