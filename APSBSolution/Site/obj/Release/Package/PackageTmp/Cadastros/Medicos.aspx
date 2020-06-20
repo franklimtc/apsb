@@ -302,6 +302,7 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
+                                <asp:HiddenField runat="server" id="idHiddenProfissionalDado" />
                                 <label for="tbFormacao">Formação Profissional</label>
                                 <asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..." />
                             </div>
@@ -309,13 +310,10 @@
                         <div class="row">
                             <div class="col">
                                 <label for="dpEspecialidade">Especialidade</label>
-                                <select id="dpEspecialidade" class="form-control">
-                                    <option selected>Selecione...</option>
-                                    <option>Angiologista</option>
-                                    <option>Cardiologista</option>
-                                    <option>Clínico geral</option>
-                                    <option>Outra</option>
-                                </select>
+                                <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
+                                </asp:DropDownList>
+                                <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade"/>
+                               
                             </div>
                             <div class="col">
                                 <label for="tbPosGraduacao">Pós-Graduação</label>

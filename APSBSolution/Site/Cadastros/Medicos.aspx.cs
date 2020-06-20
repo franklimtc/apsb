@@ -55,7 +55,7 @@ namespace Site.Cadastros
                     CarregarModalPessoal(idProfissional);
                     break;
                 case "EdProfissionais":
-                    CarregarModalProfissional();
+                    CarregarModalProfissional(idProfissional);
                     break;
                 case "EdEndereco":
                     CarregarModalEndereco();
@@ -110,9 +110,41 @@ namespace Site.Cadastros
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        private void CarregarModalProfissional()
+        private void CarregarModalProfissional(int idProfissional)
         {
             //profissionalModal
+            ProfissionalDados pd = ProfissionalDados.ListarPorID(idProfissional);
+            if (pd != null)
+            {
+                idHiddenProfissionalDado.Value = pd.IdDadoProfissional.ToString();
+                tbFormacao.Text = pd.ccFormacao;
+                dpEspecialidade.ClearSelection();
+                dpEspecialidade.Items.FindByText(pd.ccEspecialidade).Selected = true;
+                tbPosGraduacao.Text = pd.ccPosGraduacao;
+                tbConselhoRegional.Text = pd.ccConselho;
+                tbNumInscricaoConselho.Text = pd.cvNumInscricao.ToString();
+                tbTituloEleitor.Text = pd.cvTitulo.ToString();
+                tbZonaEleitor.Text = pd.cvTituloZona.ToString();
+                tbSecaoEleitor.Text = pd.cvTituloSecao.ToString();
+                tbReservista.Text = pd.cvReservista.ToString();
+                tbPisPasep.Text = pd.cvPIS.ToString();
+
+            }
+            else
+            {
+                idHiddenProfissionalDado.Value = "";
+                tbFormacao.Text = "";
+                dpEspecialidade.ClearSelection();
+                dpEspecialidade.Items.FindByValue("1").Selected = true;
+                tbPosGraduacao.Text = "";
+                tbConselhoRegional.Text = "";
+                tbNumInscricaoConselho.Text = "";
+                tbTituloEleitor.Text = "";
+                tbZonaEleitor.Text = "";
+                tbSecaoEleitor.Text = "";
+                tbReservista.Text = "";
+                tbPisPasep.Text = "";
+            }
 
             string scriptModal = @"$('#profissionalModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);

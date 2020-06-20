@@ -186,6 +186,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.Button btSalvar;
 
         /// <summary>
+        /// Controle idHiddenProfissionalDado.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idHiddenProfissionalDado;
+
+        /// <summary>
         /// Controle tbFormacao.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,24 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbFormacao;
+
+        /// <summary>
+        /// Controle dpEspecialidade.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpEspecialidade;
+
+        /// <summary>
+        /// Controle dsEspecialidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsEspecialidades;
 
         /// <summary>
         /// Controle tbPosGraduacao.

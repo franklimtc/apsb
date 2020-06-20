@@ -10,6 +10,8 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 
+--Bancos 
+
 INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('Banco do Brasil',1);
 INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('Banco da Amazonia',3);
 INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('Banco do Nordeste do Brasil',4);
@@ -140,3 +142,23 @@ INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('Banco BNP Paribas Brasil S.A',
 INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('NBC Bank Brasil S. A. – Banco Múltiplo',753);
 INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('Banco Cooperativo do Brasil – Bancoob',756);
 INSERT INTO tbBancos(ccBanco, cvCodBanco) VALUES('Banco KEB do Brasil',757);
+
+--Especialidades
+
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Angiologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Cardiologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Clínico geral');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Dentista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Dermatologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Endrocrinologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Fisioterapeuta');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Fonoaudiólogo');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Ginecologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Nutricionista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Ortopedista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Pediatra');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Pneumologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Psicólogo');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Radiologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Reumatologista');
+INSERT INTO tbEspecialidade(Especialidade) VALUES('Urologista');
