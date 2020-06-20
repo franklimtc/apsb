@@ -30,7 +30,7 @@ namespace Site.Cadastros
         {
             //dpBancoClinica.DataSource = Banco.Listar();
             dpSelectProfissional.DataSource = Profissional.ListaDropDown();
-            dpSelectProfissional.DataValueField = "cvIdProfissional";
+            dpSelectProfissional.DataValueField = "IdProfissional";
             dpSelectProfissional.DataTextField = "ccNome";
             dpSelectProfissional.DataBind();
 

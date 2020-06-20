@@ -79,6 +79,9 @@
     <Build Include="dbo\Stored Procedures\EXC_Profissional.sql" />
     <Build Include="dbo\Stored Procedures\UPD_Profissional.sql" />
     <Build Include="dbo\Stored Procedures\INS_Profissional.sql" />
+    <Build Include="dbo\Tables\tbEspecialidade.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisDados.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Especialidades.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />
