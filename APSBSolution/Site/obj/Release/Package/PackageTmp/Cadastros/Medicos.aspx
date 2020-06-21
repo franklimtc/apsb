@@ -304,7 +304,7 @@
                             <div class="col">
                                 <asp:HiddenField runat="server" id="idHiddenProfissionalDado" />
                                 <label for="tbFormacao">Formação Profissional</label>
-                                <asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..."/>
                             </div>
                         </div>
                         <div class="row">
@@ -313,13 +313,20 @@
                                 <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
                                 </asp:DropDownList>
                                 <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade"/>
-                               
                             </div>
+                           
                             <div class="col">
                                 <label for="tbPosGraduacao">Pós-Graduação</label>
                                 <asp:TextBox runat="server" ID="tbPosGraduacao" CssClass="form-control" placeholder="digite..." />
                             </div>
                         </div>
+                        <div class="row collapse"  id="colNovaEspecialidade">
+                            <div class="col">
+                                 <label for="tbEspecialidadeNova">Cadastrar Nova</label>
+                                <asp:TextBox runat="server" ID="tbEspecialidadeNova" CssClass="form-control" />
+                            </div>
+                        </div>
+                       
                         <div class="row">
                             <div class="col">
                                 <label for="tbConselhoRegional">Conselho Regional</label>
@@ -358,7 +365,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
+                    <asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarDados_Click" />
                 </div>
             </div>
         </div>
@@ -564,6 +571,20 @@
                 $("#MainContent_tbRG").removeAttr("required");
                 $("#MainContent_tbCPF").removeAttr("required");
                 $("#MainContent_tbCelular").removeAttr("required");
+            });
+        });
+
+        //Cadastrar Nova Especialidade
+        $(document).ready(function () {
+            $("#MainContent_dpEspecialidade").change(function () {
+                //alert($(this).children("option:selected").text());
+                var op = $(this).children("option:selected").text();
+                if (op === "Outra") {
+                    $('#colNovaEspecialidade').collapse('show');
+                } else {
+                    $('#colNovaEspecialidade').collapse('hide');
+                    $("#MainContent_tbEspecialidadeNova").val('')
+                }
             });
         });
 

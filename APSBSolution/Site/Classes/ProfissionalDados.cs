@@ -73,7 +73,49 @@ namespace Site.Classes
 
         public bool Salvar(string Usuario)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@IdDadoProfissional", this.IdDadoProfissional });
+            parametros.Add(new object[] { "@idProfissional", this.idProfissional });
+            parametros.Add(new object[] { "@ccFormacao", this.ccFormacao });
+            parametros.Add(new object[] { "@ccPosGraduacao", this.ccPosGraduacao });
+            parametros.Add(new object[] { "@ccEspecialidade", this.ccEspecialidade });
+            parametros.Add(new object[] { "@ccConselho", this.ccConselho });
+            parametros.Add(new object[] { "@cvNumInscricao", this.cvNumInscricao });
+            parametros.Add(new object[] { "@cvTitulo", this.cvTitulo });
+            parametros.Add(new object[] { "@cvTituloZona", this.cvTituloZona });
+            parametros.Add(new object[] { "@cvTituloSecao", this.cvTituloSecao });
+            parametros.Add(new object[] { "@cvReservista", this.cvReservista });
+            parametros.Add(new object[] { "@cvPIS", this.cvPIS });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"UPD_ProfissionaisDados 
+                                                    @IdDadoProfissional=@IdDadoProfissional,
+                                                    @idProfissional=@idProfissional,
+                                                    @ccFormacao=@ccFormacao,
+                                                    @ccPosGraduacao=@ccPosGraduacao,
+                                                    @ccEspecialidade=@ccEspecialidade,
+                                                    @ccConselho=@ccConselho,
+                                                    @cvNumInscricao=@cvNumInscricao,
+                                                    @cvTitulo=@cvTitulo,
+                                                    @cvTituloZona=@cvTituloZona,
+                                                    @cvTituloSecao=@cvTituloSecao,
+                                                    @cvReservista=@cvReservista,
+                                                    @cvPIS=@cvPIS,
+                                                    @UserName=@UserName", parametros);
+
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
         }
     }
 }

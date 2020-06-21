@@ -12,9 +12,44 @@ namespace Site.Classes
         public int idEspecialidade { get; set; }//idEspecialidade
         public string ccEspecialidade { get; set; }//Especialidade
         #endregion
+
+        public Especialidade()
+        {
+
+        }
+        public Especialidade(string especialidade)
+        {
+            this.ccEspecialidade = especialidade;
+        }
+
+        public Especialidade(int id, string especialidade)
+        {
+            this.idEspecialidade = id;
+            this.ccEspecialidade = especialidade;
+        }
         public bool Adicionar(string Usuario)
         {
-            throw new NotImplementedException();
+            //
+
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@Especialidade", this.ccEspecialidade });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"INS_Especialidade @UserName = @UserName, @Especialidade = @Especialidade;", parametros);
+
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
         }
 
         public bool Excluir(string Usuario, int idObject)
@@ -22,6 +57,7 @@ namespace Site.Classes
             throw new NotImplementedException();
         }
 
+       
         public static List<Especialidade> Listar()
         {
             List<object[]> parametros = new List<object[]>();
@@ -38,6 +74,7 @@ namespace Site.Classes
                     Lista.Add(p1);
                 }
             }
+            Lista.Add(new Especialidade(0, "Outra"));
             return Lista;
         }
 

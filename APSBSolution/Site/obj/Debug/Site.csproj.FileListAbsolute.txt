@@ -196,3 +196,4 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CoreCom
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CopyComplete
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.pdb
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csprojAssemblyReference.cache

@@ -231,6 +231,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbPosGraduacao;
 
         /// <summary>
+        /// Controle tbEspecialidadeNova.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbEspecialidadeNova;
+
+        /// <summary>
         /// Controle tbConselhoRegional.
         /// </summary>
         /// <remarks>
@@ -292,6 +301,15 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPisPasep;
+
+        /// <summary>
+        /// Controle btSalvarDados.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btSalvarDados;
 
         /// <summary>
         /// Controle tbEndereço.

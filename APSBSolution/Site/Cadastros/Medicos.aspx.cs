@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Mapping;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -66,7 +67,7 @@ namespace Site.Cadastros
                 case "AddArquivos":
                     CarregarModalArquivos();
                     break;
-                    
+
                 case "Excluir":
                     result = Profissional.Excluir(user, idProfissional);
                     if (result)
@@ -78,7 +79,7 @@ namespace Site.Cadastros
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao excluir o registro!');", true);
                     }
                     break;
-                
+
                 default:
                     break;
             }
@@ -89,7 +90,7 @@ namespace Site.Cadastros
         private void CarregarModalArquivos()
         {
             //arquivosModal
-           
+
             string scriptModal = @"$('#arquivosModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
@@ -226,6 +227,61 @@ namespace Site.Cadastros
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
             }
 
+        }
+
+        protected void btSalvarDados_Click(object sender, EventArgs e)
+        {
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+            ProfissionalDados pd1 = new ProfissionalDados();
+            if (!idHiddenProfissionalDado.Value.IsNullOrWhiteSpace())
+            {
+                pd1.IdDadoProfissional = int.Parse(idHiddenProfissionalDado.Value);
+            }
+            pd1.idProfissional = int.Parse(idHiddenMedico.Value);
+            pd1.ccFormacao = tbFormacao.Text;
+            pd1.ccPosGraduacao = tbPosGraduacao.Text;
+            if (tbEspecialidadeNova.Text.IsNullOrWhiteSpace())
+            {
+                pd1.ccEspecialidade = dpEspecialidade.SelectedItem.Text;
+            }
+            else
+            {
+                Especialidade nova = new Especialidade(tbEspecialidadeNova.Text.Trim());
+                nova.Adicionar(user);
+                dpEspecialidade.DataBind();
+                pd1.ccEspecialidade = nova.ccEspecialidade;
+            }
+            pd1.ccConselho = tbConselhoRegional.Text;
+
+            if (!tbNumInscricaoConselho.Text.IsNullOrWhiteSpace())
+                pd1.cvNumInscricao = long.Parse(tbNumInscricaoConselho.Text);
+
+            if (!tbTituloEleitor.Text.IsNullOrWhiteSpace())
+                pd1.cvTitulo = long.Parse(tbTituloEleitor.Text);
+
+            if (!tbZonaEleitor.Text.IsNullOrWhiteSpace())
+                pd1.cvTituloZona = int.Parse(tbZonaEleitor.Text);
+
+            if (!tbSecaoEleitor.Text.IsNullOrWhiteSpace())
+                pd1.cvTituloSecao = int.Parse(tbSecaoEleitor.Text);
+
+            if (!tbReservista.Text.IsNullOrWhiteSpace())
+                pd1.cvReservista = long.Parse(tbReservista.Text);
+
+            if (!tbPisPasep.Text.IsNullOrWhiteSpace())
+                pd1.cvPIS = long.Parse(tbPisPasep.Text);
+
+            bool result = pd1.Salvar(user);
+
+            if (result)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+            }
         }
     }
 }
