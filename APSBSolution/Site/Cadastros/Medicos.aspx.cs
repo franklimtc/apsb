@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core.Mapping;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
@@ -59,10 +60,10 @@ namespace Site.Cadastros
                     CarregarModalProfissional(idProfissional);
                     break;
                 case "EdEndereco":
-                    CarregarModalEndereco();
+                    CarregarModalEndereco(idProfissional);
                     break;
                 case "EdBanco":
-                    CarregarModalBanco();
+                    CarregarModalBanco(idProfissional);
                     break;
                 case "AddArquivos":
                     CarregarModalArquivos();
@@ -95,17 +96,50 @@ namespace Site.Cadastros
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        private void CarregarModalBanco()
+        private void CarregarModalBanco(int idProfissional)
         {
             //bancoModal
+            List<ProfissionalBanco> Lista = ProfissionalBanco.Listar(idProfissional);
+            dpProfissionalBanco.ClearSelection();
+            tbAgencia.Text = "";
+            tbConta.Text = "";
+            tbOperacao.Text = "";
+
+            if (Lista.Count == 0)
+            {
+                Lista.Add(new ProfissionalBanco());
+            }
+            gvProfissionalBanco.DataSource = Lista;
+            gvProfissionalBanco.DataBind();
 
             string scriptModal = @"$('#bancoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        private void CarregarModalEndereco()
+        private void CarregarModalEndereco(int idProfissional)
         {
             //moradiaModal
+            ProfissionalEndereco pde = ProfissionalEndereco.ListarPorID(idProfissional);
+            if (pde != null)
+            {
+                idHiddenProfissionalEndereco.Value = pde.IdEndereco.ToString();
+                tbEndereço.Text = pde.ccEndereco;
+                tbBairro.Text = pde.ccBairro;
+                tbEnderecoCidade.Text = pde.ccCidade;
+                tbCep.Text = pde.cvCEP.ToString();
+                dpEnderecoUF.ClearSelection();
+                dpEnderecoUF.Items.FindByValue(pde.ccUF).Selected = true;
+            }
+            else
+            {
+                idHiddenProfissionalEndereco.Value = "";
+                tbEndereço.Text = "";
+                tbBairro.Text = "";
+                tbEnderecoCidade.Text = "";
+                tbCep.Text = "";
+                dpEnderecoUF.ClearSelection();
+                dpEnderecoUF.Items.FindByValue("00").Selected = true;
+            }
 
             string scriptModal = @"$('#moradiaModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
@@ -174,6 +208,7 @@ namespace Site.Cadastros
             tbTelefone.Text = editProf.cvTelefone.ToString();
             tbCelular.Text = editProf.cvCelular.ToString();
             tbObservacoes.Text = editProf.Observacoes;
+            tbDataNascimento.Text = editProf.dtNascimento.ToString("dd/MM/yyyy");
 
             string scriptModal = @"$('#medicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
@@ -206,7 +241,8 @@ namespace Site.Cadastros
             if (!tbCelular.Text.IsNullOrWhiteSpace())
                 pNew.cvCelular = long.Parse(tbCelular.Text);
             pNew.Observacoes = tbObservacoes.Text;
-
+            if (!tbDataNascimento.Text.IsNullOrWhiteSpace())
+                pNew.dtNascimento = DateTime.Parse(tbDataNascimento.Text);
 
             if (idHiddenMedico.Value.IsNullOrWhiteSpace())
             {
@@ -282,6 +318,109 @@ namespace Site.Cadastros
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
             }
+        }
+
+        protected void btSalvarEndereco_Click(object sender, EventArgs e)
+        {
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+            ProfissionalEndereco pde = new ProfissionalEndereco();
+            if (!idHiddenProfissionalEndereco.Value.IsNullOrWhiteSpace())
+            {
+                pde.IdEndereco = int.Parse(idHiddenProfissionalEndereco.Value);
+            }
+            pde.ccEndereco = tbEndereço.Text;
+            pde.ccBairro = tbBairro.Text;
+            pde.ccCidade = tbEnderecoCidade.Text;
+            pde.ccUF = dpEnderecoUF.SelectedValue;
+            long.TryParse(tbCep.Text, out long nLong);
+            pde.cvCEP = nLong;
+            pde.idProfissional = int.Parse(idHiddenMedico.Value);
+
+            bool result = pde.Salvar(user);
+
+            if (result)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+            }
+        }
+
+        protected void btSalvarProfissionalBanco_Click(object sender, EventArgs e)
+        {
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+            ProfissionalBanco pdb = new ProfissionalBanco();
+
+            pdb.idProfissional = int.Parse(idHiddenMedico.Value);
+            pdb.ccAgencia = tbAgencia.Text;
+            pdb.ccConta = tbConta.Text;
+            pdb.ccOperacao = tbOperacao.Text;
+            pdb.idBanco = int.Parse(dpProfissionalBanco.SelectedValue);
+
+            bool result = pdb.Salvar(user);
+
+            if (result)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+            }
+        }
+
+        protected void gvProfissionalBanco_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var obj = e.CommandArgument;
+            int idProfissionalBanco = int.Parse(gvProfissionalBanco.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+            idHiddenProfissionalBanco.Value = idProfissionalBanco.ToString();
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+            bool result = false;
+
+            switch (e.CommandName)
+            {
+                case "Editar":
+                    ProfissionalBanco pb1 = ProfissionalBanco.Listar(int.Parse(idHiddenMedico.Value)).Find(x => x.IdProfissionalBanco == idProfissionalBanco);
+                    dpProfissionalBanco.ClearSelection();
+                    dpProfissionalBanco.Items.FindByValue(pb1.idBanco.ToString());
+                    tbAgencia.Text = pb1.ccAgencia;
+                    break;
+              
+                case "Excluir":
+                    result = ProfissionalBanco.Excluir(user, idProfissionalBanco);
+                    if (result)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao excluir o registro!');", true);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        [WebMethod]
+        public static bool AdicionarBanco(string _idProfissional, string ccAgencia, string ccConta, string ccOperacao, string _idBanco)
+        {
+            ProfissionalBanco pdb = new ProfissionalBanco();
+
+            pdb.idProfissional = int.Parse(_idProfissional);
+            pdb.ccAgencia = ccAgencia;
+            pdb.ccConta = ccConta;
+            pdb.ccOperacao = ccOperacao;
+            pdb.idBanco = int.Parse(_idBanco);
+
+            bool result = pdb.Salvar("API");
+            return result;
         }
     }
 }

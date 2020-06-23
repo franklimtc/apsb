@@ -14,7 +14,11 @@ namespace Site.Classes
         public int idClinica { get; set; }
         public string ccApelido { get; set; }
         public string ccRazaoSocial { get; set; }
+        public string ccUF { get; set; }
+        public string ccCidade { get; set; }
         public string ccNomeFantasia { get; set; }
+        public string ccContato { get; set; }
+        public string cvCNPJ { get; set; }
         public string ccEmail { get; set; }
         public double cvISS { get; set; }
         public double cvDescontos { get; set; }
@@ -24,6 +28,7 @@ namespace Site.Classes
         public string ccObservacao { get; set; }
         public int cvIdBanco { get; set; }
         public int cvPgtoDias { get; set; }
+        public long cvTelefone { get; set; }
 
 
         #endregion

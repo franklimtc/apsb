@@ -6,13 +6,18 @@
         #fileLoader {
             display: none;
         }
+
         .imgButton {
-            height:1.5em;
+            height: 1.5em;
         }
     </style>
 
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="idHiddenMedico" />
+    <asp:HiddenField runat="server" ID="idHiddenProfissionalEndereco" />
+    <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
+    <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
+
     <%--Hidden Filds--%>
 
     <div class="container-fluid">
@@ -38,10 +43,10 @@
                         <asp:BoundField DataField="Observacoes" HeaderText="Observações" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Dados Pessoais" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Pessoais" />
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" />
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" />
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Dados Bancários" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" />
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" />
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" />
                             </ItemTemplate>
@@ -170,42 +175,42 @@
                         <div class="row">
                             <div class="col">
                                 <label for="dpSexo">Sexo</label>
-                                <asp:DropDownList runat="server" ID="dpSexo"  CssClass="form-control" >
+                                <asp:DropDownList runat="server" ID="dpSexo" CssClass="form-control">
                                     <asp:ListItem Text="Masculino" Value="M" Selected="True" />
                                     <asp:ListItem Text="Feminino" Value="F" />
                                 </asp:DropDownList>
                             </div>
                             <div class="col">
                                 <label for="dpNaturalidade">Nat.(UF)</label>
-                                <asp:DropDownList runat="server" ID="dpNaturalidade"  CssClass="form-control" >
-                                     <asp:ListItem Text="Selecionar..." Value="00"/>
-                                     <asp:ListItem Text="Acre" Value="AC" />
-                                     <asp:ListItem Text="Alagoas " Value="AL" />
-                                     <asp:ListItem Text="Amapá " Value="AP" />
-                                     <asp:ListItem Text="Amazonas " Value="AM" />
-                                     <asp:ListItem Text="Bahia " Value="BA" />
-                                     <asp:ListItem Text="Ceará " Value="CE" />
-                                     <asp:ListItem Text="Distrito Federal " Value="DF" />
-                                     <asp:ListItem Text="Espírito Santo " Value="ES" />
-                                     <asp:ListItem Text="Goiás " Value="GO" />
-                                     <asp:ListItem Text="Maranhão " Value="MA" />
-                                     <asp:ListItem Text="Mato Grosso " Value="MT" />
-                                     <asp:ListItem Text="Mato Grosso do Sul " Value="MS" />
-                                     <asp:ListItem Text="Minas Gerais " Value="MG" />
-                                     <asp:ListItem Text="Pará " Value="PA" />
-                                     <asp:ListItem Text="Paraíba " Value="PB" />
-                                     <asp:ListItem Text="Paraná " Value="PR" />
-                                     <asp:ListItem Text="Pernambuco " Value="PE" />
-                                     <asp:ListItem Text="Piauí " Value="PI" />
-                                     <asp:ListItem Text="Rio de Janeiro " Value="RJ" />
-                                     <asp:ListItem Text="Rio Grande do Norte " Value="RN" />
-                                     <asp:ListItem Text="Rio Grande do Sul " Value="RS" />
-                                     <asp:ListItem Text="Rondônia " Value="RO" />
-                                     <asp:ListItem Text="Roraima " Value="RR" />
-                                     <asp:ListItem Text="Santa Catarina " Value="SC" />
-                                     <asp:ListItem Text="São Paulo " Value="SP" />
-                                     <asp:ListItem Text="Sergipe " Value="SE" />
-                                     <asp:ListItem Text="Tocantins " Value="TO" />
+                                <asp:DropDownList runat="server" ID="dpNaturalidade" CssClass="form-control">
+                                    <asp:ListItem Text="Selecionar..." Value="00" />
+                                    <asp:ListItem Text="Acre" Value="AC" />
+                                    <asp:ListItem Text="Alagoas " Value="AL" />
+                                    <asp:ListItem Text="Amapá " Value="AP" />
+                                    <asp:ListItem Text="Amazonas " Value="AM" />
+                                    <asp:ListItem Text="Bahia " Value="BA" />
+                                    <asp:ListItem Text="Ceará " Value="CE" />
+                                    <asp:ListItem Text="Distrito Federal " Value="DF" />
+                                    <asp:ListItem Text="Espírito Santo " Value="ES" />
+                                    <asp:ListItem Text="Goiás " Value="GO" />
+                                    <asp:ListItem Text="Maranhão " Value="MA" />
+                                    <asp:ListItem Text="Mato Grosso " Value="MT" />
+                                    <asp:ListItem Text="Mato Grosso do Sul " Value="MS" />
+                                    <asp:ListItem Text="Minas Gerais " Value="MG" />
+                                    <asp:ListItem Text="Pará " Value="PA" />
+                                    <asp:ListItem Text="Paraíba " Value="PB" />
+                                    <asp:ListItem Text="Paraná " Value="PR" />
+                                    <asp:ListItem Text="Pernambuco " Value="PE" />
+                                    <asp:ListItem Text="Piauí " Value="PI" />
+                                    <asp:ListItem Text="Rio de Janeiro " Value="RJ" />
+                                    <asp:ListItem Text="Rio Grande do Norte " Value="RN" />
+                                    <asp:ListItem Text="Rio Grande do Sul " Value="RS" />
+                                    <asp:ListItem Text="Rondônia " Value="RO" />
+                                    <asp:ListItem Text="Roraima " Value="RR" />
+                                    <asp:ListItem Text="Santa Catarina " Value="SC" />
+                                    <asp:ListItem Text="São Paulo " Value="SP" />
+                                    <asp:ListItem Text="Sergipe " Value="SE" />
+                                    <asp:ListItem Text="Tocantins " Value="TO" />
                                 </asp:DropDownList>
                             </div>
                             <div class="col">
@@ -218,12 +223,21 @@
                     <hr />
 
                     <div class="form-group">
-                        <label for="dpEstCivil">Estado Civil</label>
-                        <asp:DropDownList runat="server" ID="dpEstCivil"  CssClass="form-control" >
-                            <asp:ListItem Text="Casado" Value="C" Selected="true" />
-                            <asp:ListItem Text="Solteiro" Value="S" />
-                            <asp:ListItem Text="Outro" Value="O" />
-                        </asp:DropDownList>
+                        <div class="row">
+                            <div class="col">
+                                <label for="dpEstCivil">Estado Civil</label>
+                                <asp:DropDownList runat="server" ID="dpEstCivil" CssClass="form-control">
+                                    <asp:ListItem Text="Casado" Value="C" Selected="true" />
+                                    <asp:ListItem Text="Solteiro" Value="S" />
+                                    <asp:ListItem Text="Outro" Value="O" />
+                                </asp:DropDownList>
+                            </div>
+                            <div class="col">
+                                <label for="tbDataNascimento">Data de Nascimento</label>
+                                <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control date" Text="" />
+                            </div>
+                        </div>
+
                     </div>
                     <div class="form-group">
                         <label for="tbNomePai">Nome do pai</label>
@@ -282,7 +296,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()"/>
+                    <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />
                 </div>
             </div>
         </div>
@@ -302,9 +316,8 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
-                                <asp:HiddenField runat="server" id="idHiddenProfissionalDado" />
                                 <label for="tbFormacao">Formação Profissional</label>
-                                <asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..."/>
+                                <asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
@@ -312,21 +325,21 @@
                                 <label for="dpEspecialidade">Especialidade</label>
                                 <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
                                 </asp:DropDownList>
-                                <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade"/>
+                                <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade" />
                             </div>
-                           
+
                             <div class="col">
                                 <label for="tbPosGraduacao">Pós-Graduação</label>
                                 <asp:TextBox runat="server" ID="tbPosGraduacao" CssClass="form-control" placeholder="digite..." />
                             </div>
                         </div>
-                        <div class="row collapse"  id="colNovaEspecialidade">
+                        <div class="row collapse" id="colNovaEspecialidade">
                             <div class="col">
-                                 <label for="tbEspecialidadeNova">Cadastrar Nova</label>
+                                <label for="tbEspecialidadeNova">Cadastrar Nova</label>
                                 <asp:TextBox runat="server" ID="tbEspecialidadeNova" CssClass="form-control" />
                             </div>
                         </div>
-                       
+
                         <div class="row">
                             <div class="col">
                                 <label for="tbConselhoRegional">Conselho Regional</label>
@@ -402,12 +415,36 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="dpEnderecoUF">UF</label>
-                                <select id="dpEnderecoUF" class="form-control">
-                                    <option selected>Selecione...</option>
-                                    <option>AL</option>
-                                    <option>CE</option>
-                                    <option>MA</option>
-                                </select>
+                                <asp:DropDownList runat="server" ID="dpEnderecoUF" CssClass="form-control">
+                                    <asp:ListItem Text="Selecionar..." Value="00" />
+                                    <asp:ListItem Text="Acre" Value="AC" />
+                                    <asp:ListItem Text="Alagoas " Value="AL" />
+                                    <asp:ListItem Text="Amapá " Value="AP" />
+                                    <asp:ListItem Text="Amazonas " Value="AM" />
+                                    <asp:ListItem Text="Bahia " Value="BA" />
+                                    <asp:ListItem Text="Ceará " Value="CE" />
+                                    <asp:ListItem Text="Distrito Federal " Value="DF" />
+                                    <asp:ListItem Text="Espírito Santo " Value="ES" />
+                                    <asp:ListItem Text="Goiás " Value="GO" />
+                                    <asp:ListItem Text="Maranhão " Value="MA" />
+                                    <asp:ListItem Text="Mato Grosso " Value="MT" />
+                                    <asp:ListItem Text="Mato Grosso do Sul " Value="MS" />
+                                    <asp:ListItem Text="Minas Gerais " Value="MG" />
+                                    <asp:ListItem Text="Pará " Value="PA" />
+                                    <asp:ListItem Text="Paraíba " Value="PB" />
+                                    <asp:ListItem Text="Paraná " Value="PR" />
+                                    <asp:ListItem Text="Pernambuco " Value="PE" />
+                                    <asp:ListItem Text="Piauí " Value="PI" />
+                                    <asp:ListItem Text="Rio de Janeiro " Value="RJ" />
+                                    <asp:ListItem Text="Rio Grande do Norte " Value="RN" />
+                                    <asp:ListItem Text="Rio Grande do Sul " Value="RS" />
+                                    <asp:ListItem Text="Rondônia " Value="RO" />
+                                    <asp:ListItem Text="Roraima " Value="RR" />
+                                    <asp:ListItem Text="Santa Catarina " Value="SC" />
+                                    <asp:ListItem Text="São Paulo " Value="SP" />
+                                    <asp:ListItem Text="Sergipe " Value="SE" />
+                                    <asp:ListItem Text="Tocantins " Value="TO" />
+                                </asp:DropDownList>
                             </div>
                             <div class="col-md-9">
                                 <label for="tbEnderecoCidade">Cidade</label>
@@ -418,7 +455,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
+                    <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarEndereco_Click" />
                 </div>
             </div>
         </div>
@@ -438,14 +475,17 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col">
-                                <label for="dpBanco">Banco</label>
-                                <select runat="server" id="dpBanco" class="form-control">
+                                <label for="dpProfissionalBanco">Banco</label>
+                                <asp:DropDownList runat="server" ID="dpProfissionalBanco" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBanco" DataValueField="IdBanco">
+                                </asp:DropDownList>
+                                <asp:ObjectDataSource ID="dsBancos" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Banco"></asp:ObjectDataSource>
+                                <%-- <select runat="server" id="dpBanco" class="form-control">
                                     <option selected="selected">Selecione...</option>
                                     <option>001 - Banco do Brasil</option>
                                     <option>104 - Caixa Econômica</option>
                                     <option>341 - Itaú</option>
                                     <option>077 - Inter</option>
-                                </select>
+                                </select>--%>
                             </div>
                         </div>
                         <div class="row">
@@ -463,7 +503,7 @@
                             </div>
                         </div>
                     </div>
-                    <asp:Table runat="server" ID="gvDadosBancarios" CssClass="table table-hover table-striped table-sm">
+                    <%--<asp:Table runat="server" ID="gvDadosBancarios" CssClass="table table-hover table-striped table-sm">
                         <asp:TableHeaderRow>
                             <asp:TableCell>Banco</asp:TableCell>
                             <asp:TableCell>Agência</asp:TableCell>
@@ -511,19 +551,45 @@
                                 <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
                             </asp:TableCell>
                         </asp:TableRow>
-                    </asp:Table>
+                    </asp:Table>--%>
+                    <div class="row">
+                        <div class="col">
+                             <asp:GridView runat="server" ID="gvProfissionalBanco" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalBanco_RowCommand">
+                                <%--banco - agencia - conta - operacao - acoes--%>
+                                <Columns>
+                                    <asp:BoundField DataField="IdProfissionalBanco" HeaderText="ID" />
+                                    <asp:BoundField DataField="ccBanco" HeaderText="Banco" />
+                                    <asp:BoundField DataField="ccAgencia" HeaderText="Agência" />
+                                    <asp:BoundField DataField="ccConta" HeaderText="Conta" />
+                                    <asp:BoundField DataField="ccOperacao" HeaderText="Operação" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <%--<asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Editar"  ToolTip="Editar" />--%>
+                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Excluir"  ToolTip="Excluir"/>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco()" />
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
+                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <%--<asp:Button ID="btSalvarProfissionalBanco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarProfissionalBanco_Click" />--%>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
 
     <script>
 
@@ -544,7 +610,7 @@
         function LimparForm() {
             //alert("limpando form!");
 
-            $("#MainContent_tbNome").val("").attr("required","required");
+            $("#MainContent_tbNome").val("").attr("required", "required");
             $("#MainContent_tbCidade").val("");
             $("#MainContent_tbNomePai").val("");
             $("#MainContent_tbNomeMae").val("");
@@ -561,7 +627,6 @@
             $("#MainContent_dpNaturalidade").val("00").change();
             $("#MainContent_dpEstCivil").val("C").change();
             $("#MainContent_tbObservacoes").val("");
-            
 
         }
 
@@ -588,6 +653,6 @@
             });
         });
 
-       
+
     </script>
 </asp:Content>

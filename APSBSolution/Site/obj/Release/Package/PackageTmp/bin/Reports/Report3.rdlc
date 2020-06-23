@@ -485,21 +485,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="cvIdClinica">
+                    <Textbox Name="idClinica">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!cvIdClinica.Value</Value>
+                              <Value>=Fields!idClinica.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>cvIdClinica</rd:DefaultName>
+                      <rd:DefaultName>idClinica</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -702,7 +702,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!ccContato.Value</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -725,21 +725,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="cvTelefone">
+                    <Textbox Name="Textbox2">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!cvTelefone.Value</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>cvTelefone</rd:DefaultName>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -785,21 +785,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="cvImpostos">
+                    <Textbox Name="cvDescontos">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!cvImpostos.Value</Value>
+                              <Value>=Fields!cvDescontos.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>cvImpostos</rd:DefaultName>
+                      <rd:DefaultName>cvDescontos</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -822,7 +822,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!cbTaxaVariavel.Value</Value>
+                              <Value />
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -976,8 +976,8 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="cvIdClinica">
-          <DataField>cvIdClinica</DataField>
+        <Field Name="idClinica">
+          <DataField>idClinica</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="ccApelido">
@@ -988,26 +988,6 @@
           <DataField>ccRazaoSocial</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="ccNomeFantasia">
-          <DataField>ccNomeFantasia</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cvCNPJ">
-          <DataField>cvCNPJ</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ccContato">
-          <DataField>ccContato</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="cvTelefone">
-          <DataField>cvTelefone</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="ccEmail">
-          <DataField>ccEmail</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="ccUF">
           <DataField>ccUF</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -1016,17 +996,49 @@
           <DataField>ccCidade</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="cvImpostos">
-          <DataField>cvImpostos</DataField>
+        <Field Name="ccNomeFantasia">
+          <DataField>ccNomeFantasia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cvCNPJ">
+          <DataField>cvCNPJ</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccEmail">
+          <DataField>ccEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cvISS">
+          <DataField>cvISS</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="cbTaxaVariavel">
-          <DataField>cbTaxaVariavel</DataField>
+        <Field Name="cvDescontos">
+          <DataField>cvDescontos</DataField>
+          <rd:TypeName>System.Double</rd:TypeName>
+        </Field>
+        <Field Name="ccDescontoVariavel">
+          <DataField>ccDescontoVariavel</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cbDescontoVariavel">
+          <DataField>cbDescontoVariavel</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
         </Field>
-        <Field Name="ccObs">
-          <DataField>ccObs</DataField>
+        <Field Name="ccBanco">
+          <DataField>ccBanco</DataField>
           <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccObservacao">
+          <DataField>ccObservacao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cvIdBanco">
+          <DataField>cvIdBanco</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="cvPgtoDias">
+          <DataField>cvPgtoDias</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

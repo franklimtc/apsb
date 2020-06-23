@@ -34,6 +34,7 @@ namespace Site.Classes
         public string nomePai { get; set; }//nomePai
         public string nomeMae { get; set; }//nomeMae
         public string nomeConjuge { get; set; }//nomeConjuge
+        public DateTime dtNascimento { get; set; }
         #endregion
 
         public Profissional()
@@ -122,6 +123,12 @@ namespace Site.Classes
                     {
                         p1.RGdtEmissao = data;
                     }
+
+                    if (DateTime.TryParse(p["cdDataNascimento"].ToString(), out data))
+                    {
+                        p1.dtNascimento = data;
+                    }
+
                     p1.nomePai = p["nomePai"].ToString();
                     p1.nomeMae = p["nomeMae"].ToString();
                     p1.nomeConjuge = p["nomeConjuge"].ToString();
@@ -168,11 +175,13 @@ namespace Site.Classes
             parametros.Add(new object[] { "@nomeMae", this.nomeMae });
             parametros.Add(new object[] { "@nomeConjuge", this.nomeConjuge });
             parametros.Add(new object[] { "@IdProfissional", this.IdProfissional });
+            parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"UPD_Profissional @ccNome, @ccSexo, @ccNaturalUF, @ccNaturalCidade, @ccEstadoCivil
-, @ccEmail, @UserName, @observacoes, @RGNum, @RGEmissor, @RGdtEmissao, @CPFNum, @cvTelefone, @cvCelular, @nomePai, @nomeMae, @nomeConjuge, @IdProfissional", parametros);
+                object retorno = DAO.ExecuteScalar(@"UPD_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade, @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail
+, @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum, @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone
+, @cvCelular = @cvCelular, @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @IdProfissional = @IdProfissional, @cdDataNascimento = @cdDataNascimento", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -206,13 +215,15 @@ namespace Site.Classes
             parametros.Add(new object[] { "@nomePai", this.nomePai });
             parametros.Add(new object[] { "@nomeMae", this.nomeMae });
             parametros.Add(new object[] { "@nomeConjuge", this.nomeConjuge });
+            parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
+
 
             try
             {
                 object retorno = DAO.ExecuteScalar(@"INS_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade
                 , @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail, @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum
                 , @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone, @cvCelular = @cvCelular
-                , @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge", parametros);
+                , @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @cdDataNascimento = @cdDataNascimento", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;

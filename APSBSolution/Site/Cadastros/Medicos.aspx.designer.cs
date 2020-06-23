@@ -24,6 +24,33 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.HiddenField idHiddenMedico;
 
         /// <summary>
+        /// Controle idHiddenProfissionalEndereco.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idHiddenProfissionalEndereco;
+
+        /// <summary>
+        /// Controle idHiddenProfissionalBanco.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idHiddenProfissionalBanco;
+
+        /// <summary>
+        /// Controle idHiddenProfissionalDado.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField idHiddenProfissionalDado;
+
+        /// <summary>
         /// Controle gvMedicos.
         /// </summary>
         /// <remarks>
@@ -76,6 +103,15 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dpEstCivil;
+
+        /// <summary>
+        /// Controle tbDataNascimento.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbDataNascimento;
 
         /// <summary>
         /// Controle tbNomePai.
@@ -184,15 +220,6 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSalvar;
-
-        /// <summary>
-        /// Controle idHiddenProfissionalDado.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField idHiddenProfissionalDado;
 
         /// <summary>
         /// Controle tbFormacao.
@@ -339,6 +366,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbCep;
 
         /// <summary>
+        /// Controle dpEnderecoUF.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpEnderecoUF;
+
+        /// <summary>
         /// Controle tbEnderecoCidade.
         /// </summary>
         /// <remarks>
@@ -348,13 +384,31 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbEnderecoCidade;
 
         /// <summary>
-        /// Controle dpBanco.
+        /// Controle btSalvarEndereco.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect dpBanco;
+        protected global::System.Web.UI.WebControls.Button btSalvarEndereco;
+
+        /// <summary>
+        /// Controle dpProfissionalBanco.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpProfissionalBanco;
+
+        /// <summary>
+        /// Controle dsBancos.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsBancos;
 
         /// <summary>
         /// Controle tbAgencia.
@@ -384,12 +438,12 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbOperacao;
 
         /// <summary>
-        /// Controle gvDadosBancarios.
+        /// Controle gvProfissionalBanco.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table gvDadosBancarios;
+        protected global::System.Web.UI.WebControls.GridView gvProfissionalBanco;
     }
 }

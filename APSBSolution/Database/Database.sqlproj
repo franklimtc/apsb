@@ -84,6 +84,13 @@
     <Build Include="dbo\Stored Procedures\SEL_Especialidades.sql" />
     <Build Include="dbo\Stored Procedures\UPD_ProfissionaisDados.sql" />
     <Build Include="dbo\Stored Procedures\INS_Especialidade.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ProfissionalBanco.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Endereco.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalBanco.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Endereco.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalBanco.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ProfissionalEndereco.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalEndereco.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

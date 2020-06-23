@@ -17,7 +17,7 @@
             <br />
             <asp:GridView ID="gvClinicas" runat="server" DataSourceID="dsClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false">
                 <Columns>
-                    <asp:BoundField DataField="cvIdClinica" HeaderText="ID" />
+                    <asp:BoundField DataField="idClinica" HeaderText="ID" />
                     <asp:BoundField DataField="ccUF" HeaderText="UF" />
                     <asp:BoundField DataField="ccCidade" HeaderText="Cidade" />
                     <asp:BoundField DataField="ccRazaoSocial" HeaderText="Razão Social" />
@@ -27,8 +27,8 @@
                     <asp:BoundField DataField="ccContato" HeaderText="Contato" />
                     <asp:BoundField DataField="cvTelefone" HeaderText="Telefone" />
                     <asp:BoundField DataField="ccEmail" HeaderText="Email" />
-                    <asp:BoundField DataField="cvImpostos" HeaderText="Impostos retidos (%)" />
-                    <asp:BoundField DataField="cbTaxaVariavel" HeaderText="Taxa variável" />
+                    <asp:BoundField DataField="cvDescontos" HeaderText="Impostos retidos (%)" />
+                    <asp:BoundField DataField="cbDescontoVariavel" HeaderText="Taxa variável" />
                 </Columns>
             </asp:GridView>
              <asp:ObjectDataSource ID="dsClinica" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Clinica"></asp:ObjectDataSource>
