@@ -202,6 +202,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Arquivos\HtmlPage1.html" />
     <Content Include="assets\css\material-dashboard-rtl.css" />
     <Content Include="assets\css\material-dashboard.css" />
     <Content Include="assets\css\material-dashboard.min.css" />
@@ -1107,6 +1108,7 @@
     <Compile Include="Classes\Endereco.cs" />
     <Compile Include="Classes\Especialidade.cs" />
     <Compile Include="Classes\Profissional.cs" />
+    <Compile Include="Classes\ProfissionalArquivo.cs" />
     <Compile Include="Classes\ProfissionalBanco.cs" />
     <Compile Include="Classes\ProfissionalDados.cs" />
     <Compile Include="Classes\ProfissionalEndereco.cs" />

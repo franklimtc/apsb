@@ -60,6 +60,33 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.GridView gvMedicos;
 
         /// <summary>
+        /// Controle btUpload.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload btUpload;
+
+        /// <summary>
+        /// Controle btUploadFile.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btUploadFile;
+
+        /// <summary>
+        /// Controle gvProfissionalArquivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvProfissionalArquivo;
+
+        /// <summary>
         /// Controle tbNome.
         /// </summary>
         /// <remarks>

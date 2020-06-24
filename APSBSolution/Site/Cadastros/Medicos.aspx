@@ -17,7 +17,6 @@
     <asp:HiddenField runat="server" ID="idHiddenProfissionalEndereco" />
     <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
     <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
-
     <%--Hidden Filds--%>
 
     <div class="container-fluid">
@@ -93,58 +92,41 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-9">
-                            <input type="file" id="myfile" name="myfile" class="btn"><br>
+                            <asp:FileUpload runat="server" ID="btUpload" CssClass="btn btn-secondary" />
+                            <%--<input type="file" id="myfile" name="myfile" class="btn">--%><br>
                             <br>
                         </div>
                         <div class="col-sm-3">
-                            <input type="submit" class="btn btn-primary">
+                            <%--<input id="btUploadFile" type="button" class="btn btn-primary" value="Enviar">--%>
+                            <asp:Button Text="Enviar" runat="server" ID="btUploadFile" CssClass="btn btn-primary" OnClick="btUploadFile_Click" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div class="progress">
+                            <%--<div class="progress">
                                 <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
+                            </div>--%>
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <asp:Table runat="server" CssClass="table table-hover table-striped table-sm">
-                                <asp:TableHeaderRow>
-                                    <asp:TableHeaderCell>ID</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Arquivo</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Data</asp:TableHeaderCell>
-                                    <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
-                                </asp:TableHeaderRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>01</asp:TableCell>
-                                    <asp:TableCell>Contrato</asp:TableCell>
-                                    <asp:TableCell>01/01/2020</asp:TableCell>
-                                    <asp:TableCell>
-                                         <asp:imagebutton imageurl="~/Content/Icons/cloud-download-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" />&nbsp&nbsp
-                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>02</asp:TableCell>
-                                    <asp:TableCell>Comprovante de residência</asp:TableCell>
-                                    <asp:TableCell>01/01/2020</asp:TableCell>
-                                    <asp:TableCell>
-                                         <asp:imagebutton imageurl="~/Content/Icons/cloud-download-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" />&nbsp&nbsp
-                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>03</asp:TableCell>
-                                    <asp:TableCell>Contrato</asp:TableCell>
-                                    <asp:TableCell>01/01/2020</asp:TableCell>
-                                    <asp:TableCell>
-                                         <asp:imagebutton imageurl="~/Content/Icons/cloud-download-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" />&nbsp&nbsp
-                                         <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                            </asp:Table>
+                            <asp:GridView runat="server" ID="gvProfissionalArquivo" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalArquivo_RowCommand">
+                                <Columns>
+                                    <asp:BoundField DataField="idArquivo" HeaderText="ID" />
+                                    <asp:BoundField DataField="ccNomeArquivo" HeaderText="Arquivo" />
+                                    <asp:BoundField DataField="cdDataCriacao" HeaderText="Data" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton runat="server" ID="btBaixarArquivo" ImageUrl="~/Content/Icons/cloud-download-outline.svg" CommandName="Baixar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                                            <asp:ImageButton runat="server" ID="btExcluirArquivo" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+
+                            </asp:GridView>
+                           
+                         
                         </div>
                     </div>
                 </div>
@@ -479,13 +461,7 @@
                                 <asp:DropDownList runat="server" ID="dpProfissionalBanco" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBanco" DataValueField="IdBanco">
                                 </asp:DropDownList>
                                 <asp:ObjectDataSource ID="dsBancos" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Banco"></asp:ObjectDataSource>
-                                <%-- <select runat="server" id="dpBanco" class="form-control">
-                                    <option selected="selected">Selecione...</option>
-                                    <option>001 - Banco do Brasil</option>
-                                    <option>104 - Caixa Econômica</option>
-                                    <option>341 - Itaú</option>
-                                    <option>077 - Inter</option>
-                                </select>--%>
+                             
                             </div>
                         </div>
                         <div class="row">
@@ -503,55 +479,6 @@
                             </div>
                         </div>
                     </div>
-                    <%--<asp:Table runat="server" ID="gvDadosBancarios" CssClass="table table-hover table-striped table-sm">
-                        <asp:TableHeaderRow>
-                            <asp:TableCell>Banco</asp:TableCell>
-                            <asp:TableCell>Agência</asp:TableCell>
-                            <asp:TableCell>Conta</asp:TableCell>
-                            <asp:TableCell>Operação</asp:TableCell>
-                            <asp:TableCell>Ações</asp:TableCell>
-                        </asp:TableHeaderRow>
-                        <asp:TableRow>
-                            <asp:TableCell>001 - Banco do Brasil</asp:TableCell>
-                            <asp:TableCell>0001-X</asp:TableCell>
-                            <asp:TableCell>112233</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar"/>&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell>077 - Inter</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>034301</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>
-                                  <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar" />&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell>341 - Itaú</asp:TableCell>
-                            <asp:TableCell>134</asp:TableCell>
-                            <asp:TableCell>332211</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>
-                                  <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar" />&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                        <asp:TableRow>
-                            <asp:TableCell>341 - Itaú</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>001</asp:TableCell>
-                            <asp:TableCell>
-                                 <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" ToolTip="Editar" />&nbsp&nbsp
-                                <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir"/>
-                            </asp:TableCell>
-                        </asp:TableRow>
-                    </asp:Table>--%>
                     <div class="row">
                         <div class="col">
                              <asp:GridView runat="server" ID="gvProfissionalBanco" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalBanco_RowCommand">
