@@ -86,7 +86,7 @@ namespace Site.Classes
         {
             List<object[]> parametros = new List<object[]>();
             parametros.Add(new object[] { "@IdClinica", _idClinica });
-            DataTable dt = DAO.RetornaDT("SEL_Clinicas", parametros);
+            DataTable dt = DAO.RetornaDT("SEL_Clinicas @IdClinica=@IdClinica;", parametros);
 
 
             List<Clinica> Lista = new List<Clinica>();

@@ -94,6 +94,7 @@ namespace Site.Cadastros
             c.cbDescontoVariavel = chDescontoVariavel.Checked;
             c.ccObservacao = tbObsClinica.Text;
             c.cvCNPJ = long.Parse(tbCNPJ.Text);
+            c.cvPgtoDias = int.Parse(tbPgtoDias.Text);
             if (idHiddenClinica.Value.IsNullOrWhiteSpace())
             {
                 result = c.Adicionar("Franklim");
@@ -179,7 +180,6 @@ namespace Site.Cadastros
         {
             StringBuilder sbRequireds = new StringBuilder();
             //string clinicaModal = @"$('#clinicaModal').modal('show');";
-            sbRequireds.AppendLine("$('#clinicaModal').modal('show');");
 
             Clinica c = Clinica.ListarPorID(idClinica);
             tbApelido.Text = c.ccApelido;
@@ -204,13 +204,15 @@ namespace Site.Cadastros
 
 
             //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", clinicaModal, true);
-            
+
             sbRequireds.AppendLine("$('#MainContent_tbApelido').attr('required',true);");
             sbRequireds.AppendLine("$('#MainContent_tbRazaoSocial').attr('required',true);");
             sbRequireds.AppendLine("$('#MainContent_tbNomeFantasia').attr('required',true);");
             sbRequireds.AppendLine("$('#MainContent_tbCNPJ').attr('required',true);");
+            sbRequireds.AppendLine("$('#clinicaModal').modal('show');");
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", sbRequireds.ToString(), true);
+            //Page.RegisterStartupScript("", sbRequireds.ToString());
         }
 
         [WebMethod]
