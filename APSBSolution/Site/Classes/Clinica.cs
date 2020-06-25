@@ -18,7 +18,7 @@ namespace Site.Classes
         public string ccCidade { get; set; }
         public string ccNomeFantasia { get; set; }
         public string ccContato { get; set; }
-        public string cvCNPJ { get; set; }
+        public long cvCNPJ { get; set; }
         public string ccEmail { get; set; }
         public double cvISS { get; set; }
         public double cvDescontos { get; set; }
@@ -38,7 +38,7 @@ namespace Site.Classes
 
         }
 
-        public Clinica(int _id, string _apelido, string _razaoSocial, string _nomeFantasia, string _email, double _iss, double _descontos, string _descontoVariavel, string _banco, string _observacoes, int _pgtoDias)
+        public Clinica(int _id, string _apelido, string _razaoSocial, string _nomeFantasia, string _email, double _iss, double _descontos, string _descontoVariavel, string _banco, string _observacoes, int _pgtoDias, long _cnpj)
         {
             this.idClinica = _id;
             this.ccApelido = _apelido;
@@ -51,6 +51,7 @@ namespace Site.Classes
             this.ccBanco = _banco;
             this.ccObservacao = _observacoes;
             this.cvPgtoDias = _pgtoDias;
+            this.cvCNPJ = _cnpj;
         }
 
         public static List<Clinica> Listar()
@@ -73,7 +74,8 @@ namespace Site.Classes
                         , c["ccBanco"].ToString()
                         , c["observacao"].ToString()
                         , int.Parse(c["cvPgtoDias"].ToString())
-                                        ));
+                        , long.Parse(c["cvCNPJ"].ToString())
+                       ));
                 }
 
             }
@@ -104,12 +106,13 @@ namespace Site.Classes
                         , c["ccBanco"].ToString()
                         , c["observacao"].ToString()
                         , int.Parse(c["cvPgtoDias"].ToString())
+                        , long.Parse(c["cvCNPJ"].ToString())
                                         ));
                 }
 
             }
 
-            return Lista.Where(x => x.idClinica == _idClinica).FirstOrDefault();
+            return Lista.FirstOrDefault();
         }
         internal bool Adicionar(string Usuario)
         {
@@ -126,11 +129,12 @@ namespace Site.Classes
             parametros.Add(new object[] { "@cbDescontoVariavel", this.cbDescontoVariavel });
             parametros.Add(new object[] { "@observacoes", this.ccObservacao });
             parametros.Add(new object[] { "@cvPgtoDias", this.cvPgtoDias });
+            parametros.Add(new object[] { "@cvCNPJ", this.cvCNPJ });
 
             try
             {
                 object retorno = DAO.ExecuteScalar(@"INS_Clinica @UserName = @UserName,@ccApelido = @ccApelido, @ccRazaoSocial = @ccRazaoSocial, @ccNomeFantasia = @ccNomeFantasia, @ccEmail = @ccEmail, 
-@cvISS = @cvISS, @cvDescontos = @cvDescontos, @idBanco = @idBanco, @cbDescontoVariavel = @cbDescontoVariavel, @observacoes = @observacoes, @cvPgtoDias= @cvPgtoDias", parametros);
+@cvISS = @cvISS, @cvDescontos = @cvDescontos, @idBanco = @idBanco, @cbDescontoVariavel = @cbDescontoVariavel, @observacoes = @observacoes, @cvPgtoDias= @cvPgtoDias, @cvCNPJ=@cvCNPJ", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -179,11 +183,14 @@ namespace Site.Classes
             parametros.Add(new object[] { "@cbDescontoVariavel", this.cbDescontoVariavel });
             parametros.Add(new object[] { "@observacoes", this.ccObservacao });
             parametros.Add(new object[] { "@cvPgtoDias", this.cvPgtoDias });
+            parametros.Add(new object[] { "@cvCNPJ", this.cvCNPJ });
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"UPD_Profissional @ccNome, @ccSexo, @ccNaturalUF, @ccNaturalCidade, @ccEstadoCivil, @ccEmail
-, @UserName, @observacoes, @RGNum, @RGEmissor, @RGdtEmissao, @CPFNum, @cvTelefone, @cvCelular, @nomePai, @nomeMae, @nomeConjuge, @IdProfissional", parametros);
+                object retorno = DAO.ExecuteScalar(@"UPD_Clinica @UserName = @UserName, @ccApelido = @ccApelido, @ccRazaoSocial = @ccRazaoSocial
+                , @ccNomeFantasia =  @ccNomeFantasia, @ccEmail = @ccEmail, @cvISS = @cvISS, @cvDescontos = @cvDescontos, @idBanco = @idBanco
+                , @cvPgtoDias = @cvPgtoDias, @cbDescontoVariavel = @cbDescontoVariavel, @observacoes =@observacoes, @idClinica = @idClinica 
+                , @cvCNPJ = @cvCNPJ ", parametros);
 
                 if (bool.Parse(retorno.ToString()) == true)
                 {

@@ -557,6 +557,8 @@
 
         }
 
+        //Remover requireds para abrir modais
+
         $(document).ready(function () {
             $(".imgButton").click(function () {
                 $("#MainContent_tbNome").removeAttr("required");

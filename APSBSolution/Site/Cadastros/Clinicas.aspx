@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-        <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
+        <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar" OnClientClick="AddRequerid()">
             <asp:Button ID="btNovaClinica" Text="Nova Clínica" runat="server" CssClass="btn btn-secondary" OnClientClick="LimparForm()" />
         </asp:LinkButton>
         <br />
@@ -46,9 +46,9 @@
 
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" />
+                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
+                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -86,7 +86,13 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbClinicaNomeFantasia">Nome Fantasia</label>
-                                <asp:TextBox runat="server" ID="tbClinicaNomeFantasia" CssClass="form-control" placeholder="..." />
+                                <asp:TextBox runat="server" ID="tbClinicaNomeFantasia" CssClass="form-control" placeholder="..."/>
+                            </div>
+                        </div>
+                         <div class="row">
+                            <div class="col">
+                                <label for="tbCNPJ">CNPJ</label>
+                                <asp:TextBox runat="server" ID="tbCNPJ" CssClass="form-control cnpj" placeholder="..."/>
                             </div>
                         </div>
                         <div class="row">
@@ -134,7 +140,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" />
+                    <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />
                 </div>
             </div>
         </div>
@@ -219,6 +225,8 @@
 
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Clinica.js"></script>
+       <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/Site.js"></script>
 
     <script type="text/javascript">
         //Datatables (gvClinicas)
@@ -260,6 +268,7 @@
             $("#MainContent_tbClinicaEmail").val("");
             $("#MainContent_tbClinicaISS").val("2,0");
             $("#MainContent_tbPgtoDias").val("5");
+            $("#MainContent_tbCNPJ").val("");
 
             $("#MainContent_tbDescontos").val("6,5");
             $("#MainContent_tbObsClinica").val("");
@@ -267,5 +276,18 @@
             $("#MainContent_chDescontoVariavel").prop("checked", false);
         }
 
+        $(document).ready(function () {
+            $(".imgButton").click(function () {
+                $(".form-control").removeAttr("required");
+            });
+        });
+
+        function AddRequerid() {
+            $('#MainContent_tbApelido').attr('required', true);
+            $('#MainContent_tbRazaoSocial').attr('required', true);
+            $('#MainContent_tbNomeFantasia').attr('required', true);
+            $('#MainContent_tbCNPJ').attr('required', true);
+        }
+       
     </script>
 </asp:Content>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
@@ -92,7 +93,7 @@ namespace Site.Cadastros
             c.cvIdBanco = int.Parse(dpBancoClinica.SelectedValue);
             c.cbDescontoVariavel = chDescontoVariavel.Checked;
             c.ccObservacao = tbObsClinica.Text;
-
+            c.cvCNPJ = long.Parse(tbCNPJ.Text);
             if (idHiddenClinica.Value.IsNullOrWhiteSpace())
             {
                 result = c.Adicionar("Franklim");
@@ -176,7 +177,10 @@ namespace Site.Cadastros
 
         private void CarregarModalClinica(int idClinica)
         {
-            string clinicaModal = @"$('#clinicaModal').modal('show')";
+            StringBuilder sbRequireds = new StringBuilder();
+            //string clinicaModal = @"$('#clinicaModal').modal('show');";
+            sbRequireds.AppendLine("$('#clinicaModal').modal('show');");
+
             Clinica c = Clinica.ListarPorID(idClinica);
             tbApelido.Text = c.ccApelido;
             tbRazaoSocial.Text = c.ccRazaoSocial;
@@ -187,6 +191,7 @@ namespace Site.Cadastros
             dpBancoClinica.ClearSelection();
             dpBancoClinica.Items.FindByText(c.ccBanco).Selected = true;
             tbPgtoDias.Text = c.cvPgtoDias.ToString();
+            tbCNPJ.Text = c.cvCNPJ.ToString();
             if (c.ccDescontoVariavel == "Sim")
             {
                 chDescontoVariavel.Checked = true;
@@ -198,7 +203,14 @@ namespace Site.Cadastros
             tbObsClinica.Text = c.ccObservacao;
 
 
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", clinicaModal, true);
+            //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", clinicaModal, true);
+            
+            sbRequireds.AppendLine("$('#MainContent_tbApelido').attr('required',true);");
+            sbRequireds.AppendLine("$('#MainContent_tbRazaoSocial').attr('required',true);");
+            sbRequireds.AppendLine("$('#MainContent_tbNomeFantasia').attr('required',true);");
+            sbRequireds.AppendLine("$('#MainContent_tbCNPJ').attr('required',true);");
+
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", sbRequireds.ToString(), true);
         }
 
         [WebMethod]

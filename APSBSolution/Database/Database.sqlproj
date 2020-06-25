@@ -91,6 +91,11 @@
     <Build Include="dbo\Stored Procedures\EXC_ProfissionalBanco.sql" />
     <Build Include="dbo\Stored Procedures\UPD_ProfissionalEndereco.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ProfissionalEndereco.sql" />
+    <Build Include="dbo\Tables\tbProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalArquivoBinary.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalArquivo.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />
