@@ -36,6 +36,7 @@
 });
 
 function RemoverMascaras() {
+    $(".cep").unmask();
     $(".cpf").unmask();
     $(".cnpj").unmask();
     $(".phone_with_ddd").unmask();

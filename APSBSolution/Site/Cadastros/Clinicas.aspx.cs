@@ -37,7 +37,7 @@ namespace Site.Cadastros
 
             dpSelectProfissional.Items.Add(new ListItem("Selecionar..."));
             dpSelectProfissional.Items.FindByText("Selecionar...").Selected = true;
-            
+
         }
 
         protected void gvClinicas_PreRender(object sender, EventArgs e)
@@ -67,52 +67,61 @@ namespace Site.Cadastros
 
         protected void btSalvar_Click(object sender, EventArgs e)
         {
-            Clinica c = new Clinica();
-            bool result;
+            //Validar CNPJ
+            if (IsCnpj(tbCNPJ.Text))
+            {
+                Clinica c = new Clinica();
+                bool result;
 
-            c.ccApelido = tbApelido.Text;
-            c.ccRazaoSocial = tbRazaoSocial.Text;
-            c.ccNomeFantasia = tbClinicaNomeFantasia.Text;
-            c.ccEmail = tbClinicaEmail.Text;
-            if (tbClinicaISS.Text == "")
-            {
-                c.cvISS = 0;
+                c.ccApelido = tbApelido.Text;
+                c.ccRazaoSocial = tbRazaoSocial.Text;
+                c.ccNomeFantasia = tbClinicaNomeFantasia.Text;
+                c.ccEmail = tbClinicaEmail.Text;
+                if (tbClinicaISS.Text == "")
+                {
+                    c.cvISS = 0;
+                }
+                else
+                {
+                    c.cvISS = double.Parse(tbClinicaISS.Text);
+                }
+                if (tbDescontos.Text == "")
+                {
+                    c.cvDescontos = 0;
+                }
+                else
+                {
+                    c.cvDescontos = double.Parse(tbDescontos.Text);
+                }
+                c.cvIdBanco = int.Parse(dpBancoClinica.SelectedValue);
+                c.cbDescontoVariavel = chDescontoVariavel.Checked;
+                c.ccObservacao = tbObsClinica.Text;
+                c.cvCNPJ = long.Parse(tbCNPJ.Text);
+                c.cvPgtoDias = int.Parse(tbPgtoDias.Text);
+                if (idHiddenClinica.Value.IsNullOrWhiteSpace())
+                {
+                    result = c.Adicionar("Franklim");
+                }
+                else
+                {
+                    c.idClinica = int.Parse(idHiddenClinica.Value);
+                    result = c.Salvar("Franklim");
+                }
+
+                if (result)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+                }
             }
             else
             {
-                c.cvISS = double.Parse(tbClinicaISS.Text);
-            }
-            if (tbDescontos.Text == "")
-            {
-                c.cvDescontos = 0;
-            }
-            else
-            {
-                c.cvDescontos = double.Parse(tbDescontos.Text);
-            }
-            c.cvIdBanco = int.Parse(dpBancoClinica.SelectedValue);
-            c.cbDescontoVariavel = chDescontoVariavel.Checked;
-            c.ccObservacao = tbObsClinica.Text;
-            c.cvCNPJ = long.Parse(tbCNPJ.Text);
-            c.cvPgtoDias = int.Parse(tbPgtoDias.Text);
-            if (idHiddenClinica.Value.IsNullOrWhiteSpace())
-            {
-                result = c.Adicionar("Franklim");
-            }
-            else
-            {
-                c.idClinica = int.Parse(idHiddenClinica.Value);
-                result = c.Salvar("Franklim");
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Informe um CNPJ válido!');$('#clinicaModal').modal('show');", true);
             }
 
-            if (result)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
-            }
-            else
-            { 
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
-            }
         }
 
         protected void gvClinicas_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -139,17 +148,17 @@ namespace Site.Cadastros
                     break;
                 case "Editar":
                     CarregarModalClinica(idClinica);
-                  
+
                     break;
                 case "Associar":
                     CarregarModalRelacao(idClinica);
-                    
+
                     break;
                 default:
                     break;
             }
 
-           
+
         }
 
         private void CarregarModalRelacao(int idClinica)
@@ -178,6 +187,7 @@ namespace Site.Cadastros
 
         private void CarregarModalClinica(int idClinica)
         {
+
             StringBuilder sbRequireds = new StringBuilder();
             //string clinicaModal = @"$('#clinicaModal').modal('show');";
 
@@ -191,7 +201,7 @@ namespace Site.Cadastros
             dpBancoClinica.ClearSelection();
             dpBancoClinica.Items.FindByText(c.ccBanco).Selected = true;
             tbPgtoDias.Text = c.cvPgtoDias.ToString();
-            tbCNPJ.Text = c.cvCNPJ.ToString();
+            tbCNPJ.Text = c.cvCNPJ.ToString("00000000000000");
             if (c.ccDescontoVariavel == "Sim")
             {
                 chDescontoVariavel.Checked = true;
@@ -258,7 +268,7 @@ namespace Site.Cadastros
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao excluir o registro!');", true);
                     }
                     break;
-               
+
                 default:
                     break;
             }
@@ -289,5 +299,43 @@ namespace Site.Cadastros
         //        }
         //    }
         //}
+
+        //Métodos Auxiliares
+
+
+        public static bool IsCnpj(string cnpj)
+        {
+            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int soma;
+            int resto;
+            string digito;
+            string tempCnpj;
+            cnpj = cnpj.Trim();
+            cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
+            if (cnpj.Length != 14)
+                return false;
+            tempCnpj = cnpj.Substring(0, 12);
+            soma = 0;
+            for (int i = 0; i < 12; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = resto.ToString();
+            tempCnpj = tempCnpj + digito;
+            soma = 0;
+            for (int i = 0; i < 13; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+            resto = (soma % 11);
+            if (resto < 2)
+                resto = 0;
+            else
+                resto = 11 - resto;
+            digito = digito + resto.ToString();
+            return cnpj.EndsWith(digito);
+        }
     }
 }

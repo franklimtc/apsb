@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
+using Microsoft.SqlServer.Server;
 using Site.Classes;
 
 
@@ -12,9 +15,17 @@ namespace Site.Cadastros
 {
     public partial class Medicos : System.Web.UI.Page
     {
+        static CultureInfo culture;
+        static DateTimeStyles styles;
+
+       
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Parse a date and time with no styles.
+            culture = CultureInfo.CreateSpecificCulture("pt-BR");
+            styles = DateTimeStyles.None;
         }
 
         protected void gvMedicos_PreRender(object sender, EventArgs e)
@@ -183,6 +194,8 @@ namespace Site.Cadastros
                 tbSecaoEleitor.Text = "";
                 tbReservista.Text = "";
                 tbPisPasep.Text = "";
+                tbdtEmissaoRG.Text = "";
+                tbDataNascimento.Text = "";
             }
 
             string scriptModal = @"$('#profissionalModal').modal('show')";
@@ -207,12 +220,13 @@ namespace Site.Cadastros
             tbRG.Text = editProf.RGNum.ToString();
             tbEmissorRG.Text = editProf.RGEmissor;
             tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("dd/MM/yyyy");
-            tbCPF.Text = editProf.CPFNum.ToString();
+            tbCPF.Text = editProf.CPFNum.ToString("00000000000");
             tbEmail.Text = editProf.ccEmail;
             tbTelefone.Text = editProf.cvTelefone.ToString();
             tbCelular.Text = editProf.cvCelular.ToString();
             tbObservacoes.Text = editProf.Observacoes;
             tbDataNascimento.Text = editProf.dtNascimento.ToString("dd/MM/yyyy");
+
 
             string scriptModal = @"$('#medicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
@@ -236,8 +250,13 @@ namespace Site.Cadastros
             if (!tbRG.Text.IsNullOrWhiteSpace())
                 pNew.RGNum = long.Parse(tbRG.Text);
             pNew.RGEmissor = tbEmissorRG.Text;
+            //if (DateTime.TryParse(tbdtEmissaoRG.Text, out DateTime newDate))
             if (!tbdtEmissaoRG.Text.IsNullOrWhiteSpace())
-                pNew.RGdtEmissao = DateTime.Parse(tbdtEmissaoRG.Text);
+            {
+                DateTime.TryParse(tbdtEmissaoRG.Text, culture, styles, out DateTime newDate1);
+                pNew.RGdtEmissao = newDate1;
+            }
+
             pNew.CPFNum = long.Parse(tbCPF.Text);
             pNew.ccEmail = tbEmail.Text;
             if (!tbTelefone.Text.IsNullOrWhiteSpace())
@@ -245,28 +264,34 @@ namespace Site.Cadastros
             if (!tbCelular.Text.IsNullOrWhiteSpace())
                 pNew.cvCelular = long.Parse(tbCelular.Text);
             pNew.Observacoes = tbObservacoes.Text;
+            //if (DateTime.TryParse(tbDataNascimento.Text, out DateTime newDate2))
             if (!tbDataNascimento.Text.IsNullOrWhiteSpace())
-                pNew.dtNascimento = DateTime.Parse(tbDataNascimento.Text);
+            {
+                DateTime.TryParse(tbDataNascimento.Text, culture, styles, out DateTime newDate);
+                pNew.dtNascimento = newDate;
+            }
+                
 
-            if (idHiddenMedico.Value.IsNullOrWhiteSpace())
+            try
             {
-                result = pNew.Adicionar(user);
+                if (idHiddenMedico.Value.IsNullOrWhiteSpace())
+                {
+                    result = pNew.Adicionar(user);
+                }
+                else
+                {
+                    pNew.IdProfissional = int.Parse(idHiddenMedico.Value);
+                    result = pNew.Salvar(user);
+                }
+                if (result)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                pNew.IdProfissional = int.Parse(idHiddenMedico.Value);
-                result = pNew.Salvar(user);
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", $"alert('Falha ao salvar o registro! ERRO: {ex.Message}')", true);
             }
-
-            if (result)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
-            }
-
         }
 
         protected void btSalvarDados_Click(object sender, EventArgs e)
@@ -412,8 +437,6 @@ namespace Site.Cadastros
             }
         }
 
-       
-
         protected void btUploadFile_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
@@ -453,11 +476,11 @@ namespace Site.Cadastros
         {
             var obj = e.CommandArgument;
             int idProfissionalArquivo = int.Parse(gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
-            string nomeArquivo = gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text;
+            //string nomeArquivo = Server.HtmlDecode(gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text);
+            string nomeArquivo = ProfissionalArquivo.GetName(idProfissionalArquivo);
             //string user = User.Identity.Name;
             string user = "Franklim";
             bool result = false;
-            string script = null;
             switch (e.CommandName)
             {
                 case "Excluir":
@@ -479,6 +502,7 @@ namespace Site.Cadastros
 
                     Response.ContentType = "application/pdf";
                     Response.AppendHeader("Content-Disposition", $"attachment; filename={nomeArquivo}");
+                    Response.ContentEncoding = Encoding.Default;
                     Response.TransmitFile(fullPath);
                     Response.End();
 

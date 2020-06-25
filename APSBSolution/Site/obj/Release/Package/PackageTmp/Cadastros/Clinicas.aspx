@@ -48,7 +48,7 @@
                             <ItemTemplate>
                                 <asp:ImageButton runat="server" CssClass = "imgButton" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
                                 <asp:ImageButton runat="server" CssClass = "imgButton" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" />
+                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');"  />
                             </ItemTemplate>
                         </asp:TemplateField>
 

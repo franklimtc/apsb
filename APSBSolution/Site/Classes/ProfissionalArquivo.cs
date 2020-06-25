@@ -145,5 +145,11 @@ namespace Site.Classes
             file.Close();
             sqlConnection.Close();
         }
+
+        public static string GetName(int idArquivo)
+        {
+            string query = $"select ccNomeArquivo from tbProfissionalArquivo where idArquivo = {idArquivo}";
+            return DAO.ExecuteScalar(query).ToString();
+        }
     }
 }

@@ -4,7 +4,3 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Database\bin\Debug\Database.pdb
 C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Database.sqlprojAssemblyReference.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Database.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Database.pdb
-C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\Model.xml
-C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\refactor.xml
-C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\postdeploy.sql
-C:\Users\frank\source\repos\APSB\APSBSolution\Database\obj\Debug\predeploy.sql

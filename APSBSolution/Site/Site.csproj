@@ -202,7 +202,6 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
-    <Content Include="Arquivos\HtmlPage1.html" />
     <Content Include="assets\css\material-dashboard-rtl.css" />
     <Content Include="assets\css\material-dashboard.css" />
     <Content Include="assets\css\material-dashboard.min.css" />
@@ -1243,7 +1242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\RepVendas.rdlc" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Arquivos\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

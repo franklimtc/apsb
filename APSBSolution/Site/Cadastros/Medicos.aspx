@@ -47,7 +47,7 @@
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" />
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" />
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" />
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -119,7 +119,7 @@
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:ImageButton runat="server" ID="btBaixarArquivo" ImageUrl="~/Content/Icons/cloud-download-outline.svg" CommandName="Baixar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
-                                            <asp:ImageButton runat="server" ID="btExcluirArquivo" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                                            <asp:ImageButton runat="server" ID="btExcluirArquivo" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" OnClientClick="return confirm('Deseja excluir o registro?');"  />&nbsp&nbsp
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -391,7 +391,7 @@
                             </div>
                             <div class="col">
                                 <label for="tbCep">CEP</label>
-                                <asp:TextBox runat="server" ID="tbCep" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbCep" CssClass="form-control cep" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
@@ -492,7 +492,7 @@
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <%--<asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Editar"  ToolTip="Editar" />--%>
-                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Excluir"  ToolTip="Excluir"/>
+                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Excluir"  ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -544,7 +544,7 @@
             $("#MainContent_tbNomeConjuge").val("");
             $("#MainContent_tbRG").val("").attr("required", "required");
             $("#MainContent_tbEmissorRG").val("");
-            $("#MainContent_tbdtEmissao").val("");
+            $("#MainContent_tbdtEmissaoRG").val("");
             $("#MainContent_tbCPF").val("").attr("required", "required");
             $("#MainContent_tbEmail").val("");
             $("#MainContent_tbTelefone").val("");
@@ -554,6 +554,8 @@
             $("#MainContent_dpNaturalidade").val("00").change();
             $("#MainContent_dpEstCivil").val("C").change();
             $("#MainContent_tbObservacoes").val("");
+
+            $("#MainContent_tbDataNascimento").val("")
 
         }
 
