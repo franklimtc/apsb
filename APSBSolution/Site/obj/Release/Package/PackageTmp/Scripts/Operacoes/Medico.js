@@ -16,25 +16,29 @@
         , _idBanco: idbanco
     };
 
-    $.ajax({
-        type: "POST",
-        url: "Medicos.aspx/AdicionarBanco",
-        data: JSON.stringify(relacaoObj),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
-        },
-        success: function (result) {
-            //alert("Registro adicionado com sucesso");
-            if (result.d === true) {
-                $("#MainContent_gvProfissionalBanco").append("<tr><td>add</td><td>" + _nomeBanco + "</td ><td>" + _agencia + "</td><td>" + _conta + "</td><td>" + _operacao +"</td><td></td></tr >");
+    if (_conta === "" || _agencia === "") {
+        alert("Informe agência e conta!");
+    }
+    else {
+        $.ajax({
+            type: "POST",
+            url: "Medicos.aspx/AdicionarBanco",
+            data: JSON.stringify(relacaoObj),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            },
+            success: function (result) {
+                //alert("Registro adicionado com sucesso");
+                if (result.d === true) {
+                    $("#MainContent_gvProfissionalBanco").append("<tr><td>add</td><td>" + _nomeBanco + "</td ><td>" + _agencia + "</td><td>" + _conta + "</td><td>" + _operacao + "</td><td></td></tr >");
+                }
+                else {
+                    alert("Falha ao adicionar o registro");
+                }
             }
-            else {
-                alert("Falha ao adicionar o registro");
-            }
-        }
-    });
-
+        });
+    }
     
 }

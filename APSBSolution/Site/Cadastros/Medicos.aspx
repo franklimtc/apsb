@@ -329,31 +329,31 @@
                             </div>
                             <div class="col">
                                 <label for="tbNumInscricaoConselho">Num. Inscrição</label>
-                                <asp:TextBox runat="server" ID="tbNumInscricaoConselho" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbNumInscricaoConselho" CssClass="form-control number" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="tbTituloEleitor">Título de Eleitor</label>
-                                <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number" placeholder="digite..." />
                             </div>
                             <div class="col-md-3">
                                 <label for="tbZonaEleitor">Zona</label>
-                                <asp:TextBox runat="server" ID="tbZonaEleitor" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbZonaEleitor" CssClass="form-control number" placeholder="digite..." />
                             </div>
                             <div class="col-md-3">
                                 <label for="tbSecaoEleitor">Seção</label>
-                                <asp:TextBox runat="server" ID="tbSecaoEleitor" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbSecaoEleitor" CssClass="form-control number" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="tbReservista">Reservista</label>
-                                <asp:TextBox runat="server" ID="tbReservista" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbReservista" CssClass="form-control number" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbPisPasep">PIS/PASEP/NIT</label>
-                                <asp:TextBox runat="server" ID="tbPisPasep" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbPisPasep" CssClass="form-control number" placeholder="digite..." />
                             </div>
                         </div>
                     </div>
@@ -365,8 +365,8 @@
             </div>
         </div>
     </div>
+   
     <!-- Modal Médico - Dados de Moradia - moradiaModal-->
-
     <div class="modal fade" id="moradiaModal" tabindex="-1" role="dialog" aria-labelledby="moradiaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -437,7 +437,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarEndereco_Click" />
+                    <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarEndereco_Click" OnClientClick="RemoverMascaras()" />
                 </div>
             </div>
         </div>
@@ -471,7 +471,7 @@
                             </div>
                             <div class="col">
                                 <label for="tbConta">Conta</label>
-                                <asp:TextBox runat="server" ID="tbConta" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbConta" CssClass="form-control" placeholder="digite..."  />
                             </div>
                             <div class="col">
                                 <label for="tbOperacao">Operação</label>
@@ -479,8 +479,14 @@
                             </div>
                         </div>
                     </div>
+                     <div class="row">
+                        <div class="col">
+                            <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco()" />
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col">
+                            <br />
                              <asp:GridView runat="server" ID="gvProfissionalBanco" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalBanco_RowCommand">
                                 <%--banco - agencia - conta - operacao - acoes--%>
                                 <Columns>
@@ -499,11 +505,7 @@
                             </asp:GridView>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco()" />
-                        </div>
-                    </div>
+                   
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
