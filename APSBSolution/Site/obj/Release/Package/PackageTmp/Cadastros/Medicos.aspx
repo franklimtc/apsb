@@ -31,6 +31,13 @@
         <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-secondary" OnClientClick="LimparForm()">Novo Médico
         </asp:LinkButton>
         <br />
+        <div class="row collapse" id="divFiltros">
+            <div class="col">
+                <h1>Collapse row</h1>
+                
+                <h2>Adicionar filtros aqui</h2>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <br />
@@ -534,6 +541,8 @@
                     }
                 }
             });
+            $('#MainContent_gvMedicos_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+
         });
 
         function LimparForm() {

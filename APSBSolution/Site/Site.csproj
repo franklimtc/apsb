@@ -423,6 +423,7 @@
     <Content Include="Content\Icons\create-outline.svg" />
     <Content Include="Content\Icons\desktop-outline.svg" />
     <Content Include="Content\Icons\file-tray-full-outline.svg" />
+    <Content Include="Content\Icons\filter_alt-24px.svg" />
     <Content Include="Content\Icons\home-outline.svg" />
     <Content Include="Content\Icons\medkit-outline.svg" />
     <Content Include="Content\Icons\person-outline.svg" />

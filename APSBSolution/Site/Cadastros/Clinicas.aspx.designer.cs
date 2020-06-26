@@ -33,6 +33,24 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.Button btNovaClinica;
 
         /// <summary>
+        /// Controle chkStatus.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButtonList chkStatus;
+
+        /// <summary>
+        /// Controle btAplicarFiltro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btAplicarFiltro;
+
+        /// <summary>
         /// Controle gvClinicas.
         /// </summary>
         /// <remarks>

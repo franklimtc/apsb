@@ -82,6 +82,38 @@ namespace Site.Classes
 
             return Lista;
         }
+
+        public static List<Clinica> Listar(bool status)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@Status", status });
+
+            DataTable dt = DAO.RetornaDT($"SEL_Clinicas  @Status = @Status", parametros);
+            List<Clinica> Lista = new List<Clinica>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    Lista.Add(new Clinica(
+                        int.Parse(c["IdClinica"].ToString())
+                        , c["ccApelido"].ToString()
+                        , c["ccRazaoSocial"].ToString()
+                        , c["ccNomeFantasia"].ToString()
+                        , c["ccEmail"].ToString()
+                        , double.Parse(c["cvISS"].ToString())
+                        , double.Parse(c["cvDescontos"].ToString())
+                        , c["cbDescontoVariavel"].ToString()
+                        , c["ccBanco"].ToString()
+                        , c["observacao"].ToString()
+                        , int.Parse(c["cvPgtoDias"].ToString())
+                        , long.Parse(c["cvCNPJ"].ToString())
+                       ));
+                }
+
+            }
+
+            return Lista;
+        }
         internal static Clinica ListarPorID(int _idClinica)
         {
             List<object[]> parametros = new List<object[]>();

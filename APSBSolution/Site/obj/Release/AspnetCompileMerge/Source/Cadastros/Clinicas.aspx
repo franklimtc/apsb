@@ -24,6 +24,23 @@
             <asp:Button ID="btNovaClinica" Text="Nova Clínica" runat="server" CssClass="btn btn-secondary" OnClientClick="LimparForm()" />
         </asp:LinkButton>
         <br />
+        <div class="row collapse" id="divFiltros">
+            <br />
+            <div class="col">
+                <h2>Filtros adicionais</h2>
+                <div class="row">
+                    <div class="col">
+                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus" >
+                            <asp:ListItem Text="Ativo" Selected="True" Value="true" />
+                            <asp:ListItem Text="Inativo" Value="false" />
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="col">
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btAplicarFiltro_Click" /></div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <br />
@@ -215,7 +232,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Fechar</button>
                     <%--<button type="button" class="btn btn-primary" onclick="SalvarRelacao()">Salvar</button>--%>
                     <%--<asp:Button Text="Salvar" runat="server" ID="btSalvarRelacao" CssClass="btn btn-primary" OnClick="btSalvarRelacao_Click" />--%>
                 </div>
@@ -245,6 +262,7 @@
                 }
             });
 
+            $('#MainContent_gvClinicas_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
 
         });
 
@@ -288,6 +306,6 @@
             $('#MainContent_tbNomeFantasia').attr('required', true);
             $('#MainContent_tbCNPJ').attr('required', true);
         }
-       
+
     </script>
 </asp:Content>

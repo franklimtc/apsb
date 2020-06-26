@@ -44,8 +44,21 @@ namespace Site.Cadastros
         {
             // You only need the following 2 lines of code if you are not 
             // using an ObjectDataSource of SqlDataSource
-            gvClinicas.DataSource = Clinica.Listar();
-            gvClinicas.DataBind();
+
+            if (gvClinicas.Rows.Count == 0)
+            {
+                if (bool.Parse(chkStatus.SelectedValue))
+                {
+                    gvClinicas.DataSource = Clinica.Listar();
+                }
+                else
+                {
+                    gvClinicas.DataSource = Clinica.Listar(false);
+                }
+                gvClinicas.DataBind();
+            }
+           
+
 
             if (gvClinicas.Rows.Count > 0)
             {
@@ -350,6 +363,14 @@ namespace Site.Cadastros
                 resto = 11 - resto;
             digito = digito + resto.ToString();
             return cnpj.EndsWith(digito);
+        }
+
+        protected void btAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            bool status = bool.Parse(chkStatus.SelectedValue);
+
+            gvClinicas.DataSource = Clinica.Listar(status);
+            gvClinicas.DataBind();
         }
     }
 }
