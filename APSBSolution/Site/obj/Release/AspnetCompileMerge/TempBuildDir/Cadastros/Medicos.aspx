@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Médicos" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Medicos.aspx.cs" Inherits="Site.Cadastros.Medicos" %>
+﻿<%@ Page Title="Profissionais" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Medicos.aspx.cs" Inherits="Site.Cadastros.Medicos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -32,10 +32,21 @@
         </asp:LinkButton>
         <br />
         <div class="row collapse" id="divFiltros">
+           <br />
             <div class="col">
-                <h1>Collapse row</h1>
-                
-                <h2>Adicionar filtros aqui</h2>
+                <h2>Filtros adicionais</h2>
+                <div class="row">
+                    <div class="col">
+                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus">
+                            <asp:ListItem Text="Ativo" Selected="True" Value="true" />
+                            <asp:ListItem Text="Inativo" Value="false" />
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="col">
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btAplicarFiltro_Click" />
+                    </div>
+                    <div class="col"></div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -43,26 +54,26 @@
                 <br />
                 <asp:GridView runat="server" ID="gvMedicos" CssClass="table table-hover table-striped table-sm" OnPreRender="gvMedicos_PreRender" AutoGenerateColumns="false" OnRowCommand="gvMedicos_RowCommand">
                     <Columns>
-                        <asp:BoundField DataField="IdProfissional" HeaderText="ID" />
+                        <asp:BoundField DataField="IdProfissional" HeaderText="ID" ItemStyle-CssClass="imgLink" />
                         <asp:BoundField DataField="ccNome" HeaderText="Nome" />
                         <asp:BoundField DataField="ccEmail" HeaderText="Email" />
                         <asp:BoundField DataField="Observacoes" HeaderText="Observações" />
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Pessoais" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                             </ItemTemplate>

@@ -157,7 +157,7 @@ namespace Site.Cadastros
         protected void gvClinicas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             var obj = e.CommandArgument;
-            int idClinica = int.Parse(gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[13].Text);
+            int idClinica = int.Parse(gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
             idHiddenClinica.Value = idClinica.ToString();
             string user = "Franklim";
 

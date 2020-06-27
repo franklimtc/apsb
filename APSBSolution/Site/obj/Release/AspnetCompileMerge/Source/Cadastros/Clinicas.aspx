@@ -48,6 +48,7 @@
                 <br />
                 <asp:GridView runat="server" ID="gvClinicas" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" OnPreRender="gvClinicas_PreRender" OnRowCommand="gvClinicas_RowCommand">
                     <Columns>
+                        <asp:BoundField DataField="IdClinica" HeaderText="ID" SortExpression="IdClinica" ItemStyle-CssClass="imgLink"/>
                         <asp:BoundField DataField="ccApelido" HeaderText="Apelido" SortExpression="ccApelido" />
                         <asp:BoundField DataField="ccRazaoSocial" HeaderText="ccRazaoSocial" SortExpression="ccRazaoSocial" Visible="false" />
                         <asp:BoundField DataField="ccNomeFantasia" HeaderText="ccNomeFantasia" SortExpression="ccNomeFantasia" Visible="false" />
@@ -61,18 +62,17 @@
                         <asp:BoundField DataField="cvDescontos" HeaderText="Desconto" SortExpression="cvDescontos" />
                         <asp:BoundField DataField="ccTaxaVariavel" HeaderText="ccTaxaVariavel" SortExpression="ccTaxaVariavel" Visible="false" />
                         <asp:BoundField DataField="ccObservacao" HeaderText="Observações" SortExpression="ccObservacao" />
-                        <asp:BoundField DataField="IdClinica" HeaderText="ID" SortExpression="IdClinica" />
-                        <asp:TemplateField>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                             </ItemTemplate>

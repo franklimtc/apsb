@@ -68,10 +68,14 @@ namespace Site.Classes
             this.Observacoes = _observacoes;
         }
 
-        public static List<Profissional> Listar()
+        public static List<Profissional> Listar(bool status = true)
         {
             List<Profissional> Lista = new List<Profissional>();
-            DataTable dt = DAO.RetornaDT("SEL_Profissionais");
+
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@Status", status });
+
+            DataTable dt = DAO.RetornaDT("SEL_Profissionais @Status = @Status", parametros);
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow p in dt.Rows)
@@ -85,6 +89,7 @@ namespace Site.Classes
             }
             return Lista;
         }
+
         public static Profissional ListarPorID(int _idProfissional)
         {
             List<object[]> parametros = new List<object[]>();
@@ -367,5 +372,7 @@ namespace Site.Classes
             }
             return retorno;
         }
+
+      
     }
 }

@@ -18,9 +18,6 @@ namespace Site.Cadastros
         static CultureInfo culture;
         static DateTimeStyles styles;
 
-       
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             // Parse a date and time with no styles.
@@ -32,9 +29,12 @@ namespace Site.Cadastros
         {
             // You only need the following 2 lines of code if you are not 
             // using an ObjectDataSource of SqlDataSource
-            gvMedicos.DataSource = Profissional.Listar();
-            gvMedicos.DataBind();
-
+            if (!IsPostBack)
+            {
+                gvMedicos.DataSource = Profissional.Listar();
+                gvMedicos.DataBind();
+            }
+            
             if (gvMedicos.Rows.Count > 0)
             {
                 //This replaces <td> with <th> and adds the scope attribute
@@ -528,6 +528,14 @@ namespace Site.Cadastros
 
             bool result = pdb.Salvar("API");
             return result;
+        }
+
+        protected void btAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            bool status = bool.Parse(chkStatus.SelectedValue);
+
+            gvMedicos.DataSource = Profissional.Listar(status);
+            gvMedicos.DataBind();
         }
     }
 }

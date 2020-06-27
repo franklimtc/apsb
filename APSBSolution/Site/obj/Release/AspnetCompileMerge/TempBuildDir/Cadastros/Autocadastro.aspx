@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Autocadastro.aspx.cs" Inherits="Site.Cadastros.Autocadastro" %>
+﻿<%@ Page Title="Cadastro" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Autocadastro.aspx.cs" Inherits="Site.Cadastros.Autocadastro" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <%--HiddenFields--%>
@@ -21,20 +21,20 @@
     <div class="row">
         <div class="col">
             <br />
-            <asp:GridView runat="server" ID="gvAutocadastro" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" DataSourceID="dsCadastros" OnRowCommand="gvAutocadastro_RowCommand">
+            <asp:GridView runat="server" ID="gvAutocadastro" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" DataSourceID="dsCadastros" OnRowCommand="gvAutocadastro_RowCommand" OnPreRender="gvAutocadastro_PreRender">
                 <Columns>
                     <asp:BoundField HeaderText = "Nome"  DataField="ccNome" />
                     <asp:BoundField HeaderText = "Email" DataField="ccEmail"/>
                     <asp:BoundField HeaderText = "Token" DataField="Token"/>
                     <asp:BoundField HeaderText = "Data" DataField="cdDataCriacao"/>
                     <asp:BoundField HeaderText = "Status" DataField="StatusCadastro"/>
-                    <asp:TemplateField>
+                    <asp:TemplateField ItemStyle-CssClass="imgLink" >
                         <ItemTemplate>
                             <asp:imagebutton imageurl="~/Content/Icons/checkmark-done-circle-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Ativar" CommandName="Ativar"/>
                         </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
+                    <asp:TemplateField ItemStyle-CssClass="imgLink" >
+                        <ItemTemplate >
                             <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Excluir" CommandName="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -131,7 +131,7 @@
         //DataTables
 
         $(document).ready(function () {
-            $('#gvAutocadastro').DataTable({
+            $('#MainContent_gvAutocadastro').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
                     "zeroRecords": "Nenhum registro encontrado.",

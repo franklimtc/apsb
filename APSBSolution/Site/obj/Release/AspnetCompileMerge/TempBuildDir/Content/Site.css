@@ -41,3 +41,7 @@ input[type="select"] {
 nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-darkcyan {
     background-color: darkcyan;
 }
+
+.imgLink {
+    width: 15px;
+}
