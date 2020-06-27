@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Autocadastro.aspx.cs" Inherits="Site.Cadastros.Autocadastro" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <%--HiddenFields--%>
+            <asp:HiddenField runat="server" ID="Token" />
+    <%--HiddenFields--%>
+
     <div class="row">
         <div class="col-md-4"></div>
 
@@ -17,7 +21,27 @@
     <div class="row">
         <div class="col">
             <br />
-            <table id="gvAutocadastro" class="table table-hover table-striped table-sm">
+            <asp:GridView runat="server" ID="gvAutocadastro" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" DataSourceID="dsCadastros" OnRowCommand="gvAutocadastro_RowCommand">
+                <Columns>
+                    <asp:BoundField HeaderText = "Nome"  DataField="ccNome" />
+                    <asp:BoundField HeaderText = "Email" DataField="ccEmail"/>
+                    <asp:BoundField HeaderText = "Token" DataField="Token"/>
+                    <asp:BoundField HeaderText = "Data" DataField="cdDataCriacao"/>
+                    <asp:BoundField HeaderText = "Status" DataField="StatusCadastro"/>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:imagebutton imageurl="~/Content/Icons/checkmark-done-circle-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Ativar" CommandName="Ativar"/>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Excluir" CommandName="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
+            <asp:ObjectDataSource ID="dsCadastros" runat="server" SelectMethod="ListarAuto" TypeName="Site.Classes.Profissional"></asp:ObjectDataSource>
+<%--            <table id="gvAutocadastro" class="table table-hover table-striped table-sm">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -60,7 +84,7 @@
                     </tr>
                 </tbody>
 
-            </table>
+            </table>--%>
 
         </div>
     </div>
@@ -79,19 +103,23 @@
                     <div class="row">
                         <div class="col">
                             <label for="tbName">Nome</label>
-                            <input type="text" name="tbName" id="tbName" class="form-control" value="" />
+                            <asp:TextBox runat="server" ID="tbName" CssClass="form-control" />
+                            <%--<input type="text" name="tbName" id="tbName" class="form-control" value="" />--%>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="tbEmail">Email</label>
-                            <input type="text" name="tbEmail" id="tbEmail" class="form-control" value="" />
+                            <asp:TextBox runat="server" ID="tbEmail" CssClass="form-control" TextMode="Email" />
+
+                            <%--<input type="text" name="tbEmail" id="tbEmail" class="form-control" value="" />--%>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary">Salvar</button>--%>
+                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" ID="btSalvar" OnClick="btSalvar_Click" />
                 </div>
             </div>
         </div>

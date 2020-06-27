@@ -45,7 +45,7 @@ namespace Site.Cadastros
             // You only need the following 2 lines of code if you are not 
             // using an ObjectDataSource of SqlDataSource
 
-            if (gvClinicas.Rows.Count == 0)
+            if (gvClinicas.Rows.Count == 0 || idHiddenChange.Value == "1")
             {
                 if (bool.Parse(chkStatus.SelectedValue))
                 {
@@ -55,6 +55,7 @@ namespace Site.Cadastros
                 {
                     gvClinicas.DataSource = Clinica.Listar(false);
                 }
+                idHiddenChange.Value = "0";
                 gvClinicas.DataBind();
             }
            
@@ -128,11 +129,13 @@ namespace Site.Cadastros
                 if (idHiddenClinica.Value.IsNullOrWhiteSpace())
                 {
                     result = c.Adicionar("Franklim");
+                    idHiddenChange.Value = "1";
                 }
                 else
                 {
                     c.idClinica = int.Parse(idHiddenClinica.Value);
                     result = c.Salvar("Franklim");
+                    idHiddenChange.Value = "1";
                 }
 
                 if (result)
@@ -167,6 +170,7 @@ namespace Site.Cadastros
                     if (result)
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                        idHiddenChange.Value = "1";
                     }
                     else
                     {
@@ -289,6 +293,7 @@ namespace Site.Cadastros
                     if (result)
                     {
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                        idHiddenChange.Value = "1";
                     }
                     else
                     {

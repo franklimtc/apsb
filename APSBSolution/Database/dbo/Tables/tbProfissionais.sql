@@ -13,7 +13,7 @@
     [cdDataAlteracao]  DATETIME      NULL,
     [IdObservacao]     INT           NULL,
     [RGNum]            VARCHAR (20)  NULL,
-    [RGEmissor]        VARCHAR (5)   NULL,
+    [RGEmissor]        VARCHAR (6)   NULL,
     [RGdtEmissao]      DATETIME      NULL,
     [CPFNum]           VARCHAR (15)  NULL,
     [cvTelefone]       BIGINT        NULL,
@@ -22,9 +22,12 @@
     [nomeMae]          VARCHAR (MAX) NULL,
     [nomeConjuge]      VARCHAR (MAX) NULL,
     [cdDataNascimento] DATETIME      NULL,
+    [cbAutoCadastro]   BIT           DEFAULT ((0)) NULL,
     PRIMARY KEY CLUSTERED ([IdProfissional] ASC),
     FOREIGN KEY ([IdObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao])
 );
+
+
 
 
 

@@ -8,6 +8,7 @@
     </style>
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="idHiddenClinica" />
+    <asp:HiddenField runat="server" ID="idHiddenChange" />
     <%--Hidden Filds--%>
 
 
@@ -30,13 +31,14 @@
                 <h2>Filtros adicionais</h2>
                 <div class="row">
                     <div class="col">
-                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus" >
+                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus">
                             <asp:ListItem Text="Ativo" Selected="True" Value="true" />
                             <asp:ListItem Text="Inativo" Value="false" />
                         </asp:RadioButtonList>
                     </div>
                     <div class="col">
-                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btAplicarFiltro_Click" /></div>
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btAplicarFiltro_Click" />
+                    </div>
                     <div class="col"></div>
                 </div>
             </div>
@@ -60,12 +62,19 @@
                         <asp:BoundField DataField="ccTaxaVariavel" HeaderText="ccTaxaVariavel" SortExpression="ccTaxaVariavel" Visible="false" />
                         <asp:BoundField DataField="ccObservacao" HeaderText="Observações" SortExpression="ccObservacao" />
                         <asp:BoundField DataField="IdClinica" HeaderText="ID" SortExpression="IdClinica" />
-
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
-                                <asp:ImageButton runat="server" CssClass = "imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');"  />
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
@@ -103,19 +112,19 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbClinicaNomeFantasia">Nome Fantasia</label>
-                                <asp:TextBox runat="server" ID="tbClinicaNomeFantasia" CssClass="form-control" placeholder="..."/>
+                                <asp:TextBox runat="server" ID="tbClinicaNomeFantasia" CssClass="form-control" placeholder="..." />
                             </div>
                         </div>
-                         <div class="row">
+                        <div class="row">
                             <div class="col">
                                 <label for="tbCNPJ">CNPJ</label>
-                                <asp:TextBox runat="server" ID="tbCNPJ" CssClass="form-control cnpj" placeholder="..."/>
+                                <asp:TextBox runat="server" ID="tbCNPJ" CssClass="form-control cnpj" placeholder="..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="tbClinicaEmail">Email</label>
-                                <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." TextMode ="Email" />
+                                <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." TextMode="Email" />
                             </div>
                         </div>
                     </div>
@@ -127,7 +136,7 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="tbDescontos">Descontos</label>
-                                <asp:TextBox runat="server" ID="tbDescontos" CssClass="form-control" Text="6,5"  />
+                                <asp:TextBox runat="server" ID="tbDescontos" CssClass="form-control" Text="6,5" />
                             </div>
                             <div class="col-md-5">
                                 <label for="dpBancoClinica">Banco</label>
@@ -222,7 +231,7 @@
                                     <asp:BoundField DataField="ccObservacao" HeaderText="Observações" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:ImageButton ID="btExcluirRelacao" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                                            <asp:ImageButton ID="btExcluirRelacao" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -232,7 +241,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" >Fechar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <%--<button type="button" class="btn btn-primary" onclick="SalvarRelacao()">Salvar</button>--%>
                     <%--<asp:Button Text="Salvar" runat="server" ID="btSalvarRelacao" CssClass="btn btn-primary" OnClick="btSalvarRelacao_Click" />--%>
                 </div>
@@ -242,7 +251,7 @@
 
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Clinica.js"></script>
-       <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
 
     <script type="text/javascript">

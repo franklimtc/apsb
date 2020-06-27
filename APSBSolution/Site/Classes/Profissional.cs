@@ -10,10 +10,11 @@ namespace Site.Classes
     public class Profissional
     {
         #region Campos
-        public enum Status { Inativo = 0, Ativo = 1}
+        public enum Status { Inativo = 0, Ativo = 1 }
         public int IdProfissional { get; set; }//IdProfissional int no	4
         public string ccNome { get; set; }//ccNome varchar no	100
-        public string ccSexo { get; set; }//ccSexo char no	1
+        public string ccSexo { get; set; }//ccSexo char no	1     
+
         public string ccNaturalUF { get; set; }//ccNaturalUF char no	2
         public string ccNaturalCidade { get; set; }//ccNaturalCidade varchar no	50
         public string ccEstadoCivil { get; set; }//ccEstadoCivil char no	1
@@ -35,6 +36,10 @@ namespace Site.Classes
         public string nomeMae { get; set; }//nomeMae
         public string nomeConjuge { get; set; }//nomeConjuge
         public DateTime dtNascimento { get; set; }
+
+
+        public string Token { get; set; }
+        public string StatusCadastro { get; set; }
         #endregion
 
         public Profissional()
@@ -187,7 +192,7 @@ namespace Site.Classes
                     result = true;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -205,7 +210,7 @@ namespace Site.Classes
             parametros.Add(new object[] { "@ccNaturalCidade", this.ccNaturalCidade });
             parametros.Add(new object[] { "@ccEstadoCivil", this.ccEstadoCivil });
             parametros.Add(new object[] { "@ccEmail", this.ccEmail });
-            parametros.Add(new object[] { "@observacoes",this.Observacoes });
+            parametros.Add(new object[] { "@observacoes", this.Observacoes });
             parametros.Add(new object[] { "@RGNum", this.RGNum });
             parametros.Add(new object[] { "@RGEmissor", this.RGEmissor });
             parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
@@ -256,6 +261,111 @@ namespace Site.Classes
 
             }
             return result;
+        }
+
+        public static List<Profissional> ListarAuto()
+        {
+            List<Profissional> Lista = new List<Profissional>();
+            DataTable dt = DAO.RetornaDT("SEL_ProfissionalAuto");
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow p in dt.Rows)
+                {
+                    Profissional p1 = new Profissional();
+                    p1.ccNome = p["ccNome"].ToString();
+                    p1.ccEmail = p["ccEmail"].ToString();
+                    p1.Token = p["Token"].ToString();
+                    p1.StatusCadastro = p["StatusCadastro"].ToString();
+                    p1.cdDataCriacao = DateTime.Parse(p["cdDataCriacao"].ToString());
+                    Lista.Add(p1);
+                }
+            }
+            return Lista;
+        }
+
+        internal bool GerarToken(string Usuario)
+        {
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@ccNome", this.ccNome });
+            parametros.Add(new object[] { "@ccEmail", this.ccEmail });
+
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"INS_ProfissionalAuto @ccNome = @ccNome, @ccEmail = @ccEmail, @UserName = @UserName; ", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
+        internal static bool ExcluirAuto(string Usuario, string token)
+        {
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@Token", token });
+
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"EXC_ProfissionalAuto @UserName = @UserName, @Token = @Token;", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
+        internal static bool AtivarAuto(string Usuario, string token)
+        {
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@Token", token });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"ATV_ProfissionalAuto @UserName = @UserName, @Token = @Token;", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
+        internal static object ValidarToken(string token)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@Token", token });
+            object retorno = new object();
+            try
+            {
+                retorno = DAO.ExecuteScalar(@"SEL_Token @Token = @Token;", parametros);
+            }
+            catch
+            {
+
+            }
+            return retorno;
         }
     }
 }

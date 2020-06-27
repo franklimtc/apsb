@@ -8,6 +8,20 @@
     var _operacao = $("#MainContent_tbOperacao").val();
     var _idMedico = $("#MainContent_idHiddenMedico").val();
 
+    var url = "Medicos.aspx/AdicionarBanco";
+    var gridview = "#MainContent_gvProfissionalBanco";
+    if (idbanco === undefined) {
+         idbanco = $("#dpProfissionalBanco").children("option:selected").val();
+         _nomeBanco = $("#dpProfissionalBanco").children("option:selected").text();
+         _agencia = $("#tbAgencia").val();
+         _conta = $("#tbConta").val();
+         _operacao = $("#tbOperacao").val();
+        _idMedico = $("#idHiddenMedico").val();
+
+        url = "Autocadastro.aspx/AdicionarBanco";
+        gridview = "#gvProfissionalBanco";
+    }
+
     var relacaoObj = {
         _idProfissional: _idMedico
         , ccAgencia: _agencia
@@ -22,7 +36,7 @@
     else {
         $.ajax({
             type: "POST",
-            url: "Medicos.aspx/AdicionarBanco",
+            url: url,
             data: JSON.stringify(relacaoObj),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
@@ -32,7 +46,7 @@
             success: function (result) {
                 //alert("Registro adicionado com sucesso");
                 if (result.d === true) {
-                    $("#MainContent_gvProfissionalBanco").append("<tr><td>add</td><td>" + _nomeBanco + "</td ><td>" + _agencia + "</td><td>" + _conta + "</td><td>" + _operacao + "</td><td></td></tr >");
+                    $(gridview).append("<tr><td>add</td><td>" + _nomeBanco + "</td ><td>" + _agencia + "</td><td>" + _conta + "</td><td>" + _operacao + "</td><td></td></tr >");
                 }
                 else {
                     alert("Falha ao adicionar o registro");

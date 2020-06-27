@@ -96,6 +96,11 @@
     <Build Include="dbo\Stored Procedures\SEL_ProfissionalArquivo.sql" />
     <Build Include="dbo\Stored Procedures\INS_ProfissionalArquivo.sql" />
     <Build Include="dbo\Stored Procedures\EXC_ProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Token.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalAuto.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ProfissionalAuto.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalAuto.sql" />
+    <Build Include="dbo\Stored Procedures\ATV_ProfissionalAuto.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />
