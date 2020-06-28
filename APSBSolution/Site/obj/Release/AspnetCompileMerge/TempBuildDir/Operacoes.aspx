@@ -16,111 +16,68 @@
                     <asp:button text="Nova Operação" runat="server" CssClass="btn btn-secondary" />
         </asp:LinkButton>
         <br />
+        <div class="row collapse" id="divFiltros">
+           <br />
+            <div class="col">
+                <h2>Filtros adicionais</h2>
+                <div class="row">
+                    <div class="col">
+                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus">
+                            <asp:ListItem Text="Ativo" Selected="True" Value="true" />
+                            <asp:ListItem Text="Inativo" Value="false" />
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="col">
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" />
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
         <div class="row">
+            <%--Hidden Fields--%>
+            <asp:HiddenField runat="server" ID="idHiddenOperacao" />
+            <%--Hidden Fields--%>
             <div class="col-md-12">
                 <br />
-                <table id="gvOperacoes" class="table table-hover table-striped table-xl">
-                    <thead>
-                        <tr>
-                            <th hidden="hidden">ID</th>
-                            <th>Descrição</th>
-                            <th>Valor</th>
-                            <th>Nota</th>
-                            <th>Emissão</th>
-                            <th>Recebimento</th>
-                            <th>Repasse</th>
-                            <th>Status</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td hidden="hidden">1230</td>
-                            <td>Abc</td>
-                            <td>R$ 2.000,00</td>
-                            <td>12</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <asp:Image ImageUrl="~/Content/Icons/chart-zero.svg" runat="server" Height="1.5em" /></td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                             </asp:LinkButton>&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td hidden="hidden">1231</td>
-                            <td>Def</td>
-                            <td>R$ 1.000,00</td>
-                            <td>67</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <asp:Image ImageUrl="~/Content/Icons/chart-one.svg" runat="server" Height="1.5em" /></td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                             </asp:LinkButton>&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td hidden="hidden">1232</td>
-                            <td>Abd</td>
-                            <td>R$ 3.000,00</td>
-                            <td>98</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <asp:Image ImageUrl="~/Content/Icons/chart-two.svg" runat="server" Height="1.5em" /></td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                             </asp:LinkButton>&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td hidden="hidden">1234</td>
-                            <td>Gef</td>
-                            <td>R$ 1.000,00</td>
-                            <td>66</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <asp:Image ImageUrl="~/Content/Icons/chart-three.svg" runat="server" Height="1.5em" /></td>
-
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                             <asp:LinkButton runat="server" data-toggle="modal" data-target="#repasseMedicoModal" ToolTip="Repasse">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                             </asp:LinkButton>&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <asp:GridView runat="server" ID="gvOperacoes" DataSourceID="dsOperacoes" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnRowCommand="gvOperacoes_RowCommand" OnPreRender="gvOperacoes_PreRender">
+                    <Columns>
+                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
+                        <asp:BoundField HeaderText="Valor" DataField="cvValor" DataFormatString="{0:C}" />
+                        <asp:BoundField HeaderText="Nota" DataField="cvNF" />
+                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" DataFormatString="{0:d}" />
+                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" DataFormatString="{0:d}" />
+                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" DataFormatString="{0:d}" />
+                        <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
+                        <asp:TemplateField HeaderText="Status">
+                            <ItemTemplate>
+                                <asp:Image ImageUrl='<%# DataBinder.Eval(Container.DataItem, "Status", "~/Content/Icons/chart-{0}.svg") %>' runat="server" Height="1.5em" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                    <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" runat="server"  Height="1.5em" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em"  CommandName="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar"  CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja arquivar o registro?')" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField>
+                            <ItemTemplate>
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
             </div>
         </div>
     </div>
@@ -264,14 +221,16 @@
                                     <div class="input-group-prepend">
                                         <div class="col-sm-6">
                                             <button id="btDespesa" class="btn btn-light" type="button" onclick="$('btDespesa').removeClass('btn-light')">Despesa</button>&nbsp&nbsp
-                                        <button id="btReceita" class="btn btn-success" type="button">Receita</button>
+                                            <button id="btReceita" class="btn btn-success" type="button">Receita</button>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">R$</span>
                                                 </div>
-                                                <input id="tbValorOperacao" type="text" class="form-control text-success" placeholder="Valor..." aria-label="tbValor" aria-describedby="basic-addon1">
+                                                <%--<input id="tbValorOperacao" type="text" class="form-control text-success" placeholder="Valor..." aria-label="tbValor" aria-describedby="basic-addon1">--%>
+                                                <%--money--%>
+                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money" />
                                             </div>
                                         </div>
                                     </div>
@@ -286,25 +245,12 @@
 
                                 <label for="search">Clínica | Hospital | Despesa</label>
                                 <div>
-                                    <input type="text" id="search" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filter()">
+                                    <%--<input type="text" id="search" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filter()">--%>
+                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..."/>
                                 </div>
                                 <div>
-                                    <select id="select" class="form-control">
-                                        <option>Selecionar...</option>
-                                        <option>ALINE MEI</option>
-                                        <option>CELEBRATE</option>
-                                        <option>CELEBRATE DMA</option>
-                                        <option>CERTIFICADO DIGITAL APSB</option>
-                                        <option>CLIPS</option>
-                                        <option>CRM ANUIDADE 2020</option>
-                                        <option>CRM CERTIFICADO PJ</option>
-                                        <option>CRM TAXA DE INSCRIÇÃO</option>
-                                        <option>GPS ALG</option>
-                                        <option>GPS APSB</option>
-                                        <option>GPS DMA</option>
-                                        <option>HONORÁRIOS DA CONTABILIDADE ALG</option>
-
-                                    </select>
+                                    <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
+                                    </asp:DropDownList>
                                 </div>
                             </div>
                         </div>
@@ -313,17 +259,20 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for="tbDespesaDataNF">Data</label>
-                                    <input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />
+                                    <%--<input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />--%>
+                                    <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control date" />
                                 </div>
                                 <div id="divNF" class="col-sm-6">
                                     <label for="tbDespesaNF">NF</label>
-                                    <input type="text" id="tbNumNF" name="tbNumNF" class="form-control" />
+                                    <%--<input type="text" id="tbNumNF" name="tbNumNF" class="form-control" />--%>
+                                    <asp:TextBox runat="server" ID="tbNumNF" CssClass="form-control" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <label for="tbDespesaObs">Observações</label>
-                                    <input type="text" id="tbDespesaObs" name="tbDespesaObs" class="form-control" style="height: 100px" />
+                                    <%--<input type="text" id="tbDespesaObs" name="tbDespesaObs" class="form-control" style="height: 100px" />--%>
+                                    <asp:TextBox runat="server" ID="tbDespesaObs" CssClass="form-control" TextMode="MultiLine" />
                                 </div>
                             </div>
                         </div>
@@ -375,17 +324,20 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
+                    <asp:Button Text="Salvar" runat="server" ID="btSalvar" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/Site.js"></script>
     <script type="text/javascript">
         //DataTables
 
         $(document).ready(function () {
-            $('#gvOperacoes').DataTable({
+            $('#MainContent_gvOperacoes').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
                     "zeroRecords": "Nenhum registro encontrado.",
@@ -395,6 +347,8 @@
                     }
                 }
             });
+
+            $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
         });
 
 
@@ -409,10 +363,12 @@
             $("#operacaoModalLabel").text("Cadastro de Despesa")
 
             //tbValorOperacao
-            $("#tbValorOperacao").removeClass("text-success").addClass("text-danger");
+            $("#MainContent_tbValorOperacao").removeClass("text-success").addClass("text-danger");
 
             //divNF
             $("#divNF").addClass("d-none");
+
+
         });
 
         //Click Receita
@@ -424,7 +380,7 @@
             $("#divReceitas").removeClass("d-none");
 
             //tbValorOperacao
-            $("#tbValorOperacao").removeClass("text-danger").addClass("text-success");
+            $("#MainContent_tbValorOperacao").removeClass("text-danger").addClass("text-success");
 
             $("#operacaoModalLabel").text("Cadastro de Receita")
 
@@ -436,8 +392,8 @@
         //Filter Clínica
 
         function filter() {
-            var keyword = document.getElementById("search").value;
-            var select = document.getElementById("select");
+            var keyword = document.getElementById("MainContent_tbSearch").value;
+            var select = document.getElementById("MainContent_dpTipoDespesa");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {

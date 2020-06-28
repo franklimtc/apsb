@@ -44,7 +44,7 @@ namespace Site.Classes
 
         public bool Adicionar(string Usuario)
         {
-              bool result = false;
+            bool result = false;
             List<object[]> parametros = new List<object[]>();
             parametros.Add(new object[] { "@UserName", Usuario });
             parametros.Add(new object[] { "@idClinica", this.idClinica });

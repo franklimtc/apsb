@@ -162,3 +162,50 @@ INSERT INTO tbEspecialidade(Especialidade) VALUES('Psicólogo');
 INSERT INTO tbEspecialidade(Especialidade) VALUES('Radiologista');
 INSERT INTO tbEspecialidade(Especialidade) VALUES('Reumatologista');
 INSERT INTO tbEspecialidade(Especialidade) VALUES('Urologista');
+
+
+--Tipos de Despesas
+
+
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Agefis APSB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Agefis DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('ALG NF');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Aline Brindes E Presentes');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Aline MEI');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Arte Publicidade Propaganda');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Celebrate');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Celebrate DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Certificado Digital ASB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Certificado Digital DMA ');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('DMA NF');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Domínio APSB (Registro.Br)');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Domínio DMA (Registro.Br)');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Gps ALG');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Gps APSB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Gps DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Honorários Da Contabilidade ALG');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Honorários Da Contabilidade APSB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Honorários Da Contabilidade APSDF');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Honorários Da Contabilidade DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Imprensa Nacional');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('ISS APSB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('ISS DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Jurídico');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Marilia');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Michele MEI');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Murilo PF');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Myrella - Produções Gráficas');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Ney');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Pacote De Serviços BB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Simples ALG');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Simples DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Simples Nac. Aline');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Simples Nacional Michele');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Site');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Tfe Anual APSB');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Tfe Anual DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Treinamento');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('VHSYS');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('VHSYS DMA');
+INSERT INTO tbDespesaTipo(ccTipo) VALUES('Vivo');

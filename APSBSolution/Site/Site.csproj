@@ -1104,9 +1104,11 @@
     <Compile Include="Classes\Clinica.cs" />
     <Compile Include="Classes\ClinicaProfissional.cs" />
     <Compile Include="Classes\DAO.cs" />
+    <Compile Include="Classes\Despesa.cs" />
     <Compile Include="Classes\Documento.cs" />
     <Compile Include="Classes\Endereco.cs" />
     <Compile Include="Classes\Especialidade.cs" />
+    <Compile Include="Classes\Operacao.cs" />
     <Compile Include="Classes\Profissional.cs" />
     <Compile Include="Classes\ProfissionalArquivo.cs" />
     <Compile Include="Classes\ProfissionalBanco.cs" />
