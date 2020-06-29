@@ -196,9 +196,11 @@ namespace Site.Classes
             throw new NotImplementedException();
         }
 
-        public static List<DespesaTipo> Listar()
+        public static List<DespesaTipo> Listar(string tipo = "Despesa")
         {
-            DataTable dt = DAO.RetornaDT("SEL_DespesaTipo");
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@tipo", tipo });
+            DataTable dt = DAO.RetornaDT("SEL_DespesaTipo @tipo=@tipo", parametros);
             List<DespesaTipo> Lista = new List<DespesaTipo>();
             if (dt.Rows.Count > 0)
             {

@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Operações" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Operacoes.aspx.cs" Inherits="Site.Operacoes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4"></div>
@@ -36,6 +37,7 @@
         </div>
         <div class="row">
             <%--Hidden Fields--%>
+            <asp:HiddenField runat="server" ID="HiddenAbaAtiva" Value="Receita" />
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
             <%--Hidden Fields--%>
             <div class="col-md-12">
@@ -220,8 +222,11 @@
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <div class="col-sm-6">
-                                            <button id="btDespesa" class="btn btn-light" type="button" onclick="$('btDespesa').removeClass('btn-light')">Despesa</button>&nbsp&nbsp
-                                            <button id="btReceita" class="btn btn-success" type="button">Receita</button>
+                                            <%--<button id="btDespesa" class="btn btn-light" type="button" onclick="$('btDespesa').removeClass('btn-light')">Despesa</button>&nbsp&nbsp--%>
+                                            <%--<button id="btReceita" class="btn btn-success" type="button">Receita</button>--%>
+                                            <asp:LinkButton ID="btDespesa" Text="Despesa" runat="server" CssClass="btn btn-light"/>
+                                            <asp:LinkButton ID="btReceita" Text="Receita" runat="server" CssClass="btn btn-success" />
+
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="input-group mb-3">
@@ -249,7 +254,9 @@
                                     <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..."/>
                                 </div>
                                 <div>
-                                    <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
+                                    </asp:DropDownList>
+                                     <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -353,9 +360,9 @@
 
 
         //Click Despesa
-        $("#btDespesa").click(function () {
-            $("#btDespesa").removeClass("btn-light").addClass("btn-danger");
-            $("#btReceita").removeClass("btn-success").addClass("btn-light");
+        $("#MainContent_btDespesa").click(function () {
+            $("#MainContent_btDespesa").removeClass("btn-light").addClass("btn-danger");
+            $("#MainContent_btReceita").removeClass("btn-success").addClass("btn-light");
 
             $("#divDespesas").removeClass("d-none");
             $("#divReceitas").addClass("d-none");
@@ -369,12 +376,18 @@
             $("#divNF").addClass("d-none");
 
 
+            //Dropdown Receita/Despesa
+            $("#MainContent_dpTipoReceita").addClass("d-none");
+            $("#MainContent_dpTipoDespesa").removeClass("d-none");
+
+            return false;
+
         });
 
         //Click Receita
-        $("#btReceita").click(function () {
-            $("#btReceita").removeClass("btn-light").addClass("btn-success");
-            $("#btDespesa").removeClass("btn-danger").addClass("btn-light");
+        $("#MainContent_btReceita").click(function () {
+            $("#MainContent_btReceita").removeClass("btn-light").addClass("btn-success");
+            $("MainContent_#btDespesa").removeClass("btn-danger").addClass("btn-light");
 
             $("#divDespesas").addClass("d-none");
             $("#divReceitas").removeClass("d-none");
@@ -387,6 +400,11 @@
             //divNF
             $("#divNF").removeClass("d-none");
 
+            //Dropdown Receita/Despesa
+            $("#MainContent_dpTipoReceita").removeClass("d-none");
+            $("#MainContent_dpTipoDespesa").addClass("d-none");
+
+            return false;
         });
 
         //Filter Clínica

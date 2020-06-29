@@ -1,0 +1,29 @@
+﻿
+CREATE PROCEDURE EXC_Despesa
+(
+	@idDespesa INT
+	, @UserName VARCHAR(20)
+)   
+AS BEGIN    
+  SET NOCOUNT ON    
+  DECLARE @Result BIT = 0;    
+  
+  BEGIN TRY      
+	UPDATE tbDespesas SET cbStatus = 0 WHERE idDespesas = @idDespesa;
+    SET @Result = 1;    
+  END TRY    
+  BEGIN CATCH    
+    INSERT INTO tbLogErro    
+    SELECT      
+    ERROR_NUMBER() AS ErrorNumber      
+    ,ERROR_SEVERITY() AS ErrorSeverity      
+    ,ERROR_STATE() AS ErrorState      
+    ,ERROR_PROCEDURE() AS ErrorProcedure      
+    ,ERROR_LINE() AS ErrorLine      
+    ,ERROR_MESSAGE() AS ErrorMessage    
+    ,GETDATE() AS Data     
+    ,@UserName AS ccCriadoPor;      
+  END CATCH    
+     
+  SELECT @Result;    
+END

@@ -1,3 +1,6 @@
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.cache
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.compiled
+C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x86\msvcr120.dll
@@ -190,9 +193,6 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\pt\Microsoft.ReportViewer
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.cache
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.compiled
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CopyComplete
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\obj\Debug\Site.pdb

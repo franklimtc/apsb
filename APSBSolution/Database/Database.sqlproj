@@ -101,6 +101,18 @@
     <Build Include="dbo\Stored Procedures\INS_ProfissionalAuto.sql" />
     <Build Include="dbo\Stored Procedures\EXC_ProfissionalAuto.sql" />
     <Build Include="dbo\Stored Procedures\ATV_ProfissionalAuto.sql" />
+    <Build Include="dbo\Tables\tbReceitas.sql" />
+    <Build Include="dbo\Tables\tbDespesaTipo.sql" />
+    <Build Include="dbo\Tables\tbDespesas.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Despesa.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Operacoes.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_DespesaTipo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Despesas.sql" />
+    <Build Include="dbo\Stored Procedures\INS_DespesaTipo.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Despesa.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Operacao.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Despesa.sql" />
+    <Build Include="dbo\Stored Procedures\ARQ_Operacao.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

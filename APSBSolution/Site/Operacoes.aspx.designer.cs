@@ -33,6 +33,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.LinkButton btAplicarFiltro;
 
         /// <summary>
+        /// Controle HiddenAbaAtiva.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenAbaAtiva;
+
+        /// <summary>
         /// Controle idHiddenOperacao.
         /// </summary>
         /// <remarks>
@@ -69,6 +78,24 @@ namespace Site
         protected global::System.Web.UI.WebControls.Table gvRepasseMedico;
 
         /// <summary>
+        /// Controle btDespesa.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btDespesa;
+
+        /// <summary>
+        /// Controle btReceita.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btReceita;
+
+        /// <summary>
         /// Controle tbValorOperacao.
         /// </summary>
         /// <remarks>
@@ -94,6 +121,15 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dpTipoDespesa;
+
+        /// <summary>
+        /// Controle dpTipoReceita.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpTipoReceita;
 
         /// <summary>
         /// Controle tbDespesaDataNF.

@@ -54,6 +54,14 @@ namespace Site
                 dpTipoDespesa.ClearSelection();
                 dpTipoDespesa.Items.FindByValue("0").Selected = true;
 
+                //Dropdown Tipo Receitas
+                listaTipo = DespesaTipo.Listar("Receita");
+                listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
+                dpTipoReceita.DataSource = listaTipo;
+                dpTipoReceita.DataBind();
+                dpTipoDespesa.ClearSelection();
+                dpTipoDespesa.Items.FindByValue("0").Selected = true;
+
                 //Data
                 tbDespesaDataNF.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
@@ -67,21 +75,31 @@ namespace Site
         {
             //string Usuario = User.Identity.Name;
             string Usuario = "Franklim";
-            Despesa dp = new Despesa();
-            dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue);
-            dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("dd/MM/yyyy")), culture, styles);
-            dp.cvValor = float.Parse(tbValorOperacao.Text);
-            dp.ccObservacao = tbDespesaObs.Text;
 
-            bool result = dp.Adicionar(Usuario);
-
-            if (result)
+            if (HiddenAbaAtiva.Value == "Despesa")
             {
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Operação adicionada com sucesso!", true);
+                Despesa dp = new Despesa();
+                dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue.Replace("D", ""));
+                dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("dd/MM/yyyy")), culture, styles);
+                dp.cvValor = float.Parse(tbValorOperacao.Text);
+                dp.ccObservacao = tbDespesaObs.Text;
+
+                bool result = dp.Adicionar(Usuario);
+
+                if (result)
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Operação adicionada com sucesso!", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Falha ao adicionar operação!", true);
+                }
             }
-            else { 
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Falha ao adicionar operação!", true);
+            else if (HiddenAbaAtiva.Value == "Receita")
+            { 
+                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Cadastro de Receita!", true);
             }
+           
             gvOperacoes.DataBind();
             LimparForm();
 
@@ -140,5 +158,7 @@ namespace Site
             string scriptModal = @"$('#repasseMedicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
+
+        
     }
 }
