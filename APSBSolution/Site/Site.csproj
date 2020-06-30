@@ -1114,6 +1114,7 @@
     <Compile Include="Classes\ProfissionalBanco.cs" />
     <Compile Include="Classes\ProfissionalDados.cs" />
     <Compile Include="Classes\ProfissionalEndereco.cs" />
+    <Compile Include="Classes\Receita.cs" />
     <Compile Include="Classes\RelDespesas.cs" />
     <Compile Include="Classes\RelVendas.cs" />
     <Compile Include="Contact.aspx.cs">

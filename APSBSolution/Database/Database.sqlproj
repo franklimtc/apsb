@@ -113,6 +113,9 @@
     <Build Include="dbo\Stored Procedures\EXC_Operacao.sql" />
     <Build Include="dbo\Stored Procedures\EXC_Despesa.sql" />
     <Build Include="dbo\Stored Procedures\ARQ_Operacao.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Receita.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Receitas.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Receita.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

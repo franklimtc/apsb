@@ -51,6 +51,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.HiddenField idHiddenOperacao;
 
         /// <summary>
+        /// Controle tbAbaAtiva.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAbaAtiva;
+
+        /// <summary>
         /// Controle gvOperacoes.
         /// </summary>
         /// <remarks>
@@ -157,6 +166,60 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbDespesaObs;
+
+        /// <summary>
+        /// Controle tbReceitaDataNF.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReceitaDataNF;
+
+        /// <summary>
+        /// Controle tbReceitaNF.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReceitaNF;
+
+        /// <summary>
+        /// Controle tbReceitaDataPgtoNF.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReceitaDataPgtoNF;
+
+        /// <summary>
+        /// Controle tbReceitaNFValorPG.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReceitaNFValorPG;
+
+        /// <summary>
+        /// Controle tbReceitaDesconto.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReceitaDesconto;
+
+        /// <summary>
+        /// Controle tbReceitaObs.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbReceitaObs;
 
         /// <summary>
         /// Controle btSalvar.

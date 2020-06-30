@@ -75,31 +75,53 @@ namespace Site
         {
             //string Usuario = User.Identity.Name;
             string Usuario = "Franklim";
+            bool result = false;
 
-            if (HiddenAbaAtiva.Value == "Despesa")
+            if (tbAbaAtiva.Text == "Despesa")
             {
                 Despesa dp = new Despesa();
-                dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue.Replace("D", ""));
+                dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue);
                 dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("dd/MM/yyyy")), culture, styles);
                 dp.cvValor = float.Parse(tbValorOperacao.Text);
                 dp.ccObservacao = tbDespesaObs.Text;
 
-                bool result = dp.Adicionar(Usuario);
+                result = dp.Adicionar(Usuario);
+            }
+            else if (tbAbaAtiva.Text == "Receita")
+            {
+                Receita rc = new Receita();
+                rc.cvValor = float.Parse(tbValorOperacao.Text);
+                rc.IdClinica = int.Parse(dpTipoReceita.SelectedValue);
+                //
+                if (!tbReceitaDataNF.Text.IsNullOrWhiteSpace())
+                {
+                    rc.cdEmissao = DateTime.Parse(tbReceitaDataNF.Text);
+                }
+                //
+                if (!tbReceitaNF.Text.IsNullOrWhiteSpace())
+                {
+                    rc.cvNF = int.Parse(tbReceitaNF.Text);
+                }
+                //
+                if (!tbReceitaDataPgtoNF.Text.IsNullOrWhiteSpace())
+                {
+                    rc.cdPagamento = DateTime.Parse(tbReceitaDataPgtoNF.Text);
+                }
+                //
+                if (!tbReceitaNFValorPG.Text.IsNullOrWhiteSpace())
+                {
+                    rc.cvValorPago = float.Parse(tbReceitaNFValorPG.Text);
+                }
+                if (!tbReceitaDesconto.Text.IsNullOrWhiteSpace())
+                {
+                    rc.cvDesconto  = float.Parse(tbReceitaDesconto.Text);
+                }
+                rc.Observacao = tbReceitaObs.Text;
 
-                if (result)
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Operação adicionada com sucesso!", true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Falha ao adicionar operação!", true);
-                }
+                result = rc.Adicionar(Usuario);
+
             }
-            else if (HiddenAbaAtiva.Value == "Receita")
-            { 
-                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "Cadastro de Receita!", true);
-            }
-           
+
             gvOperacoes.DataBind();
             LimparForm();
 
@@ -159,6 +181,6 @@ namespace Site
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        
+       
     }
 }

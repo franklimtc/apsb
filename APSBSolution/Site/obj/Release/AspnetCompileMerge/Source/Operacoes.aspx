@@ -39,6 +39,7 @@
             <%--Hidden Fields--%>
             <asp:HiddenField runat="server" ID="HiddenAbaAtiva" Value="Receita" />
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
+            <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
             <div class="col-md-12">
                 <br />
@@ -235,7 +236,7 @@
                                                 </div>
                                                 <%--<input id="tbValorOperacao" type="text" class="form-control text-success" placeholder="Valor..." aria-label="tbValor" aria-describedby="basic-addon1">--%>
                                                 <%--money--%>
-                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money" />
+                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money" required />
                                             </div>
                                         </div>
                                     </div>
@@ -287,21 +288,25 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataNF">Data de Emissão</label>
-                                    <input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />
+                                    <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
+                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control date" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNF">NF</label>
-                                    <input type="text" id="tbReceitaNF" name="tbReceitaNF" class="form-control" />
+                                    <%--<input type="text" id="tbReceitaNF" name="tbReceitaNF" class="form-control" />--%>
+                                    <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
-                                    <input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />
+                                    <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
+                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control date" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNFValorPG">Valor Pago</label>
-                                    <input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />
+                                    <%--<input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />--%>
+                                    <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Text="0" />
                                 </div>
                             </div>
 
@@ -310,7 +315,8 @@
                                     <label for="tbReceitaDesconto">Desconto</label>
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />
+                                            <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
+                                            <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control" ReadOnly="true" Text="6,5" />
                                         </div>
                                         <div class="col-sm-2">
                                             <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
@@ -323,7 +329,8 @@
                             <div class="row">
                                 <div class="col">
                                     <label for="tbReceitaObs">Observações</label>
-                                    <input type="text" id="tbReceitaObs" name="tbReceitaObs" class="form-control" placeholder="..." style="height: 100px" />
+                                    <%--<input type="text" id="tbReceitaObs" name="tbReceitaObs" class="form-control" placeholder="..." style="height: 100px" />--%>
+                                    <asp:TextBox runat="server" ID="tbReceitaObs" CssClass="form-control" TextMode="MultiLine" />
                                 </div>
                             </div>
                         </div>
@@ -380,6 +387,9 @@
             $("#MainContent_dpTipoReceita").addClass("d-none");
             $("#MainContent_dpTipoDespesa").removeClass("d-none");
 
+            //Aba Ativa tbAbaAtiva
+            $("#MainContent_tbAbaAtiva").val("Despesa");
+
             return false;
 
         });
@@ -387,7 +397,7 @@
         //Click Receita
         $("#MainContent_btReceita").click(function () {
             $("#MainContent_btReceita").removeClass("btn-light").addClass("btn-success");
-            $("MainContent_#btDespesa").removeClass("btn-danger").addClass("btn-light");
+            $("#MainContent_btDespesa").removeClass("btn-danger").addClass("btn-light");
 
             $("#divDespesas").addClass("d-none");
             $("#divReceitas").removeClass("d-none");
@@ -403,6 +413,9 @@
             //Dropdown Receita/Despesa
             $("#MainContent_dpTipoReceita").removeClass("d-none");
             $("#MainContent_dpTipoDespesa").addClass("d-none");
+
+            //Aba Ativa tbAbaAtiva
+            $("#MainContent_tbAbaAtiva").val("Receita");
 
             return false;
         });
@@ -439,12 +452,12 @@
 
         //Ativar disconto
         function EnableDiscount() {
-            if ($("#tbReceitaDesconto").attr("readonly") == undefined) {
-                $("#tbReceitaDesconto").attr("readonly", "readonly");
-                console.log($("#tbReceitaDesconto").attr("readonly"));
+            if ($("#MainContent_tbReceitaDesconto").attr("readonly") == undefined) {
+                $("#MainContent_tbReceitaDesconto").attr("readonly", "readonly");
+                console.log($("#MainContent_tbReceitaDesconto").attr("readonly"));
             } else {
-                $("#tbReceitaDesconto").removeAttr('readonly')
-                console.log($("#tbReceitaDesconto").attr("readonly"));
+                $("#MainContent_tbReceitaDesconto").removeAttr('readonly')
+                console.log($("#MainContent_tbReceitaDesconto").attr("readonly"));
             }
         }
     </script>
