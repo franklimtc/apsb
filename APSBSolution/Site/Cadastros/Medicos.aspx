@@ -17,6 +17,8 @@
     <asp:HiddenField runat="server" ID="idHiddenProfissionalEndereco" />
     <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
     <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
+    <asp:HiddenField runat="server" ID="nameProfissional" />
+
     <%--Hidden Filds--%>
 
     <div class="container-fluid">
@@ -32,7 +34,7 @@
         </asp:LinkButton>
         <br />
         <div class="row collapse" id="divFiltros">
-           <br />
+            <br />
             <div class="col">
                 <h2>Filtros adicionais</h2>
                 <div class="row">
@@ -58,22 +60,27 @@
                         <asp:BoundField DataField="ccNome" HeaderText="Nome" />
                         <asp:BoundField DataField="ccEmail" HeaderText="Email" />
                         <asp:BoundField DataField="Observacoes" HeaderText="Observações" />
-                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
-                            <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Pessoais" /></ItemTemplate>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Pessoais" OnClientClick="LimparForm()" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
-                            <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" /></ItemTemplate>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" OnClientClick="LimparForm()" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
-                            <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" /></ItemTemplate>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
-                            <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" /></ItemTemplate>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" OnClientClick="LimparForm()" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
-                            <ItemTemplate><asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" /></ItemTemplate>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" /></ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
                                 <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                             </ItemTemplate>
@@ -112,7 +119,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="arquivosModalLabel">Arquivos</h5>
+                    <h5 class="modal-title" id="arquivosModalLabel">Arquivos(<asp:Label Text="" runat="server" ID="nameArquivos" />)</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -147,14 +154,14 @@
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <asp:ImageButton runat="server" ID="btBaixarArquivo" ImageUrl="~/Content/Icons/cloud-download-outline.svg" CommandName="Baixar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
-                                            <asp:ImageButton runat="server" ID="btExcluirArquivo" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" OnClientClick="return confirm('Deseja excluir o registro?');"  />&nbsp&nbsp
+                                            <asp:ImageButton runat="server" ID="btExcluirArquivo" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" OnClientClick="return confirm('Deseja excluir o registro?');" />&nbsp&nbsp
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
 
                             </asp:GridView>
-                           
-                         
+
+
                         </div>
                     </div>
                 </div>
@@ -298,11 +305,26 @@
                         </div>
                         <div class="row">
                             <div class="col">
+                                <label for="tbFiliacao">Filiação</label>
+                                <asp:TextBox runat="server" ID="tbFiliacao" CssClass="form-control date" placeholder="digite..." />
+                            </div>
+                            <div class="col">
+                                <label for="tbPgtoTaxa">Pagamento</label>
+                                <asp:TextBox runat="server" ID="tbPgtoTaxa" CssClass="form-control date" placeholder="digite..." />
+                            </div>
+                            <div class="col">
+                                <label for="tbRegCartorio">Reg. em Cartório</label>
+                                <asp:TextBox runat="server" ID="tbRegCartorio" CssClass="form-control date" placeholder="digite..." />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <label for="tbObservacoes">Observações</label>
                                 <asp:TextBox runat="server" ID="tbObservacoes" CssClass="form-control" TextMode="MultiLine" />
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -393,7 +415,7 @@
             </div>
         </div>
     </div>
-   
+
     <!-- Modal Médico - Dados de Moradia - moradiaModal-->
     <div class="modal fade" id="moradiaModal" tabindex="-1" role="dialog" aria-labelledby="moradiaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -489,7 +511,7 @@
                                 <asp:DropDownList runat="server" ID="dpProfissionalBanco" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBanco" DataValueField="IdBanco">
                                 </asp:DropDownList>
                                 <asp:ObjectDataSource ID="dsBancos" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Banco"></asp:ObjectDataSource>
-                             
+
                             </div>
                         </div>
                         <div class="row">
@@ -499,7 +521,7 @@
                             </div>
                             <div class="col">
                                 <label for="tbConta">Conta</label>
-                                <asp:TextBox runat="server" ID="tbConta" CssClass="form-control" placeholder="digite..."  />
+                                <asp:TextBox runat="server" ID="tbConta" CssClass="form-control" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbOperacao">Operação</label>
@@ -507,7 +529,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="row">
+                    <div class="row">
                         <div class="col">
                             <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco()" />
                         </div>
@@ -515,7 +537,7 @@
                     <div class="row">
                         <div class="col">
                             <br />
-                             <asp:GridView runat="server" ID="gvProfissionalBanco" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalBanco_RowCommand">
+                            <asp:GridView runat="server" ID="gvProfissionalBanco" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalBanco_RowCommand">
                                 <%--banco - agencia - conta - operacao - acoes--%>
                                 <Columns>
                                     <asp:BoundField DataField="IdProfissionalBanco" HeaderText="ID" />
@@ -526,14 +548,14 @@
                                     <asp:TemplateField>
                                         <ItemTemplate>
                                             <%--<asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Editar"  ToolTip="Editar" />--%>
-                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Excluir"  ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
+                                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" CommandName="Excluir" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
                         </div>
                     </div>
-                   
+
                 </div>
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
@@ -588,6 +610,10 @@
             $("#MainContent_tbObservacoes").val("");
 
             $("#MainContent_tbDataNascimento").val("")
+
+            $("#MainContent_tbFiliacao").val("")
+            $("#MainContent_tbPgtoTaxa").val("")
+
 
         }
 

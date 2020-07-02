@@ -70,12 +70,12 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar"  CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja arquivar o registro?')" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar"  CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -236,7 +236,7 @@
                                                 </div>
                                                 <%--<input id="tbValorOperacao" type="text" class="form-control text-success" placeholder="Valor..." aria-label="tbValor" aria-describedby="basic-addon1">--%>
                                                 <%--money--%>
-                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money" required />
+                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money"  />
                                             </div>
                                         </div>
                                     </div>
@@ -289,24 +289,24 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataNF">Data de Emissão</label>
                                     <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control date" />
+                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control date" Enabled="false"/>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNF">NF</label>
                                     <%--<input type="text" id="tbReceitaNF" name="tbReceitaNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" />
+                                    <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" Enabled="false"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
                                     <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control date" />
+                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control date" Enabled="false"/>
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNFValorPG">Valor Pago</label>
                                     <%--<input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Text="0" />
+                                    <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Enabled="false"/>
                                 </div>
                             </div>
 
@@ -368,6 +368,19 @@
 
         //Click Despesa
         $("#MainContent_btDespesa").click(function () {
+            
+            AtvDespesa();
+            return false;
+
+        });
+
+        function EditDespesa() {
+            $("#operacaoModal").modal("show");
+            AtvDespesa();
+        }
+
+
+        function AtvDespesa() {
             $("#MainContent_btDespesa").removeClass("btn-light").addClass("btn-danger");
             $("#MainContent_btReceita").removeClass("btn-success").addClass("btn-light");
 
@@ -389,13 +402,16 @@
 
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Despesa");
+        }
 
-            return false;
-
-        });
 
         //Click Receita
         $("#MainContent_btReceita").click(function () {
+            AtvReceita();
+            return false;
+        });
+
+        function AtvReceita() {
             $("#MainContent_btReceita").removeClass("btn-light").addClass("btn-success");
             $("#MainContent_btDespesa").removeClass("btn-danger").addClass("btn-light");
 
@@ -416,9 +432,12 @@
 
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Receita");
+        };
 
-            return false;
-        });
+        function EditReceita() {
+            $("#operacaoModal").modal("show");
+            AtvReceita();
+        }
 
         //Filter Clínica
 

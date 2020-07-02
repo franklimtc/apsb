@@ -51,6 +51,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.HiddenField idHiddenProfissionalDado;
 
         /// <summary>
+        /// Controle nameProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField nameProfissional;
+
+        /// <summary>
         /// Controle chkStatus.
         /// </summary>
         /// <remarks>
@@ -76,6 +85,15 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvMedicos;
+
+        /// <summary>
+        /// Controle nameArquivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameArquivos;
 
         /// <summary>
         /// Controle btUpload.
@@ -247,6 +265,33 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbCelular;
+
+        /// <summary>
+        /// Controle tbFiliacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbFiliacao;
+
+        /// <summary>
+        /// Controle tbPgtoTaxa.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPgtoTaxa;
+
+        /// <summary>
+        /// Controle tbRegCartorio.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbRegCartorio;
 
         /// <summary>
         /// Controle tbObservacoes.

@@ -368,6 +368,19 @@
 
         //Click Despesa
         $("#MainContent_btDespesa").click(function () {
+            
+            AtvDespesa();
+            return false;
+
+        });
+
+        function EditDespesa() {
+            $("#operacaoModal").modal("show");
+            AtvDespesa();
+        }
+
+
+        function AtvDespesa() {
             $("#MainContent_btDespesa").removeClass("btn-light").addClass("btn-danger");
             $("#MainContent_btReceita").removeClass("btn-success").addClass("btn-light");
 
@@ -389,13 +402,16 @@
 
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Despesa");
+        }
 
-            return false;
-
-        });
 
         //Click Receita
         $("#MainContent_btReceita").click(function () {
+            AtvReceita();
+            return false;
+        });
+
+        function AtvReceita() {
             $("#MainContent_btReceita").removeClass("btn-light").addClass("btn-success");
             $("#MainContent_btDespesa").removeClass("btn-danger").addClass("btn-light");
 
@@ -416,9 +432,12 @@
 
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Receita");
+        };
 
-            return false;
-        });
+        function EditReceita() {
+            $("#operacaoModal").modal("show");
+            AtvReceita();
+        }
 
         //Filter Clínica
 

@@ -29,12 +29,9 @@ namespace Site.Cadastros
         {
             // You only need the following 2 lines of code if you are not 
             // using an ObjectDataSource of SqlDataSource
-            if (!IsPostBack)
-            {
-                gvMedicos.DataSource = Profissional.Listar();
-                gvMedicos.DataBind();
-            }
-            
+            gvMedicos.DataSource = Profissional.Listar();
+            gvMedicos.DataBind();
+
             if (gvMedicos.Rows.Count > 0)
             {
                 //This replaces <td> with <th> and adds the scope attribute
@@ -51,8 +48,10 @@ namespace Site.Cadastros
 
         protected void gvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            var obj = e.CommandArgument;
-            int idProfissional = int.Parse(gvMedicos.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+            int idLinha = int.Parse(e.CommandArgument.ToString());
+            int idProfissional = int.Parse(gvMedicos.Rows[idLinha].Cells[0].Text);
+            nameProfissional.Value = gvMedicos.Rows[idLinha].Cells[1].Text;
+
             idHiddenMedico.Value = idProfissional.ToString();
             string user = "Franklim";
 
@@ -100,6 +99,7 @@ namespace Site.Cadastros
             //arquivosModal
 
             List<ProfissionalArquivo> Lista = ProfissionalArquivo.Listar(idHiddenMedico.Value);
+            nameArquivos.Text = nameProfissional.Value;
             if (Lista.Count == 0)
             {
                 Lista.Add(new ProfissionalArquivo());
@@ -219,14 +219,32 @@ namespace Site.Cadastros
             tbNomeConjuge.Text = editProf.nomeConjuge;
             tbRG.Text = editProf.RGNum.ToString();
             tbEmissorRG.Text = editProf.RGEmissor;
-            tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("dd/MM/yyyy");
             tbCPF.Text = editProf.CPFNum.ToString("00000000000");
             tbEmail.Text = editProf.ccEmail;
             tbTelefone.Text = editProf.cvTelefone.ToString();
             tbCelular.Text = editProf.cvCelular.ToString();
             tbObservacoes.Text = editProf.Observacoes;
-            tbDataNascimento.Text = editProf.dtNascimento.ToString("dd/MM/yyyy");
-
+            DateTime? dtdefault = new DateTime();
+            if (editProf.RGdtEmissao != dtdefault)
+            {
+                tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("dd/MM/yyyy");
+            }
+            if (editProf.dtNascimento != dtdefault)
+            {
+                tbDataNascimento.Text = editProf.dtNascimento.ToString("dd/MM/yyyy");
+            }
+            if (editProf.cdPgtoTaxa != dtdefault)
+            {
+                tbPgtoTaxa.Text = editProf.cdPgtoTaxa.ToString("dd/MM/yyyy");
+            }
+            if (editProf.cdFiliacao != dtdefault)
+            {
+                tbFiliacao.Text = editProf.cdFiliacao.ToString("dd/MM/yyyy");
+            }
+            if (editProf.cdRegCartorio != dtdefault)
+            {
+                tbRegCartorio.Text = editProf.cdRegCartorio.ToString("dd/MM/yyyy");
+            }
 
             string scriptModal = @"$('#medicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
@@ -270,7 +288,23 @@ namespace Site.Cadastros
                 DateTime.TryParse(tbDataNascimento.Text, culture, styles, out DateTime newDate);
                 pNew.dtNascimento = newDate;
             }
-                
+
+            if (!tbPgtoTaxa.Text.IsNullOrWhiteSpace())
+            {
+                DateTime.TryParse(tbPgtoTaxa.Text, culture, styles, out DateTime newDate);
+                pNew.cdPgtoTaxa = newDate;
+            }
+            if (!tbFiliacao.Text.IsNullOrWhiteSpace())
+            {
+                DateTime.TryParse(tbFiliacao.Text, culture, styles, out DateTime newDate);
+                pNew.cdFiliacao = newDate;
+            }
+
+            if (!tbRegCartorio.Text.IsNullOrWhiteSpace())
+            {
+                DateTime.TryParse(tbRegCartorio.Text, culture, styles, out DateTime newDate);
+                pNew.cdRegCartorio = newDate;
+            }
 
             try
             {
@@ -285,7 +319,12 @@ namespace Site.Cadastros
                 }
                 if (result)
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                    gvMedicos.DataBind();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", $"alert('Falha ao salvar o registro!)", true);
                 }
             }
             catch (Exception ex)
@@ -444,27 +483,36 @@ namespace Site.Cadastros
 
             if (btUpload.HasFile)
             {
-                string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{btUpload.PostedFile.FileName}";
-                btUpload.PostedFile.SaveAs(fullPath);
-
-                ProfissionalArquivo pa = new ProfissionalArquivo();
-                pa.ccNomeArquivo = btUpload.PostedFile.FileName;
-                
-                pa.fileBytes = File.ReadAllBytes(fullPath);
-                pa.idProfissional = int.Parse(idHiddenMedico.Value);
-                bool result = pa.Salvar(user);
-
-                if (result)
+                if (btUpload.PostedFile.ContentLength < 2100000)
                 {
-                    //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
-                    CarregarModalArquivos();
-                    File.Delete(fullPath);
+                    string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{btUpload.PostedFile.FileName}";
+                    btUpload.PostedFile.SaveAs(fullPath);
+
+                    ProfissionalArquivo pa = new ProfissionalArquivo();
+                    pa.ccNomeArquivo = btUpload.PostedFile.FileName;
+
+                    pa.fileBytes = File.ReadAllBytes(fullPath);
+                    pa.idProfissional = int.Parse(idHiddenMedico.Value);
+                    bool result = pa.Salvar(user);
+
+                    if (result)
+                    {
+                        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                        CarregarModalArquivos();
+                        File.Delete(fullPath);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+                        CarregarModalArquivos();
+                    }
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo com tamanho inferior a 2MB!');", true);
                     CarregarModalArquivos();
                 }
+               
             }
             else
             {

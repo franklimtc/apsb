@@ -36,10 +36,11 @@ namespace Site.Classes
         public string nomeMae { get; set; }//nomeMae
         public string nomeConjuge { get; set; }//nomeConjuge
         public DateTime dtNascimento { get; set; }
-
-
+        public DateTime cdFiliacao { get; set; }
+        public DateTime cdPgtoTaxa { get; set; }
         public string Token { get; set; }
         public string StatusCadastro { get; set; }
+        public DateTime cdRegCartorio { get; internal set; }
         #endregion
 
         public Profissional()
@@ -138,6 +139,16 @@ namespace Site.Classes
                     {
                         p1.dtNascimento = data;
                     }
+                    
+
+                    if (DateTime.TryParse(p["cdPgtoTaxa"].ToString(), out data))
+                    {
+                        p1.cdPgtoTaxa = data;
+                    }
+                    if (DateTime.TryParse(p["cdFiliacao"].ToString(), out data))
+                    {
+                        p1.cdFiliacao = data;
+                    }
 
                     p1.nomePai = p["nomePai"].ToString();
                     p1.nomeMae = p["nomeMae"].ToString();
@@ -187,11 +198,48 @@ namespace Site.Classes
             parametros.Add(new object[] { "@IdProfissional", this.IdProfissional });
             parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
 
+            if (this.cdFiliacao.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdFiliacao", this.cdFiliacao });
+            }
+            else
+            { 
+                parametros.Add(new object[] { "@cdFiliacao", DBNull.Value });
+            }
+
+            if (this.cdPgtoTaxa.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdPgtoTaxa", this.cdPgtoTaxa });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdPgtoTaxa", DBNull.Value });
+            }
+
+            if (this.cdRegCartorio.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdRegCartorio", this.cdRegCartorio });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdRegCartorio", DBNull.Value });
+            }
+
+            if (this.cdRegCartorio.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdRegCartorio", this.cdRegCartorio });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdRegCartorio", DBNull.Value });
+            }
+
             try
             {
                 object retorno = DAO.ExecuteScalar(@"UPD_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade, @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail
-, @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum, @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone
-, @cvCelular = @cvCelular, @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @IdProfissional = @IdProfissional, @cdDataNascimento = @cdDataNascimento", parametros);
+                                                    , @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum, @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone
+                                                    , @cvCelular = @cvCelular, @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @IdProfissional = @IdProfissional, @cdDataNascimento = @cdDataNascimento
+                                                    , @cdFiliacao=@cdFiliacao, @cdPgtoTaxa=@cdPgtoTaxa, @cdRegCartorio = @cdRegCartorio, @cdRegCartorio = @cdRegCartorio", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -208,7 +256,13 @@ namespace Site.Classes
         {
             bool result = false;
             List<object[]> parametros = new List<object[]>();
+            string query = @"INS_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade
+                , @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail, @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum
+                , @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone, @cvCelular = @cvCelular
+                , @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @cdDataNascimento = @cdDataNascimento, @cdFiliacao = @cdFiliacao, @cdPgtoTaxa = @cdPgtoTaxa";
+
             parametros.Add(new object[] { "@UserName", Usuario });
+
             parametros.Add(new object[] { "@ccNome", this.ccNome });
             parametros.Add(new object[] { "@ccSexo", this.ccSexo });
             parametros.Add(new object[] { "@ccNaturalUF", this.ccNaturalUF });
@@ -226,14 +280,28 @@ namespace Site.Classes
             parametros.Add(new object[] { "@nomeMae", this.nomeMae });
             parametros.Add(new object[] { "@nomeConjuge", this.nomeConjuge });
             parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
+            if (this.cdFiliacao.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdFiliacao", this.cdFiliacao });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdFiliacao", null });
+            }
+
+            if (this.cdPgtoTaxa.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdPgtoTaxa", this.cdPgtoTaxa });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdPgtoTaxa", this.cdPgtoTaxa });
+            }
 
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"INS_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade
-                , @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail, @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum
-                , @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone, @cvCelular = @cvCelular
-                , @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @cdDataNascimento = @cdDataNascimento", parametros);
+                object retorno = DAO.ExecuteScalar(query, parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;

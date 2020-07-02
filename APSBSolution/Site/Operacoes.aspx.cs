@@ -114,7 +114,7 @@ namespace Site
                 }
                 if (!tbReceitaDesconto.Text.IsNullOrWhiteSpace())
                 {
-                    rc.cvDesconto  = float.Parse(tbReceitaDesconto.Text);
+                    rc.cvDesconto = float.Parse(tbReceitaDesconto.Text);
                 }
                 rc.Observacao = tbReceitaObs.Text;
 
@@ -152,10 +152,19 @@ namespace Site
             switch (e.CommandName)
             {
                 case "Editar":
+                    tbValorOperacao.Text = gvOperacoes.Rows[int.Parse(e.CommandArgument.ToString())].Cells[2].Text;
+                        
                     CarregarModalOperacao(idOperacao, operacaoTipo);
                     break;
                 case "Repassar":
-                    CarregarModalRepasse(idOperacao, operacaoTipo);
+                    if (operacaoTipo == "Receita")
+                    {
+                        CarregarModalRepasse(idOperacao, operacaoTipo);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Repasse não disponível para Despesas!');", true);
+                    }
                     break;
                 case "Arquivar":
                     Operacao.Arquivar(user, idOperacao, operacaoTipo);
@@ -170,17 +179,26 @@ namespace Site
             }
         }
 
-        private void CarregarModalOperacao(int idProfissional, string tipo)
+        private void CarregarModalOperacao(int idOperacao, string tipo)
         {
-            string scriptModal = @"$('#operacaoModal').modal('show')";
+            string scriptModal = "null";
+            if (tipo == "Despesa")
+            {
+                scriptModal = "EditDespesa()";
+            }
+            else if (tipo == "Receita")
+            {
+                scriptModal = "EditReceita()";
+
+            }
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
         private void CarregarModalRepasse(int idProfissional, string tipo)
         {
-            string scriptModal = @"$('#repasseMedicoModal').modal('show')";
+            string scriptModal = "$('#repasseMedicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-       
+
     }
 }
