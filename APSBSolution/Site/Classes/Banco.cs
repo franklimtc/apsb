@@ -11,17 +11,19 @@ namespace Site.Classes
         public int IdBanco { get; set; }
         public string ccBanco { get; set; }
         public int cvCodBanco { get; set; }
+        public string ccBancoCod { get; set; }
 
         public Banco()
         {
 
         }
 
-        public Banco(int _id, string _banco, int _codigo)
+        public Banco(int _id, string _banco, string _ccBancoCod, int _codigo)
         {
             this.IdBanco = _id;
             this.ccBanco = _banco;
             this.cvCodBanco = _codigo;
+            this.ccBancoCod = _ccBancoCod;
         }
         public static List<Banco> Listar()
         {
@@ -35,6 +37,7 @@ namespace Site.Classes
                     Lista.Add(new Banco(
                         int.Parse(b["IdBanco"].ToString()),
                         b["ccBanco"].ToString(),
+                        b["ccBancoCod"].ToString(),
                         int.Parse(b["cvCodBanco"].ToString())
                         ));
                 }

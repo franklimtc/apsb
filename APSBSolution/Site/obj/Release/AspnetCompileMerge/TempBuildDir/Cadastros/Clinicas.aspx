@@ -140,7 +140,7 @@
                             </div>
                             <div class="col-md-5">
                                 <label for="dpBancoClinica">Banco</label>
-                                <asp:DropDownList runat="server" ID="dpBancoClinica" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBanco" DataValueField="IdBanco">
+                                <asp:DropDownList runat="server" ID="dpBancoClinica" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBancoCod" DataValueField="IdBanco">
                                 </asp:DropDownList>
                                 <asp:ObjectDataSource ID="dsBancos" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Banco"></asp:ObjectDataSource>
                             </div>

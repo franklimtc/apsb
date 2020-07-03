@@ -508,7 +508,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="dpProfissionalBanco">Banco</label>
-                                <asp:DropDownList runat="server" ID="dpProfissionalBanco" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBanco" DataValueField="IdBanco">
+                                <asp:DropDownList runat="server" ID="dpProfissionalBanco" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBancoCod" DataValueField="IdBanco">
                                 </asp:DropDownList>
                                 <asp:ObjectDataSource ID="dsBancos" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Banco"></asp:ObjectDataSource>
 
@@ -613,6 +613,7 @@
 
             $("#MainContent_tbFiliacao").val("")
             $("#MainContent_tbPgtoTaxa").val("")
+            $("#MainContent_tbRegCartorio").val("")
 
 
         }

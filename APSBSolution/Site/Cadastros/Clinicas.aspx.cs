@@ -97,14 +97,7 @@ namespace Site.Cadastros
                 }
                 else
                 {
-                    if (tbClinicaISS.Text.Length == double.Parse(tbClinicaISS.Text).ToString().Length)
-                    {
-                        c.cvISS = double.Parse(tbClinicaISS.Text);
-                    }
-                    else
-                    {
-                        c.cvISS = double.Parse(tbClinicaISS.Text.Replace(",", "."));
-                    }
+                    c.cvISS = double.Parse(tbClinicaISS.Text);
                 }
                 if (tbDescontos.Text == "")
                 {
@@ -112,15 +105,9 @@ namespace Site.Cadastros
                 }
                 else
                 {
-                    if (tbDescontos.Text.Length == double.Parse(tbDescontos.Text).ToString().Length)
-                    {
-                        c.cvDescontos = double.Parse(tbDescontos.Text);
-                    }
-                    else
-                    {
-                        c.cvDescontos = double.Parse(tbDescontos.Text.Replace(",", "."));
-                    }
+                    c.cvDescontos = double.Parse(tbDescontos.Text);
                 }
+
                 c.cvIdBanco = int.Parse(dpBancoClinica.SelectedValue);
                 c.cbDescontoVariavel = chDescontoVariavel.Checked;
                 c.ccObservacao = tbObsClinica.Text;

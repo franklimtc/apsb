@@ -149,6 +149,10 @@ namespace Site.Classes
                     {
                         p1.cdFiliacao = data;
                     }
+                    if (DateTime.TryParse(p["cdRegCartorio"].ToString(), out data))
+                    {
+                        p1.cdRegCartorio = data;
+                    }
 
                     p1.nomePai = p["nomePai"].ToString();
                     p1.nomeMae = p["nomeMae"].ToString();
@@ -225,21 +229,12 @@ namespace Site.Classes
                 parametros.Add(new object[] { "@cdRegCartorio", DBNull.Value });
             }
 
-            if (this.cdRegCartorio.ToString("dd/MM/yyyy") != "01/01/0001")
-            {
-                parametros.Add(new object[] { "@cdRegCartorio", this.cdRegCartorio });
-            }
-            else
-            {
-                parametros.Add(new object[] { "@cdRegCartorio", DBNull.Value });
-            }
-
             try
             {
                 object retorno = DAO.ExecuteScalar(@"UPD_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade, @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail
                                                     , @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum, @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone
                                                     , @cvCelular = @cvCelular, @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @IdProfissional = @IdProfissional, @cdDataNascimento = @cdDataNascimento
-                                                    , @cdFiliacao=@cdFiliacao, @cdPgtoTaxa=@cdPgtoTaxa, @cdRegCartorio = @cdRegCartorio, @cdRegCartorio = @cdRegCartorio", parametros);
+                                                    , @cdFiliacao=@cdFiliacao, @cdPgtoTaxa=@cdPgtoTaxa, @cdRegCartorio = @cdRegCartorio", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -259,7 +254,8 @@ namespace Site.Classes
             string query = @"INS_Profissional @ccNome = @ccNome, @ccSexo = @ccSexo, @ccNaturalUF = @ccNaturalUF, @ccNaturalCidade = @ccNaturalCidade
                 , @ccEstadoCivil = @ccEstadoCivil, @ccEmail = @ccEmail, @UserName = @UserName, @observacoes = @observacoes, @RGNum = @RGNum
                 , @RGEmissor = @RGEmissor, @RGdtEmissao = @RGdtEmissao, @CPFNum = @CPFNum, @cvTelefone = @cvTelefone, @cvCelular = @cvCelular
-                , @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @cdDataNascimento = @cdDataNascimento, @cdFiliacao = @cdFiliacao, @cdPgtoTaxa = @cdPgtoTaxa";
+                , @nomePai = @nomePai, @nomeMae = @nomeMae, @nomeConjuge = @nomeConjuge, @cdDataNascimento = @cdDataNascimento, @cdFiliacao = @cdFiliacao
+                , @cdPgtoTaxa = @cdPgtoTaxa, @cdRegCartorio = @cdRegCartorio";
 
             parametros.Add(new object[] { "@UserName", Usuario });
 
@@ -280,13 +276,14 @@ namespace Site.Classes
             parametros.Add(new object[] { "@nomeMae", this.nomeMae });
             parametros.Add(new object[] { "@nomeConjuge", this.nomeConjuge });
             parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
+
             if (this.cdFiliacao.ToString("dd/MM/yyyy") != "01/01/0001")
             {
                 parametros.Add(new object[] { "@cdFiliacao", this.cdFiliacao });
             }
             else
             {
-                parametros.Add(new object[] { "@cdFiliacao", null });
+                parametros.Add(new object[] { "@cdFiliacao", DBNull.Value });
             }
 
             if (this.cdPgtoTaxa.ToString("dd/MM/yyyy") != "01/01/0001")
@@ -295,7 +292,16 @@ namespace Site.Classes
             }
             else
             {
-                parametros.Add(new object[] { "@cdPgtoTaxa", this.cdPgtoTaxa });
+                parametros.Add(new object[] { "@cdPgtoTaxa", DBNull.Value });
+            }
+
+            if (this.cdRegCartorio.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@cdRegCartorio", this.cdRegCartorio });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdRegCartorio", DBNull.Value });
             }
 
 
