@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Operações" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Operacoes.aspx.cs" Inherits="Site.Operacoes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4"></div>
@@ -13,12 +13,10 @@
             <div class="col-md-4"></div>
 
         </div>
-        <asp:LinkButton runat="server" data-toggle="modal" data-target="#operacaoModal" ToolTip="Editar">
-                    <asp:button text="Nova Operação" runat="server" CssClass="btn btn-secondary" />
-        </asp:LinkButton>
+        <asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClick="btNovaOperacao_Click" />
         <br />
         <div class="row collapse" id="divFiltros">
-           <br />
+            <br />
             <div class="col">
                 <h2>Filtros adicionais</h2>
                 <div class="row">
@@ -60,17 +58,17 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                    <asp:imagebutton imageurl="~/Content/Icons/create-outline.svg" runat="server"  Height="1.5em" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                                <asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                    <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em"  CommandName="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"/>
+                                <asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar"  CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
@@ -225,7 +223,7 @@
                                         <div class="col-sm-6">
                                             <%--<button id="btDespesa" class="btn btn-light" type="button" onclick="$('btDespesa').removeClass('btn-light')">Despesa</button>&nbsp&nbsp--%>
                                             <%--<button id="btReceita" class="btn btn-success" type="button">Receita</button>--%>
-                                            <asp:LinkButton ID="btDespesa" Text="Despesa" runat="server" CssClass="btn btn-light"/>
+                                            <asp:LinkButton ID="btDespesa" Text="Despesa" runat="server" CssClass="btn btn-light" />
                                             <asp:LinkButton ID="btReceita" Text="Receita" runat="server" CssClass="btn btn-success" />
 
                                         </div>
@@ -236,7 +234,7 @@
                                                 </div>
                                                 <%--<input id="tbValorOperacao" type="text" class="form-control text-success" placeholder="Valor..." aria-label="tbValor" aria-describedby="basic-addon1">--%>
                                                 <%--money--%>
-                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money"  />
+                                                <asp:TextBox runat="server" ID="tbValorOperacao" CssClass="form-control text-success money" />
                                             </div>
                                         </div>
                                     </div>
@@ -252,12 +250,12 @@
                                 <label for="search">Clínica | Hospital | Despesa</label>
                                 <div>
                                     <%--<input type="text" id="search" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filter()">--%>
-                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..."/>
+                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />
                                 </div>
                                 <div>
                                     <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
-                                     <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -289,24 +287,24 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataNF">Data de Emissão</label>
                                     <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control date" Enabled="false"/>
+                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control date" Enabled="false" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNF">NF</label>
                                     <%--<input type="text" id="tbReceitaNF" name="tbReceitaNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" Enabled="false"/>
+                                    <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" Enabled="false" />
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
                                     <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control date" Enabled="false"/>
+                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control date" Enabled="false" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNFValorPG">Valor Pago</label>
                                     <%--<input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Enabled="false"/>
+                                    <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Enabled="false" />
                                 </div>
                             </div>
 
@@ -316,7 +314,7 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
-                                            <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control" ReadOnly="true" Text="6,5" />
+                                            <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control" />
                                         </div>
                                         <div class="col-sm-2">
                                             <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
@@ -363,12 +361,14 @@
             });
 
             $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+
+            EnableDiscount();
         });
 
 
         //Click Despesa
         $("#MainContent_btDespesa").click(function () {
-            
+
             AtvDespesa();
             return false;
 

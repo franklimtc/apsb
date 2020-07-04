@@ -25,10 +25,13 @@
     [cbAutoCadastro]   BIT           DEFAULT ((0)) NULL,
     [cdFiliacao]       DATETIME      NULL,
     [cdPgtoTaxa]       DATETIME      NULL,
+    [cdRegCartorio]    DATETIME      NULL,
     PRIMARY KEY CLUSTERED ([IdProfissional] ASC),
     FOREIGN KEY ([IdObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao]),
     UNIQUE NONCLUSTERED ([CPFNum] ASC)
 );
+
+
 
 
 

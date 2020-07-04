@@ -1,0 +1,5 @@
+﻿CREATE SEQUENCE [dbo].[SQ_ProfissionalAuto]
+    AS BIGINT
+    START WITH 1000
+    INCREMENT BY 1;
+

@@ -44,7 +44,93 @@ namespace Site.Classes
         }
         public bool Salvar(string Usuario)
         {
-            throw new NotImplementedException();
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario});
+            parametros.Add(new object[] { "@idReceita", this.idReceita});
+            parametros.Add(new object[] { "@IdClinica", this.IdClinica});
+            
+            if (this.cvValor.HasValue)
+            {
+                parametros.Add(new object[] { "@cvValor", this.cvValor });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cvValor", DBNull.Value });
+            }
+
+            if (this.cvValorPago.HasValue)
+            {
+                parametros.Add(new object[] { "@cvValorPago", this.cvValorPago });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cvValorPago", DBNull.Value });
+            }
+
+            if (this.cvNF.HasValue)
+            {
+                parametros.Add(new object[] { "@cvNF", this.cvNF });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cvNF", DBNull.Value });
+            }
+
+            if (this.cdEmissao.HasValue)
+            {
+                parametros.Add(new object[] { "@cdEmissao", this.cdEmissao.Value });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdEmissao", DBNull.Value });
+            }
+
+            if (this.cdPagamento.HasValue)
+            {
+                parametros.Add(new object[] { "@cdPagamento", this.cdPagamento });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdPagamento", DBNull.Value });
+            }
+
+            if (this.cdRepasse.HasValue)
+            {
+                parametros.Add(new object[] { "@cdRepasse", this.cdRepasse });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cdRepasse", DBNull.Value });
+            }
+
+            if (this.cvDesconto.HasValue)
+            {
+                parametros.Add(new object[] { "@cvDesconto", this.cvDesconto });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cvDesconto", DBNull.Value });
+            }
+
+            parametros.Add(new object[] { "@observacoes", this.Observacao });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"UPD_Receita
+                                                    @UserName = @UserName, @idReceita= @idReceita, @IdClinica= @IdClinica, @cvValor= @cvValor, @cvValorPago= @cvValorPago
+                                                    , @cdEmissao= @cdEmissao, @cdPagamento= @cdPagamento, @cdRepasse= @cdRepasse, @cvDesconto= @cvDesconto, @observacoes= @observacoes
+                                                    , @cvNF= @cvNF", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
         }
 
         public bool Adicionar(string Usuario)

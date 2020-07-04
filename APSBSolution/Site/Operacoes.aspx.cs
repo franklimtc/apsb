@@ -1,4 +1,5 @@
 ﻿using Microsoft.Ajax.Utilities;
+using Microsoft.SqlServer.Server;
 using Simple.Data;
 using Site.Classes;
 using System;
@@ -84,8 +85,15 @@ namespace Site
                 dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("dd/MM/yyyy")), culture, styles);
                 dp.cvValor = float.Parse(tbValorOperacao.Text);
                 dp.ccObservacao = tbDespesaObs.Text;
-
-                result = dp.Adicionar(Usuario);
+                if (idHiddenOperacao.Value.IsNullOrWhiteSpace())
+                {
+                    result = dp.Adicionar(Usuario);
+                }
+                else
+                {
+                    dp.idDespesas = int.Parse(idHiddenOperacao.Value);
+                    result = dp.Salvar(Usuario);
+                }
             }
             else if (tbAbaAtiva.Text == "Receita")
             {
@@ -118,7 +126,16 @@ namespace Site
                 }
                 rc.Observacao = tbReceitaObs.Text;
 
-                result = rc.Adicionar(Usuario);
+                if (idHiddenOperacao.Value.IsNullOrWhiteSpace())
+                {
+                    result = rc.Adicionar(Usuario);
+                }
+                else
+                {
+                    rc.idReceita = int.Parse(idHiddenOperacao.Value);
+                    result = rc.Salvar(Usuario);
+                }
+
 
             }
 
@@ -182,23 +199,103 @@ namespace Site
         private void CarregarModalOperacao(int idOperacao, string tipo)
         {
             string scriptModal = "null";
+            Operacao op = Operacao.ListarPorID(idOperacao, tipo);
+            tbValorOperacao.Text = ConvertMoney(op.cvValor.ToString());
+
             if (tipo == "Despesa")
             {
                 scriptModal = "EditDespesa()";
+                dpTipoDespesa.ClearSelection();
+                dpTipoDespesa.Items.FindByText(op.ccDescricao).Selected = true;
+                if (op.cdEmissao.HasValue)
+                {
+                    tbDespesaDataNF.Text = op.cdEmissao.Value.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    tbDespesaDataNF.Text = "";
+                }
+                tbDespesaObs.Text = op.observacao;
+
             }
             else if (tipo == "Receita")
             {
+                Receita rec = Receita.ListarPorID(op.ID);
+
                 scriptModal = "EditReceita()";
+                dpTipoReceita.ClearSelection();
+                dpTipoReceita.Items.FindByText(op.ccDescricao).Selected = true;
+
+                if (op.cdEmissao.HasValue)
+                {
+                    tbReceitaDataNF.Text = op.cdEmissao.Value.ToString("dd/MM/yyyy");
+                }
+                else
+                { 
+                    tbReceitaDataNF.Text = "";
+                }
+
+                if (op.cdPagamento.HasValue)
+                {
+                    tbReceitaDataPgtoNF.Text = op.cdPagamento.Value.ToString("dd/MM/yyyy");
+                }
+                else
+                {
+                    tbReceitaDataPgtoNF.Text = "";
+                }
+
+                if (op.cvNF.HasValue)
+                {
+                    tbReceitaNF.Text = op.cvNF.Value.ToString();
+                }
+                else
+                {
+                    tbReceitaNF.Text = "";
+                }
+
+                if (rec.cvValorPago.HasValue)
+                {
+                    tbReceitaNFValorPG.Text = ConvertMoney(rec.cvValorPago.ToString());
+                }
+                else
+                {
+                    tbReceitaNFValorPG.Text = "";
+                }
+
+                tbReceitaDesconto.Text = rec.cvDesconto.ToString();
+
+                tbReceitaDataNF.Enabled = true;
+                tbReceitaDataPgtoNF.Enabled = true;
+                tbReceitaNFValorPG.Enabled = true;
+                tbReceitaNF.Enabled = true;              
 
             }
+
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
+
+        private string ConvertMoney(string v)
+        {
+            if (!v.Contains(','))
+            {
+                v += "00";
+            }
+            return v;
+        }
+
         private void CarregarModalRepasse(int idProfissional, string tipo)
         {
             string scriptModal = "$('#repasseMedicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
+        protected void btNovaOperacao_Click(object sender, EventArgs e)
+        {
+            string scriptModal = "$('#operacaoModal').modal('show')";
+            tbReceitaDesconto.Text = "6,5";
+            idHiddenOperacao.Value = "";
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
+        }
     }
 }

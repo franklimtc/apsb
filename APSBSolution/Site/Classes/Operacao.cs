@@ -96,13 +96,6 @@ namespace Site.Classes
         public static List<Operacao> Listar()
         {
             List<object[]> parametros = new List<object[]>();
-            //parametros.Add(new object[] { "@cbArquivado", arquivado });
-            //parametros.Add(new object[] { "@cbStatus", status });
-            //parametros.Add(new object[] { "@dtInicial", dtInicio });
-            //parametros.Add(new object[] { "@dtFinal", dtFim });
-
-
-            //ID cvValor ccDescricao observacao  cdEmissao cdPagamento cdRepasse Status  Tipo cvNF
             DataTable dt = DAO.RetornaDT("SEL_Operacoes", parametros);
             List<Operacao> Lista = new List<Operacao>();
             if (dt.Rows.Count > 0)
@@ -146,9 +139,52 @@ namespace Site.Classes
             return Lista;
         }
 
-        public object ListarPorID(int idObject)
+        public static Operacao ListarPorID(int idObject, string tipo)
         {
-            throw new NotImplementedException();
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idOperacao", idObject });
+            parametros.Add(new object[] { "@tipo", tipo });
+            DataTable dt = DAO.RetornaDT("SEL_OperacaoByID @tipo = @tipo, @idOperacao = @idOperacao;", parametros);
+            List<Operacao> Lista = new List<Operacao>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    Nullable<DateTime> dtEmissao = new Nullable<DateTime>();
+                    Nullable<DateTime> dtPagamento = new Nullable<DateTime>();
+                    Nullable<DateTime> dtRepasse = new Nullable<DateTime>();
+
+                    if (DateTime.TryParse(c["cdEmissao"].ToString(), out DateTime dt1))
+                    {
+                        dtEmissao = dt1;
+                    }
+                    if (DateTime.TryParse(c["cdPagamento"].ToString(), out DateTime dt2))
+                    {
+                        dtPagamento = dt2;
+                    }
+                    if (DateTime.TryParse(c["cdRepasse"].ToString(), out DateTime dt3))
+                    {
+                        dtRepasse = dt3;
+                    }
+
+                    int.TryParse(c["cvNF"].ToString(), out int cvNF);
+                    Lista.Add(new Operacao(
+                        int.Parse(c["ID"].ToString())
+                        , float.Parse(c["cvValor"].ToString())
+                        , c["ccDescricao"].ToString()
+                        , c["observacao"].ToString()
+                        , dtEmissao
+                        , dtPagamento
+                        , dtRepasse
+                        , int.Parse(c["Status"].ToString())
+                        , c["Tipo"].ToString()
+                        , cvNF
+                        ));
+                }
+
+            }
+
+            return Lista.FirstOrDefault();
         }
 
         public bool Salvar(string Usuario)
