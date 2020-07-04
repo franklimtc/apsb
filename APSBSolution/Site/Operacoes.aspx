@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4"></div>
@@ -39,6 +41,15 @@
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
             <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
+
+            <%--Datasources--%>
+            <asp:ObjectDataSource ID="dsRepasseMedico" runat="server" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse">
+                <SelectParameters>
+                    <asp:ControlParameter ControlID="idHiddenOperacao" Name="idReceita" PropertyName="Value" Type="Int32" />
+                </SelectParameters>
+            </asp:ObjectDataSource>
+            <%--Datasources--%>
+
             <div class="col-md-12">
                 <br />
                 <asp:GridView runat="server" ID="gvOperacoes" DataSourceID="dsOperacoes" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnRowCommand="gvOperacoes_RowCommand" OnPreRender="gvOperacoes_PreRender">
@@ -122,16 +133,8 @@
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
                             </div>
                             <div>
-                                <select id="dpSelectProfissional" class="form-control">
-                                    <option>Selecionar...</option>
-                                    <option>Adriana Alves De Almeida</option>
-                                    <option>Adriane De Fátima Silva De Assumção</option>
-                                    <option>Adriano Ferreira Da Silva</option>
-                                    <option>Carlos Henrique Pereira Macedo</option>
-                                    <option>Carolina Coelho Rodrigues</option>
-                                    <option>Clara Bandeira De Mello Parente Lobato</option>
-                                    <option>Sara Da Rocha Viana</option>
-                                </select>
+                                <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control" DataSourceID="dsProfissional" DataTextField="ccNome" DataValueField="IdProfissional"></asp:DropDownList>
+                                <asp:ObjectDataSource ID="dsProfissional" runat="server" SelectMethod="ListaDropDown" TypeName="Site.Classes.Profissional"></asp:ObjectDataSource>
                             </div>
                         </div>
                     </div>
@@ -139,60 +142,42 @@
                         <div class="col">
                             <label for="tbObsprofissional">Observações</label>
                             <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height: 100px;" readonly="readonly" />
+                            
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <input type="button" id="tbAdicionarProfissional" name="name" value="Adicionar" class="btn btn-secondary" onclick="alert('Registro adicionado com sucesso!')" />
+                            <%--<input type="button" id="tbAdicionarProfissional" name="name" value="Adicionar" class="btn btn-secondary" onclick="alert('Registro adicionado com sucesso!')" />--%>
+                            <asp:Button Text="Adicionar" ID="btAdicionar" runat="server" CssClass="btn btn-primary" OnClick="btAdicionar_Click" />
                         </div>
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
-                                <input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel...">
+                                <%--<input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel...">--%>
+                                <asp:TextBox runat="server" ID="tbValorDisponivel" CssClass="form-control money" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <br />
-                            <asp:Table ID="gvRepasseMedico" runat="server" CssClass="table table-hover table-striped table-sm">
-                                <asp:TableHeaderRow>
-                                    <asp:TableCell>ID</asp:TableCell>
-                                    <asp:TableCell>Profissional</asp:TableCell>
-                                    <asp:TableCell>Valor</asp:TableCell>
-                                    <asp:TableCell>Ações</asp:TableCell>
-                                </asp:TableHeaderRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>12343</asp:TableCell>
-                                    <asp:TableCell>Carlos Henrique</asp:TableCell>
-                                    <asp:TableCell>R$ 1.000,00</asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                                        <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>12343</asp:TableCell>
-                                    <asp:TableCell>Carolina Coelho</asp:TableCell>
-                                    <asp:TableCell>R$ 1.000,00</asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                                        <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                                <asp:TableRow>
-                                    <asp:TableCell>12343</asp:TableCell>
-                                    <asp:TableCell>Clara Bandeira</asp:TableCell>
-                                    <asp:TableCell>R$ 1.000,00</asp:TableCell>
-                                    <asp:TableCell>
-                                        <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                                        <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                    </asp:TableCell>
-                                </asp:TableRow>
-                            </asp:Table>
+                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico">
+                                <Columns>
+                                    <asp:BoundField HeaderText="ID" DataField="idRepasse"/>
+                                    <asp:BoundField HeaderText ="Nome" DataField ="ccNome" />
+                                    <asp:BoundField DataField="cvValor" HeaderText="Valor" DataFormatString="{0:C}" />
+                                    <asp:BoundField DataField="ccStatus" HeaderText="Status" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
+                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                         </div>
                     </div>
                 </div>
@@ -458,7 +443,7 @@
 
         function filterProfissional() {
             var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("dpSelectProfissional");
+            var select = document.getElementById("MainContent_dpSelectProfissional");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {

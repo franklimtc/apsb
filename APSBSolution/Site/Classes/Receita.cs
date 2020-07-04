@@ -14,6 +14,8 @@ namespace Site.Classes
         public int IdClinica { get; set; }//IdClinica   int
         public float? cvValor { get; set; }//cvValor float
         public float? cvValorPago { get; set; }//cvValorPago float
+        public float? cvValorDisponivel { get; set; }
+
         public DateTime? cdEmissao { get; set; }//cdEmissao   datetime
         public DateTime? cdPagamento { get; set; }//cdPagamento datetime
         public DateTime? cdRepasse { get; set; }//cdRepasse   datetime
@@ -23,6 +25,7 @@ namespace Site.Classes
         public int? idObservacao { get; set; }//idObservacao    int
         public int? cvNF { get; set; }//cvNF    int
         public string Observacao { get; set; }
+
         #endregion
 
         public Receita()
@@ -42,6 +45,21 @@ namespace Site.Classes
             this.cvNF = cvNF;
             this.Observacao = observacao;
         }
+
+        public Receita(int idReceita, float cvValor, float? cvValorPago, DateTime? cdEmissao, DateTime? cdPagamento, DateTime? cdRepasse, float? cvDesconto, int? cvNF, string observacao, float? cvValordisponivel)
+        {
+            this.idReceita = idReceita;
+            this.cvValor = cvValor;
+            this.cvValorPago = cvValorPago;
+            this.cdEmissao = cdEmissao;
+            this.cdPagamento = cdPagamento;
+            this.cdRepasse = cdRepasse;
+            this.cvDesconto = cvDesconto;
+            this.cvNF = cvNF;
+            this.Observacao = observacao;
+            this.cvValorDisponivel = cvValordisponivel;
+        }
+
         public bool Salvar(string Usuario)
         {
             bool result = false;
@@ -254,6 +272,7 @@ namespace Site.Classes
 
                     Nullable<float> cvValorPago = new Nullable<float>();
                     Nullable<float> cvDesconto = new Nullable<float>();
+                    Nullable<float> cvValorDisponivel = new Nullable<float>();
 
                     Nullable<int> cvNF = new Nullable<int>();
 
@@ -285,6 +304,12 @@ namespace Site.Classes
                     {
                         cvDesconto = float2;
                     }
+                    if (float.TryParse(c["cvValorDisponivel"].ToString(), out float float3))
+                    {
+                        cvValorDisponivel = float3;
+                    }
+
+
 
                     Lista.Add(new Receita(
                         int.Parse(c["idReceita"].ToString())
@@ -296,6 +321,7 @@ namespace Site.Classes
                         , float.Parse(c["cvDesconto"].ToString().IfNullOrWhiteSpace("0"))
                         , cvNF
                         , c["observacao"].ToString()
+                        , cvValorDisponivel
                         ));
                 }
 

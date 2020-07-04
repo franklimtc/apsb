@@ -69,6 +69,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.TextBox tbAbaAtiva;
 
         /// <summary>
+        /// Controle dsRepasseMedico.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsRepasseMedico;
+
+        /// <summary>
         /// Controle gvOperacoes.
         /// </summary>
         /// <remarks>
@@ -87,13 +96,49 @@ namespace Site
         protected global::System.Web.UI.WebControls.ObjectDataSource dsOperacoes;
 
         /// <summary>
+        /// Controle dpSelectProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpSelectProfissional;
+
+        /// <summary>
+        /// Controle dsProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsProfissional;
+
+        /// <summary>
+        /// Controle btAdicionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btAdicionar;
+
+        /// <summary>
+        /// Controle tbValorDisponivel.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbValorDisponivel;
+
+        /// <summary>
         /// Controle gvRepasseMedico.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table gvRepasseMedico;
+        protected global::System.Web.UI.WebControls.GridView gvRepasseMedico;
 
         /// <summary>
         /// Controle btDespesa.

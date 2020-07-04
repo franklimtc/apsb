@@ -283,8 +283,11 @@ namespace Site
             return v;
         }
 
-        private void CarregarModalRepasse(int idProfissional, string tipo)
+        private void CarregarModalRepasse(int idOperacao, string tipo)
         {
+            Receita rr = Receita.ListarPorID(idOperacao);
+
+            tbValorDisponivel.Text = ConvertMoney(rr.cvValorDisponivel.Value.ToString());
             string scriptModal = "$('#repasseMedicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
@@ -296,6 +299,20 @@ namespace Site
             idHiddenOperacao.Value = "";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
+        }
+
+        protected void btAdicionar_Click(object sender, EventArgs e)
+        {
+            string Usuario = "Franklim";
+            ReceitaRepasse rr = new ReceitaRepasse();
+            rr.IdProfissional = int.Parse(dpSelectProfissional.SelectedValue);
+            rr.cvValor = float.Parse(tbValorOperacao.Text);
+            rr.idReceita = int.Parse(idHiddenOperacao.Value);
+
+            rr.Adicionar(Usuario);
+
+            string scriptModal = "$('#repasseMedicoModal').modal('show')";
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
     }
 }
