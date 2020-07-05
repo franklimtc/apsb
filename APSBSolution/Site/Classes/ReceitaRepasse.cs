@@ -95,7 +95,14 @@ namespace Site.Classes
             parametros.Add(new object[] { "@idReceita", this.idReceita });
             parametros.Add(new object[] { "@IdProfissional",  this.IdProfissional});
             parametros.Add(new object[] { "@cvValor", this.cvValor });
-            parametros.Add(new object[] { "@observacoes", this.Observacao });
+            if (this.Observacao.IsNullOrWhiteSpace())
+            {
+                parametros.Add(new object[] { "@observacoes", DBNull.Value});
+            }
+            else
+            {
+                parametros.Add(new object[] { "@observacoes", this.Observacao });
+            }
 
             try
             {
@@ -112,12 +119,12 @@ namespace Site.Classes
             return result;
         }
 
-        public bool Excluir(string Usuario, int idReceita)
+        public static bool Excluir(string Usuario, int idRepasse)
         {
             //EXC_Repasse @idRepasse = @idRepasse, @UserName = @UserName;
             bool result = false;
             List<object[]> parametros = new List<object[]>();
-            parametros.Add(new object[] { "@idRepasse", idReceita });
+            parametros.Add(new object[] { "@idRepasse", idRepasse });
             parametros.Add(new object[] { "@UserName", Usuario });
 
             try
@@ -161,6 +168,31 @@ namespace Site.Classes
 
             return Lista;
         }
+
+        internal static bool Pagar(string Usuario, int idRepasse)
+        {
+            //EXC_Repasse @idRepasse = @idRepasse, @UserName = @UserName;
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idRepasse", idRepasse });
+            parametros.Add(new object[] { "@UserName", Usuario });
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"PGR_Repasse @idRepasse = @idRepasse, @UserName = @UserName;", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
+        
 
         //public static ReceitaRepasse ListarPorID(int idReceita)
         //{

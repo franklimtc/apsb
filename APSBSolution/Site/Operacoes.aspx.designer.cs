@@ -51,6 +51,24 @@ namespace Site
         protected global::System.Web.UI.WebControls.HiddenField HiddenAbaAtiva;
 
         /// <summary>
+        /// Controle HddValorNegativo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HddValorNegativo;
+
+        /// <summary>
+        /// Controle HddValorDisponivel.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HddValorDisponivel;
+
+        /// <summary>
         /// Controle idHiddenOperacao.
         /// </summary>
         /// <remarks>
@@ -114,13 +132,13 @@ namespace Site
         protected global::System.Web.UI.WebControls.ObjectDataSource dsProfissional;
 
         /// <summary>
-        /// Controle btAdicionar.
+        /// Controle tbValorRepassado.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAdicionar;
+        protected global::System.Web.UI.WebControls.TextBox tbValorRepassado;
 
         /// <summary>
         /// Controle tbValorDisponivel.
@@ -130,6 +148,15 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbValorDisponivel;
+
+        /// <summary>
+        /// Controle bdAddRepasse.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bdAddRepasse;
 
         /// <summary>
         /// Controle gvRepasseMedico.

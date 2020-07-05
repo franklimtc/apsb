@@ -2,9 +2,18 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <style>
+        table {
+            font-size: 11px;
+        }
 
+        .num {
+            text-align: right;
+            width:90px;
+        }
+    </style>
 
-    <div class="container-fluid">
+    <div>
         <div class="row">
             <div class="col-md-4"></div>
 
@@ -38,6 +47,8 @@
         <div class="row">
             <%--Hidden Fields--%>
             <asp:HiddenField runat="server" ID="HiddenAbaAtiva" Value="Receita" />
+            <asp:HiddenField runat="server" ID="HddValorNegativo" />
+            <asp:HiddenField runat="server" ID="HddValorDisponivel" />
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
             <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
@@ -56,7 +67,9 @@
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
-                        <asp:BoundField HeaderText="Valor" DataField="cvValor" DataFormatString="{0:C}" />
+                        <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num"/>
+                        <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num"/>
+                        <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num"/>
                         <asp:BoundField HeaderText="Nota" DataField="cvNF" />
                         <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" DataFormatString="{0:d}" />
                         <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" DataFormatString="{0:d}" />
@@ -148,8 +161,12 @@
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <%--<input type="button" id="tbAdicionarProfissional" name="name" value="Adicionar" class="btn btn-secondary" onclick="alert('Registro adicionado com sucesso!')" />--%>
-                            <asp:Button Text="Adicionar" ID="btAdicionar" runat="server" CssClass="btn btn-primary" OnClick="btAdicionar_Click" />
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <asp:TextBox runat="server" ID="tbValorRepassado" CssClass="form-control money" ReadOnly="true" />
+                            </div>
                         </div>
                         <div class="col">
                             <div class="input-group">
@@ -160,11 +177,14 @@
                                 <asp:TextBox runat="server" ID="tbValorDisponivel" CssClass="form-control money" />
                             </div>
                         </div>
+                        <div class="col">
+                            <asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" OnClick="bdAddRepasse_Click" />
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <br />
-                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico">
+                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand">
                                 <Columns>
                                     <asp:BoundField HeaderText="ID" DataField="idRepasse"/>
                                     <asp:BoundField HeaderText ="Nome" DataField ="ccNome" />
@@ -172,8 +192,8 @@
                                     <asp:BoundField DataField="ccStatus" HeaderText="Status" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" OnClientClick="confirm('Deseja arquivar o registro?')" />&nbsp&nbsp
-                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
+                                            <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" CommandName="Pagar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />&nbsp&nbsp
+                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')"  CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -462,6 +482,19 @@
             } else {
                 $("#MainContent_tbReceitaDesconto").removeAttr('readonly')
                 console.log($("#MainContent_tbReceitaDesconto").attr("readonly"));
+            }
+        }
+
+        //Formatar Valor Disponivel
+
+        function formatValorDisponivel(valor) {
+            if (valor == "1") {
+                $("#MainContent_tbValorDisponivel").removeClass("text-success");
+                $("#MainContent_tbValorDisponivel").addClass("text-danger")
+            }
+            else {
+                $("#MainContent_tbValorDisponivel").removeClass("text-danger");
+                $("#MainContent_tbValorDisponivel").addClass("text-success")
             }
         }
     </script>

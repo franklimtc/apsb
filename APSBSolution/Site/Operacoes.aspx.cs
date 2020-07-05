@@ -23,23 +23,23 @@ namespace Site
         {
             // You only need the following 2 lines of code if you are not 
             // using an ObjectDataSource of SqlDataSource
+            gvOperacoes.DataBind();
+
             if (!IsPostBack)
             {
                 //gvMedicos.DataSource = Profissional.Listar();
-                gvOperacoes.DataBind();
-            }
+                if (gvOperacoes.Rows.Count > 0)
+                {
+                    //This replaces <td> with <th> and adds the scope attribute
+                    gvOperacoes.UseAccessibleHeader = true;
 
-            if (gvOperacoes.Rows.Count > 0)
-            {
-                //This replaces <td> with <th> and adds the scope attribute
-                gvOperacoes.UseAccessibleHeader = true;
+                    //This will add the <thead> and <tbody> elements
+                    gvOperacoes.HeaderRow.TableSection = TableRowSection.TableHeader;
 
-                //This will add the <thead> and <tbody> elements
-                gvOperacoes.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-                //This adds the <tfoot> element. 
-                //Remove if you don't have a footer row
-                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
+                    //This adds the <tfoot> element. 
+                    //Remove if you don't have a footer row
+                    //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
+                }
             }
         }
 
@@ -161,9 +161,9 @@ namespace Site
         protected void gvOperacoes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             var obj = e.CommandArgument;
-            int idOperacao = int.Parse(gvOperacoes.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+            int idOperacao = int.Parse(gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[0].Text);
             idHiddenOperacao.Value = idOperacao.ToString();
-            string operacaoTipo = gvOperacoes.Rows[int.Parse(e.CommandArgument.ToString())].Cells[7].Text;
+            string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
             string user = "Franklim";
 
             switch (e.CommandName)
@@ -195,7 +195,34 @@ namespace Site
                     break;
             }
         }
-
+        protected void gvRepasseMedico_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var obj = e.CommandArgument;
+            string Usuario = "Franklim";
+            int idRepasse = int.Parse(gvRepasseMedico.Rows[int.Parse(obj.ToString())].Cells[0].Text);
+            bool result = false;
+            switch (e.CommandName)
+            {
+                case "Pagar":
+                    result = ReceitaRepasse.Pagar(Usuario, idRepasse);
+                    break;
+                case "Excluir":
+                    result = ReceitaRepasse.Excluir(Usuario, idRepasse);
+                    break;
+                default:
+                    break;
+            }
+            if (!result)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "alert('Falha na operação')", true);
+            }
+            else
+            {
+                gvRepasseMedico.DataBind();
+                gvOperacoes.DataBind();
+            }
+            CarregarModalRepasse(int.Parse(idHiddenOperacao.Value), "Receita");
+        }
         private void CarregarModalOperacao(int idOperacao, string tipo)
         {
             string scriptModal = "null";
@@ -273,46 +300,63 @@ namespace Site
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
-
         private string ConvertMoney(string v)
         {
             if (!v.Contains(','))
             {
                 v += "00";
             }
-            return v;
+            return v.Replace("-","");
         }
-
         private void CarregarModalRepasse(int idOperacao, string tipo)
         {
             Receita rr = Receita.ListarPorID(idOperacao);
+            HddValorDisponivel.Value = rr.cvValorDisponivel.Value.ToString();
 
-            tbValorDisponivel.Text = ConvertMoney(rr.cvValorDisponivel.Value.ToString());
-            string scriptModal = "$('#repasseMedicoModal').modal('show')";
+            if (rr.cvValorDisponivel < 0)
+            {
+                HddValorNegativo.Value = "1";
+                tbValorDisponivel.Text = ConvertMoney("0");
+
+            }
+            else
+            { 
+                HddValorNegativo.Value = "0";
+                tbValorDisponivel.Text = ConvertMoney(HddValorDisponivel.Value);
+            }
+
+            string scriptModal = $"formatValorDisponivel('{HddValorNegativo.Value}'); $('#repasseMedicoModal').modal('show')";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
-
         protected void btNovaOperacao_Click(object sender, EventArgs e)
         {
             string scriptModal = "$('#operacaoModal').modal('show')";
             tbReceitaDesconto.Text = "6,5";
             idHiddenOperacao.Value = "";
+            tbValorDisponivel.Text = "";
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
         }
-
-        protected void btAdicionar_Click(object sender, EventArgs e)
+        protected void bdAddRepasse_Click(object sender, EventArgs e)
         {
             string Usuario = "Franklim";
             ReceitaRepasse rr = new ReceitaRepasse();
             rr.IdProfissional = int.Parse(dpSelectProfissional.SelectedValue);
-            rr.cvValor = float.Parse(tbValorOperacao.Text);
+            rr.cvValor = float.Parse(tbValorDisponivel.Text);
             rr.idReceita = int.Parse(idHiddenOperacao.Value);
+            string scriptModal = $"formatValorDisponivel('{HddValorNegativo.Value}'); $('#repasseMedicoModal').modal('show')";
 
-            rr.Adicionar(Usuario);
+            if (!rr.Adicionar(Usuario))
+            {
 
-            string scriptModal = "$('#repasseMedicoModal').modal('show')";
-            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
+            }
+            else
+            {
+                gvRepasseMedico.DataBind();
+                CarregarModalRepasse(rr.idReceita, "Receita");
+            }
         }
+
+       
     }
 }

@@ -12,7 +12,7 @@ namespace Site.Classes
     public class Operacao 
     {
         #region Campos
-        public enum imgStatus { zero = 0, one = 1, two = 2, three = 3  }
+        public enum imgStatus { zero = 0, one = 1, two = 2, three = 3, four = 4 }
         public int ID { get; set; }//idReceita 
         public float cvValor { get; set; }//cvValor
         public string ccDescricao { get; set; }//ccApelido 
@@ -23,6 +23,9 @@ namespace Site.Classes
         public imgStatus Status { get; set; }//Status  
         public string Tipo { get; set; }//Tipo 
         public int? cvNF { get; set; }//cvNF
+
+        public float? cvValorRecebido { get; set; }//cvValorRecebido
+        public float? cvValorRepassado { get; set; }//cvValorRepassado
 
         #endregion
 
@@ -43,6 +46,22 @@ namespace Site.Classes
             this.Status = (imgStatus)status;
             this.Tipo = tipo;
             this.cvNF = nf;
+        }
+
+        public Operacao(int id, float valor, string descricao, string observacao, DateTime? dtEmissao, DateTime? dtPagamento, DateTime? dtRepasse, int status, string tipo, int? nf, float? valorRecebido, float? valorRepassado)
+        {
+            this.ID = id;
+            this.cvValor = valor;
+            this.ccDescricao = descricao;
+            this.observacao = observacao;
+            this.cdEmissao = dtEmissao;
+            this.cdPagamento = dtPagamento;
+            this.cdRepasse = dtRepasse;
+            this.Status = (imgStatus)status;
+            this.Tipo = tipo;
+            this.cvNF = nf;
+            this.cvValorRecebido = valorRecebido;
+            this.cvValorRepassado = valorRepassado;
         }
         public bool Adicionar(string Usuario)
         {
@@ -106,6 +125,10 @@ namespace Site.Classes
                     Nullable<DateTime> dtPagamento = new Nullable<DateTime>();
                     Nullable<DateTime> dtRepasse = new Nullable<DateTime>();
 
+                    Nullable<float> cvRecebido = new Nullable<float>();
+                    Nullable<float> cvRepassado = new Nullable<float>();
+
+                    #region Conversoes NULL
                     if (DateTime.TryParse(c["cdEmissao"].ToString(), out DateTime dt1))
                     {
                         dtEmissao = dt1;
@@ -118,6 +141,15 @@ namespace Site.Classes
                     {
                         dtRepasse = dt3;
                     }
+                    if (float.TryParse(c["cvValorRecebido"].ToString(), out float f1))
+                    {
+                        cvRecebido = f1;
+                    }
+                    if (float.TryParse(c["cvValorRepassado"].ToString(), out float f2))
+                    {
+                        cvRepassado = f2;
+                    }
+                    #endregion
 
                     int.TryParse(c["cvNF"].ToString(), out int cvNF);
                     Lista.Add(new Operacao(
@@ -131,6 +163,8 @@ namespace Site.Classes
                         , int.Parse(c["Status"].ToString())
                         , c["Tipo"].ToString()
                         , cvNF
+                        , cvRecebido
+                        , cvRepassado
                         ));
                 }
 

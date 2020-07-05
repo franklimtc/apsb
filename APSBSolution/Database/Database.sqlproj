@@ -61,6 +61,7 @@
     <Folder Include="dbo\Tables\" />
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\Sequences\" />
+    <Folder Include="dbo\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Procedures\INS_Clinica.sql" />
@@ -119,6 +120,13 @@
     <Build Include="dbo\Stored Procedures\INS_Receita.sql" />
     <Build Include="dbo\Stored Procedures\SEL_OperacaoByID.sql" />
     <Build Include="dbo\Sequences\SQ_ProfissionalAuto.sql" />
+    <Build Include="dbo\Tables\tbProfissionalRepasse.sql" />
+    <Build Include="dbo\Views\vwReceitas.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\PGR_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Repasse.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

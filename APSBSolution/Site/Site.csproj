@@ -407,6 +407,7 @@
     <Content Include="Content\DataTables\media\images\sort_both.png" />
     <Content Include="Content\DataTables\media\images\sort_desc.png" />
     <Content Include="Content\DataTables\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\Icons\chart-four.svg" />
     <Content Include="Content\Icons\archive-outline.svg" />
     <Content Include="Content\Icons\battery-dead-outline.svg" />
     <Content Include="Content\Icons\battery-full-outline.svg" />
