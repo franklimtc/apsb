@@ -63,7 +63,7 @@ namespace Site
                 dpTipoDespesa.Items.FindByValue("0").Selected = true;
 
                 //Data
-                tbDespesaDataNF.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
 
                 // Parse a date and time with no styles.
                 culture = CultureInfo.CreateSpecificCulture("pt-BR");
@@ -81,7 +81,7 @@ namespace Site
             {
                 Despesa dp = new Despesa();
                 dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue);
-                dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("dd/MM/yyyy")), culture, styles);
+                dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("yyyy-MM-dd")), culture, styles);
                 dp.cvValor = float.Parse(tbValorOperacao.Text);
                 dp.ccObservacao = tbDespesaObs.Text;
                 if (idHiddenOperacao.Value.IsNullOrWhiteSpace())
@@ -150,7 +150,7 @@ namespace Site
             tbValorOperacao.Text = "";
             dpTipoDespesa.ClearSelection();
             dpTipoDespesa.Items.FindByValue("0").Selected = true;
-            tbDespesaDataNF.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
             tbDespesaObs.Text = "";
             tbSearch.Text = "";
             //Form Receitas
@@ -235,7 +235,7 @@ namespace Site
                 dpTipoDespesa.Items.FindByText(op.ccDescricao).Selected = true;
                 if (op.cdEmissao.HasValue)
                 {
-                    tbDespesaDataNF.Text = op.cdEmissao.Value.ToString("dd/MM/yyyy");
+                    tbDespesaDataNF.Text = op.cdEmissao.Value.ToString("yyyy-MM-dd");
                 }
                 else
                 {
@@ -254,7 +254,7 @@ namespace Site
 
                 if (op.cdEmissao.HasValue)
                 {
-                    tbReceitaDataNF.Text = op.cdEmissao.Value.ToString("dd/MM/yyyy");
+                    tbReceitaDataNF.Text = op.cdEmissao.Value.ToString("yyyy-MM-dd");
                 }
                 else
                 { 
@@ -263,7 +263,7 @@ namespace Site
 
                 if (op.cdPagamento.HasValue)
                 {
-                    tbReceitaDataPgtoNF.Text = op.cdPagamento.Value.ToString("dd/MM/yyyy");
+                    tbReceitaDataPgtoNF.Text = op.cdPagamento.Value.ToString("yyyy-MM-dd");
                 }
                 else
                 {
@@ -370,6 +370,28 @@ namespace Site
                 CarregarModalRepasse(rr.idReceita, "Receita");
             }
 
+        }
+
+        protected void btAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            gvOperacoes.DataSourceID = "";
+            bool status = bool.Parse(chkStatus.SelectedValue);
+            bool arquivado = bool.Parse(chkArquivado.SelectedValue);
+            DateTime? dtIni = null;
+            DateTime? dtFin = null;
+
+            if (!dtInicio.Text.IsNullOrWhiteSpace())
+            {
+                dtIni = DateTime.Parse(dtInicio.Text);
+            }
+
+            if (!dtFim.Text.IsNullOrWhiteSpace())
+            {
+                dtFin = DateTime.Parse(dtFim.Text);
+            }
+
+            gvOperacoes.DataSource = Operacao.Listar(arquivado, status, dtIni, dtFin);
+            gvOperacoes.DataBind();
         }
     }
 }

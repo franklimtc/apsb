@@ -112,10 +112,96 @@ namespace Site.Classes
             return result;
         }
 
+        public static List<Operacao> Listar(bool arquivado, bool cbstatus, DateTime? inicio, DateTime? fim)
+        {
+            List<object[]> parametros = new List<object[]>();
+            
+            parametros.Add(new object[] { "@cbArquivado", arquivado });
+            parametros.Add(new object[] { "@cbStatus", cbstatus });
+
+            if (inicio.HasValue)
+            {
+                parametros.Add(new object[] { "@dtInicio", inicio.Value });
+            }
+            else
+            { 
+                parametros.Add(new object[] { "@dtInicio", DBNull.Value });
+            }
+
+            if (fim.HasValue)
+            {
+                parametros.Add(new object[] { "@dtFim", fim.Value });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@dtFim", DBNull.Value });
+            }
+
+            
+
+            DataTable dt = DAO.RetornaDT("SEL_Operacoes @cbArquivado = @cbArquivado, @cbStatus = @cbStatus, @dtInicio = @dtInicio, @dtFim = @dtFim;", parametros);
+            List<Operacao> Lista = new List<Operacao>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    Nullable<DateTime> dtEmissao = new Nullable<DateTime>();
+                    Nullable<DateTime> dtPagamento = new Nullable<DateTime>();
+                    Nullable<DateTime> dtRepasse = new Nullable<DateTime>();
+
+                    Nullable<float> cvRecebido = new Nullable<float>();
+                    Nullable<float> cvRepassado = new Nullable<float>();
+
+                    #region Conversoes NULL
+                    if (DateTime.TryParse(c["cdEmissao"].ToString(), out DateTime dt1))
+                    {
+                        dtEmissao = dt1;
+                    }
+                    if (DateTime.TryParse(c["cdPagamento"].ToString(), out DateTime dt2))
+                    {
+                        dtPagamento = dt2;
+                    }
+                    if (DateTime.TryParse(c["cdRepasse"].ToString(), out DateTime dt3))
+                    {
+                        dtRepasse = dt3;
+                    }
+                    if (float.TryParse(c["cvValorRecebido"].ToString(), out float f1))
+                    {
+                        cvRecebido = f1;
+                    }
+                    if (float.TryParse(c["cvValorRepassado"].ToString(), out float f2))
+                    {
+                        cvRepassado = f2;
+                    }
+                    #endregion
+
+                    int.TryParse(c["cvNF"].ToString(), out int cvNF);
+                    Lista.Add(new Operacao(
+                        int.Parse(c["ID"].ToString())
+                        , float.Parse(c["cvValor"].ToString())
+                        , c["ccDescricao"].ToString()
+                        , c["observacao"].ToString()
+                        , dtEmissao
+                        , dtPagamento
+                        , dtRepasse
+                        , int.Parse(c["Status"].ToString())
+                        , c["Tipo"].ToString()
+                        , cvNF
+                        , cvRecebido
+                        , cvRepassado
+                        ));
+                }
+
+            }
+
+            return Lista;
+        }
+
         public static List<Operacao> Listar()
         {
             List<object[]> parametros = new List<object[]>();
-            DataTable dt = DAO.RetornaDT("SEL_Operacoes", parametros);
+
+            DataTable dt = DAO.RetornaDT("SEL_Operacoes;", parametros);
             List<Operacao> Lista = new List<Operacao>();
             if (dt.Rows.Count > 0)
             {

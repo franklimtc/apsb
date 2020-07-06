@@ -19,6 +19,7 @@
 
             <div class="col-md-4">
                 <h2>Cadastro de Operações</h2>
+                <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
                 <br />
             </div>
             <div class="col-md-4"></div>
@@ -31,16 +32,32 @@
             <div class="col">
                 <h2>Filtros adicionais</h2>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-sm-2">
+                        <asp:Label Text="Status" runat="server" AssociatedControlID="chkStatus" />
                         <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus">
                             <asp:ListItem Text="Ativo" Selected="True" Value="true" />
                             <asp:ListItem Text="Inativo" Value="false" />
                         </asp:RadioButtonList>
                     </div>
-                    <div class="col">
-                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" />
+                      <div class="col-sm-2">
+                          <asp:Label Text="Arquivado" runat="server" AssociatedControlID="chkArquivado" />
+                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkArquivado">
+                            <asp:ListItem Text="Sim" Value="true" />
+                            <asp:ListItem Text="Não" Value="false" Selected="True" />
+                        </asp:RadioButtonList>
                     </div>
-                    <div class="col"></div>
+                    <div class="col-sm-2">
+                        <asp:Label Text="Data Inicial" runat="server" AssociatedControlID="dtInicio" /><asp:TextBox runat="server" ID="dtInicio" type="date" /><br />
+                    </div>
+                    <div class="col-sm-2">
+                        <asp:Label Text="Data Final" runat="server" AssociatedControlID="dtFim" /><asp:TextBox runat="server" ID="dtFim" type="date" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <br />
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btAplicarFiltro_Click" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -102,7 +119,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-                <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
+                
             </div>
         </div>
     </div>
@@ -271,7 +288,7 @@
                                 <div class="col-sm-6">
                                     <label for="tbDespesaDataNF">Data</label>
                                     <%--<input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control date" />
+                                    <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control" type="date"  />
                                 </div>
                                 <div id="divNF" class="col-sm-6">
                                     <label for="tbDespesaNF">NF</label>
@@ -292,7 +309,7 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataNF">Data de Emissão</label>
                                     <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control date" Enabled="false" />
+                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control" Enabled="false" type="date"  />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNF">NF</label>
@@ -304,7 +321,7 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
                                     <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control date" Enabled="false" />
+                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control" Enabled="false" type="date"  />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNFValorPG">Valor Pago</label>
