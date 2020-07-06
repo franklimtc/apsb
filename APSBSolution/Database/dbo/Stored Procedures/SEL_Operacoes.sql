@@ -19,7 +19,7 @@ AS BEGIN
 	WHEN ISNULL(vwR.cvValorUsado,0) > ISNULL(r.cvValorPago,0) OR ISNULL(r.cvValorPago,0) > ISNULL(r.cvValor,0)  THEN 4
 		WHEN r.cdEmissao IS NULL THEN 0      
 		WHEN r.cdEmissao IS NOT NULL AND r.cdPagamento IS NULL THEN 1      
-		WHEN r.cdEmissao IS NOT NULL AND r.cdPagamento IS NOT NULL AND vwR.status = 'A' THEN 2      
+		WHEN r.cdEmissao IS NOT NULL AND r.cdPagamento IS NOT NULL AND (vwR.status = 'A' OR vwR.status IS NULL) THEN 2      
 		WHEN r.cdEmissao IS NOT NULL AND r.cdPagamento IS NOT NULL AND vwR.status = 'R' AND CAST(ISNULL(r.cvValorPago, 0) AS DECIMAL(10,2)) = CAST(ISNULL(vwR.cvValorUsado, 0) AS DECIMAL(10,2)) THEN 3      
 		ELSE 4       
 	END [Status]      
