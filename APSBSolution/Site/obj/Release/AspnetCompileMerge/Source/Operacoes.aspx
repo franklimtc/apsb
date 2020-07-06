@@ -82,12 +82,12 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>

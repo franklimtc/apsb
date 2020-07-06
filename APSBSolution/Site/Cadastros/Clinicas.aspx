@@ -5,6 +5,9 @@
         #chkDescontovariavel {
             padding-left: 5px;
         }
+
+
+
     </style>
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="idHiddenClinica" />

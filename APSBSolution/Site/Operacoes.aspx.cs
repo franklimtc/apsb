@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
@@ -23,23 +24,21 @@ namespace Site
         {
             // You only need the following 2 lines of code if you are not 
             // using an ObjectDataSource of SqlDataSource
-            gvOperacoes.DataBind();
+            //gvOperacoes.DataBind();
 
-            if (!IsPostBack)
+
+            //gvMedicos.DataSource = Profissional.Listar();
+            if (gvOperacoes.Rows.Count > 0)
             {
-                //gvMedicos.DataSource = Profissional.Listar();
-                if (gvOperacoes.Rows.Count > 0)
-                {
-                    //This replaces <td> with <th> and adds the scope attribute
-                    gvOperacoes.UseAccessibleHeader = true;
+                //This replaces <td> with <th> and adds the scope attribute
+                gvOperacoes.UseAccessibleHeader = true;
 
-                    //This will add the <thead> and <tbody> elements
-                    gvOperacoes.HeaderRow.TableSection = TableRowSection.TableHeader;
+                //This will add the <thead> and <tbody> elements
+                gvOperacoes.HeaderRow.TableSection = TableRowSection.TableHeader;
 
-                    //This adds the <tfoot> element. 
-                    //Remove if you don't have a footer row
-                    //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
-                }
+                //This adds the <tfoot> element. 
+                //Remove if you don't have a footer row
+                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
 
@@ -312,7 +311,7 @@ namespace Site
         {
             Receita rr = Receita.ListarPorID(idOperacao);
             HddValorDisponivel.Value = rr.cvValorDisponivel.Value.ToString();
-
+            tbValorRepassado.Text = ConvertMoney((rr.cvValorPago - rr.cvValorDisponivel).ToString());
             if (rr.cvValorDisponivel < 0)
             {
                 HddValorNegativo.Value = "1";
@@ -331,9 +330,22 @@ namespace Site
         protected void btNovaOperacao_Click(object sender, EventArgs e)
         {
             string scriptModal = "$('#operacaoModal').modal('show')";
-            tbReceitaDesconto.Text = "6,5";
             idHiddenOperacao.Value = "";
             tbValorDisponivel.Text = "";
+            tbValorOperacao.Text = "";
+
+            tbReceitaDataNF.Text = "";
+            tbReceitaDataNF.Enabled = false;
+            tbReceitaNF.Text = "";
+            tbReceitaNF.Enabled = false;
+            tbReceitaDataPgtoNF.Text = "";
+            tbReceitaDataPgtoNF.Enabled = false;
+            tbReceitaNFValorPG.Text = "";
+            tbReceitaNFValorPG.Enabled = false;
+            tbReceitaDesconto.Text = "";
+            tbReceitaDesconto.Enabled = false;
+
+
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
         }
@@ -344,19 +356,20 @@ namespace Site
             rr.IdProfissional = int.Parse(dpSelectProfissional.SelectedValue);
             rr.cvValor = float.Parse(tbValorDisponivel.Text);
             rr.idReceita = int.Parse(idHiddenOperacao.Value);
-            string scriptModal = $"formatValorDisponivel('{HddValorNegativo.Value}'); $('#repasseMedicoModal').modal('show')";
+            string scriptModal = null;
 
             if (!rr.Adicionar(Usuario))
             {
-
+                scriptModal = string.Format($"alert('Falha na operação!'); formatValorDisponivel('{HddValorNegativo.Value}'); $('#repasseMedicoModal').modal('show')");
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", scriptModal, true);
             }
             else
             {
                 gvRepasseMedico.DataBind();
+                gvOperacoes.DataBind();
                 CarregarModalRepasse(rr.idReceita, "Receita");
             }
-        }
 
-       
+        }
     }
 }
