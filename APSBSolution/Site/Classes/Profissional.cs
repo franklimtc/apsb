@@ -69,6 +69,7 @@ namespace Site.Classes
             this.Observacoes = _observacoes;
         }
 
+       
         public static List<Profissional> Listar(bool status = true)
         {
             List<Profissional> Lista = new List<Profissional>();
@@ -162,9 +163,97 @@ namespace Site.Classes
             }
             return Lista.First();
         }
+
+        public static List<Profissional> Listar()
+        {
+            DataTable dt = DAO.RetornaDT("SEL_Profissionais");
+            List<Profissional> Lista = new List<Profissional>();
+
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow p in dt.Rows)
+                {
+                    Profissional p1 = new Profissional(int.Parse(p["IdProfissional"].ToString())
+                        , p["ccNome"].ToString()
+                        , p["ccEmail"].ToString()
+                        , p["observacao"].ToString()
+                        );
+                    p1.ccSexo = p["ccSexo"].ToString();
+                    p1.ccNaturalUF = p["ccNaturalUF"].ToString();
+                    p1.ccNaturalCidade = p["ccNaturalCidade"].ToString();
+                    p1.ccEstadoCivil = p["ccEstadoCivil"].ToString();
+                    if (!p["RGNum"].ToString().IsNullOrWhiteSpace())
+                    {
+                        p1.RGNum = long.Parse(p["RGNum"].ToString());
+                    }
+                    if (!p["CPFNum"].ToString().IsNullOrWhiteSpace())
+                    {
+                        p1.CPFNum = long.Parse(p["CPFNum"].ToString());
+                    }
+                    if (!p["cvTelefone"].ToString().IsNullOrWhiteSpace())
+                    {
+                        p1.cvTelefone = long.Parse(p["cvTelefone"].ToString());
+                    }
+                    if (!p["cvCelular"].ToString().IsNullOrWhiteSpace())
+                    {
+                        p1.cvCelular = long.Parse(p["cvCelular"].ToString());
+                    }
+
+                    p1.RGEmissor = p["RGEmissor"].ToString();
+                    DateTime data;
+                    if (DateTime.TryParse(p["RGdtEmissao"].ToString(), out data))
+                    {
+                        p1.RGdtEmissao = data;
+                    }
+
+                    if (DateTime.TryParse(p["cdDataNascimento"].ToString(), out data))
+                    {
+                        p1.dtNascimento = data;
+                    }
+
+
+                    if (DateTime.TryParse(p["cdPgtoTaxa"].ToString(), out data))
+                    {
+                        p1.cdPgtoTaxa = data;
+                    }
+                    if (DateTime.TryParse(p["cdFiliacao"].ToString(), out data))
+                    {
+                        p1.cdFiliacao = data;
+                    }
+                    if (DateTime.TryParse(p["cdRegCartorio"].ToString(), out data))
+                    {
+                        p1.cdRegCartorio = data;
+                    }
+
+                    p1.nomePai = p["nomePai"].ToString();
+                    p1.nomeMae = p["nomeMae"].ToString();
+                    p1.nomeConjuge = p["nomeConjuge"].ToString();
+                    Lista.Add(p1);
+                }
+            }
+            return Lista;
+        }
         public static List<Profissional> ListaDropDown()
         {
             DataTable dt = DAO.RetornaDT("SEL_ProfissionaisDP");
+            List<Profissional> Lista = new List<Profissional>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow p in dt.Rows)
+                {
+                    Lista.Add(new Profissional(int.Parse(p["idProfissional"].ToString()), p["ccNome"].ToString()));
+                }
+
+            }
+
+            return Lista;
+        }
+        public static List<Profissional> ListaDropDown(int idClinica)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idOperacao", idClinica });
+
+            DataTable dt = DAO.RetornaDT("SEL_ProfissionalClinicaDP @idOperacao = @idOperacao;", parametros);
             List<Profissional> Lista = new List<Profissional>();
             if (dt.Rows.Count > 0)
             {

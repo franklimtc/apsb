@@ -186,6 +186,24 @@ namespace Site
         protected global::System.Web.UI.WebControls.Button bdAddRepasse;
 
         /// <summary>
+        /// Controle pnObs.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnObs;
+
+        /// <summary>
+        /// Controle tbObsRepasseProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbObsRepasseProfissional;
+
+        /// <summary>
         /// Controle gvRepasseMedico.
         /// </summary>
         /// <remarks>

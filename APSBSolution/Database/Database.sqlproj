@@ -127,6 +127,8 @@
     <Build Include="dbo\Stored Procedures\PGR_Repasse.sql" />
     <Build Include="dbo\Stored Procedures\INS_Repasse.sql" />
     <Build Include="dbo\Stored Procedures\EXC_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalClinicaDP.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_RepasseObs.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

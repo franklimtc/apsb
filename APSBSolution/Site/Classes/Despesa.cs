@@ -85,10 +85,24 @@ namespace Site.Classes
             List<object[]> parametros = new List<object[]>();
             parametros.Add(new object[] { "@cbArquivado", arquivado });
             parametros.Add(new object[] { "@cbStatus", status });
-            parametros.Add(new object[] { "@dtInicial", dtInicio });
-            parametros.Add(new object[] { "@dtFinal", dtFim });
+            if (dtInicio != null)
+            {
+                parametros.Add(new object[] { "@dtInicial", dtInicio });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@dtInicial", DBNull.Value });
+            }
+            if (dtFim != null)
+            {
+                parametros.Add(new object[] { "@dtFinal", dtFim });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@dtFinal", DBNull.Value });
+            }
 
-            DataTable dt = DAO.RetornaDT("SEL_DESPESAS @cbArquivado = @, @cbStatus = @cbStatus, @dtInicial = @dtInicial, @dtFinal = @dtFinal;", parametros);
+            DataTable dt = DAO.RetornaDT("SEL_DESPESAS @cbArquivado = @cbArquivado, @cbStatus = @cbStatus, @dtInicial = @dtInicial, @dtFinal = @dtFinal;", parametros);
             List<Despesa> Lista = new List<Despesa>();
             if (dt.Rows.Count > 0)
             {
@@ -96,7 +110,7 @@ namespace Site.Classes
                 {
                     Lista.Add(new Despesa(
                         int.Parse(c["idDespesas"].ToString())
-                        , float.Parse(c["idDespesas"].ToString())
+                        , float.Parse(c["cvValor"].ToString())
                         , DateTime.Parse(c["cdData"].ToString())
                         , c["ccTipo"].ToString()
                         , c["observacao"].ToString()

@@ -164,6 +164,8 @@ namespace Site
             idHiddenOperacao.Value = idOperacao.ToString();
             string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
             string user = "Franklim";
+            pnObs.Visible = false;
+
 
             switch (e.CommandName)
             {
@@ -200,6 +202,7 @@ namespace Site
             string Usuario = "Franklim";
             int idRepasse = int.Parse(gvRepasseMedico.Rows[int.Parse(obj.ToString())].Cells[0].Text);
             bool result = false;
+
             switch (e.CommandName)
             {
                 case "Pagar":
@@ -207,6 +210,11 @@ namespace Site
                     break;
                 case "Excluir":
                     result = ReceitaRepasse.Excluir(Usuario, idRepasse);
+                    break;
+                case "Info":
+                    pnObs.Visible = true;
+                    tbObsRepasseProfissional.Text = ReceitaRepasse.GetObs(idRepasse);
+                    result = true;
                     break;
                 default:
                     break;

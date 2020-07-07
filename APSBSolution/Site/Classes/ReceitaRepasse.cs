@@ -19,6 +19,8 @@ namespace Site.Classes
         public int IdObservacao { get; set; }//IdObservacao    int
         public string Observacao { get; set; }
         public float cvValor { get; set; }//cvValor real
+        public float cvTaxaProfissional { get; set; }
+        public float cvValorLiquido { get; set; }
         public StatusReceita ccStatus { get; set; }//ccStatus    char
         public DateTime dataRepasse { get; set; }//dataRepasse datetime
         public string ccCriadoPor { get; set; }//ccCriadoPor varchar
@@ -60,6 +62,24 @@ namespace Site.Classes
             this.ccNome = nome.ToString();
         }
 
+        public ReceitaRepasse(object _idReasse, object _idReceita, object _idProfissional, object _Obs, object _valor, object _status, object dtRepasse, object criadoPor, object nome, object taxa, object valorLiquido)
+        {
+            this.idRepasse = int.Parse(_idReasse.ToString());
+            this.idReceita = int.Parse(_idReceita.ToString());
+            this.IdProfissional = int.Parse(_idProfissional.ToString());
+            this.Observacao = _Obs.ToString();
+            this.cvValor = float.Parse(_valor.ToString());
+            this.ccStatus = (StatusReceita)Convert.ToChar(_status);
+            this.ccCriadoPor = criadoPor.ToString();
+            //Validar se a propriedade é igual a null
+            if (!dtRepasse.ToString().IsNullOrWhiteSpace())
+            {
+                this.dataRepasse = DateTime.Parse(dtRepasse.ToString());
+            }
+            this.ccNome = nome.ToString();
+            this.cvTaxaProfissional = float.Parse(taxa.ToString());
+            this.cvValorLiquido = float.Parse(valorLiquido.ToString());
+        }
         public bool Salvar(string Usuario)
         {
             //UPD_Repasse @idRepasse = @idRepasse, @ccStatus = @ccStatus, @UserName = @UserName;
@@ -162,6 +182,8 @@ namespace Site.Classes
                         , c["dataRepasse"]
                         , c["ccCriadoPor"]
                         , c["ccNome"]
+                        , c["cvTaxaProfissional"]
+                        , c["cvValorLiquido"]
                         ));
                 }
             }
@@ -192,34 +214,25 @@ namespace Site.Classes
             return result;
         }
 
-        
+        internal static string GetObs(int idRepasse)
+        {
+            string result = "Nenhuma observação!";
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idRepasse", idRepasse });
 
-        //public static ReceitaRepasse ListarPorID(int idReceita)
-        //{
-        //    List<object[]> parametros = new List<object[]>();
-        //    parametros.Add(new object[] { "@idReceita", idReceita });
-        //    DataTable dt = DAO.RetornaDT("SEL_Receitas @idReceita = @idReceita;", parametros);
-        //    List<ReceitaRepasse> Lista = new List<ReceitaRepasse>();
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        foreach (DataRow c in dt.Rows)
-        //        {
-        //            Lista.Add(new ReceitaRepasse(
-        //                c["idRepasse"]
-        //                , c["idReceita"]
-        //                , c["IdProfissional"]
-        //                , c["observacao"]
-        //                , c["cvValor"]
-        //                , c["ccStatus"]
-        //                , c["dataRepasse"]
-        //                , c["ccCriadoPor"]
-        //                , c["ccNome"]
-        //                , c["cvValorDisponivel"]
-        //                ));
-        //        }
-        //    }
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"SEL_RepasseObs @idRepasse = @idRepasse;", parametros);
+                if (!retorno.ToString().IsNullOrWhiteSpace())
+                {
+                    result = retorno.ToString();
+                }
+            }
+            catch
+            {
 
-        //    return Lista.FirstOrDefault();
-        //}
+            }
+            return result;
+        }
     }
 }

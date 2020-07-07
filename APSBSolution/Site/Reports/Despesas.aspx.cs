@@ -17,5 +17,11 @@ namespace Site.Reports
         {
             Response.Redirect(@"Report.aspx?report=report04");
         }
+
+        protected void btAplicarFiltro_Click(object sender, EventArgs e)
+        {
+            gvDespesas.DataBind();
+
+        }
     }
 }

@@ -159,7 +159,14 @@ namespace Site.Classes
             parametros.Add(new object[] { "@IdClinica", this.IdClinica });
             parametros.Add(new object[] { "@cvValor", this.cvValor });
             parametros.Add(new object[] { "@observacoes", this.Observacao });
-            parametros.Add(new object[] { "@cvDesconto", this.cvDesconto });
+            if (this.cvDesconto != null)
+            {
+                parametros.Add(new object[] { "@cvDesconto", this.cvDesconto });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@cvDesconto", DBNull.Value });
+            }
 
             try
             {
@@ -318,7 +325,7 @@ namespace Site.Classes
                         , cdEmissao
                         , cdPagamento
                         , cdRepasse
-                        , float.Parse(c["cvDesconto"].ToString().IfNullOrWhiteSpace("0"))
+                        , cvDesconto
                         , cvNF
                         , c["observacao"].ToString()
                         , cvValorDisponivel
