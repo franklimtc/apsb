@@ -483,7 +483,7 @@ namespace Site.Cadastros
 
             if (btUpload.HasFile)
             {
-                if (btUpload.PostedFile.ContentLength < 2100000)
+                if (btUpload.PostedFile.ContentLength < 52428800)
                 {
                     string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{btUpload.PostedFile.FileName}";
                     btUpload.PostedFile.SaveAs(fullPath);
@@ -509,7 +509,7 @@ namespace Site.Cadastros
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo com tamanho inferior a 2MB!');", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo com tamanho inferior a 50MB!');", true);
                     CarregarModalArquivos();
                 }
                
@@ -542,9 +542,6 @@ namespace Site.Cadastros
                     }
                     break;
                 case "Baixar":
-
-                    //string path = $"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\{nomeArquivo}";
-
                     string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{nomeArquivo}";
                     ProfissionalArquivo.BaixarArquivo(fullPath, idProfissionalArquivo);
 

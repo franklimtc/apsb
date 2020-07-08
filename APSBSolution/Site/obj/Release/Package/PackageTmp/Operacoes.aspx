@@ -9,7 +9,7 @@
 
         .num {
             text-align: right;
-            width:90px;
+            width: 90px;
         }
     </style>
 
@@ -19,7 +19,10 @@
 
             <div class="col-md-4">
                 <h2>Cadastro de Operações</h2>
+                <%--Datasources--%>
                 <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
+
+                <%--Datasources--%>
                 <br />
             </div>
             <div class="col-md-4"></div>
@@ -39,8 +42,8 @@
                             <asp:ListItem Text="Inativo" Value="false" />
                         </asp:RadioButtonList>
                     </div>
-                      <div class="col-sm-2">
-                          <asp:Label Text="Arquivado" runat="server" AssociatedControlID="chkArquivado" />
+                    <div class="col-sm-2">
+                        <asp:Label Text="Arquivado" runat="server" AssociatedControlID="chkArquivado" />
                         <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkArquivado">
                             <asp:ListItem Text="Sim" Value="true" />
                             <asp:ListItem Text="Não" Value="false" Selected="True" />
@@ -84,9 +87,9 @@
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" />
                         <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
-                        <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num"/>
-                        <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num"/>
-                        <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num"/>
+                        <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
+                        <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
+                        <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="Nota" DataField="cvNF" />
                         <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" DataFormatString="{0:d}" />
                         <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" DataFormatString="{0:d}" />
@@ -119,7 +122,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
-                
+
             </div>
         </div>
     </div>
@@ -164,17 +167,21 @@
                             </div>
                             <div>
                                 <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control" DataSourceID="dsProfissional" DataTextField="ccNome" DataValueField="IdProfissional"></asp:DropDownList>
-                                <asp:ObjectDataSource ID="dsProfissional" runat="server" SelectMethod="ListaDropDown" TypeName="Site.Classes.Profissional"></asp:ObjectDataSource>
+                                <asp:ObjectDataSource ID="dsProfissional" runat="server" SelectMethod="ListaDropDown" TypeName="Site.Classes.Profissional">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="idHiddenOperacao" Name="idClinica" PropertyName="Value" Type="Int32" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <%-- <div class="row">
                         <div class="col">
                             <label for="tbObsprofissional">Observações</label>
                             <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height: 100px;" readonly="readonly" />
                             
                         </div>
-                    </div>
+                    </div>--%>
                     <hr />
                     <div class="row">
                         <div class="col">
@@ -198,19 +205,37 @@
                             <asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" OnClick="bdAddRepasse_Click" />
                         </div>
                     </div>
+                    <asp:Panel runat="server" ID="pnObs" CssClass="row" Visible="false">
+                        <div class="col">
+                            <asp:Label Text="Observações" runat="server" AssociatedControlID="tbObsRepasseProfissional" />
+                            <asp:TextBox runat="server" ID="tbObsRepasseProfissional" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" />
+                        </div>
+                    </asp:Panel>
+                   
                     <div class="row">
                         <div class="col">
                             <br />
                             <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand">
                                 <Columns>
-                                    <asp:BoundField HeaderText="ID" DataField="idRepasse"/>
-                                    <asp:BoundField HeaderText ="Nome" DataField ="ccNome" />
-                                    <asp:BoundField DataField="cvValor" HeaderText="Valor" DataFormatString="{0:C}" />
+                                    <asp:BoundField HeaderText="ID" DataField="idRepasse" />
+                                    <asp:BoundField HeaderText="Nome" DataField="ccNome" />
+                                    <asp:BoundField HeaderText="Taxa" DataField="cvTaxaProfissional" />
+                                    <asp:BoundField DataField="cvValor" HeaderText="R$ Bruto" DataFormatString="{0:C}" />
+                                    <asp:BoundField DataField="cvValorLiquido" HeaderText="R$ Liquido" DataFormatString="{0:C}" />
                                     <asp:BoundField DataField="ccStatus" HeaderText="Status" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:imagebutton imageurl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" CommandName="Pagar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />&nbsp&nbsp
-                                            <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')"  CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                            <asp:ImageButton ImageUrl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" CommandName="Pagar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />&nbsp&nbsp
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ImageUrl="~/Content/Icons/information-circle-outline.svg" Height="1.5em" runat="server" ToolTip="Info" CommandName="Info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -288,7 +313,7 @@
                                 <div class="col-sm-6">
                                     <label for="tbDespesaDataNF">Data</label>
                                     <%--<input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control" type="date"  />
+                                    <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control" type="date" />
                                 </div>
                                 <div id="divNF" class="col-sm-6">
                                     <label for="tbDespesaNF">NF</label>
@@ -309,7 +334,7 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataNF">Data de Emissão</label>
                                     <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control" Enabled="false" type="date"  />
+                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control" Enabled="false" type="date" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNF">NF</label>
@@ -321,7 +346,7 @@
                                 <div class="col-sm-6">
                                     <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
                                     <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control" Enabled="false" type="date"  />
+                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control" Enabled="false" type="date" />
                                 </div>
                                 <div class="col-sm-6">
                                     <label for="tbReceitaNFValorPG">Valor Pago</label>
@@ -336,7 +361,10 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
-                                            <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control" />
+                                            <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control num" />
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <input type="button" id="btLimparReceitaDesconto" name="Limpar" class="btn btn-info" value="Limpar" onclick="ClearDiscount()" />
                                         </div>
                                         <div class="col-sm-2">
                                             <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
@@ -497,9 +525,14 @@
                 $("#MainContent_tbReceitaDesconto").attr("readonly", "readonly");
                 console.log($("#MainContent_tbReceitaDesconto").attr("readonly"));
             } else {
-                $("#MainContent_tbReceitaDesconto").removeAttr('readonly')
-                console.log($("#MainContent_tbReceitaDesconto").attr("readonly"));
+                $("#MainContent_tbReceitaDesconto").removeAttr("readonly")
+                $("#MainContent_tbReceitaNFValorPG").attr("readonly", "readonly")
             }
+        }
+
+        function ClearDiscount() {
+            $("#MainContent_tbReceitaDesconto").val("");
+            $("#MainContent_tbReceitaNFValorPG").removeAttr("readonly")
         }
 
         //Formatar Valor Disponivel

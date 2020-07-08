@@ -11,8 +11,11 @@
     [cbStatus]     BIT        DEFAULT ((1)) NULL,
     [idObservacao] INT        NULL,
     [cvNF]         INT        NULL,
+    [cbIssRetido]  BIT        DEFAULT ((0)) NULL,
     PRIMARY KEY CLUSTERED ([idReceita] ASC),
     FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[tbClinicas] ([IdClinica]),
     FOREIGN KEY ([idObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao])
 );
+
+
 

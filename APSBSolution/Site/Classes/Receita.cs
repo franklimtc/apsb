@@ -25,6 +25,7 @@ namespace Site.Classes
         public int? idObservacao { get; set; }//idObservacao    int
         public int? cvNF { get; set; }//cvNF    int
         public string Observacao { get; set; }
+        public bool cbIssRetido { get; set; }
 
         #endregion
 
@@ -58,6 +59,21 @@ namespace Site.Classes
             this.cvNF = cvNF;
             this.Observacao = observacao;
             this.cvValorDisponivel = cvValordisponivel;
+        }
+
+        public Receita(int idReceita, float cvValor, float? cvValorPago, DateTime? cdEmissao, DateTime? cdPagamento, DateTime? cdRepasse, float? cvDesconto, int? cvNF, string observacao, float? cvValordisponivel, bool cbIssRetido)
+        {
+            this.idReceita = idReceita;
+            this.cvValor = cvValor;
+            this.cvValorPago = cvValorPago;
+            this.cdEmissao = cdEmissao;
+            this.cdPagamento = cdPagamento;
+            this.cdRepasse = cdRepasse;
+            this.cvDesconto = cvDesconto;
+            this.cvNF = cvNF;
+            this.Observacao = observacao;
+            this.cbIssRetido = cbIssRetido;
+            this.cvValorDisponivel = cvValorDisponivel;
         }
 
         public bool Salvar(string Usuario)
@@ -131,6 +147,8 @@ namespace Site.Classes
                 parametros.Add(new object[] { "@cvDesconto", DBNull.Value });
             }
 
+            parametros.Add(new object[] { "@cbIssRetido", this.cbIssRetido});
+
             parametros.Add(new object[] { "@observacoes", this.Observacao });
 
             try
@@ -138,7 +156,7 @@ namespace Site.Classes
                 object retorno = DAO.ExecuteScalar(@"UPD_Receita
                                                     @UserName = @UserName, @idReceita= @idReceita, @IdClinica= @IdClinica, @cvValor= @cvValor, @cvValorPago= @cvValorPago
                                                     , @cdEmissao= @cdEmissao, @cdPagamento= @cdPagamento, @cdRepasse= @cdRepasse, @cvDesconto= @cvDesconto, @observacoes= @observacoes
-                                                    , @cvNF= @cvNF", parametros);
+                                                    , @cvNF= @cvNF, @cbIssRetido = @cbIssRetido", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -329,6 +347,7 @@ namespace Site.Classes
                         , cvNF
                         , c["observacao"].ToString()
                         , cvValorDisponivel
+                        , bool.Parse(c["cbIssRetido"].ToString())
                         ));
                 }
 

@@ -18,17 +18,17 @@
             <asp:GridView ID="gvClinicas" runat="server" DataSourceID="dsClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false">
                 <Columns>
                     <asp:BoundField DataField="idClinica" HeaderText="ID" />
-                    <asp:BoundField DataField="ccUF" HeaderText="UF" />
-                    <asp:BoundField DataField="ccCidade" HeaderText="Cidade" />
+                    <asp:BoundField DataField="ccUF" HeaderText="UF" Visible="false" />
+                    <asp:BoundField DataField="ccCidade" HeaderText="Cidade" Visible="false" />
                     <asp:BoundField DataField="ccRazaoSocial" HeaderText="Razão Social" />
                     <asp:BoundField DataField="ccNomeFantasia" HeaderText="Nome Fantasia" />
                     <asp:BoundField DataField="ccApelido" HeaderText="Apelido" />
                     <asp:BoundField DataField="cvCNPJ" HeaderText="CNPJ" />
-                    <asp:BoundField DataField="ccContato" HeaderText="Contato" />
-                    <asp:BoundField DataField="cvTelefone" HeaderText="Telefone" />
+                    <asp:BoundField DataField="ccContato" HeaderText="Contato" Visible="false" />
+                    <asp:BoundField DataField="cvTelefone" HeaderText="Telefone" Visible="false" />
                     <asp:BoundField DataField="ccEmail" HeaderText="Email" />
                     <asp:BoundField DataField="cvDescontos" HeaderText="Impostos retidos (%)" />
-                    <asp:BoundField DataField="cbDescontoVariavel" HeaderText="Taxa variável" />
+                    <asp:BoundField DataField="ccDescontoVariavel" HeaderText="Taxa variável" />
                 </Columns>
             </asp:GridView>
              <asp:ObjectDataSource ID="dsClinica" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Clinica"></asp:ObjectDataSource>

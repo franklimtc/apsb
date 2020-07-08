@@ -297,7 +297,8 @@
                                 <label for="search">Clínica | Hospital | Despesa</label>
                                 <div>
                                     <%--<input type="text" id="search" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filter()">--%>
-                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />
+                                    <asp:TextBox runat="server" ID="tbSearch2" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />
+                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control d-none" onkeyup="filter()" placeholder="Filtrar..." />
                                 </div>
                                 <div>
                                     <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
@@ -357,9 +358,9 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <label for="tbReceitaDesconto">Desconto</label>
+                                    <label for="tbReceitaDesconto">Desconto(%)</label>
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
                                             <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control num" />
                                         </div>
@@ -369,7 +370,11 @@
                                         <div class="col-sm-2">
                                             <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
                                         </div>
-                                        <div class="col-sm-6"></div>
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-3">
+                                            <asp:CheckBox Text="ISS Retido" runat="server" ID="chkIssRetido" CssClass="form-check-input" Enabled="false" />
+                                        </div>
+                                        
                                     </div>
                                 </div>
 
@@ -450,6 +455,13 @@
             $("#MainContent_dpTipoReceita").addClass("d-none");
             $("#MainContent_dpTipoDespesa").removeClass("d-none");
 
+            //Search Receita/Despesa
+            $("#MainContent_tbSearch").removeClass("d-none");
+            $("#MainContent_tbSearch2").addClass("d-none");
+            $("#MainContent_tbSearch").val("");
+            $("#MainContent_tbSearch2").val("");
+
+
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Despesa");
         }
@@ -480,6 +492,12 @@
             $("#MainContent_dpTipoReceita").removeClass("d-none");
             $("#MainContent_dpTipoDespesa").addClass("d-none");
 
+            //Search Receita/Despesa
+            $("#MainContent_tbSearch2").removeClass("d-none");
+            $("#MainContent_tbSearch").addClass("d-none");
+            $("#MainContent_tbSearch").val("");
+            $("#MainContent_tbSearch2").val("");
+
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Receita");
         };
@@ -492,6 +510,17 @@
         //Filter Clínica
 
         function filter() {
+            var abaAtiva = $("#MainContent_tbAbaAtiva").val();
+
+            if (abaAtiva == "Receita") {
+                filterReceita();
+            }
+            else {
+                filterDespesa()
+            }
+        }
+
+        function  filterDespesa(){
             var keyword = document.getElementById("MainContent_tbSearch").value;
             var select = document.getElementById("MainContent_dpTipoDespesa");
             for (var i = 0; i < select.length; i++) {
@@ -503,6 +532,22 @@
                 }
             }
         }
+
+        function filterReceita() {
+            //var keyword = $("#MainContent_tbSearch").val();
+            //var select = $("#MainContent_dpTipoReceita");
+            var keyword = document.getElementById("MainContent_tbSearch2").value;
+            var select = document.getElementById("MainContent_dpTipoReceita");
+            for (var i = 0; i < select.length; i++) {
+                var txt = select.options[i].text;
+                if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                    $(select.options[i]).attr('disabled', 'disabled').hide();
+                } else {
+                    $(select.options[i]).removeAttr('disabled').show();
+                }
+            }
+        }
+
 
         //Filter Médico
 

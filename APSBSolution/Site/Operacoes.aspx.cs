@@ -125,6 +125,8 @@ namespace Site
                 }
                 rc.Observacao = tbReceitaObs.Text;
 
+                rc.cbIssRetido = chkIssRetido.Checked;
+
                 if (idHiddenOperacao.Value.IsNullOrWhiteSpace())
                 {
                     result = rc.Adicionar(Usuario);
@@ -301,7 +303,9 @@ namespace Site
                 tbReceitaDataNF.Enabled = true;
                 tbReceitaDataPgtoNF.Enabled = true;
                 tbReceitaNFValorPG.Enabled = true;
-                tbReceitaNF.Enabled = true;              
+                tbReceitaNF.Enabled = true;
+                chkIssRetido.Enabled = true;
+                chkIssRetido.Checked = rec.cbIssRetido;
 
             }
 
@@ -352,7 +356,8 @@ namespace Site
             tbReceitaNFValorPG.Enabled = false;
             tbReceitaDesconto.Text = "";
             tbReceitaDesconto.Enabled = false;
-
+            chkIssRetido.Checked = false;
+            chkIssRetido.Enabled = false;
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
