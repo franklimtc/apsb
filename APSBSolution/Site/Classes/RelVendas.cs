@@ -14,9 +14,9 @@ namespace Site.Classes
         public float cvValorPago { get; set; }//cvValorPago
         public float cvValorRepassado { get; set; }//cvValorRepassado
         public float cvValorDisponivel { get; set; }//cvValorDisponivel
-        public DateTime cdEmissao { get; set; }//cdEmissao
-        public DateTime cdPagamento { get; set; }//cdPagamento
-        public DateTime cdRepasse { get; set; }//cdRepasse
+        public DateTime? cdEmissao { get; set; }//cdEmissao
+        public DateTime? cdPagamento { get; set; }//cdPagamento
+        public DateTime? cdRepasse { get; set; }//cdRepasse
         public float cvDesconto { get; set; }//cvDesconto
         public long cvNF { get; set; }//cvNF
         public string observacao { get; set; }//observacao
@@ -24,7 +24,7 @@ namespace Site.Classes
         public string ccIssRetido { get; set; }
         public string ccApelido { get; set; }//ccApelido
         public long cvCNPJ { get; set; }//cvCNPJ
-        public DateTime cdPrevistaPgto { get; set; }//cdPrevistaPgto
+        public DateTime? cdPrevistaPgto { get; set; }//cdPrevistaPgto
         public float cvDescontoValor { get; set; }//cvDescontoValor
         public float cvISS { get; set; }//cvISS
         public float cvISSValor { get; set; }//cvISSValor

@@ -18,5 +18,18 @@ namespace Site.Reports
         {
             Response.Redirect(@"Report.aspx?report=report01");
         }
+
+        protected void gvMedicos_PreRender(object sender, EventArgs e)
+        {
+            if (gvMedicos.Rows.Count > 0)
+            {
+                //This replaces <td> with <th> and adds the scope attribute
+                gvMedicos.UseAccessibleHeader = true;
+
+                //This will add the <thead> and <tbody> elements
+                gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+            }
+        }
     }
 }

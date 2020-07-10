@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col">
             <br />
-            <asp:GridView ID="gvClinicas" runat="server" DataSourceID="dsClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false">
+            <asp:GridView ID="gvClinicas" runat="server" DataSourceID="dsClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvClinicas_PreRender">
                 <Columns>
                     <asp:BoundField DataField="idClinica" HeaderText="ID" />
                     <asp:BoundField DataField="ccUF" HeaderText="UF" Visible="false" />

@@ -446,6 +446,10 @@
     <Content Include="Reports\Profissionais.aspx" />
     <Content Include="Reports\Clinicas.aspx" />
     <Content Include="Reports\Vendas.aspx" />
+    <Content Include="Reports\Rep01.rdlc" />
+    <Content Include="Reports\RepDespesas.rdlc" />
+    <Content Include="Reports\Report3.rdlc" />
+    <Content Include="Reports\RepVendas.rdlc" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -1238,16 +1242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Reports\Rep01.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepDespesas.rdlc" />
-    <EmbeddedResource Include="Reports\Report3.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepVendas.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arquivos\" />

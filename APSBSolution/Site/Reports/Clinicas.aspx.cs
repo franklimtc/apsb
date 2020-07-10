@@ -18,5 +18,21 @@ namespace Site.Reports
         {
             Response.Redirect(@"Report.aspx?report=report02");
         }
+
+        protected void gvClinicas_PreRender(object sender, EventArgs e)
+        {
+            if (gvClinicas.Rows.Count > 0)
+            {
+                //This replaces <td> with <th> and adds the scope attribute
+                gvClinicas.UseAccessibleHeader = true;
+
+                //This will add the <thead> and <tbody> elements
+                gvClinicas.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                //This adds the <tfoot> element. 
+                //Remove if you don't have a footer row
+                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
+            }
+        }
     }
 }
