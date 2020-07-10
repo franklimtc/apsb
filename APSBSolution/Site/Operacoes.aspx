@@ -18,7 +18,7 @@
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
-                <h2>Cadastro de Operações</h2>
+                <h2 id="hTitulo">Cadastro de Operações</h2>
                 <%--Datasources--%>
                 <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
 
@@ -29,6 +29,7 @@
 
         </div>
         <asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClick="btNovaOperacao_Click" />
+        <input type="button" id="btOpRep" name="btOpRep" class="btn btn-secondary" value="Detalhar" onclick="Detalhar()"  />
         <br />
         <div class="row collapse" id="divFiltros">
             <br />
@@ -81,7 +82,7 @@
             </asp:ObjectDataSource>
             <%--Datasources--%>
 
-            <div class="col-md-12">
+            <div class="col-md-12" id="divOperacoes">
                 <br />
                 <asp:GridView runat="server" ID="gvOperacoes" DataSourceID="dsOperacoes" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnRowCommand="gvOperacoes_RowCommand" OnPreRender="gvOperacoes_PreRender">
                     <Columns>
@@ -125,6 +126,26 @@
 
             </div>
         </div>
+
+        <div class="row d-none" id="divRepasses">
+            <div class="col">
+                <br />
+                <asp:GridView runat="server" ID="gvRepasses" DataSourceID="dsRepasses" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvRepasses_PreRender">
+                    <Columns>
+                        <%--ccApelido	ccNome	cvNF	cdEmissao	ValorNF	ValorPago	cdRepasse	ValorRepasse--%>
+                        <asp:BoundField DataField="ccApelido" HeaderText="Clínica" />
+                        <asp:BoundField DataField="ccNome" HeaderText="Médico" />
+                        <asp:BoundField DataField="cvNF" HeaderText="cvNF" />
+                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" DataFormatString="{0:d}"/>
+                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF"  DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="ValorPago" HeaderText="Valor Pago"  DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="cdRepasse" HeaderText="Repasse" DataFormatString="{0:d}" />
+                        <asp:BoundField DataField="ValorRepasse" HeaderText="Valor Repasse"  DataFormatString="{0:C}" />
+                    </Columns>
+                </asp:GridView>
+                <asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />
+            </div>
+        </div>
     </div>
 
     <!-- Modal Example-->
@@ -159,9 +180,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <div class="row">
                         <div class="col">
                             <label for="dpRepasseProfissional">Profissional</label>
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="tbDtRepasse" type="date" CssClass="form-control"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <div>
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
                             </div>
@@ -175,6 +204,7 @@
                             </div>
                         </div>
                     </div>
+
                     <%-- <div class="row">
                         <div class="col">
                             <label for="tbObsprofissional">Observações</label>
@@ -184,6 +214,7 @@
                     </div>--%>
                     <hr />
                     <div class="row">
+
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -211,7 +242,7 @@
                             <asp:TextBox runat="server" ID="tbObsRepasseProfissional" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" />
                         </div>
                     </asp:Panel>
-                   
+
                     <div class="row">
                         <div class="col">
                             <br />
@@ -303,7 +334,7 @@
                                 <div>
                                     <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" OnTextChanged="dpTipoReceita_TextChanged" >
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -374,7 +405,7 @@
                                         <div class="col-sm-3">
                                             <asp:CheckBox Text="ISS Retido" runat="server" ID="chkIssRetido" CssClass="form-check-input" Enabled="false" />
                                         </div>
-                                        
+
                                     </div>
                                 </div>
 
@@ -414,6 +445,18 @@
                     }
                 }
             });
+
+            $('#MainContent_gvRepasses').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+
 
             $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
 
@@ -520,7 +563,7 @@
             }
         }
 
-        function  filterDespesa(){
+        function filterDespesa() {
             var keyword = document.getElementById("MainContent_tbSearch").value;
             var select = document.getElementById("MainContent_dpTipoDespesa");
             for (var i = 0; i < select.length; i++) {
@@ -592,5 +635,21 @@
                 $("#MainContent_tbValorDisponivel").addClass("text-success")
             }
         }
+
+        function Detalhar() {
+            if ($("#btOpRep").val() == "Detalhar") {
+                $("#divOperacoes").addClass("d-none");
+                $("#divRepasses").removeClass("d-none");
+                $("#btOpRep").val("Ocultar");
+                $("#hTitulo").text("Repasses Detalhados")
+            }
+            else {
+                $("#divRepasses").addClass("d-none");
+                $("#divOperacoes").removeClass("d-none");
+                $("#btOpRep").val("Detalhar");
+                $("#hTitulo").text("Cadastro de Operações")
+            }
+        }
+
     </script>
 </asp:Content>

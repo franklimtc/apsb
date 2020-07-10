@@ -8,12 +8,13 @@
     [dataRepasse]        DATETIME     DEFAULT (getdate()) NULL,
     [ccCriadoPor]        VARCHAR (20) NOT NULL,
     [cvTaxaProfissional] REAL         NULL,
-    PRIMARY KEY CLUSTERED ([idReceita] ASC, [IdProfissional] ASC),
     CONSTRAINT [CH_STATUS] CHECK ([ccStatus]='A' OR [ccStatus]='R' OR [ccStatus]='C'),
     FOREIGN KEY ([IdObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao]),
     FOREIGN KEY ([IdProfissional]) REFERENCES [dbo].[tbProfissionais] ([IdProfissional]),
     FOREIGN KEY ([idReceita]) REFERENCES [dbo].[tbReceitas] ([idReceita])
 );
+
+
 
 
 

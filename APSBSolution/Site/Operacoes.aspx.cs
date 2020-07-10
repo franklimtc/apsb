@@ -20,6 +20,27 @@ namespace Site
         static CultureInfo culture;
         static DateTimeStyles styles;
 
+        protected void gvRepasses_PreRender(object sender, EventArgs e)
+        {
+            // You only need the following 2 lines of code if you are not 
+            // using an ObjectDataSource of SqlDataSource
+            //gvOperacoes.DataBind();
+
+
+            //gvMedicos.DataSource = Profissional.Listar();
+            if (gvRepasses.Rows.Count > 0)
+            {
+                //This replaces <td> with <th> and adds the scope attribute
+                gvRepasses.UseAccessibleHeader = true;
+
+                //This will add the <thead> and <tbody> elements
+                gvRepasses.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                //This adds the <tfoot> element. 
+                //Remove if you don't have a footer row
+                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
+            }
+        }
         protected void gvOperacoes_PreRender(object sender, EventArgs e)
         {
             // You only need the following 2 lines of code if you are not 
@@ -47,20 +68,10 @@ namespace Site
             if (!IsPostBack)
             {
                 //Dropdown Tipo Despesas
-                var listaTipo = DespesaTipo.Listar();
-                listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
-                dpTipoDespesa.DataSource = listaTipo;
-                dpTipoDespesa.DataBind();
-                dpTipoDespesa.ClearSelection();
-                dpTipoDespesa.Items.FindByValue("0").Selected = true;
+                CarregarDPDespesa();
 
                 //Dropdown Tipo Receitas
-                listaTipo = DespesaTipo.Listar("Receita");
-                listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
-                dpTipoReceita.DataSource = listaTipo;
-                dpTipoReceita.DataBind();
-                dpTipoDespesa.ClearSelection();
-                dpTipoDespesa.Items.FindByValue("0").Selected = true;
+                CarregarDPReceita();
 
                 //Data
                 tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -70,6 +81,27 @@ namespace Site
                 styles = DateTimeStyles.None;
             }
         }
+
+        void CarregarDPDespesa()
+        {
+            var listaTipo = DespesaTipo.Listar();
+            listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
+            dpTipoDespesa.DataSource = listaTipo;
+            dpTipoDespesa.DataBind();
+            dpTipoDespesa.ClearSelection();
+            dpTipoDespesa.Items.FindByValue("0").Selected = true;
+        }
+
+        void CarregarDPReceita()
+        {
+            var listaTipo = DespesaTipo.Listar("Receita");
+            listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
+            dpTipoReceita.DataSource = listaTipo;
+            dpTipoReceita.DataBind();
+            dpTipoReceita.ClearSelection();
+            dpTipoReceita.Items.FindByValue("0").Selected = true;
+        }
+
 
         protected void btSalvar_Click(object sender, EventArgs e)
         {
@@ -203,12 +235,16 @@ namespace Site
             var obj = e.CommandArgument;
             string Usuario = "Franklim";
             int idRepasse = int.Parse(gvRepasseMedico.Rows[int.Parse(obj.ToString())].Cells[0].Text);
+            DateTime dtPgto = DateTime.Now;
+
+            DateTime.TryParse(tbDtRepasse.Text, out dtPgto);
+
             bool result = false;
 
             switch (e.CommandName)
             {
                 case "Pagar":
-                    result = ReceitaRepasse.Pagar(Usuario, idRepasse);
+                    result = ReceitaRepasse.Pagar(Usuario, idRepasse, dtPgto);
                     break;
                 case "Excluir":
                     result = ReceitaRepasse.Excluir(Usuario, idRepasse);
@@ -317,6 +353,17 @@ namespace Site
             {
                 v += "00";
             }
+            else
+            {
+                var vt = v.Split(',');
+                if (vt.Length == 2)
+                {
+                    if (vt[1].Length == 1)
+                    {
+                        v += "0";
+                    }
+                }
+            }
             return v.Replace("-","");
         }
         private void CarregarModalRepasse(int idOperacao, string tipo)
@@ -324,6 +371,7 @@ namespace Site
             Receita rr = Receita.ListarPorID(idOperacao);
             HddValorDisponivel.Value = rr.cvValorDisponivel.Value.ToString();
             tbValorRepassado.Text = ConvertMoney((rr.cvValorPago - rr.cvValorDisponivel).ToString());
+            tbDtRepasse.Text = DateTime.Now.ToString("yyyy-MM-dd");
             if (rr.cvValorDisponivel < 0)
             {
                 HddValorNegativo.Value = "1";
@@ -358,6 +406,10 @@ namespace Site
             tbReceitaDesconto.Enabled = false;
             chkIssRetido.Checked = false;
             chkIssRetido.Enabled = false;
+            dpTipoDespesa.ClearSelection();
+            dpTipoDespesa.Items.FindByValue("0").Selected = true;
+            dpTipoReceita.ClearSelection();
+            dpTipoReceita.Items.FindByValue("0").Selected = true;
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
@@ -406,5 +458,28 @@ namespace Site
             gvOperacoes.DataSource = Operacao.Listar(arquivado, status, dtIni, dtFin);
             gvOperacoes.DataBind();
         }
+
+        protected void dpTipoReceita_TextChanged(object sender, EventArgs e)
+        {
+            Clinica c = Clinica.ListarPorID(int.Parse(dpTipoReceita.SelectedValue));
+
+            tbReceitaDesconto.Text = c.cvDescontos.ToString();
+            tbReceitaDesconto.Enabled = true;
+            if (c.cvISS > 0)
+            {
+                chkIssRetido.Checked = true;
+                chkIssRetido.Enabled = true;
+            }
+            else
+            {
+                chkIssRetido.Checked = false;
+                chkIssRetido.Enabled = true;
+            }
+            string scriptModal = "$('#operacaoModal').modal('show')";
+
+            ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
+        }
+
+       
     }
 }

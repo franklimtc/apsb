@@ -25,6 +25,14 @@ namespace Site.Classes
         public DateTime dataRepasse { get; set; }//dataRepasse datetime
         public string ccCriadoPor { get; set; }//ccCriadoPor varchar
 
+        public string ccApelido { get; set; }//ccApelido
+        public int cvNF { get; set; }//cvNF
+        public DateTime cdEmissao { get; set; }//cdEmissao
+        public DateTime cdRepasse { get; set; }//cdRepasse
+        public float ValorNF { get; set; }//ValorNF
+        public float ValorPago { get; set; }//ValorPago
+        public float ValorRepasse { get; set; }//ValorRepasse
+
 
         #endregion
 
@@ -43,6 +51,35 @@ namespace Site.Classes
             this.dataRepasse = dtRepasse;
             this.ccCriadoPor = criadoPor;
 
+        }
+        public ReceitaRepasse(string ccApelido, string ccNome, int? cvNF, DateTime? cdEmissao, DateTime? cdRepasse, float? ValorNF, float? ValorPago, float? ValorRepasse)
+        {
+            this.ccApelido = ccApelido;
+            this.ccNome = ccNome;
+            if (cvNF.HasValue)
+            {
+                this.cvNF = cvNF.Value;
+            }
+            if (cdEmissao.HasValue)
+            {
+                this.cdEmissao = cdEmissao.Value;
+            }
+            if (cdRepasse.HasValue)
+            {
+                this.cdRepasse = cdRepasse.Value;
+            }
+            if (ValorNF.HasValue)
+            {
+                this.ValorNF = ValorNF.Value;
+            }
+            if (ValorPago.HasValue)
+            {
+                this.ValorPago = ValorPago.Value;
+            }
+            if (ValorRepasse.HasValue)
+            {
+                this.ValorRepasse = ValorRepasse.Value;
+            }
         }
 
         public ReceitaRepasse(object _idReasse, object _idReceita, object _idProfissional, object _Obs, object _valor, object _status, object dtRepasse, object criadoPor, object nome)
@@ -191,17 +228,68 @@ namespace Site.Classes
             return Lista;
         }
 
-        internal static bool Pagar(string Usuario, int idRepasse)
+        public static List<ReceitaRepasse> Listar()
+        {
+            List<object[]> parametros = new List<object[]>();
+            DataTable dt = DAO.RetornaDT("SEL_Repasse");
+            List<ReceitaRepasse> Lista = new List<ReceitaRepasse>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    //ccApelido, ccNome, cvNF, cdEmissao, cdRepasse, ValorNF, ValorPago, ValorRepasse
+                    ReceitaRepasse rr = new ReceitaRepasse();
+                    rr.ccApelido = c["ccApelido"].ToString();
+                    rr.ccNome = c["ccNome"].ToString();
+                    if (int.TryParse(c["cvNF"].ToString(), out int nf))
+                    {
+                        rr.cvNF = nf;
+                    }
+
+                    if (DateTime.TryParse(c["cdEmissao"].ToString(), out DateTime emissao))
+                    {
+                        rr.cdEmissao = emissao;
+                    }
+
+                    if (DateTime.TryParse(c["cdRepasse"].ToString(), out DateTime repasse))
+                    {
+                        rr.cdRepasse = repasse;
+                    }
+
+                    if (float.TryParse(c["ValorNF"].ToString(), out float vnf))
+                    {
+                        rr.ValorNF = vnf;
+                    }
+
+                    if (float.TryParse(c["ValorPago"].ToString(), out float vp))
+                    {
+                        rr.ValorPago = vp;
+                    }
+
+                    if (float.TryParse(c["ValorRepasse"].ToString(), out float vr))
+                    {
+                        rr.ValorRepasse = vr;
+                    }
+
+                    Lista.Add(rr);
+
+                }
+            }
+            return Lista;
+        }
+
+        internal static bool Pagar(string Usuario, int idRepasse, DateTime dtPgto)
         {
             //EXC_Repasse @idRepasse = @idRepasse, @UserName = @UserName;
             bool result = false;
             List<object[]> parametros = new List<object[]>();
             parametros.Add(new object[] { "@idRepasse", idRepasse });
             parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@dtRepasse", dtPgto });
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"PGR_Repasse @idRepasse = @idRepasse, @UserName = @UserName;", parametros);
+                object retorno = DAO.ExecuteScalar(@"PGR_Repasse @idRepasse = @idRepasse, @UserName = @UserName, @dtRepasse = @dtRepasse;", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;

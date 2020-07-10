@@ -141,6 +141,33 @@ namespace Site
         protected global::System.Web.UI.WebControls.GridView gvOperacoes;
 
         /// <summary>
+        /// Controle gvRepasses.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvRepasses;
+
+        /// <summary>
+        /// Controle dsRepasses.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource dsRepasses;
+
+        /// <summary>
+        /// Controle tbDtRepasse.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbDtRepasse;
+
+        /// <summary>
         /// Controle dpSelectProfissional.
         /// </summary>
         /// <remarks>

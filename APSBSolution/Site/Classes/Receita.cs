@@ -73,7 +73,7 @@ namespace Site.Classes
             this.cvNF = cvNF;
             this.Observacao = observacao;
             this.cbIssRetido = cbIssRetido;
-            this.cvValorDisponivel = cvValorDisponivel;
+            this.cvValorDisponivel = cvValordisponivel;
         }
 
         public bool Salvar(string Usuario)
@@ -177,6 +177,8 @@ namespace Site.Classes
             parametros.Add(new object[] { "@IdClinica", this.IdClinica });
             parametros.Add(new object[] { "@cvValor", this.cvValor });
             parametros.Add(new object[] { "@observacoes", this.Observacao });
+            parametros.Add(new object[] { "@cbIssRetido", this.cbIssRetido });
+
             if (this.cvDesconto != null)
             {
                 parametros.Add(new object[] { "@cvDesconto", this.cvDesconto });
@@ -188,7 +190,7 @@ namespace Site.Classes
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"INS_Receita  @UserName = @UserName, @IdClinica = @IdClinica, @cvValor = @cvValor, @cvDesconto = @cvDesconto, @observacoes = @observacoes", parametros);
+                object retorno = DAO.ExecuteScalar(@"INS_Receita  @UserName = @UserName, @IdClinica = @IdClinica, @cvValor = @cvValor, @cvDesconto = @cvDesconto, @observacoes = @observacoes, @cbIssRetido = @cbIssRetido", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -348,6 +350,7 @@ namespace Site.Classes
                         , c["observacao"].ToString()
                         , cvValorDisponivel
                         , bool.Parse(c["cbIssRetido"].ToString())
+                        
                         ));
                 }
 
