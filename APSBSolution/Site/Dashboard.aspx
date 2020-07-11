@@ -1,7 +1,9 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Title="Dashboard" Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Site.Dashboard" %>
+
+<!DOCTYPE html>
 <html lang="pt-br">
 
-<head>
+<head runat="server">
     <title></title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -135,7 +137,7 @@
                         <div class="col-md-3">
                             <div class="card card-chart">
                                 <div class="card-header card-header-success">
-                                    <div class="ct-chart" id="dailySalesChart"></div>
+                                    <div class="ct-chart" id="ChartFatBruto"></div>
                                 </div>
                                 <div class="card-body">
                                     <h4 class="card-title">Faturamento bruto</h4>
@@ -412,7 +414,7 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../assets/demo/demo.js"></script>
+    <%--<script src="../assets/demo/demo.js"></script>--%>
     <script>
         $(document).ready(function () {
             $().ready(function () {
@@ -589,47 +591,38 @@
     <script>
         $(document).ready(function () {
             // Javascript method's body can be found in assets/js/demos.js
-            md.initDashboardPageCharts();
+            //md.initDashboardPageCharts();
+            var ChartFatBrutoSerie = [28000, 10000, 10941, 12141, 11000];
+
+
+            ChartFatBrutoDados = {
+                labels: ['S', 'T', 'Q', 'Q', 'S'],
+                series: [
+                    ChartFatBrutoSerie
+                ]
+            };
+
+            ChartFatBrutoOptions = {
+                lineSmooth: Chartist.Interpolation.cardinal({
+                    tension: 0
+                }),
+                low: 0,
+                high: 30000, 
+                chartPadding: {
+                    top: 0,
+                    right: 0,
+                    bottom: 0,
+                    left: 0
+                }
+            }
+
+            var ChartFatBruto = new Chartist.Line('#ChartFatBruto', ChartFatBrutoDados, ChartFatBrutoOptions);
+
+            md.startAnimationForLineChart(ChartFatBruto);
 
         });
 
-        /* ----------==========     Completed Tasks Chart initialization    ==========---------- */
-
-        datacompletedTasksChart2 = {
-            labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-            series: [
-                [230, 750, 450, 300, 280, 240, 200, 190]
-            ]
-        };
-
-        optionscompletedTasksChart2 = {
-            lineSmooth: Chartist.Interpolation.cardinal({
-                tension: 0
-            }),
-            low: 0,
-            high: 1000, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
-            chartPadding: {
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0
-            }
-        }
-
-        var completedTasksChart2 = new Chartist.Line('#completedTasksChart2', datacompletedTasksChart2, optionscompletedTasksChart2);
-
-        // start animation for the Completed Tasks Chart - Line Chart
-        md.startAnimationForLineChart(completedTasksChart2);
-
-        //dataDailySalesChart
-
-        var dailySalesChart2 = new Chartist.Line('#dailySalesChart2', datacompletedTasksChart2, optionscompletedTasksChart2);
-        md.startAnimationForLineChart(dailySalesChart2);
-
-        //websiteViewsChart2
-
-        var websiteViewsChart2 = new Chartist.Line('#websiteViewsChart2', datacompletedTasksChart2, optionscompletedTasksChart2);
-        md.startAnimationForLineChart(websiteViewsChart2);
+        
 
 
 

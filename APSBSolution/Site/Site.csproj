@@ -434,6 +434,7 @@
     <Content Include="Content\Icons\time-outline.svg" />
     <Content Include="Content\Icons\trash-outline.svg" />
     <Content Include="Content\Site.css" />
+    <Content Include="dash.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
@@ -451,6 +452,12 @@
     <Content Include="Reports\Report3.rdlc" />
     <Content Include="Reports\RepVendas.rdlc" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\ChartJS\Chart.bundle.js" />
+    <Content Include="Scripts\ChartJS\Chart.bundle.min.js" />
+    <Content Include="Scripts\ChartJS\Chart.css" />
+    <Content Include="Scripts\ChartJS\Chart.js" />
+    <Content Include="Scripts\ChartJS\Chart.min.css" />
+    <Content Include="Scripts\ChartJS\Chart.min.js" />
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -1130,6 +1137,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dash.aspx.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dash.aspx.designer.cs">
+      <DependentUpon>dash.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

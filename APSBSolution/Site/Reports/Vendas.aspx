@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col">
             <br />
-            <asp:GridView ID="gvVendas" runat="server" DataSourceID="dsVendas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False">
+            <asp:GridView ID="gvVendas" runat="server" DataSourceID="dsVendas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnPreRender="gvVendas_PreRender">
                 <Columns>
                     
                     <asp:BoundField DataField="ccApelido" HeaderText="Clínica" SortExpression="ccApelido" />
@@ -53,4 +53,23 @@
             <asp:ObjectDataSource ID="dsVendas" runat="server" SelectMethod="Listar" TypeName="Site.Classes.RelVendas"></asp:ObjectDataSource>
         </div>
     </div>
+    <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+
+    <script>
+        //DataTables
+
+        $(document).ready(function () {
+            $('#MainContent_gvVendas').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+        });
+
+    </script>
 </asp:Content>

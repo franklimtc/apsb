@@ -2,8 +2,6 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x64\msvcr1
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x86\msvcr120.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x86\SqlServerSpatial140.dll
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Reports\Rep01.rdlc
-C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Reports\Report3.rdlc
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Site.dll.config
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Site.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Site.pdb
