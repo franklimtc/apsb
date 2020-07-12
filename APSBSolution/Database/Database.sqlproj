@@ -129,6 +129,17 @@
     <Build Include="dbo\Stored Procedures\EXC_Repasse.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ProfissionalClinicaDP.sql" />
     <Build Include="dbo\Stored Procedures\SEL_RepasseObs.sql" />
+    <Build Include="dbo\Views\vwResumoReceitas.sql" />
+    <Build Include="dbo\Views\vw_ChartFatBruto.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Repasse10.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_QtdNotas.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Faturamento10.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Dashboard.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartReceitaLiquida.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartReceitaBruta.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartFatEfetivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartFatBruto.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartDespesas.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

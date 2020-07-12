@@ -434,8 +434,8 @@
     <Content Include="Content\Icons\time-outline.svg" />
     <Content Include="Content\Icons\trash-outline.svg" />
     <Content Include="Content\Site.css" />
-    <Content Include="dash.aspx" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Dash2.aspx" />
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -836,6 +836,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Operacoes\Dashboard.js" />
     <Content Include="Scripts\Operacoes\Medico.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -1114,6 +1115,7 @@
     <Compile Include="Classes\Arquivo.cs" />
     <Compile Include="Classes\Banco.cs" />
     <Compile Include="Classes\base.cs" />
+    <Compile Include="Classes\Chart.cs" />
     <Compile Include="Classes\Clinica.cs" />
     <Compile Include="Classes\ClinicaProfissional.cs" />
     <Compile Include="Classes\DAO.cs" />
@@ -1138,19 +1140,19 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="dash.aspx.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="dash.aspx.designer.cs">
-      <DependentUpon>dash.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dash2.aspx.cs">
+      <DependentUpon>Dash2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dash2.aspx.designer.cs">
+      <DependentUpon>Dash2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Datatables.aspx.cs">
       <DependentUpon>Datatables.aspx</DependentUpon>
