@@ -484,6 +484,23 @@ namespace Site
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-       
+        protected void gvRepasseMedico_PreRender(object sender, EventArgs e)
+        {
+            foreach (GridViewRow r in gvRepasseMedico.Rows)
+            {
+                HiddenField HiddenObs = r.FindControl("HiddenFieldObs") as HiddenField;
+
+                if (HiddenObs.Value.IsNullOrWhiteSpace())
+                {
+                    r.Cells[8].Enabled = false;
+                    r.Cells[8].CssClass = "transparente";
+                }
+                else
+                {
+                    r.Cells[8].Enabled = true;
+                    r.Cells[8].CssClass = "";
+                }
+            }
+        }
     }
 }

@@ -24,6 +24,24 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.HiddenField idHiddenClinica;
 
         /// <summary>
+        /// Controle HiddenClinicaDesconto.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenClinicaDesconto;
+
+        /// <summary>
+        /// Controle HiddenClinicaName.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenClinicaName;
+
+        /// <summary>
         /// Controle idHiddenChange.
         /// </summary>
         /// <remarks>
@@ -184,6 +202,15 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSalvar;
+
+        /// <summary>
+        /// Controle tbTextClinica.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tbTextClinica;
 
         /// <summary>
         /// Controle tbValorRepasse.

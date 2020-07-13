@@ -146,6 +146,9 @@ namespace Site.Cadastros
             var obj = e.CommandArgument;
             int idClinica = int.Parse(gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
             idHiddenClinica.Value = idClinica.ToString();
+
+            HiddenClinicaName.Value = gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text;
+            HiddenClinicaDesconto.Value = gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[11].Text;
             string user = "Franklim";
 
             bool result = false;
@@ -184,6 +187,7 @@ namespace Site.Cadastros
             dpSelectProfissional.DataSource = Profissional.ListaDropDown();
             dpSelectProfissional.DataValueField = "idProfissional";
             dpSelectProfissional.DataTextField = "ccNome";
+            tbTextClinica.Text = $" - {HiddenClinicaName.Value} ({HiddenClinicaDesconto.Value}%)";
 
 
             List<ClinicaProfissional> lista = ClinicaProfissional.Listar(idClinica);
