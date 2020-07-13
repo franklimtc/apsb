@@ -90,7 +90,7 @@
                 </span>
             </div>
         </nav>
-        <div class="container body-content">
+        <div class="container-fluid body-content">
             <br />
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

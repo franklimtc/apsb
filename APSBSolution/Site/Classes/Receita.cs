@@ -10,6 +10,7 @@ namespace Site.Classes
     public class Receita
     {
         #region Campos
+        public float? cvValorRepassado { get; set; }
         public int idReceita { get; set; }//idReceita int
         public int IdClinica { get; set; }//IdClinica   int
         public float? cvValor { get; set; }//cvValor float
@@ -61,7 +62,7 @@ namespace Site.Classes
             this.cvValorDisponivel = cvValordisponivel;
         }
 
-        public Receita(int idReceita, float cvValor, float? cvValorPago, DateTime? cdEmissao, DateTime? cdPagamento, DateTime? cdRepasse, float? cvDesconto, int? cvNF, string observacao, float? cvValordisponivel, bool cbIssRetido)
+        public Receita(int idReceita, float cvValor, float? cvValorPago, DateTime? cdEmissao, DateTime? cdPagamento, DateTime? cdRepasse, float? cvDesconto, int? cvNF, string observacao, float? cvValordisponivel, bool cbIssRetido, float? cvValorRepassado)
         {
             this.idReceita = idReceita;
             this.cvValor = cvValor;
@@ -74,6 +75,7 @@ namespace Site.Classes
             this.Observacao = observacao;
             this.cbIssRetido = cbIssRetido;
             this.cvValorDisponivel = cvValordisponivel;
+            this.cvValorRepassado = cvValorRepassado;
         }
 
         public bool Salvar(string Usuario)
@@ -300,6 +302,7 @@ namespace Site.Classes
                     Nullable<float> cvValorPago = new Nullable<float>();
                     Nullable<float> cvDesconto = new Nullable<float>();
                     Nullable<float> cvValorDisponivel = new Nullable<float>();
+                    Nullable<float> cvValorRepassado = new Nullable<float>();
 
                     Nullable<int> cvNF = new Nullable<int>();
 
@@ -336,6 +339,11 @@ namespace Site.Classes
                         cvValorDisponivel = float3;
                     }
 
+                    if (float.TryParse(c["cvValorRepassado"].ToString(), out float float4))
+                    {
+                        cvValorRepassado = float4;
+                    }
+
 
 
                     Lista.Add(new Receita(
@@ -350,7 +358,7 @@ namespace Site.Classes
                         , c["observacao"].ToString()
                         , cvValorDisponivel
                         , bool.Parse(c["cbIssRetido"].ToString())
-                        
+                        , cvValorRepassado
                         ));
                 }
 

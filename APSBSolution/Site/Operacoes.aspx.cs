@@ -370,7 +370,11 @@ namespace Site
         {
             Receita rr = Receita.ListarPorID(idOperacao);
             HddValorDisponivel.Value = rr.cvValorDisponivel.Value.ToString();
-            tbValorRepassado.Text = ConvertMoney((rr.cvValorPago - rr.cvValorDisponivel).ToString());
+            tbValorPago.Text = ConvertMoney(rr.cvValorPago.ToString());
+            tbValorNF.Text = ConvertMoney(rr.cvValor.ToString());
+            tbValorRepassado.Text = ConvertMoney(rr.cvValorRepassado.ToString());
+
+            //tbValorRepassado.Text = ConvertMoney((rr.cvValorPago - rr.cvValorDisponivel).ToString());
             tbDtRepasse.Text = DateTime.Now.ToString("yyyy-MM-dd");
             if (rr.cvValorDisponivel < 0)
             {

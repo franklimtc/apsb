@@ -29,7 +29,7 @@
 
         </div>
         <asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClick="btNovaOperacao_Click" />
-        <input type="button" id="btOpRep" name="btOpRep" class="btn btn-secondary" value="Detalhar" onclick="Detalhar()"  />
+        <input type="button" id="btOpRep" name="btOpRep" class="btn btn-secondary" value="Detalhar" onclick="Detalhar()" />
         <br />
         <div class="row collapse" id="divFiltros">
             <br />
@@ -136,11 +136,11 @@
                         <asp:BoundField DataField="ccApelido" HeaderText="Clínica" />
                         <asp:BoundField DataField="ccNome" HeaderText="Médico" />
                         <asp:BoundField DataField="cvNF" HeaderText="cvNF" />
-                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" DataFormatString="{0:d}"/>
-                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF"  DataFormatString="{0:C}" />
-                        <asp:BoundField DataField="ValorPago" HeaderText="Valor Pago"  DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" DataFormatString="{0:d}" />
+                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF" DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="ValorPago" HeaderText="Valor Pago" DataFormatString="{0:C}" />
                         <asp:BoundField DataField="cdRepasse" HeaderText="Repasse" DataFormatString="{0:d}" />
-                        <asp:BoundField DataField="ValorRepasse" HeaderText="Valor Repasse"  DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="ValorRepasse" HeaderText="Valor Repasse" DataFormatString="{0:C}" />
                     </Columns>
                 </asp:GridView>
                 <asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />
@@ -186,7 +186,7 @@
                             <label for="dpRepasseProfissional">Profissional</label>
                         </div>
                         <div class="col">
-                            <asp:TextBox runat="server" ID="tbDtRepasse" type="date" CssClass="form-control"/>
+                            <asp:TextBox runat="server" ID="tbDtRepasse" type="date" CssClass="form-control" />
                         </div>
                     </div>
                     <div class="row">
@@ -214,27 +214,55 @@
                     </div>--%>
                     <hr />
                     <div class="row">
+                        <div class="col"><asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col"><asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col"><asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                    </div>
+                    <div class="row">
 
                         <div class="col">
                             <div class="input-group">
+                                
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <asp:TextBox runat="server" ID="tbValorNF" CssClass="form-control money" ReadOnly="true" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <asp:TextBox runat="server" ID="tbValorPago" CssClass="form-control money" ReadOnly="true" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+                                
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
                                 <asp:TextBox runat="server" ID="tbValorRepassado" CssClass="form-control money" ReadOnly="true" />
                             </div>
                         </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
-                                <%--<input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel...">--%>
                                 <asp:TextBox runat="server" ID="tbValorDisponivel" CssClass="form-control money" />
                             </div>
                         </div>
                         <div class="col">
                             <asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" OnClick="bdAddRepasse_Click" />
                         </div>
+                        <div class="col"></div>
                     </div>
                     <asp:Panel runat="server" ID="pnObs" CssClass="row" Visible="false">
                         <div class="col">
@@ -334,7 +362,7 @@
                                 <div>
                                     <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" OnTextChanged="dpTipoReceita_TextChanged" >
+                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" OnTextChanged="dpTipoReceita_TextChanged">
                                     </asp:DropDownList>
                                 </div>
                             </div>

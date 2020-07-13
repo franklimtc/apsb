@@ -186,6 +186,24 @@ namespace Site
         protected global::System.Web.UI.WebControls.ObjectDataSource dsProfissional;
 
         /// <summary>
+        /// Controle tbValorNF.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbValorNF;
+
+        /// <summary>
+        /// Controle tbValorPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbValorPago;
+
+        /// <summary>
         /// Controle tbValorRepassado.
         /// </summary>
         /// <remarks>
