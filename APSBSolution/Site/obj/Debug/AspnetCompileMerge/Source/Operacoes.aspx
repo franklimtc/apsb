@@ -11,6 +11,9 @@
             text-align: right;
             width: 90px;
         }
+        .transparente {
+         opacity: 0.2;
+        }
     </style>
 
     <div>
@@ -274,7 +277,7 @@
                     <div class="row">
                         <div class="col">
                             <br />
-                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand">
+                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand" OnPreRender="gvRepasseMedico_PreRender">
                                 <Columns>
                                     <asp:BoundField HeaderText="ID" DataField="idRepasse" />
                                     <asp:BoundField HeaderText="Nome" DataField="ccNome" />
@@ -284,12 +287,17 @@
                                     <asp:BoundField DataField="ccStatus" HeaderText="Status" />
                                     <asp:TemplateField>
                                         <ItemTemplate>
+                                            <asp:HiddenField runat="server" ID="HiddenFieldObs" Value='<%# Eval("Observacao") %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
                                             <asp:ImageButton ImageUrl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" CommandName="Pagar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />&nbsp&nbsp
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>
                                         <ItemTemplate>
-                                            <asp:ImageButton ImageUrl="~/Content/Icons/information-circle-outline.svg" Height="1.5em" runat="server" ToolTip="Info" CommandName="Info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                            <asp:ImageButton ID="imgInfo" ImageUrl="~/Content/Icons/information-circle-outline.svg" Height="1.5em" runat="server" ToolTip="Info" CommandName="Info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField>

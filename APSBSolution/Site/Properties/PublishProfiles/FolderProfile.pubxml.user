@@ -695,10 +695,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:58:31</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/13/2020 11:39:10</publishTime>
+      <publishTime>07/13/2020 20:08:24</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/13/2020 11:39:10</publishTime>
+      <publishTime>07/13/2020 20:08:23</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:58:31</publishTime>
@@ -1157,10 +1157,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:58:31</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>07/13/2020 11:33:29</publishTime>
+      <publishTime>07/13/2020 20:03:11</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>07/13/2020 11:33:29</publishTime>
+      <publishTime>07/13/2020 20:03:11</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:58:31</publishTime>
@@ -1229,7 +1229,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:58:28</publishTime>
     </File>
     <File Include="Cadastros/Clinicas.aspx">
-      <publishTime>07/10/2020 14:58:28</publishTime>
+      <publishTime>07/13/2020 18:40:40</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>07/10/2020 14:58:28</publishTime>
@@ -1829,10 +1829,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:58:31</publishTime>
     </File>
     <File Include="Operacoes.aspx">
-      <publishTime>07/13/2020 11:36:09</publishTime>
+      <publishTime>07/13/2020 19:59:36</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/13/2020 11:38:54</publishTime>
+      <publishTime>07/13/2020 20:08:10</publishTime>
     </File>
     <File Include="Reports/Clinicas.aspx">
       <publishTime>07/10/2020 15:13:40</publishTime>

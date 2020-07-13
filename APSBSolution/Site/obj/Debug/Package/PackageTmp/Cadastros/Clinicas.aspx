@@ -11,7 +11,10 @@
     </style>
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="idHiddenClinica" />
+    <asp:HiddenField runat="server" ID="HiddenClinicaDesconto" />
+    <asp:HiddenField runat="server" ID="HiddenClinicaName" />
     <asp:HiddenField runat="server" ID="idHiddenChange" />
+
     <%--Hidden Filds--%>
 
 
@@ -180,7 +183,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional</h5>
+                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional <asp:Label  ID="tbTextClinica" runat="server" /></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
