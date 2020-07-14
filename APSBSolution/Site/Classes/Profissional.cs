@@ -61,6 +61,8 @@ namespace Site.Classes
             this.ccEmail = _email;
         }
 
+       
+
         public Profissional(int _id, string _nome, string _email, string _observacoes)
         {
             this.IdProfissional = _id;
@@ -475,6 +477,28 @@ namespace Site.Classes
             return result;
         }
 
+        internal static bool RenovarToken(string Usuario, string token)
+        {
+            bool result = false;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@UserName", Usuario });
+            parametros.Add(new object[] { "@Token", token });
+
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"RNV_ProfissionalAuto @UserName = @UserName, @Token = @Token;", parametros);
+                if (bool.Parse(retorno.ToString()) == true)
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
         internal static bool ExcluirAuto(string Usuario, string token)
         {
             bool result = false;

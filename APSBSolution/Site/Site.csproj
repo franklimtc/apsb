@@ -430,6 +430,7 @@
     <Content Include="Content\Icons\medkit-outline.svg" />
     <Content Include="Content\Icons\person-outline.svg" />
     <Content Include="Content\Icons\preco.svg" />
+    <Content Include="Content\Icons\refresh-circle-outline.svg" />
     <Content Include="Content\Icons\save-outline.svg" />
     <Content Include="Content\Icons\time-outline.svg" />
     <Content Include="Content\Icons\trash-outline.svg" />

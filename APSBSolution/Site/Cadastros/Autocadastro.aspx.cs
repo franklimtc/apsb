@@ -67,6 +67,9 @@ namespace Site.Cadastros
                         result = Profissional.AtivarAuto(Usuario, Token.Value);
                     }
                     break;
+                case "Renovar":
+                    result = Profissional.RenovarToken(Usuario, Token.Value);
+                    break;
                 default:
                     break;
             }
