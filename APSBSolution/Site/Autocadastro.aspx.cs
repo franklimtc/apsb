@@ -117,6 +117,11 @@ namespace Site
             {
                 Lista.Add(new ProfissionalBanco());
             }
+            else
+            {
+                HiddenBancoCadastrado.Value = Lista.Count.ToString();
+            }
+
             gvProfissionalBanco.DataSource = Lista;
             gvProfissionalBanco.DataBind();
 
@@ -187,8 +192,6 @@ namespace Site
                 tbSecaoEleitor.Text = "";
                 tbReservista.Text = "";
                 tbPisPasep.Text = "";
-                tbdtEmissaoRG.Text = "";
-                tbDataNascimento.Text = "";
             }
 
             //string scriptModal = @"$('#profissionalModal').modal('show')";
@@ -199,30 +202,37 @@ namespace Site
         {
             //medicoModal
             Profissional editProf = Profissional.ListarPorID(idProfissional);
-            tbNome.Text = editProf.ccNome;
-            dpSexo.ClearSelection();
-            dpSexo.Items.FindByValue(editProf.ccSexo.IfNullOrWhiteSpace("M")).Selected = true;
-            dpNaturalidade.ClearSelection();
-            dpNaturalidade.Items.FindByValue(editProf.ccNaturalUF.IfNullOrWhiteSpace("00")).Selected = true;
-            tbCidade.Text = editProf.ccNaturalCidade;
-            dpEstCivil.ClearSelection();
-            dpEstCivil.Items.FindByValue(editProf.ccEstadoCivil.IfNullOrWhiteSpace("C")).Selected = true;
-            tbNomePai.Text = editProf.nomePai;
-            tbNomeMae.Text = editProf.nomeMae;
-            tbNomeConjuge.Text = editProf.nomeConjuge;
-            tbRG.Text = editProf.RGNum.ToString();
-            tbEmissorRG.Text = editProf.RGEmissor;
-            tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("dd/MM/yyyy").IfNullOrWhiteSpace("01/01/2000");
-            tbCPF.Text = editProf.CPFNum.ToString("00000000000");
-            tbEmail.Text = editProf.ccEmail;
-            tbTelefone.Text = editProf.cvTelefone.ToString();
-            tbCelular.Text = editProf.cvCelular.ToString();
-            tbObservacoes.Text = editProf.Observacoes;
-            tbDataNascimento.Text = editProf.dtNascimento.ToString("dd/MM/yyyy").IfNullOrWhiteSpace("01/01/2000");
 
+            if (editProf != null)
+            {
+                tbNome.Text = editProf.ccNome;
+                dpSexo.ClearSelection();
+                dpSexo.Items.FindByValue(editProf.ccSexo.IfNullOrWhiteSpace("M")).Selected = true;
+                dpNaturalidade.ClearSelection();
+                dpNaturalidade.Items.FindByValue(editProf.ccNaturalUF.IfNullOrWhiteSpace("00")).Selected = true;
+                tbCidade.Text = editProf.ccNaturalCidade;
+                dpEstCivil.ClearSelection();
+                dpEstCivil.Items.FindByValue(editProf.ccEstadoCivil.IfNullOrWhiteSpace("C")).Selected = true;
+                tbNomePai.Text = editProf.nomePai;
+                tbNomeMae.Text = editProf.nomeMae;
+                tbNomeConjuge.Text = editProf.nomeConjuge;
+                tbRG.Text = editProf.RGNum.ToString();
+                tbEmissorRG.Text = editProf.RGEmissor;
+                tbCPF.Text = editProf.CPFNum.ToString("00000000000");
+                tbEmail.Text = editProf.ccEmail;
+                tbTelefone.Text = editProf.cvTelefone.ToString();
+                tbCelular.Text = editProf.cvCelular.ToString();
+                tbObservacoes.Text = editProf.Observacoes;
 
-            //string scriptModal = @"$('#medicoModal').modal('show')";
-            //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
+                tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("yyyy-MM-dd");
+                tbDataNascimento.Text = editProf.dtNascimento.ToString("yyyy-MM-dd");
+            }
+           
+
+            //tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("yyyy-MM-dd");
+            //tbDataNascimento.Text = editProf.dtNascimento.ToString("yyyy-MM-dd");
+            
+
         }
 
         [WebMethod]

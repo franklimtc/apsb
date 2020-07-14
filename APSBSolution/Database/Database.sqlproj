@@ -62,6 +62,7 @@
     <Folder Include="dbo\Stored Procedures\" />
     <Folder Include="dbo\Sequences\" />
     <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Procedures\INS_Clinica.sql" />
@@ -140,6 +141,14 @@
     <Build Include="dbo\Stored Procedures\SEL_ChartFatEfetivo.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ChartFatBruto.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ChartDespesas.sql" />
+    <Build Include="dbo\Functions\FN_TokenAuto.sql" />
+    <Build Include="dbo\Stored Procedures\RNV_ProfissionalAuto.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

@@ -1,0 +1,11 @@
+﻿
+CREATE FUNCTION [dbo].[FN_TokenAuto]
+(
+    @IdProfissional int,
+	@cdDataCriacao DATETIME
+)
+RETURNS VARCHAR(MAX)
+AS
+BEGIN
+    RETURN CONCAT('APSB',RIGHT(CONCAT('000000', CONCAT(@IdProfissional,RIGHT(CONCAT('00',DATEPART(DAY,@cdDataCriacao)),2),RIGHT(CONCAT('00',DATEPART(MILLISECOND,@cdDataCriacao)),3))),10))
+END

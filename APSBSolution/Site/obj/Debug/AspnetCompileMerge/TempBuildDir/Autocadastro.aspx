@@ -16,7 +16,6 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
-
     <form id="formCadastro" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -42,7 +41,10 @@
         <asp:HiddenField runat="server" ID="idHiddenMedico" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalEndereco" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
+        <asp:HiddenField runat="server" ID="HiddenFormPreenchido" Value="0" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
+        <asp:HiddenField runat="server" ID="HiddenBancoCadastrado" Value="0" />
+
         <%--Hidden Filds--%>
 
         <nav class="navbar fixed-top navbar-dark bg-dark" style="height: 50px;">
@@ -69,9 +71,9 @@
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell><input type="button" name="btPessoal" id="btPessoal" value="Dados Pessoais" class="btn btn-secondary" /> </asp:TableCell>
-                            <asp:TableCell><input type="button" name="btProfissional" id="btProfissional" value="Dados Profissionais" class="btn btn-secondary" /> </asp:TableCell>
-                            <asp:TableCell><input type="button" name="btEndereco" id="btEndereco" value="Endereço" class="btn btn-secondary" /> </asp:TableCell>
-                            <asp:TableCell><input type="button" name="btBanco" id="btBanco" value="Dados Bancários" class="btn btn-secondary" /> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btProfissional" id="btProfissional" value="Dados Profissionais" class="btn btn-secondary" disabled/> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btEndereco" id="btEndereco" value="Endereço" class="btn btn-secondary" disabled/> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btBanco" id="btBanco" value="Dados Bancários" class="btn btn-secondary" disabled/> </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell ColumnSpan="4">
@@ -83,10 +85,16 @@
                     </asp:Table>
                 </div>
             </div>
+            <div class="row d-none" id="divImprimir">
+                <div class="col"></div>
+                <div class="col">
+                    <input type="button" name="btImprimir" value="Imprimir" class="btn btn-secondary" style="width:100%" />
+                </div>
+                <div class="col"></div>
+            </div>
         </div>
 
         <%--Modais--%>
-
 
         <!-- Modal Médico - Dados Pessoais -->
         <div class="modal fade" id="medicoModal" tabindex="-1" role="dialog" aria-labelledby="medicoModalLabel" aria-hidden="true">
@@ -101,7 +109,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="tbNome">Nome</label>
-                            <asp:TextBox runat="server" ID="tbNome" CssClass="form-control" placeholder="digite..." Width="100%" />
+                            <asp:TextBox runat="server" ID="tbNome" CssClass="form-control" placeholder="digite..." Width="100%"/>
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -166,7 +174,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="tbDataNascimento">Data de Nascimento</label>
-                                    <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control date" Text="" />
+                                    <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control" type="date"/>
                                 </div>
                             </div>
 
@@ -191,11 +199,11 @@
                                 </div>
                                 <div class="col">
                                     <label for="tbEmissorRG">Órgão Emissor</label>
-                                    <asp:TextBox runat="server" ID="tbEmissorRG" CssClass="form-control" placeholder="digite..." />
+                                    <asp:TextBox runat="server" ID="tbEmissorRG" CssClass="form-control" placeholder="digite..."/>
                                 </div>
                                 <div class="col">
                                     <label for="tbdtEmissaoRG">Data de Emissão</label>
-                                    <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control date" placeholder="digite..." />
+                                    <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control" placeholder="digite..." type="date"/>
                                 </div>
                             </div>
                             <div class="row">
@@ -228,7 +236,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="RemoverMascaras()" OnClick="btSalvar_Click" />
+                        <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="Validar();" OnClick="btSalvar_Click" />
                     </div>
                 </div>
             </div>
@@ -310,7 +318,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarDados_Click" />
+                        <asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarDados_Click" OnClientClick="ValidarFormacao()" />
                     </div>
                 </div>
             </div>
@@ -387,7 +395,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="RemoverMascaras()" OnClick="btSalvarEndereco_Click" />
+                        <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="ValidarEndereco()" OnClick="btSalvarEndereco_Click" />
                     </div>
                 </div>
             </div>
@@ -431,7 +439,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco()" />
+                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco(); ValidarBanco();"  />
                             </div>
                         </div>
                         <div class="row">
@@ -464,6 +472,7 @@
                 </div>
             </div>
         </div>
+
         <%--Modais--%>
     </form>
 
@@ -472,45 +481,147 @@
     <script type="text/javascript" src="../Scripts/Site.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
 
-    <script>    
-        //$(document).ready(function () {
+    <script>  
+        $(document).ready(function () {
+            Validar();
+            ValidarFormacao();
+            ValidarEndereco();
+            if ($("#HiddenBancoCadastrado").val() != "0") {
+                $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
+                $("#divImprimir").removeClass("d-none")
+            }
+        });
 
-        //    $('#ModalValidar').modal('show')
-        //    $('#ModalValidar').data('bs.modal').options.backdrop = 'static';
-        //});
 
         $("#btPessoal").click(function () {
             $("#btPessoal").removeClass("btn-secondary").addClass("btn-info");
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 25).css('width', '25%');
+            
             $("#medicoModal").modal("show");
+
+            $('#tbNome').attr('required', 'required');
+            $('#tbCidade').attr('required', 'required');
+            $('#tbDataNascimento').attr('required', 'required');
+            $('#tbRG').attr('required', 'required');
+            $('#tbEmissorRG').attr('required', 'required');
+            $('#tbdtEmissaoRG').attr('required', 'required');
+            $('#tbCPF').attr('required', 'required');
+            $('#tbEmissorRG').attr('required', 'required');
+            $('#tbEmail').attr('required', 'required');
+            $('#tbTelefone').attr('required', 'required');
+            $('#tbCelular').attr('required', 'required');
+            AdicionarMascaras();
         });
+
         $("#btProfissional").click(function () {
             $("#btProfissional").removeClass("btn-secondary").addClass("btn-info");
             $("#btPessoal").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 50).css('width', '50%');
+
+            $('#tbFormacao').attr('required', 'required');
+            $('#tbConselhoRegional').attr('required', 'required');
+            $('#tbNumInscricaoConselho').attr('required', 'required');
+
             $("#profissionalModal").modal("show");
+
+            AdicionarMascaras();
         });
+
         $("#btEndereco").click(function () {
             $("#btEndereco").removeClass("btn-secondary").addClass("btn-info");
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btPessoal").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 75).css('width', '75%');
+
+            $('#tbEndereço').attr('required', 'required');
+            $('#tbBairro').attr('required', 'required');
+            $('#tbCep').attr('required', 'required');
+            $('#tbEnderecoCidade').attr('required', 'required');
             $("#moradiaModal").modal("show");
+
+            AdicionarMascaras();
         });
+
         $("#btBanco").click(function () {
             $("#btBanco").removeClass("btn-secondary").addClass("btn-info");
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btPessoal").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
+
             $("#bancoModal").modal("show");
+
+            AdicionarMascaras();
         });
+
+        function Validar()
+        {
+            var v1 = $('#tbNome').val();
+            var v2 = $('#tbCidade').val();
+            var v3 = $('#tbDataNascimento').val();
+            var v4 = $('#tbRG').val();
+            var v5 = $('#tbEmissorRG').val();
+            var v6 = $('#tbdtEmissaoRG').val();
+            var v7 = $('#tbCPF').val();
+            var v8 = $('#tbEmissorRG').val();
+            var v9 = $('#tbEmail').val();
+            var v10 = $('#tbTelefone').val();
+            var v11 = $('#tbCelular').val();
+
+
+            if (v1 != "" && v2 != "" && v3 != "" && v4 != "" && v5 != "" && v6 != "" && v7 != "" && v8 != "" && v9 != "" && v10 != "" && v11 != "") {
+                RemoverMascaras();
+                $("#btProfissional").removeAttr("disabled");
+                $('.progress-bar').attr('aria-valuenow', 25).css('width', '25%');
+            }
+            else {
+                console.log("Campos invalidados");
+            }
+        }
+
+        function ValidarFormacao() {
+
+            var v1 = $('#tbFormacao').val();
+            var v2 = $('#tbConselhoRegional').val();
+            var v3 = $('#tbNumInscricaoConselho').val();
+            if (v1 != "" && v2 != "" && v3 != "") {
+                RemoverMascaras();
+                $("#btEndereco").removeAttr("disabled");
+                $('.progress-bar').attr('aria-valuenow', 50).css('width', '50%');
+            } else {
+                console.log("Campos invalidados");
+            }
+        }
+
+        function ValidarEndereco() {
+            var v1 = $('#tbEndereço').val();
+            var v2 = $('#tbBairro').val();
+            var v3 = $('#tbCep').val();
+            var v4 = $('#tbEnderecoCidade').val();
+
+            if (v1 != "" && v2 != "" && v3 != "" && v4 != "") {
+                RemoverMascaras();
+                $("#btBanco").removeAttr("disabled");
+                $('.progress-bar').attr('aria-valuenow', 75).css('width', '75%');
+            } else {
+                console.log("Campos invalidados");
+            }
+        }
+
+        function ValidarBanco() {
+            RemoverMascaras();
+            $("#divImprimir").removeClass("d-none")
+            $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
+        }
+        
+        function AdicionarMascaras() {
+            $('.cep').mask('00000-000');
+            $('.cpf').mask('000.000.000-00', { reverse: true });
+            $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
+            $('.phone_with_ddd').mask('(00) 00000-0000');
+        };
     </script>
 </body>
 </html>

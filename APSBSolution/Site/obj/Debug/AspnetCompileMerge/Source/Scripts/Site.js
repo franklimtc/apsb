@@ -41,3 +41,4 @@ function RemoverMascaras() {
     $(".cnpj").unmask();
     $(".phone_with_ddd").unmask();
 };
+
