@@ -65,7 +65,7 @@ namespace Site
                 if (_debug=="false")
                 {
                     var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                    var result = manager.FindByName("administrador");
+                    var result = manager.FindByName("administrador@apsb.com.br");
                     if (result == null)
                     {
                         var user = new ApplicationUser() { UserName = "administrador@apsb.com.br", Email = "administrador@apsb.com.br" };

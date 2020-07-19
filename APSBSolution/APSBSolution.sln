@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", 
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalaDireta", "MalaDireta\MalaDireta\MalaDireta.csproj", "{E4DB7FDF-8312-4246-B592-ADDA90678DDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
