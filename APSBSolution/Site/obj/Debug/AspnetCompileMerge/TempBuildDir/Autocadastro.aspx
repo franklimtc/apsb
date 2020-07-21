@@ -88,7 +88,7 @@
             <div class="row d-none" id="divImprimir">
                 <div class="col"></div>
                 <div class="col">
-                    <input type="button" name="btImprimir" value="Imprimir" class="btn btn-secondary" style="width:100%" />
+                    <asp:Button Text="Imprimir" runat="server" ID="btImprimir" OnClick="btImprimir_Click" CssClass="btn btn-secondary" Width="100%" />
                 </div>
                 <div class="col"></div>
             </div>

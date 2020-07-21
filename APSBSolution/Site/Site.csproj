@@ -1281,6 +1281,7 @@
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Reports\FichaCadastral2.rdlc" />
     <EmbeddedResource Include="Reports\FichaCadastral.rdlc" />
     <EmbeddedResource Include="Reports\Mod_ficha.rdlc" />
   </ItemGroup>

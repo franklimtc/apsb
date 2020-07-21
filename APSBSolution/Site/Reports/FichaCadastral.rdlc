@@ -524,7 +524,6 @@
               </Textbox>
               <Line Name="Line3">
                 <Top>3.6cm</Top>
-                <Left>0cm</Left>
                 <Height>0cm</Height>
                 <Width>19.7581cm</Width>
                 <ZIndex>9</ZIndex>
@@ -678,7 +677,6 @@
               </Textbox>
               <Line Name="Line4">
                 <Top>4.81597cm</Top>
-                <Left>0cm</Left>
                 <Height>0cm</Height>
                 <Width>19.7581cm</Width>
                 <ZIndex>14</ZIndex>
@@ -725,7 +723,6 @@
               </Textbox>
               <Line Name="Line5">
                 <Top>6.01597cm</Top>
-                <Left>0cm</Left>
                 <Height>0cm</Height>
                 <Width>19.7581cm</Width>
                 <ZIndex>16</ZIndex>
@@ -816,7 +813,6 @@
               </Textbox>
               <Line Name="Line6">
                 <Top>7.21597cm</Top>
-                <Left>0cm</Left>
                 <Height>0cm</Height>
                 <Width>19.7581cm</Width>
                 <ZIndex>19</ZIndex>
@@ -1189,7 +1185,7 @@
               <Value>apsb_logo</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.25381cm</Top>
-              <Left>0.41988cm</Left>
+              <Left>0.44508cm</Left>
               <Height>2.18917cm</Height>
               <Width>13.49445cm</Width>
               <Style>

@@ -21,6 +21,8 @@ namespace Site.Classes
         public int cvTituloSecao { get; set; }//cvTituloSecao   smallint
         public long cvReservista { get; set; }//cvReservista    bigint
         public long cvPIS { get; set; }//cvPIS   bigint
+        public int cvCHN { get; set; }
+        public int cvCTPS { get; set; }
         #endregion
 
         public ProfissionalDados()

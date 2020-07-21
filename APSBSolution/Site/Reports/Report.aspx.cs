@@ -15,36 +15,62 @@ namespace Site.Reports
         {
             if (!IsPostBack)
             {
-                ReportViewer1.ProcessingMode = ProcessingMode.Local;
-                ReportViewer1.LocalReport.ReportPath = @"Reports\FichaCadastral.rdlc";
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccNome", "Franklim Costa"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccSexo", "M"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("dtNasc", "28/03/1097"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvCPF", "00100200304"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvRG", "00100200304"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccRgExp", "SSPMA"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvInscricao", "1111111"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccConselho", "CRM"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccEspecialidade", "Pediatria"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvPIS", "11112222"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccEndereco", "Av. dos Guararapes"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvCEP", "00102555"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccBairro", "Centro"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccCidade", "São Paulo"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccUF", "SP"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvCelular", "11999991111"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccEmail", "email@email.com"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvTitulo", "11110000"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvCNH", "11110000"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvReservista", "11110000"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvTrabalho", "11110000"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("ccBanco", "Caixa"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvAgencia", "1010"));
-                ReportViewer1.LocalReport.SetParameters(new ReportParameter("cvConta", "101011-1"));
+                int id;
 
-                ReportViewer1.LocalReport.DisplayName = "teste";
+                try
+                {
+                    id = int.Parse(Request.QueryString["id"].ToString());
+                    GerarFichaCadastral(id);
+                }
+                catch(Exception ex) 
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('{ex.Message}')", true);
+                }
             }
            
+        }
+
+        void GerarFichaCadastral(int idProfissional)
+        {
+            ReportViewer viewer = new ReportViewer();
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.LocalReport.ReportPath = @"Reports\FichaCadastral2.rdlc";
+            viewer.LocalReport.DisplayName = "Ficha Cadastral";
+
+
+            List<ProfissionalDados> ProfissionalDadosLista = new List<ProfissionalDados>();
+            List<ProfissionalEndereco> ProfissionalEnderecoLista = new List<ProfissionalEndereco>();
+
+            ProfissionalDadosLista.Add(ProfissionalDados.ListarPorID(idProfissional));
+            ProfissionalEnderecoLista.Add(ProfissionalEndereco.ListarPorID(idProfissional));
+            
+            ReportDataSource dsProfissional = new ReportDataSource("dsProfissional", Profissional.Listar().Where(x => x.IdProfissional == idProfissional));
+            ReportDataSource dsProfissionalDados    = new ReportDataSource("dsProfissionalDados", ProfissionalDadosLista);
+            ReportDataSource dsProfissionalEndereco = new ReportDataSource("dsProfissionalEndereco", ProfissionalEnderecoLista);
+            ReportDataSource dsProfissionalBanco = new ReportDataSource("dsProfissionalBanco", ProfissionalBanco.Listar(idProfissional));
+
+            viewer.LocalReport.DataSources.Add(dsProfissional);
+            viewer.LocalReport.DataSources.Add(dsProfissionalDados);
+            viewer.LocalReport.DataSources.Add(dsProfissionalEndereco);
+            viewer.LocalReport.DataSources.Add(dsProfissionalBanco);
+
+            // Variables  
+            Warning[] warnings;
+            string[] streamIds;
+            string mimeType = string.Empty;
+            string encoding = string.Empty;
+            string extension = string.Empty;
+            string fileName = "Ficha Cadastral";
+
+            byte[] bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
+
+            // Now that you have all the bytes representing the PDF report, buffer it and send it to the client.  
+            Response.Buffer = true;
+            Response.Clear();
+            Response.ContentType = mimeType;
+            Response.AddHeader("content-disposition", "attachment; filename=" + fileName + "." + extension);
+            Response.BinaryWrite(bytes); // create the file  
+            Response.Flush(); // send it to the client to download  
         }
     }
 }

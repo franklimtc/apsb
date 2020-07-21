@@ -79,6 +79,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="assets/img/apple-icon.png">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
+    <File Include="assets/img/apsb_logo.jpg">
+      <publishTime>07/15/2020 18:06:11</publishTime>
+    </File>
     <File Include="assets/img/bg2.jpg">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
@@ -686,7 +689,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Autocadastro.aspx">
-      <publishTime>07/14/2020 15:04:16</publishTime>
+      <publishTime>07/20/2020 22:05:51</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -695,10 +698,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/15/2020 17:53:02</publishTime>
+      <publishTime>07/20/2020 22:12:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/15/2020 17:53:02</publishTime>
+      <publishTime>07/20/2020 22:12:06</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1157,10 +1160,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>07/15/2020 17:52:27</publishTime>
+      <publishTime>07/20/2020 22:10:17</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>07/15/2020 17:52:27</publishTime>
+      <publishTime>07/20/2020 22:10:17</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1825,6 +1828,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Datatables.aspx">
       <publishTime>07/10/2020 14:26:26</publishTime>
     </File>
+    <File Include="dbapsbDataSet.xsc">
+      <publishTime>07/15/2020 19:32:28</publishTime>
+    </File>
+    <File Include="dbapsbDataSet.xss">
+      <publishTime>07/15/2020 19:32:28</publishTime>
+    </File>
     <File Include="Default.aspx">
       <publishTime>07/10/2020 14:26:26</publishTime>
     </File>
@@ -1835,13 +1844,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2020 19:59:36</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/15/2020 17:52:52</publishTime>
+      <publishTime>07/20/2020 22:11:52</publishTime>
     </File>
     <File Include="Reports/Clinicas.aspx">
       <publishTime>07/10/2020 15:13:40</publishTime>
     </File>
     <File Include="Reports/Despesas.aspx">
       <publishTime>07/10/2020 14:58:18</publishTime>
+    </File>
+    <File Include="Reports/FichaCadastral.rdlc">
+      <publishTime>07/20/2020 18:22:58</publishTime>
+    </File>
+    <File Include="Reports/FichaCadastral2.rdlc">
+      <publishTime>07/20/2020 21:57:42</publishTime>
+    </File>
+    <File Include="Reports/Mod_ficha.rdlc">
+      <publishTime>07/19/2020 16:04:33</publishTime>
     </File>
     <File Include="Reports/Profissionais.aspx">
       <publishTime>07/10/2020 15:10:12</publishTime>
@@ -1853,7 +1871,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 15:20:32</publishTime>
     </File>
     <File Include="Reports/Report.aspx">
-      <publishTime>07/10/2020 14:26:26</publishTime>
+      <publishTime>07/19/2020 15:55:22</publishTime>
     </File>
     <File Include="Reports/Report3.rdlc">
       <publishTime>07/10/2020 15:20:32</publishTime>
@@ -2822,7 +2840,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/14/2020 18:26:15</publishTime>
+      <publishTime>07/20/2020 22:11:38</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -45,7 +45,7 @@ namespace Site.Classes
             throw new NotImplementedException();
         }
 
-        public List<object> Listar()
+        public static List<ProfissionalEndereco> Listar()
         {
             throw new NotImplementedException();
         }

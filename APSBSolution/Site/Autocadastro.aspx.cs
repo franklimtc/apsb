@@ -371,5 +371,12 @@ namespace Site
                     break;
             }
         }
+
+        protected void btImprimir_Click(object sender, EventArgs e)
+        {
+            int idProfissional = int.Parse(idHiddenMedico.Value);
+
+            ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Reports/Report.aspx?id={idProfissional}"}', '', 'width = 200, height = 100');", true);
+        }
     }
 }

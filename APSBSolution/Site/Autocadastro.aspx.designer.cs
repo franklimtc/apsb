@@ -114,6 +114,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.Table tbCampos;
 
         /// <summary>
+        /// Controle btImprimir.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btImprimir;
+
+        /// <summary>
         /// Controle tbNome.
         /// </summary>
         /// <remarks>
