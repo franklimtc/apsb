@@ -1,11 +1,8 @@
 ﻿using Microsoft.Ajax.Utilities;
-using Simple.Data;
 using Site.Classes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -375,8 +372,19 @@ namespace Site
         protected void btImprimir_Click(object sender, EventArgs e)
         {
             int idProfissional = int.Parse(idHiddenMedico.Value);
+            string report = null;
 
-            ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Reports/Report.aspx?id={idProfissional}"}', '', 'width = 200, height = 100');", true);
+            if (rbFicha.Checked)
+                report = "cadastro";
+            else if (rbAutorizacao.Checked)
+                report = "autorizacao";
+            else if (rbInformativo.Checked)
+                report = "informativo";
+            else if (rbAcordo.Checked)
+                report = "acordo";
+
+            ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Reports/Report2.aspx?report={report}&id={idProfissional}"}', '', '');", true);
         }
+       
     }
 }

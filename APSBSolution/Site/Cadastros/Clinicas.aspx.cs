@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Text;
-using System.Web;
-using System.Web.Script.Serialization;
-using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
-using Microsoft.Reporting.Map.WebForms.BingMaps;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
-using Simple.Data;
 using Site.Classes;
 
 namespace Site.Cadastros

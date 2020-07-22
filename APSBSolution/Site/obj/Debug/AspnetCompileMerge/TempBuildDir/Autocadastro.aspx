@@ -85,12 +85,31 @@
                     </asp:Table>
                 </div>
             </div>
+            <div class="row d-none" id="divImprimirRbs">
+                <div class="col" style="text-align:center">
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Ficha Cadastral" ID="rbFicha" runat="server" CssClass="form-check-input" GroupName="rbPrint" Checked="true" />
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Autorização de Repasse" ID="rbAutorizacao" runat="server" CssClass="form-check-input" GroupName="rbPrint" />
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Informativo" ID="rbInformativo" runat="server" CssClass="form-check-input" GroupName="rbPrint" />
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Acordo de ciência" ID="rbAcordo" runat="server" CssClass="form-check-input" GroupName="rbPrint" />
+                    </div>
+                </div>
+            </div>
             <div class="row d-none" id="divImprimir">
                 <div class="col"></div>
                 <div class="col">
+                    <br />
                     <asp:Button Text="Imprimir" runat="server" ID="btImprimir" OnClick="btImprimir_Click" CssClass="btn btn-secondary" Width="100%" />
                 </div>
                 <div class="col"></div>
+
             </div>
         </div>
 
@@ -109,7 +128,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="tbNome">Nome</label>
-                            <asp:TextBox runat="server" ID="tbNome" CssClass="form-control" placeholder="digite..." Width="100%"/>
+                            <asp:TextBox runat="server" ID="tbNome" CssClass="form-control" placeholder="digite..." Width="100%" />
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -174,7 +193,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="tbDataNascimento">Data de Nascimento</label>
-                                    <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control" type="date"/>
+                                    <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control" type="date" />
                                 </div>
                             </div>
 
@@ -199,11 +218,11 @@
                                 </div>
                                 <div class="col">
                                     <label for="tbEmissorRG">Órgão Emissor</label>
-                                    <asp:TextBox runat="server" ID="tbEmissorRG" CssClass="form-control" placeholder="digite..."/>
+                                    <asp:TextBox runat="server" ID="tbEmissorRG" CssClass="form-control" placeholder="digite..." />
                                 </div>
                                 <div class="col">
                                     <label for="tbdtEmissaoRG">Data de Emissão</label>
-                                    <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control" placeholder="digite..." type="date"/>
+                                    <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control" placeholder="digite..." type="date" />
                                 </div>
                             </div>
                             <div class="row">
@@ -439,7 +458,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco(); ValidarBanco();"  />
+                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco(); ValidarBanco();" />
                             </div>
                         </div>
                         <div class="row">
@@ -489,6 +508,7 @@
             if ($("#HiddenBancoCadastrado").val() != "0") {
                 $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
                 $("#divImprimir").removeClass("d-none")
+                $("#divImprimirRbs").removeClass("d-none")
             }
         });
 
@@ -498,7 +518,7 @@
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            
+
             $("#medicoModal").modal("show");
 
             $('#tbNome').attr('required', 'required');
@@ -556,8 +576,7 @@
             AdicionarMascaras();
         });
 
-        function Validar()
-        {
+        function Validar() {
             var v1 = $('#tbNome').val();
             var v2 = $('#tbCidade').val();
             var v3 = $('#tbDataNascimento').val();
@@ -613,9 +632,10 @@
         function ValidarBanco() {
             RemoverMascaras();
             $("#divImprimir").removeClass("d-none")
+            $("#divImprimirRbs").removeClass("d-none")
             $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
         }
-        
+
         function AdicionarMascaras() {
             $('.cep').mask('00000-000');
             $('.cpf').mask('000.000.000-00', { reverse: true });

@@ -87,7 +87,7 @@ namespace Site
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            if (!Request.IsAuthenticated && Page.Title != "Logon" && _debug == "false")
+            if (!Request.IsAuthenticated && Page.Title != "Logon" && Page.Title != "Reports" && _debug == "false")
             {
                 Response.Redirect(@"~\Account\Login");
             }

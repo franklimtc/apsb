@@ -114,6 +114,42 @@ namespace Site
         protected global::System.Web.UI.WebControls.Table tbCampos;
 
         /// <summary>
+        /// Controle rbFicha.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbFicha;
+
+        /// <summary>
+        /// Controle rbAutorizacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbAutorizacao;
+
+        /// <summary>
+        /// Controle rbInformativo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbInformativo;
+
+        /// <summary>
+        /// Controle rbAcordo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbAcordo;
+
+        /// <summary>
         /// Controle btImprimir.
         /// </summary>
         /// <remarks>
