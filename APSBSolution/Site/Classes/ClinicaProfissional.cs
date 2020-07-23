@@ -67,23 +67,26 @@ namespace Site.Classes
             return result;
         }
 
-        public static List<ClinicaProfissional> Listar(int _idClinica)
+        public static List<ClinicaProfissional> Listar(int _idClinica, int? _idProfissional = null)
         {
             List<object[]> parametros = new List<object[]>();
             parametros.Add(new object[] { "@idClinica", _idClinica });
-            DataTable dt = DAO.RetornaDT("SEL_ClinicaProfissional @idClinica = @idClinica", parametros);
+            parametros.Add(new object[] { "@idProfissional", _idProfissional.Value });
+            DataTable dt = DAO.RetornaDT("SEL_ClinicaProfissional @idClinica = @idClinica, @idProfissional = @idProfissional", parametros);
 
             List<ClinicaProfissional> Lista = new List<ClinicaProfissional>();
             if (dt.Rows.Count > 0)
             {
                 foreach (DataRow c in dt.Rows)
                 {
-                    Lista.Add(new ClinicaProfissional(int.Parse(c["IdClinicaProfissional"].ToString())
+                    ClinicaProfissional cNew = new ClinicaProfissional(int.Parse(c["IdClinicaProfissional"].ToString())
                         , c["ccNome"].ToString()
                         , double.Parse(c["cvTaxaProfissional"].ToString())
                         , c["observacao"].ToString()
                         , int.Parse(c["cvStatus"].ToString())
-                        ));
+                        );
+                    cNew.idClinica = int.Parse(c["idClinica"].ToString());
+                    Lista.Add(cNew);
                 }
             }
 

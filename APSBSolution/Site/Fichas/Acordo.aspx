@@ -80,14 +80,19 @@
         <br />
         <table style="text-align: center;">
             <tr>
-                <td style="width: 200px; border: hidden; text-align: center"></td>
-                <td style="width: 400px; border: hidden; text-align: center">
+                <td style="width: 350px; border: hidden; text-align: center">
                     <hr />
                     <asp:Label ID="lbNomeAss" runat="server" /><br />
                     CPF:
                     <asp:Label ID="lbCPF" runat="server" CssClass="cpf" />
                 </td>
-                <td style="width: 200px; border: hidden; text-align: center"></td>
+                <td style="width: 100px; border:hidden"></td>
+                <td style="width: 350px; border: hidden; text-align: center">
+                    <hr />
+                    <br />
+                    APSB
+                    <br />
+                </td>
             </tr>
         </table>
     </form>
@@ -99,7 +104,7 @@
     <br />
     <br />
     <br />
-     <footer>
+    <footer>
         <hr />
         Associação dos Profissionais de Saúde de Brasília – APSB. Site: www.apsb.com.br Quadra 708/709 Norte, Bloco “A”, Entrada 13, 2º Andar, sala 201,
                     <br />

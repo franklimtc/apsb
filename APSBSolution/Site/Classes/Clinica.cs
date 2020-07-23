@@ -235,5 +235,30 @@ namespace Site.Classes
             }
             return result;
         }
+
+        internal static Clinica ListarPorCNPJ(long cnpj)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@cnpj", cnpj });
+            DataTable dt = DAO.RetornaDT("SEL_ClinicaCNPJ @cnpj=@cnpj;", parametros);
+
+
+            List<Clinica> Lista = new List<Clinica>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    Clinica cNew = new Clinica();
+                    cNew.ccApelido = c["ccApelido"].ToString();
+                    cNew.ccRazaoSocial = c["ccRazaoSocial"].ToString();
+                    cNew.ccNomeFantasia = c["ccNomeFantasia"].ToString();
+                    cNew.idClinica = int.Parse(c["IdClinica"].ToString());
+                    Lista.Add(cNew);
+                }
+
+            }
+
+            return Lista.FirstOrDefault();
+        }
     }
 }

@@ -373,20 +373,50 @@ namespace Site
         protected void btImprimir_Click(object sender, EventArgs e)
         {
             int idProfissional = int.Parse(idHiddenMedico.Value);
-            string report = null;
 
             if (rbFicha.Checked)
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Cadastro.aspx?token={hdToken.Value}"}', '', '');", true);
             else if (rbAutorizacao.Checked)
-                report = "autorizacao";
+            {
+                List< ClinicaProfissional> relacoes = ClinicaProfissional.Listar(0, int.Parse(idHiddenMedico.Value));
+                string script = "";
+                foreach (var r in relacoes)
+                {
+                    script += $"window.open('{$"Fichas/Repasse.aspx?token={hdToken.Value}"}&id={r.IdClinicaProfissional}', '', '');";
+                }
+
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", script , true);
+            }
             else if (rbInformativo.Checked)
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Informativo.aspx?token={hdToken.Value}"}', '', '');", true);
             else if (rbAcordo.Checked)
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Acordo.aspx?token={hdToken.Value}"}', '', '');", true);
-
-
-            //ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Reports/Report2.aspx?report={report}&id={idProfissional}"}', '', '');", true);
         }
-       
+
+        [WebMethod]
+        public static Clinica GetClinica(long cnpj)
+        {
+            Clinica c = Clinica.ListarPorCNPJ(cnpj);
+            return c;
+        }
+
+        [WebMethod]
+        public static bool AddClinicaProfissional(long cnpj, string token)
+        {
+            bool result = false;
+            Clinica c = Clinica.ListarPorCNPJ(cnpj);
+            var id = Profissional.ValidarToken(token);
+
+            int idProfissional = 0;
+            int.TryParse(id.ToString(), out idProfissional);
+
+            if (idProfissional > 0)
+            {
+                ClinicaProfissional cNew = new ClinicaProfissional(c.idClinica, idProfissional, 10, "");
+                result = cNew.Adicionar("Autocadastro");
+            }
+            
+            return result;
+        }
     }
 }

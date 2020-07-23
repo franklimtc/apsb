@@ -43,8 +43,9 @@
         <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
         <asp:HiddenField runat="server" ID="HiddenFormPreenchido" Value="0" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
-        <asp:HiddenField runat="server" ID="hdToken"/>
+        <asp:HiddenField runat="server" ID="hdToken" />
         <asp:HiddenField runat="server" ID="HiddenBancoCadastrado" Value="0" />
+
 
         <%--Hidden Filds--%>
 
@@ -65,7 +66,7 @@
                     </asp:Panel>
                     <asp:Table runat="server" Visible="false" ID="tbCampos">
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4">
+                            <asp:TableCell ColumnSpan="5">
                                  <h5>Cadastro Profissional</h5>
                                 <p>Navegue pelas opções e preencha os dados.</p>
                             </asp:TableCell>
@@ -75,9 +76,10 @@
                             <asp:TableCell><input type="button" name="btProfissional" id="btProfissional" value="Dados Profissionais" class="btn btn-secondary" disabled/> </asp:TableCell>
                             <asp:TableCell><input type="button" name="btEndereco" id="btEndereco" value="Endereço" class="btn btn-secondary" disabled/> </asp:TableCell>
                             <asp:TableCell><input type="button" name="btBanco" id="btBanco" value="Dados Bancários" class="btn btn-secondary" disabled/> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btClinica" id="btClinica" value="Clínicas" class="btn btn-secondary" /> </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4">
+                            <asp:TableCell ColumnSpan="5">
                                 <div class="progress" style="margin-top: 30px; margin-bottom: 30px;">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
@@ -87,7 +89,7 @@
                 </div>
             </div>
             <div class="row d-none" id="divImprimirRbs">
-                <div class="col" style="text-align:center">
+                <div class="col" style="text-align: center">
                     <div class="form-check form-check-inline">
                         <asp:RadioButton Text="Ficha Cadastral" ID="rbFicha" runat="server" CssClass="form-check-input" GroupName="rbPrint" Checked="true" />
                     </div>
@@ -493,6 +495,45 @@
             </div>
         </div>
 
+        <!-- Modal Clínicas -->
+        <div class="modal fade" id="clinicaModal" role="dialog" aria-labelledby="clinicaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="clinicaModalLabel">Adicionar Clínicas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>CNPJ: </label>
+                            <label id="lbApelidoClinica"></label>
+                            <asp:TextBox runat="server" ID="tbcnpj" CssClass="form-control cnpj" />
+                        </div>
+                        <div class="form-group">
+                            <input type="button" id="btBuscarCNPJ" name="name" value="Buscar" class="btn btn-secondary" onclick="BuscarClinica()" />
+                            <input type="button" id="btAddCNPJ" name="name" class="btn btn-primary" value="Adicionar" onclick="AddClinica()" />
+                        </div>
+                         <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional" AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
+                            <Columns>
+                                <asp:BoundField HeaderText="Clínica" DataField="ccNomeFantasia" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                    <div class="modal-footer">
+                       
+                        <asp:SqlDataSource runat="server" ID="dsClinicaProfissional" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ClinicaProfissional" SelectCommandType="StoredProcedure">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="0" Name="idClinica" Type="Int32" />
+                                <asp:ControlParameter ControlID="idHiddenMedico" DefaultValue="" Name="idProfissional" PropertyName="Value" Type="Int32" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <%--Modais--%>
     </form>
 
@@ -500,6 +541,7 @@
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Autocadastro.js"></script>
 
     <script>  
         $(document).ready(function () {
@@ -511,6 +553,11 @@
                 $("#divImprimir").removeClass("d-none")
                 $("#divImprimirRbs").removeClass("d-none")
             }
+        });
+
+        $("#btClinica").click(function () {
+            $("#clinicaModal").modal("show");
+            AdicionarMascaras();
         });
 
 

@@ -443,6 +443,7 @@
     <Content Include="Fichas\Acordo.aspx" />
     <Content Include="Fichas\Cadastro.aspx" />
     <Content Include="Fichas\Informativo.aspx" />
+    <Content Include="Fichas\Repasse.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
     <Content Include="Operacoes.aspx" />
@@ -477,6 +478,7 @@
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\Operacoes\Autocadastro.js" />
     <Content Include="Scripts\Operacoes\Clinica.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -1207,6 +1209,13 @@
     </Compile>
     <Compile Include="Fichas\Informativo.aspx.designer.cs">
       <DependentUpon>Informativo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Repasse.aspx.cs">
+      <DependentUpon>Repasse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Repasse.aspx.designer.cs">
+      <DependentUpon>Repasse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
