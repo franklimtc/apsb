@@ -373,13 +373,24 @@ namespace Site
         protected void btImprimir_Click(object sender, EventArgs e)
         {
             int idProfissional = int.Parse(idHiddenMedico.Value);
+            string script = "";
 
             if (rbFicha.Checked)
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Cadastro.aspx?token={hdToken.Value}"}', '', '');", true);
+            {
+                script = $"window.open('{$"Fichas/Cadastro.aspx?token={hdToken.Value}"}', '', '');";
+
+                if (Profissional.ValidarCristalina(idProfissional) > 0)
+                {
+                    script += $"window.open('{$"Fichas/CadastroCristalina.aspx?token={hdToken.Value}"}', '', '');";
+                    script += $"window.open('{$"Fichas/Cristalina_Cargos.pdf"}', '', '');";
+                }
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", script, true);
+
+            }
             else if (rbAutorizacao.Checked)
             {
                 List< ClinicaProfissional> relacoes = ClinicaProfissional.Listar(0, int.Parse(idHiddenMedico.Value));
-                string script = "";
+                script = "";
                 foreach (var r in relacoes)
                 {
                     script += $"window.open('{$"Fichas/Repasse.aspx?token={hdToken.Value}"}&id={r.IdClinicaProfissional}', '', '');";

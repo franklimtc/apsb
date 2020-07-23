@@ -97,6 +97,15 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="assets/img/cover.jpg">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
+    <File Include="assets/img/cristalina-brasao.jpg">
+      <publishTime>07/23/2020 19:34:06</publishTime>
+    </File>
+    <File Include="assets/img/cristalina-footer.jpg">
+      <publishTime>07/23/2020 19:45:53</publishTime>
+    </File>
+    <File Include="assets/img/cristalina-logo.jpg">
+      <publishTime>07/23/2020 18:40:46</publishTime>
+    </File>
     <File Include="assets/img/faces/avatar.jpg">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
@@ -171,6 +180,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="assets/img/sidebar-4.jpg">
       <publishTime>07/10/2020 14:26:27</publishTime>
+    </File>
+    <File Include="assets/img/yBar.jpg">
+      <publishTime>07/23/2020 19:49:22</publishTime>
     </File>
     <File Include="assets/js/core/bootstrap-material-design.min.js">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -734,7 +746,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Autocadastro.aspx">
-      <publishTime>07/22/2020 21:12:39</publishTime>
+      <publishTime>07/23/2020 17:31:27</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -743,10 +755,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/23/2020 13:28:19</publishTime>
+      <publishTime>07/23/2020 20:46:27</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/23/2020 13:28:19</publishTime>
+      <publishTime>07/23/2020 20:46:27</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1205,10 +1217,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>07/23/2020 13:19:30</publishTime>
+      <publishTime>07/23/2020 20:43:39</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>07/23/2020 13:19:30</publishTime>
+      <publishTime>07/23/2020 20:43:39</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1889,7 +1901,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2020 12:16:06</publishTime>
     </File>
     <File Include="Fichas/Cadastro.aspx">
-      <publishTime>07/22/2020 21:24:35</publishTime>
+      <publishTime>07/23/2020 18:42:05</publishTime>
+    </File>
+    <File Include="Fichas/CadastroCristalina.aspx">
+      <publishTime>07/23/2020 19:55:20</publishTime>
+    </File>
+    <File Include="Fichas/Cristalina_Cargos.pdf">
+      <publishTime>07/23/2020 20:43:21</publishTime>
     </File>
     <File Include="Fichas/Informativo.aspx">
       <publishTime>07/23/2020 08:42:42</publishTime>
@@ -1901,7 +1919,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2020 19:59:36</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/23/2020 13:28:13</publishTime>
+      <publishTime>07/23/2020 20:46:20</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>07/22/2020 12:47:42</publishTime>
@@ -2568,6 +2586,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>07/10/2020 14:26:27</publishTime>
+    </File>
+    <File Include="Scripts/Operacoes/Autocadastro.js">
+      <publishTime>07/23/2020 17:50:19</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Clinica.js">
       <publishTime>07/10/2020 14:58:19</publishTime>

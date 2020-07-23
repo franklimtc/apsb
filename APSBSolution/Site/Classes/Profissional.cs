@@ -560,6 +560,24 @@ namespace Site.Classes
             return retorno;
         }
 
-      
+        internal static int ValidarCristalina(int idProfissional) 
+        {
+            int qtdRegistros = 0;
+
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idProfissional", idProfissional });
+            object retorno = new object();
+            try
+            {
+                retorno = DAO.ExecuteScalar(@"SEL_ProfissionalCristalina @idProfissional = @idProfissional;", parametros);
+            }
+            catch
+            {
+
+            }
+            int.TryParse(retorno.ToString(), out qtdRegistros);
+
+            return qtdRegistros;
+        }
     }
 }

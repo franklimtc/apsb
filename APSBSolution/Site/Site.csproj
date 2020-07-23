@@ -198,6 +198,9 @@
     <Content Include="assets\img\city-profile.jpg" />
     <Content Include="assets\img\city.jpg" />
     <Content Include="assets\img\cover.jpg" />
+    <Content Include="assets\img\cristalina-brasao.jpg" />
+    <Content Include="assets\img\cristalina-footer.jpg" />
+    <Content Include="assets\img\cristalina-logo.jpg" />
     <Content Include="assets\img\faces\avatar.jpg" />
     <Content Include="assets\img\faces\card-profile1-square.jpg" />
     <Content Include="assets\img\faces\card-profile2-square.jpg" />
@@ -223,6 +226,7 @@
     <Content Include="assets\img\sidebar-2.jpg" />
     <Content Include="assets\img\sidebar-3.jpg" />
     <Content Include="assets\img\sidebar-4.jpg" />
+    <Content Include="assets\img\yBar.jpg" />
     <Content Include="assets\js\core\bootstrap-material-design.min.js" />
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
@@ -442,6 +446,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Fichas\Acordo.aspx" />
     <Content Include="Fichas\Cadastro.aspx" />
+    <Content Include="Fichas\CadastroCristalina.aspx" />
     <Content Include="Fichas\Informativo.aspx" />
     <Content Include="Fichas\Repasse.aspx" />
     <Content Include="Global.asax" />
@@ -468,6 +473,7 @@
     <Content Include="dbapsbDataSet.xss">
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Fichas\Cristalina_Cargos.pdf" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\ChartJS\Chart.bundle.js" />
     <Content Include="Scripts\ChartJS\Chart.bundle.min.js" />
@@ -1202,6 +1208,13 @@
     </Compile>
     <Compile Include="Fichas\Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\CadastroCristalina.aspx.cs">
+      <DependentUpon>CadastroCristalina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\CadastroCristalina.aspx.designer.cs">
+      <DependentUpon>CadastroCristalina.aspx</DependentUpon>
     </Compile>
     <Compile Include="Fichas\Informativo.aspx.cs">
       <DependentUpon>Informativo.aspx</DependentUpon>
