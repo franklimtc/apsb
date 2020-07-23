@@ -182,6 +182,11 @@
     </footer>
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
+    <script>
+        window.addEventListener("load", function () {
+            window.print();
+        });
+    </script>
 </body>
 </html>
 
