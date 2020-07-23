@@ -440,7 +440,9 @@
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Fichas\Acordo.aspx" />
     <Content Include="Fichas\Cadastro.aspx" />
+    <Content Include="Fichas\Informativo.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
     <Content Include="Operacoes.aspx" />
@@ -1185,12 +1187,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Fichas\Acordo.aspx.cs">
+      <DependentUpon>Acordo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Acordo.aspx.designer.cs">
+      <DependentUpon>Acordo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Fichas\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Fichas\Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Informativo.aspx.cs">
+      <DependentUpon>Informativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Informativo.aspx.designer.cs">
+      <DependentUpon>Informativo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

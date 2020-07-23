@@ -380,11 +380,12 @@ namespace Site
             else if (rbAutorizacao.Checked)
                 report = "autorizacao";
             else if (rbInformativo.Checked)
-                report = "informativo";
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Informativo.aspx?token={hdToken.Value}"}', '', '');", true);
             else if (rbAcordo.Checked)
-                report = "acordo";
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Acordo.aspx?token={hdToken.Value}"}', '', '');", true);
 
-            ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Reports/Report2.aspx?report={report}&id={idProfissional}"}', '', '');", true);
+
+            //ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Reports/Report2.aspx?report={report}&id={idProfissional}"}', '', '');", true);
         }
        
     }
