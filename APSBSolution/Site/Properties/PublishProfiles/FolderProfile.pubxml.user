@@ -79,6 +79,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="assets/img/apple-icon.png">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
+    <File Include="assets/img/apsbLogo2.jpg">
+      <publishTime>07/22/2020 20:46:31</publishTime>
+    </File>
     <File Include="assets/img/apsb_logo.jpg">
       <publishTime>07/15/2020 18:06:11</publishTime>
     </File>
@@ -108,6 +111,48 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="assets/img/favicon.png">
       <publishTime>07/10/2020 14:26:27</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Acordo01.jpg">
+      <publishTime>07/22/2020 12:28:46</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Acordo02.jpg">
+      <publishTime>07/22/2020 12:28:46</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Acordo03.jpg">
+      <publishTime>07/22/2020 12:32:09</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Acordo04.jpg">
+      <publishTime>07/22/2020 12:28:46</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Informativo01.jpg">
+      <publishTime>07/22/2020 12:21:44</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Informativo02.jpg">
+      <publishTime>07/22/2020 12:21:44</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Repasse00.jpg">
+      <publishTime>07/22/2020 12:01:29</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Repasse01.jpg">
+      <publishTime>07/22/2020 11:59:39</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Repasse02.jpg">
+      <publishTime>07/22/2020 11:59:39</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Repasse03.jpg">
+      <publishTime>07/22/2020 11:59:39</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Termo01.jpg">
+      <publishTime>07/22/2020 18:13:58</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Termo02.jpg">
+      <publishTime>07/22/2020 18:13:58</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Termo03.jpg">
+      <publishTime>07/22/2020 18:13:58</publishTime>
+    </File>
+    <File Include="assets/img/imgReport/Termo04.jpg">
+      <publishTime>07/22/2020 18:13:58</publishTime>
     </File>
     <File Include="assets/img/mask.png">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -689,7 +734,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Autocadastro.aspx">
-      <publishTime>07/22/2020 08:42:57</publishTime>
+      <publishTime>07/22/2020 21:12:39</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -698,10 +743,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/22/2020 11:45:11</publishTime>
+      <publishTime>07/22/2020 21:16:24</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/22/2020 11:45:10</publishTime>
+      <publishTime>07/22/2020 21:16:24</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1160,10 +1205,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>07/22/2020 11:44:24</publishTime>
+      <publishTime>07/22/2020 21:14:43</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>07/22/2020 11:44:24</publishTime>
+      <publishTime>07/22/2020 21:14:43</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1840,11 +1885,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="favicon.ico">
       <publishTime>07/10/2020 14:26:29</publishTime>
     </File>
+    <File Include="Fichas/Cadastro.aspx">
+      <publishTime>07/22/2020 21:03:29</publishTime>
+    </File>
     <File Include="Operacoes.aspx">
       <publishTime>07/13/2020 19:59:36</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/22/2020 11:44:50</publishTime>
+      <publishTime>07/22/2020 21:16:11</publishTime>
+    </File>
+    <File Include="Reports/Acordo.rdlc">
+      <publishTime>07/22/2020 12:47:42</publishTime>
     </File>
     <File Include="Reports/Clinicas.aspx">
       <publishTime>07/10/2020 15:13:40</publishTime>
@@ -1861,6 +1912,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Reports/FichaCadastral3.rdlc">
       <publishTime>07/22/2020 11:43:32</publishTime>
     </File>
+    <File Include="Reports/Informativo.rdlc">
+      <publishTime>07/22/2020 12:47:33</publishTime>
+    </File>
     <File Include="Reports/Mod_ficha.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
@@ -1870,6 +1924,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Reports/Rep01.rdlc">
       <publishTime>07/10/2020 15:20:32</publishTime>
     </File>
+    <File Include="Reports/Repasse.rdlc">
+      <publishTime>07/22/2020 12:47:57</publishTime>
+    </File>
     <File Include="Reports/RepDespesas.rdlc">
       <publishTime>07/10/2020 15:20:32</publishTime>
     </File>
@@ -1877,7 +1934,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/22/2020 10:34:22</publishTime>
     </File>
     <File Include="Reports/Report2.aspx">
-      <publishTime>07/22/2020 11:17:14</publishTime>
+      <publishTime>07/22/2020 12:48:20</publishTime>
     </File>
     <File Include="Reports/Report3.rdlc">
       <publishTime>07/10/2020 15:20:32</publishTime>

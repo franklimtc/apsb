@@ -43,6 +43,7 @@
         <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
         <asp:HiddenField runat="server" ID="HiddenFormPreenchido" Value="0" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
+        <asp:HiddenField runat="server" ID="hdToken"/>
         <asp:HiddenField runat="server" ID="HiddenBancoCadastrado" Value="0" />
 
         <%--Hidden Filds--%>

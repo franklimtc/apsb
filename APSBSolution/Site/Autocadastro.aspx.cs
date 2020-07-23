@@ -22,6 +22,7 @@ namespace Site
 
         protected void btValidar_Click(object sender, EventArgs e)
         {
+            hdToken.Value = tbToken.Text;
             int ValidaToken = int.Parse(Profissional.ValidarToken(tbToken.Text).ToString());
             if (ValidaToken>0)
             {
@@ -375,7 +376,7 @@ namespace Site
             string report = null;
 
             if (rbFicha.Checked)
-                report = "cadastro";
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Cadastro.aspx?token={hdToken.Value}"}', '', '');", true);
             else if (rbAutorizacao.Checked)
                 report = "autorizacao";
             else if (rbInformativo.Checked)

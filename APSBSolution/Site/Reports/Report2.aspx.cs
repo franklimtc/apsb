@@ -27,6 +27,15 @@ namespace Site.Reports
                         case "cadastro":
                             ExibirFichaCadastral(id);
                             break;
+                        case "autorizacao":
+                            ExibirAutorizacao(id);
+                            break;
+                        case "informativo":
+                            ExibirInformativo(id);
+                            break;
+                        case "acordo":
+                            ExibirAcordo(id);
+                            break;
                         default:
                             break;
                     }
@@ -38,9 +47,40 @@ namespace Site.Reports
             }
         }
 
+        private void ExibirAcordo(int idProfissional)
+        {
+            viewer.LocalReport.ReportPath = @"Reports\Acordo.rdlc";
+            viewer.LocalReport.DisplayName = "Acordo";
+
+            List<Profissional> ProfissionalLista = new List<Profissional>();
+            ProfissionalLista.Add(Profissional.ListarPorID(idProfissional));
+
+
+            ReportDataSource dsProfissional = new ReportDataSource("dsProfissional", ProfissionalLista);
+            viewer.LocalReport.DataSources.Add(dsProfissional);
+        }
+
+        private void ExibirInformativo(int idProfissional)
+        {
+            viewer.LocalReport.ReportPath = @"Reports\Informativo.rdlc";
+            viewer.LocalReport.DisplayName = "Informativo";
+
+            List<Profissional> ProfissionalLista = new List<Profissional>();
+            ProfissionalLista.Add(Profissional.ListarPorID(idProfissional));
+
+
+            ReportDataSource dsProfissional = new ReportDataSource("dsProfissional", ProfissionalLista);
+            viewer.LocalReport.DataSources.Add(dsProfissional);
+        }
+
+        private void ExibirAutorizacao(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         private void ExibirFichaCadastral(int idProfissional)
         {
-            viewer.LocalReport.ReportPath = @"Reports\FichaCadastral3.rdlc";
+            viewer.LocalReport.ReportPath = @"Reports\FichaCadastral2.rdlc";
             viewer.LocalReport.DisplayName = "Ficha Cadastral";
 
 

@@ -1,0 +1,12 @@
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\Debug\App_Data\dbTeste.mdf
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\Debug\App_Data\dbTeste_log.ldf
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\Debug\MalaDireta.exe.config
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\Debug\MalaDireta.exe
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\Debug\MalaDireta.pdb
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.csprojAssemblyReference.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.Form1.resources
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.Properties.Resources.resources
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.csproj.GenerateResource.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.csproj.CoreCompileInputs.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.exe
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\Debug\MalaDireta.pdb

@@ -192,6 +192,7 @@
     <Content Include="assets\demo\demo.css" />
     <Content Include="assets\demo\demo.js" />
     <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\apsbLogo2.jpg" />
     <Content Include="assets\img\apsb_logo.jpg" />
     <Content Include="assets\img\bg2.jpg" />
     <Content Include="assets\img\city-profile.jpg" />
@@ -212,6 +213,10 @@
     <Content Include="assets\img\imgReport\Repasse01.jpg" />
     <Content Include="assets\img\imgReport\Repasse02.jpg" />
     <Content Include="assets\img\imgReport\Repasse03.jpg" />
+    <Content Include="assets\img\imgReport\Termo01.jpg" />
+    <Content Include="assets\img\imgReport\Termo02.jpg" />
+    <Content Include="assets\img\imgReport\Termo03.jpg" />
+    <Content Include="assets\img\imgReport\Termo04.jpg" />
     <Content Include="assets\img\mask.png" />
     <Content Include="assets\img\new_logo.png" />
     <Content Include="assets\img\sidebar-1.jpg" />
@@ -435,6 +440,7 @@
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Fichas\Cadastro.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
     <Content Include="Operacoes.aspx" />
@@ -1179,6 +1185,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Fichas\Cadastro.aspx.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Cadastro.aspx.designer.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1279,7 +1292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arquivos\" />
-    <Folder Include="Fichas\" />
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
