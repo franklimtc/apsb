@@ -41,6 +41,7 @@ namespace Site.Classes
         public string Token { get; set; }
         public string StatusCadastro { get; set; }
         public DateTime cdRegCartorio { get; internal set; }
+        public int cvCNH { get; set; }
         #endregion
 
         public Profissional()
