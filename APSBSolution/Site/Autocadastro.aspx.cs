@@ -3,6 +3,7 @@ using Site.Classes;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -428,6 +429,49 @@ namespace Site
             }
             
             return result;
+        }
+
+        protected void btUploadFile_Click(object sender, EventArgs e)
+        {
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+
+            if (btUpload.HasFile)
+            {
+                if (btUpload.PostedFile.ContentLength < 52428800)
+                {
+                    string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{btUpload.PostedFile.FileName}";
+                    btUpload.PostedFile.SaveAs(fullPath);
+
+                    ProfissionalArquivo pa = new ProfissionalArquivo();
+                    var nomeArquivo = btUpload.PostedFile.FileName.Split('.');
+                    pa.ccNomeArquivo = $"Comprovante_Taxa.{nomeArquivo[1]}";
+
+                    pa.fileBytes = File.ReadAllBytes(fullPath);
+                    pa.idProfissional = int.Parse(idHiddenMedico.Value);
+                    bool result = pa.Salvar(user);
+
+                    if (result)
+                    {
+                        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                        File.Delete(fullPath);
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "$('#divAnexo').addClass('d-none')", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo com tamanho inferior a 50MB!');", true);
+                }
+
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo!');", true);
+            }
         }
     }
 }

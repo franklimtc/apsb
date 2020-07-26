@@ -27,23 +27,7 @@ namespace Site.Cadastros
 
         protected void gvMedicos_PreRender(object sender, EventArgs e)
         {
-            // You only need the following 2 lines of code if you are not 
-            // using an ObjectDataSource of SqlDataSource
-            gvMedicos.DataSource = Profissional.Listar();
-            gvMedicos.DataBind();
-
-            if (gvMedicos.Rows.Count > 0)
-            {
-                //This replaces <td> with <th> and adds the scope attribute
-                gvMedicos.UseAccessibleHeader = true;
-
-                //This will add the <thead> and <tbody> elements
-                gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-                //This adds the <tfoot> element. 
-                //Remove if you don't have a footer row
-                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
-            }
+            gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
         protected void gvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -56,6 +40,8 @@ namespace Site.Cadastros
             string user = "Franklim";
 
             bool result = false;
+
+            gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
 
             switch (e.CommandName)
             {
@@ -458,7 +444,7 @@ namespace Site.Cadastros
                     dpProfissionalBanco.Items.FindByValue(pb1.idBanco.ToString());
                     tbAgencia.Text = pb1.ccAgencia;
                     break;
-              
+
                 case "Excluir":
                     result = ProfissionalBanco.Excluir(user, idProfissionalBanco);
                     if (result)
@@ -512,7 +498,7 @@ namespace Site.Cadastros
                     ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo com tamanho inferior a 50MB!');", true);
                     CarregarModalArquivos();
                 }
-               
+
             }
             else
             {

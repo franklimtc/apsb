@@ -21,13 +21,14 @@
     <div class="row">
         <div class="col">
             <br />
-            <asp:GridView runat="server" ID="gvAutocadastro" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" DataSourceID="dsCadastros" OnRowCommand="gvAutocadastro_RowCommand" OnPreRender="gvAutocadastro_PreRender">
+            <asp:GridView runat="server" ID="gvAutocadastro" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" DataSourceID="dsCadastros2" OnRowCommand="gvAutocadastro_RowCommand" OnPreRender="gvAutocadastro_PreRender">
                 <Columns>
                     <asp:BoundField HeaderText = "Nome"  DataField="ccNome" />
                     <asp:BoundField HeaderText = "Email" DataField="ccEmail"/>
                     <asp:BoundField HeaderText = "Token" DataField="Token"/>
                     <asp:BoundField HeaderText = "Data" DataField="cdDataCriacao" DataFormatString="{0:d}"/>
                     <asp:BoundField HeaderText = "Status" DataField="StatusCadastro"/>
+                    <asp:BoundField HeaderText = "Taxa Paga" DataField="TaxaPaga"/>
                     <asp:TemplateField ItemStyle-CssClass="imgLink" >
                         <ItemTemplate>
                             <asp:imagebutton imageurl="~/Content/Icons/checkmark-done-circle-outline.svg" Height="1.5em" runat="server" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>"  ToolTip="Ativar" CommandName="Ativar"/>
@@ -45,8 +46,8 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:ObjectDataSource ID="dsCadastros" runat="server" SelectMethod="ListarAuto" TypeName="Site.Classes.Profissional"></asp:ObjectDataSource>
-
+            <%--<asp:ObjectDataSource ID="dsCadastros" runat="server" SelectMethod="ListarAuto" TypeName="Site.Classes.Profissional"></asp:ObjectDataSource>--%>
+            <asp:SqlDataSource runat="server" ID="dsCadastros2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ProfissionalAuto" SelectCommandType="StoredProcedure" />
         </div>
     </div>
 

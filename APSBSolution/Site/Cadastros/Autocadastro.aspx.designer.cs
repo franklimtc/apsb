@@ -33,13 +33,13 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.GridView gvAutocadastro;
 
         /// <summary>
-        /// Controle dsCadastros.
+        /// Controle dsCadastros2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsCadastros;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsCadastros2;
 
         /// <summary>
         /// Controle tbName.

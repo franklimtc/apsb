@@ -86,6 +86,12 @@
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr />
                 </div>
             </div>
             <div class="row d-none" id="divImprimirRbs">
@@ -105,14 +111,30 @@
                     </div>
                 </div>
             </div>
-            <div class="row d-none" id="divImprimir">
-                <div class="col"></div>
-                <div class="col">
-                    <br />
-                    <asp:Button Text="Imprimir" runat="server" ID="btImprimir" OnClick="btImprimir_Click" CssClass="btn btn-secondary" Width="100%" />
-                </div>
-                <div class="col"></div>
+            <div class="d-none" id="divImprimir">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <br />
+                        <asp:Button Text="Imprimir" runat="server" ID="btImprimir" OnClick="btImprimir_Click" CssClass="btn btn-secondary" Width="100%" />
+                        <br />
+                    </div>
 
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <hr />
+                    </div>
+                </div>
+                <div id="divAnexo" class="row">
+                    <div class="col" style="text-align: center">
+                        <h5>Anexar o comprovante de pagamento da taxa:</h5>
+                        <br />
+                        <asp:FileUpload runat="server" ID="btUpload" CssClass="btn btn-secondary" />
+                        <asp:Button Text="Anexar" ID="btUploadFile" runat="server" CssClass="btn btn-primary" Width="100px" OnClick="btUploadFile_Click" />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -515,14 +537,14 @@
                             <input type="button" id="btBuscarCNPJ" name="name" value="Buscar" class="btn btn-secondary" onclick="BuscarClinica()" />
                             <input type="button" id="btAddCNPJ" name="name" class="btn btn-primary" value="Adicionar" onclick="AddClinica()" />
                         </div>
-                         <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional" AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
+                        <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional" AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
                             <Columns>
                                 <asp:BoundField HeaderText="Clínica" DataField="ccNomeFantasia" />
                             </Columns>
                         </asp:GridView>
                     </div>
                     <div class="modal-footer">
-                       
+
                         <asp:SqlDataSource runat="server" ID="dsClinicaProfissional" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ClinicaProfissional" SelectCommandType="StoredProcedure">
                             <SelectParameters>
                                 <asp:Parameter DefaultValue="0" Name="idClinica" Type="Int32" />
@@ -684,12 +706,7 @@
             $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
         }
 
-        function AdicionarMascaras() {
-            $('.cep').mask('00000-000');
-            $('.cpf').mask('000.000.000-00', { reverse: true });
-            $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
-            $('.phone_with_ddd').mask('(00) 00000-0000');
-        };
+       
     </script>
 </body>
 </html>
