@@ -71,7 +71,14 @@ namespace Site.Classes
         {
             List<object[]> parametros = new List<object[]>();
             parametros.Add(new object[] { "@idClinica", _idClinica });
-            parametros.Add(new object[] { "@idProfissional", _idProfissional.Value });
+            if (_idProfissional.HasValue)
+            {
+                parametros.Add(new object[] { "@idProfissional", _idProfissional.Value });
+            }
+            else
+            { 
+                parametros.Add(new object[] { "@idProfissional", DBNull.Value});
+            }
             DataTable dt = DAO.RetornaDT("SEL_ClinicaProfissional @idClinica = @idClinica, @idProfissional = @idProfissional", parametros);
 
             List<ClinicaProfissional> Lista = new List<ClinicaProfissional>();

@@ -60,13 +60,13 @@ function CarregarModal(_idProfissional) {
 
     //BuscarPorID(int idProfissional)
     //alert("CarregarModal - " + idProfissional);
-    var url = "Medicos.aspx/BuscarPorID";
+    var url = "Medico.aspx/BuscarPorID";
 
     var relacaoObj = {
         idProfissional: _idProfissional
     };
 
-    $('#MainContent_idHiddenMedico').val(_idProfissional);
+    $('#idHiddenMedico').val(_idProfissional);
     $.ajax({
         type: "POST",
         url: url,
@@ -77,30 +77,29 @@ function CarregarModal(_idProfissional) {
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
-            //console.log(result.d);
-           
-            $('#MainContent_tbCPF').val(result.d['CPFNum']);
-            $('#MainContent_tbObservacoes').val(result.d['Observacoes']);
-            $('#MainContent_tbEmissorRG').val(result.d['RGEmissor']);
-            $('#MainContent_tbRG').val(result.d['RGNum']);
-            $('#MainContent_RGdtEmissao').val(result.d['RGdtEmissao']);
-            $('#MainContent_tbEmail').val(result.d['ccEmail']);
-            $('#MainContent_tbCidade').val(result.d['ccNaturalCidade']);
-            $('#MainContent_tbNome').val(result.d['ccNome']);
-            $("#MainContent_dpEstCivil").val(result.d['ccEstadoCivil']).change();
-            $("#MainContent_dpSexo").val(result.d['ccSexo']).change();
-            $("#MainContent_dpNaturalidade").val(result.d['ccNaturalUF']).change();
-            $('#MainContent_cdFiliacao').val(result.d['cdFiliacao']);
-            $('#MainContent_cdPgtoTaxa').val(result.d['cdPgtoTaxa']);
-            $('#MainContent_cdRegCartorio').val(result.d['cdRegCartorio']);
-            $('#MainContent_tbCelular').val(result.d['cvCelular']);
-            $('#MainContent_tbTelefone').val(result.d['cvTelefone']);
-            $('#MainContent_dtNascimento').val(result.d['dtNascimento']);
-            $('#MainContent_tbNomeConjuge').val(result.d['nomeConjuge']);
-            $('#MainContent_tbNomeMae').val(result.d['nomeMae']);
-            $('#MainContent_tbNomePai').val(result.d['nomePai']);
-            AdicionarMascaras();
+            $("#tbNome").val(result.d["ccNome"]);
+            $("#dpSexo").val(result.d["ccSexo"]).change();
+            $("#dpUFNatural").val(result.d["ccNaturalUF"]).change();
+            $("#tbCidade").val(result.d["ccNaturalCidade"]);
+            $("#tbPai").val(result.d["nomePai"]);
+            $("#tbMae").val(result.d["nomeMae"]);
+            $("#tbConjuge").val(result.d["nomeConjuge"]);
+            $("#tbRGNum").val(result.d["RGNum"]);
+            $("#tbRGEmissor").val(result.d["RGEmissor"]);
+            $("#tbRGdata").val(ConvertDate(result.d["RGdtEmissao"]));
+            $("#tbCPF").val(("0000" + result.d["CPFNum"]).slice(-11));
+            $("#tbCPF").mask("000.000.000-00")
+            $("#tbCNH").val(result.d["cvCNH"]);
+            $("#tbEmail").val(result.d["ccEmail"]);
+            $("#tbFone").val(result.d["cvTelefone"]);
+            $("#tbCelular").val(result.d["cvCelular"]);
+            $("#tbDtFiliacao").val(ConvertDate(result.d["cdFiliacao"]));
+            $("#tbDtPagamento").val(ConvertDate(result.d["cdPgtoTaxa"]));
+            $("#tbDtRegCartorio").val(ConvertDate(result.d["cdRegCartorio"]));
+            $("#tbdtNascimento").val(ConvertDate(result.d["dtNascimento"]));
+            $("#tbObs").val(result.d["Observacoes"]);
             $("#medicoModal").modal("show");
+            AdicionarMascaras();
         }
     });
 };
@@ -148,3 +147,14 @@ function CarregarModalProfissional(_idProfissional) {
     });
     
 };
+
+function ConvertDate(value) {
+    var pattern = /Date\(([^)]+)\)/;
+    var results = pattern.exec(value);
+    var dt = new Date(parseFloat(results[1]));
+    if (dt.getFullYear() > 0) {
+        return (dt.getDate() + "/" + dt.getMonth()) + "/" + dt.getFullYear();
+    }
+    else
+        return "";
+}

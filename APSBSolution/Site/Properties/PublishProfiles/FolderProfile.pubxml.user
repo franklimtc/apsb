@@ -755,10 +755,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>07/26/2020 16:05:14</publishTime>
+      <publishTime>07/27/2020 14:40:06</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>07/26/2020 16:05:14</publishTime>
+      <publishTime>07/27/2020 14:40:06</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1217,10 +1217,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>07/26/2020 15:44:30</publishTime>
+      <publishTime>07/27/2020 14:38:26</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>07/26/2020 15:44:30</publishTime>
+      <publishTime>07/27/2020 14:38:26</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1291,8 +1291,11 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Cadastros/Clinicas.aspx">
       <publishTime>07/13/2020 18:40:40</publishTime>
     </File>
+    <File Include="Cadastros/Medico.aspx">
+      <publishTime>07/26/2020 19:18:53</publishTime>
+    </File>
     <File Include="Cadastros/Medicos.aspx">
-      <publishTime>07/26/2020 16:03:24</publishTime>
+      <publishTime>07/27/2020 10:46:01</publishTime>
     </File>
     <File Include="Contact.aspx">
       <publishTime>07/10/2020 14:26:26</publishTime>
@@ -1919,7 +1922,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2020 19:59:36</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/26/2020 16:05:07</publishTime>
+      <publishTime>07/27/2020 14:39:57</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>07/22/2020 12:47:42</publishTime>
@@ -2597,7 +2600,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/12/2020 13:46:25</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Medico.js">
-      <publishTime>07/26/2020 13:58:03</publishTime>
+      <publishTime>07/26/2020 19:15:03</publishTime>
     </File>
     <File Include="Scripts/popper-utils.js">
       <publishTime>07/10/2020 14:26:27</publishTime>

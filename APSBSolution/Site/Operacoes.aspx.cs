@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,7 +20,25 @@ namespace Site
     {
         static CultureInfo culture;
         static DateTimeStyles styles;
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                //Dropdown Tipo Despesas
+                CarregarDPDespesa();
 
+                //Dropdown Tipo Receitas
+                CarregarDPReceita();
+
+                //Data
+                tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
+
+                // Parse a date and time with no styles.
+                culture = CultureInfo.CreateSpecificCulture("pt-BR");
+                styles = DateTimeStyles.None;
+            }
+            HiddenUser.Value = User.Identity.Name;
+        }
         protected void gvRepasses_PreRender(object sender, EventArgs e)
         {
             // You only need the following 2 lines of code if you are not 
@@ -62,26 +81,101 @@ namespace Site
                 //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
-
-        protected void Page_Load(object sender, EventArgs e)
+        protected void gvRepasseMedico_PreRender(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            foreach (GridViewRow r in gvRepasseMedico.Rows)
             {
-                //Dropdown Tipo Despesas
-                CarregarDPDespesa();
+                HiddenField HiddenObs = r.FindControl("HiddenFieldObs") as HiddenField;
 
-                //Dropdown Tipo Receitas
-                CarregarDPReceita();
-
-                //Data
-                tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
-
-                // Parse a date and time with no styles.
-                culture = CultureInfo.CreateSpecificCulture("pt-BR");
-                styles = DateTimeStyles.None;
+                if (HiddenObs.Value.IsNullOrWhiteSpace())
+                {
+                    r.Cells[8].Enabled = false;
+                    r.Cells[8].CssClass = "transparente";
+                }
+                else
+                {
+                    r.Cells[8].Enabled = true;
+                    r.Cells[8].CssClass = "";
+                }
             }
         }
+        protected void gvOperacoes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var obj = e.CommandArgument;
+            int idOperacao = int.Parse(gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[0].Text);
+            idHiddenOperacao.Value = idOperacao.ToString();
+            string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
+            string user = "Franklim";
+            pnObs.Visible = false;
+            
 
+            switch (e.CommandName)
+            {
+                case "Editar":
+                    tbValorOperacao.Text = gvOperacoes.Rows[int.Parse(e.CommandArgument.ToString())].Cells[2].Text;
+
+                    CarregarModalOperacao(idOperacao, operacaoTipo);
+                    break;
+                case "Repassar":
+                    if (operacaoTipo == "Receita")
+                    {
+                        CarregarModalRepasse(idOperacao, operacaoTipo);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Repasse não disponível para Despesas!');", true);
+                    }
+                    break;
+                case "Arquivar":
+                    Operacao.Arquivar(user, idOperacao, operacaoTipo);
+                    gvOperacoes.DataBind();
+                    break;
+                case "Excluir":
+                    Operacao.Excluir(user, idOperacao, operacaoTipo);
+                    gvOperacoes.DataBind();
+                    break;
+                default:
+                    break;
+            }
+        }
+        protected void gvRepasseMedico_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var obj = e.CommandArgument;
+            string Usuario = "Franklim";
+            int idRepasse = int.Parse(gvRepasseMedico.Rows[int.Parse(obj.ToString())].Cells[0].Text);
+            DateTime dtPgto = DateTime.Now;
+
+            DateTime.TryParse(tbDtRepasse.Text, out dtPgto);
+
+            bool result = false;
+
+            switch (e.CommandName)
+            {
+                case "Pagar":
+                    result = ReceitaRepasse.Pagar(Usuario, idRepasse, dtPgto);
+                    break;
+                case "Excluir":
+                    result = ReceitaRepasse.Excluir(Usuario, idRepasse);
+                    break;
+                case "Info":
+                    pnObs.Visible = true;
+                    tbObsRepasseProfissional.Text = ReceitaRepasse.GetObs(idRepasse);
+                    result = true;
+                    break;
+                default:
+                    break;
+            }
+            if (!result)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "alert('Falha na operação')", true);
+            }
+            else
+            {
+                gvRepasseMedico.DataBind();
+                gvOperacoes.DataBind();
+            }
+            CarregarModalRepasse(int.Parse(idHiddenOperacao.Value), "Receita");
+        }
         void CarregarDPDespesa()
         {
             var listaTipo = DespesaTipo.Listar();
@@ -101,8 +195,6 @@ namespace Site
             dpTipoReceita.ClearSelection();
             dpTipoReceita.Items.FindByValue("0").Selected = true;
         }
-
-
         protected void btSalvar_Click(object sender, EventArgs e)
         {
             //string Usuario = User.Identity.Name;
@@ -176,7 +268,6 @@ namespace Site
             LimparForm();
 
         }
-
         private void LimparForm()
         {
             //Form Despesas
@@ -189,84 +280,6 @@ namespace Site
             tbSearch.Text = "";
             //Form Receitas
 
-        }
-
-        protected void gvOperacoes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            var obj = e.CommandArgument;
-            int idOperacao = int.Parse(gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[0].Text);
-            idHiddenOperacao.Value = idOperacao.ToString();
-            string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
-            string user = "Franklim";
-            pnObs.Visible = false;
-
-
-            switch (e.CommandName)
-            {
-                case "Editar":
-                    tbValorOperacao.Text = gvOperacoes.Rows[int.Parse(e.CommandArgument.ToString())].Cells[2].Text;
-                        
-                    CarregarModalOperacao(idOperacao, operacaoTipo);
-                    break;
-                case "Repassar":
-                    if (operacaoTipo == "Receita")
-                    {
-                        CarregarModalRepasse(idOperacao, operacaoTipo);
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Repasse não disponível para Despesas!');", true);
-                    }
-                    break;
-                case "Arquivar":
-                    Operacao.Arquivar(user, idOperacao, operacaoTipo);
-                    gvOperacoes.DataBind();
-                    break;
-                case "Excluir":
-                    Operacao.Excluir(user, idOperacao, operacaoTipo);
-                    gvOperacoes.DataBind();
-                    break;
-                default:
-                    break;
-            }
-        }
-        protected void gvRepasseMedico_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            var obj = e.CommandArgument;
-            string Usuario = "Franklim";
-            int idRepasse = int.Parse(gvRepasseMedico.Rows[int.Parse(obj.ToString())].Cells[0].Text);
-            DateTime dtPgto = DateTime.Now;
-
-            DateTime.TryParse(tbDtRepasse.Text, out dtPgto);
-
-            bool result = false;
-
-            switch (e.CommandName)
-            {
-                case "Pagar":
-                    result = ReceitaRepasse.Pagar(Usuario, idRepasse, dtPgto);
-                    break;
-                case "Excluir":
-                    result = ReceitaRepasse.Excluir(Usuario, idRepasse);
-                    break;
-                case "Info":
-                    pnObs.Visible = true;
-                    tbObsRepasseProfissional.Text = ReceitaRepasse.GetObs(idRepasse);
-                    result = true;
-                    break;
-                default:
-                    break;
-            }
-            if (!result)
-            {
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "alert('Falha na operação')", true);
-            }
-            else
-            {
-                gvRepasseMedico.DataBind();
-                gvOperacoes.DataBind();
-            }
-            CarregarModalRepasse(int.Parse(idHiddenOperacao.Value), "Receita");
         }
         private void CarregarModalOperacao(int idOperacao, string tipo)
         {
@@ -347,25 +360,6 @@ namespace Site
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
-        private string ConvertMoney(string v)
-        {
-            if (!v.Contains(','))
-            {
-                v += "00";
-            }
-            else
-            {
-                var vt = v.Split(',');
-                if (vt.Length == 2)
-                {
-                    if (vt[1].Length == 1)
-                    {
-                        v += "0";
-                    }
-                }
-            }
-            return v.Replace("-","");
-        }
         private void CarregarModalRepasse(int idOperacao, string tipo)
         {
             Receita rr = Receita.ListarPorID(idOperacao);
@@ -440,7 +434,6 @@ namespace Site
             }
 
         }
-
         protected void btAplicarFiltro_Click(object sender, EventArgs e)
         {
             gvOperacoes.DataSourceID = "";
@@ -462,7 +455,6 @@ namespace Site
             gvOperacoes.DataSource = Operacao.Listar(arquivado, status, dtIni, dtFin);
             gvOperacoes.DataBind();
         }
-
         protected void dpTipoReceita_TextChanged(object sender, EventArgs e)
         {
             Clinica c = Clinica.ListarPorID(int.Parse(dpTipoReceita.SelectedValue));
@@ -484,23 +476,121 @@ namespace Site
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        protected void gvRepasseMedico_PreRender(object sender, EventArgs e)
+        private string ConvertMoney(string v)
         {
-            foreach (GridViewRow r in gvRepasseMedico.Rows)
+            if (!v.Contains(','))
             {
-                HiddenField HiddenObs = r.FindControl("HiddenFieldObs") as HiddenField;
-
-                if (HiddenObs.Value.IsNullOrWhiteSpace())
+                v += "00";
+            }
+            else
+            {
+                var vt = v.Split(',');
+                if (vt.Length == 2)
                 {
-                    r.Cells[8].Enabled = false;
-                    r.Cells[8].CssClass = "transparente";
-                }
-                else
-                {
-                    r.Cells[8].Enabled = true;
-                    r.Cells[8].CssClass = "";
+                    if (vt[1].Length == 1)
+                    {
+                        v += "0";
+                    }
                 }
             }
+            return v.Replace("-", "");
         }
+
+        //Webmethods        
+        [WebMethod]
+        public static Operacao CarregarDespesa(int idDespesa, string tipo)
+        {
+            Operacao op = Operacao.ListarPorID(idDespesa, tipo);
+            return op;
+        }
+
+        [WebMethod]
+        public static bool SalvarDespesa(string Usuario, string tipo, string data, string valor, string obs, string idOperacao)
+        {
+            bool result = false;
+
+            Despesa dp = new Despesa();
+            dp.idTipo = int.Parse(tipo);
+            dp.cdData = DateTime.Parse(data);
+            dp.cvValor = float.Parse(valor);
+            dp.ccObservacao = obs;
+            if (idOperacao.IsNullOrWhiteSpace())
+            {
+                result = dp.Adicionar(Usuario);
+            }
+            else
+            {
+                dp.idDespesas = int.Parse(idOperacao);
+                result = dp.Salvar(Usuario);
+            }
+            return result;
+        }
+
+        [WebMethod]
+        public static object CarregarReceita(int idReceita, string tipo)
+        {
+            Receita r = Receita.ListarPorID(idReceita);
+            Operacao o = Operacao.ListarPorID(idReceita, tipo);
+            List<object> list = new List<object>();
+            list.Add(r);
+            list.Add(o);
+            return list;
+        }
+        [WebMethod]
+        public static bool SalvarReceita(string Usuario, string valor, string tipo, string dtNF, string nf, string dtPgto, string valorPago, string desconto, string obs, string issRetido, string idReceita) 
+        {
+            bool result = false;
+
+            Receita rc = new Receita();
+            rc.cvValor = float.Parse(valor);
+            rc.IdClinica = int.Parse(tipo);
+            //
+            if (!dtNF.IsNullOrWhiteSpace())
+            {
+                rc.cdEmissao = DateTime.Parse(dtNF);
+            }
+            //
+            if (!nf.IsNullOrWhiteSpace())
+            {
+                rc.cvNF = int.Parse(nf);
+            }
+            //
+            if (!dtPgto.IsNullOrWhiteSpace())
+            {
+                rc.cdPagamento = DateTime.Parse(dtPgto);
+            }
+            //
+            if (!valorPago.IsNullOrWhiteSpace())
+            {
+                rc.cvValorPago = float.Parse(valorPago);
+            }
+            if (!desconto.IsNullOrWhiteSpace())
+            {
+                rc.cvDesconto = float.Parse(desconto);
+            }
+            rc.Observacao = obs;
+
+            rc.cbIssRetido = bool.Parse(issRetido);
+
+            if (idReceita.IsNullOrWhiteSpace())
+            {
+                result = rc.Adicionar(Usuario);
+            }
+            else
+            {
+                rc.idReceita = int.Parse(idReceita);
+                result = rc.Salvar(Usuario);
+            }
+
+            return result;
+        }
+
+        [WebMethod]
+        public static Clinica BuscarClinicaID(string idClinica)
+        {
+            return Clinica.ListarPorID(int.Parse(idClinica));
+        }
+
+        //Webmethods
     }
 }

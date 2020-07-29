@@ -605,6 +605,8 @@
             $("#MainContent_tbRG").removeAttr("required");
             $("#MainContent_tbCPF").removeAttr("required");
             $("#MainContent_tbCelular").removeAttr("required");
+            $("#MainContent_tbDataNascimento").removeAttr("required");
+            $("#MainContent_tbdtEmissaoRG").removeAttr("required");
         }
 
         function AddRequerid() {
@@ -612,6 +614,8 @@
             $("#MainContent_tbRG").val("").attr("required", "required");
             $("#MainContent_tbCPF").val("").attr("required", "required");
             $("#MainContent_tbCelular").val("").attr("required", "required");
+            $("#MainContent_tbDataNascimento").val("").attr("required", "required");
+            $("#MainContent_tbdtEmissaoRG").val("").attr("required", "required");
         };
 
         //Remover requireds para abrir modais

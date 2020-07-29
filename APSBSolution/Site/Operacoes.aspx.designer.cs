@@ -24,15 +24,6 @@ namespace Site
         protected global::System.Web.UI.WebControls.ObjectDataSource dsOperacoes;
 
         /// <summary>
-        /// Controle btNovaOperacao.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btNovaOperacao;
-
-        /// <summary>
         /// Controle chkStatus.
         /// </summary>
         /// <remarks>
@@ -112,6 +103,15 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField idHiddenOperacao;
+
+        /// <summary>
+        /// Controle HiddenUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenUser;
 
         /// <summary>
         /// Controle tbAbaAtiva.
@@ -409,14 +409,5 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbReceitaObs;
-
-        /// <summary>
-        /// Controle btSalvar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSalvar;
     }
 }
