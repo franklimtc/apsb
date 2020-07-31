@@ -476,7 +476,7 @@ namespace Site
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
         }
 
-        private string ConvertMoney(string v)
+        private static string ConvertMoney(string v)
         {
             if (!v.Contains(','))
             {
@@ -589,6 +589,38 @@ namespace Site
         public static Clinica BuscarClinicaID(string idClinica)
         {
             return Clinica.ListarPorID(int.Parse(idClinica));
+        }
+
+        [WebMethod]
+        public static List<object> BuscarDadosRepasse(string idOperacao)
+        {
+            Receita receita =  Receita.ListarPorID(int.Parse(idOperacao));
+            List<ReceitaRepasse> repasses = ReceitaRepasse.Listar(int.Parse(idOperacao));
+            List<object> lista = new List<object>();
+            lista.Add(receita);
+            lista.Add(repasses);
+            return lista;
+        }
+
+        [WebMethod]
+        public static bool AdicionarRepasse(string Usuario, string idProfissional, string cvValor, string idReceita)
+        {
+            bool result = false;
+            ReceitaRepasse rr = new ReceitaRepasse();
+            rr.IdProfissional = int.Parse(idProfissional);
+            rr.cvValor = float.Parse(cvValor);
+            rr.idReceita = int.Parse(idReceita);
+
+            try
+            {
+                result = rr.Adicionar(Usuario);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+           
+            return result;
         }
 
         //Webmethods

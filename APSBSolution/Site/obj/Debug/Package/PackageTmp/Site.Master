@@ -38,7 +38,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-darkcyan">
             <a class="navbar-brand" runat="server" href="~/Dashboard">APSB</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

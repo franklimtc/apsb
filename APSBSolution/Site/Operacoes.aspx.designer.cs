@@ -249,15 +249,6 @@ namespace Site
         protected global::System.Web.UI.WebControls.TextBox tbObsRepasseProfissional;
 
         /// <summary>
-        /// Controle gvRepasseMedico.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvRepasseMedico;
-
-        /// <summary>
         /// Controle btDespesa.
         /// </summary>
         /// <remarks>

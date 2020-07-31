@@ -40,6 +40,8 @@ function RemoverMascaras() {
     $(".cpf").unmask();
     $(".cnpj").unmask();
     $(".phone_with_ddd").unmask();
+    $('.money').unmask();
+    $('.money2').unmask();
 };
 
 function AdicionarMascaras() {
@@ -47,10 +49,50 @@ function AdicionarMascaras() {
     $('.cpf').mask('000.000.000-00', { reverse: true });
     $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
     $('.phone_with_ddd').mask('(00) 00000-0000');
+    $('.money').mask('000.000.000.000.000,00', { reverse: true });
+    $('.money2').mask("#.##0,00", { reverse: true });
 };
 
 function ResetForm() {
     $('#default').each(function () {
         this.reset();
     });
+};
+
+function ConvertDate(value) {
+    var pattern = /Date\(([^)]+)\)/;
+    var results = pattern.exec(value);
+    var dt = new Date(parseFloat(results[1]));
+    if (dt.getFullYear() > 0) {
+        return (dt.getDate() + "/" + dt.getMonth()) + "/" + dt.getFullYear();
+    }
+    else
+        return "";
+};
+
+function ConvertDate2(value) {
+    var pattern = /Date\(([^)]+)\)/;
+    if (value != null)
+        {
+        var results = pattern.exec(value);
+        var dt = new Date(parseFloat(results[1]));
+        var z = "0";
+        var month = dt.getMonth()+1;
+        var day = dt.getDate();
+
+        if (month < 10) {
+            month = z.concat(month);
+        }
+        if (day < 10) {
+            day = z.concat(day);
+        };
+
+        if (dt.getFullYear() > 0) {
+            return (dt.getFullYear() + "-" + month) + "-" + day;
+        }
+        else
+            return "";
+    }
+    else
+        return "";
 };

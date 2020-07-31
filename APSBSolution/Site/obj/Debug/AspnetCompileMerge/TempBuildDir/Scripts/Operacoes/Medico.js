@@ -148,13 +148,3 @@ function CarregarModalProfissional(_idProfissional) {
     
 };
 
-function ConvertDate(value) {
-    var pattern = /Date\(([^)]+)\)/;
-    var results = pattern.exec(value);
-    var dt = new Date(parseFloat(results[1]));
-    if (dt.getFullYear() > 0) {
-        return (dt.getDate() + "/" + dt.getMonth()) + "/" + dt.getFullYear();
-    }
-    else
-        return "";
-}

@@ -194,7 +194,7 @@ function SalvarReceita() {
 
 function DescontosClinica() {
     var id = $("#MainContent_dpTipoReceita").val();
-    console.log(id);
+    //console.log(id);
 
     var relacaoObj = {
         idClinica: $("#MainContent_dpTipoReceita").val()
@@ -210,7 +210,7 @@ function DescontosClinica() {
             console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
-            console.log(result.d);
+            //console.log(result.d);
 
             $("#MainContent_chkIssRetido").removeAttr("disabled");
             $("#MainContent_tbReceitaDesconto").removeAttr("readonly");
@@ -226,5 +226,55 @@ function DescontosClinica() {
         }
     });
 
+    return false;
+};
+
+function AbrirRepasseModal(tipo, id) {
+    if (tipo == "Receita") {
+        $("#MainContent_tbDtRepasse").val();
+
+        var relacaoObj = {
+            idOperacao: id
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "Operacoes.aspx/BuscarDadosRepasse",
+            data: JSON.stringify(relacaoObj),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            },
+            success: function (result) {
+                console.log(result.d);
+                $("#MainContent_tbValorNF").val(formatMoney(result.d[0].cvValor, ".", ",", "."));
+                $("#MainContent_tbValorPago").val(formatMoney(result.d[0].cvValorPago, ".", ",", "."));
+                $("#MainContent_tbValorRepassado").val(formatMoney(result.d[0].cvValorRepassado, ".", ",", "."));
+                $("#MainContent_tbValorDisponivel").val(formatMoney(result.d[0].cvValorDisponivel, ".", ",", "."));
+                if (result.d[0].cvValorDisponivel < 0) {
+                    formatValorDisponivel(1);
+                } else {
+                    formatValorDisponivel(0);
+                };
+                if (result.d[1].length > 0) {
+                    //alert(result.d[1].length + " registros");
+                    for (var i = 0; i < result.d[1].length; i++) {
+                        console.log(result.d[1][i]);
+                        $("#tbRepasseBody").append("<tr><th scope='row'>" + result.d[1][i].idRepasse + "</th>"
+                            + "<td>" + result.d[1][i].ccNome + "</td>"
+                            + "<td>" + result.d[1][i].cvTaxaProfissional + "</td>"
+                            + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValor, ".", ",", ".") + "</td>"
+                            + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValorLiquido, ".", ",", ".") + "</td>"
+                            + "<td>" + String.fromCharCode(result.d[1][i].ccStatus) + "</td>"
+                            + "<td><input type='image' src='../Content/Icons/cash-outline.svg' class='imgButton' /> </td>"
+                            + "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' class='imgButton' /> </td>"
+                            + "<td><input type='image' src='../Content/Icons/trash-outline.svg' class='imgButton' /> </td></tr> ");
+                    }
+                }
+            }
+        });
+        $('#repasseMedicoModal').modal('show');
+    }
     return false;
 };

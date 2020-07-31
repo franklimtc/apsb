@@ -11,8 +11,9 @@
             text-align: right;
             width: 90px;
         }
+
         .transparente {
-         opacity: 0.2;
+            opacity: 0.2;
         }
     </style>
 
@@ -93,7 +94,7 @@
                 <br />
                 <asp:GridView runat="server" ID="gvOperacoes" DataSourceID="dsOperacoes" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnRowCommand="gvOperacoes_RowCommand" OnPreRender="gvOperacoes_PreRender">
                     <Columns>
-                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:BoundField HeaderText="ID" DataField="ID" ItemStyle-CssClass="rowID" />
                         <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
                         <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
@@ -111,7 +112,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <%--<asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
-                                <%--onclick="return AbrirDesRec('Despesa')"--%> 
+                                <%--onclick="return AbrirDesRec('Despesa')"--%>
                                 <input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# $"return AbrirDesRec('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                                 <%--<input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirDesRec('{0}');") %>" />--%>
                             </ItemTemplate>
@@ -119,7 +120,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <%--<asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
-                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirRepasseModal();") %>" />
+                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# $"return AbrirRepasseModal('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
@@ -225,15 +226,18 @@
                     </div>--%>
                     <hr />
                     <div class="row">
-                        <div class="col"><asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
-                        <div class="col"><asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
-                        <div class="col"><asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col">
+                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col">
+                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col">
+                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
                     </div>
                     <div class="row">
 
                         <div class="col">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -242,7 +246,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -251,7 +255,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -261,7 +265,7 @@
                     </div>
                     <hr />
                     <div class="row">
-                        
+
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -283,9 +287,9 @@
                     </asp:Panel>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col" id="tbRepasse">
                             <br />
-                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand" OnPreRender="gvRepasseMedico_PreRender">
+                            <%--  <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand" OnPreRender="gvRepasseMedico_PreRender">
                                 <Columns>
                                     <asp:BoundField HeaderText="ID" DataField="idRepasse" />
                                     <asp:BoundField HeaderText="Nome" DataField="ccNome" />
@@ -314,7 +318,27 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
-                            </asp:GridView>
+                            </asp:GridView>--%>
+
+                            <table class="table table-hover table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Taxa</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">V. Liquido</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody id="tbRepasseBody">
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -536,7 +560,7 @@
                 SalvarDespesa();
             };
         };
-     
+
         function ConvertMoney(money) {
             //var str = money;
             //if (str.search(",") > 0) { money = str; } else { money = str + ",00"; };
@@ -627,7 +651,7 @@
             $("#MainContent_tbAbaAtiva").val("Receita");
         };
 
-      
+
 
         //Filter Clínica
 
@@ -686,6 +710,7 @@
             }
         }
 
+
         //Ativar disconto
         function EnableDiscount() {
             if ($("#MainContent_tbReceitaDesconto").attr("readonly") == undefined) {
@@ -730,12 +755,6 @@
             }
         };
 
-     
-
-        function AbrirRepasseModal() {
-            $('#repasseMedicoModal').modal('show');
-            return false;
-        };
 
         function testar(obj) {
             console.log(obj);

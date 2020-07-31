@@ -31,7 +31,8 @@
             <div class="col-md-4"></div>
 
         </div>
-        <asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClick="btNovaOperacao_Click" />
+        <%--<asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClientClick="return novaOperacao()" />--%>
+        <input type="button" id="btNovaOperacao" name="btNovaOperacao" value="Nova Operação" class="btn btn-secondary" onclick="novaOperacao()" />
         <input type="button" id="btOpRep" name="btOpRep" class="btn btn-secondary" value="Detalhar" onclick="Detalhar()" />
         <br />
         <div class="row collapse" id="divFiltros">
@@ -74,6 +75,9 @@
             <asp:HiddenField runat="server" ID="HddValorNegativo" />
             <asp:HiddenField runat="server" ID="HddValorDisponivel" />
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
+            <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
+            <input type="hidden" id="idHiddenOperacao2" name="idHiddenOperacao2" value="" />
+
             <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
 
@@ -106,12 +110,16 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <%--<asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
+                                <%--onclick="return AbrirDesRec('Despesa')"--%> 
+                                <input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# $"return AbrirDesRec('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
+                                <%--<input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirDesRec('{0}');") %>" />--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <%--<asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
+                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirRepasseModal();") %>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
@@ -370,7 +378,7 @@
                                 <div>
                                     <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" OnTextChanged="dpTipoReceita_TextChanged">
+                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" onchange="return DescontosClinica()">
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -459,14 +467,17 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
-                    <asp:Button Text="Salvar" runat="server" ID="btSalvar" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />
+                    <%--<asp:Button Text="Salvar" runat="server" ID="btSalvar" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />--%>
+                    <input type="button" name="btSalvar" value="Salvar" class="btn btn-primary" onclick="Salvar()" />
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Operacoes.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
+
     <script type="text/javascript">
         //DataTables
 
@@ -502,17 +513,52 @@
 
         //Click Despesa
         $("#MainContent_btDespesa").click(function () {
-
             AtvDespesa();
             return false;
 
         });
 
-        function EditDespesa() {
+        function novaOperacao() {
+            ResetForm();
+            $("#MainContent_tbReceitaDataNF").attr("disabled", true);
+            $("#MainContent_tbReceitaDataPgtoNF").attr("disabled", true);
+            $("#MainContent_tbReceitaNF").attr("disabled", true);
+            $("#MainContent_tbReceitaNFValorPG").attr("disabled", true);
             $("#operacaoModal").modal("show");
-            AtvDespesa();
-        }
+            AtvReceita();
+        };
 
+        function Salvar() {
+            if ($("#MainContent_tbAbaAtiva").val() == "Receita") {
+                SalvarReceita();
+            }
+            else {
+                SalvarDespesa();
+            };
+        };
+     
+        function ConvertMoney(money) {
+            //var str = money;
+            //if (str.search(",") > 0) { money = str; } else { money = str + ",00"; };
+            if ($(money).indexOf(",") == 0) {
+                money += ",00";
+            }
+            return money;
+        };
+
+        function formatMoney(number, decPlaces, decSep, thouSep) {
+            decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
+                decSep = typeof decSep === "undefined" ? "." : decSep;
+            thouSep = typeof thouSep === "undefined" ? "," : thouSep;
+            var sign = number < 0 ? "-" : "";
+            var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
+            var j = (j = i.length) > 3 ? j % 3 : 0;
+
+            return sign +
+                (j ? i.substr(0, j) + thouSep : "") +
+                i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
+                (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+        };
 
         function AtvDespesa() {
             $("#MainContent_btDespesa").removeClass("btn-light").addClass("btn-danger");
@@ -581,10 +627,7 @@
             $("#MainContent_tbAbaAtiva").val("Receita");
         };
 
-        function EditReceita() {
-            $("#operacaoModal").modal("show");
-            AtvReceita();
-        }
+      
 
         //Filter Clínica
 
@@ -685,7 +728,18 @@
                 $("#btOpRep").val("Detalhar");
                 $("#hTitulo").text("Cadastro de Operações")
             }
-        }
+        };
+
+     
+
+        function AbrirRepasseModal() {
+            $('#repasseMedicoModal').modal('show');
+            return false;
+        };
+
+        function testar(obj) {
+            console.log(obj);
+        };
 
     </script>
 </asp:Content>

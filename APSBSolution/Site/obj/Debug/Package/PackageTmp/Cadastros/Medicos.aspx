@@ -7,9 +7,7 @@
             display: none;
         }
 
-        .imgButton {
-            height: 1.5em;
-        }
+       
     </style>
 
     <%--Hidden Filds--%>
