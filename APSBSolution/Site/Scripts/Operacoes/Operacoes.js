@@ -230,9 +230,13 @@ function DescontosClinica() {
 };
 
 function AbrirRepasseModal(tipo, id) {
+
+    $("#divObs").addClass("d-none");
+    $("#MainContent_tbObsRepasseProfissional").val("");
+    $("#hiddenRepasseID").val(id);
     if (tipo == "Receita") {
         $("#MainContent_tbDtRepasse").val();
-
+        var idClinica = 0;
         var relacaoObj = {
             idOperacao: id
         };
@@ -247,7 +251,7 @@ function AbrirRepasseModal(tipo, id) {
                 console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
             },
             success: function (result) {
-                console.log(result.d);
+                //console.log(result.d);
                 $("#MainContent_tbValorNF").val(formatMoney(result.d[0].cvValor, ".", ",", "."));
                 $("#MainContent_tbValorPago").val(formatMoney(result.d[0].cvValorPago, ".", ",", "."));
                 $("#MainContent_tbValorRepassado").val(formatMoney(result.d[0].cvValorRepassado, ".", ",", "."));
@@ -257,24 +261,163 @@ function AbrirRepasseModal(tipo, id) {
                 } else {
                     formatValorDisponivel(0);
                 };
+
+                $("#tbRepasseBody").empty(); //Limpa  a tabela para carregar novos dados
+
                 if (result.d[1].length > 0) {
                     //alert(result.d[1].length + " registros");
                     for (var i = 0; i < result.d[1].length; i++) {
-                        console.log(result.d[1][i]);
-                        $("#tbRepasseBody").append("<tr><th scope='row'>" + result.d[1][i].idRepasse + "</th>"
+                        //console.log(result.d[1][i]);
+                        var row = "<tr><th scope='row'>" + result.d[1][i].idRepasse + "</th>"
                             + "<td>" + result.d[1][i].ccNome + "</td>"
                             + "<td>" + result.d[1][i].cvTaxaProfissional + "</td>"
                             + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValor, ".", ",", ".") + "</td>"
                             + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValorLiquido, ".", ",", ".") + "</td>"
-                            + "<td>" + String.fromCharCode(result.d[1][i].ccStatus) + "</td>"
-                            + "<td><input type='image' src='../Content/Icons/cash-outline.svg' class='imgButton' /> </td>"
-                            + "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' class='imgButton' /> </td>"
-                            + "<td><input type='image' src='../Content/Icons/trash-outline.svg' class='imgButton' /> </td></tr> ");
+                            + "<td>" + String.fromCharCode(result.d[1][i].ccStatus) + "</td>";
+                        if (String.fromCharCode(result.d[1][i].ccStatus) == "A") {
+                            row = row + ("<td><input type='image' src='../Content/Icons/cash-outline.svg' class='imgButton' onclick='return pagar(" + result.d[1][i].idRepasse+")' /> </td>");
+                        }
+                        else {
+                            row += "<td><input type='image' src='../Content/Icons/cash-outline.svg' class='imgButtonDisabled' disabled /> </td>";
+                        };
+
+                        if (result.d[1][i].Observacao != "") {
+                            row += "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' class='imgButton' onclick='return getInfo(" + result.d[1][i].idRepasse +")' /> </td>";
+                        } else {
+                            row += "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' class='imgButtonDisabled'  disabled/> </td>";
+                        }
+
+                        row += "<td><input type='image' src='../Content/Icons/trash-outline.svg' class='imgButton' onclick='return excluir(" + result.d[1][i].idRepasse +")' /> </td></tr> ";
+
+                        $("#tbRepasseBody").append(row);
                     }
+                }
+
+                //Carregar dados Dropdown
+                $('#dpSelectProfissional').empty();
+                var i = 0;
+                var p = result.d[2][i];
+                if (p != undefined) {
+                    while (p != undefined) {
+                        $("#dpSelectProfissional").append(new Option(p.ccNome, p.IdProfissional));
+                        i++;
+                        p = result.d[2][i];
+                    }
+                }
+                else {
+                    $('#dpSelectProfissional')
+                        .empty()
+                        .append('<option selected="selected" value="0">Nenhum profissional associado</option>');
                 }
             }
         });
         $('#repasseMedicoModal').modal('show');
     }
     return false;
+};
+function pagar(id) {
+    return cmdRepasse("Pagar", id);
+};
+
+function excluir(id) {
+    return cmdRepasse("Excluir", id);
+};
+
+function getInfo(id) {
+
+    var url = "Operacoes.aspx/CommandRepasse";
+    var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
+    var dt = $("#MainContent_tbDtRepasse").val();
+
+    var obj = {
+        Usuario: user
+        , comando: "Info"
+        , _idRepasse: id
+        , data: dt
+    };
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(obj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            console.log(result.d);
+            $("#divObs").removeClass("d-none");
+            $("#MainContent_tbObsRepasseProfissional").val(result.d[1]);
+        }
+    });
+    return false;
+};
+
+    
+
+function AdicionarRepasse() {
+    //string Usuario, string idProfissional, string cvValor, string idReceita
+
+    var id = $("#hiddenRepasseID").val();
+    var _idProfissional = $("#dpSelectProfissional").val();
+    var _cvValor = $("#MainContent_tbValorDisponivel").val();
+    var _idReceita = $("#hiddenRepasseID").val();
+    var _data = $("#MainContent_tbDtRepasse").val();
+    var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
+
+    var relacaoObj = {
+        Usuario: user,
+        idProfissional: _idProfissional,
+        cvValor: _cvValor,
+        idReceita: _idReceita,
+        data: _data
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/AdicionarRepasse",
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            AbrirRepasseModal("Receita", id);
+        }
+    });
+
+};
+
+function cmdRepasse(cmd, id) {
+    var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
+    var dt = $("#MainContent_tbDtRepasse").val();
+
+    var obj = {
+        Usuario: user
+        , comando: cmd
+        , _idRepasse: id
+        , data: dt
+    };
+    Call("CommandRepasse", obj);
+    return false;
+};
+
+
+function Call(metodo, obj) {
+    var url = "Operacoes.aspx/" + metodo;
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(obj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            AbrirRepasseModal("Receita", $("#hiddenRepasseID").val())
+        }
+    });
 };

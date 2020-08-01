@@ -32,6 +32,7 @@ namespace Site.Classes
         public float ValorNF { get; set; }//ValorNF
         public float ValorPago { get; set; }//ValorPago
         public float ValorRepasse { get; set; }//ValorRepasse
+        public int idClinica { get; set; }
 
 
         #endregion
@@ -152,6 +153,7 @@ namespace Site.Classes
             parametros.Add(new object[] { "@idReceita", this.idReceita });
             parametros.Add(new object[] { "@IdProfissional",  this.IdProfissional});
             parametros.Add(new object[] { "@cvValor", this.cvValor });
+            parametros.Add(new object[] { "@dataRepasse", this.dataRepasse });
             if (this.Observacao.IsNullOrWhiteSpace())
             {
                 parametros.Add(new object[] { "@observacoes", DBNull.Value});
@@ -163,7 +165,7 @@ namespace Site.Classes
 
             try
             {
-                object retorno = DAO.ExecuteScalar(@"INS_Repasse @idReceita = @idReceita, @IdProfissional = @IdProfissional, @cvValor = @cvValor, @observacoes = @observacoes, @UserName = @UserName;", parametros);
+                object retorno = DAO.ExecuteScalar(@"INS_Repasse @idReceita = @idReceita, @IdProfissional = @IdProfissional, @cvValor = @cvValor, @observacoes = @observacoes, @UserName = @UserName, @dataRepasse = @dataRepasse;", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -209,7 +211,7 @@ namespace Site.Classes
             {
                 foreach (DataRow c in dt.Rows)
                 {
-                    Lista.Add(new ReceitaRepasse(
+                    ReceitaRepasse rr = new ReceitaRepasse(
                         c["idRepasse"]
                         , c["idReceita"]
                         , c["IdProfissional"]
@@ -221,7 +223,10 @@ namespace Site.Classes
                         , c["ccNome"]
                         , c["cvTaxaProfissional"]
                         , c["cvValorLiquido"]
-                        ));
+                        );
+
+                    rr.idClinica = int.Parse(c["idClinica"].ToString());
+                    Lista.Add(rr);
                 }
             }
 

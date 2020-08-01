@@ -168,24 +168,6 @@ namespace Site
         protected global::System.Web.UI.WebControls.TextBox tbDtRepasse;
 
         /// <summary>
-        /// Controle dpSelectProfissional.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpSelectProfissional;
-
-        /// <summary>
-        /// Controle dsProfissional.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsProfissional;
-
-        /// <summary>
         /// Controle tbValorNF.
         /// </summary>
         /// <remarks>
@@ -220,24 +202,6 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbValorDisponivel;
-
-        /// <summary>
-        /// Controle bdAddRepasse.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bdAddRepasse;
-
-        /// <summary>
-        /// Controle pnObs.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnObs;
 
         /// <summary>
         /// Controle tbObsRepasseProfissional.

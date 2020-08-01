@@ -345,8 +345,7 @@ namespace Site.Classes
                     }
 
 
-
-                    Lista.Add(new Receita(
+                    Receita r = new Receita(
                         int.Parse(c["idReceita"].ToString())
                         , float.Parse(c["cvValor"].ToString().IfNullOrWhiteSpace("0"))
                         , cvValorPago
@@ -359,7 +358,9 @@ namespace Site.Classes
                         , cvValorDisponivel
                         , bool.Parse(c["cbIssRetido"].ToString())
                         , cvValorRepassado
-                        ));
+                        );
+                    r.IdClinica = int.Parse(c["IdClinica"].ToString());
+                    Lista.Add(r);
                 }
 
             }
