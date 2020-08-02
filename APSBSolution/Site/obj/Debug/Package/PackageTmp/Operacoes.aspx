@@ -11,8 +11,9 @@
             text-align: right;
             width: 90px;
         }
+
         .transparente {
-         opacity: 0.2;
+            opacity: 0.2;
         }
     </style>
 
@@ -77,6 +78,7 @@
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
             <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
             <input type="hidden" id="idHiddenOperacao2" name="idHiddenOperacao2" value="" />
+            <input type="hidden" id="hiddenRepasseID" name="hiddenRepasseID" value="" />
 
             <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
@@ -93,7 +95,7 @@
                 <br />
                 <asp:GridView runat="server" ID="gvOperacoes" DataSourceID="dsOperacoes" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnRowCommand="gvOperacoes_RowCommand" OnPreRender="gvOperacoes_PreRender">
                     <Columns>
-                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:BoundField HeaderText="ID" DataField="ID" ItemStyle-CssClass="rowID" />
                         <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
                         <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
@@ -111,7 +113,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <%--<asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
-                                <%--onclick="return AbrirDesRec('Despesa')"--%> 
+                                <%--onclick="return AbrirDesRec('Despesa')"--%>
                                 <input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# $"return AbrirDesRec('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                                 <%--<input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirDesRec('{0}');") %>" />--%>
                             </ItemTemplate>
@@ -119,7 +121,7 @@
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <%--<asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
-                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirRepasseModal();") %>" />
+                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# $"return AbrirRepasseModal('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
@@ -206,34 +208,26 @@
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
                             </div>
                             <div>
-                                <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control" DataSourceID="dsProfissional" DataTextField="ccNome" DataValueField="IdProfissional"></asp:DropDownList>
-                                <asp:ObjectDataSource ID="dsProfissional" runat="server" SelectMethod="ListaDropDown" TypeName="Site.Classes.Profissional">
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="idHiddenOperacao" Name="idClinica" PropertyName="Value" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
+                                <select id="dpSelectProfissional" class="form-control">
+                                </select>
                             </div>
                         </div>
                     </div>
 
-                    <%-- <div class="row">
-                        <div class="col">
-                            <label for="tbObsprofissional">Observações</label>
-                            <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height: 100px;" readonly="readonly" />
-                            
-                        </div>
-                    </div>--%>
                     <hr />
                     <div class="row">
-                        <div class="col"><asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
-                        <div class="col"><asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
-                        <div class="col"><asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col">
+                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col">
+                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                        <div class="col">
+                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
                     </div>
                     <div class="row">
 
                         <div class="col">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -242,7 +236,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -251,7 +245,7 @@
                         </div>
                         <div class="col">
                             <div class="input-group">
-                                
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -261,7 +255,7 @@
                     </div>
                     <hr />
                     <div class="row">
-                        
+
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -271,50 +265,39 @@
                             </div>
                         </div>
                         <div class="col">
-                            <asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" OnClick="bdAddRepasse_Click" />
+                            <%--<asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" />--%>
+                            <input type="button" name="btAdicionar" value="Adicionar" onclick="AdicionarRepasse()" class="btn btn-secondary" />
                         </div>
                         <div class="col"></div>
                     </div>
-                    <asp:Panel runat="server" ID="pnObs" CssClass="row" Visible="false">
+                    <div class="row d-none" id="divObs">
                         <div class="col">
                             <asp:Label Text="Observações" runat="server" AssociatedControlID="tbObsRepasseProfissional" />
                             <asp:TextBox runat="server" ID="tbObsRepasseProfissional" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" />
                         </div>
-                    </asp:Panel>
+                    </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col" id="tbRepasse">
                             <br />
-                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand" OnPreRender="gvRepasseMedico_PreRender">
-                                <Columns>
-                                    <asp:BoundField HeaderText="ID" DataField="idRepasse" />
-                                    <asp:BoundField HeaderText="Nome" DataField="ccNome" />
-                                    <asp:BoundField HeaderText="Taxa" DataField="cvTaxaProfissional" />
-                                    <asp:BoundField DataField="cvValor" HeaderText="R$ Bruto" DataFormatString="{0:C}" />
-                                    <asp:BoundField DataField="cvValorLiquido" HeaderText="R$ Liquido" DataFormatString="{0:C}" />
-                                    <asp:BoundField DataField="ccStatus" HeaderText="Status" />
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:HiddenField runat="server" ID="HiddenFieldObs" Value='<%# Eval("Observacao") %>' />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:ImageButton ImageUrl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" CommandName="Pagar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />&nbsp&nbsp
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:ImageButton ID="imgInfo" ImageUrl="~/Content/Icons/information-circle-outline.svg" Height="1.5em" runat="server" ToolTip="Info" CommandName="Info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
+                            <table class="table table-hover table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Taxa</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">V. Liquido</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbRepasseBody">
+
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -536,7 +519,7 @@
                 SalvarDespesa();
             };
         };
-     
+
         function ConvertMoney(money) {
             //var str = money;
             //if (str.search(",") > 0) { money = str; } else { money = str + ",00"; };
@@ -627,7 +610,7 @@
             $("#MainContent_tbAbaAtiva").val("Receita");
         };
 
-      
+
 
         //Filter Clínica
 
@@ -686,6 +669,7 @@
             }
         }
 
+
         //Ativar disconto
         function EnableDiscount() {
             if ($("#MainContent_tbReceitaDesconto").attr("readonly") == undefined) {
@@ -730,12 +714,6 @@
             }
         };
 
-     
-
-        function AbrirRepasseModal() {
-            $('#repasseMedicoModal').modal('show');
-            return false;
-        };
 
         function testar(obj) {
             console.log(obj);

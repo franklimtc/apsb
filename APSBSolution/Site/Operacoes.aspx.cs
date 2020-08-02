@@ -82,24 +82,7 @@ namespace Site
                 //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
-        //protected void gvRepasseMedico_PreRender(object sender, EventArgs e)
-        //{
-        //    foreach (GridViewRow r in gvRepasseMedico.Rows)
-        //    {
-        //        HiddenField HiddenObs = r.FindControl("HiddenFieldObs") as HiddenField;
-
-        //        if (HiddenObs.Value.IsNullOrWhiteSpace())
-        //        {
-        //            r.Cells[8].Enabled = false;
-        //            r.Cells[8].CssClass = "transparente";
-        //        }
-        //        else
-        //        {
-        //            r.Cells[8].Enabled = true;
-        //            r.Cells[8].CssClass = "";
-        //        }
-        //    }
-        //}
+   
         protected void gvOperacoes_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             var obj = e.CommandArgument;
@@ -107,26 +90,10 @@ namespace Site
             idHiddenOperacao.Value = idOperacao.ToString();
             string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
             string user = "Franklim";
-            pnObs.Visible = false;
-            
 
             switch (e.CommandName)
             {
-                case "Editar":
-                    tbValorOperacao.Text = gvOperacoes.Rows[int.Parse(e.CommandArgument.ToString())].Cells[2].Text;
-
-                    CarregarModalOperacao(idOperacao, operacaoTipo);
-                    break;
-                case "Repassar":
-                    if (operacaoTipo == "Receita")
-                    {
-                        CarregarModalRepasse(idOperacao, operacaoTipo);
-                    }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Repasse não disponível para Despesas!');", true);
-                    }
-                    break;
+              
                 case "Arquivar":
                     Operacao.Arquivar(user, idOperacao, operacaoTipo);
                     gvOperacoes.DataBind();
@@ -139,44 +106,8 @@ namespace Site
                     break;
             }
         }
-        //protected void gvRepasseMedico_RowCommand(object sender, GridViewCommandEventArgs e)
-        //{
-        //    var obj = e.CommandArgument;
-        //    string Usuario = "Franklim";
-        //    int idRepasse = int.Parse(gvRepasseMedico.Rows[int.Parse(obj.ToString())].Cells[0].Text);
-        //    DateTime dtPgto = DateTime.Now;
+      
 
-        //    DateTime.TryParse(tbDtRepasse.Text, out dtPgto);
-
-        //    bool result = false;
-
-        //    switch (e.CommandName)
-        //    {
-        //        case "Pagar":
-        //            result = ReceitaRepasse.Pagar(Usuario, idRepasse, dtPgto);
-        //            break;
-        //        case "Excluir":
-        //            result = ReceitaRepasse.Excluir(Usuario, idRepasse);
-        //            break;
-        //        case "Info":
-        //            pnObs.Visible = true;
-        //            tbObsRepasseProfissional.Text = ReceitaRepasse.GetObs(idRepasse);
-        //            result = true;
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    if (!result)
-        //    {
-        //        ScriptManager.RegisterStartupScript(this.Page, GetType(), "", "alert('Falha na operação')", true);
-        //    }
-        //    else
-        //    {
-        //        gvRepasseMedico.DataBind();
-        //        gvOperacoes.DataBind();
-        //    }
-        //    CarregarModalRepasse(int.Parse(idHiddenOperacao.Value), "Receita");
-        //}
         void CarregarDPDespesa()
         {
             var listaTipo = DespesaTipo.Listar();
