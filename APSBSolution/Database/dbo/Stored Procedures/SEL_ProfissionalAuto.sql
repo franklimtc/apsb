@@ -1,36 +1,39 @@
-﻿
-CREATE PROCEDURE SEL_ProfissionalAuto      
-AS      
-BEGIN      
- SELECT       
- CASE WHEN ccSexo IS NULL OR ccNaturalUF IS NULL OR ccNaturalCidade IS NULL OR ccEstadoCivil IS NULL     
- OR RGNum IS NULL OR RGdtEmissao IS NULL OR CPFNum IS NULL OR cvTelefone IS NULL OR cvCelular IS NULL  THEN 'Incompleto'     
- ELSE 'Completo' END StatusCadastro    
- , IdProfissional      
- , DBO.FN_TokenAuto(IdProfissional, cdDataCriacao) Token      
- , ccNome      
- , ccSexo      
- , ccNaturalUF      
- , ccNaturalCidade      
- , ccEstadoCivil      
- , ccEmail      
- , cvStatus      
- , ccCriadoPor      
- , cdDataCriacao      
- , ccAlteradoPor      
- , cdDataAlteracao      
- , IdObservacao      
- , RGNum      
- , RGEmissor      
- , RGdtEmissao      
- , CPFNum      
- , cvTelefone      
- , cvCelular      
- , nomePai      
- , nomeMae      
- , nomeConjuge      
- , cdDataNascimento      
- , cbAutoCadastro      
- FROM tbProfissionais where cbAutoCadastro = 1 AND cvStatus = 0;      
-      
+﻿    
+CREATE PROCEDURE SEL_ProfissionalAuto          
+AS          
+BEGIN          
+ SELECT DISTINCT          
+ CASE WHEN p.ccSexo IS NULL OR p.ccNaturalUF IS NULL OR p.ccNaturalCidade IS NULL OR p.ccEstadoCivil IS NULL         
+ OR p.RGNum IS NULL OR p.RGdtEmissao IS NULL OR p.CPFNum IS NULL OR p.cvTelefone IS NULL OR p.cvCelular IS NULL  THEN 'Incompleto'         
+ ELSE 'Completo' END StatusCadastro        
+ , p.IdProfissional          
+ , DBO.FN_TokenAuto(p.IdProfissional, p.cdDataCriacao) Token          
+ , p.ccNome          
+ , p.ccSexo          
+ , p.ccNaturalUF          
+ , p.ccNaturalCidade          
+ , p.ccEstadoCivil          
+ , p.ccEmail          
+ , p.cvStatus          
+ , p.ccCriadoPor          
+ , p.cdDataCriacao          
+ , p.ccAlteradoPor          
+ , p.cdDataAlteracao          
+ , p.IdObservacao          
+ , p.RGNum          
+ , p.RGEmissor          
+ , p.RGdtEmissao          
+ , p.CPFNum          
+ , p.cvTelefone          
+ , p.cvCelular          
+ , p.nomePai          
+ , p.nomeMae          
+ , p.nomeConjuge          
+ , p.cdDataNascimento          
+ , p.cbAutoCadastro   
+ , CASE WHEN (COUNT(pa.idArquivo) OVER()) > 0 THEN 'Sim' Else 'Não' end TaxaPaga  
+ FROM tbProfissionais p  
+ LEFT JOIN tbProfissionalArquivo pa ON p.IdProfissional = pa.idProfissional AND pa.ccNomeArquivo like 'Comprovante_Taxa%'  
+ where p.cbAutoCadastro = 1 AND p.cvStatus = 0;          
+          
 END

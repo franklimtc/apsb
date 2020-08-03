@@ -1,8 +1,13 @@
-﻿CREATE PROCEDURE SEL_ChartFatEfetivo    
-AS BEGIN    
-	SELECT r.cdEmissao, DAY(r.cdEmissao) d, MONTH(r.cdEmissao) m, SUM(CAST(r.cvValorPago AS INT)) cvValor 
-	FROM tbReceitas r 
-	WHERE r.cdEmissao > DATEADD(DAY, -7, GETDATE())
-	GROUP BY r.cdEmissao
-	ORDER BY r.cdEmissao
-END
+﻿CREATE PROCEDURE SEL_ChartFatEfetivo
+AS
+  BEGIN
+	SELECT MONTH(cdEmissao)                   MN, 
+		   LEFT(FORMAT(cdEmissao, 'MMMM'), 1) d, 
+		   SUM(CAST(r.cvValor AS INT))        cvValor
+	  FROM tbReceitas R
+	 WHERE YEAR(cdEmissao)=YEAR(GETDATE())
+		   AND cdPagamento IS NOT NULL
+	 GROUP BY MONTH(cdEmissao), 
+			  LEFT(FORMAT(cdEmissao, 'MMMM'), 1)
+	ORDER BY MN;
+  END;

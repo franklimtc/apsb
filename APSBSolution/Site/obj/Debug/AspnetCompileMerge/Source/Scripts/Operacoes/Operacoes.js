@@ -118,7 +118,7 @@ function EditReceita(id) {
 
             $("#MainContent_tbReceitaNF").val(result.d[0].cvNF);
             $("#MainContent_tbReceitaNFValorPG").val(formatMoney(result.d[0].cvValorPago, ".", ",", "."));
-            $("#MainContent_tbReceitaDesconto").val(result.d[0].cvDesconto);
+            $("#MainContent_tbReceitaDesconto").val(formatMoney(result.d[0].cvDesconto, ".", ",", "."));
             $("#MainContent_chkIssRetido").removeAttr("disabled");
 
             if (result.d[0].cbIssRetido == true) {

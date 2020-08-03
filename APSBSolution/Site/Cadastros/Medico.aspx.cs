@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -20,6 +22,7 @@ namespace Site.Cadastros
             // Parse a date and time with no styles.
             culture = CultureInfo.CreateSpecificCulture("pt-BR");
             styles = DateTimeStyles.None;
+            HiddenUser.Value = User.Identity.Name;
         }
 
         protected void gvMedicos_PreRender(object sender, EventArgs e)
@@ -27,13 +30,189 @@ namespace Site.Cadastros
             gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
-        [WebMethod]
-        public static Profissional BuscarPorID(int idProfissional)
+        protected void btSalvar_Click(object sender, EventArgs e)
         {
-            Profissional p = new Profissional();
-            p = Profissional.ListarPorID(idProfissional);
-            return p;
+            Profissional pNew = new Profissional();
+            pNew.ccNome = tbNome.Value;
+            pNew.ccSexo = dpSexo.Value;
+            pNew.ccNaturalUF = dpUFNatural.Value;
+            pNew.ccNaturalCidade = tbCidade.Value;
+            pNew.ccEstadoCivil = tbEstCivil.Value;
+            pNew.nomePai = tbPai.Value;
+            pNew.nomeMae = tbMae.Value;
+            pNew.nomeConjuge = tbConjuge.Value;
+            pNew.RGNum = int.Parse(tbRGNum.Value);
+            pNew.RGEmissor = tbRGEmissor.Value;
+            if (tbRGdata.Value != "")
+            {
+                pNew.RGdtEmissao = DateTime.Parse(tbRGdata.Value);
+            }
+
+            pNew.CPFNum = long.Parse(tbCPF.Value.Replace(".","").Replace("-",""));
+            pNew.ccEmail = tbEmail.Value;
+            pNew.Observacoes = tbObs.Value;
+
+            if (tbFone.Value != "")
+                pNew.cvTelefone = long.Parse(tbFone.Value);
+            if (tbCelular.Value != "")
+                pNew.cvCelular = long.Parse(tbCelular.Value);
+
+            if (tbdtNascimento.Value != "")
+            {
+                DateTime.TryParse(tbdtNascimento.Value, culture, styles, out DateTime newDate);
+                pNew.dtNascimento = newDate;
+            }
+
+            if (tbDtPagamento.Value !="")
+            {
+                DateTime.TryParse(tbDtPagamento.Value, culture, styles, out DateTime newDate);
+                pNew.cdPgtoTaxa = newDate;
+            }
+            if (tbDtFiliacao.Value != "")
+            {
+                DateTime.TryParse(tbDtFiliacao.Value, culture, styles, out DateTime newDate);
+                pNew.cdFiliacao = newDate;
+            }
+
+            if (tbDtRegCartorio.Value != "")
+            {
+                DateTime.TryParse(tbDtRegCartorio.Value, culture, styles, out DateTime newDate);
+                pNew.cdRegCartorio = newDate;
+            }
+
+            try
+            {
+                bool result = false;
+                if (idHiddenMedico.Value == "")
+                {
+                    result = pNew.Adicionar(HiddenUser.Value);
+                }
+                else
+                {
+                    pNew.IdProfissional = int.Parse(idHiddenMedico.Value);
+                    result = pNew.Salvar(HiddenUser.Value);
+                }
+                if (result)
+                {
+                    gvMedicos.DataBind();
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", $"alert('Falha ao salvar o registro! ERRO: {ex.Message}')", true);
+            }
         }
+
+        protected void btUploadFile_Click(object sender, EventArgs e)
+        {
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+
+            if (btUpload.HasFile)
+            {
+                if (btUpload.PostedFile.ContentLength < 52428800)
+                {
+                    string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{btUpload.PostedFile.FileName}";
+                    btUpload.PostedFile.SaveAs(fullPath);
+
+                    ProfissionalArquivo pa = new ProfissionalArquivo();
+                    pa.ccNomeArquivo = btUpload.PostedFile.FileName;
+
+                    pa.fileBytes = File.ReadAllBytes(fullPath);
+                    pa.idProfissional = int.Parse(idHiddenMedico.Value);
+                    bool result = pa.Salvar(user);
+
+                    if (result)
+                    {
+                        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro salvo com sucesso!');", true);
+                        File.Delete(fullPath);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao salvar o registro!');", true);
+                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo com tamanho inferior a 50MB!');", true);
+                }
+
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo!');", true);
+            }
+        }
+
+        protected void gvProfissionalArquivo_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            var obj = e.CommandArgument;
+            int idProfissionalArquivo = int.Parse(gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+            //string nomeArquivo = Server.HtmlDecode(gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text);
+            string nomeArquivo = ProfissionalArquivo.GetName(idProfissionalArquivo);
+            //string user = User.Identity.Name;
+            string user = "Franklim";
+            bool result = false;
+            switch (e.CommandName)
+            {
+                case "Excluir":
+                    ProfissionalArquivo file = new ProfissionalArquivo();
+                    file.idArquivo = idProfissionalArquivo;
+                    result = file.Excluir(user);
+                    if (result)
+                    {
+                        gvProfissionalArquivo.DataBind();
+                    }
+                    break;
+                case "Baixar":
+                    string fullPath = $"{Server.MapPath("").Replace("Cadastros", "Arquivos")}\\{nomeArquivo}";
+                    ProfissionalArquivo.BaixarArquivo(fullPath, idProfissionalArquivo);
+
+                    Response.ContentType = "application/pdf";
+                    Response.AppendHeader("Content-Disposition", $"attachment; filename={nomeArquivo}");
+                    Response.ContentEncoding = Encoding.Default;
+                    Response.TransmitFile(fullPath);
+                    Response.End();
+
+                    File.Delete(fullPath);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        #region WebMethods
+
+        [WebMethod]
+        public static Profissional BuscarPorID(string idProfissional)
+        {
+            return Profissional.ListarPorID(int.Parse(idProfissional));
+        }
+
+        [WebMethod]
+        public static ProfissionalDados BuscarDadosID(string idProfissional)
+        {
+            return ProfissionalDados.ListarPorID(int.Parse(idProfissional));
+        }
+
+        [WebMethod]
+        public static ProfissionalEndereco BuscarEnderecoID(string idProfissional)
+        {
+            return ProfissionalEndereco.ListarPorID(int.Parse(idProfissional));
+        }
+
+        [WebMethod]
+        public static List<ProfissionalBanco> BuscarBancosID(string idProfissional)
+        {
+            return ProfissionalBanco.Listar(int.Parse(idProfissional));
+        }
+
+        [WebMethod]
+        public static List<ProfissionalArquivo> BuscararquivosID(string idProfissional)
+        {
+            return ProfissionalArquivo.Listar(int.Parse(idProfissional));
+        }
+
         [WebMethod]
         public static object SalvarMedico(string user, string nome, string sexo, string uf, string cidade, string estCivil, string pai, string mae, string conjuge, string rgNum, string rgEmissor, string rgData, string cpf, string email, string telefone, string celular, string obs, string dtNascimento, string dtTaxa, string dtFiliacao, string dtCartorio, string idMedico)
         {
@@ -108,5 +287,15 @@ namespace Site.Cadastros
             }
             return result;
         }
+
+        [WebMethod]
+        public static bool RemoverBanco(string Usuario, string IdProfissionalBanco)
+        {
+            bool result = false;
+            result =  ProfissionalBanco.Excluir(Usuario, int.Parse(IdProfissionalBanco));
+            return result;
+        }
+
+        #endregion
     }
 }

@@ -1,8 +1,13 @@
-﻿CREATE PROCEDURE SEL_ChartReceitaBruta    
-AS BEGIN    
-	SELECT r.cdEmissao, DAY(r.cdEmissao) d, MONTH(r.cdEmissao) m, SUM(CAST(r.cvValorPago AS INT)) cvValor 
-	FROM tbReceitas r 
-	WHERE r.cdEmissao > DATEADD(DAY, -7, GETDATE())
-	GROUP BY r.cdEmissao
-	ORDER BY r.cdEmissao
-END
+﻿CREATE PROCEDURE SEL_ChartReceitaBruta
+AS
+  BEGIN
+	SELECT MONTH(dataRepasse)                                             MN, 
+		   LEFT(FORMAT(dataRepasse, 'MMMM'), 1)                           d, 
+		   SUM(CAST(r.cvValor*ISNULL(cvTaxaProfissional, 10)/100 AS INT)) cvValor
+	  FROM tbProfissionalRepasse R
+	 WHERE YEAR(dataRepasse)=YEAR(GETDATE())
+		   AND ccStatus='R'
+	 GROUP BY MONTH(dataRepasse), 
+			  LEFT(FORMAT(dataRepasse, 'MMMM'), 1)
+	ORDER BY MN;
+  END;

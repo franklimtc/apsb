@@ -284,7 +284,14 @@ namespace Site.Classes
             parametros.Add(new object[] { "@observacoes", this.Observacoes });
             parametros.Add(new object[] { "@RGNum", this.RGNum });
             parametros.Add(new object[] { "@RGEmissor", this.RGEmissor });
-            parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
+            if (this.RGdtEmissao.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
+            }
+            else
+            { 
+                parametros.Add(new object[] { "@RGdtEmissao", DBNull.Value });
+            }
             parametros.Add(new object[] { "@CPFNum", this.CPFNum });
             parametros.Add(new object[] { "@cvTelefone", this.cvTelefone });
             parametros.Add(new object[] { "@cvCelular", this.cvCelular });
@@ -360,7 +367,14 @@ namespace Site.Classes
             parametros.Add(new object[] { "@observacoes", this.Observacoes });
             parametros.Add(new object[] { "@RGNum", this.RGNum });
             parametros.Add(new object[] { "@RGEmissor", this.RGEmissor });
-            parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
+            if (this.RGdtEmissao.ToString("dd/MM/yyyy") != "01/01/0001")
+            {
+                parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@RGdtEmissao", DBNull.Value });
+            }
             parametros.Add(new object[] { "@CPFNum", this.CPFNum });
             parametros.Add(new object[] { "@cvTelefone", this.cvTelefone });
             parametros.Add(new object[] { "@cvCelular", this.cvCelular });

@@ -755,10 +755,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/01/2020 20:39:11</publishTime>
+      <publishTime>08/02/2020 11:04:54</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/01/2020 20:39:11</publishTime>
+      <publishTime>08/02/2020 11:04:54</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1217,10 +1217,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>08/01/2020 20:38:48</publishTime>
+      <publishTime>08/02/2020 10:54:21</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>08/01/2020 20:38:48</publishTime>
+      <publishTime>08/02/2020 10:54:21</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1922,7 +1922,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/01/2020 20:30:01</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/01/2020 20:38:58</publishTime>
+      <publishTime>08/02/2020 11:04:44</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>07/22/2020 12:47:42</publishTime>
@@ -2603,7 +2603,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/30/2020 08:29:27</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Operacoes.js">
-      <publishTime>08/01/2020 20:34:38</publishTime>
+      <publishTime>08/02/2020 11:02:38</publishTime>
     </File>
     <File Include="Scripts/popper-utils.js">
       <publishTime>07/10/2020 14:26:27</publishTime>

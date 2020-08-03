@@ -253,6 +253,7 @@
     <Content Include="assets\js\plugins\sweetalert2.js" />
     <Content Include="Autocadastro.aspx" />
     <Content Include="Cadastro.aspx" />
+    <Content Include="Cadastros\Arquivos.aspx" />
     <Content Include="Cadastros\Autocadastro.aspx" />
     <Content Include="Cadastros\Clinicas.aspx" />
     <Content Include="Cadastros\Medico.aspx" />
@@ -1115,6 +1116,13 @@
     </Compile>
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\Arquivos.aspx.cs">
+      <DependentUpon>Arquivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Arquivos.aspx.designer.cs">
+      <DependentUpon>Arquivos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\Autocadastro.aspx.cs">
       <DependentUpon>Autocadastro.aspx</DependentUpon>
