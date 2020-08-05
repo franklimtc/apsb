@@ -176,7 +176,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary">Salvar</button>--%>
                 </div>
             </div>
         </div>
@@ -658,7 +658,7 @@
 
         function filterProfissional() {
             var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("MainContent_dpSelectProfissional");
+            var select = document.getElementById("dpSelectProfissional");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {

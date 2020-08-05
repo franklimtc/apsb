@@ -6,7 +6,7 @@
     var _agencia = $("#MainContent_tbAgencia").val();
     var _conta = $("#MainContent_tbConta").val();
     var _operacao = $("#MainContent_tbOperacao").val();
-    var _idMedico = $("#idHiddenMedico").val();
+    var _idMedico = $("#MainContent_idHiddenMedico").val();
 
     var url = "Medicos.aspx/AdicionarBanco";
     var gridview = "#MainContent_gvProfissionalBanco";
@@ -57,7 +57,7 @@
 };
 
 function CarregarModal(_idProfissional) {
-    $("#idHiddenMedico").val(_idProfissional);
+    $("#MainContent_idHiddenMedico").val(_idProfissional);
 
     var url = "Medico.aspx/BuscarPorID";
 
@@ -65,7 +65,6 @@ function CarregarModal(_idProfissional) {
         idProfissional: _idProfissional
     };
 
-    $('#idHiddenMedico').val(_idProfissional);
     $.ajax({
         type: "POST",
         url: url,
@@ -85,17 +84,17 @@ function CarregarModal(_idProfissional) {
             $("#MainContent_tbConjuge").val(result.d["nomeConjuge"]);
             $("#MainContent_tbRGNum").val(result.d["RGNum"]);
             $("#MainContent_tbRGEmissor").val(result.d["RGEmissor"]);
-            $("#MainContent_tbRGdata").val(ConvertDate(result.d["RGdtEmissao"]));
+            $("#MainContent_tbRGdata").val(ConvertDate2(result.d["RGdtEmissao"]));
             $("#MainContent_tbCPF").val(("0000" + result.d["CPFNum"]).slice(-11));
             $("#MainContent_tbCPF").mask("000.000.000-00")
             $("#MainContent_tbCNH").val(result.d["cvCNH"]);
             $("#MainContent_tbEmail").val(result.d["ccEmail"]);
             $("#MainContent_tbFone").val(result.d["cvTelefone"]);
             $("#MainContent_tbCelular").val(result.d["cvCelular"]);
-            $("#MainContent_tbDtFiliacao").val(ConvertDate(result.d["cdFiliacao"]));
-            $("#MainContent_tbDtPagamento").val(ConvertDate(result.d["cdPgtoTaxa"]));
-            $("#MainContent_tbDtRegCartorio").val(ConvertDate(result.d["cdRegCartorio"]));
-            $("#MainContent_tbdtNascimento").val(ConvertDate(result.d["dtNascimento"]));
+            $("#MainContent_tbDtFiliacao").val(ConvertDate2(result.d["cdFiliacao"]));
+            $("#MainContent_tbDtPagamento").val(ConvertDate2(result.d["cdPgtoTaxa"]));
+            $("#MainContent_tbDtRegCartorio").val(ConvertDate2(result.d["cdRegCartorio"]));
+            $("#MainContent_tbdtNascimento").val(ConvertDate2(result.d["dtNascimento"]));
             $("#MainContent_tbObs").val(result.d["Observacoes"]);
             $("#medicoModal").modal("show");
             RemoverMascaras();
@@ -106,7 +105,7 @@ function CarregarModal(_idProfissional) {
 };
 
 function CarregarModalProfissional(_idProfissional) {
-    $("#idHiddenMedico").val(_idProfissional);
+    $("#MainContent_idHiddenMedico").val(_idProfissional);
 
     var url = "Medico.aspx/BuscarDadosID";
 
@@ -114,7 +113,6 @@ function CarregarModalProfissional(_idProfissional) {
         idProfissional: _idProfissional
     };
 
-    $('idHiddenMedico').val(_idProfissional);
 
     $.ajax({
         type: "POST",
@@ -157,7 +155,7 @@ function CarregarModalProfissional(_idProfissional) {
 };
 
 function CarregarModalEndereco(_idProfissional) {
-    $("#idHiddenMedico").val(_idProfissional);
+    $("#MainContent_idHiddenMedico").val(_idProfissional);
 
     var url = "Medico.aspx/BuscarEnderecoID";
 
@@ -165,7 +163,6 @@ function CarregarModalEndereco(_idProfissional) {
         idProfissional: _idProfissional
     };
 
-    $('idHiddenMedico').val(_idProfissional);
 
     $.ajax({
         type: "POST",
@@ -197,7 +194,7 @@ function SalvarEndereco() {
 };
 
 function CarregarModalBanco(_idProfissional) {
-    $("#idHiddenMedico").val(_idProfissional);
+    $("#MainContent_idHiddenMedico").val(_idProfissional);
 
     var url = "Medico.aspx/BuscarBancosID";
 
@@ -205,7 +202,6 @@ function CarregarModalBanco(_idProfissional) {
         idProfissional: _idProfissional
     };
 
-    $('idHiddenMedico').val(_idProfissional);
 
     $.ajax({
         type: "POST",
@@ -239,7 +235,7 @@ function CarregarModalBanco(_idProfissional) {
 };
 
 function CarregarModalArquivos(_idProfissional) {
-    $("#idHiddenMedico").val(_idProfissional);
+    $("#MainContent_idHiddenMedico").val(_idProfissional);
     
     var url = "Medico.aspx/BuscararquivosID";
 
@@ -247,7 +243,6 @@ function CarregarModalArquivos(_idProfissional) {
         idProfissional: _idProfissional
     };
 
-    $('idHiddenMedico').val(_idProfissional);
 
     $.ajax({
         type: "POST",
@@ -274,7 +269,7 @@ function RemoverBanco(id) {
         IdProfissionalBanco: id
     };
 
-    var idMedico = $('#idHiddenMedico').val();
+    var idMedico = $('#MainContent_idHiddenMedico').val();
     $.ajax({
         type: "POST",
         url: url,

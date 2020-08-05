@@ -755,10 +755,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/02/2020 11:04:54</publishTime>
+      <publishTime>08/04/2020 08:38:24</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/02/2020 11:04:54</publishTime>
+      <publishTime>08/04/2020 08:38:24</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -767,22 +767,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/de/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -791,97 +791,97 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/EnvDTE.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/es/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/it/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ja/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ko/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.FriendlyUrls.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -902,7 +902,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/Microsoft.MSXML.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/Microsoft.Owin.dll">
       <publishTime>07/10/2020 14:26:44</publishTime>
@@ -935,22 +935,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/14/2020 18:56:27</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.DataVisualization.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.Design.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.ProcessingObjectModel.dll">
       <publishTime>07/14/2020 18:56:27</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WebDesign.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WebForms.dll">
       <publishTime>07/14/2020 18:56:27</publishTime>
     </File>
     <File Include="bin/Microsoft.ReportViewer.WinForms.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Microsoft.ScriptManager.MSAjax.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -962,19 +962,19 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.OLE.Interop.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.Shell.Interop.8.0.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.Shell.Interop.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.TextManager.Interop.8.0.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/Microsoft.VisualStudio.TextManager.Interop.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>07/10/2020 14:26:46</publishTime>
@@ -1022,22 +1022,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>02/11/2014 15:28:42</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/pt/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Reports/Rep01.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -1193,22 +1193,22 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:44</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/ru/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/Simple.Data.Ado.dll">
       <publishTime>07/10/2020 14:26:46</publishTime>
@@ -1217,10 +1217,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>08/02/2020 10:54:21</publishTime>
+      <publishTime>08/03/2020 19:25:19</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>08/02/2020 10:54:21</publishTime>
+      <publishTime>08/03/2020 19:25:19</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1235,7 +1235,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="bin/stdole.dll">
-      <publishTime>07/10/2020 13:51:39</publishTime>
+      <publishTime>10/07/2020 13:51:39</publishTime>
     </File>
     <File Include="bin/System.Web.Optimization.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1244,46 +1244,49 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHS/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHT/Microsoft.ReportViewer.Common.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHT/Microsoft.ReportViewer.DataVisualization.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHT/Microsoft.ReportViewer.Design.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHT/Microsoft.ReportViewer.WebDesign.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHT/Microsoft.ReportViewer.WebForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="bin/zh-CHT/Microsoft.ReportViewer.WinForms.resources.dll">
-      <publishTime>07/10/2020 14:26:45</publishTime>
+      <publishTime>10/07/2020 14:26:45</publishTime>
     </File>
     <File Include="Bundle.config">
       <publishTime>07/10/2020 14:26:26</publishTime>
     </File>
     <File Include="Cadastro.aspx">
       <publishTime>07/10/2020 14:26:26</publishTime>
+    </File>
+    <File Include="Cadastros/Arquivos.aspx">
+      <publishTime>08/02/2020 21:21:27</publishTime>
     </File>
     <File Include="Cadastros/Autocadastro.aspx">
       <publishTime>07/24/2020 18:04:40</publishTime>
@@ -1292,7 +1295,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/13/2020 18:40:40</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
-      <publishTime>07/26/2020 19:18:53</publishTime>
+      <publishTime>08/04/2020 08:33:18</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>07/28/2020 19:04:54</publishTime>
@@ -1880,7 +1883,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/01/2020 14:27:30</publishTime>
     </File>
     <File Include="Dash2.aspx">
-      <publishTime>07/12/2020 11:03:37</publishTime>
+      <publishTime>08/02/2020 12:57:04</publishTime>
     </File>
     <File Include="Dashboard.aspx">
       <publishTime>07/12/2020 15:29:40</publishTime>
@@ -1922,10 +1925,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/01/2020 20:30:01</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/02/2020 11:04:44</publishTime>
+      <publishTime>08/04/2020 08:38:11</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
-      <publishTime>07/22/2020 12:47:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/Clinicas.aspx">
       <publishTime>07/10/2020 15:13:40</publishTime>
@@ -1937,13 +1940,13 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/FichaCadastral2.rdlc">
-      <publishTime>07/21/2020 21:37:43</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/FichaCadastral3.rdlc">
-      <publishTime>07/22/2020 11:43:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/Informativo.rdlc">
-      <publishTime>07/22/2020 12:47:33</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/Mod_ficha.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -1955,7 +1958,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 15:20:32</publishTime>
     </File>
     <File Include="Reports/Repasse.rdlc">
-      <publishTime>07/22/2020 12:47:57</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/RepDespesas.rdlc">
       <publishTime>07/10/2020 15:20:32</publishTime>
@@ -2600,7 +2603,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/12/2020 13:46:25</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Medico.js">
-      <publishTime>07/30/2020 08:29:27</publishTime>
+      <publishTime>08/03/2020 19:34:42</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Operacoes.js">
       <publishTime>08/02/2020 11:02:38</publishTime>
@@ -2633,7 +2636,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Scripts/Site.js">
-      <publishTime>07/29/2020 19:06:32</publishTime>
+      <publishTime>08/04/2020 08:20:02</publishTime>
     </File>
     <File Include="Scripts/src/index.js">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -2915,7 +2918,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>07/29/2020 09:55:15</publishTime>
+      <publishTime>08/02/2020 12:56:44</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>07/10/2020 14:26:27</publishTime>

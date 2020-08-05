@@ -34,7 +34,7 @@
         <div class="col">
             <br />
 
-            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender">
+            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender" OnRowCommand="gvMedicos_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="IdProfissional" HeaderText="ID" ItemStyle-CssClass="imgLink" />
                     <asp:BoundField DataField="ccNome" HeaderText="Nome" />
@@ -165,16 +165,16 @@
                             <input runat="server" type="text" name="tbConjuge" id="tbConjuge" value="" class="form-control" />
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-4">
                                 <label for="tbRGNum">RG:</label>
                                 <input runat="server" type="text" name="tbRGNum" id="tbRGNum" value="" class="form-control number" required />
                             </div>
                             <div class="col">
-                                <label for="tbRGEmissor">Órgão Emissor:</label>
+                                <label for="tbRGEmissor">Emissor:</label>
                                 <input runat="server" type="text" name="tbRGEmissor" id="tbRGEmissor" value="" class="form-control" required />
                             </div>
-                            <div class="col">
-                                <label for="tbRGdata">Data Emissão:</label>
+                            <div class="col-md-5">
+                                <label for="tbRGdata">Emissão:</label>
                                 <input runat="server" type="date" name="tbRGdata" id="tbRGdata" value="" class="form-control" />
                             </div>
                         </div>
@@ -212,10 +212,14 @@
                                 <label for="tbDtPagamento">Pagamento:</label>
                                 <input runat="server" type="date" name="tbDtPagamento" id="tbDtPagamento" value="" class="form-control" />
                             </div>
+                           
+                        </div>
+                        <div class="row">
                             <div class="col">
                                 <label for="tbDtRegCartorio">Registro:</label>
                                 <input runat="server" type="date" name="tbDtRegCartorio" id="tbDtRegCartorio" value="" class="form-control" />
                             </div>
+                            <div class="col"></div>
                         </div>
                         <hr />
                         <div class="form-group">

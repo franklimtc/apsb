@@ -5,6 +5,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -30,6 +31,36 @@ namespace Site.Cadastros
             gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
+        protected void gvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int idLinha = int.Parse(e.CommandArgument.ToString());
+            int idProfissional = int.Parse(gvMedicos.Rows[idLinha].Cells[0].Text);
+            idHiddenMedico.Value = idProfissional.ToString();
+            string user = User.Identity.Name;
+
+            bool result = false;
+
+            switch (e.CommandName)
+            {
+
+                case "Excluir":
+                    result = Profissional.Excluir(user, idProfissional);
+                    if (result)
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Falha ao excluir o registro!');", true);
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
         protected void btSalvar_Click(object sender, EventArgs e)
         {
             Profissional pNew = new Profissional();
@@ -53,30 +84,30 @@ namespace Site.Cadastros
             pNew.Observacoes = tbObs.Value;
 
             if (tbFone.Value != "")
-                pNew.cvTelefone = long.Parse(tbFone.Value);
+                pNew.cvTelefone = long.Parse(Regex.Replace(tbFone.Value, "[^0-9a-zA-Z]+", ""));
             if (tbCelular.Value != "")
-                pNew.cvCelular = long.Parse(tbCelular.Value);
+                pNew.cvCelular = long.Parse(Regex.Replace(tbCelular.Value, "[^0-9a-zA-Z]+", ""));
 
             if (tbdtNascimento.Value != "")
             {
-                DateTime.TryParse(tbdtNascimento.Value, culture, styles, out DateTime newDate);
+                DateTime.TryParse(tbdtNascimento.Value, out DateTime newDate);
                 pNew.dtNascimento = newDate;
             }
 
             if (tbDtPagamento.Value !="")
             {
-                DateTime.TryParse(tbDtPagamento.Value, culture, styles, out DateTime newDate);
+                DateTime.TryParse(tbDtPagamento.Value, out DateTime newDate);
                 pNew.cdPgtoTaxa = newDate;
             }
             if (tbDtFiliacao.Value != "")
             {
-                DateTime.TryParse(tbDtFiliacao.Value, culture, styles, out DateTime newDate);
+                DateTime.TryParse(tbDtFiliacao.Value, out DateTime newDate);
                 pNew.cdFiliacao = newDate;
             }
 
             if (tbDtRegCartorio.Value != "")
             {
-                DateTime.TryParse(tbDtRegCartorio.Value, culture, styles, out DateTime newDate);
+                DateTime.TryParse(tbDtRegCartorio.Value, out DateTime newDate);
                 pNew.cdRegCartorio = newDate;
             }
 

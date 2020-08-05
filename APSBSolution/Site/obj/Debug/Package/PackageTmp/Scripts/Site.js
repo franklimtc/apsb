@@ -78,7 +78,7 @@ function ConvertDate2(value) {
         var dt = new Date(parseFloat(results[1]));
         var z = "0";
         var month = dt.getMonth()+1;
-        var day = dt.getDate();
+        var day = dt.getDate()+1;
 
         if (month < 10) {
             month = z.concat(month);

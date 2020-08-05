@@ -35,7 +35,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" runat="server" href="~/Cadastros/Autocadastro">Autocadastro</a>
                             <a class="dropdown-item" runat="server" href="~/Cadastros/Clinicas">Clínicas</a>
-                            <a class="dropdown-item" runat="server" href="~/Cadastros/Medicos">Médicos</a>
+                            <a class="dropdown-item" runat="server" href="~/Cadastros/Medico">Médicos</a>
                         </div>
                     </li>
                     <li class="nav-item"><a class="nav-link" runat="server" href="~/Operacoes">Operações</a></li>
