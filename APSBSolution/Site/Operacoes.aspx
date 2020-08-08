@@ -126,12 +126,12 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja arquivar este registro')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -217,11 +217,14 @@
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
                         <div class="col">
-                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
                         <div class="col">
-                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
                     </div>
                     <div class="row">
 
@@ -295,7 +298,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbRepasseBody">
-
                                 </tbody>
                             </table>
                         </div>
@@ -303,7 +305,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
                 </div>
             </div>
         </div>
@@ -460,11 +462,16 @@
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Operacoes.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
+    <script src="Scripts/moment.js"></script>
+    <script src="Scripts/datetime-moment.js"></script>
 
     <script type="text/javascript">
         //DataTables
 
         $(document).ready(function () {
+
+            $.fn.dataTable.moment('DD/MM/YYYY');
+            //$.fn.dataTable.moment('HH:mm MMM D, YY');
             $('#MainContent_gvOperacoes').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
@@ -476,21 +483,28 @@
                 }
             });
 
-            $('#MainContent_gvRepasses').DataTable({
-                "language": {
-                    "lengthMenu": "Exibir _MENU_ registros.",
-                    "zeroRecords": "Nenhum registro encontrado.",
-                    "info": "Exibindo página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
-                        "previous": "Anterior", "next": "Próximo"
-                    }
+        $('#MainContent_gvRepasses').DataTable({
+            "language": {
+                "lengthMenu": "Exibir _MENU_ registros.",
+                "zeroRecords": "Nenhum registro encontrado.",
+                "info": "Exibindo página _PAGE_ de _PAGES_",
+                "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                    "previous": "Anterior", "next": "Próximo"
                 }
-            });
+            }
+        });
 
 
-            $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+        $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
 
-            EnableDiscount();
+        EnableDiscount();
+
+        CarregarFiltro();
+
+        $('.dataTables_filter input').change(function () {
+            localStorage["Operacoes"] = $('.dataTables_filter input').val();
+        });
+           
         });
 
 

@@ -533,6 +533,7 @@
     <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
     <script>
         $(document).ready(function () {
+
             $('#MainContent_gvMedicos').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
@@ -544,6 +545,11 @@
                 }
             });
             $('#MainContent_gvMedicos_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Medico"] = $('.dataTables_filter input').val();
+            });
 
         });
 

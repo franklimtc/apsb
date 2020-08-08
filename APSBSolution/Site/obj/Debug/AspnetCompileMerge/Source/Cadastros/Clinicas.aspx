@@ -278,6 +278,11 @@
             });
 
             $('#MainContent_gvClinicas_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Clinicas"] = $('.dataTables_filter input').val();
+            });
 
         });
 

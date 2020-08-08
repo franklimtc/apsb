@@ -34,7 +34,7 @@
         <div class="col">
             <br />
 
-            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender">
+            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender" OnRowCommand="gvMedicos_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="IdProfissional" HeaderText="ID" ItemStyle-CssClass="imgLink" />
                     <asp:BoundField DataField="ccNome" HeaderText="Nome" />
@@ -544,6 +544,11 @@
                 }
             });
             $('#MainContent_gvMedicos_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Medico"] = $('.dataTables_filter input').val();
+            });
 
         });
 

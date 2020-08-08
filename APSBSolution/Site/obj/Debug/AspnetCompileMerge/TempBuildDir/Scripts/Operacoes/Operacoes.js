@@ -354,8 +354,6 @@ function getInfo(id) {
     return false;
 };
 
-    
-
 function AdicionarRepasse() {
     //string Usuario, string idProfissional, string cvValor, string idReceita
 
@@ -403,7 +401,6 @@ function cmdRepasse(cmd, id) {
     Call("CommandRepasse", obj);
     return false;
 };
-
 
 function Call(metodo, obj) {
     var url = "Operacoes.aspx/" + metodo;

@@ -126,12 +126,12 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja arquivar este registro')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary">Salvar</button>--%>
                 </div>
             </div>
         </div>
@@ -303,7 +303,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
                 </div>
             </div>
         </div>
@@ -491,6 +491,13 @@
             $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
 
             EnableDiscount();
+
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Operacoes"] = $('.dataTables_filter input').val();
+            });
+           
         });
 
 
@@ -658,7 +665,7 @@
 
         function filterProfissional() {
             var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("MainContent_dpSelectProfissional");
+            var select = document.getElementById("dpSelectProfissional");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {

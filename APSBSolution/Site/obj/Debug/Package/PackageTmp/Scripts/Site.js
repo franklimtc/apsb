@@ -33,7 +33,26 @@
         }
     });
     $('.selectonfocus').mask("00/00/0000", { selectOnFocus: true });
+
+
 });
+
+function SalvarFiltro() {
+    $('.dataTables_filter input').change(function () {
+        localStorage[location.pathname.split('/').slice(-1)[0]] = $('.dataTables_filter input').val();
+    });
+};
+
+function CarregarFiltro() {
+    var page = location.pathname.split('/').slice(-1)[0]
+    if (localStorage[page] != undefined) {
+        var filter = localStorage[page];
+        if (filter != "") {
+            $('.dataTables_filter input').val(filter);
+            $('.dataTables_filter input').keyup();
+        };
+    }
+};
 
 function RemoverMascaras() {
     $(".cep").unmask();
@@ -72,13 +91,12 @@ function ConvertDate(value) {
 
 function ConvertDate2(value) {
     var pattern = /Date\(([^)]+)\)/;
-    if (value != null)
-        {
+    if (value != null) {
         var results = pattern.exec(value);
         var dt = new Date(parseFloat(results[1]));
         var z = "0";
-        var month = dt.getMonth()+1;
-        var day = dt.getDate()+1;
+        var month = dt.getMonth() + 1;
+        var day = dt.getDate() + 1;
 
         if (month < 10) {
             month = z.concat(month);
