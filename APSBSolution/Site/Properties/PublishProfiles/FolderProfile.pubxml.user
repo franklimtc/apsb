@@ -755,10 +755,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/08/2020 15:25:37</publishTime>
+      <publishTime>08/11/2020 08:25:47</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/08/2020 15:25:37</publishTime>
+      <publishTime>08/11/2020 08:25:47</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>07/10/2020 14:26:42</publishTime>
@@ -1217,10 +1217,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:46</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>08/04/2020 08:41:08</publishTime>
+      <publishTime>08/11/2020 08:18:12</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>08/04/2020 08:41:08</publishTime>
+      <publishTime>08/11/2020 08:18:12</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -1295,7 +1295,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/08/2020 14:47:13</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
-      <publishTime>08/08/2020 15:24:49</publishTime>
+      <publishTime>08/08/2020 15:53:51</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>07/28/2020 19:04:54</publishTime>
@@ -1922,10 +1922,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/23/2020 13:28:01</publishTime>
     </File>
     <File Include="Operacoes.aspx">
-      <publishTime>08/08/2020 15:07:04</publishTime>
+      <publishTime>08/11/2020 08:24:07</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/08/2020 15:25:29</publishTime>
+      <publishTime>08/11/2020 08:25:35</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2536,6 +2536,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Scripts/DataTables/media/js/jquery.dataTables.min.js">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
+    <File Include="Scripts/datetime-moment.js">
+      <publishTime>08/08/2020 15:50:42</publishTime>
+    </File>
     <File Include="Scripts/esm/popper-utils.js">
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
@@ -2592,6 +2595,24 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Scripts/modernizr-2.8.3.js">
       <publishTime>07/10/2020 14:26:27</publishTime>
+    </File>
+    <File Include="Scripts/moment-with-locales.js">
+      <publishTime>08/08/2020 16:33:11</publishTime>
+    </File>
+    <File Include="Scripts/moment-with-locales.min.js">
+      <publishTime>08/08/2020 16:33:11</publishTime>
+    </File>
+    <File Include="Scripts/moment-with-locales.min.js.map">
+      <publishTime>08/08/2020 16:33:11</publishTime>
+    </File>
+    <File Include="Scripts/moment.js">
+      <publishTime>08/08/2020 16:33:10</publishTime>
+    </File>
+    <File Include="Scripts/moment.min.js">
+      <publishTime>08/08/2020 16:33:10</publishTime>
+    </File>
+    <File Include="Scripts/moment.min.js.map">
+      <publishTime>08/08/2020 16:33:10</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Autocadastro.js">
       <publishTime>07/23/2020 17:50:19</publishTime>
@@ -2918,7 +2939,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>08/02/2020 12:56:44</publishTime>
+      <publishTime>08/08/2020 16:02:39</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>07/10/2020 14:26:27</publishTime>
@@ -2942,7 +2963,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>07/10/2020 14:26:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/22/2020 11:44:41</publishTime>
+      <publishTime>08/11/2020 08:25:33</publishTime>
     </File>
   </ItemGroup>
 </Project>

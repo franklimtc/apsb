@@ -101,9 +101,9 @@
                         <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="Nota" DataField="cvNF" />
-                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" DataFormatString="{0:d}" />
-                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" DataFormatString="{0:d}" />
-                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" DataFormatString="{0:d}" />
+                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" ItemStyle-CssClass="date" />
+                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" ItemStyle-CssClass="date" />
+                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" ItemStyle-CssClass="date"/>
                         <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
                         <asp:TemplateField HeaderText="Status">
                             <ItemTemplate>
@@ -465,6 +465,7 @@
     <script src="Scripts/moment.js"></script>
     <script src="Scripts/datetime-moment.js"></script>
 
+
     <script type="text/javascript">
         //DataTables
 
@@ -483,35 +484,35 @@
                 }
             });
 
-        $('#MainContent_gvRepasses').DataTable({
-            "language": {
-                "lengthMenu": "Exibir _MENU_ registros.",
-                "zeroRecords": "Nenhum registro encontrado.",
-                "info": "Exibindo página _PAGE_ de _PAGES_",
-                "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
-                    "previous": "Anterior", "next": "Próximo"
+            $('#MainContent_gvRepasses').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
                 }
-            }
-        });
+            });
 
 
-        $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
 
-        EnableDiscount();
+            EnableDiscount();
 
-        CarregarFiltro();
+            CarregarFiltro();
 
-        $('.dataTables_filter input').change(function () {
-            localStorage["Operacoes"] = $('.dataTables_filter input').val();
-        });
+            $('.dataTables_filter input').change(function () {
+                localStorage["Operacoes"] = $('.dataTables_filter input').val();
+            });
            
         });
 
 
-        //Click Despesa
-        $("#MainContent_btDespesa").click(function () {
-            AtvDespesa();
-            return false;
+            //Click Despesa
+            $("#MainContent_btDespesa").click(function () {
+                AtvDespesa();
+                return false;
 
         });
 

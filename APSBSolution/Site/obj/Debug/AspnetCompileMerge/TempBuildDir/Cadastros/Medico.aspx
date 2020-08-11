@@ -533,6 +533,7 @@
     <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
     <script>
         $(document).ready(function () {
+
             $('#MainContent_gvMedicos').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",

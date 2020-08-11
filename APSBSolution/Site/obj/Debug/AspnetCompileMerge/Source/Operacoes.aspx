@@ -101,9 +101,9 @@
                         <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="Nota" DataField="cvNF" />
-                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" DataFormatString="{0:d}" />
-                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" DataFormatString="{0:d}" />
-                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" DataFormatString="{0:d}" />
+                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" ItemStyle-CssClass="date" />
+                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" ItemStyle-CssClass="date" />
+                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" ItemStyle-CssClass="date"/>
                         <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
                         <asp:TemplateField HeaderText="Status">
                             <ItemTemplate>
@@ -217,11 +217,14 @@
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
                         <div class="col">
-                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
                         <div class="col">
-                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" /></div>
+                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
                     </div>
                     <div class="row">
 
@@ -295,7 +298,6 @@
                                     </tr>
                                 </thead>
                                 <tbody id="tbRepasseBody">
-
                                 </tbody>
                             </table>
                         </div>
@@ -460,11 +462,17 @@
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Operacoes.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
+    <script src="Scripts/moment.js"></script>
+    <script src="Scripts/datetime-moment.js"></script>
+
 
     <script type="text/javascript">
         //DataTables
 
         $(document).ready(function () {
+
+            $.fn.dataTable.moment('DD/MM/YYYY');
+            //$.fn.dataTable.moment('HH:mm MMM D, YY');
             $('#MainContent_gvOperacoes').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
@@ -501,10 +509,10 @@
         });
 
 
-        //Click Despesa
-        $("#MainContent_btDespesa").click(function () {
-            AtvDespesa();
-            return false;
+            //Click Despesa
+            $("#MainContent_btDespesa").click(function () {
+                AtvDespesa();
+                return false;
 
         });
 
