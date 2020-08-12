@@ -30,7 +30,7 @@ namespace Site.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("Dados", throwIfV1Schema: false)
         {
         }
 

@@ -63,7 +63,6 @@ namespace Site.Cadastros
             }
         }
 
-
         protected void btSalvar_Click(object sender, EventArgs e)
         {
             Profissional pNew = new Profissional();
@@ -248,7 +247,7 @@ namespace Site.Cadastros
         }
 
         [WebMethod]
-        public static object SalvarMedico(string user, string nome, string sexo, string uf, string cidade, string estCivil, string pai, string mae, string conjuge, string rgNum, string rgEmissor, string rgData, string cpf, string email, string telefone, string celular, string obs, string dtNascimento, string dtTaxa, string dtFiliacao, string dtCartorio, string idMedico)
+        private static object SalvarMedico(string user, string nome, string sexo, string uf, string cidade, string estCivil, string pai, string mae, string conjuge, string rgNum, string rgEmissor, string rgData, string cpf, string email, string telefone, string celular, string obs, string dtNascimento, string dtTaxa, string dtFiliacao, string dtCartorio, string idMedico)
         {
             bool result = false;
             //string user = User.Identity.Name;
@@ -321,6 +320,76 @@ namespace Site.Cadastros
             }
             return result;
         }
+        
+        [WebMethod]
+        public static bool SalvarDados(string user, string idDado, string idMedico, string ccFormacao, string ccPosGraduacao, string ccEspecialidade, string ccEspecialidadeNova, string ccConselho, string NumInscricaoConselho, string TituloEleitor, string ZonaEleitor, string SecaoEleitor, string Reservista, string PisPasep)
+        {
+            ProfissionalDados pd1 = new ProfissionalDados();
+            if (idDado != "")
+            {
+                pd1.IdDadoProfissional = int.Parse(idDado);
+            }
+            pd1.idProfissional = int.Parse(idMedico);
+            pd1.ccFormacao = ccFormacao;
+            pd1.ccPosGraduacao = ccPosGraduacao;
+            if (ccEspecialidadeNova == "")
+            {
+                pd1.ccEspecialidade = ccEspecialidade;
+            }
+            else
+            {
+                Especialidade nova = new Especialidade(ccEspecialidadeNova);
+                nova.Adicionar(user);
+                pd1.ccEspecialidade = nova.ccEspecialidade;
+            }
+            pd1.ccConselho = ccConselho;
+
+            if (NumInscricaoConselho != "")
+                pd1.cvNumInscricao = long.Parse(NumInscricaoConselho);
+
+            if (TituloEleitor != "")
+                pd1.cvTitulo = long.Parse(TituloEleitor);
+
+            if (ZonaEleitor != "")
+                pd1.cvTituloZona = int.Parse(ZonaEleitor);
+
+            if (SecaoEleitor != "")
+                pd1.cvTituloSecao = int.Parse(SecaoEleitor);
+
+            if (Reservista != "")
+                pd1.cvReservista = long.Parse(Reservista);
+
+            if (PisPasep != "")
+                pd1.cvPIS = long.Parse(PisPasep);
+
+            bool result = pd1.Salvar(user);
+            return result;
+        }
+
+        [WebMethod]
+        public static bool SalvarEndereco(string user, string idMedico, string endereco, string bairro, string cep, string uf, string cidade, string idEndereco)
+        {
+            bool result = false;
+            ProfissionalEndereco pe = new ProfissionalEndereco();
+
+            pe.ccEndereco = endereco;
+            pe.ccBairro = bairro;
+            pe.cvCEP = long.Parse(cep.Replace("-", ""));
+            pe.ccUF = uf;
+            pe.ccCidade = cidade;
+            pe.idProfissional = int.Parse(idMedico);
+            if (int.TryParse(idEndereco, out int newIdEndereco))
+            {
+                pe.IdEndereco = newIdEndereco;
+                result = pe.Adicionar(user);
+            }
+            else
+            {
+                result = pe.Salvar(user);
+            }
+            return result;
+        }
+
 
         [WebMethod]
         public static bool RemoverBanco(string Usuario, string IdProfissionalBanco)

@@ -13,10 +13,10 @@
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
     <input runat="server" type="hidden" id="idHiddenMedico" name="idHiddenMedico" />
-    <input type="hidden" id="idHiddenProfissionalEndereco" name="idHiddenProfissionalEndereco" />
-    <input type="hidden" id="idHiddenProfissionalBanco" name="idHiddenProfissionalBanco" />
-    <input type="hidden" id="idHiddenProfissionalDado" name="idHiddenProfissionalDado" />
-    <input type="hidden" id="nameProfissional" name="nameProfissional" />
+    <input runat="server" type="hidden" id="idHiddenProfissionalEndereco" name="idHiddenProfissionalEndereco" />
+    <input runat="server" type="hidden" id="idHiddenProfissionalBanco" name="idHiddenProfissionalBanco" />
+    <input runat="server" type="hidden" id="idHiddenProfissionalDado" name="idHiddenProfissionalDado" />
+    <input runat="server" type="hidden" id="nameProfissional" name="nameProfissional" />
     <%--Hidden Filds--%>
 
     <div class="row">
@@ -313,7 +313,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" />
+                    <%--<asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="" />--%>
+                    <button type="button" class="btn btn-primary" onclick="SalvarDados()">Salvar</button>
                 </div>
             </div>
         </div>
@@ -391,7 +392,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <%--<asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="RemoverMascaras()" />--%>
-                    <input type="button" id="btSalvarEndereco" name="btSalvarEndereco" value="Salvar" class="btn btn-primary" />
+                    <input type="button" id="btSalvarEndereco" name="btSalvarEndereco" value="Salvar" class="btn btn-primary" onclick="SalvarEndereco()" />
                 </div>
             </div>
         </div>
@@ -532,6 +533,7 @@
     <script type="text/javascript" src="../Scripts/Site.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
     <script>
+       
         $(document).ready(function () {
 
             $('#MainContent_gvMedicos').DataTable({
@@ -549,6 +551,17 @@
 
             $('.dataTables_filter input').change(function () {
                 localStorage["Medico"] = $('.dataTables_filter input').val();
+            });
+
+            $("#MainContent_dpEspecialidade").change(function () {
+                //alert($(this).children("option:selected").text());
+                var op = $(this).children("option:selected").text();
+                if (op === "Outra") {
+                    $('#colNovaEspecialidade').collapse('show');
+                } else {
+                    $('#colNovaEspecialidade').collapse('hide');
+                    $("#MainContent_tbEspecialidadeNova").val('')
+                }
             });
 
         });

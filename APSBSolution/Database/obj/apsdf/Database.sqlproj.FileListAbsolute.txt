@@ -1,0 +1,5 @@
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Database\bin\Release\Database.dacpac
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Database\bin\Release\Database.dll
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Database\bin\Release\Database.pdb
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Database\obj\apsdf\Database.dll
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Database\obj\apsdf\Database.pdb

@@ -1,0 +1,12 @@
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\apsdf\App_Data\dbTeste.mdf
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\apsdf\App_Data\dbTeste_log.ldf
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\apsdf\MalaDireta.exe.config
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\apsdf\MalaDireta.exe
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\bin\apsdf\MalaDireta.pdb
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.csprojAssemblyReference.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.Form1.resources
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.Properties.Resources.resources
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.csproj.GenerateResource.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.csproj.CoreCompileInputs.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.exe
+C:\Users\frank\Source\Repos\APSB\APSBSolution\MalaDireta\MalaDireta\obj\apsdf\MalaDireta.pdb

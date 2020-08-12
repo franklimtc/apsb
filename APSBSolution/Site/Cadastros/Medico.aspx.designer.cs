@@ -33,6 +33,42 @@ namespace Site.Cadastros
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden idHiddenMedico;
 
         /// <summary>
+        /// Controle idHiddenProfissionalEndereco.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden idHiddenProfissionalEndereco;
+
+        /// <summary>
+        /// Controle idHiddenProfissionalBanco.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden idHiddenProfissionalBanco;
+
+        /// <summary>
+        /// Controle idHiddenProfissionalDado.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden idHiddenProfissionalDado;
+
+        /// <summary>
+        /// Controle nameProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden nameProfissional;
+
+        /// <summary>
         /// Controle gvMedicos.
         /// </summary>
         /// <remarks>
@@ -355,15 +391,6 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbPisPasep;
-
-        /// <summary>
-        /// Controle btSalvarDados.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSalvarDados;
 
         /// <summary>
         /// Controle tbEndereço.
