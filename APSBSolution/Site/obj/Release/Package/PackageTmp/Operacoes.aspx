@@ -11,6 +11,10 @@
             text-align: right;
             width: 90px;
         }
+
+        .transparente {
+            opacity: 0.2;
+        }
     </style>
 
     <div>
@@ -18,7 +22,7 @@
             <div class="col-md-4"></div>
 
             <div class="col-md-4">
-                <h2>Cadastro de Operações</h2>
+                <h2 id="hTitulo">Cadastro de Operações</h2>
                 <%--Datasources--%>
                 <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
 
@@ -28,7 +32,9 @@
             <div class="col-md-4"></div>
 
         </div>
-        <asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClick="btNovaOperacao_Click" />
+        <%--<asp:Button ID="btNovaOperacao" Text="Nova Operação" runat="server" CssClass="btn btn-secondary" OnClientClick="return novaOperacao()" />--%>
+        <input type="button" id="btNovaOperacao" name="btNovaOperacao" value="Nova Operação" class="btn btn-secondary" onclick="novaOperacao()" />
+        <input type="button" id="btOpRep" name="btOpRep" class="btn btn-secondary" value="Detalhar" onclick="Detalhar()" />
         <br />
         <div class="row collapse" id="divFiltros">
             <br />
@@ -70,6 +76,10 @@
             <asp:HiddenField runat="server" ID="HddValorNegativo" />
             <asp:HiddenField runat="server" ID="HddValorDisponivel" />
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
+            <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
+            <input type="hidden" id="idHiddenOperacao2" name="idHiddenOperacao2" value="" />
+            <input type="hidden" id="hiddenRepasseID" name="hiddenRepasseID" value="" />
+
             <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
 
@@ -81,19 +91,19 @@
             </asp:ObjectDataSource>
             <%--Datasources--%>
 
-            <div class="col-md-12">
+            <div class="col-md-12" id="divOperacoes">
                 <br />
                 <asp:GridView runat="server" ID="gvOperacoes" DataSourceID="dsOperacoes" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" OnRowCommand="gvOperacoes_RowCommand" OnPreRender="gvOperacoes_PreRender">
                     <Columns>
-                        <asp:BoundField HeaderText="ID" DataField="ID" />
+                        <asp:BoundField HeaderText="ID" DataField="ID" ItemStyle-CssClass="rowID" />
                         <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
                         <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="Nota" DataField="cvNF" />
-                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" DataFormatString="{0:d}" />
-                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" DataFormatString="{0:d}" />
-                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" DataFormatString="{0:d}" />
+                        <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" ItemStyle-CssClass="date" />
+                        <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" ItemStyle-CssClass="date" />
+                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" ItemStyle-CssClass="date"/>
                         <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
                         <asp:TemplateField HeaderText="Status">
                             <ItemTemplate>
@@ -102,27 +112,51 @@
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <%--<asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
+                                <%--onclick="return AbrirDesRec('Despesa')"--%>
+                                <input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# $"return AbrirDesRec('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
+                                <%--<input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirDesRec('{0}');") %>" />--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <%--<asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
+                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# $"return AbrirRepasseModal('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/archive-outline.svg" Height="1.5em" runat="server" ToolTip="Arquivar" CommandName="Arquivar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja arquivar este registro')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
 
+            </div>
+        </div>
+
+        <div class="row d-none" id="divRepasses">
+            <div class="col">
+                <br />
+                <asp:GridView runat="server" ID="gvRepasses" DataSourceID="dsRepasses" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvRepasses_PreRender">
+                    <Columns>
+                        <%--ccApelido	ccNome	cvNF	cdEmissao	ValorNF	ValorPago	cdRepasse	ValorRepasse--%>
+                        <asp:BoundField DataField="ccApelido" HeaderText="Clínica" />
+                        <asp:BoundField DataField="ccNome" HeaderText="Médico" />
+                        <asp:BoundField DataField="cvNF" HeaderText="cvNF" />
+                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" DataFormatString="{0:d}" />
+                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF" DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="ValorPago" HeaderText="Valor Pago" DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="cdRepasse" HeaderText="Repasse" DataFormatString="{0:d}" />
+                        <asp:BoundField DataField="ValorRepasse" HeaderText="Valor Repasse" DataFormatString="{0:C}" />
+                    </Columns>
+                </asp:GridView>
+                <asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />
             </div>
         </div>
     </div>
@@ -142,7 +176,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary">Salvar</button>--%>
                 </div>
             </div>
         </div>
@@ -159,93 +193,119 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <div class="row">
                         <div class="col">
                             <label for="dpRepasseProfissional">Profissional</label>
+                        </div>
+                        <div class="col">
+                            <asp:TextBox runat="server" ID="tbDtRepasse" type="date" CssClass="form-control" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <div>
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
                             </div>
                             <div>
-                                <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control" DataSourceID="dsProfissional" DataTextField="ccNome" DataValueField="IdProfissional"></asp:DropDownList>
-                                <asp:ObjectDataSource ID="dsProfissional" runat="server" SelectMethod="ListaDropDown" TypeName="Site.Classes.Profissional">
-                                    <SelectParameters>
-                                        <asp:ControlParameter ControlID="idHiddenOperacao" Name="idClinica" PropertyName="Value" Type="Int32" />
-                                    </SelectParameters>
-                                </asp:ObjectDataSource>
+                                <select id="dpSelectProfissional" class="form-control">
+                                </select>
                             </div>
                         </div>
                     </div>
-                    <%-- <div class="row">
-                        <div class="col">
-                            <label for="tbObsprofissional">Observações</label>
-                            <input type="text" id="tbObsprofissional" name="tbObsprofissional" value="Adicionar observações do médico" class="form-control" style="height: 100px;" readonly="readonly" />
-                            
-                        </div>
-                    </div>--%>
+
                     <hr />
                     <div class="row">
                         <div class="col">
+                            <asp:Label Text="Total NF" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
+                        <div class="col">
+                            <asp:Label Text="Total Pago" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
+                        <div class="col">
+                            <asp:Label Text="Total Repassado" AssociatedControlID="tbValorRepassado" runat="server" />
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
                             <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <asp:TextBox runat="server" ID="tbValorNF" CssClass="form-control money" ReadOnly="true" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">R$</span>
+                                </div>
+                                <asp:TextBox runat="server" ID="tbValorPago" CssClass="form-control money" ReadOnly="true" />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group">
+
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
                                 <asp:TextBox runat="server" ID="tbValorRepassado" CssClass="form-control money" ReadOnly="true" />
                             </div>
                         </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+
                         <div class="col">
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
-                                <%--<input id="tbValorDisponivel" type="text" class="form-control text-success" value="0,00" placeholder="Valor disponivel...">--%>
                                 <asp:TextBox runat="server" ID="tbValorDisponivel" CssClass="form-control money" />
                             </div>
                         </div>
                         <div class="col">
-                            <asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" OnClick="bdAddRepasse_Click" />
+                            <%--<asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" />--%>
+                            <input type="button" name="btAdicionar" value="Adicionar" onclick="AdicionarRepasse()" class="btn btn-secondary" />
                         </div>
+                        <div class="col"></div>
                     </div>
-                    <asp:Panel runat="server" ID="pnObs" CssClass="row" Visible="false">
+                    <div class="row d-none" id="divObs">
                         <div class="col">
                             <asp:Label Text="Observações" runat="server" AssociatedControlID="tbObsRepasseProfissional" />
                             <asp:TextBox runat="server" ID="tbObsRepasseProfissional" TextMode="MultiLine" CssClass="form-control" ReadOnly="true" />
                         </div>
-                    </asp:Panel>
-                   
+                    </div>
+
                     <div class="row">
-                        <div class="col">
+                        <div class="col" id="tbRepasse">
                             <br />
-                            <asp:GridView runat="server" ID="gvRepasseMedico" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False" DataSourceID="dsRepasseMedico" OnRowCommand="gvRepasseMedico_RowCommand">
-                                <Columns>
-                                    <asp:BoundField HeaderText="ID" DataField="idRepasse" />
-                                    <asp:BoundField HeaderText="Nome" DataField="ccNome" />
-                                    <asp:BoundField HeaderText="Taxa" DataField="cvTaxaProfissional" />
-                                    <asp:BoundField DataField="cvValor" HeaderText="R$ Bruto" DataFormatString="{0:C}" />
-                                    <asp:BoundField DataField="cvValorLiquido" HeaderText="R$ Liquido" DataFormatString="{0:C}" />
-                                    <asp:BoundField DataField="ccStatus" HeaderText="Status" />
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:ImageButton ImageUrl="~/Content/Icons/cash-outline.svg" Height="1.5em" runat="server" ToolTip="Pagar" CommandName="Pagar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />&nbsp&nbsp
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:ImageButton ImageUrl="~/Content/Icons/information-circle-outline.svg" Height="1.5em" runat="server" ToolTip="Info" CommandName="Info" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                    <asp:TemplateField>
-                                        <ItemTemplate>
-                                            <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
-                                        </ItemTemplate>
-                                    </asp:TemplateField>
-                                </Columns>
-                            </asp:GridView>
+                            <table class="table table-hover table-striped table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Taxa</th>
+                                        <th scope="col">Valor</th>
+                                        <th scope="col">V. Liquido</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbRepasseBody">
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>
+                    <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
                 </div>
             </div>
         </div>
@@ -297,12 +357,13 @@
                                 <label for="search">Clínica | Hospital | Despesa</label>
                                 <div>
                                     <%--<input type="text" id="search" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filter()">--%>
-                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />
+                                    <asp:TextBox runat="server" ID="tbSearch2" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />
+                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control d-none" onkeyup="filter()" placeholder="Filtrar..." />
                                 </div>
                                 <div>
                                     <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
-                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control">
+                                    <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" onchange="return DescontosClinica()">
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -357,9 +418,9 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <label for="tbReceitaDesconto">Desconto</label>
+                                    <label for="tbReceitaDesconto">Desconto(%)</label>
                                     <div class="row">
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-3">
                                             <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
                                             <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control num" />
                                         </div>
@@ -369,7 +430,11 @@
                                         <div class="col-sm-2">
                                             <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
                                         </div>
-                                        <div class="col-sm-6"></div>
+                                        <div class="col-sm-1"></div>
+                                        <div class="col-sm-3">
+                                            <asp:CheckBox Text="ISS Retido" runat="server" ID="chkIssRetido" CssClass="form-check-input" Enabled="false" />
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -387,18 +452,27 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
-                    <asp:Button Text="Salvar" runat="server" ID="btSalvar" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />
+                    <%--<asp:Button Text="Salvar" runat="server" ID="btSalvar" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />--%>
+                    <input type="button" name="btSalvar" value="Salvar" class="btn btn-primary" onclick="Salvar()" />
                 </div>
             </div>
         </div>
     </div>
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Operacoes.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
+    <script src="Scripts/moment.js"></script>
+    <script src="Scripts/datetime-moment.js"></script>
+
+
     <script type="text/javascript">
         //DataTables
 
         $(document).ready(function () {
+
+            $.fn.dataTable.moment('DD/MM/YYYY');
+            //$.fn.dataTable.moment('HH:mm MMM D, YY');
             $('#MainContent_gvOperacoes').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
@@ -410,25 +484,79 @@
                 }
             });
 
+            $('#MainContent_gvRepasses').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+
+
             $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
 
             EnableDiscount();
+
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Operacoes"] = $('.dataTables_filter input').val();
+            });
+           
         });
 
 
-        //Click Despesa
-        $("#MainContent_btDespesa").click(function () {
-
-            AtvDespesa();
-            return false;
+            //Click Despesa
+            $("#MainContent_btDespesa").click(function () {
+                AtvDespesa();
+                return false;
 
         });
 
-        function EditDespesa() {
+        function novaOperacao() {
+            ResetForm();
+            $("#MainContent_tbReceitaDataNF").attr("disabled", true);
+            $("#MainContent_tbReceitaDataPgtoNF").attr("disabled", true);
+            $("#MainContent_tbReceitaNF").attr("disabled", true);
+            $("#MainContent_tbReceitaNFValorPG").attr("disabled", true);
             $("#operacaoModal").modal("show");
-            AtvDespesa();
-        }
+            AtvReceita();
+        };
 
+        function Salvar() {
+            if ($("#MainContent_tbAbaAtiva").val() == "Receita") {
+                SalvarReceita();
+            }
+            else {
+                SalvarDespesa();
+            };
+        };
+
+        function ConvertMoney(money) {
+            //var str = money;
+            //if (str.search(",") > 0) { money = str; } else { money = str + ",00"; };
+            if ($(money).indexOf(",") == 0) {
+                money += ",00";
+            }
+            return money;
+        };
+
+        function formatMoney(number, decPlaces, decSep, thouSep) {
+            decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
+                decSep = typeof decSep === "undefined" ? "." : decSep;
+            thouSep = typeof thouSep === "undefined" ? "," : thouSep;
+            var sign = number < 0 ? "-" : "";
+            var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
+            var j = (j = i.length) > 3 ? j % 3 : 0;
+
+            return sign +
+                (j ? i.substr(0, j) + thouSep : "") +
+                i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
+                (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+        };
 
         function AtvDespesa() {
             $("#MainContent_btDespesa").removeClass("btn-light").addClass("btn-danger");
@@ -449,6 +577,13 @@
             //Dropdown Receita/Despesa
             $("#MainContent_dpTipoReceita").addClass("d-none");
             $("#MainContent_dpTipoDespesa").removeClass("d-none");
+
+            //Search Receita/Despesa
+            $("#MainContent_tbSearch").removeClass("d-none");
+            $("#MainContent_tbSearch2").addClass("d-none");
+            $("#MainContent_tbSearch").val("");
+            $("#MainContent_tbSearch2").val("");
+
 
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Despesa");
@@ -480,18 +615,32 @@
             $("#MainContent_dpTipoReceita").removeClass("d-none");
             $("#MainContent_dpTipoDespesa").addClass("d-none");
 
+            //Search Receita/Despesa
+            $("#MainContent_tbSearch2").removeClass("d-none");
+            $("#MainContent_tbSearch").addClass("d-none");
+            $("#MainContent_tbSearch").val("");
+            $("#MainContent_tbSearch2").val("");
+
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Receita");
         };
 
-        function EditReceita() {
-            $("#operacaoModal").modal("show");
-            AtvReceita();
-        }
+
 
         //Filter Clínica
 
         function filter() {
+            var abaAtiva = $("#MainContent_tbAbaAtiva").val();
+
+            if (abaAtiva == "Receita") {
+                filterReceita();
+            }
+            else {
+                filterDespesa()
+            }
+        }
+
+        function filterDespesa() {
             var keyword = document.getElementById("MainContent_tbSearch").value;
             var select = document.getElementById("MainContent_dpTipoDespesa");
             for (var i = 0; i < select.length; i++) {
@@ -504,11 +653,11 @@
             }
         }
 
-        //Filter Médico
-
-        function filterProfissional() {
-            var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("MainContent_dpSelectProfissional");
+        function filterReceita() {
+            //var keyword = $("#MainContent_tbSearch").val();
+            //var select = $("#MainContent_dpTipoReceita");
+            var keyword = document.getElementById("MainContent_tbSearch2").value;
+            var select = document.getElementById("MainContent_dpTipoReceita");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
@@ -518,6 +667,23 @@
                 }
             }
         }
+
+
+        //Filter Médico
+
+        function filterProfissional() {
+            var keyword = document.getElementById("tbRepasseProfissional").value;
+            var select = document.getElementById("dpSelectProfissional");
+            for (var i = 0; i < select.length; i++) {
+                var txt = select.options[i].text;
+                if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                    $(select.options[i]).attr('disabled', 'disabled').hide();
+                } else {
+                    $(select.options[i]).removeAttr('disabled').show();
+                }
+            }
+        }
+
 
         //Ativar disconto
         function EnableDiscount() {
@@ -547,5 +713,26 @@
                 $("#MainContent_tbValorDisponivel").addClass("text-success")
             }
         }
+
+        function Detalhar() {
+            if ($("#btOpRep").val() == "Detalhar") {
+                $("#divOperacoes").addClass("d-none");
+                $("#divRepasses").removeClass("d-none");
+                $("#btOpRep").val("Ocultar");
+                $("#hTitulo").text("Repasses Detalhados")
+            }
+            else {
+                $("#divRepasses").addClass("d-none");
+                $("#divOperacoes").removeClass("d-none");
+                $("#btOpRep").val("Detalhar");
+                $("#hTitulo").text("Cadastro de Operações")
+            }
+        };
+
+
+        function testar(obj) {
+            console.log(obj);
+        };
+
     </script>
 </asp:Content>

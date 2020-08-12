@@ -28,7 +28,10 @@ namespace Site.Cadastros
 
         protected void gvMedicos_PreRender(object sender, EventArgs e)
         {
-            gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
+            if (gvMedicos.Rows.Count > 0)
+            {
+                gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
 
         protected void gvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)

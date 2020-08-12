@@ -478,6 +478,10 @@
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Content>
     <Content Include="Fichas\Cristalina_Cargos.pdf" />
+    <None Include="Properties\PublishProfiles\apsdf - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsdf - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsdf - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\ChartJS\Chart.bundle.js" />
     <Content Include="Scripts\ChartJS\Chart.bundle.min.js" />
@@ -1357,7 +1361,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arquivos\" />
-    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\Acordo.rdlc" />
