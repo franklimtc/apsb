@@ -16,7 +16,6 @@
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 </head>
 <body>
-
     <form id="formCadastro" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -42,7 +41,12 @@
         <asp:HiddenField runat="server" ID="idHiddenMedico" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalEndereco" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalBanco" />
+        <asp:HiddenField runat="server" ID="HiddenFormPreenchido" Value="0" />
         <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
+        <asp:HiddenField runat="server" ID="hdToken" />
+        <asp:HiddenField runat="server" ID="HiddenBancoCadastrado" Value="0" />
+
+
         <%--Hidden Filds--%>
 
         <nav class="navbar fixed-top navbar-dark bg-dark" style="height: 50px;">
@@ -62,31 +66,79 @@
                     </asp:Panel>
                     <asp:Table runat="server" Visible="false" ID="tbCampos">
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4">
+                            <asp:TableCell ColumnSpan="5">
                                  <h5>Cadastro Profissional</h5>
                                 <p>Navegue pelas opções e preencha os dados.</p>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
                             <asp:TableCell><input type="button" name="btPessoal" id="btPessoal" value="Dados Pessoais" class="btn btn-secondary" /> </asp:TableCell>
-                            <asp:TableCell><input type="button" name="btProfissional" id="btProfissional" value="Dados Profissionais" class="btn btn-secondary" /> </asp:TableCell>
-                            <asp:TableCell><input type="button" name="btEndereco" id="btEndereco" value="Endereço" class="btn btn-secondary" /> </asp:TableCell>
-                            <asp:TableCell><input type="button" name="btBanco" id="btBanco" value="Dados Bancários" class="btn btn-secondary" /> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btProfissional" id="btProfissional" value="Dados Profissionais" class="btn btn-secondary" disabled/> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btEndereco" id="btEndereco" value="Endereço" class="btn btn-secondary" disabled/> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btBanco" id="btBanco" value="Dados Bancários" class="btn btn-secondary" disabled/> </asp:TableCell>
+                            <asp:TableCell><input type="button" name="btClinica" id="btClinica" value="Clínicas" class="btn btn-secondary" /> </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
-                            <asp:TableCell ColumnSpan="4">
+                            <asp:TableCell ColumnSpan="5">
                                 <div class="progress" style="margin-top: 30px; margin-bottom: 30px;">
                                     <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <hr />
+                </div>
+            </div>
+            <div class="row d-none" id="divImprimirRbs">
+                <div class="col" style="text-align: center">
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Ficha Cadastral" ID="rbFicha" runat="server" CssClass="form-check-input" GroupName="rbPrint" Checked="true" />
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Autorização de Repasse" ID="rbAutorizacao" runat="server" CssClass="form-check-input" GroupName="rbPrint" />
+
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Informativo" ID="rbInformativo" runat="server" CssClass="form-check-input" GroupName="rbPrint" />
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <asp:RadioButton Text="Acordo de ciência" ID="rbAcordo" runat="server" CssClass="form-check-input" GroupName="rbPrint" />
+                    </div>
+                </div>
+            </div>
+            <div class="d-none" id="divImprimir">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <br />
+                        <asp:Button Text="Imprimir" runat="server" ID="btImprimir" OnClick="btImprimir_Click" CssClass="btn btn-secondary" Width="100%" />
+                        <br />
+                    </div>
+
+                    <div class="col"></div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <hr />
+                    </div>
+                </div>
+                <div id="divAnexo" class="row">
+                    <div class="col" style="text-align: center">
+                        <h5>Anexar o comprovante de pagamento da taxa:</h5>
+                        <br />
+                        <asp:FileUpload runat="server" ID="btUpload" CssClass="btn btn-secondary" />
+                        <asp:Button Text="Anexar" ID="btUploadFile" runat="server" CssClass="btn btn-primary" Width="100px" OnClick="btUploadFile_Click" />
+                    </div>
                 </div>
             </div>
         </div>
 
         <%--Modais--%>
-
 
         <!-- Modal Médico - Dados Pessoais -->
         <div class="modal fade" id="medicoModal" tabindex="-1" role="dialog" aria-labelledby="medicoModalLabel" aria-hidden="true">
@@ -166,7 +218,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="tbDataNascimento">Data de Nascimento</label>
-                                    <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control date" Text="" />
+                                    <asp:TextBox runat="server" ID="tbDataNascimento" CssClass="form-control" type="date" />
                                 </div>
                             </div>
 
@@ -195,7 +247,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="tbdtEmissaoRG">Data de Emissão</label>
-                                    <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control date" placeholder="digite..." />
+                                    <asp:TextBox runat="server" ID="tbdtEmissaoRG" CssClass="form-control" placeholder="digite..." type="date" />
                                 </div>
                             </div>
                             <div class="row">
@@ -228,7 +280,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="RemoverMascaras()" OnClick="btSalvar_Click" />
+                        <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="Validar();" OnClick="btSalvar_Click" />
                     </div>
                 </div>
             </div>
@@ -310,7 +362,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarDados_Click" />
+                        <asp:Button ID="btSalvarDados" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvarDados_Click" OnClientClick="ValidarFormacao()" />
                     </div>
                 </div>
             </div>
@@ -387,7 +439,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                        <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="RemoverMascaras()" OnClick="btSalvarEndereco_Click" />
+                        <asp:Button ID="btSalvarEndereco" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="ValidarEndereco()" OnClick="btSalvarEndereco_Click" />
                     </div>
                 </div>
             </div>
@@ -431,7 +483,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco()" />
+                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco(); ValidarBanco();" />
                             </div>
                         </div>
                         <div class="row">
@@ -464,6 +516,46 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Clínicas -->
+        <div class="modal fade" id="clinicaModal" role="dialog" aria-labelledby="clinicaModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="clinicaModalLabel">Adicionar Clínicas</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>CNPJ: </label>
+                            <label id="lbApelidoClinica"></label>
+                            <asp:TextBox runat="server" ID="tbcnpj" CssClass="form-control cnpj" />
+                        </div>
+                        <div class="form-group">
+                            <input type="button" id="btBuscarCNPJ" name="name" value="Buscar" class="btn btn-secondary" onclick="BuscarClinica()" />
+                            <input type="button" id="btAddCNPJ" name="name" class="btn btn-primary" value="Adicionar" onclick="AddClinica()" />
+                        </div>
+                        <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional" AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
+                            <Columns>
+                                <asp:BoundField HeaderText="Clínica" DataField="ccNomeFantasia" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                    <div class="modal-footer">
+
+                        <asp:SqlDataSource runat="server" ID="dsClinicaProfissional" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ClinicaProfissional" SelectCommandType="StoredProcedure">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="0" Name="idClinica" Type="Int32" />
+                                <asp:ControlParameter ControlID="idHiddenMedico" DefaultValue="" Name="idProfissional" PropertyName="Value" Type="Int32" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <%--Modais--%>
     </form>
 
@@ -471,46 +563,150 @@
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Medico.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Autocadastro.js"></script>
 
-    <script>    
-        //$(document).ready(function () {
+    <script>  
+        $(document).ready(function () {
+            Validar();
+            ValidarFormacao();
+            ValidarEndereco();
+            if ($("#HiddenBancoCadastrado").val() != "0") {
+                $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
+                $("#divImprimir").removeClass("d-none")
+                $("#divImprimirRbs").removeClass("d-none")
+            }
+        });
 
-        //    $('#ModalValidar').modal('show')
-        //    $('#ModalValidar').data('bs.modal').options.backdrop = 'static';
-        //});
+        $("#btClinica").click(function () {
+            $("#clinicaModal").modal("show");
+            AdicionarMascaras();
+        });
+
 
         $("#btPessoal").click(function () {
             $("#btPessoal").removeClass("btn-secondary").addClass("btn-info");
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 25).css('width', '25%');
+
             $("#medicoModal").modal("show");
+
+            $('#tbNome').attr('required', 'required');
+            $('#tbCidade').attr('required', 'required');
+            $('#tbDataNascimento').attr('required', 'required');
+            $('#tbRG').attr('required', 'required');
+            $('#tbEmissorRG').attr('required', 'required');
+            $('#tbdtEmissaoRG').attr('required', 'required');
+            $('#tbCPF').attr('required', 'required');
+            $('#tbEmissorRG').attr('required', 'required');
+            $('#tbEmail').attr('required', 'required');
+            $('#tbTelefone').attr('required', 'required');
+            $('#tbCelular').attr('required', 'required');
+            AdicionarMascaras();
         });
+
         $("#btProfissional").click(function () {
             $("#btProfissional").removeClass("btn-secondary").addClass("btn-info");
             $("#btPessoal").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 50).css('width', '50%');
+
+            $('#tbFormacao').attr('required', 'required');
+            $('#tbConselhoRegional').attr('required', 'required');
+            $('#tbNumInscricaoConselho').attr('required', 'required');
+
             $("#profissionalModal").modal("show");
+
+            AdicionarMascaras();
         });
+
         $("#btEndereco").click(function () {
             $("#btEndereco").removeClass("btn-secondary").addClass("btn-info");
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btPessoal").removeClass("btn-info").addClass("btn-secondary");
             $("#btBanco").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 75).css('width', '75%');
+
+            $('#tbEndereço').attr('required', 'required');
+            $('#tbBairro').attr('required', 'required');
+            $('#tbCep').attr('required', 'required');
+            $('#tbEnderecoCidade').attr('required', 'required');
             $("#moradiaModal").modal("show");
+
+            AdicionarMascaras();
         });
+
         $("#btBanco").click(function () {
             $("#btBanco").removeClass("btn-secondary").addClass("btn-info");
             $("#btProfissional").removeClass("btn-info").addClass("btn-secondary");
             $("#btEndereco").removeClass("btn-info").addClass("btn-secondary");
             $("#btPessoal").removeClass("btn-info").addClass("btn-secondary");
-            $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
+
             $("#bancoModal").modal("show");
+
+            AdicionarMascaras();
         });
+
+        function Validar() {
+            var v1 = $('#tbNome').val();
+            var v2 = $('#tbCidade').val();
+            var v3 = $('#tbDataNascimento').val();
+            var v4 = $('#tbRG').val();
+            var v5 = $('#tbEmissorRG').val();
+            var v6 = $('#tbdtEmissaoRG').val();
+            var v7 = $('#tbCPF').val();
+            var v8 = $('#tbEmissorRG').val();
+            var v9 = $('#tbEmail').val();
+            var v10 = $('#tbTelefone').val();
+            var v11 = $('#tbCelular').val();
+
+
+            if (v1 != "" && v2 != "" && v3 != "" && v4 != "" && v5 != "" && v6 != "" && v7 != "" && v8 != "" && v9 != "" && v10 != "" && v11 != "") {
+                RemoverMascaras();
+                $("#btProfissional").removeAttr("disabled");
+                $('.progress-bar').attr('aria-valuenow', 25).css('width', '25%');
+            }
+            else {
+                console.log("Campos invalidados");
+            }
+        }
+
+        function ValidarFormacao() {
+
+            var v1 = $('#tbFormacao').val();
+            var v2 = $('#tbConselhoRegional').val();
+            var v3 = $('#tbNumInscricaoConselho').val();
+            if (v1 != "" && v2 != "" && v3 != "") {
+                RemoverMascaras();
+                $("#btEndereco").removeAttr("disabled");
+                $('.progress-bar').attr('aria-valuenow', 50).css('width', '50%');
+            } else {
+                console.log("Campos invalidados");
+            }
+        }
+
+        function ValidarEndereco() {
+            var v1 = $('#tbEndereço').val();
+            var v2 = $('#tbBairro').val();
+            var v3 = $('#tbCep').val();
+            var v4 = $('#tbEnderecoCidade').val();
+
+            if (v1 != "" && v2 != "" && v3 != "" && v4 != "") {
+                RemoverMascaras();
+                $("#btBanco").removeAttr("disabled");
+                $('.progress-bar').attr('aria-valuenow', 75).css('width', '75%');
+            } else {
+                console.log("Campos invalidados");
+            }
+        }
+
+        function ValidarBanco() {
+            RemoverMascaras();
+            $("#divImprimir").removeClass("d-none")
+            $("#divImprimirRbs").removeClass("d-none")
+            $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
+        }
+
+       
     </script>
 </body>
 </html>

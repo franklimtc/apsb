@@ -7,9 +7,7 @@
             display: none;
         }
 
-        .imgButton {
-            height: 1.5em;
-        }
+       
     </style>
 
     <%--Hidden Filds--%>
@@ -30,7 +28,7 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-        <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-secondary" OnClientClick="LimparForm()">Novo Médico
+        <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-secondary" OnClientClick="LimparForm(); AddRequerid();">Novo Médico
         </asp:LinkButton>
         <br />
         <div class="row collapse" id="divFiltros">
@@ -54,7 +52,8 @@
         <div class="row">
             <div class="col-md-12">
                 <br />
-                <asp:GridView runat="server" ID="gvMedicos" CssClass="table table-hover table-striped table-sm" OnPreRender="gvMedicos_PreRender" AutoGenerateColumns="false" OnRowCommand="gvMedicos_RowCommand">
+
+                <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos" CssClass="table table-hover table-striped table-sm" OnPreRender="gvMedicos_PreRender" AutoGenerateColumns="false" OnRowCommand="gvMedicos_RowCommand" UseAccessibleHeader="true" AutoPostBack="flash">
                     <Columns>
                         <asp:BoundField DataField="IdProfissional" HeaderText="ID" ItemStyle-CssClass="imgLink" />
                         <asp:BoundField DataField="ccNome" HeaderText="Nome" />
@@ -62,23 +61,28 @@
                         <asp:BoundField DataField="Observacoes" HeaderText="Observações" />
                         <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Pessoais" OnClientClick="LimparForm()" /></ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditar" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Pessoais" OnClientClick="LimparForm();" />
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" OnClientClick="LimparForm()" /></ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" OnClientClick="LimparForm();" />
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" /></ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" />
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" OnClientClick="LimparForm()" /></ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" OnClientClick="LimparForm()" />
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
-                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" /></ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" />
+                            </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField ItemStyle-CssClass="imgLink">
                             <ItemTemplate>
@@ -87,6 +91,7 @@
                         </asp:TemplateField>
                     </Columns>
                 </asp:GridView>
+                <asp:ObjectDataSource runat="server" ID="dsMedicos" SelectMethod="Listar" TypeName="Site.Classes.Profissional" />
                 <br />
             </div>
         </div>
@@ -589,45 +594,38 @@
         });
 
         function LimparForm() {
-            //alert("limpando form!");
 
-            $("#MainContent_tbNome").val("").attr("required", "required");
-            $("#MainContent_tbCidade").val("");
-            $("#MainContent_tbNomePai").val("");
-            $("#MainContent_tbNomeMae").val("");
-            $("#MainContent_tbNomeConjuge").val("");
-            $("#MainContent_tbRG").val("").attr("required", "required");
-            $("#MainContent_tbEmissorRG").val("");
-            $("#MainContent_tbdtEmissaoRG").val("");
-            $("#MainContent_tbCPF").val("").attr("required", "required");
-            $("#MainContent_tbEmail").val("");
-            $("#MainContent_tbTelefone").val("");
-            $("#MainContent_tbCelular").val("").attr("required", "required");
-            $("#MainContent_idHiddenMedico").val("");
-            $("#MainContent_dpSexo ").val("M").change();
-            $("#MainContent_dpNaturalidade").val("00").change();
-            $("#MainContent_dpEstCivil").val("C").change();
-            $("#MainContent_tbObservacoes").val("");
+            $('#default').each(function () {
+                this.reset();
+            });
 
-            $("#MainContent_tbDataNascimento").val("")
-
-            $("#MainContent_tbFiliacao").val("")
-            $("#MainContent_tbPgtoTaxa").val("")
-            $("#MainContent_tbRegCartorio").val("")
-
-
+            $("#MainContent_tbNome").removeAttr("required");
+            $("#MainContent_tbRG").removeAttr("required");
+            $("#MainContent_tbCPF").removeAttr("required");
+            $("#MainContent_tbCelular").removeAttr("required");
+            $("#MainContent_tbDataNascimento").removeAttr("required");
+            $("#MainContent_tbdtEmissaoRG").removeAttr("required");
         }
+
+        function AddRequerid() {
+            $("#MainContent_tbNome").val("").attr("required", "required");
+            $("#MainContent_tbRG").val("").attr("required", "required");
+            $("#MainContent_tbCPF").val("").attr("required", "required");
+            $("#MainContent_tbCelular").val("").attr("required", "required");
+            $("#MainContent_tbDataNascimento").val("").attr("required", "required");
+            $("#MainContent_tbdtEmissaoRG").val("").attr("required", "required");
+        };
 
         //Remover requireds para abrir modais
 
-        $(document).ready(function () {
-            $(".imgButton").click(function () {
-                $("#MainContent_tbNome").removeAttr("required");
-                $("#MainContent_tbRG").removeAttr("required");
-                $("#MainContent_tbCPF").removeAttr("required");
-                $("#MainContent_tbCelular").removeAttr("required");
-            });
-        });
+        //   $(document).ready(function () {
+        //       $(".imgButton").click(function () {
+        //           $("#MainContent_tbNome").removeAttr("required");
+        //           $("#MainContent_tbRG").removeAttr("required");
+        //           $("#MainContent_tbCPF").removeAttr("required");
+        //           $("#MainContent_tbCelular").removeAttr("required");
+        //       });
+        //   });
 
         //Cadastrar Nova Especialidade
         $(document).ready(function () {
@@ -642,6 +640,12 @@
                 }
             });
         });
+
+        function RemoverRequerid() {
+            $('#default').each(function () {
+                this.reset();
+            });
+        };
 
 
     </script>

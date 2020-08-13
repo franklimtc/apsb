@@ -11,7 +11,10 @@
     </style>
     <%--Hidden Filds--%>
     <asp:HiddenField runat="server" ID="idHiddenClinica" />
+    <asp:HiddenField runat="server" ID="HiddenClinicaDesconto" />
+    <asp:HiddenField runat="server" ID="HiddenClinicaName" />
     <asp:HiddenField runat="server" ID="idHiddenChange" />
+
     <%--Hidden Filds--%>
 
 
@@ -180,7 +183,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional</h5>
+                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional <asp:Label  ID="tbTextClinica" runat="server" /></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -275,6 +278,11 @@
             });
 
             $('#MainContent_gvClinicas_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Clinicas"] = $('.dataTables_filter input').val();
+            });
 
         });
 

@@ -645,7 +645,8 @@
             var select = document.getElementById("MainContent_dpTipoDespesa");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
-                if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                //if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                if (txt.toLowerCase().includes(keyword.toLowerCase()) == false) {
                     $(select.options[i]).attr('disabled', 'disabled').hide();
                 } else {
                     $(select.options[i]).removeAttr('disabled').show();
@@ -660,7 +661,8 @@
             var select = document.getElementById("MainContent_dpTipoReceita");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
-                if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                //if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+                if (txt.toLowerCase().includes(keyword.toLowerCase()) == false) {
                     $(select.options[i]).attr('disabled', 'disabled').hide();
                 } else {
                     $(select.options[i]).removeAttr('disabled').show();

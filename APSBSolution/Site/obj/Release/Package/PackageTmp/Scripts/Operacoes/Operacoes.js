@@ -216,7 +216,7 @@ function DescontosClinica() {
             $("#MainContent_tbReceitaDesconto").removeAttr("readonly");
             $("#MainContent_tbReceitaDesconto").val(formatMoney(result.d["cvDescontos"], ".", ",", "."));
 
-            if (result.d["cvDescontos"] != 0) {
+            if (result.d["cvISS"] > 0) {
                 $("#MainContent_chkIssRetido").attr("checked", true);
             } else {
                 $("#MainContent_chkIssRetido").attr("checked", false);
