@@ -238,8 +238,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="input-group">
-
+                            <div class="input-group cvAlert">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -247,8 +246,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <div class="input-group">
-
+                            <div class="input-group cvAlert">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">R$</span>
                                 </div>
@@ -271,7 +269,9 @@
                             <%--<asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" />--%>
                             <input type="button" name="btAdicionar" value="Adicionar" onclick="AdicionarRepasse()" class="btn btn-secondary" />
                         </div>
-                        <div class="col"></div>
+                        <div class="col">
+                            <img id="imgDanger" src="Content/Icons/danger.jpg" alt="Alternate Text" width="50px" class="collapse" />
+                        </div>
                     </div>
                     <div class="row d-none" id="divObs">
                         <div class="col">
