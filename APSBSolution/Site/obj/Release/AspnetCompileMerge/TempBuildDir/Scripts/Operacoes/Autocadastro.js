@@ -46,9 +46,14 @@ function AddClinica() {
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
-            $("#gvClinicas").append("<tr><td>" + clinica+"</td></tr >");
-            console.log(result.d);
-            AdicionarMascaras();
+            if ($("#gvClinicas").val() != undefined) {
+                $("#gvClinicas").append("<tr><td>" + clinica + "</td></tr >");
+                console.log(result.d);
+                AdicionarMascaras();
+            }
+            else {
+
+            }
         }
     });
 };

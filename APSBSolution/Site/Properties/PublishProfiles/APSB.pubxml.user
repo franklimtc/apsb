@@ -746,7 +746,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:40</publishTime>
     </File>
     <File Include="Autocadastro.aspx">
-      <publishTime>08/13/2020 08:18:16</publishTime>
+      <publishTime>08/14/2020 18:55:26</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>08/13/2020 08:16:42</publishTime>
@@ -755,10 +755,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/13/2020 19:13:21</publishTime>
+      <publishTime>08/15/2020 13:10:32</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/13/2020 19:13:21</publishTime>
+      <publishTime>08/15/2020 13:10:32</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1217,10 +1217,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>08/13/2020 19:13:05</publishTime>
+      <publishTime>08/15/2020 13:10:21</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>08/13/2020 19:13:05</publishTime>
+      <publishTime>08/15/2020 13:10:21</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:40</publishTime>
@@ -1295,7 +1295,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
-      <publishTime>08/13/2020 08:18:16</publishTime>
+      <publishTime>08/15/2020 11:06:11</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
@@ -1892,7 +1892,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
     <File Include="Dashboard.aspx">
-      <publishTime>08/13/2020 08:18:16</publishTime>
+      <publishTime>08/15/2020 13:04:46</publishTime>
     </File>
     <File Include="Datatables.aspx">
       <publishTime>08/13/2020 08:16:39</publishTime>
@@ -1931,7 +1931,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 19:06:06</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/13/2020 19:13:09</publishTime>
+      <publishTime>08/15/2020 13:10:23</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2621,7 +2621,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Autocadastro.js">
-      <publishTime>08/13/2020 08:18:16</publishTime>
+      <publishTime>08/14/2020 18:53:10</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Clinica.js">
       <publishTime>08/13/2020 08:18:16</publishTime>

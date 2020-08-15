@@ -537,11 +537,13 @@
                             <input type="button" id="btBuscarCNPJ" name="name" value="Buscar" class="btn btn-secondary" onclick="BuscarClinica()" />
                             <input type="button" id="btAddCNPJ" name="name" class="btn btn-primary" value="Adicionar" onclick="AddClinica()" />
                         </div>
-                        <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional" AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
+                        <div id="divgvClinicas">
+                        <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional"  AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
                             <Columns>
                                 <asp:BoundField HeaderText="Clínica" DataField="ccNomeFantasia" />
                             </Columns>
                         </asp:GridView>
+                        </div>
                     </div>
                     <div class="modal-footer">
 

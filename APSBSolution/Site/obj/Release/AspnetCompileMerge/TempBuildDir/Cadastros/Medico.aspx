@@ -190,7 +190,7 @@
                         </div>
                         <div class="form-group">
                             <label for="tbEmail">Email:</label>
-                            <input runat="server" type="email" name="tbEmail" id="tbEmail" value="" class="form-control" />
+                            <input runat="server" type="text" name="tbEmail" id="tbEmail" value="" class="form-control" onfocusout="Validaremails()" />
                         </div>
                         <div class="row">
                             <div class="col">
@@ -590,5 +590,15 @@
             $("#MainContent_tbDtRegCartorio").val("");
             $("#MainContent_tbObs").val("");
         };
+
+        function Validaremails() {
+            var emailReg = new RegExp(/^([A-Z0-9.%+-]+@[A-Z0-9.-]+.[A-Z]{2,6})*([,;][\s]*([A-Z0-9.%+-]+@[A-Z0-9.-]+.[A-Z]{2,6}))*$/i);
+            var emailText = $('#MainContent_tbEmail').val();
+            if (!emailReg.test(emailText)) {
+                alert('ERRO: Email inserido com formato incorreto. Insira os emails separados por vírgula!');
+                return false;
+            }
+        };
+
     </script>
 </asp:Content>

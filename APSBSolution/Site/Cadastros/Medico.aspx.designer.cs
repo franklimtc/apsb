@@ -219,7 +219,7 @@ namespace Site.Cadastros
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tbEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbEmail;
 
         /// <summary>
         /// Controle tbFone.
