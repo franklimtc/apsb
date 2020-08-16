@@ -122,3 +122,4 @@ C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\apsdf\Site.csproj.CoreCom
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\apsdf\Site.csproj.CopyComplete
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\apsdf\Site.dll
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\apsdf\Site.pdb
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\apsdf\Site.csprojAssemblyReference.cache

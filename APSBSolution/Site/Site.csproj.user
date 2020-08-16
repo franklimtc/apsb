@@ -8,8 +8,8 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
-    <NameOfLastUsedPublishProfile>APSB</NameOfLastUsedPublishProfile>
+    <LastActiveSolutionConfig>apsdf|Any CPU</LastActiveSolutionConfig>
+    <NameOfLastUsedPublishProfile>APSDF</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

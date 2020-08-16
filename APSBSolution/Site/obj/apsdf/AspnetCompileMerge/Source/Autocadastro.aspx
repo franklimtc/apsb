@@ -582,7 +582,7 @@
             };
 
             if (window.location.href.indexOf("apsdf") > 0) {
-                $("#MainContent_HiddenEmpresa").val("APSDF");
+                $("#HiddenEmpresa").val("APSDF");
             }
 
         });
