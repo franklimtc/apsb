@@ -45,6 +45,7 @@
         <asp:HiddenField runat="server" ID="idHiddenProfissionalDado" />
         <asp:HiddenField runat="server" ID="hdToken" />
         <asp:HiddenField runat="server" ID="HiddenBancoCadastrado" Value="0" />
+        <asp:HiddenField runat="server" ID="HiddenEmpresa" Value="APSB" />
 
 
         <%--Hidden Filds--%>
@@ -483,7 +484,7 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBanco(); ValidarBanco();" />
+                                <input type="button" id="btAdicionarBanco" value="Adicionar" class="btn btn-secondary" onclick="AdicionarBancoAuto(); ValidarBanco();" />
                             </div>
                         </div>
                         <div class="row">
@@ -529,14 +530,16 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>CNPJ: </label>
+                            <label>Clínica: </label>
                             <label id="lbApelidoClinica"></label>
-                            <asp:TextBox runat="server" ID="tbcnpj" CssClass="form-control cnpj" />
+                            <asp:TextBox runat="server" ID="tbcnpj" placeholder="Digite o CNPJ da clínica" CssClass="form-control cnpj" />
                         </div>
                         <div class="form-group">
                             <input type="button" id="btBuscarCNPJ" name="name" value="Buscar" class="btn btn-secondary" onclick="BuscarClinica()" />
-                            <input type="button" id="btAddCNPJ" name="name" class="btn btn-primary" value="Adicionar" onclick="AddClinica()" />
+                            <input type="button" id="btAddCNPJ" name="name" class="btn btn-primary" value="Adicionar" onclick="AddClinica()" disabled />
                         </div>
+                        <p>1 - Busque a clínica pelo CNPJ;</p>
+                        <p>2 - Adicione a clínica;</p>
                         <div id="divgvClinicas">
                         <asp:GridView runat="server" ID="gvClinicas" Width="100%" DataSourceID="dsClinicaProfissional"  AutoGenerateColumns="false" CssClass="table table-hover table-striped table-sm">
                             <Columns>
@@ -576,14 +579,18 @@
                 $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
                 $("#divImprimir").removeClass("d-none")
                 $("#divImprimirRbs").removeClass("d-none")
+            };
+
+            if (window.location.href.indexOf("apsdf") > 0) {
+                $("#HiddenEmpresa").val("APSDF");
             }
+
         });
 
         $("#btClinica").click(function () {
             $("#clinicaModal").modal("show");
             AdicionarMascaras();
         });
-
 
         $("#btPessoal").click(function () {
             $("#btPessoal").removeClass("btn-secondary").addClass("btn-info");
@@ -707,7 +714,6 @@
             $("#divImprimirRbs").removeClass("d-none")
             $('.progress-bar').attr('aria-valuenow', 100).css('width', '100%');
         }
-
        
     </script>
 </body>

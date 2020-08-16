@@ -234,22 +234,6 @@ namespace Site
 
         }
 
-        [WebMethod]
-        public static bool AdicionarBanco(string _idProfissional, string ccAgencia, string ccConta, string ccOperacao, string _idBanco)
-        {
-
-            ProfissionalBanco pdb = new ProfissionalBanco();
-
-            pdb.idProfissional = int.Parse(_idProfissional);
-            pdb.ccAgencia = ccAgencia;
-            pdb.ccConta = ccConta;
-            pdb.ccOperacao = ccOperacao;
-            pdb.idBanco = int.Parse(_idBanco);
-
-            bool result = pdb.Salvar("API");
-            return result;
-        }
-
         protected void btSalvarEndereco_Click(object sender, EventArgs e)
         {
             string user = "Franklim";
@@ -333,7 +317,6 @@ namespace Site
             }
         }
 
-
         protected void gvProfissionalBanco_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             var obj = e.CommandArgument;
@@ -375,10 +358,15 @@ namespace Site
         {
             int idProfissional = int.Parse(idHiddenMedico.Value);
             string script = "";
+            string apsdf = "";
+            if (HiddenEmpresa.Value == "APSDF")
+            {
+                apsdf = "_APSDF";
+            }
 
             if (rbFicha.Checked)
             {
-                script = $"window.open('{$"Fichas/Cadastro.aspx?token={hdToken.Value}"}', '', '');";
+                script = $"window.open('{$"Fichas/Cadastro{apsdf}.aspx?token={hdToken.Value}"}', '', '');";
 
                 if (Profissional.ValidarCristalina(idProfissional) > 0)
                 {
@@ -394,41 +382,15 @@ namespace Site
                 script = "";
                 foreach (var r in relacoes)
                 {
-                    script += $"window.open('{$"Fichas/Repasse.aspx?token={hdToken.Value}"}&id={r.IdClinicaProfissional}', '', '');";
+                    script += $"window.open('{$"Fichas/Repasse{apsdf}.aspx?token={hdToken.Value}"}&id={r.IdClinicaProfissional}', '', '');";
                 }
 
                 ScriptManager.RegisterStartupScript(this.Page, GetType(), "", script , true);
             }
             else if (rbInformativo.Checked)
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Informativo.aspx?token={hdToken.Value}"}', '', '');", true);
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Informativo{apsdf}.aspx?token={hdToken.Value}"}', '', '');", true);
             else if (rbAcordo.Checked)
-                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Acordo.aspx?token={hdToken.Value}"}', '', '');", true);
-        }
-
-        [WebMethod]
-        public static Clinica GetClinica(long cnpj)
-        {
-            Clinica c = Clinica.ListarPorCNPJ(cnpj);
-            return c;
-        }
-
-        [WebMethod]
-        public static bool AddClinicaProfissional(long cnpj, string token)
-        {
-            bool result = false;
-            Clinica c = Clinica.ListarPorCNPJ(cnpj);
-            var id = Profissional.ValidarToken(token);
-
-            int idProfissional = 0;
-            int.TryParse(id.ToString(), out idProfissional);
-
-            if (idProfissional > 0)
-            {
-                ClinicaProfissional cNew = new ClinicaProfissional(c.idClinica, idProfissional, 10, "");
-                result = cNew.Adicionar("Autocadastro");
-            }
-            
-            return result;
+                ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"window.open('{$"Fichas/Acordo{apsdf}.aspx?token={hdToken.Value}"}', '', '');", true);
         }
 
         protected void btUploadFile_Click(object sender, EventArgs e)
@@ -472,6 +434,48 @@ namespace Site
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Selecione um arquivo!');", true);
             }
+        }
+
+        [WebMethod]
+        public static bool AdicionarBanco(string _idProfissional, string ccAgencia, string ccConta, string ccOperacao, string _idBanco)
+        {
+
+            ProfissionalBanco pdb = new ProfissionalBanco();
+
+            pdb.idProfissional = int.Parse(_idProfissional);
+            pdb.ccAgencia = ccAgencia;
+            pdb.ccConta = ccConta;
+            pdb.ccOperacao = ccOperacao;
+            pdb.idBanco = int.Parse(_idBanco);
+
+            bool result = pdb.Salvar("API");
+            return result;
+        }
+
+        [WebMethod]
+        public static Clinica GetClinica(long cnpj)
+        {
+            Clinica c = Clinica.ListarPorCNPJ(cnpj);
+            return c;
+        }
+
+        [WebMethod]
+        public static bool AddClinicaProfissional(long cnpj, string token)
+        {
+            bool result = false;
+            Clinica c = Clinica.ListarPorCNPJ(cnpj);
+            var id = Profissional.ValidarToken(token);
+
+            int idProfissional = 0;
+            int.TryParse(id.ToString(), out idProfissional);
+
+            if (idProfissional > 0)
+            {
+                ClinicaProfissional cNew = new ClinicaProfissional(c.idClinica, idProfissional, 10, "");
+                result = cNew.Adicionar("Autocadastro");
+            }
+
+            return result;
         }
     }
 }

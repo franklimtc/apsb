@@ -149,8 +149,8 @@
                         <asp:BoundField DataField="ccApelido" HeaderText="Clínica" />
                         <asp:BoundField DataField="ccNome" HeaderText="Médico" />
                         <asp:BoundField DataField="cvNF" HeaderText="cvNF" />
-                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" DataFormatString="{0:d}" />
-                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF" DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" ItemStyle-CssClass="date"  />
+                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF" DataFormatString="{0:C}"  />
                         <asp:BoundField DataField="ValorPago" HeaderText="Valor Pago" DataFormatString="{0:C}" />
                         <asp:BoundField DataField="cdRepasse" HeaderText="Repasse" DataFormatString="{0:d}" />
                         <asp:BoundField DataField="ValorRepasse" HeaderText="Valor Repasse" DataFormatString="{0:C}" />

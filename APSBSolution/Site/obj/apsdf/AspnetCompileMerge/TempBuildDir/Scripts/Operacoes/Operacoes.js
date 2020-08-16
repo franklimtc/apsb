@@ -216,7 +216,7 @@ function DescontosClinica() {
             $("#MainContent_tbReceitaDesconto").removeAttr("readonly");
             $("#MainContent_tbReceitaDesconto").val(formatMoney(result.d["cvDescontos"], ".", ",", "."));
 
-            if (result.d["cvDescontos"] != 0) {
+            if (result.d["cvISS"] > 0) {
                 $("#MainContent_chkIssRetido").attr("checked", true);
             } else {
                 $("#MainContent_chkIssRetido").attr("checked", false);
@@ -309,12 +309,36 @@ function AbrirRepasseModal(tipo, id) {
                         .empty()
                         .append('<option selected="selected" value="0">Nenhum profissional associado</option>');
                 }
+                //Validar Valores
+                var cvValor = result.d[0].cvValorPago;
+                if (result.d[0].cbIssRetido != true) {
+                    cvValor -= result.d[0].cvValor * 2 / 100;
+                }
+                if (cvValor < result.d[0].cvValorRepassado) {
+                    AtivarErroValor();
+                } else {
+                    DesativarErroValor();
+                };
+
             }
         });
         $('#repasseMedicoModal').modal('show');
     }
     return false;
 };
+
+function AtivarErroValor() {
+    $('#imgDanger').collapse('show');
+    $(".cvAlert").css("border-style", "solid");
+    $(".cvAlert").css("border-color", "red");
+};
+
+function DesativarErroValor() {
+    $('#imgDanger').collapse('hide');
+    $(".cvAlert").css("border-style", "none");
+    $(".cvAlert").css("border-color", "none");
+};
+
 function pagar(id) {
     return cmdRepasse("Pagar", id);
 };

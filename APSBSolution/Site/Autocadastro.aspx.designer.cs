@@ -87,6 +87,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.HiddenField HiddenBancoCadastrado;
 
         /// <summary>
+        /// Controle HiddenEmpresa.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenEmpresa;
+
+        /// <summary>
         /// Controle pnValidar.
         /// </summary>
         /// <remarks>

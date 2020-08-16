@@ -27,8 +27,8 @@ namespace Site.Classes
 
         public string ccApelido { get; set; }//ccApelido
         public int cvNF { get; set; }//cvNF
-        public DateTime cdEmissao { get; set; }//cdEmissao
-        public DateTime cdRepasse { get; set; }//cdRepasse
+        public DateTime? cdEmissao { get; set; }//cdEmissao
+        public DateTime? cdRepasse { get; set; }//cdRepasse
         public float ValorNF { get; set; }//ValorNF
         public float ValorPago { get; set; }//ValorPago
         public float ValorRepasse { get; set; }//ValorRepasse

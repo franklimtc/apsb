@@ -72,7 +72,7 @@ function CarregarModal(_idProfissional) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            //alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
             $("#MainContent_tbNome").val(result.d["ccNome"]);
@@ -127,7 +127,7 @@ function CarregarModalProfissional(_idProfissional) {
             //console.log(result.d);
             if (result.d != null) {
                 var IdDadoProfissional = result.d["IdDadoProfissional"];
-                $("#idHiddenProfissionalDado").val(IdDadoProfissional);
+                $("#MainContent_idHiddenProfissionalDado").val(IdDadoProfissional);
                 $("#MainContent_tbFormacao").val(result.d["ccFormacao"]);
                 //$("#MainContent_dpEspecialidade").val(result.d["ccEspecialidade"]).change();
 
@@ -177,6 +177,7 @@ function CarregarModalEndereco(_idProfissional) {
             //console.log(result.d);    
            
             if (result.d != null) {
+                $("#MainContent_idHiddenProfissionalEndereco").val(result.d.IdEndereco)
                 $("#MainContent_tbEndereço").val(result.d.ccEndereco);
                 $("#MainContent_tbBairro").val(result.d.ccBairro);
                 $("#MainContent_tbCep").val(result.d.cvCEP);
@@ -187,10 +188,6 @@ function CarregarModalEndereco(_idProfissional) {
     });
     $("#moradiaModal").modal("show");
     return false;
-};
-
-function SalvarEndereco() {
-    alert('Implementar!');
 };
 
 function CarregarModalBanco(_idProfissional) {
@@ -210,7 +207,7 @@ function CarregarModalBanco(_idProfissional) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            //alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
             //console.log(result.d);
@@ -286,9 +283,109 @@ function RemoverBanco(id) {
     return false;
 };
 
-function SalvarMedico() {
-    alert("Salvando médico!");
+function SalvarDados() {
+
+
+    var url = "Medico.aspx/SalvarDados";
+    var relacaoObj = {
+        user: $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@")),
+        idDado: $("#MainContent_idHiddenProfissionalDado").val(),
+        idMedico: $("#MainContent_idHiddenMedico").val(),
+        ccFormacao: $("#MainContent_tbFormacao").val(),
+        ccPosGraduacao: $("#MainContent_tbPosGraduacao").val(),
+        ccEspecialidade: $("#MainContent_dpEspecialidade option:selected").text(),
+        ccEspecialidadeNova: $("#MainContent_tbEspecialidadeNova").val(),
+        ccConselho: $("#MainContent_tbConselhoRegional").val(),
+        NumInscricaoConselho: $("#MainContent_tbNumInscricaoConselho").val(),
+        TituloEleitor: $("#MainContent_tbTituloEleitor").val(),
+        ZonaEleitor: $("#MainContent_tbZonaEleitor").val(),
+        SecaoEleitor: $("#MainContent_tbSecaoEleitor").val(),
+        Reservista: $("#MainContent_tbReservista").val(),
+        PisPasep: $("#MainContent_tbPisPasep").val()
+    };
+    //console.log(relacaoObj);
+    //console.log(JSON.stringify(relacaoObj));
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            if (result.d == true) {
+                alert("Registro salvo com sucesso!");
+            } else {
+                alert("Falha ao salvar o registro!");
+            }
+        }
+    });
 };
+
+function SalvarMedico() {
+    var relacaoObj = {
+        user: ""
+        , nome: ""
+        , sexo: ""
+        , uf: ""
+        , cidade: ""
+        , estCivil: ""
+        , pai: ""
+        , mae: ""
+        , conjuge: ""
+        , rgNum: ""
+        , rgEmissor: ""
+        , rgData: ""
+        , cpf: ""
+        , email: ""
+        , telefone: ""
+        , celular: ""
+        , obs: ""
+        , dtNascimento: ""
+        , dtTaxa: ""
+        , dtFiliacao: ""
+        , dtCartorio: ""
+        , idMedico: ""
+    };
+    console.log(JSON.stringify(relacaoObj))
+
+    };
+
+function SalvarEndereco() {
+    var url = "Medico.aspx/SalvarEndereco";
+    var relacaoObj = {
+        user: $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@")),
+        idMedico: $("#MainContent_idHiddenMedico").val(),
+        endereco: $("#MainContent_tbEndereço").val(),
+        bairro: $("#MainContent_tbBairro").val(),
+        cep: $("#MainContent_tbCep").val(),
+        uf: $("#MainContent_dpEnderecoUF").val(),
+        cidade: $("#MainContent_tbEnderecoCidade").val(),
+        idEndereco: $("#MainContent_idHiddenProfissionalEndereco").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            if (result.d == true) {
+                alert("Registro salvo com sucesso!");
+            } else {
+                alert("Falha ao salvar o registro!");
+            }
+        }
+    });
+};
+
 
 
 

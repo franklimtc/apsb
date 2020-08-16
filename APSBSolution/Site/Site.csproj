@@ -175,6 +175,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
+    <Content Include="assets\img\APSDFLogo.png" />
     <Content Include="Content\Icons\danger.jpg" />
     <Content Include="Content\Icons\danger.png" />
     <Content Include="Account\Forgot.aspx" />
@@ -450,10 +451,14 @@
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Fichas\Acordo_APSDF.aspx" />
     <Content Include="Fichas\Acordo.aspx" />
+    <Content Include="Fichas\Cadastro_APSDF.aspx" />
     <Content Include="Fichas\Cadastro.aspx" />
     <Content Include="Fichas\CadastroCristalina.aspx" />
+    <Content Include="Fichas\Informativo_APSDF.aspx" />
     <Content Include="Fichas\Informativo.aspx" />
+    <Content Include="Fichas\Repasse_APSDF.aspx" />
     <Content Include="Fichas\Repasse.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
@@ -1226,12 +1231,26 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Fichas\Acordo_APSDF.aspx.cs">
+      <DependentUpon>Acordo_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Acordo_APSDF.aspx.designer.cs">
+      <DependentUpon>Acordo_APSDF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Fichas\Acordo.aspx.cs">
       <DependentUpon>Acordo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Fichas\Acordo.aspx.designer.cs">
       <DependentUpon>Acordo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Cadastro_APSDF.aspx.cs">
+      <DependentUpon>Cadastro_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Cadastro_APSDF.aspx.designer.cs">
+      <DependentUpon>Cadastro_APSDF.aspx</DependentUpon>
     </Compile>
     <Compile Include="Fichas\Cadastro.aspx.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
@@ -1247,12 +1266,26 @@
     <Compile Include="Fichas\CadastroCristalina.aspx.designer.cs">
       <DependentUpon>CadastroCristalina.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Fichas\Informativo_APSDF.aspx.cs">
+      <DependentUpon>Informativo_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Informativo_APSDF.aspx.designer.cs">
+      <DependentUpon>Informativo_APSDF.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Fichas\Informativo.aspx.cs">
       <DependentUpon>Informativo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Fichas\Informativo.aspx.designer.cs">
       <DependentUpon>Informativo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Repasse_APSDF.aspx.cs">
+      <DependentUpon>Repasse_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Repasse_APSDF.aspx.designer.cs">
+      <DependentUpon>Repasse_APSDF.aspx</DependentUpon>
     </Compile>
     <Compile Include="Fichas\Repasse.aspx.cs">
       <DependentUpon>Repasse.aspx</DependentUpon>

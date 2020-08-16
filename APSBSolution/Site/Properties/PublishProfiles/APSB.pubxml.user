@@ -85,6 +85,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="assets/img/apsb_logo.jpg">
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
+    <File Include="assets/img/APSDFLogo.png">
+      <publishTime>08/15/2020 21:43:23</publishTime>
+    </File>
     <File Include="assets/img/bg2.jpg">
       <publishTime>08/13/2020 08:16:40</publishTime>
     </File>
@@ -746,7 +749,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:40</publishTime>
     </File>
     <File Include="Autocadastro.aspx">
-      <publishTime>08/14/2020 18:55:26</publishTime>
+      <publishTime>08/15/2020 22:42:14</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>08/13/2020 08:16:42</publishTime>
@@ -755,10 +758,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>08/15/2020 13:10:32</publishTime>
+      <publishTime>08/15/2020 22:42:46</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>08/15/2020 13:10:32</publishTime>
+      <publishTime>08/15/2020 22:42:46</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1217,10 +1220,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>08/15/2020 13:10:21</publishTime>
+      <publishTime>08/15/2020 22:42:36</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>08/15/2020 13:10:21</publishTime>
+      <publishTime>08/15/2020 22:42:36</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:40</publishTime>
@@ -1912,11 +1915,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Fichas/Acordo.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
+    <File Include="Fichas/Acordo_APSDF.aspx">
+      <publishTime>08/15/2020 21:54:50</publishTime>
+    </File>
     <File Include="Fichas/Cadastro.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
     <File Include="Fichas/CadastroCristalina.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
+    </File>
+    <File Include="Fichas/Cadastro_APSDF.aspx">
+      <publishTime>08/15/2020 21:53:58</publishTime>
     </File>
     <File Include="Fichas/Cristalina_Cargos.pdf">
       <publishTime>08/13/2020 08:18:16</publishTime>
@@ -1924,14 +1933,20 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Fichas/Informativo.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
+    <File Include="Fichas/Informativo_APSDF.aspx">
+      <publishTime>08/15/2020 22:05:56</publishTime>
+    </File>
     <File Include="Fichas/Repasse.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
+    <File Include="Fichas/Repasse_APSDF.aspx">
+      <publishTime>08/15/2020 22:10:10</publishTime>
+    </File>
     <File Include="Operacoes.aspx">
-      <publishTime>08/13/2020 19:06:06</publishTime>
+      <publishTime>08/15/2020 19:26:44</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>08/15/2020 13:10:23</publishTime>
+      <publishTime>08/15/2020 22:42:38</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2621,7 +2636,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Autocadastro.js">
-      <publishTime>08/14/2020 18:53:10</publishTime>
+      <publishTime>08/15/2020 20:55:05</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Clinica.js">
       <publishTime>08/13/2020 08:18:16</publishTime>
@@ -2630,7 +2645,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:16</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Medico.js">
-      <publishTime>08/13/2020 08:18:16</publishTime>
+      <publishTime>08/15/2020 20:28:28</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Operacoes.js">
       <publishTime>08/13/2020 19:11:06</publishTime>
