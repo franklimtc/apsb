@@ -10,7 +10,7 @@ namespace MalaDireta
 {
     public class Dao
     {
-        static string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+        static string connString = "Server=tcp:svapsb01.database.windows.net,1433;Initial Catalog=dbapsb;Persist Security Info=False;User ID=admapsb;Password=Senh@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
         public static bool Conectar()
         {
