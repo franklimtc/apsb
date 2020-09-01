@@ -285,13 +285,31 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.Button btSalvar;
 
         /// <summary>
-        /// Controle tbFormacao.
+        /// Controle dpFormacao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbFormacao;
+        protected global::System.Web.UI.WebControls.DropDownList dpFormacao;
+
+        /// <summary>
+        /// Controle dsFormacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsFormacao;
+
+        /// <summary>
+        /// Controle tbFormProfissional.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbFormProfissional;
 
         /// <summary>
         /// Controle dpEspecialidade.
@@ -330,13 +348,13 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.TextBox tbEspecialidadeNova;
 
         /// <summary>
-        /// Controle tbConselhoRegional.
+        /// Controle dpConselhoRegional.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbConselhoRegional;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpConselhoRegional;
 
         /// <summary>
         /// Controle tbNumInscricaoConselho.

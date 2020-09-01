@@ -128,15 +128,21 @@ function CarregarModalProfissional(_idProfissional) {
             if (result.d != null) {
                 var IdDadoProfissional = result.d["IdDadoProfissional"];
                 $("#MainContent_idHiddenProfissionalDado").val(IdDadoProfissional);
-                $("#MainContent_tbFormacao").val(result.d["ccFormacao"]);
+                //$("#MainContent_tbFormacao").val(result.d["ccFormacao"]);
                 //$("#MainContent_dpEspecialidade").val(result.d["ccEspecialidade"]).change();
+                $('#MainContent_dpFormacao option:selected').removeAttr('selected');
 
+                $("#MainContent_dpFormacao option").filter(function () {
+                    return this.text == result.d["ccFormacao"];
+                }).attr('selected', true);
+
+                $('#MainContent_dpEspecialidade option:selected').removeAttr('selected');
                 $("#MainContent_dpEspecialidade option").filter(function () {
                     return this.text == result.d["ccEspecialidade"];
                 }).attr('selected', true);
 
                 $("#MainContent_tbPosGraduacao").val(result.d["ccPosGraduacao"]);
-                $("#MainContent_tbConselhoRegional").val(result.d["ccConselho"]);
+                $("#MainContent_dpConselhoRegional").val(result.d["ccConselho"]);
                 $("#MainContent_tbNumInscricaoConselho").val(result.d["cvNumInscricao"]);
                 $("#MainContent_tbTituloEleitor").val(result.d["cvTitulo"]);
                 $("#MainContent_tbZonaEleitor").val(result.d["cvTituloZona"]);
@@ -145,6 +151,8 @@ function CarregarModalProfissional(_idProfissional) {
                 $("#MainContent_tbPisPasep").val(result.d["cvPIS"]);
 
                 AdicionarMascaras();
+                $("#rowFormacao").collapse("hide");
+
             } else {
                 ResetForm();
             }
@@ -287,15 +295,25 @@ function SalvarDados() {
 
 
     var url = "Medico.aspx/SalvarDados";
+    var formacao;
+
+    if ($("#MainContent_dpFormacao  option:selected").val() === "Outra") {
+        formacao = $("#MainContent_tbFormProfissional").val();
+        $("#MainContent_dpFormacao").append('<option>' + formacao + '</option>');
+    }
+    else {
+        formacao = $("#MainContent_dpFormacao  option:selected").val();
+    }
+
     var relacaoObj = {
         user: $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@")),
         idDado: $("#MainContent_idHiddenProfissionalDado").val(),
         idMedico: $("#MainContent_idHiddenMedico").val(),
-        ccFormacao: $("#MainContent_tbFormacao").val(),
+        ccFormacao: formacao,
         ccPosGraduacao: $("#MainContent_tbPosGraduacao").val(),
         ccEspecialidade: $("#MainContent_dpEspecialidade option:selected").text(),
         ccEspecialidadeNova: $("#MainContent_tbEspecialidadeNova").val(),
-        ccConselho: $("#MainContent_tbConselhoRegional").val(),
+        ccConselho: $("#MainContent_dpConselhoRegional").val(),
         NumInscricaoConselho: $("#MainContent_tbNumInscricaoConselho").val(),
         TituloEleitor: $("#MainContent_tbTituloEleitor").val(),
         ZonaEleitor: $("#MainContent_tbZonaEleitor").val(),
@@ -305,7 +323,7 @@ function SalvarDados() {
     };
     //console.log(relacaoObj);
     //console.log(JSON.stringify(relacaoObj));
-
+   
     $.ajax({
         type: "POST",
         url: url,

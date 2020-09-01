@@ -42,36 +42,36 @@
                     <asp:BoundField DataField="Observacoes" HeaderText="Observações" />
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <input type="image" class="imgButton" src="../Content/Icons/person-outline.svg" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModal({0});") %>"/>
+                            <input type="image" class="imgButton" src="../Content/Icons/person-outline.svg" title="Dados Pessoais" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModal({0});") %>"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <input type="image" class="imgButton" src="../Content/Icons/medkit-outline.svg" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModalProfissional({0});") %>"/>
+                            <input type="image" class="imgButton" src="../Content/Icons/medkit-outline.svg" title="Dados Profissionais" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModalProfissional({0});") %>"/>
                             <%--<asp:ImageButton runat="server" CssClass="imgButton" ID="btEdProfissionais" ImageUrl="~/Content/Icons/medkit-outline.svg" CommandName="EdProfissionais" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Profissionais" OnClientClick="LimparForm();" />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <input type="image" class="imgButton" src="../Content/Icons/home-outline.svg" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModalEndereco({0});") %>"/>
+                            <input type="image" class="imgButton" src="../Content/Icons/home-outline.svg" title="Endereço" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModalEndereco({0});") %>"/>
                             <%--<asp:ImageButton runat="server" CssClass="imgButton" ID="btEdEndereco" ImageUrl="~/Content/Icons/home-outline.svg" CommandName="EdEndereco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Endereço" OnClientClick="LimparForm()" />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <input type="image" class="imgButton" src="../Content/Icons/cash-outline.svg" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModalBanco({0});") %>"/>
+                            <input type="image" class="imgButton" src="../Content/Icons/cash-outline.svg" title="Dados Bancários" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "return CarregarModalBanco({0});") %>"/>
                             <%--<asp:ImageButton runat="server" CssClass="imgButton" ID="btEdBanco" ImageUrl="~/Content/Icons/cash-outline.svg" CommandName="EdBanco" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Dados Bancários" OnClientClick="LimparForm()" />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <input type="image" class="imgButton" src="../Content/Icons/archive-outline.svg" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "window.open('Arquivos.aspx?id={0}', '', 'width=600,height=400');") %>"/>
+                            <input type="image" class="imgButton" src="../Content/Icons/archive-outline.svg" title="Arquivar" onclick="<%# DataBinder.Eval(Container.DataItem, "IdProfissional", "window.open('Arquivos.aspx?id={0}', '', 'width=600,height=400');") %>"/>
                             <%--<asp:ImageButton runat="server" CssClass="imgButton" ID="btAddArquivos" ImageUrl="~/Content/Icons/archive-outline.svg" CommandName="AddArquivos" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Adicionar arquivos" />--%>
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
+                            <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" title="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -252,62 +252,79 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbFormacao">Formação Profissional</label>
-                                <asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..." />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="dpEspecialidade">Especialidade</label>
-                                <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
+                                <%--<asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..." />--%>
+                                <asp:DropDownList runat="server" ID="dpFormacao" DataSourceID="dsFormacao" CssClass="form-control" DataTextField="ccFormacao" DataValueField="ccFormacao">
                                 </asp:DropDownList>
-                                <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade" />
+                                <asp:SqlDataSource runat="server" ID="dsFormacao" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_Formacoes" SelectCommandType="StoredProcedure" />
                             </div>
+                        </div>
+                        </div>
+                    <div class="form-group">
+                        <div class="row collapse" id="rowFormacao">
+                            <div class="col">
+                                <input runat="server" type="text" id="tbFormProfissional" name="tbFormProfissional" value="" class="form-control" placeholder="Nova Formação" />
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label for="dpEspecialidade">Especialidade</label>
+                            <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
+                            </asp:DropDownList>
+                            <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade" />
+                        </div>
 
-                            <div class="col">
-                                <label for="tbPosGraduacao">Pós-Graduação</label>
-                                <asp:TextBox runat="server" ID="tbPosGraduacao" CssClass="form-control" placeholder="digite..." />
-                            </div>
+                        <div class="col">
+                            <label for="tbPosGraduacao">Pós-Graduação</label>
+                            <asp:TextBox runat="server" ID="tbPosGraduacao" CssClass="form-control" placeholder="digite..." />
                         </div>
-                        <div class="row collapse" id="colNovaEspecialidade">
-                            <div class="col">
-                                <label for="tbEspecialidadeNova">Cadastrar Nova</label>
-                                <asp:TextBox runat="server" ID="tbEspecialidadeNova" CssClass="form-control" />
-                            </div>
+                    </div>
+                    <div class="row collapse" id="colNovaEspecialidade">
+                        <div class="col">
+                            <label for="tbEspecialidadeNova">Cadastrar Nova</label>
+                            <asp:TextBox runat="server" ID="tbEspecialidadeNova" CssClass="form-control" />
                         </div>
+                    </div>
 
-                        <div class="row">
-                            <div class="col">
-                                <label for="tbConselhoRegional">Conselho Regional</label>
-                                <asp:TextBox runat="server" ID="tbConselhoRegional" CssClass="form-control" placeholder="digite..." />
-                            </div>
-                            <div class="col">
-                                <label for="tbNumInscricaoConselho">Num. Inscrição</label>
-                                <asp:TextBox runat="server" ID="tbNumInscricaoConselho" CssClass="form-control number" placeholder="digite..." />
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Conselho Regional</label>
+                            <%--<asp:TextBox runat="server" ID="tbConselhoRegional" CssClass="form-control" placeholder="digite..." />--%>
+                            <input runat="server" list="dsConselhos" id="dpConselhoRegional" class="form-control" />
+                            <datalist id="dsConselhos">
+                                <option value="CRM">
+                                <option value="CRO">
+                                <option value="CREFITO">
+                            </datalist>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="tbTituloEleitor">Título de Eleitor</label>
-                                <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number" placeholder="digite..." />
-                            </div>
-                            <div class="col-md-3">
-                                <label for="tbZonaEleitor">Zona</label>
-                                <asp:TextBox runat="server" ID="tbZonaEleitor" CssClass="form-control number" placeholder="digite..." />
-                            </div>
-                            <div class="col-md-3">
-                                <label for="tbSecaoEleitor">Seção</label>
-                                <asp:TextBox runat="server" ID="tbSecaoEleitor" CssClass="form-control number" placeholder="digite..." />
-                            </div>
+                        <div class="col">
+                            <label for="tbNumInscricaoConselho">Num. Inscrição</label>
+                            <asp:TextBox runat="server" ID="tbNumInscricaoConselho" CssClass="form-control number" placeholder="digite..." />
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <label for="tbReservista">Reservista</label>
-                                <asp:TextBox runat="server" ID="tbReservista" CssClass="form-control number" placeholder="digite..." />
-                            </div>
-                            <div class="col">
-                                <label for="tbPisPasep">PIS/PASEP/NIT</label>
-                                <asp:TextBox runat="server" ID="tbPisPasep" CssClass="form-control number" placeholder="digite..." />
-                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="tbTituloEleitor">Título de Eleitor</label>
+                            <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number" placeholder="digite..." />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="tbZonaEleitor">Zona</label>
+                            <asp:TextBox runat="server" ID="tbZonaEleitor" CssClass="form-control number" placeholder="digite..." />
+                        </div>
+                        <div class="col-md-3">
+                            <label for="tbSecaoEleitor">Seção</label>
+                            <asp:TextBox runat="server" ID="tbSecaoEleitor" CssClass="form-control number" placeholder="digite..." />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="tbReservista">Reservista</label>
+                            <asp:TextBox runat="server" ID="tbReservista" CssClass="form-control number" placeholder="digite..." />
+                        </div>
+                        <div class="col">
+                            <label for="tbPisPasep">PIS/PASEP/NIT</label>
+                            <asp:TextBox runat="server" ID="tbPisPasep" CssClass="form-control number" placeholder="digite..." />
                         </div>
                     </div>
                 </div>
@@ -320,7 +337,7 @@
         </div>
     </div>
 
-     <!-- Modal Médico - Dados de Moradia - moradiaModal-->
+    <!-- Modal Médico - Dados de Moradia - moradiaModal-->
     <div class="modal fade" id="moradiaModal" tabindex="-1" role="dialog" aria-labelledby="moradiaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -560,10 +577,20 @@
                     $('#colNovaEspecialidade').collapse('show');
                 } else {
                     $('#colNovaEspecialidade').collapse('hide');
-                    $("#MainContent_tbEspecialidadeNova").val('')
+                    $("#MainContent_tbEspecialidadeNova").val('');
                 }
             });
 
+            $("#MainContent_dpFormacao").append('<option>Outra</option>')
+
+            $("#MainContent_dpFormacao").change(function () {
+                if ($("#MainContent_dpFormacao option:selected").val() === "Outra") {
+                    $("#rowFormacao").collapse("show")
+                } else {
+                    $("#rowFormacao").collapse("hide")
+                    $("#MainContent_tbFormProfissional").val('');
+                }
+            });
         });
 
         function LimparForm()
