@@ -595,27 +595,34 @@
 
         function LimparForm()
         {
-            $("#MainContent_tbNome").val("");
-            $("#MainContent_dpSexo").val("H").change();
-            $("#MainContent_dpUFNatural").val("DF").change();
-            $("#MainContent_tbCidade").val("");
-            $("#MainContent_tbEstCivil").val("C").change();
-            $("#MainContent_tbdtNascimento").val("");
-            $("#MainContent_tbPai").val("");
-            $("#MainContent_tbMae").val("");
-            $("#MainContent_tbConjuge").val("");
-            $("#MainContent_tbRGNum").val("");
-            $("#MainContent_tbRGEmissor").val("");
-            $("#MainContent_tbRGdata").val("");
-            $("#MainContent_tbCPF").val("");
-            $("#MainContent_tbCNH").val("");
-            $("#MainContent_tbEmail").val("");
-            $("#MainContent_tbFone").val("");
-            $("#MainContent_tbCelular").val("");
-            $("#MainContent_tbDtFiliacao").val("");
-            $("#MainContent_tbDtPagamento").val("");
-            $("#MainContent_tbDtRegCartorio").val("");
-            $("#MainContent_tbObs").val("");
+            var carregaDados = false;
+            if ($("#MainContent_tbNome").val() != "") {
+                carregaDados = confirm("Deseja carregar os dados preenchidos?");
+            }
+            if (carregaDados === false) {
+
+                $("#MainContent_tbNome").val("");
+                $("#MainContent_dpSexo").val("H").change();
+                $("#MainContent_dpUFNatural").val("DF").change();
+                $("#MainContent_tbCidade").val("");
+                $("#MainContent_tbEstCivil").val("C").change();
+                $("#MainContent_tbdtNascimento").val("");
+                $("#MainContent_tbPai").val("");
+                $("#MainContent_tbMae").val("");
+                $("#MainContent_tbConjuge").val("");
+                $("#MainContent_tbRGNum").val("");
+                $("#MainContent_tbRGEmissor").val("");
+                $("#MainContent_tbRGdata").val("");
+                $("#MainContent_tbCPF").val("");
+                $("#MainContent_tbCNH").val("");
+                $("#MainContent_tbEmail").val("");
+                $("#MainContent_tbFone").val("");
+                $("#MainContent_tbCelular").val("");
+                $("#MainContent_tbDtFiliacao").val("");
+                $("#MainContent_tbDtPagamento").val("");
+                $("#MainContent_tbDtRegCartorio").val("");
+                $("#MainContent_tbObs").val("");
+            }
         };
 
         function Validaremails() {

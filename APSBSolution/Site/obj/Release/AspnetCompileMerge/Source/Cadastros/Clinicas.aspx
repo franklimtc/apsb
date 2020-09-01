@@ -300,18 +300,28 @@
         }
 
         function LimparForm() {
-            $("#MainContent_tbApelido").val("");
-            $("#MainContent_tbRazaoSocial").val("");
-            $("#MainContent_tbClinicaNomeFantasia").val("");
-            $("#MainContent_tbClinicaEmail").val("");
-            $("#MainContent_tbClinicaISS").val("2,0");
-            $("#MainContent_tbPgtoDias").val("5");
-            $("#MainContent_tbCNPJ").val("");
+            var carregaDados = false;
+            if ($("#MainContent_tbApelido").val() != ""
+                || $("#MainContent_tbRazaoSocial").val() != ""
+                || $("#MainContent_tbClinicaNomeFantasia").val() != ""
+            ) {
+                carregaDados = confirm("Deseja carregar os dados preenchidos?");
+            }
+            if (carregaDados === false) {
 
-            $("#MainContent_tbDescontos").val("6,5");
-            $("#MainContent_tbObsClinica").val("");
-            $("#MainContent_idHiddenClinica").val("");
-            $("#MainContent_chDescontoVariavel").prop("checked", false);
+                $("#MainContent_tbApelido").val("");
+                $("#MainContent_tbRazaoSocial").val("");
+                $("#MainContent_tbClinicaNomeFantasia").val("");
+                $("#MainContent_tbClinicaEmail").val("");
+                $("#MainContent_tbClinicaISS").val("2,0");
+                $("#MainContent_tbPgtoDias").val("5");
+                $("#MainContent_tbCNPJ").val("");
+
+                $("#MainContent_tbDescontos").val("6,5");
+                $("#MainContent_tbObsClinica").val("");
+                $("#MainContent_idHiddenClinica").val("");
+                $("#MainContent_chDescontoVariavel").prop("checked", false);
+            }
         }
 
         $(document).ready(function () {
