@@ -6,6 +6,7 @@
     $('.cep').mask('00000-000');
     $('.phone').mask('00000-0000');
     $('.phone_with_ddd').mask('(00) 00000-0000');
+    $('.phone_with_ddd2').mask('(00) 0000-0000');
     $('.phone_us').mask('(000) 000-0000');
     $('.mixed').mask('AAA 000-S0S');
     $('.cpf').mask('000.000.000-00', { reverse: true });
@@ -59,6 +60,7 @@ function RemoverMascaras() {
     $(".cpf").unmask();
     $(".cnpj").unmask();
     $(".phone_with_ddd").unmask();
+    $(".phone_with_ddd2").unmask();
     $('.money').unmask();
     $('.money2').unmask();
 };
@@ -68,6 +70,7 @@ function AdicionarMascaras() {
     $('.cpf').mask('000.000.000-00', { reverse: true });
     $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
     $('.phone_with_ddd').mask('(00) 00000-0000');
+    $('.phone_with_ddd2').mask('(00) 0000-0000');
     $('.money').mask('000.000.000.000.000,00', { reverse: true });
     $('.money2').mask("#.##0,00", { reverse: true });
 };

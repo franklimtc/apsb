@@ -276,15 +276,6 @@ namespace Site.Cadastros
         protected global::System.Web.UI.HtmlControls.HtmlTextArea tbObs;
 
         /// <summary>
-        /// Controle btSalvar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btSalvar;
-
-        /// <summary>
         /// Controle dpFormacao.
         /// </summary>
         /// <remarks>

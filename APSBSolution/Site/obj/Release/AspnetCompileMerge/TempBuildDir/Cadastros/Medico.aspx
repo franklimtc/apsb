@@ -195,7 +195,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbFone">Fone:</label>
-                                <input runat="server" type="text" name="tbFone" id="tbFone" value="" class="form-control phone_with_ddd" />
+                                <input runat="server" type="text" name="tbFone" id="tbFone" value="" class="form-control phone_with_ddd2" />
                             </div>
                             <div class="col">
                                 <label for="tbCelular">Celular:</label>
@@ -230,7 +230,8 @@
                 </div>
                 <div class="modal-footer">
                     <%--<button type="button" class="btn btn-primary" onclick="SalvarMedico()" >Salvar</button>--%>
-                    <asp:Button Text="Salvar" ID="btSalvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" />
+                    <%--<asp:Button Text="Salvar" ID="btSalvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" />--%>
+                    <input type="button" name="btSalvar" value="Salvar" id="btSalvar" class="btn btn-primary" onclick="SalvarMedico()" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -596,9 +597,10 @@
         function LimparForm()
         {
             var carregaDados = false;
-            if ($("#MainContent_tbNome").val() != "") {
+            if ($("#MainContent_tbNome").val() != "" && $("#MainContent_idHiddenMedico").val() === "") {
                 carregaDados = confirm("Deseja carregar os dados preenchidos?");
             }
+            
             if (carregaDados === false) {
 
                 $("#MainContent_tbNome").val("");

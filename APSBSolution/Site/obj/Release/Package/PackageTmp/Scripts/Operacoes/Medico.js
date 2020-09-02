@@ -183,7 +183,7 @@ function CarregarModalEndereco(_idProfissional) {
         },
         success: function (result) {
             //console.log(result.d);    
-           
+
             if (result.d != null) {
                 $("#MainContent_idHiddenProfissionalEndereco").val(result.d.IdEndereco)
                 $("#MainContent_tbEndereço").val(result.d.ccEndereco);
@@ -229,7 +229,7 @@ function CarregarModalBanco(_idProfissional) {
                         + result.d[i].ccAgencia + "</td><td>"
                         + result.d[i].ccConta + "</td><td>"
                         + result.d[i].ccOperacao + "</td><td>"
-                        + "<input type='image' class='imgButton' src='../Content/Icons/trash-outline.svg' onclick='return RemoverBanco(" + result.d[i].IdProfissionalBanco+")'/>" + "</td>"
+                        + "<input type='image' class='imgButton' src='../Content/Icons/trash-outline.svg' onclick='return RemoverBanco(" + result.d[i].IdProfissionalBanco + ")'/>" + "</td>"
                         + "</tr>");
                 }
             }
@@ -241,7 +241,7 @@ function CarregarModalBanco(_idProfissional) {
 
 function CarregarModalArquivos(_idProfissional) {
     $("#MainContent_idHiddenMedico").val(_idProfissional);
-    
+
     var url = "Medico.aspx/BuscararquivosID";
 
     var relacaoObj = {
@@ -323,7 +323,7 @@ function SalvarDados() {
     };
     //console.log(relacaoObj);
     //console.log(JSON.stringify(relacaoObj));
-   
+
     $.ajax({
         type: "POST",
         url: url,
@@ -344,33 +344,56 @@ function SalvarDados() {
 };
 
 function SalvarMedico() {
-    var relacaoObj = {
-        user: ""
-        , nome: ""
-        , sexo: ""
-        , uf: ""
-        , cidade: ""
-        , estCivil: ""
-        , pai: ""
-        , mae: ""
-        , conjuge: ""
-        , rgNum: ""
-        , rgEmissor: ""
-        , rgData: ""
-        , cpf: ""
-        , email: ""
-        , telefone: ""
-        , celular: ""
-        , obs: ""
-        , dtNascimento: ""
-        , dtTaxa: ""
-        , dtFiliacao: ""
-        , dtCartorio: ""
-        , idMedico: ""
-    };
-    console.log(JSON.stringify(relacaoObj))
+    var url = "Medico.aspx/SalvarMedico";
 
-    };
+    var relacaoObj = {
+        user: $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"))
+        , nome: $("#MainContent_tbNome").val()
+        , sexo: $("#MainContent_dpSexo").val()
+        , uf: $("#MainContent_dpUFNatural").val()
+        , cidade: $("#MainContent_tbCidade").val()
+        , estCivil: $("#MainContent_tbEstCivil").val()
+        , pai: $("#MainContent_tbPai").val()
+        , mae: $("#MainContent_tbMae").val()
+        , conjuge: $("#MainContent_tbConjuge").val()
+        , rgNum: $("#MainContent_tbRGNum").val()
+        , rgEmissor: $("#MainContent_tbRGEmissor").val()
+        , rgData: $("#MainContent_tbRGdata").val()
+        , cpf: $("#MainContent_tbCPF").val()
+        , email: $("#MainContent_tbEmail").val()
+        , telefone: $("#MainContent_tbFone").val()
+        , celular: $("#MainContent_tbCelular").val()
+        , obs: $("#MainContent_tbObs").val()
+        , dtNascimento: $("#MainContent_tbdtNascimento").val()
+        , dtTaxa: $("#MainContent_tbDtFiliacao").val()
+        , dtFiliacao: $("#MainContent_tbDtPagamento").val()
+        , dtCartorio: $("#MainContent_tbDtRegCartorio").val()
+        , idMedico: $("#MainContent_idHiddenMedico").val()
+        , cnh: $("#MainContent_tbCNH").val()
+    }
+
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        },
+        success: function (result) {
+            if (result.d == true) {
+                alert("Registro salvo com sucesso!");
+            } else {
+                alert("Falha ao salvar o registro!");
+            }
+        }
+    });
+
+    $("#MainContent_gvMedicos").append("<tr><td>0</td><td>" + relacaoObj.nome + "</td><td>" + relacaoObj.email + "</td><td>" + relacaoObj.obs+"</td><td>Atualize</td><td>a</td><td>página</td><td>...</td><td>...</td><td>...</td></tr>");
+
+};
 
 function SalvarEndereco() {
     var url = "Medico.aspx/SalvarEndereco";

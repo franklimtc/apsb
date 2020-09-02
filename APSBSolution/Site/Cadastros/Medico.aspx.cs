@@ -247,7 +247,7 @@ namespace Site.Cadastros
         }
 
         [WebMethod]
-        private static object SalvarMedico(string user, string nome, string sexo, string uf, string cidade, string estCivil, string pai, string mae, string conjuge, string rgNum, string rgEmissor, string rgData, string cpf, string email, string telefone, string celular, string obs, string dtNascimento, string dtTaxa, string dtFiliacao, string dtCartorio, string idMedico)
+        public static bool SalvarMedico(string user, string nome, string sexo, string uf, string cidade, string estCivil, string pai, string mae, string conjuge, string rgNum, string rgEmissor, string rgData, string cpf, string email, string telefone, string celular, string obs, string dtNascimento, string dtTaxa, string dtFiliacao, string dtCartorio, string idMedico, string cnh)
         {
             bool result = false;
             //string user = User.Identity.Name;
@@ -263,6 +263,10 @@ namespace Site.Cadastros
             pNew.nomeConjuge =conjuge;
             if (rgNum != "")
                 pNew.RGNum = long.Parse(rgNum);
+
+            if (cnh != "")
+                pNew.cvCNH = long.Parse(cnh);
+
             pNew.RGEmissor = rgEmissor;
             //if (DateTime.TryParse(tbdtEmissaoRG.Text, out DateTime newDate))
             if (rgData != "")
@@ -271,12 +275,12 @@ namespace Site.Cadastros
                 pNew.RGdtEmissao = newDate1;
             }
             
-            pNew.CPFNum = long.Parse(cpf);
+            pNew.CPFNum = long.Parse(cpf.Replace(".", "").Replace("-", ""));
             pNew.ccEmail = email;
             if (telefone != "")
-                pNew.cvTelefone = long.Parse(telefone);
+                pNew.cvTelefone = long.Parse(Regex.Replace(telefone, "[^0-9a-zA-Z]+", ""));
             if (celular != "")
-                pNew.cvCelular = long.Parse(celular);
+                pNew.cvCelular = long.Parse(Regex.Replace(celular, "[^0-9a-zA-Z]+", ""));
             pNew.Observacoes = obs;
             //if (DateTime.TryParse(tbDataNascimento.Text, out DateTime newDate2))
             if (dtNascimento != "")
@@ -304,7 +308,7 @@ namespace Site.Cadastros
 
             try
             {
-                if (idMedico != "")
+                if (idMedico == "")
                 {
                     result = pNew.Adicionar(user);
                 }
@@ -314,9 +318,9 @@ namespace Site.Cadastros
                     result = pNew.Salvar(user);
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                return ex.Message; 
+                result = false;
             }
             return result;
         }
