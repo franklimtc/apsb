@@ -758,10 +758,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/01/2020 21:10:31</publishTime>
+      <publishTime>09/01/2020 21:33:53</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/01/2020 21:10:31</publishTime>
+      <publishTime>09/01/2020 21:33:53</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1220,10 +1220,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/01/2020 21:10:15</publishTime>
+      <publishTime>09/01/2020 21:33:40</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/01/2020 21:10:15</publishTime>
+      <publishTime>09/01/2020 21:33:40</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:40</publishTime>
@@ -1298,7 +1298,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/01/2020 08:43:15</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
-      <publishTime>09/01/2020 20:50:27</publishTime>
+      <publishTime>09/01/2020 21:20:36</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>08/13/2020 08:18:16</publishTime>
@@ -1943,10 +1943,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/15/2020 22:10:10</publishTime>
     </File>
     <File Include="Operacoes.aspx">
-      <publishTime>08/15/2020 19:26:44</publishTime>
+      <publishTime>09/01/2020 21:33:21</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/01/2020 21:10:20</publishTime>
+      <publishTime>09/01/2020 21:33:43</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>

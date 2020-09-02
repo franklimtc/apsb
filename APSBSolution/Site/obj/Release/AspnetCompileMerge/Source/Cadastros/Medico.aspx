@@ -231,7 +231,7 @@
                 <div class="modal-footer">
                     <%--<button type="button" class="btn btn-primary" onclick="SalvarMedico()" >Salvar</button>--%>
                     <%--<asp:Button Text="Salvar" ID="btSalvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" />--%>
-                    <input type="button" name="btSalvar" value="Salvar" id="btSalvar" class="btn btn-primary" onclick="SalvarMedico()" />
+                    <input type="submit" name="btSalvar" value="Salvar" id="btSalvar" class="btn btn-primary" onclick="SalvarMedico()" />
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>

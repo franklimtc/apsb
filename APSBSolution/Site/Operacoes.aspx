@@ -114,14 +114,14 @@
                             <ItemTemplate>
                                 <%--<asp:ImageButton ImageUrl="~/Content/Icons/create-outline.svg" runat="server" Height="1.5em" CommandName="Editar" ToolTip="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
                                 <%--onclick="return AbrirDesRec('Despesa')"--%>
-                                <input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# $"return AbrirDesRec('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
+                                <input type="image" src="../Content/Icons/create-outline.svg" title="Editar" class="imgButton" onclick="<%# $"return AbrirDesRec('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                                 <%--<input type="image" src="../Content/Icons/create-outline.svg" class="imgButton" onclick="<%# DataBinder.Eval(Container.DataItem, "Tipo", "return AbrirDesRec('{0}');") %>" />--%>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
                             <ItemTemplate>
                                 <%--<asp:ImageButton ImageUrl="~/Content/Icons/person-outline.svg" runat="server" Height="1.5em" CommandName="Repassar" ToolTip="Repassar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />--%>
-                                <input type="image" src="../Content/Icons/person-outline.svg" class="imgButton" onclick="<%# $"return AbrirRepasseModal('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
+                                <input type="image" src="../Content/Icons/person-outline.svg" title="Repassar" class="imgButton" onclick="<%# $"return AbrirRepasseModal('{DataBinder.Eval(Container.DataItem, "Tipo")}', '{DataBinder.Eval(Container.DataItem, "ID")}');"%>" />
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField>
