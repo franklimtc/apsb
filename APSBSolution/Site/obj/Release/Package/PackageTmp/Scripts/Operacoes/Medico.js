@@ -40,8 +40,8 @@
             data: JSON.stringify(relacaoObj),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            error: function () {
+                alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
             },
             success: function (result) {
                 //alert("Registro adicionado com sucesso");
@@ -71,8 +71,8 @@ function CarregarModal(_idProfissional) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             $("#MainContent_tbNome").val(result.d["ccNome"]);
@@ -120,8 +120,8 @@ function CarregarModalProfissional(_idProfissional) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //console.log(result.d);
@@ -178,8 +178,8 @@ function CarregarModalEndereco(_idProfissional) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //console.log(result.d);    
@@ -214,8 +214,8 @@ function CarregarModalBanco(_idProfissional) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            //alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //console.log(result.d);
@@ -255,8 +255,8 @@ function CarregarModalArquivos(_idProfissional) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             console.log(result.d);
@@ -281,8 +281,8 @@ function RemoverBanco(id) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             CarregarModalBanco(idMedico);
@@ -330,8 +330,8 @@ function SalvarDados() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             if (result.d == true) {
@@ -379,8 +379,8 @@ function SalvarMedico() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             if (result.d == true) {
@@ -414,8 +414,8 @@ function SalvarEndereco() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             if (result.d == true) {

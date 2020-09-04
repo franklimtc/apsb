@@ -26,8 +26,8 @@
                 data: JSON.stringify(relacaoObj),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json',
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+                error: function () {
+                    alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
                 },
                 success: function (result) {
                     //alert("Registro adicionado com sucesso");

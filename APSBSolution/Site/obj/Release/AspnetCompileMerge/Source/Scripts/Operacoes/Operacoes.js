@@ -20,8 +20,8 @@ function EditDespesa(id) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //alert("Registro adicionado com sucesso");
@@ -68,8 +68,8 @@ function SalvarDespesa() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //alert("Registro adicionado com sucesso");
@@ -101,8 +101,8 @@ function EditReceita(id) {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //alert("Registro adicionado com sucesso");
@@ -181,8 +181,8 @@ function SalvarReceita() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             $("#operacaoModal").modal("hide");
@@ -206,8 +206,8 @@ function DescontosClinica() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //console.log(result.d);
@@ -247,8 +247,8 @@ function AbrirRepasseModal(tipo, id) {
             data: JSON.stringify(relacaoObj),
             contentType: 'application/json; charset=utf-8',
             dataType: 'json',
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                console.log("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+            error: function () {
+                alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
             },
             success: function (result) {
                 //console.log(result.d);
@@ -366,8 +366,8 @@ function getInfo(id) {
         data: JSON.stringify(obj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             console.log(result.d);
@@ -402,8 +402,8 @@ function AdicionarRepasse() {
         data: JSON.stringify(relacaoObj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             AbrirRepasseModal("Receita", id);
@@ -434,8 +434,8 @@ function Call(metodo, obj) {
         data: JSON.stringify(obj),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(obj));
         },
         success: function (result) {
             AbrirRepasseModal("Receita", $("#hiddenRepasseID").val())
