@@ -26,10 +26,13 @@
     [cdFiliacao]       DATETIME      NULL,
     [cdPgtoTaxa]       DATETIME      NULL,
     [cdRegCartorio]    DATETIME      NULL,
+    [cvCNH]            BIGINT        DEFAULT ((0)) NULL,
     PRIMARY KEY CLUSTERED ([IdProfissional] ASC),
     FOREIGN KEY ([IdObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao]),
     UNIQUE NONCLUSTERED ([CPFNum] ASC)
 );
+
+
 
 
 

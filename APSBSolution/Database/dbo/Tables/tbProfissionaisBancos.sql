@@ -6,9 +6,12 @@
     [idProfissional]      INT          NOT NULL,
     [idBanco]             INT          NOT NULL,
     [cvStatus]            BIT          DEFAULT ((1)) NULL,
+    [cdDataCriacao]       DATETIME     DEFAULT (getdate()) NULL,
     PRIMARY KEY CLUSTERED ([IdProfissionalBanco] ASC),
     FOREIGN KEY ([idBanco]) REFERENCES [dbo].[tbBancos] ([IdBanco]),
     FOREIGN KEY ([idProfissional]) REFERENCES [dbo].[tbProfissionais] ([IdProfissional])
 );
+
+
 
 

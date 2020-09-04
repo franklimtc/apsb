@@ -13,10 +13,13 @@
     [cvNF]          INT        NULL,
     [cbIssRetido]   BIT        DEFAULT ((0)) NULL,
     [cvDescontoISS] REAL       NULL,
+    [cdDataCriacao] DATETIME   DEFAULT (getdate()) NULL,
     PRIMARY KEY CLUSTERED ([idReceita] ASC),
     FOREIGN KEY ([IdClinica]) REFERENCES [dbo].[tbClinicas] ([IdClinica]),
     FOREIGN KEY ([idObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao])
 );
+
+
 
 
 

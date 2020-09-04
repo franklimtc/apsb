@@ -11,8 +11,11 @@
     [cvTituloSecao]      SMALLINT      NULL,
     [cvReservista]       BIGINT        NULL,
     [cvPIS]              BIGINT        NULL,
+    [cdDataCriacao]      DATETIME      DEFAULT (getdate()) NULL,
     PRIMARY KEY CLUSTERED ([IdDadoProfissional] ASC),
     FOREIGN KEY ([idProfissional]) REFERENCES [dbo].[tbProfissionais] ([IdProfissional])
 );
+
+
 
 
