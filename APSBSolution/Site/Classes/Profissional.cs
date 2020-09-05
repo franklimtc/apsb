@@ -349,6 +349,16 @@ namespace Site.Classes
             return result;
         }
 
+        internal static int GetIDByName(string name)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "ccNome", name });
+
+            object retorno = DAO.ExecuteScalar(@"GetIDProfissionalByName @ccNome = @ccNome ", parametros);
+
+            return int.Parse(retorno.ToString());
+        }
+
         internal bool Adicionar(string Usuario)
         {
             bool result = false;

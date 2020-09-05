@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
 using Site.Classes;
+using Newtonsoft.Json;
 
 namespace Site.Cadastros
 {
@@ -21,17 +22,35 @@ namespace Site.Cadastros
 
         private void CarregarItens()
         {
-            //dpBancoClinica.DataSource = Banco.Listar();
-            dpSelectProfissional.DataSource = Profissional.ListaDropDown();
-            dpSelectProfissional.DataValueField = "IdProfissional";
-            dpSelectProfissional.DataTextField = "ccNome";
-            dpSelectProfissional.DataBind();
+            List<Profissional> listaProfissionais = Profissional.ListaDropDown();
 
-            dpSelectProfissional.Items.Add(new ListItem("Selecionar..."));
-            dpSelectProfissional.Items.FindByText("Selecionar...").Selected = true;
+            //dpBancoClinica.DataSource = Banco.Listar();
+            //dpSelectProfissional.DataSource = listaProfissionais;
+            //dpSelectProfissional.DataValueField = "IdProfissional";
+            //dpSelectProfissional.DataTextField = "ccNome";
+            //dpSelectProfissional.DataBind();
+
+            //dpSelectProfissional.Items.Add(new ListItem("Selecionar..."));
+            //dpSelectProfissional.Items.FindByText("Selecionar...").Selected = true;
+
+
+            //StringBuilder sb = new StringBuilder();
+
+            //foreach (var p in listaProfissionais)
+            //{
+            //    sb.AppendLine($"$('#dsProfissionais').append(\"<option value = '{p.ccNome}'>\");");
+            //}
+            //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", sb.ToString(), true);
 
         }
-
+        protected void gvProfissionalClinica_PreRender(object sender, EventArgs e)
+        {
+            if (gvProfissionalClinica.Rows.Count > 0)
+            {
+                gvProfissionalClinica.UseAccessibleHeader = true;
+                gvProfissionalClinica.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
         protected void gvClinicas_PreRender(object sender, EventArgs e)
         {
             // You only need the following 2 lines of code if you are not 
@@ -176,9 +195,9 @@ namespace Site.Cadastros
 
         private void CarregarModalRelacao(int idClinica)
         {
-            dpSelectProfissional.DataSource = Profissional.ListaDropDown();
-            dpSelectProfissional.DataValueField = "idProfissional";
-            dpSelectProfissional.DataTextField = "ccNome";
+            //dpSelectProfissional.DataSource = Profissional.ListaDropDown();
+            //dpSelectProfissional.DataValueField = "idProfissional";
+            //dpSelectProfissional.DataTextField = "ccNome";
             tbTextClinica.Text = $" - {HiddenClinicaName.Value} ({HiddenClinicaDesconto.Value}%)";
 
 
@@ -190,8 +209,8 @@ namespace Site.Cadastros
             gvProfissionalClinica.DataSource = lista;
             gvProfissionalClinica.DataBind();
 
-            dpSelectProfissional.ClearSelection();
-            dpSelectProfissional.Items.FindByValue("Selecionar...").Selected = true;
+            //dpSelectProfissional.ClearSelection();
+            //dpSelectProfissional.Items.FindByValue("Selecionar...").Selected = true;
             tbObsProfissional.Text = "";
             tbValorRepasse.Text = "10";
 
@@ -359,6 +378,39 @@ namespace Site.Cadastros
 
             gvClinicas.DataSource = Clinica.Listar(status);
             gvClinicas.DataBind();
+        }
+
+        [WebMethod]
+        public static List<ProfissionalDP> ListarProfissionalDP()
+        {
+            List<Profissional> lista =  Profissional.ListaDropDown();
+            List<ProfissionalDP> listaDP = new List<ProfissionalDP>();
+
+            foreach (var item in lista)
+            {
+                listaDP.Add(new ProfissionalDP(item.IdProfissional, item.ccNome));
+            }
+
+            return listaDP;
+        }
+
+        [WebMethod]
+        public static int GetIdByName(string name)
+        {
+            return Profissional.GetIDByName(name);
+        }
+
+       
+    }
+
+    public class ProfissionalDP
+    {
+        public int idProfissional { get; set; }
+        public string ccNome { get; set; }
+        public ProfissionalDP(int id, string nome)
+        {
+            this.idProfissional = id;
+            this.ccNome = nome;
         }
     }
 }

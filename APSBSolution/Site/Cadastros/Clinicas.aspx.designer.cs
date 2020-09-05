@@ -42,6 +42,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.HiddenField HiddenClinicaName;
 
         /// <summary>
+        /// Controle HiddenProfissionalID.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenProfissionalID;
+
+        /// <summary>
         /// Controle idHiddenChange.
         /// </summary>
         /// <remarks>
@@ -220,15 +229,6 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbValorRepasse;
-
-        /// <summary>
-        /// Controle dpSelectProfissional.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpSelectProfissional;
 
         /// <summary>
         /// Controle tbObsProfissional.
