@@ -1,7 +1,8 @@
 ﻿function SalvarRelacao() {
     var _idClinica = $("#MainContent_idHiddenClinica").val();
-    var _idProfissional = $("#MainContent_dpSelectProfissional").children("option:selected").val();
-    var _nomeProfissional = $("#MainContent_dpSelectProfissional").children("option:selected").text();
+    var _nomeProfissional = $("#dpProfissional2").val();
+    var _idProfissional = $("#MainContent_HiddenProfissionalID").val();
+
     var _taxa = $("#MainContent_tbValorRepasse").val();
     var _obs = $("#MainContent_tbObsProfissional").val();
 
@@ -73,3 +74,46 @@ $("#MainContent_tbDescontos").focusout(function () {
         $("#MainContent_tbDescontos").val(valor);
     };
 });
+
+function CarregarDPProfissionais() {
+
+    $.ajax({
+        type: "POST",
+        url: "Clinicas.aspx/ListarProfissionalDP",
+        data: null,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            //alert("Registro adicionado com sucesso");
+            //console.log(result.d);
+            for (var i = 0; i < result.d.length; i++) {
+                $('#dsProfissionais').append("<option value='"+result.d[i].ccNome+"'>");
+            }
+
+        }
+    });
+
+};
+
+function GetIdProfissionalByName(nome) {
+    var relacaoObj = {
+        name: nome
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Clinicas.aspx/GetIdByName",
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function () {
+            //alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+            console.log("erro ao capturar id do profissional!");
+        },
+        success: function (result) {
+            //alert("Registro adicionado com sucesso");
+            $("#MainContent_HiddenProfissionalID").val(result.d)
+        }
+    });
+
+};

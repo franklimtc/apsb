@@ -13,6 +13,7 @@
     <asp:HiddenField runat="server" ID="idHiddenClinica" />
     <asp:HiddenField runat="server" ID="HiddenClinicaDesconto" />
     <asp:HiddenField runat="server" ID="HiddenClinicaName" />
+    <asp:HiddenField runat="server" ID="HiddenProfissionalID" />
     <asp:HiddenField runat="server" ID="idHiddenChange" />
 
     <%--Hidden Filds--%>
@@ -178,11 +179,12 @@
         </div>
     </div>
 
-    <!-- Modal - Profissional -->
-    <div class="modal fade" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <!-- Large modal -->
+
+    <div class="modal fade bd-example-modal-lg" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
+                 <div class="modal-header">
                     <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional <asp:Label  ID="tbTextClinica" runat="server" /></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -195,7 +197,7 @@
                                 <div class="col-sm-8">
                                     <label for="dpRepasseProfissional">Profissional</label>
                                     <div>
-                                        <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
+                                        <input list="dsProfissionais" name="dpProfissional2" id="dpProfissional2" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -207,9 +209,15 @@
                             </div>
 
                             <div>
-                                <asp:DropDownList ID="dpSelectProfissional" runat="server" CssClass="form-control"></asp:DropDownList>
 
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            
+                              <datalist id="dsProfissionais">
+                              </datalist>
                         </div>
                     </div>
                     <div class="row">
@@ -220,15 +228,13 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <%--<asp:Button ID="btAdicionar" Text="Adicionar" runat="server" CssClass="btn btn-secondary"  />--%>
-                            <%--<asp:LinkButton ID="btAdicionarRelacao" Text="Adicinar" runat="server" OnClick="btAdicionarRelacao_Click"  CssClass="btn btn-secondary" />--%>
                             <input type="button" id="btAdicionarRelacao" value="Adicionar" class="btn btn-secondary" onclick="SalvarRelacao()" />
                         </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col">
-                            <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnRowCommand="gvProfissionalClinica_RowCommand">
+                            <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvProfissionalClinica_PreRender" OnRowCommand="gvProfissionalClinica_RowCommand">
                                 <Columns>
                                     <asp:BoundField DataField="IdClinicaProfissional" HeaderText="ID" />
                                     <asp:BoundField DataField="ccNomeProfissional" HeaderText="Nome" />
@@ -248,12 +254,89 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <%--<button type="button" class="btn btn-primary" onclick="SalvarRelacao()">Salvar</button>--%>
-                    <%--<asp:Button Text="Salvar" runat="server" ID="btSalvarRelacao" CssClass="btn btn-primary" OnClick="btSalvarRelacao_Click" />--%>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal - Profissional -->
+    <%--<div class="modal fade modal-lg" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional <asp:Label  ID="tbTextClinica" runat="server" /></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <label for="dpRepasseProfissional">Profissional</label>
+                                    <div>
+                                        <input list="dsProfissionais" name="dpProfissional2" id="dpProfissional2" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="tbValorRepasse">Percentual</label>
+                                    <div>
+                                        <asp:TextBox runat="server" ID="tbValorRepasse" CssClass="form-control" Text="10"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            
+                              <datalist id="dsProfissionais">
+                              </datalist>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="tbObsProfissional">Observações</label>
+                            <asp:TextBox runat="server" ID="tbObsProfissional" CssClass="form-control" placeholder="Observações do profissional" TextMode="MultiLine"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input type="button" id="btAdicionarRelacao" value="Adicionar" class="btn btn-secondary" onclick="SalvarRelacao()" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvProfissionalClinica_PreRender" OnRowCommand="gvProfissionalClinica_RowCommand">
+                                <Columns>
+                                    <asp:BoundField DataField="IdClinicaProfissional" HeaderText="ID" />
+                                    <asp:BoundField DataField="ccNomeProfissional" HeaderText="Nome" />
+                                    <asp:BoundField DataField="cvTaxaProfissional" HeaderText="Taxa" />
+                                    <asp:BoundField DataField="cvStatus" HeaderText="Status" />
+                                    <asp:BoundField DataField="ccObservacao" HeaderText="Observações" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btExcluirRelacao" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>--%>
 
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/Operacoes/Clinica.js"></script>
@@ -277,13 +360,31 @@
                 }
             });
 
+            $('#MainContent_gvProfissionalClinica').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "infoFiltered": "(filtrado de _MAX_ registros)",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+
+            
+
             $('#MainContent_gvClinicas_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
             CarregarFiltro();
 
             $('.dataTables_filter input').change(function () {
                 localStorage["Clinicas"] = $('.dataTables_filter input').val();
             });
+            CarregarDPProfissionais();
 
+            $("#dpProfissional2").change(function () {
+                GetIdProfissionalByName($("#dpProfissional2").val());
+            });
         });
 
         function filterProfissional() {
