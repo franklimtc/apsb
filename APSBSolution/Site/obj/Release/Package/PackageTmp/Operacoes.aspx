@@ -204,9 +204,9 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div>
+                           <%-- <div>
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
-                            </div>
+                            </div>--%>
                             <div>
                                 <select id="dpSelectProfissional" class="form-control">
                                 </select>
@@ -357,14 +357,23 @@
                                 <label for="search">Clínica | Hospital | Despesa</label>
                                 <div>
                                     <%--<input type="text" id="search" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filter()">--%>
-                                    <asp:TextBox runat="server" ID="tbSearch2" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />
-                                    <asp:TextBox runat="server" ID="tbSearch" CssClass="form-control d-none" onkeyup="filter()" placeholder="Filtrar..." />
+                                    <%--<asp:TextBox runat="server" ID="tbSearch2" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />--%>
+                                    <%--<asp:TextBox runat="server" ID="tbSearch" CssClass="form-control d-none" onkeyup="filter()" placeholder="Filtrar..." />--%>
+                                    <%--DropDown Profissionais--%>
+                                    <input runat="server" id="dpSearchClinicas" list="dsClinicasDP" name="dpProfissional" class="form-control" placeholder="Selecione a clínica..." onchange="CarregarDadosClinica()"/>
+                                    <datalist id="dsClinicasDP">
+                                    </datalist>
+                                    
+                                    <%--DropDown Despesas--%>
+                                    <input runat="server" id="dpSearchDespesas" list="dsDespesasDP" name="dpDespesas" class="form-control d-none" placeholder="Selecione a despesa..."/>
+                                    <datalist id="dsDespesasDP">
+                                    </datalist>
                                 </div>
                                 <div>
-                                    <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
+                                   <%-- <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
                                     <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" onchange="return DescontosClinica()">
-                                    </asp:DropDownList>
+                                    </asp:DropDownList>--%>
                                 </div>
                             </div>
                         </div>
@@ -505,6 +514,10 @@
             $('.dataTables_filter input').change(function () {
                 localStorage["Operacoes"] = $('.dataTables_filter input').val();
             });
+
+            //Carregar Dropdowns
+            CarregarClinicasDP();
+            CarregarDespesasDP();
            
         });
 
@@ -518,6 +531,16 @@
 
         function novaOperacao() {
             ResetForm();
+            $("#MainContent_dpSearchClinicas").val("");
+            $("#MainContent_tbReceitaDataNF").val("");
+            $("#MainContent_tbReceitaNF").val("");
+            $("#MainContent_tbReceitaNFValorPG").val("");
+            $("#MainContent_tbReceitaDataPgtoNF").val("");
+            $("#MainContent_tbReceitaDesconto").val("");
+            $("#MainContent_idHiddenOperacao").val("");
+            $("#idHiddenOperacao2").val("");
+            $("#MainContent_tbValorOperacao").val("");
+
             $("#MainContent_tbReceitaDataNF").attr("disabled", true);
             $("#MainContent_tbReceitaDataPgtoNF").attr("disabled", true);
             $("#MainContent_tbReceitaNF").attr("disabled", true);
@@ -573,10 +596,15 @@
             //divNF
             $("#divNF").addClass("d-none");
 
+            
+            
 
             //Dropdown Receita/Despesa
-            $("#MainContent_dpTipoReceita").addClass("d-none");
-            $("#MainContent_dpTipoDespesa").removeClass("d-none");
+            //$("#MainContent_dpTipoReceita").addClass("d-none");
+            $("#MainContent_dpSearchClinicas").addClass("d-none");
+
+            //$("#MainContent_dpTipoDespesa").removeClass("d-none");
+            $("#MainContent_dpSearchDespesas").removeClass("d-none");
 
             //Search Receita/Despesa
             $("#MainContent_tbSearch").removeClass("d-none");
@@ -612,8 +640,10 @@
             $("#divNF").removeClass("d-none");
 
             //Dropdown Receita/Despesa
-            $("#MainContent_dpTipoReceita").removeClass("d-none");
-            $("#MainContent_dpTipoDespesa").addClass("d-none");
+            //$("#MainContent_dpTipoReceita").removeClass("d-none");
+            $("#MainContent_dpSearchClinicas").removeClass("d-none");
+            //$("#MainContent_dpTipoDespesa").addClass("d-none");
+            $("#MainContent_dpSearchDespesas").addClass("d-none");
 
             //Search Receita/Despesa
             $("#MainContent_tbSearch2").removeClass("d-none");
@@ -654,37 +684,37 @@
             }
         }
 
-        function filterReceita() {
-            //var keyword = $("#MainContent_tbSearch").val();
-            //var select = $("#MainContent_dpTipoReceita");
-            var keyword = document.getElementById("MainContent_tbSearch2").value;
-            var select = document.getElementById("MainContent_dpTipoReceita");
-            for (var i = 0; i < select.length; i++) {
-                var txt = select.options[i].text;
-                //if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
-                if (txt.toLowerCase().includes(keyword.toLowerCase()) == false) {
-                    $(select.options[i]).attr('disabled', 'disabled').hide();
-                } else {
-                    $(select.options[i]).removeAttr('disabled').show();
-                }
-            }
-        }
+        //function filterReceita() {
+        //    //var keyword = $("#MainContent_tbSearch").val();
+        //    //var select = $("#MainContent_dpTipoReceita");
+        //    var keyword = document.getElementById("MainContent_tbSearch2").value;
+        //    var select = document.getElementById("MainContent_dpTipoReceita");
+        //    for (var i = 0; i < select.length; i++) {
+        //        var txt = select.options[i].text;
+        //        //if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+        //        if (txt.toLowerCase().includes(keyword.toLowerCase()) == false) {
+        //            $(select.options[i]).attr('disabled', 'disabled').hide();
+        //        } else {
+        //            $(select.options[i]).removeAttr('disabled').show();
+        //        }
+        //    }
+        //}
 
 
         //Filter Médico
 
-        function filterProfissional() {
-            var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("dpSelectProfissional");
-            for (var i = 0; i < select.length; i++) {
-                var txt = select.options[i].text;
-                if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
-                    $(select.options[i]).attr('disabled', 'disabled').hide();
-                } else {
-                    $(select.options[i]).removeAttr('disabled').show();
-                }
-            }
-        }
+        //function filterProfissional() {
+        //    var keyword = document.getElementById("tbRepasseProfissional").value;
+        //    var select = document.getElementById("dpSelectProfissional");
+        //    for (var i = 0; i < select.length; i++) {
+        //        var txt = select.options[i].text;
+        //        if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
+        //            $(select.options[i]).attr('disabled', 'disabled').hide();
+        //        } else {
+        //            $(select.options[i]).removeAttr('disabled').show();
+        //        }
+        //    }
+        //}
 
 
         //Ativar disconto

@@ -99,8 +99,8 @@
     </form>
   
     <script>
-        $(document).load(function(){
-            if (window.location.href.indexOf("APSB") > 0) {
+        $(document).ready(function(){
+            if (window.location.href.indexOf("apsb") > 0) {
                 $("#AppTitle").text("APSB");
             } else {
                 $("#AppTitle").text("APSDF");

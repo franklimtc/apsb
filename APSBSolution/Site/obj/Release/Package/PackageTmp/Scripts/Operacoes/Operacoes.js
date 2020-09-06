@@ -30,12 +30,7 @@ function EditDespesa(id) {
             console.log(ConvertDate2(result.d["cdEmissao"]));
             $("#MainContent_tbDespesaDataNF").val(ConvertDate2(result.d["cdEmissao"]));
             $("#MainContent_tbDespesaObs").val(result.d["observacao"]);
-            var sel = result.d["ccDescricao"];
-
-            $("#MainContent_dpTipoDespesa option").filter(function () {
-                return this.text == sel;
-            }).attr('selected', true);
-
+            $("#MainContent_dpSearchDespesas").val(result.d["ccDescricao"]);
             AdicionarMascaras();
         }
     });
@@ -47,7 +42,7 @@ function EditDespesa(id) {
 
 function SalvarDespesa() {
     var _Usuario = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
-    var _tipo = $("#MainContent_dpTipoDespesa").val();
+    var _tipo = $("#MainContent_dpSearchDespesas").val();
     var _data = $("#MainContent_tbDespesaDataNF").val();
     var _valor = $("#MainContent_tbValorOperacao").val();
     var _obs = $("#MainContent_tbDespesaObs").val();
@@ -112,9 +107,7 @@ function EditReceita(id) {
             $("#MainContent_tbReceitaDataNF").val(ConvertDate2(result.d[0].cdEmissao));
             $("#MainContent_tbReceitaDataPgtoNF").val(ConvertDate2(result.d[0].cdPagamento));
 
-            $("#MainContent_dpTipoReceita option").filter(function () {
-                return this.text == result.d[1].ccDescricao;
-            }).attr('selected', true);
+            $("#MainContent_dpSearchClinicas").val(result.d[1].ccDescricao);
 
             $("#MainContent_tbReceitaNF").val(result.d[0].cvNF);
             $("#MainContent_tbReceitaNFValorPG").val(formatMoney(result.d[0].cvValorPago, ".", ",", "."));
@@ -151,7 +144,7 @@ function SalvarReceita() {
 
     var _Usuario = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));;
     var _valor = $("#MainContent_tbValorOperacao").val();
-    var _tipo = $("#MainContent_dpTipoReceita").val();
+    var _tipo = $("#MainContent_dpSearchClinicas").val();
     var _dtNF = $("#MainContent_tbReceitaDataNF").val();
     var _nf = $("#MainContent_tbReceitaNF").val();
     var _dtPgto = $("#MainContent_tbReceitaDataPgtoNF").val();
@@ -439,6 +432,72 @@ function Call(metodo, obj) {
         },
         success: function (result) {
             AbrirRepasseModal("Receita", $("#hiddenRepasseID").val())
+        }
+    });
+};
+
+
+function CarregarClinicasDP() {
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/ListarClinicasDP",
+        data: null,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            //alert("Registro adicionado com sucesso");
+            //console.log(result.d);
+            for (var i = 0; i < result.d.length; i++) {
+                $('#dsClinicasDP').append("<option value='" + result.d[i] + "'>");
+            }
+
+        }
+    });
+
+};
+
+function CarregarDespesasDP() {
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/ListarDespesasDP",
+        data: null,
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            //alert("Registro adicionado com sucesso");
+            //console.log(result.d);
+            for (var i = 0; i < result.d.length; i++) {
+                $('#dsDespesasDP').append("<option value='" + result.d[i] + "'>");
+            }
+
+        }
+    });
+
+};
+
+function CarregarDadosClinica() {
+    var clinica = $("#MainContent_dpSearchClinicas").val();
+    var obj = {
+        Apelido: clinica
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/BuscarClinicaByApelido",
+        data: JSON.stringify(obj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            console.log(result.d);
+            $("#MainContent_tbReceitaDesconto").val(result.d.cvDescontos);
+            if (result.d.cvISS > 0) {
+                $("#MainContent_chkIssRetido").prop("checked", true);
+            }
+            else {
+                $("#MainContent_chkIssRetido").prop("checked", false);
+            }
         }
     });
 };

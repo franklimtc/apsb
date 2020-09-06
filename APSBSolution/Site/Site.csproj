@@ -175,6 +175,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
+    <Content Include="Arquivos\WebForm1.aspx" />
     <Content Include="assets\img\APSDFLogo.png" />
     <Content Include="Content\Icons\danger.jpg" />
     <Content Include="Content\Icons\danger.png" />
@@ -485,11 +486,12 @@
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Content>
     <Content Include="Fichas\Cristalina_Cargos.pdf" />
+    <None Include="Properties\PublishProfiles\apsb - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsb - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\APSB.pubxml" />
     <None Include="Properties\PublishProfiles\apsdf - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\apsdf - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apsdf - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\APSDF.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\ChartJS\Chart.bundle.js" />
     <Content Include="Scripts\ChartJS\Chart.bundle.min.js" />
@@ -1120,6 +1122,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Arquivos\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Arquivos\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Autocadastro.aspx.cs">
       <DependentUpon>Autocadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1398,9 +1407,7 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Arquivos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Reports\Acordo.rdlc" />
     <EmbeddedResource Include="Reports\FichaCadastral3.rdlc" />
