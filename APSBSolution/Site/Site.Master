@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - APSB</title>
+    <title><%: Page.Title %></title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -39,7 +39,7 @@
             </Scripts>
         </asp:ScriptManager>
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-darkcyan">
-            <a class="navbar-brand" runat="server" href="~/Dashboard">APSB</a>
+            <a class="navbar-brand" runat="server" href="~/Dashboard" id="AppTitle">APSB</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -98,6 +98,15 @@
         </div>
     </form>
   
+    <script>
+        $(document).load(function(){
+            if (window.location.href.indexOf("APSB") > 0) {
+                $("#AppTitle").text("APSB");
+            } else {
+                $("#AppTitle").text("APSDF");
+            }
+        });
+    </script>
     
 </body>
 </html>
