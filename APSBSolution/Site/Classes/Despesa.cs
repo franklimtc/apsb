@@ -240,5 +240,25 @@ namespace Site.Classes
         {
             throw new NotImplementedException();
         }
+
+        internal static DespesaTipo ListarPorNome(string ccDespesa)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@ccTipo", ccDespesa });
+            DataTable dt = DAO.RetornaDT("SEL_DespesaByName @ccTipo=@ccTipo", parametros);
+            List<DespesaTipo> Lista = new List<DespesaTipo>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    Lista.Add(new DespesaTipo(
+                        int.Parse(c["idtipo"].ToString())
+                        , c["ccTipo"].ToString()
+                        ));
+                }
+            }
+
+            return Lista.FirstOrDefault();
+        }
     }
 }

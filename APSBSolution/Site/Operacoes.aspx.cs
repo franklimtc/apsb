@@ -25,10 +25,10 @@ namespace Site
             if (!IsPostBack)
             {
                 //Dropdown Tipo Despesas
-                CarregarDPDespesa();
+                //CarregarDPDespesa();
 
                 //Dropdown Tipo Receitas
-                CarregarDPReceita();
+                //CarregarDPReceita();
 
                 //Data
                 tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -108,25 +108,25 @@ namespace Site
         }
       
 
-        void CarregarDPDespesa()
-        {
-            var listaTipo = DespesaTipo.Listar();
-            listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
-            dpTipoDespesa.DataSource = listaTipo;
-            dpTipoDespesa.DataBind();
-            dpTipoDespesa.ClearSelection();
-            dpTipoDespesa.Items.FindByValue("0").Selected = true;
-        }
+        //void CarregarDPDespesa()
+        //{
+        //    var listaTipo = DespesaTipo.Listar();
+        //    listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
+        //    //dpTipoDespesa.DataSource = listaTipo;
+        //    //dpTipoDespesa.DataBind();
+        //    //dpTipoDespesa.ClearSelection();
+        //    //dpTipoDespesa.Items.FindByValue("0").Selected = true;
+        //}
 
-        void CarregarDPReceita()
-        {
-            var listaTipo = DespesaTipo.Listar("Receita");
-            listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
-            dpTipoReceita.DataSource = listaTipo;
-            dpTipoReceita.DataBind();
-            dpTipoReceita.ClearSelection();
-            dpTipoReceita.Items.FindByValue("0").Selected = true;
-        }
+        //void CarregarDPReceita()
+        //{
+        //    var listaTipo = DespesaTipo.Listar("Receita");
+        //    listaTipo.Add(new DespesaTipo(0, "Selecionar.."));
+        //    //dpTipoReceita.DataSource = listaTipo;
+        //    //dpTipoReceita.DataBind();
+        //    //dpTipoReceita.ClearSelection();
+        //    //dpTipoReceita.Items.FindByValue("0").Selected = true;
+        //}
         protected void btSalvar_Click(object sender, EventArgs e)
         {
             //string Usuario = User.Identity.Name;
@@ -136,7 +136,8 @@ namespace Site
             if (tbAbaAtiva.Text == "Despesa")
             {
                 Despesa dp = new Despesa();
-                dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue);
+                //dp.idTipo = int.Parse(dpTipoDespesa.SelectedValue);
+                dp.idTipo = DespesaTipo.ListarPorNome(dpSearchDespesas.Value).idTipo;
                 dp.cdData = DateTime.Parse(tbDespesaDataNF.Text.IfNullOrWhiteSpace(DateTime.Now.ToString("yyyy-MM-dd")), culture, styles);
                 dp.cvValor = float.Parse(tbValorOperacao.Text);
                 dp.ccObservacao = tbDespesaObs.Text;
@@ -154,7 +155,8 @@ namespace Site
             {
                 Receita rc = new Receita();
                 rc.cvValor = float.Parse(tbValorOperacao.Text);
-                rc.IdClinica = int.Parse(dpTipoReceita.SelectedValue);
+                //rc.IdClinica = int.Parse(dpTipoReceita.SelectedValue);
+                rc.IdClinica = Clinica.ListarPorApelido(dpSearchClinicas.Value).idClinica;
                 //
                 if (!tbReceitaDataNF.Text.IsNullOrWhiteSpace())
                 {
@@ -193,7 +195,6 @@ namespace Site
                     result = rc.Salvar(Usuario);
                 }
 
-
             }
 
             gvOperacoes.DataBind();
@@ -205,11 +206,12 @@ namespace Site
             //Form Despesas
 
             tbValorOperacao.Text = "";
-            dpTipoDespesa.ClearSelection();
-            dpTipoDespesa.Items.FindByValue("0").Selected = true;
+            //dpTipoDespesa.ClearSelection();
+            //dpTipoDespesa.Items.FindByValue("0").Selected = true;
             tbDespesaDataNF.Text = DateTime.Now.ToString("yyyy-MM-dd");
             tbDespesaObs.Text = "";
-            tbSearch.Text = "";
+            //tbSearch.Text = "";
+            
             //Form Receitas
 
         }
@@ -222,8 +224,9 @@ namespace Site
             if (tipo == "Despesa")
             {
                 scriptModal = "EditDespesa()";
-                dpTipoDespesa.ClearSelection();
-                dpTipoDespesa.Items.FindByText(op.ccDescricao).Selected = true;
+                //dpTipoDespesa.ClearSelection();
+                //dpTipoDespesa.Items.FindByText(op.ccDescricao).Selected = true;
+                dpSearchDespesas.Value = op.ccDescricao;
                 if (op.cdEmissao.HasValue)
                 {
                     tbDespesaDataNF.Text = op.cdEmissao.Value.ToString("yyyy-MM-dd");
@@ -240,9 +243,9 @@ namespace Site
                 Receita rec = Receita.ListarPorID(op.ID);
 
                 scriptModal = "EditReceita()";
-                dpTipoReceita.ClearSelection();
-                dpTipoReceita.Items.FindByText(op.ccDescricao).Selected = true;
-
+                //dpTipoReceita.ClearSelection();
+                //dpTipoReceita.Items.FindByText(op.ccDescricao).Selected = true;
+                dpSearchClinicas.Value = op.ccDescricao;
                 if (op.cdEmissao.HasValue)
                 {
                     tbReceitaDataNF.Text = op.cdEmissao.Value.ToString("yyyy-MM-dd");
@@ -336,10 +339,12 @@ namespace Site
             tbReceitaDesconto.Enabled = false;
             chkIssRetido.Checked = false;
             chkIssRetido.Enabled = false;
-            dpTipoDespesa.ClearSelection();
-            dpTipoDespesa.Items.FindByValue("0").Selected = true;
-            dpTipoReceita.ClearSelection();
-            dpTipoReceita.Items.FindByValue("0").Selected = true;
+            dpSearchClinicas.Value = "";
+            dpSearchDespesas.Value = "";
+            //dpTipoDespesa.ClearSelection();
+            //dpTipoDespesa.Items.FindByValue("0").Selected = true;
+            //dpTipoReceita.ClearSelection();
+            //dpTipoReceita.Items.FindByValue("0").Selected = true;
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
@@ -389,7 +394,8 @@ namespace Site
         }
         protected void dpTipoReceita_TextChanged(object sender, EventArgs e)
         {
-            Clinica c = Clinica.ListarPorID(int.Parse(dpTipoReceita.SelectedValue));
+            //Clinica c = Clinica.ListarPorID(int.Parse(dpTipoReceita.SelectedValue));
+            Clinica c = Clinica.ListarPorApelido(dpSearchClinicas.Value);
 
             tbReceitaDesconto.Text = c.cvDescontos.ToString();
             tbReceitaDesconto.Enabled = true;
@@ -442,7 +448,7 @@ namespace Site
             bool result = false;
 
             Despesa dp = new Despesa();
-            dp.idTipo = int.Parse(tipo);
+            dp.idTipo = DespesaTipo.ListarPorNome(tipo).idTipo;
             dp.cdData = DateTime.Parse(data);
             dp.cvValor = float.Parse(valor);
             dp.ccObservacao = obs;
@@ -475,7 +481,7 @@ namespace Site
 
             Receita rc = new Receita();
             rc.cvValor = float.Parse(valor);
-            rc.IdClinica = int.Parse(tipo);
+            rc.IdClinica = Clinica.ListarPorApelido(tipo).idClinica;
             //
             if (!dtNF.IsNullOrWhiteSpace())
             {
@@ -494,11 +500,11 @@ namespace Site
             //
             if (!valorPago.IsNullOrWhiteSpace())
             {
-                rc.cvValorPago = float.Parse(valorPago);
+                rc.cvValorPago = float.Parse(valorPago.Replace(".",","));
             }
             if (!desconto.IsNullOrWhiteSpace())
             {
-                rc.cvDesconto = float.Parse(desconto);
+                rc.cvDesconto = float.Parse(desconto.Replace(".", ","));
             }
             rc.Observacao = obs;
 
@@ -521,6 +527,12 @@ namespace Site
         public static Clinica BuscarClinicaID(string idClinica)
         {
             return Clinica.ListarPorID(int.Parse(idClinica));
+        }
+
+        [WebMethod]
+        public static Clinica BuscarClinicaByApelido(string Apelido)
+        {
+            return Clinica.ListarPorApelido(Apelido);
         }
 
         [WebMethod]
@@ -597,6 +609,30 @@ namespace Site
         public static string GetObsRepasse(string idRepasse)
         {
             return ReceitaRepasse.GetObs(int.Parse(idRepasse));
+        }
+
+        [WebMethod]
+        public static List<string> ListarClinicasDP()
+        {
+            List<string> listaClinicas = new List<string>();
+            foreach (Clinica c in Clinica.Listar())
+            {
+                listaClinicas.Add(c.ccApelido);
+            }        
+
+            return listaClinicas;
+        }
+        
+        [WebMethod]
+        public static List<string> ListarDespesasDP()
+        {
+            List<string> listaDespesas = new List<string>();
+            foreach (DespesaTipo d in DespesaTipo.Listar())
+            {
+                listaDespesas.Add(d.ccTipo);
+            }
+
+            return listaDespesas;
         }
 
         //Webmethods

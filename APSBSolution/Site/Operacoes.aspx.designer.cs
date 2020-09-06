@@ -240,40 +240,22 @@ namespace Site
         protected global::System.Web.UI.WebControls.TextBox tbValorOperacao;
 
         /// <summary>
-        /// Controle tbSearch2.
+        /// Controle dpSearchClinicas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbSearch2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpSearchClinicas;
 
         /// <summary>
-        /// Controle tbSearch.
+        /// Controle dpSearchDespesas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbSearch;
-
-        /// <summary>
-        /// Controle dpTipoDespesa.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpTipoDespesa;
-
-        /// <summary>
-        /// Controle dpTipoReceita.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpTipoReceita;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText dpSearchDespesas;
 
         /// <summary>
         /// Controle tbDespesaDataNF.

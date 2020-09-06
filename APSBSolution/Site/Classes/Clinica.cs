@@ -178,6 +178,40 @@ namespace Site.Classes
             }
             return result;
         }
+
+        internal static Clinica ListarPorApelido(string apelido)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@ccApelido", apelido });
+            DataTable dt = DAO.RetornaDT("SEL_ClinicasByApelido @ccApelido=@ccApelido;", parametros);
+
+
+            List<Clinica> Lista = new List<Clinica>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    Lista.Add(new Clinica(
+                        int.Parse(c["IdClinica"].ToString())
+                        , c["ccApelido"].ToString()
+                        , c["ccRazaoSocial"].ToString()
+                        , c["ccNomeFantasia"].ToString()
+                        , c["ccEmail"].ToString()
+                        , double.Parse(c["cvISS"].ToString())
+                        , double.Parse(c["cvDescontos"].ToString())
+                        , c["cbDescontoVariavel"].ToString()
+                        , c["ccBanco"].ToString()
+                        , c["observacao"].ToString()
+                        , int.Parse(c["cvPgtoDias"].ToString())
+                        , long.Parse(c["cvCNPJ"].ToString())
+                                        ));
+                }
+
+            }
+
+            return Lista.FirstOrDefault();
+        }
+
         internal static bool Excluir(string Usuario, int idClinica)
         {
             bool result = false;
