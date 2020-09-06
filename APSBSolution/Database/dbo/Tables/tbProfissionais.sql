@@ -29,8 +29,11 @@
     [cvCNH]            BIGINT        DEFAULT ((0)) NULL,
     PRIMARY KEY CLUSTERED ([IdProfissional] ASC),
     FOREIGN KEY ([IdObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao]),
-    UNIQUE NONCLUSTERED ([CPFNum] ASC)
+    UNIQUE NONCLUSTERED ([CPFNum] ASC),
+    CONSTRAINT [UNQ_ccNome] UNIQUE NONCLUSTERED ([ccNome] ASC)
 );
+
+
 
 
 

@@ -20,7 +20,7 @@
  @cdFiliacao       DATETIME     = NULL, 
  @cdPgtoTaxa       DATETIME     = NULL, 
  @cdRegCartorio    DATETIME     = NULL, 
- @cvCNH BIGINT = NULL
+ @cvCNH            BIGINT       = NULL
 )
 AS
     BEGIN
@@ -58,12 +58,12 @@ AS
 		   cvCNH
 		  )
 		  VALUES
-		  (@ccNome, 
+		  (LTRIM(RTRIM(@ccNome)), 
 		   @ccSexo, 
 		   @ccNaturalUF, 
-		   @ccNaturalCidade, 
+		   LTRIM(RTRIM(@ccNaturalCidade)), 
 		   @ccEstadoCivil, 
-		   @ccEmail, 
+		   LTRIM(RTRIM(@ccEmail)), 
 		   @UserName, 
 		   @IdObservacao, 
 		   @RGNum, 
@@ -72,9 +72,9 @@ AS
 		   @CPFNum, 
 		   @cvTelefone, 
 		   @cvCelular, 
-		   @nomePai, 
-		   @nomeMae, 
-		   @nomeConjuge, 
+		   LTRIM(RTRIM(@nomePai)), 
+		   LTRIM(RTRIM(@nomeMae)), 
+		   LTRIM(RTRIM(@nomeConjuge)), 
 		   @cdDataNascimento, 
 		   @cdPgtoTaxa, 
 		   @cdFiliacao, 

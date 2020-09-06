@@ -36,12 +36,12 @@ AS
 	   BEGIN TRY
 		  UPDATE tbProfissionais
 		    SET  
-			   ccNome = @ccNome, 
+			   ccNome = TRIM(@ccNome), 
 			   ccSexo = @ccSexo, 
 			   ccNaturalUF = @ccNaturalUF, 
 			   ccNaturalCidade = @ccNaturalCidade, 
 			   ccEstadoCivil = @ccEstadoCivil, 
-			   ccEmail = @ccEmail, 
+			   ccEmail = TRIM(@ccEmail), 
 			   ccAlteradoPor = @UserName, 
 			   cdDataAlteracao = GETDATE(), 
 			   IdObservacao = @idObservacao, 
@@ -51,9 +51,9 @@ AS
 			   CPFNum = @CPFNum, 
 			   cvTelefone = @cvTelefone, 
 			   cvCelular = @cvCelular, 
-			   nomePai = @nomePai, 
-			   nomeMae = @nomeMae, 
-			   nomeConjuge = @nomeConjuge, 
+			   nomePai = TRIM(@nomePai), 
+			   nomeMae = TRIM(@nomeMae), 
+			   nomeConjuge = TRIM(@nomeConjuge), 
 			   cdDataNascimento = @cdDataNascimento, 
 			   cdFiliacao = @cdFiliacao, 
 			   cdPgtoTaxa = @cdPgtoTaxa, 
