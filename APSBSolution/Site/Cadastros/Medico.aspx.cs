@@ -34,6 +34,10 @@ namespace Site.Cadastros
             }
         }
 
+        protected void btRefresh_Click(object sender, EventArgs e)
+        {
+            gvMedicos.DataBind();
+        }
         protected void gvMedicos_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             int idLinha = int.Parse(e.CommandArgument.ToString());
@@ -404,5 +408,7 @@ namespace Site.Cadastros
         }
 
         #endregion
+
+       
     }
 }

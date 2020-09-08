@@ -27,9 +27,10 @@
         </div>
         <div class="col-md-4"></div>
     </div>
-    <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-secondary" OnClientClick="LimparForm()">
+    <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-primary" OnClientClick="LimparForm()">
         Novo Médico
     </asp:LinkButton>
+    <asp:Button Text="Atualizar" runat="server" ID="btRefresh" OnClick="btRefresh_Click" CssClass="btn btn-secondary" />
     <div class="row">
         <div class="col">
             <br />
