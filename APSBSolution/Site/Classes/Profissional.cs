@@ -185,6 +185,10 @@ namespace Site.Classes
                     p1.ccNaturalUF = p["ccNaturalUF"].ToString();
                     p1.ccNaturalCidade = p["ccNaturalCidade"].ToString();
                     p1.ccEstadoCivil = p["ccEstadoCivil"].ToString();
+                    if (DateTime.TryParse(p["cdDataCriacao"].ToString(), out DateTime data1))
+                    {
+                        p1.cdDataCriacao = data1;
+                    }
                     if (!p["RGNum"].ToString().IsNullOrWhiteSpace())
                     {
                         p1.RGNum = long.Parse(p["RGNum"].ToString());

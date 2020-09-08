@@ -45,6 +45,7 @@
                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" runat="server" href="~/Reports/Clinicas">Lista de Clínicas</a>
                             <a class="dropdown-item" runat="server" href="~/Reports/Profissionais">Lista de Profissionais</a>
+                              <a class="dropdown-item" runat="server" href="~/Reports/Repasses">Relatório de Repasses</a>
                             <a class="dropdown-item" runat="server" href="~/Reports/Despesas">Relatório de Despesas</a>
                             <a class="dropdown-item" runat="server" href="~/Reports/Vendas">Relatório de Vendas</a>
                         </div>

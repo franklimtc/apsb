@@ -467,6 +467,7 @@
     <Content Include="Reports\Despesas.aspx" />
     <Content Include="Reports\Profissionais.aspx" />
     <Content Include="Reports\Clinicas.aspx" />
+    <Content Include="Reports\Repasses.aspx" />
     <Content Include="Reports\Report.aspx" />
     <Content Include="Reports\Report2.aspx" />
     <Content Include="Reports\Vendas.aspx" />
@@ -1198,6 +1199,7 @@
     <Compile Include="Classes\Receita.cs" />
     <Compile Include="Classes\ReceitaRepasse.cs" />
     <Compile Include="Classes\RelDespesas.cs" />
+    <Compile Include="Classes\RelProfissionais.cs" />
     <Compile Include="Classes\RelVendas.cs" />
     <Compile Include="Classes\Report.cs" />
     <Compile Include="Contact.aspx.cs">
@@ -1335,6 +1337,13 @@
     </Compile>
     <Compile Include="Reports\Clinicas.aspx.designer.cs">
       <DependentUpon>Clinicas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Repasses.aspx.cs">
+      <DependentUpon>Repasses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Repasses.aspx.designer.cs">
+      <DependentUpon>Repasses.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
