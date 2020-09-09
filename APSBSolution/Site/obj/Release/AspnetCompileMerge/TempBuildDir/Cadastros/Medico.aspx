@@ -30,7 +30,7 @@
     <asp:LinkButton runat="server" data-toggle="modal" data-target="#medicoModal" ToolTip="Editar" CssClass="btn btn-primary" OnClientClick="LimparForm()">
         Novo Médico
     </asp:LinkButton>
-    <asp:Button Text="Atualizar" runat="server" ID="btRefresh" OnClick="btRefresh_Click" CssClass="btn btn-secondary" />
+    <%--<asp:Button Text="Atualizar" runat="server" ID="btRefresh" OnClick="btRefresh_Click" CssClass="btn btn-secondary" />--%>
     <div class="row">
         <div class="col">
             <br />
@@ -137,7 +137,7 @@
                             </div>
                             <div class="col-sm-4">
                                 <label for="tbCidade">Cidade:</label>
-                                <input runat="server" type="text" name="tbCidade" id="tbCidade" value="" class="form-control" required />
+                                <input runat="server" type="text" name="tbCidade" id="tbCidade" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="row">
@@ -150,7 +150,7 @@
                             </div>
                             <div class="col">
                                 <label for="tbdtNascimento">Data de Nascimento:</label>
-                                <input runat="server" type="date" name="tbNome" id="tbdtNascimento" value="" class="form-control" required />
+                                <input runat="server" type="date" name="tbNome" id="tbdtNascimento" value="" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -168,11 +168,11 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="tbRGNum">RG:</label>
-                                <input runat="server" type="text" name="tbRGNum" id="tbRGNum" value="" class="form-control number" required />
+                                <input runat="server" type="text" name="tbRGNum" id="tbRGNum" value="" class="form-control number" />
                             </div>
                             <div class="col">
                                 <label for="tbRGEmissor">Emissor:</label>
-                                <input runat="server" type="text" name="tbRGEmissor" id="tbRGEmissor" value="" class="form-control" required />
+                                <input runat="server" type="text" name="tbRGEmissor" id="tbRGEmissor" value="" class="form-control" />
                             </div>
                             <div class="col-md-5">
                                 <label for="tbRGdata">Emissão:</label>

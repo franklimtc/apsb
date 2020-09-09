@@ -38,7 +38,7 @@ namespace Site.Fichas
                 lbNome.Text = p1.ccNome;
                 lbNomeAss.Text = p1.ccNome;
                 lbSexo.Text = p1.ccSexo;
-                lbDtNascimento.Text = p1.dtNascimento.ToString("dd/MM/yyyy");
+                lbDtNascimento.Text = p1.dtNascimento.Value.ToString("dd/MM/yyyy");
                 lbCPF.Text = p1.CPFNum.ToString("00000000000");
                 lbRG.Text = p1.RGNum.ToString();
                 lbOrgExp.Text = p1.RGEmissor;
@@ -50,7 +50,7 @@ namespace Site.Fichas
                 lbCEP.Text = p3.cvCEP.Value.ToString("00000000");
                 lbBairro.Text = p3.ccBairro;
                 lbCidade.Text = $"{p3.ccCidade}/{p3.ccUF}";
-                lbCelular.Text = p1.cvCelular.ToString("00000000000");
+                lbCelular.Text = p1.cvCelular.Value.ToString("00000000000");
                 lbEmail.Text = p1.ccEmail;
                 lbTitulo.Text = p2.cvTitulo.ToString();
                 lbCNH.Text = p2.cvCHN.ToString();

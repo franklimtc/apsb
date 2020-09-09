@@ -1,4 +1,6 @@
-﻿function AdicionarBanco() {
+﻿//import { isUndefined } from "../DataTables/extensions/pdfmake/pdfmake";
+
+function AdicionarBanco() {
 
 
     var idbanco = $("#MainContent_dpProfissionalBanco").children("option:selected").val();
@@ -372,26 +374,32 @@ function SalvarMedico() {
         , cnh: $("#MainContent_tbCNH").val()
     }
 
-
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: JSON.stringify(relacaoObj),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        error: function () {
-            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
-        },
-        success: function (result) {
-            if (result.d == true) {
-                alert("Registro salvo com sucesso!");
-            } else {
-                alert("Falha ao salvar o registro!");
+    if (relacaoObj.nome != "" && relacaoObj.cpf != "") {
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: JSON.stringify(relacaoObj),
+            contentType: 'application/json; charset=utf-8',
+            dataType: 'json',
+            error: function () {
+                alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+            },
+            success: function (result) {
+                if (result.d == true) {
+                    alert("Registro salvo com sucesso!");
+                    location.reload();
+                } else {
+                    alert("Falha ao salvar o registro!");
+                }
             }
-        }
-    });
+        });
+    } else {
+        alert("Obrigatório inserir Nome e CPF do profissional!");
+    };
 
-    $("#MainContent_gvMedicos").append("<tr><td>0</td><td>" + relacaoObj.nome + "</td><td>" + relacaoObj.email + "</td><td>" + relacaoObj.obs+"</td><td>Atualize</td><td>a</td><td>página</td><td>...</td><td>...</td><td>...</td></tr>");
+    
+
+    //$("#MainContent_gvMedicos").append("<tr><td>0</td><td>" + relacaoObj.nome + "</td><td>" + relacaoObj.email + "</td><td>" + relacaoObj.obs+"</td><td>Atualize</td><td>a</td><td>página</td><td>...</td><td>...</td><td>...</td></tr>");
 
 };
 

@@ -26,22 +26,22 @@ namespace Site.Classes
         public DateTime cdDAtaAlteracao { get; set; }//cdDataAlteracao datetime    no	8
         public int idObservacao { get; set; }//IdObservacao int no	4
         public string Observacoes { get; set; }
-        public long RGNum { get; set; }//RGNum varchar no	20
+        public long? RGNum { get; set; }//RGNum varchar no	20
         public string RGEmissor { get; set; }//RGEmissor varchar no	5
-        public DateTime RGdtEmissao { get; set; }//RGdtEmissao datetime    no	8
+        public DateTime? RGdtEmissao { get; set; }//RGdtEmissao datetime    no	8
         public long CPFNum { get; set; }//CPFNum varchar no	15
-        public long cvTelefone { get; set; }//cvTelefone bigint  no	8
-        public long cvCelular { get; set; }//cvCelular bigint  no	8   
+        public long? cvTelefone { get; set; }//cvTelefone bigint  no	8
+        public long? cvCelular { get; set; }//cvCelular bigint  no	8   
         public string nomePai { get; set; }//nomePai
         public string nomeMae { get; set; }//nomeMae
         public string nomeConjuge { get; set; }//nomeConjuge
-        public DateTime dtNascimento { get; set; }
-        public DateTime cdFiliacao { get; set; }
-        public DateTime cdPgtoTaxa { get; set; }
+        public DateTime? dtNascimento { get; set; }
+        public DateTime? cdFiliacao { get; set; }
+        public DateTime? cdPgtoTaxa { get; set; }
         public string Token { get; set; }
         public string StatusCadastro { get; set; }
-        public DateTime cdRegCartorio { get; internal set; }
-        public long cvCNH { get; set; }
+        public DateTime? cdRegCartorio { get; internal set; }
+        public long? cvCNH { get; set; }
         #endregion
 
         public Profissional()
@@ -54,7 +54,7 @@ namespace Site.Classes
             this.IdProfissional = _id;
             this.ccNome = _nome;
         }
-        public Profissional(int _id, int _cel, string _nome, string _email)
+        public Profissional(int _id, long _cel, string _nome, string _email)
         {
             this.IdProfissional = _id;
             this.cvCelular = _cel;
@@ -290,7 +290,7 @@ namespace Site.Classes
             parametros.Add(new object[] { "@observacoes", this.Observacoes });
             parametros.Add(new object[] { "@RGNum", this.RGNum });
             parametros.Add(new object[] { "@RGEmissor", this.RGEmissor });
-            if (this.RGdtEmissao.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.RGdtEmissao.HasValue)
             {
                 parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
             }
@@ -308,7 +308,7 @@ namespace Site.Classes
             parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
             parametros.Add(new object[] { "@cvCNH", this.cvCNH });
 
-            if (this.cdFiliacao.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.cdFiliacao.HasValue)
             {
                 parametros.Add(new object[] { "@cdFiliacao", this.cdFiliacao });
             }
@@ -317,7 +317,7 @@ namespace Site.Classes
                 parametros.Add(new object[] { "@cdFiliacao", DBNull.Value });
             }
 
-            if (this.cdPgtoTaxa.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.cdPgtoTaxa.HasValue)
             {
                 parametros.Add(new object[] { "@cdPgtoTaxa", this.cdPgtoTaxa });
             }
@@ -326,7 +326,7 @@ namespace Site.Classes
                 parametros.Add(new object[] { "@cdPgtoTaxa", DBNull.Value });
             }
 
-            if (this.cdRegCartorio.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.cdRegCartorio.HasValue)
             {
                 parametros.Add(new object[] { "@cdRegCartorio", this.cdRegCartorio });
             }
@@ -382,9 +382,18 @@ namespace Site.Classes
             parametros.Add(new object[] { "@ccEstadoCivil", this.ccEstadoCivil });
             parametros.Add(new object[] { "@ccEmail", this.ccEmail });
             parametros.Add(new object[] { "@observacoes", this.Observacoes });
-            parametros.Add(new object[] { "@RGNum", this.RGNum });
             parametros.Add(new object[] { "@RGEmissor", this.RGEmissor });
-            if (this.RGdtEmissao.ToString("dd/MM/yyyy") != "01/01/0001")
+
+            if (this.RGNum.HasValue)
+            {
+                parametros.Add(new object[] { "@RGNum", this.RGNum });
+            }
+            else
+            {
+                parametros.Add(new object[] { "@RGNum", DBNull.Value });
+            }
+
+            if (this.RGdtEmissao.HasValue)
             {
                 parametros.Add(new object[] { "@RGdtEmissao", this.RGdtEmissao });
             }
@@ -401,7 +410,7 @@ namespace Site.Classes
             parametros.Add(new object[] { "@cdDataNascimento", this.dtNascimento });
             parametros.Add(new object[] { "@cvCNH", this.cvCNH });
 
-            if (this.cdFiliacao.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.cdFiliacao.HasValue)
             {
                 parametros.Add(new object[] { "@cdFiliacao", this.cdFiliacao });
             }
@@ -410,7 +419,7 @@ namespace Site.Classes
                 parametros.Add(new object[] { "@cdFiliacao", DBNull.Value });
             }
 
-            if (this.cdPgtoTaxa.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.cdPgtoTaxa.HasValue)
             {
                 parametros.Add(new object[] { "@cdPgtoTaxa", this.cdPgtoTaxa });
             }
@@ -419,7 +428,7 @@ namespace Site.Classes
                 parametros.Add(new object[] { "@cdPgtoTaxa", DBNull.Value });
             }
 
-            if (this.cdRegCartorio.ToString("dd/MM/yyyy") != "01/01/0001")
+            if (this.cdRegCartorio.HasValue)
             {
                 parametros.Add(new object[] { "@cdRegCartorio", this.cdRegCartorio });
             }

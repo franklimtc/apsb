@@ -211,25 +211,25 @@ namespace Site.Cadastros
             tbCelular.Text = editProf.cvCelular.ToString();
             tbObservacoes.Text = editProf.Observacoes;
             DateTime? dtdefault = new DateTime();
-            if (editProf.RGdtEmissao != dtdefault)
+            if (editProf.RGdtEmissao.HasValue)
             {
-                tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("dd/MM/yyyy");
+                tbdtEmissaoRG.Text = editProf.RGdtEmissao.Value.ToString("dd/MM/yyyy");
             }
-            if (editProf.dtNascimento != dtdefault)
+            if (editProf.dtNascimento.HasValue)
             {
-                tbDataNascimento.Text = editProf.dtNascimento.ToString("dd/MM/yyyy");
+                tbDataNascimento.Text = editProf.dtNascimento.Value.ToString("dd/MM/yyyy");
             }
-            if (editProf.cdPgtoTaxa != dtdefault)
+            if (editProf.cdPgtoTaxa.HasValue)
             {
-                tbPgtoTaxa.Text = editProf.cdPgtoTaxa.ToString("dd/MM/yyyy");
+                tbPgtoTaxa.Text = editProf.cdPgtoTaxa.Value.ToString("dd/MM/yyyy");
             }
-            if (editProf.cdFiliacao != dtdefault)
+            if (editProf.cdFiliacao.HasValue)
             {
-                tbFiliacao.Text = editProf.cdFiliacao.ToString("dd/MM/yyyy");
+                tbFiliacao.Text = editProf.cdFiliacao.Value.ToString("dd/MM/yyyy");
             }
-            if (editProf.cdRegCartorio != dtdefault)
+            if (editProf.cdRegCartorio.HasValue)
             {
-                tbRegCartorio.Text = editProf.cdRegCartorio.ToString("dd/MM/yyyy");
+                tbRegCartorio.Text = editProf.cdRegCartorio.Value.ToString("dd/MM/yyyy");
             }
 
             string scriptModal = @"$('#medicoModal').modal('show')";

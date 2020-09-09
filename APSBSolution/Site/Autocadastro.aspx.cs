@@ -223,8 +223,8 @@ namespace Site
                 tbCelular.Text = editProf.cvCelular.ToString();
                 tbObservacoes.Text = editProf.Observacoes;
 
-                tbdtEmissaoRG.Text = editProf.RGdtEmissao.ToString("yyyy-MM-dd");
-                tbDataNascimento.Text = editProf.dtNascimento.ToString("yyyy-MM-dd");
+                tbdtEmissaoRG.Text = editProf.RGdtEmissao.Value.ToString("yyyy-MM-dd");
+                tbDataNascimento.Text = editProf.dtNascimento.Value.ToString("yyyy-MM-dd");
             }
            
 

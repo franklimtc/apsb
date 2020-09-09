@@ -49,9 +49,21 @@ namespace Site.Classes
             {
                 foreach (var item in parametros)
                 {
-                    comand.Parameters.AddWithValue(item[0].ToString(), item[1]);
+                    switch (item[1])
+                    {
+                        case null:
+                            comand.Parameters.AddWithValue(item[0].ToString(), DBNull.Value);
+                            break;
+                        case "":
+                            comand.Parameters.AddWithValue(item[0].ToString(), DBNull.Value);
+                            break;
+                        default:
+                            comand.Parameters.AddWithValue(item[0].ToString(), item[1]);
+                            break;
+                    }
                 }
             }
+            
 
             object result;
 
