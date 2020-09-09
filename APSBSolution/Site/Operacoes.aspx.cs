@@ -500,7 +500,7 @@ namespace Site
             //
             if (!valorPago.IsNullOrWhiteSpace())
             {
-                rc.cvValorPago = float.Parse(valorPago.Replace(".",","));
+                rc.cvValorPago = float.Parse(valorPago);
             }
             if (!desconto.IsNullOrWhiteSpace())
             {

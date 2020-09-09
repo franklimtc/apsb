@@ -521,6 +521,17 @@
                 localStorage["Operacoes"] = $('.dataTables_filter input').val();
             });
 
+            //Calcular Desconto
+            $("#MainContent_tbReceitaNFValorPG").change(function () {
+                CalcularDesconto();
+            });
+
+            //Calcular Valor Total
+            
+            $("#MainContent_tbReceitaDesconto").change(function () {
+                CalcularValorPago();
+            });
+
             //Carregar Dropdowns
             CarregarClinicasDP();
             CarregarDespesasDP();
