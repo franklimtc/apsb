@@ -287,20 +287,24 @@ function AbrirRepasseModal(tipo, id) {
                 }
 
                 //Carregar dados Dropdown
-                $('#dpSelectProfissional').empty();
+                //$('#dpSelectProfissional').empty();
+                $("#dsRepasseProfissional").empty();
+
                 var i = 0;
                 var p = result.d[2][i];
                 if (p != undefined) {
                     while (p != undefined) {
-                        $("#dpSelectProfissional").append(new Option(p.ccNome, p.IdProfissional));
+                        $("#dsRepasseProfissional").append(new Option(p.ccNome))
+                        //$("#dpSelectProfissional").append(new Option(p.ccNome, p.IdProfissional));
                         i++;
                         p = result.d[2][i];
                     }
                 }
                 else {
-                    $('#dpSelectProfissional')
-                        .empty()
-                        .append('<option selected="selected" value="0">Nenhum profissional associado</option>');
+                    //$('#dpSelectProfissional')
+                    //    .empty()
+                    //    .append('<option selected="selected" value="0">Nenhum profissional associado</option>');
+                    $("#dsRepasseProfissional").empty();
                 }
                 //Validar Valores
                 var cvValor = result.d[0].cvValorPago;
@@ -371,39 +375,6 @@ function getInfo(id) {
     return false;
 };
 
-function AdicionarRepasse() {
-    //string Usuario, string idProfissional, string cvValor, string idReceita
-
-    var id = $("#hiddenRepasseID").val();
-    var _idProfissional = $("#dpSelectProfissional").val();
-    var _cvValor = $("#MainContent_tbValorDisponivel").val();
-    var _idReceita = $("#hiddenRepasseID").val();
-    var _data = $("#MainContent_tbDtRepasse").val();
-    var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
-
-    var relacaoObj = {
-        Usuario: user,
-        idProfissional: _idProfissional,
-        cvValor: _cvValor,
-        idReceita: _idReceita,
-        data: _data
-    };
-
-    $.ajax({
-        type: "POST",
-        url: "Operacoes.aspx/AdicionarRepasse",
-        data: JSON.stringify(relacaoObj),
-        contentType: 'application/json; charset=utf-8',
-        dataType: 'json',
-        error: function () {
-            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
-        },
-        success: function (result) {
-            AbrirRepasseModal("Receita", id);
-        }
-    });
-
-};
 
 function cmdRepasse(cmd, id) {
     var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
@@ -498,6 +469,80 @@ function CarregarDadosClinica() {
             else {
                 $("#MainContent_chkIssRetido").prop("checked", false);
             }
+        }
+    });
+};
+
+function Get_ProfissionalIDByReceita(idReceita, nomeProfissional) {
+    var obj = {
+        id: idReceita
+        , nome: nomeProfissional
+        , idProfissional: 0
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/BuscarProfissionalIDByReceita",
+        data: JSON.stringify(obj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            //console.log(result.d);
+            obj.idProfissional = result.d;
+        }
+    });
+
+};
+
+function AdicionarRepasse() {
+    //string Usuario, string idProfissional, string cvValor, string idReceita
+
+    var id = $("#hiddenRepasseID").val();
+    //var _idProfissional = $("#dpSelectProfissional").val();
+    var _nomeProfissional = $("#dpSelectProfissional2").val();
+    var _cvValor = $("#MainContent_tbValorDisponivel").val();
+    var _idReceita = $("#hiddenRepasseID").val()
+    var _data = $("#MainContent_tbDtRepasse").val();
+    var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
+
+    var objProfissional = {
+        id: _idReceita,
+        nome: _nomeProfissional,
+        idProfissional: 0
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/BuscarProfissionalIDByReceita",
+        data: JSON.stringify(objProfissional),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        success: function (result) {
+            SalvarRepasse(user, result.d, _cvValor, _idReceita, _data);
+        }
+    });
+};
+
+function SalvarRepasse(user, id, _cvValor, _idReceita, _data) {
+    var relacaoObj = {
+        Usuario: user,
+        idProfissional: id,
+        cvValor: _cvValor,
+        idReceita: _idReceita,
+        data: _data
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/AdicionarRepasse",
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+        },
+        success: function (result) {
+            AbrirRepasseModal("Receita", _idReceita);
         }
     });
 };

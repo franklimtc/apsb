@@ -208,8 +208,14 @@
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
                             </div>--%>
                             <div>
-                                <select id="dpSelectProfissional" class="form-control">
-                                </select>
+                               <%-- <select id="dpSelectProfissional" class="form-control">
+                                </select>--%>
+                                <input list="dsRepasseProfissional" name="dpSelectProfissional2" id="dpSelectProfissional2" value="" class="form-control" />
+                                <datalist id="dsRepasseProfissional">
+                                    <option>Teste 1</option>
+                                    <option>Teste 2</option>
+                                    <option>Teste 3</option>
+                                </datalist>
                             </div>
                         </div>
                     </div>

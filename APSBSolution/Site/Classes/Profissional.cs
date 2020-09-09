@@ -555,6 +555,26 @@ namespace Site.Classes
             return result;
         }
 
+        internal static int GetProfissionalIDByReceita(string id, string nome)
+        {
+            int result = 0;
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idReceita", int.Parse(id) });
+            parametros.Add(new object[] { "@ccNome", nome });
+
+
+            try
+            {
+                object retorno = DAO.ExecuteScalar(@"SEL_ProfissionalIDByReceita @idReceita = @idReceita, @ccNome = @ccNome;", parametros);
+                int.TryParse(retorno.ToString(), out result);
+            }
+            catch
+            {
+
+            }
+            return result;
+        }
+
         internal static bool AtivarAuto(string Usuario, string token)
         {
             bool result = false;

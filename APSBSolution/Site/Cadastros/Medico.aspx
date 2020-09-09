@@ -603,7 +603,7 @@
             }
             
             if (carregaDados === false) {
-
+                $("#MainContent_idHiddenMedico").val("");
                 $("#MainContent_tbNome").val("");
                 $("#MainContent_dpSexo").val("H").change();
                 $("#MainContent_dpUFNatural").val("DF").change();

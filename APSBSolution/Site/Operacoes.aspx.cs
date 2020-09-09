@@ -635,6 +635,12 @@ namespace Site
             return listaDespesas;
         }
 
+        [WebMethod]
+        public static int BuscarProfissionalIDByReceita(string id, string nome)
+        {
+            return Profissional.GetProfissionalIDByReceita(id, nome);
+        }
+
         //Webmethods
     }
 }
