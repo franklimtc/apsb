@@ -79,6 +79,7 @@
             <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
             <input type="hidden" id="idHiddenOperacao2" name="idHiddenOperacao2" value="" />
             <input type="hidden" id="hiddenRepasseID" name="hiddenRepasseID" value="" />
+            <input type="hidden" id="hiddenRepasseAlterado" name="hiddenRepasseAlterado" value="0" />
 
             <asp:TextBox runat="server" Text="Receita" CssClass="d-none" ID="tbAbaAtiva" />
             <%--Hidden Fields--%>
@@ -183,7 +184,7 @@
     </div>
 
     <!-- Modal Repasse Médico-->
-    <div class="modal fade" id="repasseMedicoModal" tabindex="-1" role="dialog" aria-labelledby="repasseMedicoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="repasseMedicoModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="repasseMedicoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -310,7 +311,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <button type="button" id="btFecharRepasseModal" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <%--<button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>--%>
                 </div>
             </div>
@@ -544,6 +545,14 @@
                 AtvDespesa();
                 return false;
 
+        });
+
+
+        $("#btFecharRepasseModal").click(function () {
+            if ($("#hiddenRepasseAlterado").val() =="1") {
+                location.reload();
+                $("#hiddenRepasseAlterado").val("0");
+            }
         });
 
         function novaOperacao() {

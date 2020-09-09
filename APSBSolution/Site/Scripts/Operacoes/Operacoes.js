@@ -402,7 +402,8 @@ function Call(metodo, obj) {
             alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(obj));
         },
         success: function (result) {
-            AbrirRepasseModal("Receita", $("#hiddenRepasseID").val())
+            $("#hiddenRepasseAlterado").val("1");
+            AbrirRepasseModal("Receita", $("#hiddenRepasseID").val());
         }
     });
 };
@@ -542,6 +543,7 @@ function SalvarRepasse(user, id, _cvValor, _idReceita, _data) {
             alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
+            $("#hiddenRepasseAlterado").val("1");
             AbrirRepasseModal("Receita", _idReceita);
         }
     });

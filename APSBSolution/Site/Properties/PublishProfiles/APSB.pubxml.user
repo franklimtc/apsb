@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/09/2020 19:11:06</publishTime>
+      <publishTime>09/09/2020 19:31:23</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/09/2020 19:11:06</publishTime>
+      <publishTime>09/09/2020 19:31:23</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/09/2020 19:10:48</publishTime>
+      <publishTime>09/09/2020 19:31:09</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/09/2020 19:10:48</publishTime>
+      <publishTime>09/09/2020 19:31:09</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -1946,10 +1946,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/15/2020 22:10:10</publishTime>
     </File>
     <File Include="Operacoes.aspx">
-      <publishTime>09/08/2020 22:34:38</publishTime>
+      <publishTime>09/09/2020 19:26:36</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/09/2020 19:10:53</publishTime>
+      <publishTime>09/09/2020 19:31:12</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2654,7 +2654,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/09/2020 13:42:30</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Operacoes.js">
-      <publishTime>09/09/2020 18:23:15</publishTime>
+      <publishTime>09/09/2020 19:29:27</publishTime>
     </File>
     <File Include="Scripts/popper-utils.js">
       <publishTime>08/13/2020 08:16:19</publishTime>
