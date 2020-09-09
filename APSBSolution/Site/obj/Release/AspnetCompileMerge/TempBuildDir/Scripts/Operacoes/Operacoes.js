@@ -550,20 +550,25 @@ function SalvarRepasse(user, id, _cvValor, _idReceita, _data) {
 function CalcularValorPago() {
     var valorTotal = $("#MainContent_tbValorOperacao").val().replace(".", "").replace(",", ".");
     var valorDesconto = $("#MainContent_tbReceitaDesconto").val().replace(".", "").replace(",", ".");
-    var valorPago = valorTotal - (valorTotal * valorDesconto / 100);
-    $("#MainContent_tbReceitaNFValorPG").val(valorPago.toFixed(2));
-    //console.log(valorTotal);
-    //console.log(valorDesconto);
-    //console.log(valorPago);
+    var valorISS = 0;
+    if ($("#MainContent_chkIssRetido").is(":checked")) {
+        valorISS = 2
+    }
+    if (valorDesconto != "") {
+        var valorPago = valorTotal - (valorTotal * (Number(valorDesconto) + Number(valorISS)) / 100);
+        $("#MainContent_tbReceitaNFValorPG").val(valorPago.toFixed(2));
+    }
 };
 
 function CalcularDesconto() {
     var valorTotal = $("#MainContent_tbValorOperacao").val().replace(".", "").replace(",", ".");
     var valorPago = $("#MainContent_tbReceitaNFValorPG").val().replace(".", "").replace(",", ".");
-    var valorDesconto = 100 - (valorPago / valorTotal * 100);
-    $("#MainContent_tbReceitaDesconto").val(valorDesconto.toFixed(2));
-    //console.log(valorTotal);
-    //console.log(valorDesconto);
-    //console.log(valorPago);
-
+    var valorISS = 0;
+    if ($("#MainContent_chkIssRetido").is(":checked")) {
+        valorISS = 2
+    }
+    if (valorPago != "") {
+        var valorDesconto = 100 - ((valorPago / valorTotal * 100) + valorISS);
+        $("#MainContent_tbReceitaDesconto").val(valorDesconto.toFixed(2));
+    }
 };

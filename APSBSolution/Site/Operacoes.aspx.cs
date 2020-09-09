@@ -349,28 +349,7 @@ namespace Site
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", scriptModal, true);
 
         }
-        //protected void bdAddRepasse_Click(object sender, EventArgs e)
-        //{
-        //    string Usuario = "Franklim";
-        //    ReceitaRepasse rr = new ReceitaRepasse();
-        //    rr.IdProfissional = int.Parse(dpSelectProfissional.SelectedValue);
-        //    rr.cvValor = float.Parse(tbValorDisponivel.Text);
-        //    rr.idReceita = int.Parse(idHiddenOperacao.Value);
-        //    string scriptModal = null;
-
-        //    if (!rr.Adicionar(Usuario))
-        //    {
-        //        scriptModal = string.Format($"alert('Falha na operação!'); formatValorDisponivel('{HddValorNegativo.Value}'); $('#repasseMedicoModal').modal('show')");
-        //        ScriptManager.RegisterStartupScript(this.Page, GetType(), "", scriptModal, true);
-        //    }
-        //    else
-        //    {
-        //        gvRepasseMedico.DataBind();
-        //        gvOperacoes.DataBind();
-        //        CarregarModalRepasse(rr.idReceita, "Receita");
-        //    }
-
-        //}
+       
         protected void btAplicarFiltro_Click(object sender, EventArgs e)
         {
             gvOperacoes.DataSourceID = "";
@@ -500,7 +479,7 @@ namespace Site
             //
             if (!valorPago.IsNullOrWhiteSpace())
             {
-                rc.cvValorPago = float.Parse(valorPago);
+                rc.cvValorPago = toFloat(valorPago);
             }
             if (!desconto.IsNullOrWhiteSpace())
             {
@@ -641,6 +620,27 @@ namespace Site
             return Profissional.GetProfissionalIDByReceita(id, nome);
         }
 
+        public static float toFloat(string numero)
+        {
+            string[] num = numero.Replace(",", ".").Split('.');
+            float nFloat;
+            if (num.Length == 1)
+            {
+                nFloat = float.Parse(num[0]);
+            }
+            else
+            {
+                string nFormat = "";
+                for (int i = 0; i < num.Length - 1; i++)
+                {
+                    nFormat += num[i];
+                }
+                nFormat += "," + num[num.Length - 1];
+
+                float.TryParse(nFormat, out nFloat);
+            }
+            return nFloat;
+        }
         //Webmethods
     }
 }
