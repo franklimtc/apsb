@@ -150,13 +150,13 @@ namespace Site
         protected global::System.Web.UI.WebControls.GridView gvRepasses;
 
         /// <summary>
-        /// Controle dsRepasses.
+        /// Controle dsRepasses2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsRepasses;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsRepasses2;
 
         /// <summary>
         /// Controle tbDtRepasse.

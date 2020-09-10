@@ -9,20 +9,40 @@
         <div class="col"></div>
     </div>
     <div class="row">
-        <div class="col">
-            <asp:Button ID="btExportar" Text="Exportar" runat="server" CssClass="btn btn-secondary" OnClientClick="alert('Não implementado!')" />
+        <div class="col-md-2">
+            <label for="MainContent_dtInicio">Data inicial:</label>
+            <asp:TextBox runat="server" ID="dtInicio" type="date" requered />
+        </div>
+        <div class="col-md-2">
+            <label for="MainContent_dtFinal">Data Final:</label>
+            <%--<input runat="server" type="date" name="dtFinal" id="dtFinal" value="" required />--%>
+            <asp:TextBox runat="server" ID="dtFinal" type="date" requered />
         </div>
     </div>
+    <div class="row">
+         <div class="col-md-2">
+             <br />
+            <asp:Button ID="btAtualizar" Text="Atualizar" runat="server" CssClass="btn btn-primary" OnClick="btAtualizar_Click" />
+            <asp:Button ID="btExportar" Text="Exportar" runat="server" CssClass="btn btn-secondary" OnClick="btExportar_Click" />
+        </div>
+    </div>
+
+    <asp:SqlDataSource runat="server" ID="dsRepasses" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ProfissionalRepasses" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="dtInicio" Name="dtInicial" PropertyName="Text" Type="DateTime" />
+            <asp:ControlParameter ControlID="dtFinal" Name="dtFinal" PropertyName="Text" Type="DateTime" />
+        </SelectParameters>
+    </asp:SqlDataSource>
 
     <div class="row">
         <div class="col">
             <br />
-            <asp:GridView runat="server" DataSourceID="dsRepasses" CssClass="table table-hover table-striped" AutoGenerateColumns="False" DataKeyNames="IdProfissional">
+            <asp:GridView runat="server" ID="gvRepasses" CssClass="table table-hover table-striped" AutoGenerateColumns="False" DataKeyNames="IdProfissional">
                 <Columns>
                     <asp:BoundField DataField="IdProfissional" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="IdProfissional" Visible="false" />
                     <asp:BoundField DataField="ccNome" HeaderText="Profissional" SortExpression="ccNome" />
                     <asp:BoundField DataField="nomeMae" HeaderText="Nome da mãe" SortExpression="nomeMae" />
-                    <asp:BoundField DataField="CPFNum" HeaderText="CPF" SortExpression="CPFNum"  ItemStyle-CssClass="cpf"/>
+                    <asp:BoundField DataField="CPFNum" HeaderText="CPF" SortExpression="CPFNum" ItemStyle-CssClass="cpf" />
                     <asp:BoundField DataField="RGNum" HeaderText="RG" SortExpression="RGNum" />
                     <asp:BoundField DataField="titulo" HeaderText="Título Eleitoral" SortExpression="titulo" />
                     <asp:BoundField DataField="cvCNH" HeaderText="CNH" SortExpression="cvCNH" />
@@ -34,8 +54,7 @@
                     <asp:BoundField DataField="periodo" HeaderText="Período" ReadOnly="True" SortExpression="periodo" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource runat="server" ID="dsRepasses" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ProfissionalRepasses" SelectCommandType="StoredProcedure">
-            </asp:SqlDataSource>
+
         </div>
     </div>
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>

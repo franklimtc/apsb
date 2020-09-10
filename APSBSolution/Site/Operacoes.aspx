@@ -104,7 +104,7 @@
                         <asp:BoundField HeaderText="Nota" DataField="cvNF" />
                         <asp:BoundField HeaderText="Emissão" DataField="cdEmissao" ItemStyle-CssClass="date" />
                         <asp:BoundField HeaderText="Pagamento" DataField="cdPagamento" ItemStyle-CssClass="date" />
-                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" ItemStyle-CssClass="date"/>
+                        <asp:BoundField HeaderText="Repasse" DataField="cdRepasse" ItemStyle-CssClass="date" />
                         <asp:BoundField HeaderText="Tipo" DataField="Tipo" />
                         <asp:TemplateField HeaderText="Status">
                             <ItemTemplate>
@@ -144,20 +144,23 @@
         <div class="row d-none" id="divRepasses">
             <div class="col">
                 <br />
-                <asp:GridView runat="server" ID="gvRepasses" DataSourceID="dsRepasses" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvRepasses_PreRender">
+                <asp:GridView runat="server" ID="gvRepasses" DataSourceID="dsRepasses2" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvRepasses_PreRender">
                     <Columns>
                         <%--ccApelido	ccNome	cvNF	cdEmissao	ValorNF	ValorPago	cdRepasse	ValorRepasse--%>
+                        <asp:BoundField DataField="idReceita" HeaderText="ID" />
                         <asp:BoundField DataField="ccApelido" HeaderText="Clínica" />
                         <asp:BoundField DataField="ccNome" HeaderText="Médico" />
-                        <asp:BoundField DataField="cvNF" HeaderText="cvNF" />
-                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" ItemStyle-CssClass="date"  />
-                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF" DataFormatString="{0:C}"  />
+                        <asp:BoundField DataField="cvNF" HeaderText="Nota" />
+                        <asp:BoundField DataField="cdEmissao" HeaderText="Emissão" ItemStyle-CssClass="date" />
+                        <asp:BoundField DataField="ValorNF" HeaderText="Valor NF" DataFormatString="{0:C}" />
                         <asp:BoundField DataField="ValorPago" HeaderText="Valor Pago" DataFormatString="{0:C}" />
                         <asp:BoundField DataField="cdRepasse" HeaderText="Repasse" DataFormatString="{0:d}" />
                         <asp:BoundField DataField="ValorRepasse" HeaderText="Valor Repasse" DataFormatString="{0:C}" />
+                        <asp:BoundField DataField="ccStatus" HeaderText="Status" />
                     </Columns>
                 </asp:GridView>
-                <asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />
+                <%--<asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />--%>
+                <asp:SqlDataSource runat="server" ID="dsRepasses2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_Repasse" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
             </div>
         </div>
     </div>
@@ -205,11 +208,11 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                           <%-- <div>
+                            <%-- <div>
                                 <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
                             </div>--%>
                             <div>
-                               <%-- <select id="dpSelectProfissional" class="form-control">
+                                <%-- <select id="dpSelectProfissional" class="form-control">
                                 </select>--%>
                                 <input list="dsRepasseProfissional" name="dpSelectProfissional2" id="dpSelectProfissional2" value="" class="form-control" />
                                 <datalist id="dsRepasseProfissional">
@@ -367,17 +370,17 @@
                                     <%--<asp:TextBox runat="server" ID="tbSearch2" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />--%>
                                     <%--<asp:TextBox runat="server" ID="tbSearch" CssClass="form-control d-none" onkeyup="filter()" placeholder="Filtrar..." />--%>
                                     <%--DropDown Profissionais--%>
-                                    <input runat="server" id="dpSearchClinicas" list="dsClinicasDP" name="dpProfissional" class="form-control" placeholder="Selecione a clínica..." onchange="CarregarDadosClinica()"/>
+                                    <input runat="server" id="dpSearchClinicas" list="dsClinicasDP" name="dpProfissional" class="form-control" placeholder="Selecione a clínica..." onchange="CarregarDadosClinica()" />
                                     <datalist id="dsClinicasDP">
                                     </datalist>
-                                    
+
                                     <%--DropDown Despesas--%>
-                                    <input runat="server" id="dpSearchDespesas" list="dsDespesasDP" name="dpDespesas" class="form-control d-none" placeholder="Selecione a despesa..."/>
+                                    <input runat="server" id="dpSearchDespesas" list="dsDespesasDP" name="dpDespesas" class="form-control d-none" placeholder="Selecione a despesa..." />
                                     <datalist id="dsDespesasDP">
                                     </datalist>
                                 </div>
                                 <div>
-                                   <%-- <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
+                                    <%-- <asp:DropDownList runat="server" ID="dpTipoDespesa" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control d-none">
                                     </asp:DropDownList>
                                     <asp:DropDownList runat="server" ID="dpTipoReceita" DataTextField="ccTipo" DataValueField="idtipo" CssClass="form-control" AutoPostBack="true" onchange="return DescontosClinica()">
                                     </asp:DropDownList>--%>
@@ -528,7 +531,7 @@
             });
 
             //Calcular Valor Total
-            
+
             $("#MainContent_tbReceitaDesconto").change(function () {
                 CalcularValorPago();
             });
@@ -536,20 +539,20 @@
             //Carregar Dropdowns
             CarregarClinicasDP();
             CarregarDespesasDP();
-           
+
         });
 
 
-            //Click Despesa
-            $("#MainContent_btDespesa").click(function () {
-                AtvDespesa();
-                return false;
+        //Click Despesa
+        $("#MainContent_btDespesa").click(function () {
+            AtvDespesa();
+            return false;
 
         });
 
 
         $("#btFecharRepasseModal").click(function () {
-            if ($("#hiddenRepasseAlterado").val() =="1") {
+            if ($("#hiddenRepasseAlterado").val() == "1") {
                 location.reload();
                 $("#hiddenRepasseAlterado").val("0");
             }
@@ -622,8 +625,8 @@
             //divNF
             $("#divNF").addClass("d-none");
 
-            
-            
+
+
 
             //Dropdown Receita/Despesa
             //$("#MainContent_dpTipoReceita").addClass("d-none");

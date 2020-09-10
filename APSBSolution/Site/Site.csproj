@@ -487,6 +487,28 @@
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Content>
     <Content Include="Fichas\Cristalina_Cargos.pdf" />
+    <Content Include="DBAPSBRepasse.xsc">
+      <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
+    </Content>
+    <None Include="DBAPSBRepasse.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAPSBRepasse.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBAPSBRepasse.xss">
+      <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
+    </Content>
+    <Content Include="DBAPSBRepasses.xsc">
+      <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Content>
+    <None Include="DBAPSBRepasses.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAPSBRepasses.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBAPSBRepasses.xss">
+      <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\apsb - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apsb - ReadOnly - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apsb - Web Deploy.pubxml" />
@@ -1235,6 +1257,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBAPSBRepasse.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBAPSBRepasses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1424,6 +1456,7 @@
     <EmbeddedResource Include="Reports\FichaCadastral.rdlc" />
     <EmbeddedResource Include="Reports\Informativo.rdlc" />
     <EmbeddedResource Include="Reports\Mod_ficha.rdlc" />
+    <Content Include="Reports\Rel_repasse.rdlc" />
     <EmbeddedResource Include="Reports\Repasse.rdlc" />
   </ItemGroup>
   <PropertyGroup>

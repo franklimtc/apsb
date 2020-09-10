@@ -15,6 +15,33 @@ namespace Site.Reports
     {
 
         /// <summary>
+        /// Controle dtInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtInicio;
+
+        /// <summary>
+        /// Controle dtFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtFinal;
+
+        /// <summary>
+        /// Controle btAtualizar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btAtualizar;
+
+        /// <summary>
         /// Controle btExportar.
         /// </summary>
         /// <remarks>
@@ -31,5 +58,14 @@ namespace Site.Reports
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource dsRepasses;
+
+        /// <summary>
+        /// Controle gvRepasses.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvRepasses;
     }
 }
