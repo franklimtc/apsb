@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Site.Classes;
+using System.Data;
 
 namespace Site.Reports
 {
@@ -28,7 +29,16 @@ namespace Site.Reports
 
             // Setup the report viewer object and get the array of bytes  
             ReportViewer viewer = new ReportViewer();
-            ReportDataSource DataSet1 = new ReportDataSource("DataSet1", RelVendas.Listar());
+            //ReportDataSource DataSet1 = new ReportDataSource("DataSet1", RelVendas.Listar());
+            List<object[]> parametros = new List<object[]>();
+
+            parametros.Add(new object[] { "@cbArquivado", checkArquivo.Checked });
+            parametros.Add(new object[] { "@cbStatus", checkStatus.Checked });
+            parametros.Add(new object[] { "@dtInicial", dtInicio.Text });
+            parametros.Add(new object[] { "@dtFinal", dtFim.Text });
+
+            DataTable dt = DAO.RetornaDT("SEL_Receitas  @cbArquivado = @cbArquivado,  @cbStatus = @cbStatus,  @dtInicial = @dtInicial,  @dtFinal = @dtFinal;", parametros);
+            ReportDataSource DataSet1 = new ReportDataSource("DataSet1", dt);
 
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.LocalReport.ReportPath = @"Reports\RepVendas.rdlc";
@@ -62,6 +72,12 @@ namespace Site.Reports
                 //Remove if you don't have a footer row
                 //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
+        }
+
+        protected void btAtualizar_Click(object sender, EventArgs e)
+        {
+            gvVendas.DataSourceID = "dsVendas";
+            gvVendas.DataBind();
         }
     }
 }

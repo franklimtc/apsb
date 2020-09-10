@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Site.Classes;
+using System.Data;
 
 namespace Site.Reports
 {
@@ -26,10 +27,18 @@ namespace Site.Reports
             string extension = string.Empty;
             string fileName = "Relatório de Despesas";
 
+            List<object[]> parametros = new List<object[]>();
+
+            parametros.Add(new object[] { "@dtInicial", dtInicio.Text });
+            parametros.Add(new object[] { "@dtFinal",  dtFim.Text });
+            parametros.Add(new object[] { "@cbArquivado",  checkArquivo.Checked });
+            parametros.Add(new object[] { "@cbStatus",  checkStatus.Checked });
+
+            DataTable dt = DAO.RetornaDT("SEL_Despesas  @cbArquivado = @cbArquivado,  @cbStatus = @cbStatus,  @dtInicial = @dtInicial,  @dtFinal = @dtFinal;", parametros);
 
             // Setup the report viewer object and get the array of bytes  
             ReportViewer viewer = new ReportViewer();
-            ReportDataSource DataSet1 = new ReportDataSource("DataSet1", RelDespesas.Listar());
+            ReportDataSource DataSet1 = new ReportDataSource("DataSet1", dt);
 
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.LocalReport.ReportPath = @"Reports\RepDespesas.rdlc";
@@ -51,6 +60,7 @@ namespace Site.Reports
 
         protected void btAplicarFiltro_Click(object sender, EventArgs e)
         {
+            gvDespesas.DataSourceID = "dsDespesas";
             gvDespesas.DataBind();
 
         }

@@ -72,7 +72,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField ItemStyle-CssClass="imgLink">
                         <ItemTemplate>
-                            <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" title="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
+                            <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluir" ImageUrl="~/Content/Icons/trash-outline.svg" title="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" ToolTip="Excluir" OnClientClick="return PrepararExclusaoProfissional();" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
@@ -636,6 +636,19 @@
                 return false;
             }
         };
+
+        function PrepararExclusaoProfissional() {
+            var result = false;
+            var confirma = confirm('Deseja excluir o registro?');
+
+            if (confirma) {
+                $("#MainContent_tbCPF").prop('required', false);
+                $("#MainContent_tbNome").prop('required', false)
+                console.log("confirmacao");
+                result = true;
+            }     
+            return result;
+        }
 
     </script>
 </asp:Content>

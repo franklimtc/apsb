@@ -15,31 +15,22 @@ namespace Site.Reports
     {
 
         /// <summary>
-        /// Controle btExportar.
+        /// Controle checkArquivo.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btExportar;
+        protected global::System.Web.UI.WebControls.CheckBox checkArquivo;
 
         /// <summary>
-        /// Controle chkStatus.
+        /// Controle checkStatus.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList chkStatus;
-
-        /// <summary>
-        /// Controle chkArquivado.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList chkArquivado;
+        protected global::System.Web.UI.WebControls.CheckBox checkStatus;
 
         /// <summary>
         /// Controle dtInicio.
@@ -60,13 +51,22 @@ namespace Site.Reports
         protected global::System.Web.UI.WebControls.TextBox dtFim;
 
         /// <summary>
-        /// Controle btAplicarFiltro.
+        /// Controle btAtualizar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btAplicarFiltro;
+        protected global::System.Web.UI.WebControls.Button btAtualizar;
+
+        /// <summary>
+        /// Controle btExportar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btExportar;
 
         /// <summary>
         /// Controle gvDespesas.
@@ -84,6 +84,6 @@ namespace Site.Reports
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsDespesas;
+        protected global::System.Web.UI.WebControls.SqlDataSource dsDespesas;
     }
 }

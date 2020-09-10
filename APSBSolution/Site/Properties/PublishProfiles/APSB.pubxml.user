@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/10/2020 15:26:38</publishTime>
+      <publishTime>09/10/2020 19:17:30</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/10/2020 15:26:38</publishTime>
+      <publishTime>09/10/2020 19:17:30</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/10/2020 15:26:25</publishTime>
+      <publishTime>09/10/2020 19:17:15</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/10/2020 15:26:25</publishTime>
+      <publishTime>09/10/2020 19:17:15</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -1301,7 +1301,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2020 13:50:18</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
-      <publishTime>09/09/2020 14:03:35</publishTime>
+      <publishTime>09/10/2020 19:08:39</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>08/13/2020 08:18:07</publishTime>
@@ -1909,6 +1909,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="dbapsbDataSet.xss">
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
+    <File Include="dbAPSBProcedures.xsc">
+      <publishTime>09/10/2020 18:46:26</publishTime>
+    </File>
+    <File Include="dbAPSBProcedures.xss">
+      <publishTime>09/10/2020 18:46:26</publishTime>
+    </File>
     <File Include="DBAPSBRepasse.xsc">
       <publishTime>09/09/2020 21:50:22</publishTime>
     </File>
@@ -1961,7 +1967,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2020 15:01:25</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/10/2020 15:26:27</publishTime>
+      <publishTime>09/10/2020 19:17:20</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -1970,7 +1976,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Reports/Despesas.aspx">
-      <publishTime>08/13/2020 08:18:07</publishTime>
+      <publishTime>09/10/2020 18:53:00</publishTime>
     </File>
     <File Include="Reports/FichaCadastral.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2000,10 +2006,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/Repasses.aspx">
-      <publishTime>09/09/2020 22:26:42</publishTime>
+      <publishTime>09/10/2020 18:28:32</publishTime>
     </File>
     <File Include="Reports/RepDespesas.rdlc">
-      <publishTime>08/13/2020 08:16:19</publishTime>
+      <publishTime>09/10/2020 18:47:29</publishTime>
     </File>
     <File Include="Reports/Report.aspx">
       <publishTime>08/13/2020 08:18:07</publishTime>
@@ -2018,7 +2024,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Reports/Vendas.aspx">
-      <publishTime>08/13/2020 08:18:07</publishTime>
+      <publishTime>09/10/2020 18:29:19</publishTime>
     </File>
     <File Include="Scripts/bootstrap.bundle.js">
       <publishTime>08/13/2020 08:16:19</publishTime>

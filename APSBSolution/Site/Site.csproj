@@ -490,6 +490,17 @@
     <Content Include="DBAPSBRepasse.xsc">
       <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
     </Content>
+    <Content Include="dbAPSBProcedures.xsc">
+      <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
+    </Content>
+    <None Include="dbAPSBProcedures.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbAPSBProcedures.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbAPSBProcedures.xss">
+      <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
+    </Content>
     <None Include="DBAPSBRepasse.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DBAPSBRepasse.Designer.cs</LastGenOutput>
@@ -1256,6 +1267,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dbAPSBProcedures.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBAPSBRepasse.Designer.cs">
       <AutoGen>True</AutoGen>

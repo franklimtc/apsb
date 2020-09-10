@@ -43,7 +43,7 @@ namespace Site.Cadastros
             int idLinha = int.Parse(e.CommandArgument.ToString());
             int idProfissional = int.Parse(gvMedicos.Rows[idLinha].Cells[0].Text);
             idHiddenMedico.Value = idProfissional.ToString();
-            string user = User.Identity.Name;
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@")) ;
 
             bool result = false;
 
@@ -54,6 +54,7 @@ namespace Site.Cadastros
                     result = Profissional.Excluir(user, idProfissional);
                     if (result)
                     {
+                        gvMedicos.Rows[idLinha].Visible = false;
                         ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
                     }
                     else

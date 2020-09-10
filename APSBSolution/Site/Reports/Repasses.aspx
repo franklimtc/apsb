@@ -8,20 +8,21 @@
         </div>
         <div class="col"></div>
     </div>
-    <div class="row">
+
+    <div class="row" style="border-style: dotted; border-color: darkcyan; border-width: thin; margin-left: 3px">
         <div class="col-md-2">
             <label for="MainContent_dtInicio">Data inicial:</label>
             <asp:TextBox runat="server" ID="dtInicio" type="date" requered />
         </div>
         <div class="col-md-2">
             <label for="MainContent_dtFinal">Data Final:</label>
-            <%--<input runat="server" type="date" name="dtFinal" id="dtFinal" value="" required />--%>
             <asp:TextBox runat="server" ID="dtFinal" type="date" requered />
         </div>
     </div>
+
     <div class="row">
-         <div class="col-md-2">
-             <br />
+        <div class="col-md-2">
+            <br />
             <asp:Button ID="btAtualizar" Text="Atualizar" runat="server" CssClass="btn btn-primary" OnClick="btAtualizar_Click" />
             <asp:Button ID="btExportar" Text="Exportar" runat="server" CssClass="btn btn-secondary" OnClick="btExportar_Click" />
         </div>
