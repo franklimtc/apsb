@@ -21,12 +21,12 @@ AS
 			   pd.cvPIS pis, 
 			   pd.ccConselho conselho, 
 			   pd.cvNumInscricao regConselho, 
-	   (
-		  SELECT CONCAT(b.ccBanco, ' AG - ', tb.ccAgencia, ' Conta - ', tb.ccConta, ' OP - ', tb.ccOperacao, ' | ')
-		  FROM    tbProfissionaisBancos tb
-				INNER JOIN tbBancos b ON tb.idBanco = b.IdBanco
-		  WHERE  P.IdProfissional = TB.idProfissional FOR XML PATH('')
-	   ) Banco, 
+				(
+				    SELECT CONCAT(b.ccBanco, ' AG - ', tb.ccAgencia, ' Conta - ', tb.ccConta, ' OP - ', tb.ccOperacao, ' | ')
+				    FROM    tbProfissionaisBancos tb
+						  INNER JOIN tbBancos b ON tb.idBanco = b.IdBanco
+				    WHERE  P.IdProfissional = TB.idProfissional FOR XML PATH('')
+				) Banco, 
 			   r.Valor faturamento, 
 			   @year periodo
 	   FROM tbProfissionais p
@@ -34,7 +34,7 @@ AS
 		   INNER JOIN
 	   (
 		  SELECT IdProfissional, 
-			    CAST(SUM(cvValor) AS DECIMAL(20, 2)) Valor
+			    CAST(SUM(cvValorRepasse) AS DECIMAL(20, 2)) Valor
 		  FROM   tbProfissionalRepasse
 		  WHERE  ccStatus = 'R'
 			    AND (YEAR(dataRepasse) = @year
