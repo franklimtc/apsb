@@ -294,7 +294,8 @@ namespace Site.Cadastros
                     result = ClinicaProfissional.Excluir(user, idRelacao);
                     if (result)
                     {
-                        ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                        //ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", "alert('Registro excluído com sucesso!');", true);
+                        CarregarModalRelacao(int.Parse(idHiddenClinica.Value));
                         idHiddenChange.Value = "1";
                     }
                     else

@@ -99,6 +99,8 @@ function CarregarModal(_idProfissional) {
             $("#MainContent_tbdtNascimento").val(ConvertDate2(result.d["dtNascimento"]));
             $("#MainContent_tbObs").val(result.d["Observacoes"]);
             $("#medicoModal").modal("show");
+            $("#MainContent_tbCNH").val(result.d["cvCNH"]);
+
             RemoverMascaras();
             AdicionarMascaras();
         }

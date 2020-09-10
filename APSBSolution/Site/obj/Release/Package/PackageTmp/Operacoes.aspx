@@ -276,11 +276,17 @@
                             </div>
                         </div>
                         <div class="col">
-                            <%--<asp:Button Text="Adicionar" runat="server" ID="bdAddRepasse" CssClass="btn btn-secondary" />--%>
                             <input type="button" name="btAdicionar" value="Adicionar" onclick="AdicionarRepasse()" class="btn btn-secondary" />
                         </div>
+                       
                         <div class="col">
                             <img id="imgDanger" src="Content/Icons/danger.jpg" alt="Alternate Text" width="50px" class="collapse" />
+                        </div>
+                    </div>
+                    <div class="row">
+                         <div class="col">
+                             <br />
+                            <input type="button" id="btCorrigirReceita" name="btCorrigirReceita" value="Atualizar valor" onclick="UPD_ReceitaByRepasses()" style="width:100%" class="btn btn-primary collapse" />
                         </div>
                     </div>
                     <div class="row d-none" id="divObs">
@@ -525,16 +531,23 @@
                 localStorage["Operacoes"] = $('.dataTables_filter input').val();
             });
 
-            //Calcular Desconto
+            //Calcular Desconto pelo valor pago
             $("#MainContent_tbReceitaNFValorPG").change(function () {
                 CalcularDesconto();
             });
 
-            //Calcular Valor Total
+            //Calcular Valor Pago pelo desconto
 
             $("#MainContent_tbReceitaDesconto").change(function () {
                 CalcularValorPago();
             });
+
+            //Calcular Valor Pago pelo Valor total
+
+            $("#MainContent_tbValorOperacao").change(function () {
+                CalcularValorPago();
+            });
+
 
             //Carregar Dropdowns
             CarregarClinicasDP();

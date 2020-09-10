@@ -619,6 +619,13 @@ namespace Site
         {
             return Profissional.GetProfissionalIDByReceita(id, nome);
         }
+        [WebMethod]
+        public static bool UPD_ReceitaByRepasses(string Usuario, string idReceita)
+        {
+            bool result = false;
+            result = Receita.UPD_ReceitaByRepasses(Usuario, int.Parse(idReceita));
+            return result;
+        }
 
         public static float toFloat(string numero)
         {

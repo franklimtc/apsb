@@ -367,5 +367,23 @@ namespace Site.Classes
 
             return Lista.FirstOrDefault();
         }
+
+        internal static bool UPD_ReceitaByRepasses(string usuario, int idreceita)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@idReceita", idreceita });
+            parametros.Add(new object[] { "@UserName", usuario });
+            bool result = false;
+            try
+            {
+                DAO.ExecuteNonQuery("UPD_ReceitaByRepasses @idReceita = @idReceita, @UserName = @UserName;", parametros);
+                result = true;
+            }
+            catch 
+            {
+            }
+            return result;
+
+        }
     }
 }

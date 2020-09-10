@@ -157,6 +157,10 @@ namespace Site.Classes
                     {
                         p1.cdRegCartorio = data;
                     }
+                    if (long.TryParse(p["cvCNH"].ToString(), out long cnh))
+                    {
+                        p1.cvCNH = cnh;
+                    }
 
                     p1.nomePai = p["nomePai"].ToString();
                     p1.nomeMae = p["nomeMae"].ToString();

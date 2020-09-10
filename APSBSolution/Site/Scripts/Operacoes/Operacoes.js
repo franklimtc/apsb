@@ -142,7 +142,7 @@ function SalvarReceita() {
 
    // Usuario, valor, tipo, dtNF, nf, dtPgto, valorPago, desconto, obs, issRetido, idReceita
 
-    var _Usuario = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));;
+    var _Usuario = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
     var _valor = $("#MainContent_tbValorOperacao").val();
     var _tipo = $("#MainContent_dpSearchClinicas").val();
     var _dtNF = $("#MainContent_tbReceitaDataNF").val();
@@ -227,6 +227,7 @@ function AbrirRepasseModal(tipo, id) {
     $("#divObs").addClass("d-none");
     $("#MainContent_tbObsRepasseProfissional").val("");
     $("#hiddenRepasseID").val(id);
+    $("#idHiddenOperacao2").val(id);
     if (tipo == "Receita") {
         $("#MainContent_tbDtRepasse").val();
         var idClinica = 0;
@@ -326,12 +327,14 @@ function AbrirRepasseModal(tipo, id) {
 
 function AtivarErroValor() {
     $('#imgDanger').collapse('show');
+    $('#btCorrigirReceita').collapse('show');
     $(".cvAlert").css("border-style", "solid");
     $(".cvAlert").css("border-color", "red");
 };
 
 function DesativarErroValor() {
     $('#imgDanger').collapse('hide');
+    $('#btCorrigirReceita').collapse('hide');
     $(".cvAlert").css("border-style", "none");
     $(".cvAlert").css("border-color", "none");
 };
@@ -375,7 +378,6 @@ function getInfo(id) {
     return false;
 };
 
-
 function cmdRepasse(cmd, id) {
     var user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
     var dt = $("#MainContent_tbDtRepasse").val();
@@ -407,7 +409,6 @@ function Call(metodo, obj) {
         }
     });
 };
-
 
 function CarregarClinicasDP() {
 
@@ -573,4 +574,29 @@ function CalcularDesconto() {
         var valorDesconto = 100 - ((valorPago / valorTotal * 100) + valorISS);
         $("#MainContent_tbReceitaDesconto").val(valorDesconto.toFixed(2));
     }
+};
+
+function UPD_ReceitaByRepasses() {
+    var relacaoObj = {
+        Usuario: $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@")),
+        idReceita: $("#idHiddenOperacao2").val()
+    };
+
+    $.ajax({
+        type: "POST",
+        url: "Operacoes.aspx/UPD_ReceitaByRepasses",
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function () {
+            alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+        },
+        success: function (result) {
+            $("#hiddenRepasseAlterado").val("1");
+            alert("Valor da receita atualizado!");
+        }
+        , error: function () {
+            alert("Falha ao atualizar o valor da receita!")
+        }
+    });
 };

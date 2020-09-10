@@ -131,7 +131,7 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbClinicaEmail">Email</label>
-                                <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." TextMode="Email" />
+                                <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." />
                             </div>
                         </div>
                     </div>
