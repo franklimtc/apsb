@@ -78,6 +78,8 @@
                 </Columns>
             </asp:GridView>
             <asp:ObjectDataSource runat="server" ID="dsMedicos" SelectMethod="Listar" TypeName="Site.Classes.Profissional" />
+            <asp:SqlDataSource runat="server" ID="dsMedicos2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ProfissionaisGrid" SelectCommandType="StoredProcedure">
+            </asp:SqlDataSource>
         </div>
     </div>
     <%--Modais--%>

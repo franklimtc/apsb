@@ -35,7 +35,7 @@
         <div class="col">
             <br />
 
-            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender" OnRowCommand="gvMedicos_RowCommand">
+            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos2" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender" OnRowCommand="gvMedicos_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="IdProfissional" HeaderText="ID" ItemStyle-CssClass="imgLink" />
                     <asp:BoundField DataField="ccNome" HeaderText="Nome" />
@@ -77,7 +77,13 @@
                     </asp:TemplateField>
                 </Columns>
             </asp:GridView>
-            <asp:ObjectDataSource runat="server" ID="dsMedicos" SelectMethod="Listar" TypeName="Site.Classes.Profissional" />
+            <%--<asp:ObjectDataSource runat="server" ID="dsMedicos" SelectMethod="Listar" TypeName="Site.Classes.Profissional" />--%>
+
+            <asp:SqlDataSource runat="server" ID="dsMedicos2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ProfissionaisGrid" SelectCommandType="StoredProcedure">
+                <SelectParameters>
+                    <asp:Parameter Name="Status" Type="Boolean" DefaultValue="true" />
+                </SelectParameters>
+            </asp:SqlDataSource>
         </div>
     </div>
     <%--Modais--%>
