@@ -171,6 +171,12 @@
     <Build Include="dbo\Stored Procedures\SEL_ProfissionalRepasses.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ProfissionaisRel.sql" />
     <Build Include="dbo\Stored Procedures\SEL_ProfissionalIDByReceita.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ReceitaByRepasses.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_QtdProfissioais.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisGrid2.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisGrid.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_LastError.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ClinicaDetinitivo.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

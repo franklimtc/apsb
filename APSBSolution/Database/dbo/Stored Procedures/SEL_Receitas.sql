@@ -27,6 +27,7 @@ AS
 				   c.cvCNPJ, 
 				   DATEADD(day, ISNULL(c.cvPgtoDias, 5), r.cdEmissao) cdPrevistaPgto, 
 				   CAST(ISNULL((r.cvDesconto / 100) * r.cvValor, 0) AS DECIMAL(10, 2)) cvDescontoValor,
+				   CASE WHEN r.cbIssRetido = 1 THEN 'Sim' Else 'Não' END AS ccIssRetido, 
 				   CASE
 					  WHEN R.cbIssRetido = 1
 					  THEN C.cvISS
@@ -80,6 +81,7 @@ AS
 				   CAST(r.cvDesconto AS DECIMAL(10, 2)) cvDesconto, 
 				   r.cvNF, 
 				   o.observacao, 
+				   CASE WHEN r.cbIssRetido = 1 THEN 'Sim' Else 'Não' END AS ccIssRetido, 
 				   r.cbIssRetido, 
 				   LTRIM(RTRIM(c.ccApelido)) ccApelido, 
 				   c.cvCNPJ, 
