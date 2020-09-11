@@ -31,11 +31,35 @@
         Novo Médico
     </asp:LinkButton>
     <%--<asp:Button Text="Atualizar" runat="server" ID="btRefresh" OnClick="btRefresh_Click" CssClass="btn btn-secondary" />--%>
+     <div class="row collapse" id="divFiltros">
+            <br />
+            <div class="col">
+                <h2>Filtros adicionais</h2>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-check">
+                            <asp:CheckBox ID="chkAtivo" Text="&nbspAtivo" runat="server" Checked="true" CssClass="form-check-input" /> <br />
+                            <asp:CheckBox ID="chkUltimaAtualizacao" Text="&nbspÚltimas atualizações" runat="server" Checked="true" CssClass="form-check-input"/><br />
+                            <br />
+                        <label>Nome: </label>
+
+                            <asp:TextBox runat="server" ID="tbNomeSearch" placeholder="Informe um nome para pesquisa!" CssClass="form-control" />
+                        </div>
+                        <br />
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btFiltrar_Click"/>
+                        <%--<asp:Button Text="Filtrar" runat="server" CssClass="btn btn-secondary" OnClick="btFiltrar_Click" ID="btFiltrar" />--%>
+
+                    </div>
+                   
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
     <div class="row">
         <div class="col">
             <br />
 
-            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos2" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" UseAccessibleHeader="true" OnPreRender="gvMedicos_PreRender" OnRowCommand="gvMedicos_RowCommand">
+            <asp:GridView runat="server" ID="gvMedicos" DataSourceID="dsMedicos2" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" OnPreRender="gvMedicos_PreRender" OnRowCommand="gvMedicos_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="IdProfissional" HeaderText="ID" ItemStyle-CssClass="imgLink" />
                     <asp:BoundField DataField="ccNome" HeaderText="Nome" />
@@ -78,10 +102,11 @@
                 </Columns>
             </asp:GridView>
             <%--<asp:ObjectDataSource runat="server" ID="dsMedicos" SelectMethod="Listar" TypeName="Site.Classes.Profissional" />--%>
-
             <asp:SqlDataSource runat="server" ID="dsMedicos2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_ProfissionaisGrid" SelectCommandType="StoredProcedure">
                 <SelectParameters>
-                    <asp:Parameter Name="Status" Type="Boolean" DefaultValue="true" />
+                    <asp:ControlParameter ControlID="chkAtivo" DefaultValue="True" Name="Status" PropertyName="Checked" Type="Boolean" />
+                    <asp:ControlParameter ControlID="chkUltimaAtualizacao" DefaultValue="True" Name="ultimosRegistros" PropertyName="Checked" Type="Boolean" />
+                    <%--<asp:ControlParameter ControlID="tbNomeSearch" Name="ccNome" PropertyName="Text" Type="String" />--%>
                 </SelectParameters>
             </asp:SqlDataSource>
         </div>
@@ -655,6 +680,13 @@
             }     
             return result;
         }
+
+        $("#MainContent_tbNomeSearch").change(function () {
+            if ($("#MainContent_tbNomeSearch").val() != "") {
+                $("#MainContent_chkUltimaAtualizacao").prop("checked", false);
+            }
+           
+        });
 
     </script>
 </asp:Content>

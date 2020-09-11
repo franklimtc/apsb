@@ -28,10 +28,27 @@ namespace Site.Cadastros
 
         protected void gvMedicos_PreRender(object sender, EventArgs e)
         {
-            if (gvMedicos.Rows.Count > 0)
+
+            if (gvMedicos.Rows.Count == 0)
+            {
+                gvMedicos.DataSourceID = "";
+                List<Profissional> profissionals = new List<Profissional>();
+                profissionals.Add(new Profissional(0, "Nenhum registro encontrado"));
+                gvMedicos.DataSource = profissionals;
+                gvMedicos.DataBind();
+            }
+
+            gvMedicos.UseAccessibleHeader = true;
+            try
             {
                 gvMedicos.HeaderRow.TableSection = TableRowSection.TableHeader;
+
             }
+            catch 
+            {
+
+            }
+
         }
 
         //protected void btRefresh_Click(object sender, EventArgs e)
@@ -408,8 +425,27 @@ namespace Site.Cadastros
             return result;
         }
 
+
         #endregion
 
-       
+
+        protected void btFiltrar_Click(object sender, EventArgs e)
+        {
+            gvMedicos.DataSource = null;
+            gvMedicos.DataSourceID = "dsMedicos2";
+
+            if (tbNomeSearch.Text != "")
+            {
+                if (dsMedicos2.SelectParameters["ccNome"] == null)
+                {
+                    dsMedicos2.SelectParameters.Add(new ControlParameter("ccNome", "tbNomeSearch", "Text"));
+                }
+            }
+            else
+            {
+                dsMedicos2.SelectParameters.Remove(dsMedicos2.SelectParameters["ccNome"]);
+            }
+            gvMedicos.DataBind();
+        }
     }
 }

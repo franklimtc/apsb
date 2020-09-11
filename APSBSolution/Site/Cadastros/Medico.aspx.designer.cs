@@ -69,6 +69,42 @@ namespace Site.Cadastros
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden nameProfissional;
 
         /// <summary>
+        /// Controle chkAtivo.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkAtivo;
+
+        /// <summary>
+        /// Controle chkUltimaAtualizacao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkUltimaAtualizacao;
+
+        /// <summary>
+        /// Controle tbNomeSearch.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbNomeSearch;
+
+        /// <summary>
+        /// Controle btAplicarFiltro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btAplicarFiltro;
+
+        /// <summary>
         /// Controle gvMedicos.
         /// </summary>
         /// <remarks>
@@ -76,15 +112,6 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvMedicos;
-
-        /// <summary>
-        /// Controle dsMedicos.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource dsMedicos;
 
         /// <summary>
         /// Controle dsMedicos2.
