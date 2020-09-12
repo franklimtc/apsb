@@ -33,7 +33,7 @@ namespace Site.Classes
         public float ValorPago { get; set; }//ValorPago
         public float ValorRepasse { get; set; }//ValorRepasse
         public int idClinica { get; set; }
-
+        public string Bancos { get; set; }
 
         #endregion
 
@@ -226,6 +226,7 @@ namespace Site.Classes
                         );
 
                     rr.idClinica = int.Parse(c["idClinica"].ToString());
+                    rr.Bancos = c["Bancos"].ToString();
                     Lista.Add(rr);
                 }
             }
@@ -275,6 +276,8 @@ namespace Site.Classes
                     {
                         rr.ValorRepasse = vr;
                     }
+
+                    rr.Bancos = c["Bancos"].ToString();
 
                     Lista.Add(rr);
 

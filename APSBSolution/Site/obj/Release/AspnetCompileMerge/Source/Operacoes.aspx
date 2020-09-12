@@ -187,8 +187,8 @@
     </div>
 
     <!-- Modal Repasse Médico-->
-    <div class="modal fade" id="repasseMedicoModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="repasseMedicoModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade bd-example-modal-lg" id="repasseMedicoModal" data-keyboard="false" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="repasseMedicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="repasseMedicoModalLabel">Repasse a Profissionais</h5>
@@ -308,6 +308,7 @@
                                         <th scope="col">Valor</th>
                                         <th scope="col">V. Liquido</th>
                                         <th scope="col">Status</th>
+                                        <th scope="col">Bancos</th>
                                         <th scope="col"></th>
                                         <th scope="col"></th>
                                         <th scope="col"></th>

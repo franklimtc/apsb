@@ -268,20 +268,44 @@ function AbrirRepasseModal(tipo, id) {
                             + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValor, ".", ",", ".") + "</td>"
                             + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValorLiquido, ".", ",", ".") + "</td>"
                             + "<td>" + String.fromCharCode(result.d[1][i].ccStatus) + "</td>";
-                        if (String.fromCharCode(result.d[1][i].ccStatus) == "A") {
-                            row = row + ("<td><input type='image' src='../Content/Icons/cash-outline.svg' class='imgButton' onclick='return pagar(" + result.d[1][i].idRepasse+")' /> </td>");
+
+                        if (result.d[1][0].Bancos != "") {
+                            var Bancos = JSON.parse(result.d[1][0].Bancos);
+                            if (Bancos != undefined) {
+                                var ib = 0;
+                                var banco = Bancos[ib];
+                                row = row + "<td>";
+                                do {
+                                    if (ib > 0) {
+                                        row += "&nbsp";
+                                    }
+                                    row = row + "<img src='../Content/Bancos/" + banco.cvCodBanco + ".png' title='" + banco.ccBanco + "' class='imgButton'>"
+                                    ib++;
+                                    banco = Bancos[ib];
+                                }
+                                while (banco != undefined);
+                                row = row + "</td>";
+                            }
                         }
                         else {
-                            row += "<td><input type='image' src='../Content/Icons/cash-outline.svg' class='imgButtonDisabled' disabled /> </td>";
+                            row += "<td><img src='../Content/Icons/erro.jpg' title='Nenhum banco cadastrado' class='imgButton'></td>";
+                        }
+
+
+                        if (String.fromCharCode(result.d[1][i].ccStatus) == "A") {
+                            row = row + ("<td><input type='image' src='../Content/Icons/cash-outline.svg' title='Pagar' class='imgButton' onclick='return pagar(" + result.d[1][i].idRepasse+")' /> </td>");
+                        }
+                        else {
+                            row += "<td><input type='image' src='../Content/Icons/cash-outline.svg' title='Pagar' class='imgButtonDisabled' disabled /> </td>";
                         };
 
                         if (result.d[1][i].Observacao != "") {
-                            row += "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' class='imgButton' onclick='return getInfo(" + result.d[1][i].idRepasse +")' /> </td>";
+                            row += "<td><input type='image' src='../Content/Icons/info_yellow.png' title='Informações' class='imgButton' onclick='return getInfo(" + result.d[1][i].idRepasse +")' /> </td>";
                         } else {
-                            row += "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' class='imgButtonDisabled'  disabled/> </td>";
+                            row += "<td><input type='image' src='../Content/Icons/information-circle-outline.svg' title='Informações' class='imgButtonDisabled'  disabled/> </td>";
                         }
 
-                        row += "<td><input type='image' src='../Content/Icons/trash-outline.svg' class='imgButton' onclick='return excluir(" + result.d[1][i].idRepasse +")' /> </td></tr> ";
+                        row += "<td><input type='image' src='../Content/Icons/trash-outline.svg' class='imgButton' title='Excluir' onclick='return excluir(" + result.d[1][i].idRepasse +")' /> </td></tr> ";
 
                         $("#tbRepasseBody").append(row);
                     }
