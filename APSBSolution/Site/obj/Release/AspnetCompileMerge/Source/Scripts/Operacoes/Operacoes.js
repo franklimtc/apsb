@@ -269,8 +269,8 @@ function AbrirRepasseModal(tipo, id) {
                             + "<td style='text-align: right'>" + formatMoney(result.d[1][i].cvValorLiquido, ".", ",", ".") + "</td>"
                             + "<td>" + String.fromCharCode(result.d[1][i].ccStatus) + "</td>";
 
-                        if (result.d[1][0].Bancos != "") {
-                            var Bancos = JSON.parse(result.d[1][0].Bancos);
+                        if (result.d[1][i].Bancos != "") {
+                            var Bancos = JSON.parse(result.d[1][i].Bancos);
                             if (Bancos != undefined) {
                                 var ib = 0;
                                 var banco = Bancos[ib];
@@ -399,6 +399,7 @@ function getInfo(id) {
             $("#MainContent_tbObsRepasseProfissional").val(result.d[1]);
         }
     });
+
     return false;
 };
 
