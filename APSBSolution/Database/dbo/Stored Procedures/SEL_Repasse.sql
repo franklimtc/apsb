@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE SEL_Repasse(@idReceita INT = NULL)
+﻿
+CREATE PROCEDURE SEL_Repasse(@idReceita INT = NULL)
 AS
     BEGIN
 	   IF @idReceita IS NOT NULL
@@ -14,7 +15,9 @@ AS
 				   r.ccStatus, 
 				   r.dataRepasse, 
 				   r.ccCriadoPor, 
-				   o.observacao
+				   --o.observacao, 
+				   dbo.GetObservacoes(p.IdProfissional) observacao,
+				   dbo.GetBancos(p.IdProfissional) Bancos
 			 FROM   tbProfissionalRepasse r
 				   INNER JOIN tbReceitas re ON r.idReceita = re.idReceita
 				   INNER JOIN tbProfissionais p ON r.idProfissional = p.IdProfissional
@@ -27,19 +30,22 @@ AS
 		  ELSE
 		  BEGIN
 			 SELECT c.ccApelido, 
-				   p.ccNome,
-				   r.idReceita,
+				   p.ccNome, 
+				   r.idReceita, 
 				   r.cvNF, 
 				   r.cdEmissao, 
 				   CAST(r.cvValor AS DECIMAL(10, 2)) ValorNF, 
 				   CAST(r.cvValorPago AS DECIMAL(10, 2)) ValorPago, 
 				   pr.dataRepasse cdRepasse, 
-				   CAST(pr.cvValor - (pr.cvValor * (ISNULL(pr.cvTaxaProfissional, 0) / 100)) AS DECIMAL(10, 2)) ValorRepasse,
-				   pr.ccStatus
+				   CAST(pr.cvValor - (pr.cvValor * (ISNULL(pr.cvTaxaProfissional, 0) / 100)) AS DECIMAL(10, 2)) ValorRepasse, 
+				   pr.ccStatus, 
+				   dbo.GetObservacoes(p.IdProfissional) observacao,
+				   dbo.GetBancos(p.IdProfissional) Bancos
 			 FROM   tbReceitas r
 				   INNER JOIN tbProfissionalRepasse pr ON r.idReceita = pr.idReceita
 				   INNER JOIN tbClinicas c ON r.IdClinica = c.IdClinica
 				   INNER JOIN tbProfissionais p ON pr.IdProfissional = p.IdProfissional
-				   WHERE r.cbStatus = 1 and pr.ccStatus <> 'C'
+			 WHERE  r.cbStatus = 1
+				   AND pr.ccStatus <> 'C';
 		  END;
     END;

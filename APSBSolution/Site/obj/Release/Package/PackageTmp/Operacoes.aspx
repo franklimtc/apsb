@@ -394,6 +394,11 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row collapse" id="rowDespesaNova">
+                            <div class="col">
+                                <input type="text" name="tbNovadespesa" id="tbNovadespesa" class="form-control" value="" />
+                            </div>
+                        </div>
                         <hr />
                         <div id="divDespesas" class="d-none">
                             <div class="row">
@@ -554,6 +559,16 @@
             CarregarClinicasDP();
             CarregarDespesasDP();
 
+        });
+
+        $("#MainContent_dpSearchDespesas").change(function () {
+            if ($("#MainContent_dpSearchDespesas").val() == "Outra") {
+                $("#rowDespesaNova").collapse("show");
+            }
+            else {
+                $("#rowDespesaNova").collapse("hide");
+                $("#tbNovadespesa").val("");
+            }
         });
 
 

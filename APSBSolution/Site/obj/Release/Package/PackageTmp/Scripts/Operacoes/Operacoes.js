@@ -48,6 +48,11 @@ function SalvarDespesa() {
     var _obs = $("#MainContent_tbDespesaObs").val();
     var _idOperacao = $("#idHiddenOperacao2").val();
 
+    if (_tipo == "Outra") {
+        _tipo = $("#tbNovadespesa").val();
+    }
+
+
     var relacaoObj = {
         Usuario: _Usuario,
         tipo: _tipo,
@@ -469,6 +474,8 @@ function CarregarDespesasDP() {
             for (var i = 0; i < result.d.length; i++) {
                 $('#dsDespesasDP').append("<option value='" + result.d[i] + "'>");
             }
+
+            $('#dsDespesasDP').append("<option value='Outra'>");
 
         }
     });
