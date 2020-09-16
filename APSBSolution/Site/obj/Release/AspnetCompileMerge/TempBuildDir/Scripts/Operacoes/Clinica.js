@@ -2,6 +2,7 @@
     var _idClinica = $("#MainContent_idHiddenClinica").val();
     var _nomeProfissional = $("#dpProfissional2").val();
     var _idProfissional = $("#MainContent_HiddenProfissionalID").val();
+    var _Usuario = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
 
     var _taxa = $("#MainContent_tbValorRepasse").val();
     var _obs = $("#MainContent_tbObsProfissional").val();
@@ -19,6 +20,7 @@
                 , idProfissional: _idProfissional
                 , taxa: _taxa
                 , observacao: _obs
+                , user: _Usuario
             };
 
             $.ajax({

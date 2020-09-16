@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/14/2020 21:01:35</publishTime>
+      <publishTime>09/16/2020 09:58:46</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/14/2020 21:01:34</publishTime>
+      <publishTime>09/16/2020 09:58:46</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/14/2020 21:01:18</publishTime>
+      <publishTime>09/16/2020 09:58:28</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/14/2020 21:01:18</publishTime>
+      <publishTime>09/16/2020 09:58:28</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -1298,7 +1298,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Cadastros/Clinicas.aspx">
-      <publishTime>09/11/2020 07:36:52</publishTime>
+      <publishTime>09/16/2020 08:37:57</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
       <publishTime>09/11/2020 13:13:33</publishTime>
@@ -2006,7 +2006,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/14/2020 20:50:44</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/14/2020 21:01:22</publishTime>
+      <publishTime>09/16/2020 09:58:32</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2705,7 +2705,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/15/2020 20:55:05</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Clinica.js">
-      <publishTime>09/05/2020 15:51:57</publishTime>
+      <publishTime>09/16/2020 08:39:26</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Dashboard.js">
       <publishTime>09/10/2020 13:30:56</publishTime>
@@ -2744,7 +2744,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:19</publishTime>
     </File>
     <File Include="Scripts/Site.js">
-      <publishTime>09/04/2020 12:53:56</publishTime>
+      <publishTime>09/16/2020 08:13:21</publishTime>
     </File>
     <File Include="Scripts/src/index.js">
       <publishTime>08/13/2020 08:16:19</publishTime>

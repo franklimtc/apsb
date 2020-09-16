@@ -29,7 +29,7 @@ namespace Site.Cadastros
                 pNew.ccNome = tbName.Text;
                 pNew.ccEmail = tbEmail.Text;
                 //string Usuario = User.Identity.Name;
-                string Usuario = "Franklim";
+                string Usuario = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
                 if (pNew.GerarToken(Usuario))
                 {
@@ -50,7 +50,7 @@ namespace Site.Cadastros
             Token.Value = gvAutocadastro.Rows[int.Parse(e.CommandArgument.ToString())].Cells[2].Text;
             string status = gvAutocadastro.Rows[int.Parse(e.CommandArgument.ToString())].Cells[4].Text;
 
-            string Usuario = "Franklim";
+            string Usuario = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             bool result = false;
             switch (e.CommandName)
             {

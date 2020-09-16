@@ -18,6 +18,7 @@ namespace Site.Cadastros
             {
                 CarregarItens();
             }
+            HiddenUser.Value = User.Identity.Name;
         }
 
         private void CarregarItens()
@@ -92,6 +93,7 @@ namespace Site.Cadastros
 
         protected void btSalvar_Click(object sender, EventArgs e)
         {
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             //Validar CNPJ
             if (IsCnpj(tbCNPJ.Text))
             {
@@ -120,19 +122,28 @@ namespace Site.Cadastros
                 }
 
                 c.cvIdBanco = int.Parse(dpBancoClinica.SelectedValue);
-                c.cbDescontoVariavel = chDescontoVariavel.Checked;
+                if (chDescontoVariavel.Checked)
+                {
+                    c.cbDescontoVariavel = chDescontoVariavel.Checked;
+
+
+                    c.cvValorCorte = ConvertDouble(tbValorCorte.Value);
+                    c.cvValorMaior = ConvertDouble(tbTaxaMaior.Value);
+                    c.cvValorMenor = ConvertDouble(tbTaxaMenor.Value);
+                    
+                }
                 c.ccObservacao = tbObsClinica.Text;
                 c.cvCNPJ = long.Parse(tbCNPJ.Text);
                 c.cvPgtoDias = int.Parse(tbPgtoDias.Text);
                 if (idHiddenClinica.Value.IsNullOrWhiteSpace())
                 {
-                    result = c.Adicionar("Franklim");
+                    result = c.Adicionar(user);
                     idHiddenChange.Value = "1";
                 }
                 else
                 {
                     c.idClinica = int.Parse(idHiddenClinica.Value);
-                    result = c.Salvar("Franklim");
+                    result = c.Salvar(user);
                     idHiddenChange.Value = "1";
                 }
 
@@ -152,6 +163,24 @@ namespace Site.Cadastros
 
         }
 
+        private double? ConvertDouble(string Value)
+        {
+            double? valor = null;
+            if (Value.Length >= 3 && !Value.IsNullOrWhiteSpace())
+            {
+                if (double.TryParse(Value.Insert(Value.Length - 2, ","), out double c1))
+                {
+                    valor = c1;
+                }
+            }
+            else
+            {
+                if (double.TryParse(Value, out double c5))
+                    valor = c5;
+            }
+            return valor;
+        }
+
         protected void gvClinicas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             var obj = e.CommandArgument;
@@ -160,7 +189,7 @@ namespace Site.Cadastros
 
             HiddenClinicaName.Value = gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text;
             HiddenClinicaDesconto.Value = gvClinicas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[11].Text;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             bool result = false;
 
@@ -238,10 +267,18 @@ namespace Site.Cadastros
             if (c.ccDescontoVariavel == "Sim")
             {
                 chDescontoVariavel.Checked = true;
+                tbValorCorte.Value = ConvertMoney(c.cvValorCorte.ToString());
+                tbTaxaMenor.Value = ConvertMoney(c.cvValorMenor.ToString());
+                tbTaxaMaior.Value = ConvertMoney(c.cvValorMaior.ToString());
+                sbRequireds.AppendLine("$('#MainContent_divDescontoVariavel').collapse('show')");
             }
             else
             {
                 chDescontoVariavel.Checked = false;
+                tbValorCorte.Value  = "";
+                tbTaxaMenor.Value   = "";
+                tbTaxaMaior.Value = "";
+                sbRequireds.AppendLine("$('#MainContent_divDescontoVariavel').collapse('hide')");
             }
             tbObsClinica.Text = c.ccObservacao;
 
@@ -252,7 +289,10 @@ namespace Site.Cadastros
             sbRequireds.AppendLine("$('#MainContent_tbRazaoSocial').attr('required',true);");
             sbRequireds.AppendLine("$('#MainContent_tbNomeFantasia').attr('required',true);");
             sbRequireds.AppendLine("$('#MainContent_tbCNPJ').attr('required',true);");
+            
+            
             sbRequireds.AppendLine("$('#clinicaModal').modal('show');");
+
 
             ScriptManager.RegisterStartupScript(this.Page, this.GetType(), "", sbRequireds.ToString(), true);
             //Page.RegisterStartupScript("", sbRequireds.ToString());
@@ -265,10 +305,9 @@ namespace Site.Cadastros
         }
 
         [WebMethod]
-        public static bool SalvarRelacao(string idClinica, string idProfissional, string taxa, string observacao)
+        public static bool SalvarRelacao(string idClinica, string idProfissional, string taxa, string observacao, string user)
         {
             //strin user = User.Identity.Name;
-            string user = "Franklim";
 
             if (taxa.Contains("."))
             {
@@ -284,7 +323,7 @@ namespace Site.Cadastros
         {
             var obj = e.CommandArgument;
             int idRelacao = int.Parse(gvProfissionalClinica.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             bool result = false;
 
@@ -401,7 +440,27 @@ namespace Site.Cadastros
             return Profissional.GetIDByName(name);
         }
 
-       
+        private static string ConvertMoney(string v)
+        {
+            if (!v.Contains(","))
+            {
+                v += "00";
+            }
+            else
+            {
+                var vt = v.Split(',');
+                if (vt.Length == 2)
+                {
+                    if (vt[1].Length == 1)
+                    {
+                        v += "0";
+                    }
+                }
+            }
+            return v.Replace("-", "");
+        }
+
+
     }
 
     public class ProfissionalDP

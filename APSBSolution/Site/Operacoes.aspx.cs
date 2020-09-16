@@ -89,7 +89,7 @@ namespace Site
             int idOperacao = int.Parse(gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[0].Text);
             idHiddenOperacao.Value = idOperacao.ToString();
             string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             switch (e.CommandName)
             {
@@ -130,7 +130,7 @@ namespace Site
         protected void btSalvar_Click(object sender, EventArgs e)
         {
             //string Usuario = User.Identity.Name;
-            string Usuario = "Franklim";
+            string Usuario = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             bool result = false;
 
             if (tbAbaAtiva.Text == "Despesa")

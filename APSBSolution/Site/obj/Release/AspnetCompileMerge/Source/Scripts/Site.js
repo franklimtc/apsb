@@ -63,6 +63,7 @@ function RemoverMascaras() {
     $(".phone_with_ddd2").unmask();
     $('.money').unmask();
     $('.money2').unmask();
+    $('.percent').unmask();
 };
 
 function AdicionarMascaras() {
@@ -73,6 +74,7 @@ function AdicionarMascaras() {
     $('.phone_with_ddd2').mask('(00) 0000-0000');
     $('.money').mask('000.000.000.000.000,00', { reverse: true });
     $('.money2').mask("#.##0,00", { reverse: true });
+    $('.percent').mask('##0,00%', { reverse: true });
 };
 
 function ResetForm() {

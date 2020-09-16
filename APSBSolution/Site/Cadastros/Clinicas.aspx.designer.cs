@@ -60,6 +60,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.HiddenField idHiddenChange;
 
         /// <summary>
+        /// Controle HiddenUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenUser;
+
+        /// <summary>
         /// Controle btNovaClinica.
         /// </summary>
         /// <remarks>
@@ -193,6 +202,33 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chDescontoVariavel;
+
+        /// <summary>
+        /// Controle tbValorCorte.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbValorCorte;
+
+        /// <summary>
+        /// Controle tbTaxaMenor.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbTaxaMenor;
+
+        /// <summary>
+        /// Controle tbTaxaMaior.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tbTaxaMaior;
 
         /// <summary>
         /// Controle tbObsClinica.

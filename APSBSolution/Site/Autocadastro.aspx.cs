@@ -236,7 +236,7 @@ namespace Site
 
         protected void btSalvarEndereco_Click(object sender, EventArgs e)
         {
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             ProfissionalEndereco pde = new ProfissionalEndereco();
             if (!idHiddenProfissionalEndereco.Value.IsNullOrWhiteSpace())
             {
@@ -265,7 +265,7 @@ namespace Site
         protected void btSalvarDados_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             ProfissionalDados pd1 = new ProfissionalDados();
             if (!idHiddenProfissionalDado.Value.IsNullOrWhiteSpace())
             {
@@ -323,7 +323,7 @@ namespace Site
             int idProfissionalBanco = int.Parse(gvProfissionalBanco.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
             idHiddenProfissionalBanco.Value = idProfissionalBanco.ToString();
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             bool result = false;
 
             switch (e.CommandName)
@@ -396,7 +396,7 @@ namespace Site
         protected void btUploadFile_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             if (btUpload.HasFile)
             {

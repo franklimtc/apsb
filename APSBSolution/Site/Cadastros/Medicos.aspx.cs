@@ -37,7 +37,7 @@ namespace Site.Cadastros
             nameProfissional.Value = gvMedicos.Rows[idLinha].Cells[1].Text;
 
             idHiddenMedico.Value = idProfissional.ToString();
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             bool result = false;
 
@@ -240,7 +240,7 @@ namespace Site.Cadastros
         {
             bool result = false;
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             Profissional pNew = new Profissional();
             pNew.ccNome = tbNome.Text;
@@ -322,7 +322,7 @@ namespace Site.Cadastros
         protected void btSalvarDados_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             ProfissionalDados pd1 = new ProfissionalDados();
             if (!idHiddenProfissionalDado.Value.IsNullOrWhiteSpace())
             {
@@ -377,7 +377,7 @@ namespace Site.Cadastros
         protected void btSalvarEndereco_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             ProfissionalEndereco pde = new ProfissionalEndereco();
             if (!idHiddenProfissionalEndereco.Value.IsNullOrWhiteSpace())
             {
@@ -406,7 +406,7 @@ namespace Site.Cadastros
         protected void btSalvarProfissionalBanco_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             ProfissionalBanco pdb = new ProfissionalBanco();
 
             pdb.idProfissional = int.Parse(idHiddenMedico.Value);
@@ -433,7 +433,7 @@ namespace Site.Cadastros
             int idProfissionalBanco = int.Parse(gvProfissionalBanco.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
             idHiddenProfissionalBanco.Value = idProfissionalBanco.ToString();
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             bool result = false;
 
             switch (e.CommandName)
@@ -465,7 +465,7 @@ namespace Site.Cadastros
         protected void btUploadFile_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             if (btUpload.HasFile)
             {
@@ -513,7 +513,7 @@ namespace Site.Cadastros
             //string nomeArquivo = Server.HtmlDecode(gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text);
             string nomeArquivo = ProfissionalArquivo.GetName(idProfissionalArquivo);
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             bool result = false;
             switch (e.CommandName)
             {

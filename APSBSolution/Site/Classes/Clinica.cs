@@ -29,7 +29,9 @@ namespace Site.Classes
         public int cvIdBanco { get; set; }
         public int cvPgtoDias { get; set; }
         public long cvTelefone { get; set; }
-
+        public double? cvValorCorte { get; set; }
+        public double? cvValorMenor { get; set; }
+        public double? cvValorMaior { get; set; }
 
         #endregion
 
@@ -126,7 +128,7 @@ namespace Site.Classes
             {
                 foreach (DataRow c in dt.Rows)
                 {
-                    Lista.Add(new Clinica(
+                    Clinica cNew = new Clinica(
                         int.Parse(c["IdClinica"].ToString())
                         , c["ccApelido"].ToString()
                         , c["ccRazaoSocial"].ToString()
@@ -139,7 +141,21 @@ namespace Site.Classes
                         , c["observacao"].ToString()
                         , int.Parse(c["cvPgtoDias"].ToString())
                         , long.Parse(c["cvCNPJ"].ToString())
-                                        ));
+                                        );
+                    if (double.TryParse(c["cvValorCorte"].ToString(), out double c1))
+                    {
+                        cNew.cvValorCorte = c1;
+                    }
+                    if (double.TryParse(c["cvValorMenor"].ToString(), out double c2))
+                    {
+                        cNew.cvValorMenor = c2;
+                    }
+                    if (double.TryParse(c["cvValorMaior"].ToString(), out double c3))
+                    {
+                        cNew.cvValorMaior = c3;
+                    }
+
+                    Lista.Add(cNew);
                 }
 
             }
@@ -163,10 +179,27 @@ namespace Site.Classes
             parametros.Add(new object[] { "@cvPgtoDias", this.cvPgtoDias });
             parametros.Add(new object[] { "@cvCNPJ", this.cvCNPJ });
 
+            if (this.cvValorCorte.HasValue)
+                parametros.Add(new object[] { "@cvValorCorte", this.cvValorCorte });
+            else
+                parametros.Add(new object[] { "@cvValorCorte", DBNull.Value });
+
+            if (this.cvValorMaior.HasValue)
+                parametros.Add(new object[] { "@cvValorMaior", this.cvValorMaior });
+            else
+                parametros.Add(new object[] { "@cvValorMaior", DBNull.Value });
+
+
+            if (this.cvValorMenor.HasValue)
+                parametros.Add(new object[] { "@cvValorMenor", this.cvValorMenor });
+            else
+                parametros.Add(new object[] { "@cvValorMenor", DBNull.Value });
+
             try
             {
                 object retorno = DAO.ExecuteScalar(@"INS_Clinica @UserName = @UserName,@ccApelido = @ccApelido, @ccRazaoSocial = @ccRazaoSocial, @ccNomeFantasia = @ccNomeFantasia, @ccEmail = @ccEmail, 
-@cvISS = @cvISS, @cvDescontos = @cvDescontos, @idBanco = @idBanco, @cbDescontoVariavel = @cbDescontoVariavel, @observacoes = @observacoes, @cvPgtoDias= @cvPgtoDias, @cvCNPJ=@cvCNPJ", parametros);
+@cvISS = @cvISS, @cvDescontos = @cvDescontos, @idBanco = @idBanco, @cbDescontoVariavel = @cbDescontoVariavel, @observacoes = @observacoes, @cvPgtoDias= @cvPgtoDias, @cvCNPJ=@cvCNPJ
+, @cvValorCorte = @cvValorCorte, @cvValorMenor = @cvValorMenor, @cvValorMaior = @cvValorMaior", parametros);
                 if (bool.Parse(retorno.ToString()) == true)
                 {
                     result = true;
@@ -251,12 +284,28 @@ namespace Site.Classes
             parametros.Add(new object[] { "@cvPgtoDias", this.cvPgtoDias });
             parametros.Add(new object[] { "@cvCNPJ", this.cvCNPJ });
 
+            if (this.cvValorCorte.HasValue)
+                parametros.Add(new object[] { "@cvValorCorte", this.cvValorCorte });
+            else
+                parametros.Add(new object[] { "@cvValorCorte", DBNull.Value });
+
+            if (this.cvValorMaior.HasValue)
+                parametros.Add(new object[] { "@cvValorMaior", this.cvValorMaior });
+            else
+                parametros.Add(new object[] { "@cvValorMaior", DBNull.Value });
+
+
+            if (this.cvValorMenor.HasValue)
+                parametros.Add(new object[] { "@cvValorMenor", this.cvValorMenor });
+            else
+                parametros.Add(new object[] { "@cvValorMenor", DBNull.Value });
+
             try
             {
                 object retorno = DAO.ExecuteScalar(@"UPD_Clinica @UserName = @UserName, @ccApelido = @ccApelido, @ccRazaoSocial = @ccRazaoSocial
                 , @ccNomeFantasia =  @ccNomeFantasia, @ccEmail = @ccEmail, @cvISS = @cvISS, @cvDescontos = @cvDescontos, @idBanco = @idBanco
                 , @cvPgtoDias = @cvPgtoDias, @cbDescontoVariavel = @cbDescontoVariavel, @observacoes =@observacoes, @idClinica = @idClinica 
-                , @cvCNPJ = @cvCNPJ ", parametros);
+                , @cvCNPJ = @cvCNPJ, @cvValorCorte = @cvValorCorte, @cvValorMenor = @cvValorMenor, @cvValorMaior = @cvValorMaior", parametros);
 
                 if (bool.Parse(retorno.ToString()) == true)
                 {

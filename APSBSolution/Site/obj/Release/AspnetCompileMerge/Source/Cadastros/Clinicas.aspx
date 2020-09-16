@@ -15,6 +15,7 @@
     <asp:HiddenField runat="server" ID="HiddenClinicaName" />
     <asp:HiddenField runat="server" ID="HiddenProfissionalID" />
     <asp:HiddenField runat="server" ID="idHiddenChange" />
+    <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
 
     <%--Hidden Filds--%>
 
@@ -163,6 +164,20 @@
                                 <label for="chDescontoVariavel">Desconto Variável</label>
                             </div>
                         </div>
+                        <div class="row collapse" id="divDescontoVariavel">
+                            <div class="col">
+                                <label for="MainContent_tbValorCorte">Valor de Corte</label>
+                                <input runat="server" type="text" name="tbValorCorte" id="tbValorCorte" class="form-control money" value="" />
+                            </div>
+                            <div class="col">
+                                <label for="MainContent_tbTaxaMenor">Taxa Menor</label>
+                                <input runat="server" type="text" name="tbTaxaMenor" id="tbTaxaMenor" class="form-control percent" value="" />
+                            </div>
+                            <div class="col">
+                                 <label for="MainContent_tbTaxaMaior">Taxa Maior</label>
+                                <input runat="server" type="text" name="tbTaxaMaior" id="tbTaxaMaior" class="form-control percent" value="" />
+                            </div>
+                        </div> 
                         <div class="row">
                             <div class="col">
                                 <label for="tbObsClinica">Observações</label>
@@ -385,6 +400,16 @@
             $("#dpProfissional2").change(function () {
                 GetIdProfissionalByName($("#dpProfissional2").val());
             });
+
+            //Exibir Dados de desconto variável
+            if ($("#MainContent_chDescontoVariavel").is(':checked')) {
+                $("#divDescontoVariavel").collapse('show');
+            }
+        });
+
+
+        $("#MainContent_chDescontoVariavel").change(function () {
+            $("#divDescontoVariavel").collapse('toggle');
         });
 
         function filterProfissional() {
@@ -422,7 +447,11 @@
                 $("#MainContent_tbObsClinica").val("");
                 $("#MainContent_idHiddenClinica").val("");
                 $("#MainContent_chDescontoVariavel").prop("checked", false);
+                $("#MainContent_tbValorCorte").val("");
+                $("#MainContent_tbValorMenor").val("");
+                $("#MainContent_tbValorMaior").val("");
             }
+
         }
 
         $(document).ready(function () {

@@ -45,7 +45,7 @@ namespace Site.Cadastros
         protected void btUploadFile_Click(object sender, EventArgs e)
         {
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             if (btUpload.HasFile)
             {
@@ -91,7 +91,7 @@ namespace Site.Cadastros
             //string nomeArquivo = Server.HtmlDecode(gvProfissionalArquivo.Rows[int.Parse(e.CommandArgument.ToString())].Cells[1].Text);
             string nomeArquivo = ProfissionalArquivo.GetName(idProfissionalArquivo);
             //string user = User.Identity.Name;
-            string user = "Franklim";
+            string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
             bool result = false;
             switch (e.CommandName)
             {
