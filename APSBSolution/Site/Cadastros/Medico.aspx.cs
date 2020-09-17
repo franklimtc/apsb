@@ -425,6 +425,25 @@ namespace Site.Cadastros
             return result;
         }
 
+        [WebMethod]
+        public static string GetProfissionalByCPF(string cpf)
+        {
+            object result = null;
+            try
+            {
+                result = Profissional.GetProfissionalByCPF(long.Parse(Regex.Replace(cpf, "[^0-9a-zA-Z]+", "")));
+
+                if (result == null)
+                {
+                    result = "";
+                }
+            }
+            catch
+            {
+            }
+
+            return result.ToString();
+        }
 
         #endregion
 

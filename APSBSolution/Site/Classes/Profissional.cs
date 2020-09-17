@@ -360,11 +360,20 @@ namespace Site.Classes
         internal static int GetIDByName(string name)
         {
             List<object[]> parametros = new List<object[]>();
-            parametros.Add(new object[] { "ccNome", name });
+            parametros.Add(new object[] { "@ccNome", name });
 
             object retorno = DAO.ExecuteScalar(@"GetIDProfissionalByName @ccNome = @ccNome ", parametros);
 
             return int.Parse(retorno.ToString());
+        }
+
+        internal static object GetProfissionalByCPF(long cpf)
+        {
+            List<object[]> parametros = new List<object[]>();
+            parametros.Add(new object[] { "@CPF", cpf });
+
+            object retorno = DAO.ExecuteScalar(@"SEL_ProfissionalbyCPF @CPF = @CPF", parametros);
+            return retorno;
         }
 
         internal bool Adicionar(string Usuario)

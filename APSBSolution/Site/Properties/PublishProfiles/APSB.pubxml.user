@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/16/2020 09:58:46</publishTime>
+      <publishTime>09/17/2020 09:35:32</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/16/2020 09:58:46</publishTime>
+      <publishTime>09/17/2020 09:35:31</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/16/2020 09:58:28</publishTime>
+      <publishTime>09/17/2020 09:35:14</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/16/2020 09:58:28</publishTime>
+      <publishTime>09/17/2020 09:35:14</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -1298,10 +1298,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Cadastros/Clinicas.aspx">
-      <publishTime>09/16/2020 08:37:57</publishTime>
+      <publishTime>09/17/2020 08:37:04</publishTime>
     </File>
     <File Include="Cadastros/Medico.aspx">
-      <publishTime>09/11/2020 13:13:33</publishTime>
+      <publishTime>09/17/2020 09:32:43</publishTime>
     </File>
     <File Include="Cadastros/Medicos.aspx">
       <publishTime>08/13/2020 08:18:07</publishTime>
@@ -2006,7 +2006,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/14/2020 20:50:44</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/16/2020 09:58:32</publishTime>
+      <publishTime>09/17/2020 09:35:17</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2711,7 +2711,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2020 13:30:56</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Medico.js">
-      <publishTime>09/10/2020 13:55:16</publishTime>
+      <publishTime>09/17/2020 09:31:17</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Operacoes.js">
       <publishTime>09/14/2020 20:53:52</publishTime>

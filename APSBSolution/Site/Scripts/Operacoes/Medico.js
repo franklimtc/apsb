@@ -437,7 +437,30 @@ function SalvarEndereco() {
     });
 };
 
+function ValidarCPF(_cpf) {
+    var url = "Medico.aspx/GetProfissionalByCPF";
 
+    var relacaoObj = {
+        cpf: _cpf
+    }
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: JSON.stringify(relacaoObj),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json',
+        error: function () {
+            //alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+        },
+        success: function (result) {
+            if ($("#MainContent_idHiddenMedico").val() == "" && result.d != "") {
+                alert('ATENÇÃO: ' + result.d);
+            }
+        }
+    });
+
+};
 
 
 

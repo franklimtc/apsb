@@ -41,7 +41,7 @@
                             <asp:CheckBox ID="chkAtivo" Text="&nbspAtivo" runat="server" Checked="true" CssClass="form-check-input" /> <br />
                             <asp:CheckBox ID="chkUltimaAtualizacao" Text="&nbspÚltimas atualizações" runat="server" Checked="true" CssClass="form-check-input"/><br />
                             <br />
-                        <label>Nome: </label>
+                        <label for="MainContent_tbNomeSearch">Nome: </label>
 
                             <asp:TextBox runat="server" ID="tbNomeSearch" placeholder="Informe um nome para pesquisa!" CssClass="form-control" />
                         </div>
@@ -626,6 +626,12 @@
             });
         });
 
+        $("#MainContent_tbCPF").change(function () {
+            var cpf = $("#MainContent_tbCPF").val();
+            if (cpf != "") {
+                ValidarCPF(cpf);
+            }
+        });
         function LimparForm()
         {
             var carregaDados = false;
