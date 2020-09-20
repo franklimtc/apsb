@@ -1,5 +1,4 @@
-﻿
-CREATE PROCEDURE SEL_Repasse(@idReceita INT = NULL)
+﻿CREATE PROCEDURE SEL_Repasse(@idReceita INT = NULL)
 AS
     BEGIN
 	   IF @idReceita IS NOT NULL
@@ -15,8 +14,7 @@ AS
 				   r.ccStatus, 
 				   r.dataRepasse, 
 				   r.ccCriadoPor, 
-				   --o.observacao, 
-				   dbo.GetObservacoes(p.IdProfissional) observacao,
+				   COALESCE(o.observacao, dbo.GetRepassesAtivos(p.IdProfissional)) observacao, 
 				   dbo.GetBancos(p.IdProfissional) Bancos
 			 FROM   tbProfissionalRepasse r
 				   INNER JOIN tbReceitas re ON r.idReceita = re.idReceita
@@ -39,7 +37,7 @@ AS
 				   pr.dataRepasse cdRepasse, 
 				   CAST(pr.cvValor - (pr.cvValor * (ISNULL(pr.cvTaxaProfissional, 0) / 100)) AS DECIMAL(10, 2)) ValorRepasse, 
 				   pr.ccStatus, 
-				   dbo.GetObservacoes(p.IdProfissional) observacao,
+				   dbo.GetObservacoes(p.IdProfissional) observacao, 
 				   dbo.GetBancos(p.IdProfissional) Bancos
 			 FROM   tbReceitas r
 				   INNER JOIN tbProfissionalRepasse pr ON r.idReceita = pr.idReceita
@@ -49,3 +47,5 @@ AS
 				   AND pr.ccStatus <> 'C';
 		  END;
     END;
+
+	   --sp_helptext GetObservacoes

@@ -94,7 +94,7 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="clinicaModal" tabindex="-1" role="dialog" aria-labelledby="clinicaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="clinicaModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="clinicaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -196,7 +196,7 @@
 
     <!-- Large modal -->
 
-    <div class="modal fade bd-example-modal-lg" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="profissionalModal" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                  <div class="modal-header">

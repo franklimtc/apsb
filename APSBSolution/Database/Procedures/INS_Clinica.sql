@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE INS_Clinica
+﻿
+CREATE PROCEDURE INS_Clinica
 (@UserName           VARCHAR(MAX), 
  @ccApelido          VARCHAR(MAX), 
  @ccRazaoSocial      VARCHAR(MAX), 
@@ -8,9 +9,12 @@
  @cvDescontos        DECIMAL(10, 2), 
  @idBanco            INT, 
  @cvPgtoDias         INT, 
- @cbDescontoVariavel DECIMAL(10, 2), 
+ @cbDescontoVariavel BIT, 
  @observacoes        VARCHAR(MAX), 
- @cvCNPJ             BIGINT
+ @cvCNPJ             BIGINT, 
+ @cvValorCorte       DECIMAL(10, 2)  = NULL, 
+ @cvValorMenor       DECIMAL(10, 2)  = NULL, 
+ @cvValorMaior       DECIMAL(10, 2)  = NULL
 )
 AS
     BEGIN
@@ -51,6 +55,27 @@ AS
 		   @cvPgtoDias, 
 		   @cvCNPJ
 		  );
+		  DECLARE @idClinica INT;
+		  SELECT @idClinica = SCOPE_IDENTITY();
+		  IF @cbDescontoVariavel = 1
+			 BEGIN
+				INSERT INTO tbDescontoVariavelClinicas
+				(idClinica, 
+				 cvValorCorte, 
+				 cvValorMenor, 
+				 cvValorMaior, 
+				 cbStatus, 
+				 ccAlteradoPor
+				)
+				VALUES
+				(@idClinica, 
+				 @cvValorCorte, 
+				 @cvValorMenor, 
+				 @cvValorMaior, 
+				 1, 
+				 @UserName
+				);
+			 END;
 		  SET @Result = 1;
 	   END TRY
 	   BEGIN CATCH

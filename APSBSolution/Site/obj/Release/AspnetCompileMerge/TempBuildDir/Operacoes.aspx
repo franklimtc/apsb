@@ -98,6 +98,7 @@
                     <Columns>
                         <asp:BoundField HeaderText="ID" DataField="ID" ItemStyle-CssClass="rowID" />
                         <asp:BoundField HeaderText="Descrição" DataField="ccDescricao" />
+                        <asp:BoundField HeaderText="Operador" DataField="ccOperador" />
                         <asp:BoundField HeaderText="R$ Nota" DataField="cvValor" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Recebido" DataField="cvValorRecebido" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
                         <asp:BoundField HeaderText="R$ Repassado" DataField="cvValorRepassado" DataFormatString="{0:C}" ItemStyle-CssClass="num" />
@@ -166,7 +167,7 @@
     </div>
 
     <!-- Modal Example-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -329,7 +330,7 @@
     </div>
 
     <!-- Modal Operações -->
-    <div class="modal fade" id="operacaoModal" tabindex="-1" role="dialog" aria-labelledby="operacaoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="operacaoModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="operacaoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

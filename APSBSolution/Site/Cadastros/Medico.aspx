@@ -112,7 +112,7 @@
         </div>
     </div>
     <%--Modais--%>
-    <div class="modal" tabindex="-1" role="dialog" id="medicoModal">
+    <div class="modal" tabindex="-1" role="dialog" id="medicoModal" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -271,7 +271,7 @@
     </div>
 
     <!-- Modal Médico - Dados Profissionais - profissionalModal-->
-    <div class="modal fade" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
+    <div class="modal fade" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -371,7 +371,7 @@
     </div>
 
     <!-- Modal Médico - Dados de Moradia - moradiaModal-->
-    <div class="modal fade" id="moradiaModal" tabindex="-1" role="dialog" aria-labelledby="moradiaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="moradiaModal" tabindex="-1" role="dialog" aria-labelledby="moradiaModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -449,7 +449,7 @@
     </div>
 
     <!-- Modal Médico - Dados Bancários - bancoModal-->
-    <div class="modal fade" id="bancoModal" tabindex="-1" role="dialog" aria-labelledby="bancoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="bancoModal" tabindex="-1" role="dialog" aria-labelledby="bancoModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -521,7 +521,7 @@
     </div>
 
      <!-- Modal Arquivos -->
-    <div class="modal fade" id="arquivosModal" tabindex="-1" role="dialog" aria-labelledby="arquivosModalLabel" aria-hidden="true">
+    <div class="modal fade" id="arquivosModal" tabindex="-1" role="dialog" aria-labelledby="arquivosModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

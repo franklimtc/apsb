@@ -179,6 +179,10 @@
     <Build Include="dbo\Stored Procedures\EXC_ClinicaDetinitivo.sql" />
     <Build Include="dbo\Functions\GetObservacoes.sql" />
     <Build Include="dbo\Functions\GetBancos.sql" />
+    <Build Include="dbo\Tables\tbDescontoVariavelClinicas.sql" />
+    <Build Include="dbo\Functions\GetTaxaProfissional.sql" />
+    <Build Include="dbo\Functions\GetRepassesAtivos.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalbyCPF.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

@@ -26,6 +26,7 @@ namespace Site.Classes
 
         public float? cvValorRecebido { get; set; }//cvValorRecebido
         public float? cvValorRepassado { get; set; }//cvValorRepassado
+        public string ccOperador { get; set; }
 
         #endregion
 
@@ -176,7 +177,7 @@ namespace Site.Classes
                     #endregion
 
                     int.TryParse(c["cvNF"].ToString(), out int cvNF);
-                    Lista.Add(new Operacao(
+                    Operacao opNew = new Operacao(
                         int.Parse(c["ID"].ToString())
                         , float.Parse(c["cvValor"].ToString())
                         , c["ccDescricao"].ToString()
@@ -189,7 +190,10 @@ namespace Site.Classes
                         , cvNF
                         , cvRecebido
                         , cvRepassado
-                        ));
+                        );
+                    opNew.ccOperador = c["ccOperador"].ToString();   
+
+                    Lista.Add(opNew);
                 }
 
             }
@@ -238,20 +242,23 @@ namespace Site.Classes
                     #endregion
 
                     int.TryParse(c["cvNF"].ToString(), out int cvNF);
-                    Lista.Add(new Operacao(
-                        int.Parse(c["ID"].ToString())
-                        , float.Parse(c["cvValor"].ToString())
-                        , c["ccDescricao"].ToString()
-                        , c["observacao"].ToString()
-                        , dtEmissao
-                        , dtPagamento
-                        , dtRepasse
-                        , int.Parse(c["Status"].ToString())
-                        , c["Tipo"].ToString()
-                        , cvNF
-                        , cvRecebido
-                        , cvRepassado
-                        ));
+                    Operacao opNew = new Operacao(
+                                            int.Parse(c["ID"].ToString())
+                                            , float.Parse(c["cvValor"].ToString())
+                                            , c["ccDescricao"].ToString()
+                                            , c["observacao"].ToString()
+                                            , dtEmissao
+                                            , dtPagamento
+                                            , dtRepasse
+                                            , int.Parse(c["Status"].ToString())
+                                            , c["Tipo"].ToString()
+                                            , cvNF
+                                            , cvRecebido
+                                            , cvRepassado
+                                            );
+                    opNew.ccOperador = c["ccOperador"].ToString();
+
+                    Lista.Add(opNew);
                 }
 
             }

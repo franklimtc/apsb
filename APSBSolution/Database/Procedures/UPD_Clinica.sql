@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE UPD_Clinica
+﻿
+CREATE PROCEDURE UPD_Clinica
 (@UserName           VARCHAR(MAX), 
  @ccApelido          VARCHAR(MAX), 
  @ccRazaoSocial      VARCHAR(MAX), 
@@ -11,7 +12,10 @@
  @cbDescontoVariavel BIT, 
  @observacoes        VARCHAR(MAX), 
  @idClinica          INT, 
- @cvCNPJ             BIGINT
+ @cvCNPJ             BIGINT, 
+ @cvValorCorte       DECIMAL(10, 2)  = NULL, 
+ @cvValorMenor       DECIMAL(10, 2)  = NULL, 
+ @cvValorMaior       DECIMAL(10, 2)  = NULL
 )
 AS
     BEGIN
@@ -55,6 +59,52 @@ AS
 			   idObservacao = NULLIF(@idObservacao, 0), 
 			   cvCNPJ = @cvCNPJ
 		  WHERE  IdClinica = @idClinica;
+		  IF @cbDescontoVariavel = 1
+			 BEGIN
+				DECLARE @QTD INT= 0;
+				SELECT @QTD = COUNT(*)
+				FROM   tbDescontoVariavelClinicas
+				WHERE  idClinica = @idClinica;
+				IF @QTD = 0
+				    BEGIN
+					   INSERT INTO tbDescontoVariavelClinicas
+					   (idClinica, 
+					    cvValorCorte, 
+					    cvValorMenor, 
+					    cvValorMaior, 
+					    cbStatus, 
+					    ccAlteradoPor
+					   )
+					   VALUES
+					   (@idClinica, 
+					    @cvValorCorte, 
+					    @cvValorMenor, 
+					    @cvValorMaior, 
+					    1, 
+					    @UserName
+					   );
+				    END;
+				    ELSE
+				    BEGIN
+					   UPDATE tbDescontoVariavelClinicas
+						SET  
+						    cbStatus = 1, 
+						    cvValorCorte = @cvValorCorte, 
+						    cvValorMenor = @cvValorMenor, 
+						    cvValorMaior = @cvValorMaior, 
+						    ccAlteradoPor = @UserName
+					   WHERE  idClinica = @idClinica;
+				    END;
+			 END;
+			 ELSE
+			 BEGIN
+				UPDATE tbDescontoVariavelClinicas
+				  SET  
+					 cbStatus = 0, 
+					 cdDataDesativacao = GETDATE(), 
+					 ccAlteradoPor = @UserName
+				WHERE  idClinica = @idClinica;
+			 END;
 		  SET @Result = 1;
 	   END TRY
 	   BEGIN CATCH
