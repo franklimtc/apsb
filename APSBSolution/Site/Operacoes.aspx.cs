@@ -88,7 +88,7 @@ namespace Site
             var obj = e.CommandArgument;
             int idOperacao = int.Parse(gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[0].Text);
             idHiddenOperacao.Value = idOperacao.ToString();
-            string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[9].Text;
+            string operacaoTipo = gvOperacoes.Rows[int.Parse(obj.ToString())].Cells[10].Text;
             string user = User.Identity.Name.Substring(0, User.Identity.Name.IndexOf("@"));
 
             switch (e.CommandName)

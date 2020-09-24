@@ -16,12 +16,15 @@
     [ccAlteradoPor]      VARCHAR (20)  NULL,
     [cdDataAlteracao]    DATETIME      NULL,
     [cvCNPJ]             BIGINT        NULL,
+    [ccOperador]         VARCHAR (20)  NULL,
     PRIMARY KEY CLUSTERED ([IdClinica] ASC),
     FOREIGN KEY ([idBanco]) REFERENCES [dbo].[tbBancos] ([IdBanco]),
     FOREIGN KEY ([idObservacao]) REFERENCES [dbo].[tbObservacoes] ([IdObservacao]),
     UNIQUE NONCLUSTERED ([ccApelido] ASC),
     CONSTRAINT [UN_cvCNPJ] UNIQUE NONCLUSTERED ([cvCNPJ] ASC)
 );
+
+
 
 
 

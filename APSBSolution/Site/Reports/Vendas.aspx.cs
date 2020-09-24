@@ -44,7 +44,11 @@ namespace Site.Reports
             viewer.LocalReport.ReportPath = @"Reports\RepVendas.rdlc";
             viewer.LocalReport.DisplayName = fileName;
 
+            ReportParameter dtInicial = new ReportParameter("dtInicial", dtInicio.Text);
+            ReportParameter dtFinal = new ReportParameter("dtFinal", dtFim.Text);
+
             viewer.LocalReport.DataSources.Add(DataSet1);
+            viewer.LocalReport.SetParameters(new ReportParameter[] { dtInicial, dtFinal });
 
             byte[] bytes = viewer.LocalReport.Render("EXCEL", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
             //byte[] bytes = viewer.LocalReport.Render("PDF");

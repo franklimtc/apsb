@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/20/2020 11:52:26</publishTime>
+      <publishTime>09/24/2020 08:58:58</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/20/2020 11:52:26</publishTime>
+      <publishTime>09/24/2020 08:58:58</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/20/2020 11:52:12</publishTime>
+      <publishTime>09/24/2020 08:58:37</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/20/2020 11:52:12</publishTime>
+      <publishTime>09/24/2020 08:58:37</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -2003,10 +2003,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/15/2020 22:10:10</publishTime>
     </File>
     <File Include="Operacoes.aspx">
-      <publishTime>09/20/2020 11:44:36</publishTime>
+      <publishTime>09/23/2020 19:15:54</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/20/2020 11:52:16</publishTime>
+      <publishTime>09/24/2020 08:58:39</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2060,7 +2060,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Reports/RepVendas.rdlc">
-      <publishTime>08/13/2020 08:18:07</publishTime>
+      <publishTime>09/24/2020 07:51:35</publishTime>
     </File>
     <File Include="Reports/Vendas.aspx">
       <publishTime>09/10/2020 18:29:19</publishTime>

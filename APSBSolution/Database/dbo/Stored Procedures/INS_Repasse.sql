@@ -16,14 +16,12 @@ AS
 		  VALUES                   (@observacoes);
 			 SELECT @idObservacao = SCOPE_IDENTITY();
 		  END;
-	   
-	   SELECT @cvTaxa = dbo.GetTaxaProfissional(@idReceita, @cvValor, @IdProfissional);
-	  -- SELECT @cvTaxa = a.cvTaxaProfissional
-	  -- FROM   tbClinicaProfissional a
-			--INNER JOIN tbReceitas b ON A.idClinica = b.IdClinica
-			--					  AND b.idReceita = @idReceita
-	  -- WHERE  a.idProfissional = @IdProfissional;
-
+	   SELECT @cvTaxa = dbo.GetTaxaProfissional(@idReceita, @cvValor, @IdProfissional);    
+	   -- SELECT @cvTaxa = a.cvTaxaProfissional    
+	   -- FROM   tbClinicaProfissional a    
+	   --INNER JOIN tbReceitas b ON A.idClinica = b.IdClinica    
+	   --       AND b.idReceita = @idReceita    
+	   -- WHERE  a.idProfissional = @IdProfissional;    
 
 	   BEGIN TRY
 		  INSERT INTO tbProfissionalRepasse
@@ -31,16 +29,14 @@ AS
 		   IdProfissional, 
 		   cvValor, 
 		   ccCriadoPor, 
-		   cvTaxaProfissional, 
-		   dataRepasse
+		   cvTaxaProfissional
 		  )
 		  VALUES
 		  (@idReceita, 
 		   @IdProfissional, 
 		   @cvValor, 
 		   @UserName, 
-		   @cvTaxa, 
-		   @dataRepasse
+		   @cvTaxa
 		  );
 		  SET @Result = 1;
 	   END TRY

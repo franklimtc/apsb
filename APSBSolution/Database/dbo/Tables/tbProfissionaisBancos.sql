@@ -15,3 +15,10 @@
 
 
 
+
+
+
+GO
+CREATE NONCLUSTERED INDEX [IX_Status_ProfissionalBanco]
+    ON [dbo].[tbProfissionaisBancos]([cvStatus] ASC, [idProfissional] ASC);
+
