@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE SEL_ProfissionalRepasses
+﻿
+CREATE PROCEDURE SEL_ProfissionalRepasses
 (@year      INT      = NULL, 
  @dtInicial DATETIME = NULL, 
  @dtFinal   DATETIME = NULL
@@ -6,8 +7,7 @@
 AS
     BEGIN
 	   IF @year IS NULL
-		 AND @dtInicial IS NULL
-		 AND @dtFinal IS NULL
+		 
 		  BEGIN
 			 SET @year = YEAR(GETDATE());
 		  END;
@@ -21,12 +21,12 @@ AS
 			   pd.cvPIS pis, 
 			   pd.ccConselho conselho, 
 			   pd.cvNumInscricao regConselho, 
-				(
-				    SELECT CONCAT(b.ccBanco, ' AG - ', tb.ccAgencia, ' Conta - ', tb.ccConta, ' OP - ', tb.ccOperacao, ' | ')
-				    FROM    tbProfissionaisBancos tb
-						  INNER JOIN tbBancos b ON tb.idBanco = b.IdBanco
-				    WHERE  P.IdProfissional = TB.idProfissional FOR XML PATH('')
-				) Banco, 
+	   (
+		  SELECT CONCAT(b.ccBanco, ' AG - ', tb.ccAgencia, ' Conta - ', tb.ccConta, ' OP - ', tb.ccOperacao, ' | ')
+		  FROM    tbProfissionaisBancos tb
+				INNER JOIN tbBancos b ON tb.idBanco = b.IdBanco
+		  WHERE  P.IdProfissional = TB.idProfissional FOR XML PATH('')
+	   ) Banco, 
 			   r.Valor faturamento, 
 			   @year periodo
 	   FROM tbProfissionais p

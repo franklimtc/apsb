@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>09/24/2020 08:58:58</publishTime>
+      <publishTime>09/25/2020 08:26:48</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>09/24/2020 08:58:58</publishTime>
+      <publishTime>09/25/2020 08:26:48</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>09/24/2020 08:58:37</publishTime>
+      <publishTime>09/25/2020 08:26:28</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>09/24/2020 08:58:37</publishTime>
+      <publishTime>09/25/2020 08:26:28</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -2006,7 +2006,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/23/2020 19:15:54</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>09/24/2020 08:58:39</publishTime>
+      <publishTime>09/25/2020 08:26:31</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2036,7 +2036,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Reports/Rel_repasse.rdlc">
-      <publishTime>09/09/2020 22:14:17</publishTime>
+      <publishTime>09/25/2020 08:03:04</publishTime>
     </File>
     <File Include="Reports/Rep01.rdlc">
       <publishTime>09/07/2020 22:07:33</publishTime>
@@ -2045,7 +2045,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Reports/Repasses.aspx">
-      <publishTime>09/10/2020 18:28:32</publishTime>
+      <publishTime>09/25/2020 08:07:08</publishTime>
     </File>
     <File Include="Reports/RepDespesas.rdlc">
       <publishTime>09/10/2020 18:47:29</publishTime>

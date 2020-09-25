@@ -947,7 +947,7 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>0.88206in</Height>
+        <Height>0.97581in</Height>
         <Style />
       </Body>
       <Width>15.46966in</Width>
@@ -971,9 +971,76 @@
                     </TextRun>
                   </TextRuns>
                   <Style>
-                    <TextAlign>Center</TextAlign>
+                    <TextAlign>Left</TextAlign>
                   </Style>
                 </Paragraph>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Período: </Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <Format>g</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>dtInicial</Label>
+                      <Value>=Parameters!dtInicial.Value</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <Format>dd/MM/yyyy</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Value> à </Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <Format>g</Format>
+                      </Style>
+                    </TextRun>
+                    <TextRun>
+                      <Label>dtFinal</Label>
+                      <Value>=Parameters!dtFinal.Value</Value>
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <Format>dd/MM/yyyy</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox25</rd:DefaultName>
+              <Height>2.39889cm</Height>
+              <Width>39cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>1.79917cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
@@ -992,14 +1059,13 @@
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
+                  <Style />
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox25</rd:DefaultName>
-              <Height>2.39889cm</Height>
-              <Width>13cm</Width>
+              <rd:DefaultName>Textbox2</rd:DefaultName>
+              <Top>0.64035cm</Top>
+              <Height>0.6cm</Height>
+              <Width>39cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1016,7 +1082,7 @@
               <Style>None</Style>
             </Border>
           </Style>
-        </PageHeader>
+        </PageFooter>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
         <LeftMargin>2cm</LeftMargin>
@@ -1028,10 +1094,32 @@
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParameters>
+    <ReportParameter Name="dtInicial">
+      <DataType>DateTime</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="dtFinal">
+      <DataType>DateTime</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+  </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
       <NumberOfRows>2</NumberOfRows>
+      <CellDefinitions>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>dtInicial</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>0</RowIndex>
+          <ParameterName>dtFinal</ParameterName>
+        </CellDefinition>
+      </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>

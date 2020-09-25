@@ -34,6 +34,9 @@ namespace Site.Reports
                 parametros.Add(new object[] { "@dtInicial", dtInicio.Text });
                 parametros.Add(new object[] { "@dtFinal", dtFinal.Text });
 
+                ReportParameter dtini = new ReportParameter("dtInicial", dtInicio.Text);
+                ReportParameter dtfin = new ReportParameter("dtFinal", dtFinal.Text);
+
                 DataTable dt = DAO.RetornaDT("SEL_ProfissionalRepasses @dtInicial = @dtInicial, @dtFinal = @dtFinal;", parametros);
 
                 ReportViewer viewer = new ReportViewer();
@@ -44,6 +47,7 @@ namespace Site.Reports
                 viewer.LocalReport.DisplayName = fileName;
 
                 viewer.LocalReport.DataSources.Add(DataSet1);
+                viewer.LocalReport.SetParameters(new ReportParameter[] { dtini, dtfin });
 
                 byte[] bytes = viewer.LocalReport.Render("EXCEL", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
                 //byte[] bytes = viewer.LocalReport.Render("PDF");

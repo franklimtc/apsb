@@ -52,7 +52,7 @@
                     <asp:BoundField DataField="regConselho" HeaderText="Num Inscrição" SortExpression="regConselho" />
                     <asp:BoundField DataField="Banco" HeaderText="Informações Bancárias" ReadOnly="True" SortExpression="Banco" />
                     <asp:BoundField DataField="faturamento" HeaderText="Faturamento" ReadOnly="True" SortExpression="faturamento" ItemStyle-CssClass="money2" />
-                    <asp:BoundField DataField="periodo" HeaderText="Período" ReadOnly="True" SortExpression="periodo" />
+                    <asp:BoundField DataField="periodo" HeaderText="Ano" ReadOnly="True" SortExpression="periodo" />
                 </Columns>
             </asp:GridView>
 
