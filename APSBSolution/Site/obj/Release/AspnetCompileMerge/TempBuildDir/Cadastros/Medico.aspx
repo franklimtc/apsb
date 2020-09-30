@@ -666,7 +666,7 @@
         };
 
         function Validaremails() {
-            var emailReg = new RegExp(/^([A-Z0-9.%+-]+@[A-Z0-9.-]+.[A-Z]{2,6})*([,;][\s]*([A-Z0-9.%+-]+@[A-Z0-9.-]+.[A-Z]{2,6}))*$/i);
+            var emailReg = new RegExp(/^([A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,6})*([,;][\s]*([A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,6}))*$/i);
             var emailText = $('#MainContent_tbEmail').val();
             if (!emailReg.test(emailText)) {
                 alert('ERRO: Email inserido com formato incorreto. Insira os emails separados por vírgula!');

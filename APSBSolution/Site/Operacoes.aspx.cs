@@ -4,6 +4,7 @@ using Simple.Data;
 using Site.Classes;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -352,24 +353,71 @@ namespace Site
        
         protected void btAplicarFiltro_Click(object sender, EventArgs e)
         {
-            gvOperacoes.DataSourceID = "";
-            bool status = bool.Parse(chkStatus.SelectedValue);
-            bool arquivado = bool.Parse(chkArquivado.SelectedValue);
-            DateTime? dtIni = null;
-            DateTime? dtFin = null;
-
-            if (!dtInicio.Text.IsNullOrWhiteSpace())
+            if (HiddenDetalhes.Value == "0")
             {
-                dtIni = DateTime.Parse(dtInicio.Text);
+                gvOperacoes.DataSourceID = "";
+                bool status = bool.Parse(chkStatus.SelectedValue);
+                bool arquivado = bool.Parse(chkArquivado.SelectedValue);
+                DateTime? dtIni = null;
+                DateTime? dtFin = null;
+
+                if (!dtInicio.Text.IsNullOrWhiteSpace())
+                {
+                    dtIni = DateTime.Parse(dtInicio.Text);
+                }
+
+                if (!dtFim.Text.IsNullOrWhiteSpace())
+                {
+                    dtFin = DateTime.Parse(dtFim.Text);
+                }
+
+                gvOperacoes.DataSource = Operacao.Listar(arquivado, status, dtIni, dtFin);
+                gvOperacoes.DataBind();
+            }
+            else
+            {
+                gvRepasses.DataSourceID = "";
+                bool status = bool.Parse(chkStatus.SelectedValue);
+                bool arquivado = bool.Parse(chkArquivado.SelectedValue);
+                DateTime? dtIni = null;
+                DateTime? dtFin = null;
+
+                if (!dtInicio.Text.IsNullOrWhiteSpace())
+                    dtIni = DateTime.Parse(dtInicio.Text);
+
+                if (!dtFim.Text.IsNullOrWhiteSpace())
+                    dtFin = DateTime.Parse(dtFim.Text);
+
+                List<object[]> parametros = new List<object[]>();
+                parametros.Add(new object[] { "@cbArquivado",arquivado });
+                parametros.Add(new object[] { "@cbStatus", status});
+
+                if (dtIni.HasValue && dtFin.HasValue)
+                {
+                    parametros.Add(new object[] { "@dtInicio", dtIni });
+                    parametros.Add(new object[] { "@dtFim", dtFin });
+                }
+                else
+                {
+                    parametros.Add(new object[] { "@dtInicio", DBNull.Value });
+                    parametros.Add(new object[] { "@dtFim", DBNull.Value });
+                }
+                
+                DataTable dt = DAO.RetornaDT("SEL_Repasse @cbArquivado = @cbArquivado, @cbStatus  = @cbStatus, @dtInicio  = @dtInicio, @dtFim = @dtFim;", parametros);
+
+                if (dt.Rows.Count > 0)
+                {
+                    gvRepasses.DataSource = dt;
+                }
+                else
+                {
+                    List<ReceitaRepasse> lista = new List<ReceitaRepasse>();
+                    lista.Add(new ReceitaRepasse());
+                    gvRepasses.DataSource = lista;
+                }
+                gvRepasses.DataBind();
             }
 
-            if (!dtFim.Text.IsNullOrWhiteSpace())
-            {
-                dtFin = DateTime.Parse(dtFim.Text);
-            }
-
-            gvOperacoes.DataSource = Operacao.Listar(arquivado, status, dtIni, dtFin);
-            gvOperacoes.DataBind();
         }
         protected void dpTipoReceita_TextChanged(object sender, EventArgs e)
         {

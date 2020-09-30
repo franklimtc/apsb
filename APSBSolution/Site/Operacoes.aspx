@@ -16,7 +16,7 @@
             opacity: 0.2;
         }
     </style>
-
+    <%--hidden fields--%>
     <div>
         <div class="row">
             <div class="col-md-4"></div>
@@ -25,7 +25,7 @@
                 <h2 id="hTitulo">Cadastro de Operações</h2>
                 <%--Datasources--%>
                 <asp:ObjectDataSource runat="server" ID="dsOperacoes" SelectMethod="Listar" TypeName="Site.Classes.Operacao" />
-
+                <asp:SqlDataSource runat="server" ID="dsRepasses2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_Repasse" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
                 <%--Datasources--%>
                 <br />
             </div>
@@ -76,6 +76,7 @@
             <asp:HiddenField runat="server" ID="HddValorNegativo" />
             <asp:HiddenField runat="server" ID="HddValorDisponivel" />
             <asp:HiddenField runat="server" ID="idHiddenOperacao" />
+            <asp:HiddenField runat="server" ID="HiddenDetalhes" Value="0" />
             <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
             <input type="hidden" id="idHiddenOperacao2" name="idHiddenOperacao2" value="" />
             <input type="hidden" id="hiddenRepasseID" name="hiddenRepasseID" value="" />
@@ -161,7 +162,7 @@
                     </Columns>
                 </asp:GridView>
                 <%--<asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />--%>
-                <asp:SqlDataSource runat="server" ID="dsRepasses2" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_Repasse" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
+                
             </div>
         </div>
     </div>
@@ -531,6 +532,8 @@
 
 
             $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            $('#MainContent_gvRepasses_filter').append("<input type='image' name='btFilter2' id='btFilter2' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            
 
             EnableDiscount();
 
@@ -562,6 +565,9 @@
             CarregarClinicasDP();
             CarregarDespesasDP();
 
+            if ($("#MainContent_HiddenDetalhes").val() == "1") {
+                Detalhar();
+            }
         });
 
         $("#MainContent_dpSearchDespesas").change(function () {
@@ -812,13 +818,15 @@
                 $("#divOperacoes").addClass("d-none");
                 $("#divRepasses").removeClass("d-none");
                 $("#btOpRep").val("Ocultar");
-                $("#hTitulo").text("Repasses Detalhados")
+                $("#hTitulo").text("Repasses Detalhados");
+                $("#MainContent_HiddenDetalhes").val("1");
             }
             else {
                 $("#divRepasses").addClass("d-none");
                 $("#divOperacoes").removeClass("d-none");
                 $("#btOpRep").val("Detalhar");
                 $("#hTitulo").text("Cadastro de Operações")
+                $("#MainContent_HiddenDetalhes").val("0");
             }
         };
 

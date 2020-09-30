@@ -24,6 +24,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.ObjectDataSource dsOperacoes;
 
         /// <summary>
+        /// Controle dsRepasses2.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsRepasses2;
+
+        /// <summary>
         /// Controle chkStatus.
         /// </summary>
         /// <remarks>
@@ -105,6 +114,15 @@ namespace Site
         protected global::System.Web.UI.WebControls.HiddenField idHiddenOperacao;
 
         /// <summary>
+        /// Controle HiddenDetalhes.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenDetalhes;
+
+        /// <summary>
         /// Controle HiddenUser.
         /// </summary>
         /// <remarks>
@@ -148,15 +166,6 @@ namespace Site
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvRepasses;
-
-        /// <summary>
-        /// Controle dsRepasses2.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsRepasses2;
 
         /// <summary>
         /// Controle tbDtRepasse.
