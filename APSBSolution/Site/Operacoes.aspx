@@ -568,6 +568,15 @@
             if ($("#MainContent_HiddenDetalhes").val() == "1") {
                 Detalhar();
             }
+
+            //Calcula o valor do Pagamento caso o checkbox do ISS seja alterado
+            $("#MainContent_chkIssRetido").change(function () {
+                if ($("#MainContent_tbReceitaDesconto").val() == "") {
+                    $("#MainContent_tbReceitaDesconto").val("0");
+                }
+                CalcularValorPago();
+
+            });
         });
 
         $("#MainContent_dpSearchDespesas").change(function () {
