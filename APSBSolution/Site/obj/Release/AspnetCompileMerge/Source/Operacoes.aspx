@@ -162,13 +162,12 @@
                     </Columns>
                 </asp:GridView>
                 <%--<asp:ObjectDataSource runat="server" ID="dsRepasses" SelectMethod="Listar" TypeName="Site.Classes.ReceitaRepasse" />--%>
-                
             </div>
         </div>
     </div>
 
     <!-- Modal Example-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -280,15 +279,15 @@
                         <div class="col">
                             <input type="button" name="btAdicionar" value="Adicionar" onclick="AdicionarRepasse()" class="btn btn-secondary" />
                         </div>
-                       
+
                         <div class="col">
                             <img id="imgDanger" src="Content/Icons/danger.jpg" alt="Alternate Text" width="50px" class="collapse" />
                         </div>
                     </div>
                     <div class="row">
-                         <div class="col">
-                             <br />
-                            <input type="button" id="btCorrigirReceita" name="btCorrigirReceita" value="Atualizar valor" onclick="UPD_ReceitaByRepasses()" style="width:100%" class="btn btn-primary collapse" />
+                        <div class="col">
+                            <br />
+                            <input type="button" id="btCorrigirReceita" name="btCorrigirReceita" value="Atualizar valor" onclick="UPD_ReceitaByRepasses()" style="width: 100%" class="btn btn-primary collapse" />
                         </div>
                     </div>
                     <div class="row d-none" id="divObs">
@@ -331,7 +330,7 @@
     </div>
 
     <!-- Modal Operações -->
-    <div class="modal fade" id="operacaoModal" tabindex="-1" role="dialog" data-backdrop="static"  aria-labelledby="operacaoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="operacaoModal" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="operacaoModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -379,7 +378,7 @@
                                     <%--<asp:TextBox runat="server" ID="tbSearch2" CssClass="form-control" onkeyup="filter()" placeholder="Filtrar..." />--%>
                                     <%--<asp:TextBox runat="server" ID="tbSearch" CssClass="form-control d-none" onkeyup="filter()" placeholder="Filtrar..." />--%>
                                     <%--DropDown Profissionais--%>
-                                    <input runat="server" id="dpSearchClinicas" list="dsClinicasDP" name="dpProfissional" class="form-control" placeholder="Selecione a clínica..." onchange="CarregarDadosClinica()" />
+                                    <input runat="server" id="dpSearchClinicas" list="dsClinicasDP" name="dpProfissional" class="form-control" placeholder="Selecione a clínica..."/>
                                     <datalist id="dsClinicasDP">
                                     </datalist>
 
@@ -402,81 +401,88 @@
                             </div>
                         </div>
                         <hr />
-                        <div id="divDespesas" class="d-none">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="tbDespesaDataNF">Data</label>
-                                    <%--<input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control" type="date" />
-                                </div>
-                                <div id="divNF" class="col-sm-6">
-                                    <label for="tbDespesaNF">NF</label>
-                                    <%--<input type="text" id="tbNumNF" name="tbNumNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbNumNF" CssClass="form-control" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="tbDespesaObs">Observações</label>
-                                    <%--<input type="text" id="tbDespesaObs" name="tbDespesaObs" class="form-control" style="height: 100px" />--%>
-                                    <asp:TextBox runat="server" ID="tbDespesaObs" CssClass="form-control" TextMode="MultiLine" />
-                                </div>
+                        <div class="d-flex justify-content-center">
+                            <div id="spinner" class="spinner-border" role="status">
+                                <span  class="sr-only">Loading...</span>
                             </div>
                         </div>
-                        <div id="divReceitas">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="tbReceitaDataNF">Data de Emissão</label>
-                                    <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control" Enabled="false" type="date" />
+                        <div id="divOps" class="d-none">
+                            <div id="divDespesas" class="d-none">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="tbDespesaDataNF">Data</label>
+                                        <%--<input type="text" id="tbDespesaDataNF" name="tbDespesaDataNF" class="form-control" />--%>
+                                        <asp:TextBox runat="server" ID="tbDespesaDataNF" CssClass="form-control" type="date" />
+                                    </div>
+                                    <div id="divNF" class="col-sm-6">
+                                        <label for="tbDespesaNF">NF</label>
+                                        <%--<input type="text" id="tbNumNF" name="tbNumNF" class="form-control" />--%>
+                                        <asp:TextBox runat="server" ID="tbNumNF" CssClass="form-control" />
+                                    </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <label for="tbReceitaNF">NF</label>
-                                    <%--<input type="text" id="tbReceitaNF" name="tbReceitaNF" class="form-control" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" Enabled="false" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
-                                    <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control" Enabled="false" type="date" />
-                                </div>
-                                <div class="col-sm-6">
-                                    <label for="tbReceitaNFValorPG">Valor Pago</label>
-                                    <%--<input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Enabled="false" />
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="tbDespesaObs">Observações</label>
+                                        <%--<input type="text" id="tbDespesaObs" name="tbDespesaObs" class="form-control" style="height: 100px" />--%>
+                                        <asp:TextBox runat="server" ID="tbDespesaObs" CssClass="form-control" TextMode="MultiLine" />
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="row">
-                                <div class="col">
-                                    <label for="tbReceitaDesconto">Desconto(%)</label>
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
-                                            <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control num" />
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <input type="button" id="btLimparReceitaDesconto" name="Limpar" class="btn btn-info" value="Limpar" onclick="ClearDiscount()" />
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
-                                        </div>
-                                        <div class="col-sm-1"></div>
-                                        <div class="col-sm-3">
-                                            <asp:CheckBox Text="ISS Retido" runat="server" ID="chkIssRetido" CssClass="form-check-input" Enabled="false" />
-                                        </div>
-
+                            <div id="divReceitas">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="tbReceitaDataNF">Data de Emissão</label>
+                                        <%--<input type="text" id="tbReceitaDataNF" name="tbReceitaDataNF" class="form-control" />--%>
+                                        <asp:TextBox runat="server" ID="tbReceitaDataNF" CssClass="form-control" Enabled="false" type="date" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="tbReceitaNF">NF</label>
+                                        <%--<input type="text" id="tbReceitaNF" name="tbReceitaNF" class="form-control" />--%>
+                                        <asp:TextBox runat="server" ID="tbReceitaNF" CssClass="form-control" Enabled="false" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="tbReceitaDataPgtoNF">Data de Pagamento</label>
+                                        <%--<input type="text" id="tbReceitaDataPgtoNF" name="tbReceitaDataPgtoNF" class="form-control" readonly="readonly" />--%>
+                                        <asp:TextBox runat="server" ID="tbReceitaDataPgtoNF" CssClass="form-control" Enabled="false" type="date" />
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label for="tbReceitaNFValorPG">Valor Pago</label>
+                                        <%--<input type="text" id="tbReceitaNFValorPG" name="tbReceitaNFValorPG" class="form-control" readonly="readonly" />--%>
+                                        <asp:TextBox runat="server" ID="tbReceitaNFValorPG" CssClass="form-control money" Enabled="false" />
                                     </div>
                                 </div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <label for="tbReceitaObs">Observações</label>
-                                    <%--<input type="text" id="tbReceitaObs" name="tbReceitaObs" class="form-control" placeholder="..." style="height: 100px" />--%>
-                                    <asp:TextBox runat="server" ID="tbReceitaObs" CssClass="form-control" TextMode="MultiLine" />
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="tbReceitaDesconto">Desconto(%)</label>
+                                        <div class="row">
+                                            <div class="col-sm-3">
+                                                <%--<input type="text" id="tbReceitaDesconto" name="tbReceitaDesconto" class="form-control" readonly="readonly" value="6,5%" />--%>
+                                                <asp:TextBox runat="server" ID="tbReceitaDesconto" CssClass="form-control num" />
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="button" id="btLimparReceitaDesconto" name="Limpar" class="btn btn-info" value="Limpar" onclick="ClearDiscount()" />
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="button" id="btEditarReceitaDesconto" name="Editar" class="btn btn-info" value="Editar" onclick="EnableDiscount()" />
+                                            </div>
+                                            <div class="col-sm-1"></div>
+                                            <div class="col-sm-3">
+                                                <asp:CheckBox Text="ISS Retido" runat="server" ID="chkIssRetido" CssClass="form-check-input" Enabled="false" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="tbReceitaObs">Observações</label>
+                                        <%--<input type="text" id="tbReceitaObs" name="tbReceitaObs" class="form-control" placeholder="..." style="height: 100px" />--%>
+                                        <asp:TextBox runat="server" ID="tbReceitaObs" CssClass="form-control" TextMode="MultiLine" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -507,7 +513,7 @@
             $.fn.dataTable.moment('DD/MM/YYYY');
             //$.fn.dataTable.moment('HH:mm MMM D, YY');
             $('#MainContent_gvOperacoes').DataTable({
-                "order": [[0, "desc"]], 
+                "order": [[0, "desc"]],
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
                     "zeroRecords": "Nenhum registro encontrado.",
@@ -533,7 +539,7 @@
 
             $('#MainContent_gvOperacoes_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
             $('#MainContent_gvRepasses_filter').append("<input type='image' name='btFilter2' id='btFilter2' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
-            
+
 
             EnableDiscount();
 
@@ -575,6 +581,15 @@
                     $("#MainContent_tbReceitaDesconto").val("0");
                 }
                 CalcularValorPago();
+
+            });
+
+            //Carrega dados das clínicas
+
+            $("#MainContent_dpSearchClinicas").change(function () {
+                $("#divOps").addClass("d-none")
+                $('#spinner').addClass('spinner-border');
+                CarregarDadosClinica();
 
             });
         });

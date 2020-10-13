@@ -503,6 +503,9 @@ function CarregarDadosClinica() {
             else {
                 $("#MainContent_chkIssRetido").prop("checked", false);
             }
+
+            $('#spinner').removeClass('spinner-border');
+            $("#divOps").removeClass("d-none")
         }
     });
 };
