@@ -133,6 +133,8 @@ function EditReceita(id) {
             $("#MainContent_tbReceitaNFValorPG").removeAttr("disabled");
 
             //console.log(result.d);
+            $("#divOps").removeClass("d-none")
+            $('#spinner').removeClass('spinner-border');
         }
     });
 
