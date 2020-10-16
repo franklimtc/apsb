@@ -706,6 +706,11 @@
 
             //Aba Ativa tbAbaAtiva
             $("#MainContent_tbAbaAtiva").val("Despesa");
+
+            //Remover waiting
+            $("#divOps").removeClass("d-none")
+            $('#spinner').removeClass('spinner-border');
+
         }
 
 

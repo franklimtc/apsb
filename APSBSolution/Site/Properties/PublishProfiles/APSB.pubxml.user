@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>10/13/2020 10:22:46</publishTime>
+      <publishTime>10/16/2020 07:54:38</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>10/13/2020 10:22:46</publishTime>
+      <publishTime>10/16/2020 07:54:37</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>10/13/2020 10:22:31</publishTime>
+      <publishTime>10/16/2020 07:54:25</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>10/13/2020 10:22:31</publishTime>
+      <publishTime>10/16/2020 07:54:25</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -2003,10 +2003,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/15/2020 22:10:10</publishTime>
     </File>
     <File Include="Operacoes.aspx">
-      <publishTime>10/12/2020 12:00:14</publishTime>
+      <publishTime>10/13/2020 16:22:52</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/13/2020 10:22:35</publishTime>
+      <publishTime>10/16/2020 07:54:27</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2711,7 +2711,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/10/2020 13:30:56</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Medico.js">
-      <publishTime>09/17/2020 09:31:17</publishTime>
+      <publishTime>10/16/2020 07:51:04</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Operacoes.js">
       <publishTime>10/13/2020 10:19:58</publishTime>

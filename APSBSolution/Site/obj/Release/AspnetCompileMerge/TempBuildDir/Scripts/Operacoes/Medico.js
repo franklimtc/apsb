@@ -130,6 +130,8 @@ function CarregarModalProfissional(_idProfissional) {
         success: function (result) {
             //console.log(result.d);
             if (result.d != null) {
+                ResetForm();
+
                 var IdDadoProfissional = result.d["IdDadoProfissional"];
                 $("#MainContent_idHiddenProfissionalDado").val(IdDadoProfissional);
                 //$("#MainContent_tbFormacao").val(result.d["ccFormacao"]);
@@ -183,11 +185,12 @@ function CarregarModalEndereco(_idProfissional) {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         error: function () {
+            ResetForm();
             alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
         },
         success: function (result) {
             //console.log(result.d);    
-
+            ResetForm();
             if (result.d != null) {
                 $("#MainContent_idHiddenProfissionalEndereco").val(result.d.IdEndereco)
                 $("#MainContent_tbEndereço").val(result.d.ccEndereco);
@@ -369,8 +372,8 @@ function SalvarMedico() {
         , celular: $("#MainContent_tbCelular").val()
         , obs: $("#MainContent_tbObs").val()
         , dtNascimento: $("#MainContent_tbdtNascimento").val()
-        , dtTaxa: $("#MainContent_tbDtFiliacao").val()
-        , dtFiliacao: $("#MainContent_tbDtPagamento").val()
+        , dtTaxa: $("#MainContent_tbDtPagamento").val()
+        , dtFiliacao: $("#MainContent_tbDtFiliacao").val()
         , dtCartorio: $("#MainContent_tbDtRegCartorio").val()
         , idMedico: $("#MainContent_idHiddenMedico").val()
         , cnh: $("#MainContent_tbCNH").val()
