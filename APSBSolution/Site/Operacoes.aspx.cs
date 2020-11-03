@@ -537,15 +537,16 @@ namespace Site
 
             rc.cbIssRetido = bool.Parse(issRetido);
 
-            if (idReceita.IsNullOrWhiteSpace())
-            {
-                result = rc.Adicionar(Usuario);
-            }
-            else
-            {
-                rc.idReceita = int.Parse(idReceita);
-                result = rc.Salvar(Usuario);
-            }
+            result = rc.Salvar(Usuario);
+            //if (idReceita.IsNullOrWhiteSpace())
+            //{
+            //    result = rc.Salvar(Usuario);
+            //}
+            //else
+            //{
+            //    rc.idReceita = int.Parse(idReceita);
+            //    result = rc.Salvar(Usuario);
+            //}
 
             return result;
         }

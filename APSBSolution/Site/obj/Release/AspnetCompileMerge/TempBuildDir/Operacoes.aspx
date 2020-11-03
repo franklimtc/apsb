@@ -632,10 +632,10 @@
             $("#idHiddenOperacao2").val("");
             $("#MainContent_tbValorOperacao").val("");
 
-            $("#MainContent_tbReceitaDataNF").attr("disabled", true);
-            $("#MainContent_tbReceitaDataPgtoNF").attr("disabled", true);
-            $("#MainContent_tbReceitaNF").attr("disabled", true);
-            $("#MainContent_tbReceitaNFValorPG").attr("disabled", true);
+            $("#MainContent_tbReceitaDataNF").attr("disabled", false);
+            $("#MainContent_tbReceitaDataPgtoNF").attr("disabled", false);
+            $("#MainContent_tbReceitaNF").attr("disabled", false);
+            $("#MainContent_tbReceitaNFValorPG").attr("disabled", false);
             $("#operacaoModal").modal("show");
             AtvReceita();
         };

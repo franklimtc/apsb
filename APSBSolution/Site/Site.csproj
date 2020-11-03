@@ -483,6 +483,7 @@
     <Content Include="Reports\Repasses.aspx" />
     <Content Include="Reports\Report.aspx" />
     <Content Include="Reports\Report2.aspx" />
+    <Content Include="Reports\ReportRedirect.aspx" />
     <Content Include="Reports\Vendas.aspx" />
     <Content Include="Reports\Rep01.rdlc" />
     <Content Include="Reports\RepDespesas.rdlc" />
@@ -505,6 +506,28 @@
     </Content>
     <Content Include="dbAPSBProcedures.xsc">
       <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
+    </Content>
+    <Content Include="dbapsbDataSetRelGeral.xsc">
+      <DependentUpon>dbapsbDataSetRelGeral.xsd</DependentUpon>
+    </Content>
+    <None Include="dbapsbDataSetRelGeral.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbapsbDataSetRelGeral.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbapsbDataSetRelGeral.xss">
+      <DependentUpon>dbapsbDataSetRelGeral.xsd</DependentUpon>
+    </Content>
+    <Content Include="dbapsbDataSetRelGeral2.xsc">
+      <DependentUpon>dbapsbDataSetRelGeral2.xsd</DependentUpon>
+    </Content>
+    <None Include="dbapsbDataSetRelGeral2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbapsbDataSetRelGeral2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbapsbDataSetRelGeral2.xss">
+      <DependentUpon>dbapsbDataSetRelGeral2.xsd</DependentUpon>
     </Content>
     <None Include="dbAPSBProcedures.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -1281,6 +1304,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="dbapsbDataSetRelGeral.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbapsbDataSetRelGeral.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dbapsbDataSetRelGeral2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbapsbDataSetRelGeral2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dbAPSBProcedures.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1420,6 +1453,13 @@
     <Compile Include="Reports\Report2.aspx.designer.cs">
       <DependentUpon>Report2.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\ReportRedirect.aspx.cs">
+      <DependentUpon>ReportRedirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportRedirect.aspx.designer.cs">
+      <DependentUpon>ReportRedirect.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Vendas.aspx.cs">
       <DependentUpon>Vendas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1486,6 +1526,7 @@
     <EmbeddedResource Include="Reports\Informativo.rdlc" />
     <EmbeddedResource Include="Reports\Mod_ficha.rdlc" />
     <Content Include="Reports\Rel_repasse.rdlc" />
+    <Content Include="Reports\Rel_geral.rdlc" />
     <EmbeddedResource Include="Reports\Repasse.rdlc" />
   </ItemGroup>
   <PropertyGroup>
