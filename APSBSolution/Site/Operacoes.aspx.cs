@@ -536,6 +536,11 @@ namespace Site
             rc.Observacao = obs;
 
             rc.cbIssRetido = bool.Parse(issRetido);
+            if (int.TryParse(idReceita, out int _idreceita))
+            {
+                rc.idReceita = _idreceita;
+            }
+            
 
             result = rc.Salvar(Usuario);
             //if (idReceita.IsNullOrWhiteSpace())

@@ -5,14 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site", "Site\Site.csproj", "{8DE425E6-7FF7-400E-AB7C-54C0E064B873}"
 EndProject
-Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MalaDireta", "MalaDireta\MalaDireta\MalaDireta.csproj", "{E4DB7FDF-8312-4246-B592-ADDA90678DDB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCSite", "MVCSite\MVCSite.csproj", "{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{2BF5E93E-00F0-4A77-B9F9-4732C357EEB0}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		apsdf|Any CPU = apsdf|Any CPU
@@ -26,30 +18,6 @@ Global
 		{8DE425E6-7FF7-400E-AB7C-54C0E064B873}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DE425E6-7FF7-400E-AB7C-54C0E064B873}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DE425E6-7FF7-400E-AB7C-54C0E064B873}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.apsdf|Any CPU.ActiveCfg = apsdf|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.apsdf|Any CPU.Build.0 = apsdf|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.apsdf|Any CPU.Deploy.0 = apsdf|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8F9D4EE1-0257-4689-90BE-C86CA60DAC7C}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.apsdf|Any CPU.ActiveCfg = apsdf|Any CPU
-		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.apsdf|Any CPU.Build.0 = apsdf|Any CPU
-		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4DB7FDF-8312-4246-B592-ADDA90678DDB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}.apsdf|Any CPU.ActiveCfg = apsdf|Any CPU
-		{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}.apsdf|Any CPU.Build.0 = apsdf|Any CPU
-		{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F413B91D-083B-4C9F-87C8-4F8E0BE0B9AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BF5E93E-00F0-4A77-B9F9-4732C357EEB0}.apsdf|Any CPU.ActiveCfg = Release
-		{2BF5E93E-00F0-4A77-B9F9-4732C357EEB0}.Debug|Any CPU.ActiveCfg = Debug
-		{2BF5E93E-00F0-4A77-B9F9-4732C357EEB0}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
