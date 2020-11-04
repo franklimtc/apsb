@@ -187,6 +187,7 @@
     <Build Include="dbo\Functions\fnTesteReceita.sql" />
     <Build Include="dbo\Functions\GetMonthName.sql" />
     <Build Include="dbo\Stored Procedures\PROC_RelatorioGeral.sql" />
+    <Build Include="dbo\Functions\ConvertFirstLetterinCapital.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\tbDocumentos.sql" />

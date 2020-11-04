@@ -11,7 +11,7 @@ AS
 			CAST(ISNULL(r.cvValorPago, 0) AS DECIMAL(10, 2)) cvValorRecebido, 
 			CAST(ISNULL(vwR.cvValorRepassado, 0) AS DECIMAL(10, 2)) cvValorRepassado, 
 			c.ccApelido [ccDescricao], 
-			c.ccOperador, 
+			COALESCE(r.UserName, c.ccOperador) ccOperador, 
 			o.observacao, 
 			r.cdEmissao, 
 			r.cdPagamento,
@@ -36,8 +36,8 @@ AS
 			    THEN 2
 			    WHEN r.cdEmissao IS NOT NULL
 				    AND r.cdPagamento IS NOT NULL
-				    AND vwR.STATUS = 'R'    
-			    --AND CAST(ISNULL(r.cvValorPago, 0) AS DECIMAL(10, 2))=CAST(ISNULL(vwR.cvValorUsado, 0) AS DECIMAL(10, 2))    
+				    AND vwR.STATUS = 'R'      
+			    --AND CAST(ISNULL(r.cvValorPago, 0) AS DECIMAL(10, 2))=CAST(ISNULL(vwR.cvValorUsado, 0) AS DECIMAL(10, 2))      
 			    THEN 3
 			    ELSE 4
 			END [Status], 
@@ -57,7 +57,7 @@ AS
 			NULL cvValorRecebido, 
 			NULL cvValorRepassado, 
 			t.ccTipo, 
-			NULL ccOperador, 
+			d.UserName ccOperador, 
 			o.observacao, 
 			d.cdData cdEmissao, 
 			NULL cdPagamento, 
@@ -70,5 +70,5 @@ AS
 			LEFT JOIN tbObservacoes o ON d.IdObservacao = o.IdObservacao
 	   WHERE  d.cbStatus = @cbStatus
 			AND d.cbArquivado = @cbArquivado
-			AND d.cdData BETWEEN ISNULL(@dtInicio, DATEADD(year, -10, GETDATE())) AND ISNULL(@dtFim, DATEADD(year, +10, GETDATE()))
+			AND d.cdData BETWEEN ISNULL(@dtInicio, DATEADD(year, -10, GETDATE())) AND ISNULL(@dtFim, DATEADD(year, +10, GETDATE()));
     END;
