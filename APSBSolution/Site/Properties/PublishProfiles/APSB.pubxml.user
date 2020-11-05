@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>11/04/2020 09:45:21</publishTime>
+      <publishTime>11/05/2020 09:13:35</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>11/04/2020 09:45:21</publishTime>
+      <publishTime>11/05/2020 09:13:35</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>08/13/2020 08:16:43</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:16:53</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>11/04/2020 09:45:04</publishTime>
+      <publishTime>11/05/2020 09:13:09</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>11/04/2020 09:45:04</publishTime>
+      <publishTime>11/05/2020 09:13:09</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>08/13/2020 08:16:19</publishTime>
@@ -2018,7 +2018,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/03/2020 19:48:51</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/04/2020 09:45:08</publishTime>
+      <publishTime>11/05/2020 09:13:13</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2075,7 +2075,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>08/13/2020 08:18:07</publishTime>
     </File>
     <File Include="Reports/ReportRedirect.aspx">
-      <publishTime>10/28/2020 08:46:26</publishTime>
+      <publishTime>11/05/2020 08:45:57</publishTime>
     </File>
     <File Include="Reports/RepVendas.rdlc">
       <publishTime>09/24/2020 07:51:35</publishTime>

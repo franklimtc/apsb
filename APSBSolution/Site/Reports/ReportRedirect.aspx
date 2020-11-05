@@ -17,9 +17,9 @@
                     <asp:BoundField DataField="RGNum" HeaderText="RG" SortExpression="RGNum" />
                     <asp:BoundField DataField="cvPIS" HeaderText="PIS" SortExpression="cvPIS" />
                     <asp:BoundField DataField="cvCNH" HeaderText="CNH" SortExpression="cvCNH" />
-                    <asp:BoundField DataField="cvNumInscricao" HeaderText="CREA" SortExpression="cvNumInscricao" />
+                    <asp:BoundField DataField="cvNumInscricao" HeaderText="Registro" SortExpression="cvNumInscricao" />
                     <asp:BoundField DataField="cvTitulo" HeaderText="Titulo Eleitor" SortExpression="cvTitulo" />
-                    <asp:BoundField DataField="cdFiliacao" HeaderText="Data Filiação" SortExpression="cdFiliacao" />
+                    <asp:BoundField DataField="cdFiliacao" HeaderText="Data Filiação" SortExpression="cdFiliacao" DataFormatString="{0:d}" />
                     <asp:BoundField DataField="ccEspecialidade" HeaderText="Especialidade" SortExpression="ccEspecialidade" />
                     <asp:BoundField DataField="ccBanco" HeaderText="Banco" SortExpression="ccBanco" />
                     <asp:BoundField DataField="ccAgencia" HeaderText="Agência" SortExpression="ccAgencia" />
@@ -29,7 +29,7 @@
                     <asp:BoundField DataField="mesNome" HeaderText="Mês" ReadOnly="True" SortExpression="mesNome" />
                     <asp:BoundField DataField="cvValorRepasse" HeaderText="Valor Repasse" ReadOnly="True" SortExpression="cvValorRepasse" />
                     <asp:BoundField DataField="ccApelido" HeaderText="Clínica" SortExpression="ccApelido" />
-                    <asp:BoundField DataField="cvDescontos" HeaderText="Taxa" SortExpression="cvDescontos" />
+                    <asp:BoundField DataField="cvDescontos" HeaderText="Descontos (%)" SortExpression="cvDescontos" />
                     <asp:BoundField DataField="cvValorClinica" HeaderText="Valor Descontado" ReadOnly="True" SortExpression="cvValorClinica" />
                     <asp:BoundField DataField="anoClinica" HeaderText="Ano" ReadOnly="True" SortExpression="anoClinica" />
                     <asp:BoundField DataField="mesNomeClinica" HeaderText="Mês" ReadOnly="True" SortExpression="mesNomeClinica" />
@@ -40,6 +40,9 @@
         </div>
     </div>
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script src="../Scripts/moment.js"></script>
+    <script src="../Scripts/datetime-moment.js"></script>
     <script>
         $(document).ready(function () {
             $('#MainContent_gvRelatorioGeral').DataTable({
