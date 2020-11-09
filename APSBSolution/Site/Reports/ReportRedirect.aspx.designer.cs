@@ -24,6 +24,24 @@ namespace Site.Reports
         protected global::System.Web.UI.WebControls.SqlDataSource dsRelatorioGeral;
 
         /// <summary>
+        /// Controle dtInicial.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtInicial;
+
+        /// <summary>
+        /// Controle dtFinal.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox dtFinal;
+
+        /// <summary>
         /// Controle gvRelatorioGeral.
         /// </summary>
         /// <remarks>

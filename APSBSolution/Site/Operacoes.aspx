@@ -514,6 +514,7 @@
             //$.fn.dataTable.moment('HH:mm MMM D, YY');
             $('#MainContent_gvOperacoes').DataTable({
                 "order": [[0, "desc"]],
+                "deferRender": true,
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
                     "zeroRecords": "Nenhum registro encontrado.",
@@ -526,6 +527,7 @@
 
             $('#MainContent_gvRepasses').DataTable({
                 "order": [[0, "desc"]],
+                "deferRender": true,
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
                     "zeroRecords": "Nenhum registro encontrado.",
