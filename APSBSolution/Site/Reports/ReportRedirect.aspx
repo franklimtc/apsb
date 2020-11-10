@@ -43,6 +43,7 @@
                     <asp:BoundField DataField="ccNome" HeaderText="Profissional" SortExpression="ccNome"  />
                     <asp:BoundField DataField="CPFNum" HeaderText="CPF" SortExpression="CPFNum" />
                     <asp:BoundField DataField="RGNum" HeaderText="RG" SortExpression="RGNum" />
+                    <asp:BoundField DataField="telefone" HeaderText="Fone" SortExpression="telefone" />
                     <asp:BoundField DataField="cvPIS" HeaderText="PIS" SortExpression="cvPIS" />
                     <asp:BoundField DataField="cvCNH" HeaderText="CNH" SortExpression="cvCNH" />
                     <asp:BoundField DataField="cvNumInscricao" HeaderText="Registro" SortExpression="cvNumInscricao" />
@@ -55,14 +56,15 @@
                     <asp:BoundField DataField="cvTaxaProfissional" HeaderText="Taxa" SortExpression="cvTaxaProfissional" />
                     <asp:BoundField DataField="ano" HeaderText="Ano" ReadOnly="True" SortExpression="ano" Visible="false" />
                     <asp:BoundField DataField="mesNome" HeaderText="Mês" ReadOnly="True" SortExpression="mesNome" Visible="false" />
-                    <asp:BoundField DataField="cvValorRepasse" HeaderText="Valor Repasse" ReadOnly="True" SortExpression="cvValorRepasse" />
+                    <asp:BoundField DataField="cvValorRepasse" HeaderText="Valor Repasse" ReadOnly="True" SortExpression="cvValorRepasse"  ControlStyle-CssClass="money" />
                     <asp:BoundField DataField="ccApelido" HeaderText="Clínica" SortExpression="ccApelido" />
                     <asp:BoundField DataField="cvDescontos" HeaderText="Descontos (%)" SortExpression="cvDescontos" />
-                    <asp:BoundField DataField="cvValorClinica" HeaderText="Valor Pago" ReadOnly="True" SortExpression="cvValorClinica" />
+                    <asp:BoundField DataField="cvValorClinica" HeaderText="Valor Pago" ReadOnly="True" SortExpression="cvValorClinica" ControlStyle-CssClass="money" />
                     <asp:BoundField DataField="qtdNotas" HeaderText="Qtd Notas" ReadOnly="True" SortExpression="qtdNotas" />
                     <asp:BoundField DataField="anoClinica" HeaderText="Ano" ReadOnly="True" SortExpression="anoClinica" />
                     <asp:BoundField DataField="mesNomeClinica" HeaderText="Mês" ReadOnly="True" SortExpression="mesNomeClinica" />
                     <asp:BoundField DataField="ccCriadoPor" HeaderText="Usuário" ReadOnly="True" SortExpression="ccCriadoPor" />
+                    <asp:BoundField DataField="observacao" HeaderText="OBS" ReadOnly="True" SortExpression="observacao" />
                 </Columns>
 
             </asp:GridView>
