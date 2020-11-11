@@ -84,7 +84,7 @@ namespace Site.Classes
             return result;
         }
 
-        public static DataTable RetornaDT(string query, List<object[]> parametros = null)
+        public static DataTable RetornaDT(string query, List<object[]> parametros = null, bool procedure = false)
         {
             SqlConnection conexao = new SqlConnection(connString);
             SqlCommand comand = new SqlCommand(query, conexao);
@@ -96,6 +96,10 @@ namespace Site.Classes
                 {
                     comand.Parameters.AddWithValue(item[0].ToString(), item[1]);
                 }
+            }
+            if (procedure)
+            {
+                comand.CommandType = CommandType.StoredProcedure;
             }
 
             SqlDataAdapter da = new SqlDataAdapter(comand);

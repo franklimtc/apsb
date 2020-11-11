@@ -64,11 +64,11 @@ namespace Site.Reports
 
 
             List<object[]> parametros = new List<object[]>();
-            parametros.Add(new object[] { "@dtInicial", DateTime.Parse(dtInicial.Text) });
-            parametros.Add(new object[] { "@dtFinal", DateTime.Parse(dtFinal.Text) });
+            parametros.Add(new object[] { "dtInicial", dtInicial.Text });
+            parametros.Add(new object[] { "dtFinal", dtFinal.Text });
 
             // Setup the report viewer object and get the array of bytes  
-            DataTable dtSource = DAO.RetornaDT("PROC_RelatorioGeral", parametros);
+            DataTable dtSource = DAO.RetornaDT("PROC_RelatorioGeral", parametros, true);
             ReportViewer viewer = new ReportViewer();
             ReportDataSource DataSet1 = new ReportDataSource("DSRelatorioGeral", dtSource);
 
