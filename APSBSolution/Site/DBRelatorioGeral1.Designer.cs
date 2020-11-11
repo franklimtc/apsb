@@ -20,9 +20,9 @@ namespace Site {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dbapsbDataSetRelGeral")]
+    [global::System.Xml.Serialization.XmlRootAttribute("DBRelatorioGeral1")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dbapsbDataSetRelGeral : global::System.Data.DataSet {
+    public partial class DBRelatorioGeral1 : global::System.Data.DataSet {
         
         private PROC_RelatorioGeralDataTable tablePROC_RelatorioGeral;
         
@@ -30,7 +30,7 @@ namespace Site {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public dbapsbDataSetRelGeral() {
+        public DBRelatorioGeral1() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Site {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        protected dbapsbDataSetRelGeral(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected DBRelatorioGeral1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace Site {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dbapsbDataSetRelGeral cln = ((dbapsbDataSetRelGeral)(base.Clone()));
+            DBRelatorioGeral1 cln = ((DBRelatorioGeral1)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace Site {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dbapsbDataSetRelGeral";
+            this.DataSetName = "DBRelatorioGeral1";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dbapsbDataSetRelGeral.xsd";
+            this.Namespace = "http://tempuri.org/DBRelatorioGeral1.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tablePROC_RelatorioGeral = new PROC_RelatorioGeralDataTable();
@@ -225,7 +225,7 @@ namespace Site {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dbapsbDataSetRelGeral ds = new dbapsbDataSetRelGeral();
+            DBRelatorioGeral1 ds = new DBRelatorioGeral1();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -305,6 +305,12 @@ namespace Site {
             
             private global::System.Data.DataColumn columnccConta;
             
+            private global::System.Data.DataColumn columnccCriadoPor;
+            
+            private global::System.Data.DataColumn columntelefone;
+            
+            private global::System.Data.DataColumn columnobservacao;
+            
             private global::System.Data.DataColumn columncvTaxaProfissional;
             
             private global::System.Data.DataColumn columnano;
@@ -319,9 +325,11 @@ namespace Site {
             
             private global::System.Data.DataColumn columncvValorClinica;
             
-            private global::System.Data.DataColumn columnano1;
+            private global::System.Data.DataColumn columnqtdNotas;
             
-            private global::System.Data.DataColumn columnmesNome1;
+            private global::System.Data.DataColumn columnanoClinica;
+            
+            private global::System.Data.DataColumn columnmesNomeClinica;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -462,6 +470,30 @@ namespace Site {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn ccCriadoPorColumn {
+                get {
+                    return this.columnccCriadoPor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn telefoneColumn {
+                get {
+                    return this.columntelefone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn observacaoColumn {
+                get {
+                    return this.columnobservacao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn cvTaxaProfissionalColumn {
                 get {
                     return this.columncvTaxaProfissional;
@@ -518,17 +550,25 @@ namespace Site {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn ano1Column {
+            public global::System.Data.DataColumn qtdNotasColumn {
                 get {
-                    return this.columnano1;
+                    return this.columnqtdNotas;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn mesNome1Column {
+            public global::System.Data.DataColumn anoClinicaColumn {
                 get {
-                    return this.columnmesNome1;
+                    return this.columnanoClinica;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn mesNomeClinicaColumn {
+                get {
+                    return this.columnmesNomeClinica;
                 }
             }
             
@@ -582,6 +622,9 @@ namespace Site {
                         string ccBanco, 
                         string ccAgencia, 
                         string ccConta, 
+                        string ccCriadoPor, 
+                        string telefone, 
+                        string observacao, 
                         decimal cvTaxaProfissional, 
                         int ano, 
                         string mesNome, 
@@ -589,8 +632,9 @@ namespace Site {
                         string ccApelido, 
                         float cvDescontos, 
                         double cvValorClinica, 
-                        int ano1, 
-                        string mesNome1) {
+                        int qtdNotas, 
+                        int anoClinica, 
+                        string mesNomeClinica) {
                 PROC_RelatorioGeralRow rowPROC_RelatorioGeralRow = ((PROC_RelatorioGeralRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -606,6 +650,9 @@ namespace Site {
                         ccBanco,
                         ccAgencia,
                         ccConta,
+                        ccCriadoPor,
+                        telefone,
+                        observacao,
                         cvTaxaProfissional,
                         ano,
                         mesNome,
@@ -613,8 +660,9 @@ namespace Site {
                         ccApelido,
                         cvDescontos,
                         cvValorClinica,
-                        ano1,
-                        mesNome1};
+                        qtdNotas,
+                        anoClinica,
+                        mesNomeClinica};
                 rowPROC_RelatorioGeralRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPROC_RelatorioGeralRow);
                 return rowPROC_RelatorioGeralRow;
@@ -657,6 +705,9 @@ namespace Site {
                 this.columnccBanco = base.Columns["ccBanco"];
                 this.columnccAgencia = base.Columns["ccAgencia"];
                 this.columnccConta = base.Columns["ccConta"];
+                this.columnccCriadoPor = base.Columns["ccCriadoPor"];
+                this.columntelefone = base.Columns["telefone"];
+                this.columnobservacao = base.Columns["observacao"];
                 this.columncvTaxaProfissional = base.Columns["cvTaxaProfissional"];
                 this.columnano = base.Columns["ano"];
                 this.columnmesNome = base.Columns["mesNome"];
@@ -664,8 +715,9 @@ namespace Site {
                 this.columnccApelido = base.Columns["ccApelido"];
                 this.columncvDescontos = base.Columns["cvDescontos"];
                 this.columncvValorClinica = base.Columns["cvValorClinica"];
-                this.columnano1 = base.Columns["ano1"];
-                this.columnmesNome1 = base.Columns["mesNome1"];
+                this.columnqtdNotas = base.Columns["qtdNotas"];
+                this.columnanoClinica = base.Columns["anoClinica"];
+                this.columnmesNomeClinica = base.Columns["mesNomeClinica"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -697,6 +749,12 @@ namespace Site {
                 base.Columns.Add(this.columnccAgencia);
                 this.columnccConta = new global::System.Data.DataColumn("ccConta", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnccConta);
+                this.columnccCriadoPor = new global::System.Data.DataColumn("ccCriadoPor", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnccCriadoPor);
+                this.columntelefone = new global::System.Data.DataColumn("telefone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntelefone);
+                this.columnobservacao = new global::System.Data.DataColumn("observacao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnobservacao);
                 this.columncvTaxaProfissional = new global::System.Data.DataColumn("cvTaxaProfissional", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncvTaxaProfissional);
                 this.columnano = new global::System.Data.DataColumn("ano", typeof(int), null, global::System.Data.MappingType.Element);
@@ -711,10 +769,12 @@ namespace Site {
                 base.Columns.Add(this.columncvDescontos);
                 this.columncvValorClinica = new global::System.Data.DataColumn("cvValorClinica", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columncvValorClinica);
-                this.columnano1 = new global::System.Data.DataColumn("ano1", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnano1);
-                this.columnmesNome1 = new global::System.Data.DataColumn("mesNome1", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnmesNome1);
+                this.columnqtdNotas = new global::System.Data.DataColumn("qtdNotas", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnqtdNotas);
+                this.columnanoClinica = new global::System.Data.DataColumn("anoClinica", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnanoClinica);
+                this.columnmesNomeClinica = new global::System.Data.DataColumn("mesNomeClinica", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmesNomeClinica);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIdProfissional}, true));
                 this.columnIdProfissional.AutoIncrement = true;
@@ -730,6 +790,11 @@ namespace Site {
                 this.columnccBanco.MaxLength = 100;
                 this.columnccAgencia.MaxLength = 10;
                 this.columnccConta.MaxLength = 20;
+                this.columnccCriadoPor.ReadOnly = true;
+                this.columnccCriadoPor.MaxLength = 5000;
+                this.columntelefone.ReadOnly = true;
+                this.columntelefone.MaxLength = 2147483647;
+                this.columnobservacao.MaxLength = 2147483647;
                 this.columncvTaxaProfissional.AllowDBNull = false;
                 this.columnano.ReadOnly = true;
                 this.columnmesNome.ReadOnly = true;
@@ -737,9 +802,10 @@ namespace Site {
                 this.columncvValorRepasse.ReadOnly = true;
                 this.columnccApelido.MaxLength = 100;
                 this.columncvValorClinica.ReadOnly = true;
-                this.columnano1.ReadOnly = true;
-                this.columnmesNome1.ReadOnly = true;
-                this.columnmesNome1.MaxLength = 3;
+                this.columnqtdNotas.ReadOnly = true;
+                this.columnanoClinica.ReadOnly = true;
+                this.columnmesNomeClinica.ReadOnly = true;
+                this.columnmesNomeClinica.MaxLength = 3;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -807,7 +873,7 @@ namespace Site {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dbapsbDataSetRelGeral ds = new dbapsbDataSetRelGeral();
+                DBRelatorioGeral1 ds = new DBRelatorioGeral1();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1075,6 +1141,54 @@ namespace Site {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string ccCriadoPor {
+                get {
+                    try {
+                        return ((string)(this[this.tablePROC_RelatorioGeral.ccCriadoPorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'ccCriadoPor\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePROC_RelatorioGeral.ccCriadoPorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string telefone {
+                get {
+                    try {
+                        return ((string)(this[this.tablePROC_RelatorioGeral.telefoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'telefone\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePROC_RelatorioGeral.telefoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string observacao {
+                get {
+                    try {
+                        return ((string)(this[this.tablePROC_RelatorioGeral.observacaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'observacao\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePROC_RelatorioGeral.observacaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public decimal cvTaxaProfissional {
                 get {
                     return ((decimal)(this[this.tablePROC_RelatorioGeral.cvTaxaProfissionalColumn]));
@@ -1182,33 +1296,49 @@ namespace Site {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int ano1 {
+            public int qtdNotas {
                 get {
                     try {
-                        return ((int)(this[this.tablePROC_RelatorioGeral.ano1Column]));
+                        return ((int)(this[this.tablePROC_RelatorioGeral.qtdNotasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'ano1\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'qtdNotas\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePROC_RelatorioGeral.ano1Column] = value;
+                    this[this.tablePROC_RelatorioGeral.qtdNotasColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public string mesNome1 {
+            public int anoClinica {
                 get {
                     try {
-                        return ((string)(this[this.tablePROC_RelatorioGeral.mesNome1Column]));
+                        return ((int)(this[this.tablePROC_RelatorioGeral.anoClinicaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("O valor da coluna \'mesNome1\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'anoClinica\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePROC_RelatorioGeral.mesNome1Column] = value;
+                    this[this.tablePROC_RelatorioGeral.anoClinicaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public string mesNomeClinica {
+                get {
+                    try {
+                        return ((string)(this[this.tablePROC_RelatorioGeral.mesNomeClinicaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("O valor da coluna \'mesNomeClinica\' na tabela \'PROC_RelatorioGeral\' é DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePROC_RelatorioGeral.mesNomeClinicaColumn] = value;
                 }
             }
             
@@ -1334,6 +1464,42 @@ namespace Site {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsccCriadoPorNull() {
+                return this.IsNull(this.tablePROC_RelatorioGeral.ccCriadoPorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetccCriadoPorNull() {
+                this[this.tablePROC_RelatorioGeral.ccCriadoPorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IstelefoneNull() {
+                return this.IsNull(this.tablePROC_RelatorioGeral.telefoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SettelefoneNull() {
+                this[this.tablePROC_RelatorioGeral.telefoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsobservacaoNull() {
+                return this.IsNull(this.tablePROC_RelatorioGeral.observacaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetobservacaoNull() {
+                this[this.tablePROC_RelatorioGeral.observacaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public bool IsanoNull() {
                 return this.IsNull(this.tablePROC_RelatorioGeral.anoColumn);
             }
@@ -1406,26 +1572,38 @@ namespace Site {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool Isano1Null() {
-                return this.IsNull(this.tablePROC_RelatorioGeral.ano1Column);
+            public bool IsqtdNotasNull() {
+                return this.IsNull(this.tablePROC_RelatorioGeral.qtdNotasColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void Setano1Null() {
-                this[this.tablePROC_RelatorioGeral.ano1Column] = global::System.Convert.DBNull;
+            public void SetqtdNotasNull() {
+                this[this.tablePROC_RelatorioGeral.qtdNotasColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public bool IsmesNome1Null() {
-                return this.IsNull(this.tablePROC_RelatorioGeral.mesNome1Column);
+            public bool IsanoClinicaNull() {
+                return this.IsNull(this.tablePROC_RelatorioGeral.anoClinicaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public void SetmesNome1Null() {
-                this[this.tablePROC_RelatorioGeral.mesNome1Column] = global::System.Convert.DBNull;
+            public void SetanoClinicaNull() {
+                this[this.tablePROC_RelatorioGeral.anoClinicaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool IsmesNomeClinicaNull() {
+                return this.IsNull(this.tablePROC_RelatorioGeral.mesNomeClinicaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void SetmesNomeClinicaNull() {
+                this[this.tablePROC_RelatorioGeral.mesNomeClinicaColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1464,7 +1642,7 @@ namespace Site {
         }
     }
 }
-namespace Site.dbapsbDataSetRelGeralTableAdapters {
+namespace Site.DBRelatorioGeral1TableAdapters {
     
     
     /// <summary>
@@ -1601,6 +1779,9 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
             tableMapping.ColumnMappings.Add("ccBanco", "ccBanco");
             tableMapping.ColumnMappings.Add("ccAgencia", "ccAgencia");
             tableMapping.ColumnMappings.Add("ccConta", "ccConta");
+            tableMapping.ColumnMappings.Add("ccCriadoPor", "ccCriadoPor");
+            tableMapping.ColumnMappings.Add("telefone", "telefone");
+            tableMapping.ColumnMappings.Add("observacao", "observacao");
             tableMapping.ColumnMappings.Add("cvTaxaProfissional", "cvTaxaProfissional");
             tableMapping.ColumnMappings.Add("ano", "ano");
             tableMapping.ColumnMappings.Add("mesNome", "mesNome");
@@ -1608,8 +1789,9 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
             tableMapping.ColumnMappings.Add("ccApelido", "ccApelido");
             tableMapping.ColumnMappings.Add("cvDescontos", "cvDescontos");
             tableMapping.ColumnMappings.Add("cvValorClinica", "cvValorClinica");
-            tableMapping.ColumnMappings.Add("ano1", "ano1");
-            tableMapping.ColumnMappings.Add("mesNome1", "mesNome1");
+            tableMapping.ColumnMappings.Add("qtdNotas", "qtdNotas");
+            tableMapping.ColumnMappings.Add("anoClinica", "anoClinica");
+            tableMapping.ColumnMappings.Add("mesNomeClinica", "mesNomeClinica");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -1629,14 +1811,28 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
             this._commandCollection[0].CommandText = "dbo.PROC_RelatorioGeral";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtInicial", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dtFinal", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 23, 3, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dbapsbDataSetRelGeral.PROC_RelatorioGeralDataTable dataTable) {
+        public virtual int Fill(DBRelatorioGeral1.PROC_RelatorioGeralDataTable dataTable, global::System.Nullable<global::System.DateTime> dtInicial, global::System.Nullable<global::System.DateTime> dtFinal) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((dtInicial.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(dtInicial.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((dtFinal.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(dtFinal.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1648,9 +1844,21 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dbapsbDataSetRelGeral.PROC_RelatorioGeralDataTable GetData() {
+        public virtual DBRelatorioGeral1.PROC_RelatorioGeralDataTable GetData(global::System.Nullable<global::System.DateTime> dtInicial, global::System.Nullable<global::System.DateTime> dtFinal) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            dbapsbDataSetRelGeral.PROC_RelatorioGeralDataTable dataTable = new dbapsbDataSetRelGeral.PROC_RelatorioGeralDataTable();
+            if ((dtInicial.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(dtInicial.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((dtFinal.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(dtFinal.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            DBRelatorioGeral1.PROC_RelatorioGeralDataTable dataTable = new DBRelatorioGeral1.PROC_RelatorioGeralDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -1724,7 +1932,7 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateUpdatedRows(dbapsbDataSetRelGeral dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(DBRelatorioGeral1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1734,7 +1942,7 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateInsertedRows(dbapsbDataSetRelGeral dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(DBRelatorioGeral1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             return result;
         }
@@ -1744,7 +1952,7 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        private int UpdateDeletedRows(dbapsbDataSetRelGeral dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(DBRelatorioGeral1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             return result;
         }
@@ -1778,7 +1986,7 @@ namespace Site.dbapsbDataSetRelGeralTableAdapters {
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-        public virtual int UpdateAll(dbapsbDataSetRelGeral dataSet) {
+        public virtual int UpdateAll(DBRelatorioGeral1 dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

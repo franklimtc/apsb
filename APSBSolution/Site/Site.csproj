@@ -507,28 +507,6 @@
     <Content Include="dbAPSBProcedures.xsc">
       <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
     </Content>
-    <Content Include="dbapsbDataSetRelGeral.xsc">
-      <DependentUpon>dbapsbDataSetRelGeral.xsd</DependentUpon>
-    </Content>
-    <None Include="dbapsbDataSetRelGeral.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dbapsbDataSetRelGeral.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="dbapsbDataSetRelGeral.xss">
-      <DependentUpon>dbapsbDataSetRelGeral.xsd</DependentUpon>
-    </Content>
-    <Content Include="dbapsbDataSetRelGeral2.xsc">
-      <DependentUpon>dbapsbDataSetRelGeral2.xsd</DependentUpon>
-    </Content>
-    <None Include="dbapsbDataSetRelGeral2.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dbapsbDataSetRelGeral2.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="dbapsbDataSetRelGeral2.xss">
-      <DependentUpon>dbapsbDataSetRelGeral2.xsd</DependentUpon>
-    </Content>
     <None Include="dbAPSBProcedures.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dbAPSBProcedures.Designer.cs</LastGenOutput>
@@ -555,6 +533,17 @@
     </None>
     <Content Include="DBAPSBRepasses.xss">
       <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Content>
+    <Content Include="DBRelatorioGeral1.xsc">
+      <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
+    </Content>
+    <None Include="DBRelatorioGeral1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBRelatorioGeral1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBRelatorioGeral1.xss">
+      <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\apsb - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apsb - ReadOnly - FTP.pubxml" />
@@ -1304,16 +1293,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="dbapsbDataSetRelGeral.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbapsbDataSetRelGeral.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="dbapsbDataSetRelGeral2.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dbapsbDataSetRelGeral2.xsd</DependentUpon>
-    </Compile>
     <Compile Include="dbAPSBProcedures.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1328,6 +1307,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBRelatorioGeral1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

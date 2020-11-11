@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-md-2">
             <br />
-            <asp:Button Text="Exportar" runat="server" CssClass="btn btn-secondary" />
+            <asp:Button ID="btnExportar" Text="Exportar" runat="server" CssClass="btn btn-secondary" OnClick="btnExportar_Click" />
         </div>
     </div>
     <br />
@@ -44,6 +44,7 @@
                     <asp:BoundField DataField="CPFNum" HeaderText="CPF" SortExpression="CPFNum" />
                     <asp:BoundField DataField="RGNum" HeaderText="RG" SortExpression="RGNum" />
                     <asp:BoundField DataField="telefone" HeaderText="Fone" SortExpression="telefone" />
+                    <asp:BoundField DataField="observacao" HeaderText="OBS" ReadOnly="True" SortExpression="observacao" />
                     <asp:BoundField DataField="cvPIS" HeaderText="PIS" SortExpression="cvPIS" />
                     <asp:BoundField DataField="cvCNH" HeaderText="CNH" SortExpression="cvCNH" />
                     <asp:BoundField DataField="cvNumInscricao" HeaderText="Registro" SortExpression="cvNumInscricao" />
@@ -64,7 +65,6 @@
                     <asp:BoundField DataField="anoClinica" HeaderText="Ano" ReadOnly="True" SortExpression="anoClinica" />
                     <asp:BoundField DataField="mesNomeClinica" HeaderText="Mês" ReadOnly="True" SortExpression="mesNomeClinica" />
                     <asp:BoundField DataField="ccCriadoPor" HeaderText="Usuário" ReadOnly="True" SortExpression="ccCriadoPor" />
-                    <asp:BoundField DataField="observacao" HeaderText="OBS" ReadOnly="True" SortExpression="observacao" />
                 </Columns>
 
             </asp:GridView>
