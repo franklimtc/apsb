@@ -89,5 +89,10 @@ namespace Site.Reports
             Response.BinaryWrite(bytes); // create the file  
             Response.Flush(); // send it to the client to download 
         }
+
+        protected void btnExibir_Click(object sender, EventArgs e)
+        {
+            gvRelatorioGeral.DataBind();
+        }
     }
 }

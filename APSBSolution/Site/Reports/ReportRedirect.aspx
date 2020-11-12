@@ -28,10 +28,14 @@
             <asp:TextBox runat="server" ID="dtFinal" type="date" CssClass="form-control"  requered />
         </div>
     </div>
+    <p></p>
     <div class="row">
         <div class="col-md-2">
-            <br />
-            <asp:Button ID="btnExportar" Text="Exportar" runat="server" CssClass="btn btn-secondary" OnClick="btnExportar_Click" />
+            <asp:Button ID="btnExibir" Text="Exibir" runat="server" CssClass="btn btn-secondary" OnClick="btnExibir_Click" />
+            <asp:Button ID="btnExportar" Text="Exportar" runat="server" CssClass="btn btn-primary" OnClick="btnExportar_Click" />
+
+        </div>
+        <div class="col-md-2">
         </div>
     </div>
     <br />
