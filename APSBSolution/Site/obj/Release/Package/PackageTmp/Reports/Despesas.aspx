@@ -36,6 +36,7 @@
             <asp:GridView ID="gvDespesas" runat="server" DataSourceID="dsDespesas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="idDespesas" HeaderText="ID" />
+                    <asp:BoundField DataField="ccCategoria" HeaderText="Categoria" />
                     <asp:BoundField DataField="ccTipo" HeaderText="Descrição" />
                     <asp:BoundField DataField="cvValor" HeaderText="Valor" DataFormatString="{0:C}"/>
                     <asp:BoundField DataField="cdData" HeaderText="Data" DataFormatString="{0:d}" />

@@ -43,23 +43,11 @@ namespace Site
         }
         protected void gvRepasses_PreRender(object sender, EventArgs e)
         {
-            // You only need the following 2 lines of code if you are not 
-            // using an ObjectDataSource of SqlDataSource
-            //gvOperacoes.DataBind();
-
-
-            //gvMedicos.DataSource = Profissional.Listar();
+          
             if (gvRepasses.Rows.Count > 0)
             {
-                //This replaces <td> with <th> and adds the scope attribute
                 gvRepasses.UseAccessibleHeader = true;
-
-                //This will add the <thead> and <tbody> elements
                 gvRepasses.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-                //This adds the <tfoot> element. 
-                //Remove if you don't have a footer row
-                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
         protected void gvOperacoes_PreRender(object sender, EventArgs e)

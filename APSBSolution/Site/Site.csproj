@@ -177,6 +177,7 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Arquivos\WebForm1.aspx" />
     <Content Include="assets\img\APSDFLogo.png" />
+    <Content Include="Cadastros\Configuracoes.aspx" />
     <Content Include="Content\Bancos\1.png" />
     <Content Include="Content\Bancos\104.png" />
     <Content Include="Content\Bancos\237.png" />
@@ -476,6 +477,16 @@
     <Content Include="Fichas\Repasse.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
+    <Content Include="Models\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
     <Content Include="Operacoes.aspx" />
     <Content Include="Reports\Despesas.aspx" />
     <Content Include="Reports\Profissionais.aspx" />
@@ -544,6 +555,24 @@
     </None>
     <Content Include="DBRelatorioGeral1.xss">
       <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="DS_SEL_Despesas.xsc">
+      <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
+    </Content>
+    <None Include="DS_SEL_Despesas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_SEL_Despesas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DS_SEL_Despesas.xss">
+      <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\apsb - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\apsb - ReadOnly - FTP.pubxml" />
@@ -1223,6 +1252,13 @@
     <Compile Include="Cadastros\Clinicas.aspx.designer.cs">
       <DependentUpon>Clinicas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\Configuracoes.aspx.cs">
+      <DependentUpon>Configuracoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Configuracoes.aspx.designer.cs">
+      <DependentUpon>Configuracoes.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\Medico.aspx.cs">
       <DependentUpon>Medico.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1320,6 +1356,11 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DS_SEL_Despesas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Fichas\Acordo_APSDF.aspx.cs">
       <DependentUpon>Acordo_APSDF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1386,7 +1427,31 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\tbDespesas.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDespesasCategoria.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDespesaTipo.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Operacoes.aspx.cs">
       <DependentUpon>Operacoes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

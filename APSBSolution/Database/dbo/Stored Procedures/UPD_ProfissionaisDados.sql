@@ -25,6 +25,8 @@ AS
 		  VALUES                (@ccFormacao);
 		  END;
 	   DECLARE @Result BIT= 0;
+	   select @IdDadoProfissional = IdDadoProfissional from tbProfissionaisDados where idProfissional = @idProfissional;
+
 	   BEGIN TRY
 		  IF @IdDadoProfissional IS NULL
 			OR @IdDadoProfissional = ''
