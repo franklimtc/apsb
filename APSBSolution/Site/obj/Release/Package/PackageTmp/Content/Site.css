@@ -9,6 +9,9 @@ body {
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    max-width: 1320px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -40,4 +43,17 @@ input[type="select"] {
 
 nav.navbar.navbar-expand-lg.fixed-top.navbar-dark.bg-darkcyan {
     background-color: darkcyan;
+}
+
+.imgLink {
+    width: 15px;
+}
+
+.imgButton {
+    height: 1.5em;
+}
+
+.imgButtonDisabled {
+    height: 1.5em;
+    opacity: 0.2;
 }

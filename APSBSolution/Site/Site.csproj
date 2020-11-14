@@ -87,24 +87,8 @@
     <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1404.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
@@ -124,6 +108,8 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -189,6 +175,22 @@
     <Content Include="About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
+    <Content Include="Arquivos\WebForm1.aspx" />
+    <Content Include="assets\img\APSDFLogo.png" />
+    <Content Include="Cadastros\Configuracoes.aspx" />
+    <Content Include="Content\Bancos\1.png" />
+    <Content Include="Content\Bancos\104.png" />
+    <Content Include="Content\Bancos\237.png" />
+    <Content Include="Content\Bancos\260.png" />
+    <Content Include="Content\Bancos\33.png" />
+    <Content Include="Content\Bancos\341.png" />
+    <Content Include="Content\Bancos\655.png" />
+    <Content Include="Content\Bancos\70.png" />
+    <Content Include="Content\Bancos\748.png" />
+    <Content Include="Content\Bancos\756.png" />
+    <Content Include="Content\Bancos\77.png" />
+    <Content Include="Content\Icons\danger.jpg" />
+    <Content Include="Content\Icons\danger.png" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Lockout.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -208,21 +210,41 @@
     <Content Include="assets\demo\demo.css" />
     <Content Include="assets\demo\demo.js" />
     <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\apsbLogo2.jpg" />
+    <Content Include="assets\img\apsb_logo.jpg" />
     <Content Include="assets\img\bg2.jpg" />
     <Content Include="assets\img\city-profile.jpg" />
     <Content Include="assets\img\city.jpg" />
     <Content Include="assets\img\cover.jpg" />
+    <Content Include="assets\img\cristalina-brasao.jpg" />
+    <Content Include="assets\img\cristalina-footer.jpg" />
+    <Content Include="assets\img\cristalina-logo.jpg" />
     <Content Include="assets\img\faces\avatar.jpg" />
     <Content Include="assets\img\faces\card-profile1-square.jpg" />
     <Content Include="assets\img\faces\card-profile2-square.jpg" />
     <Content Include="assets\img\faces\marc.jpg" />
     <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\imgReport\Acordo01.jpg" />
+    <Content Include="assets\img\imgReport\Acordo02.jpg" />
+    <Content Include="assets\img\imgReport\Acordo03.jpg" />
+    <Content Include="assets\img\imgReport\Acordo04.jpg" />
+    <Content Include="assets\img\imgReport\Informativo01.jpg" />
+    <Content Include="assets\img\imgReport\Informativo02.jpg" />
+    <Content Include="assets\img\imgReport\Repasse00.jpg" />
+    <Content Include="assets\img\imgReport\Repasse01.jpg" />
+    <Content Include="assets\img\imgReport\Repasse02.jpg" />
+    <Content Include="assets\img\imgReport\Repasse03.jpg" />
+    <Content Include="assets\img\imgReport\Termo01.jpg" />
+    <Content Include="assets\img\imgReport\Termo02.jpg" />
+    <Content Include="assets\img\imgReport\Termo03.jpg" />
+    <Content Include="assets\img\imgReport\Termo04.jpg" />
     <Content Include="assets\img\mask.png" />
     <Content Include="assets\img\new_logo.png" />
     <Content Include="assets\img\sidebar-1.jpg" />
     <Content Include="assets\img\sidebar-2.jpg" />
     <Content Include="assets\img\sidebar-3.jpg" />
     <Content Include="assets\img\sidebar-4.jpg" />
+    <Content Include="assets\img\yBar.jpg" />
     <Content Include="assets\js\core\bootstrap-material-design.min.js" />
     <Content Include="assets\js\core\jquery.min.js" />
     <Content Include="assets\js\core\popper.min.js" />
@@ -247,8 +269,10 @@
     <Content Include="assets\js\plugins\sweetalert2.js" />
     <Content Include="Autocadastro.aspx" />
     <Content Include="Cadastro.aspx" />
+    <Content Include="Cadastros\Arquivos.aspx" />
     <Content Include="Cadastros\Autocadastro.aspx" />
     <Content Include="Cadastros\Clinicas.aspx" />
+    <Content Include="Cadastros\Medico.aspx" />
     <Content Include="Cadastros\Medicos.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
@@ -407,6 +431,7 @@
     <Content Include="Content\DataTables\media\images\sort_both.png" />
     <Content Include="Content\DataTables\media\images\sort_desc.png" />
     <Content Include="Content\DataTables\media\images\sort_desc_disabled.png" />
+    <Content Include="Content\Icons\chart-four.svg" />
     <Content Include="Content\Icons\archive-outline.svg" />
     <Content Include="Content\Icons\battery-dead-outline.svg" />
     <Content Include="Content\Icons\battery-full-outline.svg" />
@@ -422,27 +447,156 @@
     <Content Include="Content\Icons\cloud-download-outline.svg" />
     <Content Include="Content\Icons\create-outline.svg" />
     <Content Include="Content\Icons\desktop-outline.svg" />
+    <Content Include="Content\Icons\erro.jpg" />
     <Content Include="Content\Icons\file-tray-full-outline.svg" />
+    <Content Include="Content\Icons\filter_alt-24px.svg" />
     <Content Include="Content\Icons\home-outline.svg" />
+    <Content Include="Content\Icons\information-circle-outline.svg" />
+    <Content Include="Content\Icons\info_yellow.png" />
     <Content Include="Content\Icons\medkit-outline.svg" />
     <Content Include="Content\Icons\person-outline.svg" />
     <Content Include="Content\Icons\preco.svg" />
+    <Content Include="Content\Icons\refresh-circle-outline.svg" />
     <Content Include="Content\Icons\save-outline.svg" />
     <Content Include="Content\Icons\time-outline.svg" />
     <Content Include="Content\Icons\trash-outline.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Dash2.aspx" />
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Fichas\Acordo_APSDF.aspx" />
+    <Content Include="Fichas\Acordo.aspx" />
+    <Content Include="Fichas\Cadastro_APSDF.aspx" />
+    <Content Include="Fichas\Cadastro.aspx" />
+    <Content Include="Fichas\CadastroCristalina.aspx" />
+    <Content Include="Fichas\Informativo_APSDF.aspx" />
+    <Content Include="Fichas\Informativo.aspx" />
+    <Content Include="Fichas\Repasse_APSDF.aspx" />
+    <Content Include="Fichas\Repasse.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Account\Web.config" />
+    <Content Include="Models\DB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DB.edmx</DependentUpon>
+      <LastGenOutput>DB.cs</LastGenOutput>
+    </Content>
     <Content Include="Operacoes.aspx" />
     <Content Include="Reports\Despesas.aspx" />
-    <Content Include="Reports\Report.aspx" />
     <Content Include="Reports\Profissionais.aspx" />
     <Content Include="Reports\Clinicas.aspx" />
+    <Content Include="Reports\Repasses.aspx" />
+    <Content Include="Reports\Report.aspx" />
+    <Content Include="Reports\Report2.aspx" />
+    <Content Include="Reports\ReportRedirect.aspx" />
     <Content Include="Reports\Vendas.aspx" />
+    <Content Include="Reports\Rep01.rdlc" />
+    <Content Include="Reports\RepDespesas.rdlc" />
+    <Content Include="Reports\Report3.rdlc" />
+    <Content Include="Reports\RepVendas.rdlc" />
+    <Content Include="dbapsbDataSet.xsc">
+      <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="dbapsbDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbapsbDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbapsbDataSet.xss">
+      <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Fichas\Cristalina_Cargos.pdf" />
+    <Content Include="DBAPSBRepasse.xsc">
+      <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
+    </Content>
+    <Content Include="dbAPSBProcedures.xsc">
+      <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
+    </Content>
+    <None Include="dbAPSBProcedures.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dbAPSBProcedures.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="dbAPSBProcedures.xss">
+      <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
+    </Content>
+    <None Include="DBAPSBRepasse.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAPSBRepasse.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBAPSBRepasse.xss">
+      <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
+    </Content>
+    <Content Include="DBAPSBRepasses.xsc">
+      <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Content>
+    <None Include="DBAPSBRepasses.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBAPSBRepasses.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBAPSBRepasses.xss">
+      <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Content>
+    <Content Include="DBRelatorioGeral1.xsc">
+      <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
+    </Content>
+    <None Include="DBRelatorioGeral1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBRelatorioGeral1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBRelatorioGeral1.xss">
+      <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DB.edmx.diagram">
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Content>
+    <Content Include="DS_SEL_Despesas.xsc">
+      <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
+    </Content>
+    <None Include="DS_SEL_Despesas.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_SEL_Despesas.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DS_SEL_Despesas.xss">
+      <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\apsb - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsb - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsb - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\APSB.pubxml" />
+    <None Include="Properties\PublishProfiles\apsdf - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\apsdf - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\ChartJS\Chart.bundle.js" />
+    <Content Include="Scripts\ChartJS\Chart.bundle.min.js" />
+    <Content Include="Scripts\ChartJS\Chart.css" />
+    <Content Include="Scripts\ChartJS\Chart.js" />
+    <Content Include="Scripts\ChartJS\Chart.min.css" />
+    <Content Include="Scripts\ChartJS\Chart.min.js" />
+    <Content Include="Scripts\datetime-moment.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\Operacoes\Autocadastro.js" />
+    <Content Include="Scripts\Operacoes\Clinica.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -807,19 +961,21 @@
     <Content Include="Content\DataTables\media\images\Sorting icons.psd" />
     <Content Include="Content\DataTables\extensions\Buttons\css\mixins.scss" />
     <Content Include="Content\DataTables\extensions\Buttons\css\common.scss" />
-    <None Include="Properties\PublishProfiles\apptest20201 - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\apptest20201 - ReadOnly - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\apptest20201 - Web Deploy.pubxml" />
+    <Content Include="App_Data\SQLCampare.scmp" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Operacoes\Dashboard.js" />
+    <Content Include="Scripts\Operacoes\Medico.js" />
+    <Content Include="Scripts\Operacoes\Operacoes.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
     <Content Include="Scripts\src\methods\destroy.js" />
@@ -1054,6 +1210,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Arquivos\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Arquivos\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Autocadastro.aspx.cs">
       <DependentUpon>Autocadastro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1067,6 +1230,13 @@
     </Compile>
     <Compile Include="Cadastro.aspx.designer.cs">
       <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\Arquivos.aspx.cs">
+      <DependentUpon>Arquivos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Arquivos.aspx.designer.cs">
+      <DependentUpon>Arquivos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\Autocadastro.aspx.cs">
       <DependentUpon>Autocadastro.aspx</DependentUpon>
@@ -1082,6 +1252,20 @@
     <Compile Include="Cadastros\Clinicas.aspx.designer.cs">
       <DependentUpon>Clinicas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\Configuracoes.aspx.cs">
+      <DependentUpon>Configuracoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Configuracoes.aspx.designer.cs">
+      <DependentUpon>Configuracoes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\Medico.aspx.cs">
+      <DependentUpon>Medico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\Medico.aspx.designer.cs">
+      <DependentUpon>Medico.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\Medicos.aspx.cs">
       <DependentUpon>Medicos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1089,10 +1273,29 @@
     <Compile Include="Cadastros\Medicos.aspx.designer.cs">
       <DependentUpon>Medicos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Arquivo.cs" />
+    <Compile Include="Classes\Banco.cs" />
+    <Compile Include="Classes\base.cs" />
+    <Compile Include="Classes\Chart.cs" />
     <Compile Include="Classes\Clinica.cs" />
+    <Compile Include="Classes\ClinicaProfissional.cs" />
+    <Compile Include="Classes\DAO.cs" />
+    <Compile Include="Classes\Despesa.cs" />
+    <Compile Include="Classes\Documento.cs" />
+    <Compile Include="Classes\Endereco.cs" />
+    <Compile Include="Classes\Especialidade.cs" />
+    <Compile Include="Classes\Operacao.cs" />
     <Compile Include="Classes\Profissional.cs" />
+    <Compile Include="Classes\ProfissionalArquivo.cs" />
+    <Compile Include="Classes\ProfissionalBanco.cs" />
+    <Compile Include="Classes\ProfissionalDados.cs" />
+    <Compile Include="Classes\ProfissionalEndereco.cs" />
+    <Compile Include="Classes\Receita.cs" />
+    <Compile Include="Classes\ReceitaRepasse.cs" />
     <Compile Include="Classes\RelDespesas.cs" />
+    <Compile Include="Classes\RelProfissionais.cs" />
     <Compile Include="Classes\RelVendas.cs" />
+    <Compile Include="Classes\Report.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1107,12 +1310,44 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dash2.aspx.cs">
+      <DependentUpon>Dash2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dash2.aspx.designer.cs">
+      <DependentUpon>Dash2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Datatables.aspx.cs">
       <DependentUpon>Datatables.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Datatables.aspx.designer.cs">
       <DependentUpon>Datatables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dbapsbDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbapsbDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="dbAPSBProcedures.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dbAPSBProcedures.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBAPSBRepasse.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAPSBRepasse.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBAPSBRepasses.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBAPSBRepasses.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DBRelatorioGeral1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -1121,10 +1356,102 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DS_SEL_Despesas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Acordo_APSDF.aspx.cs">
+      <DependentUpon>Acordo_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Acordo_APSDF.aspx.designer.cs">
+      <DependentUpon>Acordo_APSDF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Acordo.aspx.cs">
+      <DependentUpon>Acordo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Acordo.aspx.designer.cs">
+      <DependentUpon>Acordo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Cadastro_APSDF.aspx.cs">
+      <DependentUpon>Cadastro_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Cadastro_APSDF.aspx.designer.cs">
+      <DependentUpon>Cadastro_APSDF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Cadastro.aspx.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Cadastro.aspx.designer.cs">
+      <DependentUpon>Cadastro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\CadastroCristalina.aspx.cs">
+      <DependentUpon>CadastroCristalina.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\CadastroCristalina.aspx.designer.cs">
+      <DependentUpon>CadastroCristalina.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Informativo_APSDF.aspx.cs">
+      <DependentUpon>Informativo_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Informativo_APSDF.aspx.designer.cs">
+      <DependentUpon>Informativo_APSDF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Informativo.aspx.cs">
+      <DependentUpon>Informativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Informativo.aspx.designer.cs">
+      <DependentUpon>Informativo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Repasse_APSDF.aspx.cs">
+      <DependentUpon>Repasse_APSDF.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Repasse_APSDF.aspx.designer.cs">
+      <DependentUpon>Repasse_APSDF.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Fichas\Repasse.aspx.cs">
+      <DependentUpon>Repasse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fichas\Repasse.aspx.designer.cs">
+      <DependentUpon>Repasse.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\tbDespesas.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDespesasCategoria.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tbDespesaTipo.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Operacoes.aspx.cs">
       <DependentUpon>Operacoes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1140,13 +1467,6 @@
     <Compile Include="Reports\Despesas.aspx.designer.cs">
       <DependentUpon>Despesas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Report.aspx.cs">
-      <DependentUpon>Report.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\Report.aspx.designer.cs">
-      <DependentUpon>Report.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reports\Profissionais.aspx.cs">
       <DependentUpon>Profissionais.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1160,6 +1480,34 @@
     </Compile>
     <Compile Include="Reports\Clinicas.aspx.designer.cs">
       <DependentUpon>Clinicas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Repasses.aspx.cs">
+      <DependentUpon>Repasses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Repasses.aspx.designer.cs">
+      <DependentUpon>Repasses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report2.aspx.cs">
+      <DependentUpon>Report2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Report2.aspx.designer.cs">
+      <DependentUpon>Report2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReportRedirect.aspx.cs">
+      <DependentUpon>ReportRedirect.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReportRedirect.aspx.designer.cs">
+      <DependentUpon>ReportRedirect.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Vendas.aspx.cs">
       <DependentUpon>Vendas.aspx</DependentUpon>
@@ -1193,12 +1541,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
+    <Content Include="Scripts\moment.min.js.map" />
+    <Content Include="Scripts\moment-with-locales.min.js.map" />
+    <None Include="Web.apsdf.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1211,20 +1564,34 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Reports\Rep01.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepDespesas.rdlc" />
-    <EmbeddedResource Include="Reports\Report3.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\RepVendas.rdlc" />
+    <EmbeddedResource Include="Reports\Acordo.rdlc" />
+    <EmbeddedResource Include="Reports\FichaCadastral3.rdlc" />
+    <EmbeddedResource Include="Reports\FichaCadastral2.rdlc" />
+    <EmbeddedResource Include="Reports\FichaCadastral.rdlc" />
+    <EmbeddedResource Include="Reports\Informativo.rdlc" />
+    <EmbeddedResource Include="Reports\Mod_ficha.rdlc" />
+    <Content Include="Reports\Rel_repasse.rdlc" />
+    <Content Include="Reports\Rel_geral.rdlc" />
+    <EmbeddedResource Include="Reports\Repasse.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'apsdf|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />

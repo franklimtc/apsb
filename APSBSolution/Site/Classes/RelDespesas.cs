@@ -31,7 +31,7 @@ namespace Site.Classes
             this.cvStatus = _status;
         }
 
-        public List<RelDespesas> Listar()
+        public static List<RelDespesas> Listar()
         {
             List<RelDespesas> Lista = new List<RelDespesas>();
             Lista.Add(new RelDespesas(1,"Internet", 1000, DateTime.Now, "Pendente"));

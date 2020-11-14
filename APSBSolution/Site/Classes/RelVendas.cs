@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -8,28 +9,27 @@ namespace Site.Classes
     public class RelVendas
     {
         #region Campos
-        public int cvIDVenda { get; set; }
+        public int idReceita { get; set; }
+        public float cvValor { get; set; }//cvValor
+        public float cvValorPago { get; set; }//cvValorPago
+        public float cvValorRepassado { get; set; }//cvValorRepassado
+        public float cvValorDisponivel { get; set; }//cvValorDisponivel
+        public DateTime? cdEmissao { get; set; }//cdEmissao
+        public DateTime? cdPagamento { get; set; }//cdPagamento
+        public DateTime? cdRepasse { get; set; }//cdRepasse
+        public float cvDesconto { get; set; }//cvDesconto
+        public long cvNF { get; set; }//cvNF
+        public string observacao { get; set; }//observacao
+        public bool cbIssRetido { get; set; }//cbIssRetido
+        public string ccIssRetido { get; set; }
+        public string ccApelido { get; set; }//ccApelido
+        public long cvCNPJ { get; set; }//cvCNPJ
+        public DateTime? cdPrevistaPgto { get; set; }//cdPrevistaPgto
+        public float cvDescontoValor { get; set; }//cvDescontoValor
+        public float cvISS { get; set; }//cvISS
+        public float cvISSValor { get; set; }//cvISSValor
+        public string Status { get; set; }//Status
 
-        //Colunas do relatório de vendas:
-        //clínica(razão social)
-        public string ccClinica { get; set; }
-        public string ccCNPJ { get; set; }
-        public string ccEmail { get; set; }
-        public string ccCidade { get; set; }
-        public string ccUF { get; set; }
-        public int cvNF { get; set; }
-        public DateTime cdDataEmissao { get; set; }
-        public double cvValorBruto { get; set; }
-        public DateTime cdDataPrevista { get; set; }
-        public DateTime cdDataPagamento { get; set; }
-        public double cvValorPago { get; set; }
-        public double cvImpostoRetidoPercentual { get; set; }
-        public double cvImpostoRetidoValor { get; set; }
-        public double cvISSPercentual { get; set; }
-        public double cvISSValor { get; set; }
-        public DateTime cdDataRepasse { get; set; }
-        public double cvValorRepasse { get; set; }
-        public string cvStatus { get; set; }
         #endregion
 
         public RelVendas()
@@ -37,27 +37,102 @@ namespace Site.Classes
 
         }
 
-        public RelVendas(int _id, string _clinica, double _valor)
-        {
-            this.cvIDVenda = _id;
-            this.ccClinica = _clinica;
-            this.cvValorBruto = _valor;
-            this.cvValorPago = _valor;
-            this.cvValorPago = _valor * 0.9;
-        }
 
-        public List<RelVendas> Listar()
+        public static List<RelVendas> Listar()
         {
+            List<object[]> parametros = new List<object[]>();
+           
+
+            DataTable dt = DAO.RetornaDT("SEL_Receitas", parametros);
             List<RelVendas> Lista = new List<RelVendas>();
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow c in dt.Rows)
+                {
+                    //         
+                    RelVendas rv = new RelVendas();
 
-            Lista.Add(new RelVendas(1, "Clínica A", 1000));
-            Lista.Add(new RelVendas(2, "Clínica B", 1000));
-            Lista.Add(new RelVendas(3, "Clínica C", 1000));
-            Lista.Add(new RelVendas(4, "Clínica D", 1000));
-            Lista.Add(new RelVendas(5, "Clínica E", 1000));
+                    rv.idReceita = int.Parse(c["idReceita"].ToString());
+                    rv.observacao = (c["observacao"].ToString());
+                    rv.Status = (c["Status"].ToString());
+                    rv.ccApelido = (c["ccApelido"].ToString());
 
-            return Lista;
+                    if (DateTime.TryParse(c["cdPrevistaPgto"].ToString(), out DateTime cdPrevistaPgtot))
+                    {
+                        rv.cdPrevistaPgto = cdPrevistaPgtot;
+                    }
+                    if (float.TryParse(c["cvISS"].ToString(), out float cvISSt))
+                    {
+                        rv.cvISS = cvISSt / 100;
+                    }
+                    if (float.TryParse(c["cvISSValor"].ToString(), out float cvISSValort))
+                    {
+                        rv.cvISSValor = cvISSValort;
+                    }
+                    if (float.TryParse(c["cvDescontoValor"].ToString(), out float cvDescontoValort))
+                    {
+                        rv.cvDescontoValor = cvDescontoValort;
+                    }
+                    if (long.TryParse(c["cvCNPJ"].ToString(), out long cvCNPJt))
+                    {
+                        rv.cvCNPJ = cvCNPJt;
+                    }
+                    if (bool.TryParse(c["cbIssRetido"].ToString(), out bool cbIssRetidot))
+                    {
+                        rv.cbIssRetido = cbIssRetidot;
+                        if (cbIssRetidot)
+                        {
+                            rv.ccIssRetido = "Sim";
+                        }
+                        else
+                        {
+                            rv.ccIssRetido = "Não";
+                        }
 
+                    }
+                    if (float.TryParse(c["cvValor"].ToString() , out float cvValorT))
+                    {
+                        rv.cvValor = cvValorT;
+                    }
+                    if (float.TryParse(c["cvValorPago"].ToString(), out float cvValorPagoT))
+                    {
+                        rv.cvValorPago = cvValorPagoT;
+                    }
+                    if (float.TryParse(c["cvValorRepassado"].ToString(), out float cvValorRepassadot))
+                    {
+                        rv.cvValorRepassado = cvValorRepassadot;
+                    }
+                    if (float.TryParse(c["cvValorDisponivel"].ToString(), out float cvValorDisponivelt))
+                    {
+                        rv.cvValorDisponivel = cvValorDisponivelt;
+                    }
+                    if (DateTime.TryParse(c["cdEmissao"].ToString(), out DateTime cdEmissaot))
+                    {
+                        rv.cdEmissao = cdEmissaot;
+                    }
+                    if (DateTime.TryParse(c["cdPagamento"].ToString(), out DateTime cdPagamentot))
+                    {
+                        rv.cdPagamento = cdPagamentot;
+                    }
+                    if (DateTime.TryParse(c["cdRepasse"].ToString(), out DateTime cdRepasset))
+                    {
+                        rv.cdRepasse = cdRepasset;
+                    }
+                    if (float.TryParse(c["cvDesconto"].ToString(), out float cvDescontot))
+                    {
+                        rv.cvDesconto = cvDescontot / 100;
+                    }
+
+                    if (int.TryParse(c["cvNF"].ToString(), out int cvNFt))
+                    {
+                        rv.cvNF = cvNFt;
+                    }
+
+                    Lista.Add(rv);
+                }
+            }
+
+                return Lista;
         }
     }
 }

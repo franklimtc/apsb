@@ -5,7 +5,21 @@
         #chkDescontovariavel {
             padding-left: 5px;
         }
+
+
+
     </style>
+    <%--Hidden Filds--%>
+    <asp:HiddenField runat="server" ID="idHiddenClinica" />
+    <asp:HiddenField runat="server" ID="HiddenClinicaDesconto" />
+    <asp:HiddenField runat="server" ID="HiddenClinicaName" />
+    <asp:HiddenField runat="server" ID="HiddenProfissionalID" />
+    <asp:HiddenField runat="server" ID="idHiddenChange" />
+    <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
+
+    <%--Hidden Filds--%>
+
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4"></div>
@@ -15,112 +29,72 @@
             </div>
             <div class="col-md-4"></div>
         </div>
-        <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
-                    <asp:button text="Nova Clínica" runat="server" CssClass="btn btn-secondary" />
+        <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar" OnClientClick="AddRequerid()">
+            <asp:Button ID="btNovaClinica" Text="Nova Clínica" runat="server" CssClass="btn btn-secondary" OnClientClick="LimparForm()" />
         </asp:LinkButton>
         <br />
+        <div class="row collapse" id="divFiltros">
+            <br />
+            <div class="col">
+                <h2>Filtros adicionais</h2>
+                <div class="row">
+                    <div class="col">
+                        <asp:RadioButtonList runat="server" CssClass="input-group-text" ID="chkStatus">
+                            <asp:ListItem Text="Ativo" Selected="True" Value="true" />
+                            <asp:ListItem Text="Inativo" Value="false" />
+                        </asp:RadioButtonList>
+                    </div>
+                    <div class="col">
+                        <asp:LinkButton ID="btAplicarFiltro" Text="Aplicar" runat="server" CssClass="btn btn-secondary" OnClick="btAplicarFiltro_Click" />
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
-                <%--<asp:GridView runat="server" ID="gvClinicas"></asp:GridView>--%>
                 <br />
+                <asp:GridView runat="server" ID="gvClinicas" AutoGenerateColumns="False" CssClass="table table-hover table-striped table-sm" OnPreRender="gvClinicas_PreRender" OnRowCommand="gvClinicas_RowCommand">
+                    <Columns>
+                        <asp:BoundField DataField="IdClinica" HeaderText="ID" SortExpression="IdClinica" ItemStyle-CssClass="imgLink"/>
+                        <asp:BoundField DataField="ccApelido" HeaderText="Apelido" SortExpression="ccApelido" />
+                        <asp:BoundField DataField="ccRazaoSocial" HeaderText="ccRazaoSocial" SortExpression="ccRazaoSocial" Visible="false" />
+                        <asp:BoundField DataField="ccNomeFantasia" HeaderText="ccNomeFantasia" SortExpression="ccNomeFantasia" Visible="false" />
+                        <asp:BoundField DataField="cvCNPJ" HeaderText="cvCNPJ" SortExpression="cvCNPJ" Visible="false" />
+                        <asp:BoundField DataField="ccContato" HeaderText="ccContato" SortExpression="ccContato" Visible="false" />
+                        <asp:BoundField DataField="cvTelefone" HeaderText="cvTelefone" SortExpression="cvTelefone" Visible="false" />
+                        <asp:BoundField DataField="ccEmail" HeaderText="Email" SortExpression="ccEmail" />
+                        <asp:BoundField DataField="ccUF" HeaderText="ccUF" SortExpression="ccUF" Visible="false" />
+                        <asp:BoundField DataField="ccCidade" HeaderText="ccCidade" SortExpression="ccCidade" Visible="false" />
+                        <asp:BoundField DataField="cvISS" HeaderText="ISS" SortExpression="cvISS" />
+                        <asp:BoundField DataField="cvDescontos" HeaderText="Desconto" SortExpression="cvDescontos" />
+                        <asp:BoundField DataField="ccTaxaVariavel" HeaderText="ccTaxaVariavel" SortExpression="ccTaxaVariavel" Visible="false" />
+                        <asp:BoundField DataField="ccObservacao" HeaderText="Observações" SortExpression="ccObservacao" />
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btEditarGrid" ImageUrl="~/Content/Icons/business-outline.svg" CommandName="Editar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Editar" />&nbsp&nbsp
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField  ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btAssociarGrid" ImageUrl="~/Content/Icons/person-outline.svg" CommandName="Associar" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Associar" />&nbsp&nbsp
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField ItemStyle-CssClass="imgLink">
+                            <ItemTemplate>
+                                <asp:ImageButton runat="server" CssClass="imgButton" ID="btExcluirGrid" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?');" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
 
-                <table id="gvClinicas" class="table table-hover table-striped table-sm">
-                    <thead>
-                        <tr>
-                            <th hidden="hidden">ID</th>
-                            <th>Apelido</th>
-                            <th>Email</th>
-                            <th>ISS</th>
-                            <th>Desconto</th>
-                            <th>Banco</th>
-                            <th>Observações</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr>
-                            <td hidden="hidden">01</td>
-                            <td>Clinica B</td>
-                            <td>clinica@dominio.com</td>
-                            <td>2,0%</td>
-                            <td>6,5%</td>
-                            <td>CAIXA</td>
-                            <td>..</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td hidden="hidden">01</td>
-                            <td>Clinica C</td>
-                            <td>clinica@dominio.com</td>
-                            <td>2,0%</td>
-                            <td>6,5%</td>
-                            <td>CAIXA</td>
-                            <td>..</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td hidden="hidden">01</td>
-                            <td>Clinica E</td>
-                            <td>clinica@dominio.com</td>
-                            <td>2,0%</td>
-                            <td>6,5%</td>
-                            <td>CAIXA</td>
-                            <td>..</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td hidden="hidden">01</td>
-                            <td>Clinica D</td>
-                            <td>clinica@dominio.com</td>
-                            <td>2,0%</td>
-                            <td>6,5%</td>
-                            <td>CAIXA</td>
-                            <td>..</td>
-                            <td>
-                                <asp:LinkButton runat="server" data-toggle="modal" data-target="#clinicaModal" ToolTip="Editar">
-                                <asp:imagebutton imageurl="~/Content/Icons/business-outline.svg" Height="1.5em" runat="server"/>
-                                </asp:LinkButton>&nbsp&nbsp
-                            <asp:LinkButton runat="server" data-toggle="modal" data-target="#profissionalModal" ToolTip="Associar">
-                                <asp:imagebutton imageurl="~/Content/Icons/person-outline.svg" Height="1.5em" runat="server"/>
-                            </asp:LinkButton>&nbsp&nbsp
-                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                            </td>
-                        </tr>
-
-
-                    </tbody>
-                </table>
+                    </Columns>
+                </asp:GridView>
+                <br />
             </div>
         </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="clinicaModal" tabindex="-1" role="dialog" aria-labelledby="clinicaModalLabel" aria-hidden="true">
+    <div class="modal fade" id="clinicaModal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static" aria-labelledby="clinicaModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -151,6 +125,12 @@
                         </div>
                         <div class="row">
                             <div class="col">
+                                <label for="tbCNPJ">CNPJ</label>
+                                <asp:TextBox runat="server" ID="tbCNPJ" CssClass="form-control cnpj" placeholder="..." />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <label for="tbClinicaEmail">Email</label>
                                 <asp:TextBox runat="server" ID="tbClinicaEmail" CssClass="form-control" placeholder="..." />
                             </div>
@@ -160,32 +140,44 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label for="tbClinicaISS">ISS</label>
-                                <asp:TextBox runat="server" ID="tbClinicaISS" CssClass="form-control" Text="2.0" placeholder="..." TextMode="Number" />
+                                <asp:TextBox runat="server" ID="tbClinicaISS" CssClass="form-control" Text="2,0" />
                             </div>
                             <div class="col-md-4">
                                 <label for="tbDescontos">Descontos</label>
-                                <asp:TextBox runat="server" ID="tbDescontos" CssClass="form-control" Text="6.5" placeholder="..." TextMode="Number" />
+                                <asp:TextBox runat="server" ID="tbDescontos" CssClass="form-control" Text="6,5" />
                             </div>
                             <div class="col-md-5">
                                 <label for="dpBancoClinica">Banco</label>
-                                <select id="dpBancoClinica" class="form-control">
-                                    <option selected="selected">Selecione..</option>
-                                    <option>Banco do Brasil</option>
-                                    <option>Bradesco</option>
-                                    <option>Caixa</option>
-                                    <option>Itau</option>
-                                </select>
-
+                                <asp:DropDownList runat="server" ID="dpBancoClinica" CssClass="form-control" DataSourceID="dsBancos" DataTextField="ccBancoCod" DataValueField="IdBanco">
+                                </asp:DropDownList>
+                                <asp:ObjectDataSource ID="dsBancos" runat="server" SelectMethod="Listar" TypeName="Site.Classes.Banco"></asp:ObjectDataSource>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
+                                <label for="tbPgtoDias">Pagamento em dias</label>
+                                <asp:TextBox runat="server" ID="tbPgtoDias" CssClass="form-control" Text="5" placeholder="dias" TextMode="number" />
+                            </div>
+                            <div class="col">
                                 <br />
-                                <input type="checkbox" name="chDescontoVariavel" />
+                                <asp:CheckBox runat="server" ID="chDescontoVariavel" />
                                 <label for="chDescontoVariavel">Desconto Variável</label>
-
                             </div>
                         </div>
+                        <div class="row collapse" id="divDescontoVariavel">
+                            <div class="col">
+                                <label for="MainContent_tbValorCorte">Valor de Corte</label>
+                                <input runat="server" type="text" name="tbValorCorte" id="tbValorCorte" class="form-control money" value="" />
+                            </div>
+                            <div class="col">
+                                <label for="MainContent_tbTaxaMenor">Taxa Menor</label>
+                                <input runat="server" type="text" name="tbTaxaMenor" id="tbTaxaMenor" class="form-control percent" value="" />
+                            </div>
+                            <div class="col">
+                                 <label for="MainContent_tbTaxaMaior">Taxa Maior</label>
+                                <input runat="server" type="text" name="tbTaxaMaior" id="tbTaxaMaior" class="form-control percent" value="" />
+                            </div>
+                        </div> 
                         <div class="row">
                             <div class="col">
                                 <label for="tbObsClinica">Observações</label>
@@ -195,20 +187,20 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <asp:Button Text="Salvar" runat="server" CssClass="btn btn-primary" OnClientClick="alert('Registro salvo com sucesso!')" />
+                    <button type="reset" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                    <asp:Button ID="btSalvar" Text="Salvar" runat="server" CssClass="btn btn-primary" OnClick="btSalvar_Click" OnClientClick="RemoverMascaras()" />
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Large modal -->
 
-    <!-- Modal - Profissional -->
-    <div class="modal fade" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+    <div class="modal fade bd-example-modal-lg" id="profissionalModal" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional</h5>
+                 <div class="modal-header">
+                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional <asp:Label  ID="tbTextClinica" runat="server" /></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -220,95 +212,161 @@
                                 <div class="col-sm-8">
                                     <label for="dpRepasseProfissional">Profissional</label>
                                     <div>
-                                        <input type="text" id="tbRepasseProfissional" class="form-control" placeholder="Filtrar..." name="search" onkeyup="filterProfissional()">
+                                        <input list="dsProfissionais" name="dpProfissional2" id="dpProfissional2" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="tbValorRepasse">Percentual</label>
                                     <div>
-                                        <input type="text" id="tbValorRepasse" class="form-control" placeholder="Filtrar..." name="search" value="10%">
+                                        <asp:TextBox runat="server" ID="tbValorRepasse" CssClass="form-control" Text="10"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
 
                             <div>
-                                <select id="dpSelectProfissional" class="form-control">
-                                    <option>Selecionar...</option>
-                                    <option>Adriana Alves De Almeida</option>
-                                    <option>Adriane De Fátima Silva De Assumção</option>
-                                    <option>Adriano Ferreira Da Silva</option>
-                                    <option>Carlos Henrique Pereira Macedo</option>
-                                    <option>Carolina Coelho Rodrigues</option>
-                                    <option>Clara Bandeira De Mello Parente Lobato</option>
-                                    <option>Sara Da Rocha Viana</option>
-                                </select>
+
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
+                            
+                              <datalist id="dsProfissionais">
+                              </datalist>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
                             <label for="tbObsProfissional">Observações</label>
-                            <input type="text" id="tbObsProfissional" name="tbObsProfissional" value="" placeholder="Observações do profissional" style="height: 100px;" class="form-control" />
+                            <asp:TextBox runat="server" ID="tbObsProfissional" CssClass="form-control" placeholder="Observações do profissional" TextMode="MultiLine"></asp:TextBox>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <input type="button" name="tbAdicionar" value="Adicionar" class="btn btn-secondary" />
+                            <input type="button" id="btAdicionarRelacao" value="Adicionar" class="btn btn-secondary" onclick="SalvarRelacao()" />
                         </div>
                     </div>
                     <hr />
                     <div class="row">
-                        <asp:Table ID="tbProfissionalClinica" runat="server" CssClass="table table-hover table-striped table-sm">
-                            <asp:TableHeaderRow>
-                                <asp:TableHeaderCell>ID</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Nome</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Percentual</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Ações</asp:TableHeaderCell>
-                            </asp:TableHeaderRow>
-                            <asp:TableRow>
-                                <asp:TableCell>01</asp:TableCell>
-                                <asp:TableCell>Adriana Alves De Almeida</asp:TableCell>
-                                <asp:TableCell>10%</asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow>
-                                <asp:TableCell>02</asp:TableCell>
-                                <asp:TableCell>Carlos Henrique Pereira Macedo</asp:TableCell>
-                                <asp:TableCell>10%</asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                </asp:TableCell>
-                            </asp:TableRow>
-                            <asp:TableRow>
-                                <asp:TableCell>03</asp:TableCell>
-                                <asp:TableCell>Sara Da Rocha Viana</asp:TableCell>
-                                <asp:TableCell>8%</asp:TableCell>
-                                <asp:TableCell>
-                                    <asp:imagebutton imageurl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="confirm('Deseja excluir o registro?')" />
-                                </asp:TableCell>
-                            </asp:TableRow>
-                        </asp:Table>
+                        <div class="col">
+                            <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvProfissionalClinica_PreRender" OnRowCommand="gvProfissionalClinica_RowCommand">
+                                <Columns>
+                                    <asp:BoundField DataField="IdClinicaProfissional" HeaderText="ID" />
+                                    <asp:BoundField DataField="ccNomeProfissional" HeaderText="Nome" />
+                                    <asp:BoundField DataField="cvTaxaProfissional" HeaderText="Taxa" />
+                                    <asp:BoundField DataField="cvStatus" HeaderText="Status" />
+                                    <asp:BoundField DataField="ccObservacao" HeaderText="Observações" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btExcluirRelacao" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary" onclick="alert('Registro salvo com sucesso!')">Salvar</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modal - Profissional -->
+    <%--<div class="modal fade modal-lg" id="profissionalModal" tabindex="-1" role="dialog" aria-labelledby="profissionalModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profissionalModalLabel">Associar Profissional <asp:Label  ID="tbTextClinica" runat="server" /></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <label for="dpRepasseProfissional">Profissional</label>
+                                    <div>
+                                        <input list="dsProfissionais" name="dpProfissional2" id="dpProfissional2" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="tbValorRepasse">Percentual</label>
+                                    <div>
+                                        <asp:TextBox runat="server" ID="tbValorRepasse" CssClass="form-control" Text="10"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            
+                              <datalist id="dsProfissionais">
+                              </datalist>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="tbObsProfissional">Observações</label>
+                            <asp:TextBox runat="server" ID="tbObsProfissional" CssClass="form-control" placeholder="Observações do profissional" TextMode="MultiLine"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <input type="button" id="btAdicionarRelacao" value="Adicionar" class="btn btn-secondary" onclick="SalvarRelacao()" />
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col">
+                            <asp:GridView runat="server" ID="gvProfissionalClinica" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvProfissionalClinica_PreRender" OnRowCommand="gvProfissionalClinica_RowCommand">
+                                <Columns>
+                                    <asp:BoundField DataField="IdClinicaProfissional" HeaderText="ID" />
+                                    <asp:BoundField DataField="ccNomeProfissional" HeaderText="Nome" />
+                                    <asp:BoundField DataField="cvTaxaProfissional" HeaderText="Taxa" />
+                                    <asp:BoundField DataField="cvStatus" HeaderText="Status" />
+                                    <asp:BoundField DataField="ccObservacao" HeaderText="Observações" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                            <asp:ImageButton ID="btExcluirRelacao" ImageUrl="~/Content/Icons/trash-outline.svg" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" Height="1.5em" runat="server" ToolTip="Excluir" OnClientClick="return confirm('Deseja excluir o registro?')" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>--%>
+
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="../Scripts/Operacoes/Clinica.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
+    <script type="text/javascript" src="../Scripts/Site.js"></script>
 
     <script type="text/javascript">
         //Datatables (gvClinicas)
         //DataTables
 
         $(document).ready(function () {
-            $('#gvClinicas').DataTable({
+            $('#MainContent_gvClinicas').DataTable({
                 "language": {
                     "lengthMenu": "Exibir _MENU_ registros.",
+                    "infoFiltered": "(filtrado de _MAX_ registros)",
                     "zeroRecords": "Nenhum registro encontrado.",
                     "info": "Exibindo página _PAGE_ de _PAGES_",
                     "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
@@ -316,11 +374,47 @@
                     }
                 }
             });
+
+            $('#MainContent_gvProfissionalClinica').DataTable({
+                "language": {
+                    "lengthMenu": "Exibir _MENU_ registros.",
+                    "infoFiltered": "(filtrado de _MAX_ registros)",
+                    "zeroRecords": "Nenhum registro encontrado.",
+                    "info": "Exibindo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No records available", "search": "Procurar", "previous": "Anterior", "paginate": {
+                        "previous": "Anterior", "next": "Próximo"
+                    }
+                }
+            });
+
+            
+
+            $('#MainContent_gvClinicas_filter').append("<input type='image' name='btFilter' id='btFilter' title='Filtrar' class='imgButton' src='../Content/Icons/filter_alt-24px.svg' style='height:1.2em;'  data-toggle='collapse' data-target='#divFiltros' onclick='return false;' >");
+            CarregarFiltro();
+
+            $('.dataTables_filter input').change(function () {
+                localStorage["Clinicas"] = $('.dataTables_filter input').val();
+            });
+            CarregarDPProfissionais();
+
+            $("#dpProfissional2").change(function () {
+                GetIdProfissionalByName($("#dpProfissional2").val());
+            });
+
+            //Exibir Dados de desconto variável
+            if ($("#MainContent_chDescontoVariavel").is(':checked')) {
+                $("#divDescontoVariavel").collapse('show');
+            }
+        });
+
+
+        $("#MainContent_chDescontoVariavel").change(function () {
+            $("#divDescontoVariavel").collapse('toggle');
         });
 
         function filterProfissional() {
             var keyword = document.getElementById("tbRepasseProfissional").value;
-            var select = document.getElementById("dpSelectProfissional");
+            var select = document.getElementById("MainContent_dpSelectProfissional");
             for (var i = 0; i < select.length; i++) {
                 var txt = select.options[i].text;
                 if (txt.substring(0, keyword.length).toLowerCase() !== keyword.toLowerCase() && keyword.trim() !== "") {
@@ -330,5 +424,48 @@
                 }
             }
         }
+
+        function LimparForm() {
+            var carregaDados = false;
+            if ($("#MainContent_tbApelido").val() != ""
+                || $("#MainContent_tbRazaoSocial").val() != ""
+                || $("#MainContent_tbClinicaNomeFantasia").val() != ""
+            ) {
+                carregaDados = confirm("Deseja carregar os dados preenchidos?");
+            }
+            if (carregaDados === false) {
+
+                $("#MainContent_tbApelido").val("");
+                $("#MainContent_tbRazaoSocial").val("");
+                $("#MainContent_tbClinicaNomeFantasia").val("");
+                $("#MainContent_tbClinicaEmail").val("");
+                $("#MainContent_tbClinicaISS").val("2,0");
+                $("#MainContent_tbPgtoDias").val("5");
+                $("#MainContent_tbCNPJ").val("");
+
+                $("#MainContent_tbDescontos").val("6,5");
+                $("#MainContent_tbObsClinica").val("");
+                $("#MainContent_idHiddenClinica").val("");
+                $("#MainContent_chDescontoVariavel").prop("checked", false);
+                $("#MainContent_tbValorCorte").val("");
+                $("#MainContent_tbValorMenor").val("");
+                $("#MainContent_tbValorMaior").val("");
+            }
+
+        }
+
+        $(document).ready(function () {
+            $(".imgButton").click(function () {
+                $(".form-control").removeAttr("required");
+            });
+        });
+
+        function AddRequerid() {
+            $('#MainContent_tbApelido').attr('required', true);
+            $('#MainContent_tbRazaoSocial').attr('required', true);
+            $('#MainContent_tbNomeFantasia').attr('required', true);
+            $('#MainContent_tbCNPJ').attr('required', true);
+        }
+
     </script>
 </asp:Content>

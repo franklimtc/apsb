@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{8f9d4ee1-0257-4689-90be-c86ca60dac7c}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>Database</RootNamespace>
+    <AssemblyName>Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'apsdf|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Procedures" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="dbo\Sequences\" />
+    <Folder Include="dbo\Views\" />
+    <Folder Include="dbo\Functions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Procedures\INS_Clinica.sql" />
+    <Build Include="dbo\Tables\tbLogErro.sql" />
+    <Build Include="dbo\Tables\tbBancos.sql" />
+    <Build Include="dbo\Tables\tbClinicaProfissional.sql" />
+    <Build Include="dbo\Tables\tbClinicas.sql" />
+    <Build Include="Procedures\SEL_Clinica.sql" />
+    <Build Include="Procedures\UPD_Clinica.sql" />
+    <Build Include="Procedures\EXC_Clinica.sql" />
+    <Build Include="Procedures\SEL_Bancos.sql" />
+    <Build Include="Procedures\SEL_ProfissionaisDP.sql" />
+    <Build Include="Procedures\INS_ClinicaProfissional.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ClinicaProfissional.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ClinicaProfissional.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Profissionais.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Profissional.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Profissional.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Profissional.sql" />
+    <Build Include="dbo\Tables\tbEspecialidade.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisDados.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Especialidades.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ProfissionaisDados.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Especialidade.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ProfissionalBanco.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Endereco.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalBanco.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Endereco.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalBanco.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ProfissionalEndereco.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalEndereco.sql" />
+    <Build Include="dbo\Tables\tbProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalArquivoBinary.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalArquivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Token.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalAuto.sql" />
+    <Build Include="dbo\Stored Procedures\INS_ProfissionalAuto.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalAuto.sql" />
+    <Build Include="dbo\Stored Procedures\ATV_ProfissionalAuto.sql" />
+    <Build Include="dbo\Tables\tbReceitas.sql" />
+    <Build Include="dbo\Tables\tbDespesaTipo.sql" />
+    <Build Include="dbo\Tables\tbDespesas.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Despesa.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Operacoes.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_DespesaTipo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Despesas.sql" />
+    <Build Include="dbo\Stored Procedures\INS_DespesaTipo.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Despesa.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Operacao.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Despesa.sql" />
+    <Build Include="dbo\Stored Procedures\ARQ_Operacao.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Receita.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Receitas.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Receita.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_OperacaoByID.sql" />
+    <Build Include="dbo\Sequences\SQ_ProfissionalAuto.sql" />
+    <Build Include="dbo\Tables\tbProfissionalRepasse.sql" />
+    <Build Include="dbo\Views\vwReceitas.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\PGR_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\INS_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_Repasse.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalClinicaDP.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_RepasseObs.sql" />
+    <Build Include="dbo\Views\vwResumoReceitas.sql" />
+    <Build Include="dbo\Views\vw_ChartFatBruto.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Repasse10.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_QtdNotas.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Faturamento10.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Dashboard.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartReceitaLiquida.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartReceitaBruta.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartFatEfetivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartFatBruto.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ChartDespesas.sql" />
+    <Build Include="dbo\Functions\FN_TokenAuto.sql" />
+    <Build Include="dbo\Stored Procedures\RNV_ProfissionalAuto.sql" />
+    <Build Include="dbo\Tables\AspNetUsers.sql" />
+    <Build Include="dbo\Tables\AspNetUserRoles.sql" />
+    <Build Include="dbo\Tables\AspNetUserLogins.sql" />
+    <Build Include="dbo\Tables\AspNetUserClaims.sql" />
+    <Build Include="dbo\Tables\AspNetRoles.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
+    <Build Include="dbo\Stored Procedures\REL_FichaCadastral.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ClinicaCNPJ.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalCristalina.sql" />
+    <Build Include="dbo\Tables\tbFormacao.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_Formacoes.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_DespesaByName.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ClinicasByApelido.sql" />
+    <Build Include="dbo\Stored Procedures\GetIDProfissionalByName.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ProfissionalDetinitivo.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalRepasses.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisRel.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalIDByReceita.sql" />
+    <Build Include="dbo\Stored Procedures\UPD_ReceitaByRepasses.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_QtdProfissioais.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisGrid2.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionaisGrid.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_LastError.sql" />
+    <Build Include="dbo\Stored Procedures\EXC_ClinicaDetinitivo.sql" />
+    <Build Include="dbo\Functions\GetObservacoes.sql" />
+    <Build Include="dbo\Functions\GetBancos.sql" />
+    <Build Include="dbo\Tables\tbDescontoVariavelClinicas.sql" />
+    <Build Include="dbo\Functions\GetTaxaProfissional.sql" />
+    <Build Include="dbo\Functions\GetRepassesAtivos.sql" />
+    <Build Include="dbo\Stored Procedures\SEL_ProfissionalbyCPF.sql" />
+    <Build Include="dbo\Functions\fnTesteReceitaDescricao.sql" />
+    <Build Include="dbo\Functions\fnTesteReceita.sql" />
+    <Build Include="dbo\Functions\GetMonthName.sql" />
+    <Build Include="dbo\Stored Procedures\PROC_RelatorioGeral.sql" />
+    <Build Include="dbo\Functions\ConvertFirstLetterinCapital.sql" />
+    <Build Include="dbo\Tables\tbDespesasCategoria.sql" />
+    <Build Include="dbo\Stored Procedures\SPImport03.sql" />
+    <Build Include="dbo\Stored Procedures\ProcessarImport01.sql" />
+    <Build Include="dbo\Stored Procedures\ARQ_Receitas.sql" />
+    <Build Include="dbo\Stored Procedures\ARQ_Operacoes.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\tbDocumentos.sql" />
+    <Build Include="dbo\Tables\tbEndereco.sql" />
+    <Build Include="dbo\Tables\tbObservacoes.sql" />
+    <Build Include="dbo\Tables\tbParentes.sql" />
+    <Build Include="dbo\Tables\tbProfissionais.sql" />
+    <Build Include="dbo\Tables\tbProfissionaisBancos.sql" />
+    <Build Include="dbo\Tables\tbProfissionaisDados.sql" />
+    <Build Include="dbo\Tables\tbTelefones.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Insert_Bancos.sql" />
+  </ItemGroup>
+</Project>

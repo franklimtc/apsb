@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbapsbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbDespesas">
+          <Key>
+            <PropertyRef Name="idDespesas" />
+          </Key>
+          <Property Name="idDespesas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idTipo" Type="int" Nullable="false" />
+          <Property Name="cvValor" Type="float" Nullable="false" />
+          <Property Name="cdData" Type="datetime" />
+          <Property Name="cbArquivado" Type="bit" />
+          <Property Name="cbStatus" Type="bit" />
+          <Property Name="IdObservacao" Type="int" />
+          <Property Name="cdDataCriacao" Type="datetime" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbDespesasCategoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ccCategoria" Type="varchar" MaxLength="100" />
+          <Property Name="cdCriacao" Type="datetime" />
+          <Property Name="ccUsuario" Type="varchar" MaxLength="100" />
+          <Property Name="cbStatus" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbDespesaTipo">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ccTipo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cdDataCriacao" Type="datetime" />
+          <Property Name="idCategoria" Type="int" />
+          <Property Name="cbStatus" Type="bit" />
+          <Property Name="ccUsuario" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK__tbDespesa__idCat__68D28DBC">
+          <End Role="tbDespesasCategoria" Type="Self.tbDespesasCategoria" Multiplicity="0..1" />
+          <End Role="tbDespesaTipo" Type="Self.tbDespesaTipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDespesasCategoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="tbDespesaTipo">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbDespesa__idTip__04E4BC85">
+          <End Role="tbDespesaTipo" Type="Self.tbDespesaTipo" Multiplicity="1" />
+          <End Role="tbDespesas" Type="Self.tbDespesas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDespesaTipo">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="tbDespesas">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbapsbModelStoreContainer">
+          <EntitySet Name="tbDespesas" EntityType="Self.tbDespesas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDespesasCategoria" EntityType="Self.tbDespesasCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbDespesaTipo" EntityType="Self.tbDespesaTipo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__tbDespesa__idCat__68D28DBC" Association="Self.FK__tbDespesa__idCat__68D28DBC">
+            <End Role="tbDespesasCategoria" EntitySet="tbDespesasCategoria" />
+            <End Role="tbDespesaTipo" EntitySet="tbDespesaTipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbDespesa__idTip__04E4BC85" Association="Self.FK__tbDespesa__idTip__04E4BC85">
+            <End Role="tbDespesaTipo" EntitySet="tbDespesaTipo" />
+            <End Role="tbDespesas" EntitySet="tbDespesas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbapsbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbDespesas">
+          <Key>
+            <PropertyRef Name="idDespesas" />
+          </Key>
+          <Property Name="idDespesas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idTipo" Type="Int32" Nullable="false" />
+          <Property Name="cvValor" Type="Double" Nullable="false" />
+          <Property Name="cdData" Type="DateTime" Precision="3" />
+          <Property Name="cbArquivado" Type="Boolean" />
+          <Property Name="cbStatus" Type="Boolean" />
+          <Property Name="IdObservacao" Type="Int32" />
+          <Property Name="cdDataCriacao" Type="DateTime" Precision="3" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbDespesaTipo" Relationship="Self.FK__tbDespesa__idTip__04E4BC85" FromRole="tbDespesas" ToRole="tbDespesaTipo" />
+        </EntityType>
+        <EntityType Name="tbDespesasCategoria">
+          <Key>
+            <PropertyRef Name="idCategoria" />
+          </Key>
+          <Property Name="idCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ccCategoria" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cdCriacao" Type="DateTime" Precision="3" />
+          <Property Name="ccUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbDespesaTipo" Relationship="Self.FK__tbDespesa__idCat__68D28DBC" FromRole="tbDespesasCategoria" ToRole="tbDespesaTipo" />
+          <Property Name="cbStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbDespesaTipo">
+          <Key>
+            <PropertyRef Name="idTipo" />
+          </Key>
+          <Property Name="idTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ccTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cdDataCriacao" Type="DateTime" Precision="3" />
+          <Property Name="idCategoria" Type="Int32" />
+          <NavigationProperty Name="tbDespesas" Relationship="Self.FK__tbDespesa__idTip__04E4BC85" FromRole="tbDespesaTipo" ToRole="tbDespesas" />
+          <NavigationProperty Name="tbDespesasCategoria" Relationship="Self.FK__tbDespesa__idCat__68D28DBC" FromRole="tbDespesaTipo" ToRole="tbDespesasCategoria" />
+          <Property Name="cbStatus" Type="Boolean" />
+          <Property Name="ccUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__tbDespesa__idTip__04E4BC85">
+          <End Role="tbDespesaTipo" Type="Self.tbDespesaTipo" Multiplicity="1" />
+          <End Role="tbDespesas" Type="Self.tbDespesas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDespesaTipo">
+              <PropertyRef Name="idTipo" />
+            </Principal>
+            <Dependent Role="tbDespesas">
+              <PropertyRef Name="idTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tbDespesa__idCat__68D28DBC">
+          <End Role="tbDespesasCategoria" Type="Self.tbDespesasCategoria" Multiplicity="0..1" />
+          <End Role="tbDespesaTipo" Type="Self.tbDespesaTipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbDespesasCategoria">
+              <PropertyRef Name="idCategoria" />
+            </Principal>
+            <Dependent Role="tbDespesaTipo">
+              <PropertyRef Name="idCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbapsbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbDespesas" EntityType="Self.tbDespesas" />
+          <EntitySet Name="tbDespesasCategoria" EntityType="Self.tbDespesasCategoria" />
+          <EntitySet Name="tbDespesaTipo" EntityType="Self.tbDespesaTipo" />
+          <AssociationSet Name="FK__tbDespesa__idTip__04E4BC85" Association="Self.FK__tbDespesa__idTip__04E4BC85">
+            <End Role="tbDespesaTipo" EntitySet="tbDespesaTipo" />
+            <End Role="tbDespesas" EntitySet="tbDespesas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tbDespesa__idCat__68D28DBC" Association="Self.FK__tbDespesa__idCat__68D28DBC">
+            <End Role="tbDespesasCategoria" EntitySet="tbDespesasCategoria" />
+            <End Role="tbDespesaTipo" EntitySet="tbDespesaTipo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbapsbModelStoreContainer" CdmEntityContainer="dbapsbEntities">
+          <EntitySetMapping Name="tbDespesas">
+            <EntityTypeMapping TypeName="dbapsbModel.tbDespesas">
+              <MappingFragment StoreEntitySet="tbDespesas">
+                <ScalarProperty Name="idDespesas" ColumnName="idDespesas" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="cvValor" ColumnName="cvValor" />
+                <ScalarProperty Name="cdData" ColumnName="cdData" />
+                <ScalarProperty Name="cbArquivado" ColumnName="cbArquivado" />
+                <ScalarProperty Name="cbStatus" ColumnName="cbStatus" />
+                <ScalarProperty Name="IdObservacao" ColumnName="IdObservacao" />
+                <ScalarProperty Name="cdDataCriacao" ColumnName="cdDataCriacao" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDespesasCategoria">
+            <EntityTypeMapping TypeName="dbapsbModel.tbDespesasCategoria">
+              <MappingFragment StoreEntitySet="tbDespesasCategoria">
+                <ScalarProperty Name="cbStatus" ColumnName="cbStatus" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+                <ScalarProperty Name="ccCategoria" ColumnName="ccCategoria" />
+                <ScalarProperty Name="cdCriacao" ColumnName="cdCriacao" />
+                <ScalarProperty Name="ccUsuario" ColumnName="ccUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbDespesaTipo">
+            <EntityTypeMapping TypeName="dbapsbModel.tbDespesaTipo">
+              <MappingFragment StoreEntitySet="tbDespesaTipo">
+                <ScalarProperty Name="ccUsuario" ColumnName="ccUsuario" />
+                <ScalarProperty Name="cbStatus" ColumnName="cbStatus" />
+                <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+                <ScalarProperty Name="ccTipo" ColumnName="ccTipo" />
+                <ScalarProperty Name="cdDataCriacao" ColumnName="cdDataCriacao" />
+                <ScalarProperty Name="idCategoria" ColumnName="idCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

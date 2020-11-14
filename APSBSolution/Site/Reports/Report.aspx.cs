@@ -1,63 +1,76 @@
-﻿using Simple.Data.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Reporting.WebForms;
+using Site.Classes;
 
 namespace Site.Reports
 {
-	public partial class Report : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class Report : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             if (!IsPostBack)
             {
-                string report = Request.QueryString["report"];
-                CarregarReport(report);
+                int id;
+
+                try
+                {
+                    id = int.Parse(Request.QueryString["id"].ToString());
+                    GerarFichaCadastral(id);
+                }
+                catch(Exception ex) 
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('{ex.Message}')", true);
+                }
             }
+           
         }
 
-        private void CarregarReport(string report)
+        void GerarFichaCadastral(int idProfissional)
         {
-            switch (report)
-            {
-                case "report01":
-                    repv01.LocalReport.ReportPath = @"Reports\Rep01.rdlc";
-                    repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsReport01";
-                    repv01.LocalReport.DisplayName = "Lista de Profissionais";
+            ReportViewer viewer = new ReportViewer();
+            viewer.ProcessingMode = ProcessingMode.Local;
+            viewer.LocalReport.ReportPath = @"Reports\FichaCadastral2.rdlc";
+            viewer.LocalReport.DisplayName = "Ficha Cadastral";
 
-                    repv01.DataBind();
 
-                    break;
-                case "report02":
-                    repv01.LocalReport.ReportPath = @"Reports\Report3.rdlc";
-                    repv01.LocalReport.DisplayName = "Lista de Clínicas";
-                    repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsReport02";
+            List<ProfissionalDados> ProfissionalDadosLista = new List<ProfissionalDados>();
+            List<ProfissionalEndereco> ProfissionalEnderecoLista = new List<ProfissionalEndereco>();
 
-                    repv01.DataBind();
-                    
-                    break;
-                case "report03":
-                    repv01.LocalReport.ReportPath = @"Reports\RepVendas.rdlc";
-                    repv01.LocalReport.DisplayName = "Relatório de Vendas";
-                    repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsVendas";
+            ProfissionalDadosLista.Add(ProfissionalDados.ListarPorID(idProfissional));
+            ProfissionalEnderecoLista.Add(ProfissionalEndereco.ListarPorID(idProfissional));
+            
+            ReportDataSource dsProfissional = new ReportDataSource("dsProfissional", Profissional.Listar().Where(x => x.IdProfissional == idProfissional));
+            ReportDataSource dsProfissionalDados    = new ReportDataSource("dsProfissionalDados", ProfissionalDadosLista);
+            ReportDataSource dsProfissionalEndereco = new ReportDataSource("dsProfissionalEndereco", ProfissionalEnderecoLista);
+            ReportDataSource dsProfissionalBanco = new ReportDataSource("dsProfissionalBanco", ProfissionalBanco.Listar(idProfissional));
 
-                    repv01.DataBind();
+            viewer.LocalReport.DataSources.Add(dsProfissional);
+            viewer.LocalReport.DataSources.Add(dsProfissionalDados);
+            viewer.LocalReport.DataSources.Add(dsProfissionalEndereco);
+            viewer.LocalReport.DataSources.Add(dsProfissionalBanco);
 
-                    break;
-                case "report04":
-                    repv01.LocalReport.ReportPath = @"Reports\RepDespesas.rdlc";
-                    repv01.LocalReport.DisplayName = "Relatório de Despesas";
-                    repv01.LocalReport.DataSources["DataSet1"].DataSourceId = "dsDespesas";
+            // Variables  
+            Warning[] warnings;
+            string[] streamIds;
+            string mimeType = string.Empty;
+            string encoding = string.Empty;
+            string extension = string.Empty;
+            string fileName = "Ficha Cadastral";
 
-                    repv01.DataBind();
+            byte[] bytes = viewer.LocalReport.Render("PDF", null, out mimeType, out encoding, out extension, out streamIds, out warnings);
 
-                    break;
-                default:
-                    break;
-            }
+            // Now that you have all the bytes representing the PDF report, buffer it and send it to the client.  
+            Response.Buffer = true;
+            Response.Clear();
+            Response.ContentType = mimeType;
+            Response.AddHeader("content-disposition", "attachment; filename=" + fileName + "." + extension);
+            Response.BinaryWrite(bytes); // create the file  
+            Response.Flush(); // send it to the client to download  
         }
     }
 }

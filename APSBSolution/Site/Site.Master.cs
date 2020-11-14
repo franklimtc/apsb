@@ -65,7 +65,7 @@ namespace Site
                 if (_debug=="false")
                 {
                     var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                    var result = manager.FindByName("administrador");
+                    var result = manager.FindByName("administrador@apsb.com.br");
                     if (result == null)
                     {
                         var user = new ApplicationUser() { UserName = "administrador@apsb.com.br", Email = "administrador@apsb.com.br" };
@@ -86,10 +86,15 @@ namespace Site
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (!Request.IsAuthenticated && Page.Title != "Logon" && _debug == "false")
+
+            if (!Request.IsAuthenticated && Page.Title != "Logon" && Page.Title != "Reports" && _debug == "false")
             {
                 Response.Redirect(@"~\Account\Login");
+            }
+            else 
+            {
+                //Exibir menu
+               
             }
         }
 

@@ -13708,7 +13708,7 @@ fieldset[disabled] .form-group .form-control {
 .rounded {
   border-radius: 6px !important;
 }
-
+/*
 .navbar {
   border: 0;
   border-radius: 3px;
@@ -14047,7 +14047,7 @@ fieldset[disabled] .form-group .form-control {
 
 .off-canvas-sidebar .navbar.navbar-transparent {
   padding-top: 25px !important;
-}
+}*/
 
 .alert {
   border: 0;
@@ -15197,7 +15197,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   display: none !important;
 }
 
-.sidebar .sidebar-wrapper .navbar-form {
+/*.sidebar .sidebar-wrapper .navbar-form {
   border: none;
   box-shadow: none;
 }
@@ -15208,7 +15208,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   width: 78%;
   padding-left: 17px;
 }
-
+*/
 .sidebar .sidebar-wrapper>.nav [data-toggle="collapse"]~div>ul>li>a span,
 .sidebar .sidebar-wrapper .user .user-info [data-toggle="collapse"]~div>ul>li>a span {
   display: inline-block;
@@ -15551,7 +15551,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   opacity: .77;
 }
 
-.off-canvas-sidebar .navbar-collapse .nav>li>a,
+/*.off-canvas-sidebar .navbar-collapse .nav>li>a,
 .off-canvas-sidebar .navbar-collapse .nav>li>a:hover {
   color: #fff;
   margin: 0 15px;
@@ -15561,7 +15561,7 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
 .off-canvas-sidebar .navbar-collapse .nav>li>a:hover {
   background: rgba(200, 200, 200, 0.2);
 }
-
+*/
 .main-panel {
   position: relative;
   float: right;
@@ -15579,10 +15579,10 @@ fieldset[disabled] .form-group.is-focused .togglebutton label {
   border-top: 1px solid #e7e7e7;
 }
 
-.main-panel>.navbar {
+/*.main-panel>.navbar {
   margin-bottom: 0;
 }
-
+*/
 .main-panel .header {
   margin-bottom: 30px;
 }
@@ -17071,7 +17071,7 @@ label {
   transition: all 150ms ease-in;
 }
 
-.offline-doc .navbar.navbar-transparent {
+/*.offline-doc .navbar.navbar-transparent {
   padding-top: 25px;
   border-bottom: none;
 }
@@ -17083,7 +17083,7 @@ label {
 .offline-doc .navbar.navbar-transparent .navbar-brand,
 .offline-doc .navbar.navbar-transparent .collapse .navbar-nav .nav-link {
   color: #fff !important;
-}
+}*/
 
 .offline-doc .footer {
   z-index: 3 !important;
@@ -17142,11 +17142,11 @@ html[dir="rtl"] .main-panel {
   float: left;
 }
 
-html[dir="rtl"] .sidebar,
+/*html[dir="rtl"] .sidebar,
 html[dir="rtl"] .off-canvas-sidebar nav .navbar-collapse {
   text-align: right;
 }
-
+*/
 html[dir="rtl"] .sidebar {
   left: unset;
   right: 0;
@@ -18606,7 +18606,7 @@ Copyright (c) 2015 Daniel Eden
 
 @media all and (max-width: 991px) {
 
-  [class*="navbar-expand-"]>.container,
+/*  [class*="navbar-expand-"]>.container,
   [class*="navbar-expand-"]>.container-fluid {
     padding-left: 15px;
     padding-right: 15px;
@@ -18615,7 +18615,7 @@ Copyright (c) 2015 Daniel Eden
   .navbar .navbar-collapse .navbar-nav>li.button-container {
     padding: 15px;
   }
-
+*/
   .bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn) {
     width: -webkit-fill-available !important;
   }
@@ -18630,7 +18630,7 @@ Copyright (c) 2015 Daniel Eden
     margin: 0 auto;
     min-height: 400px;
   }
-
+/*
   .navbar-collapse {
     position: fixed;
     display: block;
@@ -18768,7 +18768,7 @@ Copyright (c) 2015 Daniel Eden
 
   .navbar.navbar-transparent .navbar-toggler .navbar-toggler-icon {
     background-color: #fff;
-  }
+  }*/
 
   #bodyClick {
     height: 100%;
@@ -18783,11 +18783,11 @@ Copyright (c) 2015 Daniel Eden
     overflow-x: hidden;
   }
 
-  #navbar .navbar-collapse,
+/*  #navbar .navbar-collapse,
   #navigation .navbar-collapse {
     display: none !important;
   }
-
+*/
   .dropdown-menu.show .dropdown-item.open+.dropdown-menu.show {
     right: 101% !important;
   }
@@ -18798,7 +18798,7 @@ Copyright (c) 2015 Daniel Eden
   }
 }
 
-@media all and (min-width: 991px) {
+/*@media all and (min-width: 991px) {
   .navbar .navbar-nav {
     align-items: center;
   }
@@ -18811,7 +18811,7 @@ Copyright (c) 2015 Daniel Eden
     display: none !important;
   }
 }
-
+*/
 @media screen and (max-width: 991px) {
   .presentation-page .section-components .components-macbook {
     max-width: 850px !important;
@@ -18920,7 +18920,7 @@ Copyright (c) 2015 Daniel Eden
     overflow-x: hidden;
   }
 
-  .nav-open .menu-on-left .main-panel,
+/*  .nav-open .menu-on-left .main-panel,
   .nav-open .menu-on-left .wrapper-full-page,
   .nav-open .menu-on-left .navbar-fixed>div {
     -webkit-transform: translate3d(260px, 0, 0);
@@ -18929,7 +18929,7 @@ Copyright (c) 2015 Daniel Eden
     -ms-transform: translate3d(260px, 0, 0);
     transform: translate3d(260px, 0, 0);
   }
-
+*/
   .menu-on-left .sidebar,
   .menu-on-left .off-canvas-sidebar {
     left: 0;
@@ -19000,11 +19000,12 @@ Copyright (c) 2015 Daniel Eden
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  .navbar-minimize {
+/*  .navbar-minimize {
     display: none;
   }
 
-  .card .form-horizontal .label-on-left,
+*/  
+.card .form-horizontal .label-on-left,
   .card .form-horizontal .label-on-right {
     padding-left: 15px;
     padding-top: 8px;
@@ -19070,7 +19071,7 @@ Copyright (c) 2015 Daniel Eden
     position: relative;
   }
 
-  .nav-open .main-panel,
+/*  .nav-open .main-panel,
   .nav-open .wrapper-full-page,
   .nav-open .navbar .container .navbar-toggler,
   .nav-open .navbar .container .navbar-wrapper,
@@ -19225,7 +19226,7 @@ Copyright (c) 2015 Daniel Eden
     -ms-overflow-style: -ms-autohiding-scrollbar;
     -webkit-overflow-scrolling: touch;
   }
-
+*/
   .form-group.form-search .form-control {
     font-size: 1.7em;
     height: 37px;

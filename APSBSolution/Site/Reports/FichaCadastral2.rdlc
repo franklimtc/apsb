@@ -1,0 +1,1655 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="SiteClasses">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>76caeb72-cbe9-44c5-a879-90e5d1be6513</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="SiteClasses1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>d03c7177-d51f-4809-b5e2-2ea9b5c6765e</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="SiteClasses2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>8a1161f3-d4e1-410a-b113-67fcc629862e</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="SiteClasses3">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>f0d1a17c-a75a-471f-9401-a9e7e067da17</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="dsProfissional">
+      <Query>
+        <DataSourceName>SiteClasses</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="IdProfissional">
+          <DataField>IdProfissional</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ccNome">
+          <DataField>ccNome</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccSexo">
+          <DataField>ccSexo</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccNaturalUF">
+          <DataField>ccNaturalUF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccNaturalCidade">
+          <DataField>ccNaturalCidade</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccEstadoCivil">
+          <DataField>ccEstadoCivil</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccEmail">
+          <DataField>ccEmail</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccCriadoPor">
+          <DataField>ccCriadoPor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cdDataCriacao">
+          <DataField>cdDataCriacao</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="ccAlteradoPor">
+          <DataField>ccAlteradoPor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cdDAtaAlteracao">
+          <DataField>cdDAtaAlteracao</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="idObservacao">
+          <DataField>idObservacao</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Observacoes">
+          <DataField>Observacoes</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RGNum">
+          <DataField>RGNum</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="RGEmissor">
+          <DataField>RGEmissor</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="RGdtEmissao">
+          <DataField>RGdtEmissao</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="CPFNum">
+          <DataField>CPFNum</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="cvTelefone">
+          <DataField>cvTelefone</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="cvCelular">
+          <DataField>cvCelular</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="nomePai">
+          <DataField>nomePai</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nomeMae">
+          <DataField>nomeMae</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nomeConjuge">
+          <DataField>nomeConjuge</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="dtNascimento">
+          <DataField>dtNascimento</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="cdFiliacao">
+          <DataField>cdFiliacao</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="cdPgtoTaxa">
+          <DataField>cdPgtoTaxa</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Token">
+          <DataField>Token</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="StatusCadastro">
+          <DataField>StatusCadastro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cdRegCartorio">
+          <DataField>cdRegCartorio</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Site.Classes</rd:DataSetName>
+        <rd:TableName>Profissional</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Listar</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[Site.Classes.Profissional] Listar(Boolean)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>Site.Classes.Profissional, Site, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dsProfissionalDados">
+      <Query>
+        <DataSourceName>SiteClasses1</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="IdDadoProfissional">
+          <DataField>IdDadoProfissional</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idProfissional">
+          <DataField>idProfissional</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ccFormacao">
+          <DataField>ccFormacao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccPosGraduacao">
+          <DataField>ccPosGraduacao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccEspecialidade">
+          <DataField>ccEspecialidade</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccConselho">
+          <DataField>ccConselho</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cvNumInscricao">
+          <DataField>cvNumInscricao</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="cvTitulo">
+          <DataField>cvTitulo</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="cvTituloZona">
+          <DataField>cvTituloZona</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="cvTituloSecao">
+          <DataField>cvTituloSecao</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="cvReservista">
+          <DataField>cvReservista</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="cvPIS">
+          <DataField>cvPIS</DataField>
+          <rd:TypeName>System.Int64</rd:TypeName>
+        </Field>
+        <Field Name="cvCHN">
+          <DataField>cvCHN</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="cvCTPS">
+          <DataField>cvCTPS</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Site.Classes</rd:DataSetName>
+        <rd:TableName>ProfissionalDados</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Listar</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>Site.Classes.ProfissionalDados, Site, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dsProfissionalEndereco">
+      <Query>
+        <DataSourceName>SiteClasses2</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="IdEndereco">
+          <DataField>IdEndereco</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ccEndereco">
+          <DataField>ccEndereco</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccBairro">
+          <DataField>ccBairro</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cvCEP">
+          <DataField>cvCEP</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+        <Field Name="ccUF">
+          <DataField>ccUF</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccCidade">
+          <DataField>ccCidade</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="idProfissional">
+          <DataField>idProfissional</DataField>
+          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Site.Classes</rd:DataSetName>
+        <rd:TableName>ProfissionalEndereco</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Listar</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>Site.Classes.ProfissionalEndereco, Site, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="dsProfissionalBanco">
+      <Query>
+        <DataSourceName>SiteClasses3</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="IdProfissionalBanco">
+          <DataField>IdProfissionalBanco</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="ccAgencia">
+          <DataField>ccAgencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccConta">
+          <DataField>ccConta</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="ccOperacao">
+          <DataField>ccOperacao</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="idProfissional">
+          <DataField>idProfissional</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="idBanco">
+          <DataField>idBanco</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="cvStatus">
+          <DataField>cvStatus</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="ccBanco">
+          <DataField>ccBanco</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="cvCodBanco">
+          <DataField>cvCodBanco</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>Site.Classes</rd:DataSetName>
+        <rd:TableName>ProfissionalBanco</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Listar</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceSelectMethodSignature>System.Collections.Generic.List`1[Site.Classes.ProfissionalBanco] Listar(Int32)</rd:ObjectDataSourceSelectMethodSignature>
+        <rd:ObjectDataSourceType>Site.Classes.ProfissionalBanco, Site, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Rectangle Name="Rectangle1">
+            <ReportItems>
+              <Textbox Name="Textbox19">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>RG: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>RG</Label>
+                        <Value>=First(Fields!RGNum.Value, "dsProfissional")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>1.2cm</Top>
+                <Left>9.8504cm</Left>
+                <Height>1.2cm</Height>
+                <Width>4.40502cm</Width>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox21">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>N. Inscrição: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>ConselhoInscricao</Label>
+                        <Value>=First(Fields!cvNumInscricao.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>2.4cm</Top>
+                <Left>0.25357cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.59682cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox18">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CPF: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>cvCPF</Label>
+                        <Value>=Sum(Fields!CPFNum.Value, "dsProfissional")</Value>
+                        <Style>
+                          <Format>000"."000"."000-00</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>1.2cm</Top>
+                <Left>5.25357cm</Left>
+                <Height>1.2cm</Height>
+                <Width>4.59683cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox15">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Nome: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>ccNome</Label>
+                        <Value>=First(Fields!ccNome.Value, "dsProfissional")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Left>0.25357cm</Left>
+                <Height>1.2cm</Height>
+                <Width>14.00185cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox17">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>D. Nascimento: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>dtNasc</Label>
+                        <Value>=First(Fields!dtNascimento.Value, "dsProfissional")</Value>
+                        <Style>
+                          <Format>dd/MM/yyyy</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>1.2cm</Top>
+                <Left>0.25357cm</Left>
+                <Height>1.2cm</Height>
+                <Width>5cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox20">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Org. Exp.: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>OrgExp</Label>
+                        <Value>=First(Fields!RGEmissor.Value, "dsProfissional")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>1.2cm</Top>
+                <Left>14.43181cm</Left>
+                <Height>1.12944cm</Height>
+                <Width>5.32629cm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox16">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Sexo: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>ccSexo</Label>
+                        <Value>=First(Fields!ccSexo.Value, "dsProfissional")</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value xml:space="preserve"> </Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox16</rd:DefaultName>
+                <Left>14.43181cm</Left>
+                <Height>1.2cm</Height>
+                <Width>5.32629cm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox22">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Endereço: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Endereco</Label>
+                        <Value>=First(Fields!ccEndereco.Value, "dsProfissionalEndereco")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>4.81597cm</Top>
+                <Left>0.25357cm</Left>
+                <Height>1.2cm</Height>
+                <Width>15cm</Width>
+                <ZIndex>7</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox23">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Conselho Regional: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Conselho</Label>
+                        <Value>=First(Fields!ccConselho.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>2.4cm</Top>
+                <Left>10.02679cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.73132cm</Width>
+                <ZIndex>8</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox24">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Especialidade(s): </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Especialidade</Label>
+                        <Value>=First(Fields!ccEspecialidade.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>3.6cm</Top>
+                <Left>0.25357cm</Left>
+                <Height>1.21597cm</Height>
+                <Width>9.59682cm</Width>
+                <ZIndex>9</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox25">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>PIS: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>PIS</Label>
+                        <Value>=First(Fields!cvPIS.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>3.61597cm</Top>
+                <Left>10.02678cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.73132cm</Width>
+                <ZIndex>10</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox26">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CEP: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>CEP</Label>
+                        <Value>=First(Fields!cvCEP.Value, "dsProfissionalEndereco")</Value>
+                        <Style>
+                          <Format>00000-000</Format>
+                        </Style>
+                      </TextRun>
+                      <TextRun>
+                        <Value xml:space="preserve"> </Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>4.81597cm</Top>
+                <Left>15.42996cm</Left>
+                <Height>1.2cm</Height>
+                <Width>4.32814cm</Width>
+                <ZIndex>11</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox27">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Bairro: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Bairro</Label>
+                        <Value>=First(Fields!ccBairro.Value, "dsProfissionalEndereco")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>6.01597cm</Top>
+                <Left>0.25357cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.59682cm</Width>
+                <ZIndex>12</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox28">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Cidade/UF: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Cidade</Label>
+                        <Value>=First(Fields!ccCidade.Value, "dsProfissionalEndereco")+"/"+First(Fields!ccUF.Value, "dsProfissionalEndereco")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>6.01597cm</Top>
+                <Left>9.95623cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.80188cm</Width>
+                <ZIndex>13</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox29">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Celular: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Celular</Label>
+                        <Value>=First(Fields!cvCelular.Value, "dsProfissional")</Value>
+                        <Style>
+                          <Format>(00) 00000-0000</Format>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>7.21597cm</Top>
+                <Left>0.25357cm</Left>
+                <Height>1.24656cm</Height>
+                <Width>9.59682cm</Width>
+                <ZIndex>14</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox30">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Email: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>ccEmail</Label>
+                        <Value>=First(Fields!ccEmail.Value, "dsProfissional")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>7.21597cm</Top>
+                <Left>9.95622cm</Left>
+                <Height>1.24656cm</Height>
+                <Width>9.80188cm</Width>
+                <ZIndex>15</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox31">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Titulo Eleitor: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Titulo</Label>
+                        <Value>=First(Fields!cvTitulo.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>8.44686cm</Top>
+                <Left>0.27877cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.57414cm</Width>
+                <ZIndex>16</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox32">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>CNH: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>CNH</Label>
+                        <Value>=First(Fields!cvCHN.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>8.44686cm</Top>
+                <Left>9.99402cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.80188cm</Width>
+                <ZIndex>17</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox33">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Reservista: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Reservista</Label>
+                        <Value>=First(Fields!cvReservista.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>9.64378cm</Top>
+                <Left>0.29137cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.55902cm</Width>
+                <ZIndex>18</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox34">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>C. Trabalho: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>CTPS</Label>
+                        <Value>=First(Fields!cvCTPS.Value, "dsProfissionalDados")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>9.64378cm</Top>
+                <Left>9.99402cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.80188cm</Width>
+                <ZIndex>19</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox35">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Banco: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Banco</Label>
+                        <Value>=First(Fields!ccBanco.Value, "dsProfissionalBanco")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>10.84378cm</Top>
+                <Left>0.29138cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.55902cm</Width>
+                <ZIndex>20</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                  <RightBorder>
+                    <Style>Solid</Style>
+                  </RightBorder>
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Textbox Name="Textbox36">
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Agência: </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Agencia</Label>
+                        <Value>=First(Fields!ccAgencia.Value, "dsProfissionalBanco")</Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Value> | Conta:  </Value>
+                        <Style />
+                      </TextRun>
+                      <TextRun>
+                        <Label>Conta</Label>
+                        <Value>=First(Fields!ccConta.Value, "dsProfissionalBanco")</Value>
+                        <Style />
+                      </TextRun>
+                    </TextRuns>
+                    <Style />
+                  </Paragraph>
+                </Paragraphs>
+                <rd:DefaultName>Textbox15</rd:DefaultName>
+                <Top>10.84378cm</Top>
+                <Left>9.99403cm</Left>
+                <Height>1.2cm</Height>
+                <Width>9.80188cm</Width>
+                <ZIndex>21</ZIndex>
+                <Style>
+                  <Border />
+                  <VerticalAlign>Middle</VerticalAlign>
+                  <PaddingLeft>2pt</PaddingLeft>
+                  <PaddingRight>2pt</PaddingRight>
+                  <PaddingTop>2pt</PaddingTop>
+                  <PaddingBottom>2pt</PaddingBottom>
+                </Style>
+              </Textbox>
+              <Line Name="Line1">
+                <Top>1.2cm</Top>
+                <Height>0cm</Height>
+                <Width>19.79591cm</Width>
+                <ZIndex>22</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line2">
+                <Top>2.4cm</Top>
+                <Height>0cm</Height>
+                <Width>19.79591cm</Width>
+                <ZIndex>23</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line4">
+                <Top>4.81597cm</Top>
+                <Height>0cm</Height>
+                <Width>19.79591cm</Width>
+                <ZIndex>24</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line9">
+                <Top>10.84378cm</Top>
+                <Left>0.0126cm</Left>
+                <Height>0cm</Height>
+                <Width>19.78331cm</Width>
+                <ZIndex>25</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line5">
+                <Top>6.01597cm</Top>
+                <Height>0cm</Height>
+                <Width>19.75811cm</Width>
+                <ZIndex>26</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line6">
+                <Top>7.21597cm</Top>
+                <Height>0cm</Height>
+                <Width>19.79591cm</Width>
+                <ZIndex>27</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line7">
+                <Top>8.46253cm</Top>
+                <Height>0cm</Height>
+                <Width>19.7581cm</Width>
+                <ZIndex>28</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+              <Line Name="Line8">
+                <Top>9.64686cm</Top>
+                <Height>0cm</Height>
+                <Width>19.79591cm</Width>
+                <ZIndex>29</ZIndex>
+                <Style>
+                  <Border>
+                    <Style>Solid</Style>
+                  </Border>
+                </Style>
+              </Line>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+            <Top>2.5847cm</Top>
+            <Left>0.16631cm</Left>
+            <Height>12.0461cm</Height>
+            <Width>19.79591cm</Width>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Rectangle>
+          <Textbox Name="Textbox1">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TERMO DE ADESÃO DO ASSOCIADO </Value>
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value />
+                    <Style>
+                      <FontSize>14pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>DADOS PESSOAIS DO TITULAR </Value>
+                    <Style>
+                      <FontSize>13pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.27718cm</Top>
+            <Left>0.16631cm</Left>
+            <Height>1.82562cm</Height>
+            <Width>19.67242cm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox38">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>TERMO DE ADESÃO DO ASSOCIADO: neste ato,  resolvo  aderir  de  livre  e  espontânea  vontade  ao Estatuto Social da Associação  dos  Profissionais  de Saúde de Brasília – APSB, inscrita no CNPJ 21.975.267/0001-74, com sede na Quadra 708/709  Norte,  Bloco  “A”,  Ed.  Celebrate, ”,  Entrada 13,  2º  Andar,  sala  201 Brasília-DF,  CEP: 70.741-610, doravante passando  a  figurar  como  membro  estatutário,  estando  ciente  que  a  aprovação  definitiva  ocorrerá  após  decisão  da Assembleia  Geral  de  Associados,  da  qual  estarei  autorizado a participar. Declaro ter ciência da taxa de R$ 60,00 para filiação. Declaro serem verdadeiras as informações declaradas no formulário Dados Pessoais do Titular acima.</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style />
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox38</rd:DefaultName>
+            <Top>15.2658cm</Top>
+            <Left>0.45769cm</Left>
+            <Height>2.96333cm</Height>
+            <Width>19.01062cm</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox39">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Brasília, </Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Label>data</Label>
+                    <Value>=Now()</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                      <Format>d' de 'MMMM' de 'yyyy</Format>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value> .</Value>
+                    <Style>
+                      <FontSize>12pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Right</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox39</rd:DefaultName>
+            <Top>18.52522cm</Top>
+            <Left>8.34289cm</Left>
+            <Height>0.70583cm</Height>
+            <Width>11.12542cm</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line16">
+            <Top>21.13955cm</Top>
+            <Left>1.58423cm</Left>
+            <Height>0cm</Height>
+            <Width>7.15667cm</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Line Name="Line18">
+            <Top>21.13955cm</Top>
+            <Left>11.22048cm</Left>
+            <Height>0cm</Height>
+            <Width>7.15667cm</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+          <Textbox Name="Textbox40">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Label>ccNome</Label>
+                    <Value>=First(Fields!ccNome.Value, "dsProfissional")</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox40</rd:DefaultName>
+            <Top>21.31594cm</Top>
+            <Left>1.58423cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.15667cm</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox41">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>APSB</Value>
+                    <Style />
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox41</rd:DefaultName>
+            <Top>21.31594cm</Top>
+            <Left>11.22048cm</Left>
+            <Height>0.6cm</Height>
+            <Width>7.15667cm</Width>
+            <ZIndex>7</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Line Name="Line10">
+            <Top>6.20067cm</Top>
+            <Left>0.16631cm</Left>
+            <Height>0cm</Height>
+            <Width>19.7581cm</Width>
+            <ZIndex>8</ZIndex>
+            <Style>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+          </Line>
+        </ReportItems>
+        <Height>225.04326mm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+            <Width>0.5cm</Width>
+          </Border>
+        </Style>
+      </Body>
+      <Width>200.857mm</Width>
+      <Page>
+        <PageHeader>
+          <Height>2.5841cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Image Name="logo">
+              <Source>Embedded</Source>
+              <Value>apsb_logo</Value>
+              <Sizing>FitProportional</Sizing>
+              <Top>0.25381cm</Top>
+              <Left>0.44508cm</Left>
+              <Height>2.18917cm</Height>
+              <Width>13.49445cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+            </Image>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageHeader>
+        <PageFooter>
+          <Height>1.63286cm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="Textbox42">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Associação dos Profissionais de Saúde de Brasília – APSB. Site: www.apsb.com.br Quadra 708/709 Norte, Bloco “A”, Entrada 13, 2º Andar, sala 201, Brasília-DF. CEP: 70.741-610 Telefones 3962-3022 E-mail: comercial@apsb.com.br </Value>
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox42</rd:DefaultName>
+              <Top>0.3175cm</Top>
+              <Left>0.25357cm</Left>
+              <Height>0.97896cm</Height>
+              <Width>19cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line19">
+              <Top>0.17639cm</Top>
+              <Left>0.25357cm</Left>
+              <Height>0cm</Height>
+              <Width>19cm</Width>
+              <ZIndex>1</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>29.7cm</PageHeight>
+        <PageWidth>21cm</PageWidth>
+        <LeftMargin>0.5cm</LeftMargin>
+        <RightMargin>0cm</RightMargin>
+        <TopMargin>0.5cm</TopMargin>
+        <BottomMargin>0cm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style>
+          <Border>
+            <Style>None</Style>
+            <Width>0.5mm</Width>
+          </Border>
+        </Style>
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>6</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <EmbeddedImages>
+    <EmbeddedImage Name="apsb_logo">
+      <MIMEType>image/jpeg</MIMEType>
+      <ImageData>/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCACLAxoDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD9/KKTcKAc0ALRUb3CRvtJ+bGcUC4Uj/61F0BJRSBs0tABRSE4o3Ci6AWiiigAooooAKKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAF
+opNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKTcKNwoAWik3CjcKAFopNwo3CgBaKQuBTfOFAD6KZ5wo84UAPoqP7Qv+RR9oX/ACKAJKKjN0g7/pSfa09f0oAloqJbxGbGTknHSpaAIfMp6fzqKpo/uCgDM8R+GxrqAiWS3mTlJYzhk/xHtWDe+LL3wN/yGITcWKYVr6BeIx2Lp1H1HFdj5dRS2qXAYOAwIwQe9c86MnrCVvyAq6VrltrNvHNaTR3ELjKujbgRV9H3ivOfGfwkutPdtS8IXv8AYupId5gxm0uj3Dp2J9Riszw1+0wmn6idL8V6fNomqQgCRyN0D/7Sn0rzv7Up4eXs8V7nZ/Z/4HoDZ6vLJtNRi6BHb/Gvn79r7xp4y1rw7pUngC4a5spd5u5bFg8y9NuB6fez9K5j9ju3+Kg8b+d4ik1E6B5bCUXvVmxwVzzXkVeLIf2msup0JST+2vh9b9hc9nsfV0b74wfUZp1QJc4Ucj3qC61yC0fDzQr9XGa+tU49GMvUVmf8JTaA8S7z6KM0+HXxcP8AJBOQTjO3GKanFuyYFyigHiiqAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACml8GhmwaaTk0AKXyKSikY4FAC
+00vg0m+kJyaAAnNITgUhfBprv8tABJJTfMpC2aYzYNAD4Xzcr/vCtOsm3cG5Tn+IfzrWoAqq2TViP7gqpuq3Ecxj6UAOpMUtMZvmpN2ARlU9vavMP2pfB2nan8Mb/U5pUsr3SIHuLa6zypAztPqDjGK7fxt420zwJoM1/qt3DaWsKliztjOOw9TXxf8AtBftAeIf2oNTGi+FdMvm0SFjuCIc3J6Zb0HtXxXGGd4TD4OeGlH2k5qygtX6tdEZ1naNlucNN8VZ7J1uLa6nsJZBlmhlMZz15x1r1D4F6b8U/jPbiez8Qahp2jHj7VM2d4/2ARk14l40+BHjLwXY/bNT0O+igHzGXYWC/XFfZf7CXxLsvGPwVstMjKrf6KBb3EXQ45w35V+N8B5PiK+ZvC5lVqU9LqLbjzeXmvQ4aNOcpfvGzoPDv7Oz2qRnWfE/iHV5B94G5McZP0XBrtdC8AaTowURWal04DysZG/NsmtxMEDFLiv6Nw+XYeiv3cf6+Z6SEjtkhXCxqo9lp6JgUlFdiQDimBTadn5fwpuaYBRRmkzQAtFFFABRRRnFABRRmigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACkc4FLmmucigBpOaKTOKax+agA3GkJzSbqRzxQA6ms2DTc4pjHLUABY5oLZppPFMoAc5xUU0vljJIAA6motQv47CLfIwUDk+9eZ/Ef4vxWETJFJgfWgDsL/wAdwWWv2FsrKXuLmOLr6sB/Wu8r4t0r4t/2n8YfDEHm58/WbSPGfWZBX2lQgRmluKu27bYV/wB2s7zKnvZZl0vNuivNj5QxwDSk2ldAWLnUYbOFnldY0QZZmOAK4HxT8X5712s/
+Clg+s3zkjzvu20Huzd/oK0Z/hzceLJhLrl488IOVs4jthB9+7fjXTado8Gk2gitokiReAEXAFcU41qvu/Cu/UDyO0/Zdn8eXyaj481SXWpwdyWUZ2WsPsF7/AI16f4a8C6X4PsVg06wtbSMDGI4wK2l4FLUYXK8NQk5wj7z3b1b9WBVutOjv4DHNEkqMMFXGQRXk/iP9m1fC3ig+JfBLJpGrqczW44t7xe6svY+9exUm2rxeW4fE2dSOsdU+qfkwOa8G+No/EduI7mI2OpxDE9tJ95D6j1HvXQLIGNZPiHwdDrG2dWNvdwnfHOn3kP8AUe1Z2k+MZdJ1RNP1dVinfIhnAxFP+PY+1aKrKnaNXXzA6nFMuJ1tYWdztVBkk9hT45/M+nrXlX7VXxZHw/8ABklvA4+2Xo8uNc9M8ZrputwNXVP2mfB2j6g1rNqkQmRtpUc4PSuv8P8Ai+w8VaYLqznWWE/xLX4WfthftbeK7f8AaL0/wN8Nbt21pZUtr1441mN1dzEYjGQfuggH3z6V71/wRo/4KM+KPFHxf8R/DH4j6mbq9uopH0xplWJopowRJDgAcnBI/wB2s41LysB+lOuftL+ENB1OS0udTjWaI4ZfQ1DZ/tT+CrqdY11SMFjgZFfl3/wVt+LPiL4CQaVqnhfUWsLzUdXuIJnEavvVVyB8wPqK8T8L/E74reKv2Vr/AOJn/C1tGtnsXlT+yZoYVuZdjhRtGOp6il7Ubsj93z8Q9Hj0P7e19Ctpj/WFuBXF3n7Wngq0uvK/tJHYHB2jOK/Lv/gmd+2T4z/a2sPFPgvxQ/npoekNq0F6gCeaVlij8lscbm8zI/3TXzZc/tu+NvFvxk/sbUtcPw90Lz5YpilkJGtwuQCdwLE7gPzp+0Qj9+vCfxk8P+M1b7DfxyFRkqTg1jav+0z4O0TUHtrnU4llQ7SvXFfkX+zh8aPi5pPxyii8JfETwr490JZUzHdTx20tzER8w2nDBuo+tbP/
+AAVk+NPiT4Baj4cv/C+otps+rXFytx+7WTcFEePvA9Cxp+0QH6rQftU+CpnVF1VMnoMV3Ph7xXYeKbBLixuEnifoVNfg3oHxX+I2v/svt8Q5fjP4esb8W9zcLoc0UIumMUkiBANuctsyPZhX1L/wQe/be+I/x9+JuteGfEsS6loVjp/2lNRWLZ5M28ARkjg7gScexpqd2B+qOaKT+P8AClqwCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAGP1pKV+tJQAj/dqMnFOZ8imO3FACOcmmlsUjSYqN5fm/+vQA6kJxVfzcVHJqKQjLOigepoAtMc0zzBXN6/8AFLSNCizNdx5HYNXm3jb9r3R9CRxDJGWHcmgND2ea5SIEswXvzXPeI/iRp+hwNumTeP8Aar5N+I/7ecQR9lyi8cANXgfxG/bn87zP9L/8epcyFzI+xvid+0HBscC5XAHZq+dvib8eY2d/9KHf+Kvk3x7+2Z9pL/6V2/vV4p48/a584Pm59f4qlvQz57n2n8J/jEmqftM/D63FwCbjxPpseM9c3UY/rX68V/NP+yJ+0afEP7cXwctPP3favHWiQ4z13X8A/rX9LFODLgzlIfFFpcD5Z0/GtO18R25iA3qeOoNfAi/tb+Rx9qH/AH1U0f7af2b/AJe//Hqoo+/otZhYcU7+1lDYr4Kt/wBvP7P/AMvo/wC+qsR/8FFI7XreR/XdSsgvbc+7/wC1F96DqqjtXwsv/BTW2gb5ruE/iKlX/gqdpdufnuLb86YXufcX9rr6GnDVFI718ON/wVr8PW3+smtj77hTR/wWI8H23+sntv8AvsUBzI+5TqKuMc81W1XSrPW7MwXKLLGTnBHQ+tfETf8ABaX4
+f23+subYf9tBTZP+C43wvtR+9u4x/wADFJpNWYcyPubT4EsbRIUZmWMYG45NfIX/AAUb0LxR4X8Fav4r06wvtdvLeE2+l6dZQmWR7h8hGIH8K/eJ/wBmuPl/4L1fB+0Pz32COuGFUrv/AIOB/glC2ZLx2wPQGk4q1mRzo+B/2K/+Cb37QfxF+JV9420jT38L67olwbhLnXITG08sqvllDDkjnntxVD9oX/gn7+0D+zN8e9M8Vf2Rea74gvbltXW/0SBpEimWTJDbRwST+INfeV9/wcZ/A/TQfLmumz2Va57Vf+DmH4ORyYWxvpxjGfSo9nDcOePU8m/4KhfCHxx+0L+zL8LPEeleEdfn1XUrqa51HTo7NzPYyiJVYMuMgbs4r0n/AIJef8EhvAnxW/ZSsNR+KPhLV7XxN/aE6S291LJbny1b5MpnpipP+Imn4RKBjS77g+vT9KdH/wAHOHwmhXC6Zfj8f/rU0ktEHPBvVn1jN/wT08IfCr4Uanovwz0u08OXssLNHLjcZpQrbN7dSA2OM1+Yni7R/ib4O+MM1l8ZPguPEujBHt5rjS9Ny7txtlWRRyeK+jP+InX4Sgf8gzUM/wC9/wDWqOf/AIOafhBdDD6PePxj5sH+lLkg9WHPHufFHiH9inxj8ef2iEf4Q/DfxX4S0OQQqn21XiEEoxuk3noN2Dj2NfTH/BZ39kLx7qPgn4W2Wk6Jqvie9s7aWO9lsbdpsSCKEFmwO7Ka76L/AIOZfhDbn93pF4n+7gf0p7f8HNvwlf72l3xx3J6fpR7OHcOddT5O+FHwvfwh+z9B4f1/9nDxdr3iaKG5jk1E20iCR3kdoj0/gVl+uK9g/wCCG/7Jfxq+F/7T1prup6Xq3hvwbFBMNTgvVMS3ZKYjAQ9W3EHPYA16iv8Awc1fCQnjSL3J9Mf4U1f+Dmz4SRDjS74fj/8AWoUYr4Q54dz9RvM5o836V+Xv/ETr8KP+gbqH5/8A1qX/AIic/hR/
+0DdQ/P8A+tV8y6hzx6H6g+b9KPN+lfl+f+DnD4VKOdL1Ef5+lJ/xE6fCj/oG6h+f/wBanzIOdH6g+b9KPN+lfl9/xE6fCj/oG6h+f/1qVf8Ag5w+FTg40vUTjk47fpRzIOdH6geb9KPN+lfl9/xE5/Cn/oG6h+f/ANaj/iJ0+FH/AEDdQ/OjmQc6P1B836Ueb9K/L7/iJ0+FH/QN1D8//rUf8ROnwo/6Buofn/8AWo5kHOj9QfN+lHm/Svy+/wCInT4Uf9A3UPz/APrUf8ROnwo/6Buofn/9ajmQc6P1B836Ueb9K/L7/iJ0+FH/AEDdQ/P/AOtR/wAROnwo/wCgbqH5/wD1qOZBzo/UHzfpR5v0r8vv+InP4UH/AJhuofn/APWoP/Bzl8KQP+QZqHPI5/8ArUcyDnR+oPm/SjzfpX5ff8ROfwo/6Buofn/9agf8HOXwpY4Gmahn6/8A1qOZBzo/UHzfpR5v0r8v2/4OcfhSjYOmaiD6E/8A1qT/AIidPhR/0DdQ/P8A+tRzIOdH6g+b9KPN+lfl9/xE5/Cj/oG6h+f/ANagf8HOXwpY8aZqH5//AFqOZBzo/UHzfpR5v0r8vj/wc5/Ckf8AMM1D8/8A61H/ABE5/Cj/AKBuofn/APWo5kHOj9QfN+lAkr8vh/wc6/Ccf8w3UPzrsv2ev+C6Fh+1r8RrzQfh74V/tD+yrAX99Pd3fkpAhlWMdjkndWlGlKtLkp+oc6P0PElHme4r5f8A+G0PGLNx4T0n6/2i3/xNKP2zfGRb/kU9J/8ABk3/AMRWiw8mr3LWp9QeZ7igSe4r5dP7aPjFTz4T0n/wZN/8TSH9tTxcB/yKmlf+DFv/AIij6vLugPqPzB60eYPWvln/AIba8Yf9CnpP/gxb/wCJoP7bXjEf8ylpX/gxb/4ip+ry7oD6m8wetHmD1r5Z/wCG2/GH/QpaV/4MW/8AiKaf23/Fw/5lPSv/AAYt/wDEUvYS7oD6o8wetJ5n
+uK+V/wDhuDxgP+ZR0r/wZH/4ig/txeLh/wAyjpf/AIMT/wDEU/YtbtAfVHme4pfM9xXysP24vFxH/IpaX/4MW/8AiKX/AIbh8Xf9ClpX/gxP/wARR7HzQH1P5nuKDLgdRXyt/wANyeLs/wDIpaV/4MW/+Ipf+G4vFv8A0KWlfjqLf/EUex80B9TebR5tfLP/AA3F4t/6FLSP/Bi3/wATR/w3F4t/6FLSP/Bi3/xNT7P+8M+pvOpfNr5Y/wCG3/F3/QpaT/4MT/8AEUf8Nv8Aiz/oVNJ/8GLf/EUez/vAfU3nUebXyyf24PFw6eEtJP8A3EW/+JoH7cPi3v4R0n/wYn/4mj2f94D6m82gzV8s/wDDb/i7/oUtJ/8ABif/AIikb9uHxci5/wCES0n/AMGLf/EUez/vID6m8/3FHn18rf8ADc3i5v8AmUdK/wDBg3/xFOT9uLxcf+ZS0r/wYN/8RT9n/eQve7H1P9oo8/3FfK7fty+LVP8AyKWlf+DBv/iKb/w3J4wz/wAijpX/AIMT/wDEUez/ALyC0luj6q8/3FHn+4r5Yj/bi8XMf+RS0n/wYN/8RT/+G4PFv/QpaT/4MG/+JqXT/vIPe7H1J5/uKPP9xXy0f23vFx/5lLSv/Bi3/wATR/w3B4tA/wCRS0n/AMGDf/E0uT+8gvLsfUvn+4pRcY9K+WG/bh8WKoP/AAimk/8Agwb/AOIoT9uPxa3TwlpJ/wC4i3/xFV7PT4kHvdj6n+0UfaK+V3/bk8WKf+RT0kf9xFv/AIik/wCG5vFv/Qo6T/4MW/8AiKjk/vILT7H1T9opPtFfK/8Aw3J4tH/Mo6V/4MW/+IpP+G5fFzDjwjpX/gxb/wCIqlD+8h8s+x9UPPk9aY9ztHWvlef9t/xpJH+78I6OG7FtROP/AEGuV8Tfti/Fu7jI0/RPC9sT0L3Ttj/x2j2f95C97sfZj3J9evtVK/1yDT4y0s8aAf3mxX52eN/jj+0n4l3iz1Xw
+pp+77uxnyP0rx3xx4O/ai8b7zJ450WISdQsr/wCFVyf3l/XyC8ux+pXiP4+eF/C6k3er2ileoEg/xry/xp/wUO8DeFi+L+KUqOPnHNflj4q/Yl/aL8TEmfx9o2H6/vH/AMK4jWv+CWnxz11j5vjzRz/20f8Awo5P7y/r5EXm9kfo38Qv+CvPh7Tw4tbqBMf7QrwP4jf8FhLWV5BHqOPpJXx9qX/BGX4xal9/xtox9f3j8/pWXP8A8EOfincn5vF+iH/gb/4UexctpIX7w9d8f/8ABVyO/d8ag3U/x14141/4KWtfl9t5ISf9qmv/AMEHfiRKf3ninQm+rP8A4VG//BBP4hs3/Iy+H/xZ/wDCpdFp/GhWmeZeKv277nUNxWaU5/2q8/8AEP7WWoaoG2vJz6tX0X/w4S+IX/Qy+Hvzf/CmH/ggp8QCf+Rm8Pfm/wDhU/V3/Ov6+Rm4VOx8jav8cNV1L/lq351z194wvtQb55n/ADr7aH/BBTx/u/5Gbw/z7v8A4Uf8OFfiBn/kZvD/AOb/AOFHsH/Ov6+QlCa6Hzz/AME7bmSf/goT8CNzk/8AFxPD/f8A6iVvX9dlfzw/sa/8EUPG/wALv2v/AIU+JbrxDoc1t4d8Y6Rqc0cZbdIkN7DIwHHUhTX9D1HJydbm1NSS94/mq1r9rn7Mx/0j/wAerkNY/bU8l2H2k8f7VfIN/wCKry+c7pnqhLeSytks3XrnrXPczufUWr/txzhyEnk9vmrmdV/bc1SQ/I8n/fVeAFs+tFFxSPX9U/a/1+5zslkHH96sO9/aX8R33W8lX/gVeeUUXJOrvvjp4jumwb+fB9GNZtz8Stbus7tQuMf79Yj9aaelAj0z9m34V+Lv2q/jZoPgjQrid7/W7pYfMZjtgj6vIx7Kqgk1+gH/AAUz/Y98OeGf2BFuvB2htp198F/EsWiahq24GXxFazxhGu3IP3Tcn5fQCvz4+Av7TGu/s52fiQ+HFgt9T8Saa+lN
+qJX9/ZQvjf5TfwsQMZ9Ca6f4G/tMfEjwl8L/AIjaLpkd34g8P+ItOgGupeb7mK0jilDpISc7SG7/AFq+hcNtT0f49/8ABOaP4H/B3QfEd945jubjxBpttfWjRQM9nM0u0eR5w4Ei55B9DUv7TH/BMO5+B114Z0ey8ULruv8Aiqext9MSC3P2XUmudmPJm5U7S4BHXg1z3jr/AIKb+I/FnwUTwFb+HvD+n+H/AO1bfVbiKOEuJ5IWDgBT9xSygkL1x71H8Q/+ClfjLx/4Z8G6BpGl6ZoNv4Q12PXtPS0Uuwu1xt2lskKOyjjJpIZ12u/8Ers2HxT0/QfG+n634u+D+ky6p4g0+OJljRYhmdI5DwzR/wA65P4rfsL+H/2drK00/wCIHju20zxhd6fHfnRLS3M0loJYxJEkrdAWVlOPQ12P7Q37YfxftPBni15/AaeBH+ILg+JtUtrFoZdTDHcyux6K5OSO9effGH/goPf/AB18NyjxP4P8M6l4mn09dPfX2hIunRIREjntvChQD7ChgemfED/gnXdeIbnwho6PoXhu08P/AA6tfGnirW/mxBBdOxi84H/lqRtAA67xUA/4JJ3PxB8C/DPWfh/4pi8Qv8Ttau9KsIZoTBtjtVZri4Of4E2jn/arhtN/4KceNv8AhZ3ijXr+10nUbLxlodp4d1PSp4s2ktpaqiQrjttEakY9609A/wCCoXjiL4j/AAsubH+yfC2nfDR7mDTYLS3zbwRXeBcb1/iJUAe+DTWwGXD+xHoHj34paT4A+H/jeHxj4z1PUl09YYbYx2pOGMsgkPVVVCSa+oPiT+zx8OviX+yb8W7jwTpXgx9U+GdtY6dPqVlDKTNJLcJCkcTscNI0igbsdGPrXmHxf/acHhP9pDwp4z+AfgePTIdEiXVU1GPTmX+05UtmS8YD/nhkyH6H2rzH4if8FD/Ft/8AB3WvBek+HNE8IaN4r1O11y7+wW5ja5lgk8yM7j1USDPp8tMD
+0KP/AIJDSD4j6j8N5fG1ivxT0vw6/iK50UQkxQKtuLkwNJ08zyyG/HFfIXgbwPqXxF8d6R4b0mB7nVda1CHTLSAcmeaWTy0H4scV9KeN/wDgrb458YXOt61FpGhaZ428S6Uuj6p4jt4P9NuoPJSIjPRSUUAkelfNXgDxzqfwy8daN4k0i5a21fQb2HUbOYdYp4pA6MPowBrMD9Cv2FP2H/h38D/2hPHN54z13S/Gd98JPCWqa1reji3L2cc0cDL5Rc8Flc4GP4hXk/w6/wCCUzeN/Gnw98H634zsdC+IHxT0v+2tH0n7OXWGCVGlh81hwu9UYj2rjfGn/BS3XPEngn4g2Fn4Y8PaRqvxOsRY6/qdpGVmu084TN7Deyjd9TWjpH/BWDxro9v4f1FNG0CTxp4V0VNA0rxJJBm8s7RE2IAem5VLAH/aNUhe71NLwz/wS7Z/2dL/AMd6/wCLYLD7BrN9pF7a2sBuW02S2cxl59vKIzKQDjH518p+GtDufFXiXT9LtE+03WpTx20KqMebI7AKPxJ/WvoL4cf8FLPFHwx+E2ueHdO0bSBe+ItNuNLv9TdC01zHPu3u6/daT52+Y85xXhvwv8f3Xwq+JGieJLOKGa80DUItSt0lXdG0sThkyPTIz+FJj93ofsN+1D8OPgj+zh8Rda8CeM9P+GsPgfwz4IhsXESD/hIZtWFkpVxt5BZyjc9ia+FP+HXDQeEvhe1z4wsrfxZ8YtMh1Hw1oAiJuJfPk224c9AGXacn19q+ef2ifjvrn7TPxr8R+PfEUiya14nvWvLnYMKpK7VUewAUD2Wu4+If7eXjfx/8bfh9488y20/V/hnp9hpuhrAuI7WOzLGEY+pGfakGh6R4x/4Jp2Vv4F+Kl94b8dWOv6l8GkjbxLbpCURU8wQuYnP3trZHvivtP4Tfso+Cfgje/BT4YeFLDwd4j8WeLPC8vjfxXea/p5mElg0Urpz/AMs0HlEY65INfA/xS/4KK698
+S/CniPw/YaJonhLTvHt7Hc+KJdNiKy6rtk3kMey7stgcZNd7+1N/wUwuI/2wvGni34ZyIdF1XwRD4E0+W4jw9tYixSCTy/7rFw7A/wC1V6BoZ3iX/gnlZXH7NNj8X7vxTZ2Nj4qF3e29tZW7TW+nOrsUtpWB/dsQFC546Vj/ABV/4J3W/wAKf2WfD3xFvfFiSnxHo8erW0dvbGW1WR84tWlH3ZQOoase0/4KL+INH/Z21z4e6boOiadaeIdPi02/uokJaeJCp3bD8okOwfMOeTUnij/gpD4i139nTU/hvbeH9D03RtZltZb7yUJ84wYYbQeE3EYYr1p6C93qelePf+CaF5cagsOoT6V4U0X4dfD/AErXvF+pxhmKTXoaSJGXvMwYLgcfJXOaF/wS1u/iB8T/AIRaf4b8UW974b+L9pf3mn6pJEY/sSWSym581OwTyjz0OKyU/wCCq3j3VPib4+13WbPSNX074mWlpZa7o88R+yTR2ihbcKOq7PmI+tZo/wCCmnjm28e2GtWFppel22i+Grvwvo+m28WLfSbW6QpMYh/fILZbqdxqWP3ehd8Tf8E7Wu/gcPGfg7xZaeLFi8XW/g2WCCIp5l9OrNEIyfvKQCK7jwp/wSc0/VfGHj7wndfESxPiz4b+H73xBrtvBbl7ewFoqmSEyd3B3D659K8E8G/ti+L/AAF8GtC8GaVPDZ2WheK08YRSKn7xr5I1jjcnuFC9P9o16V4y/wCCp/i3xNp/xBFp4f8ADmj6j8T7J7HxBf2lvtnvFkOZTntv5yB1zTWwvc6np/hn/gl+Pih4d+CvhGW+0Hw7rvirwZe+Npbvc32y+geVjDCVJwZCFYKB/dNfJ/7THwdsfgX8TJNBsdXk1UxxBpzLbtbzWkm91MTq3RhgH6EV6fc/8FK/FWtfEfSfEOr6Lo2qS6DoNn4d02JlaMWVtbFjH5ZU5VtzuT65rzD9qD9orWP2rfjTq3jbXo7aDUdY8tXS3QKk
+axxrGgx34Uc98VInsehfDf8AYjU/ALSfiX438RW/hXw74ku5LTRIzGZbrVHiYLJ5aD+FSy5Pq1fVv7Tf/BLKP4o/Hu98MeGP7P0Dwx8EvBejWXiHVNgje+vpIA5+XPMkjE9emBXyh8Mf+CgOteD/AITeG/BeveHtC8XaJ4Ou5L3RE1CMltPkkYO4Uj+Esq5HtW9B/wAFUvHtz8U/iPr+p22n6tp/xSeKXW9JnBFvK0OPJIxypXHb0pscbcpxf7a37In/AAyP4s0Ozi1+w1+z8RaYupQSQMN1v8zqUkUE4YFTx7165/wSVu/hfc3njmw8WW+ht4/1Kzji8Fza+m/TI7nf8yydtxGApPfFfNfxu+Lz/GTxQmoDTLPR4IIPs8NtbbiqDOc5Y5J5PNdT8Bf2pU+CXhuXTZfB/hvxHG159uimv4MzQycYww5wMdKEO6Pefi1+xx8RP2hv2g/Fdl4y0Pwv8NIfhZo8dz4i1C0txBaeQzs8U+Bw7yCRVXHUBap6X/wSjHxDsfg5eeD/ABemqW3xi1q90mxaW2MRjW1DefMRn7o2Nj6VzDf8FZPiTrPxF8aa3rq6Xr1r4+0230jVtMuoP9Gkt4MeSuB02bRg0xv+CrHxA07xn8MdX0iy0XR4/hOl5HodlawbbeMXSsJdy9yQcZ+tVcPc6l6f4CDxl+yl4607RtL0eA/CTXo7C71oRlrvxLdXU8kUUUZ6BVWPO0e1ey/sPf8ABOLwn8Ov21/DOgfEjxHZX+teG7WbXtd8Opb+bHbww2pleKZ+mRwSK+avH/8AwUG8U+LfhFe+CtN0vRfDmjX2vReIJBYw7ZHuIx8hZupwSzc9zXWXf/BVTxRqF/4i1yXw34eXxn4o0WbQ9Q16OMrczwzJ5cjHtuKYGaNA0PRPCf8AwSkvPj7pth481LxBpHg6w+Jd9dXWh2AxstbcyuEkfJG2Mngf7tfG3xf+HFz8Hvir4h8K3dxb3d14e1CfT5J7eTfFOYnK
+F0PQqcZHtXs3hH/golr2l/Cbw/4T1zQdH8SW/hONoNJuLrcJbSHcXEeVIyoZmOD7V4Dr+sTeIddu76fb5t3M8zhemWYnikxO1ipmv0O/4N0m8r48fE5vXwvbj6f6dHX541+hf/Buzx8bviif+pYth/5PxV14CVpzf92X5Er4kfrT9oGD06003A7/AKVTUv6U5Q5bpXP7U77Frzw/GfxqNmHmdarmOQnpTDuH8qftQsWfMT1pJSjHqag24H/16TpT9pfQLFiMIB1z9aQxoW461A3Xv+FNC7m60mBYJXFIxTNVihXvSGQjrUAWWZPagEH0quDkZpyuAKCyTyht60jqAOopplAoEgYUCdhRg0Yp0ZCL0pfMOeAMUybCeWCvUU3yfcUjPwaYjHdRa4WJPIz/ABUhgx/FS5zQTijkAR412deaPKwOTSGVR2o+0RpFLI7pFFBG0ssjnakSKMliewApeRegYTP6UoeNULZAVRkknoK/OX9q/wD4LW3I8Z3PhP4QWYmnFybQaxNH5sl5KTtCW8fue9fZ/wCxjqvjrRvh1bT/ABjmh1XWtWjQyWsUQT7BFjhdw6yc8jpSk7Iakk9T01PLkAIIIPPHNN8n3q34n8I2GhwDVNLaZ9Lm/wBVKh+Vm7o6/wAJ9KydP1SPVYS0Lh9vDDPKn3FcuHxSqPlaszWpScNVsXVh561IsQ7mog5K0B8feH611mRP8q9OtRllJ7UzeD7U0uB25o5AJHhDrTBB5dBmOBUctzg9agCQxg9qXYKigZ7qdYolaSVzgIoyTXn/AMfv2r/ht+yzHKfHviyx02eNC/8AZ9swnvJD6bR0/GknfYVz0QkAfpSxaZPeN8inHqcKPzNfBurf8FTfih+1HfSab8APhncQ2LP5Q13WEznnG4fwrx9a3Phr+wp8X/jLP/aXxn+L+t+VI24aPocxijK/3WYY/ShruPntsfXnin4k+FvBJK6x4p8P6e69UkvFL/kDVHw18XvC/jIM
+dJ1WTUYh/wAtYbZ/LP8AwIjFcH4S/Ys+G/gWziSPw9DfvFIp86+driQ+5Ld69b0zTLbTbFba1toLe3QbQkSBRj6CjbQL31JIbnTbu6Mcd8xdVDn5OMHpWnHo1tMo/wBPROONy1iRIj3m8BVzHsPHoatMfMQD3wKnk6gW7zwzdsN1rPaXPHA3Yz+FY+o/2noaZu9LudrfxwjzB+lWxJturggkBpQy47DGMVZj16609QIp3Xd1BOamXMloaXXUxrXxRZTvsaType6SDaRV+G5juot0bK49VbIp76xb+ILQf2nY291E+fmCBX9OtVJfhpo2qYOlXtxpUo5CmQ7DWLqzjuVHkZYfpSYqqdA8Q6Cn721+2QR/xx8lh61BbeKLS6k8vzNk2cFHGCD6VdPEqT5SJRdy43yScVFKHz7U9pdrYI5NDSEit732IIh98VI5xmkzQef/AK9Aje+FA/4ul4Z/7Clr/wCjVr7nr4Z+FP8AyVLw1/2FbX/0atfc1awM5n8Vj/fP1pKV/vn60lcxwBRRRQAUUUUANfrTaey7jTCK0QHtX7BH7Mdj+1d8fV8O6pqD2Gl2WnXWr3hhG6eaK3haRo4l7u20AD3r7X+Bfw/8Fp/wTu+JMfh3Qr3whcfFTxlo/wAP7a71aTMroZxLLIQcYAQtnHpX5qeBvHWsfDTxLb6xoOo3Wl6nakmK4t32uuRjGfTr+ddd8Q/2rPH/AMU/D9npWt+JL+707T70ajbwBgiRXAUqJQBj5trEZqr6F3Psv9rH9hj9n74CaH8QvDcOua5/wk3g/T2+xXnkuVvbxFBYOMbRGxBAYH0r5G/YY+FzfGn9sf4aeGfLLjWfEVlBIv8AdjMqsxPsEBrP8a/tZ/EL4i+GZdI1rxNfahZTxLDIspBaRFIIDNjJ6Dqa5L4e/EHWfhV4wstf8P6hcaZrOmv5ltdwtiSFtpUkH6E0kF0fsvr3i/Sv2y739q7wZpsGq2Gp6pYXLWVxr8YGk2sN
+q3lj7OSBscgDBr5E8T/sH/C7wjpXwC8DzvqUvxO+NGiWt7LM9wsdpoz3kvlwysPbB477a+VfFn7YHxJ8babcWmoeLdVkt7wFbhEk8vz1PVW24yDz+dc14p+MXifxp4m0vWNT1q+utS0SCC1sLhpDvtIoOYlQ9gpyR9abC6Pt+9/Yh+FGkWnx90qXw94mgi+D3hy6uIdeupPLS+1BZBBCqr0Ks7AgegrD+K/7DvgbQP2HtP8AHXh7R9V1HULeytbXXJnn8q40jVJTjY8JHMRIYAjrXzD4v/bA+JHjzw9qOlat4s1S8sNXREvoXk+W6CMGXf8A3uQDz6UzxD+1x8RfFXhSPRL/AMU6lPpaSxTNblgFleI5jLYHzbT0zQmFz9ItT+Eb/szj43p9skvY/hJ8HtM8JW0LhdkGq6x5SyhAO/8ArBnr89cb8dv+CcXh3TvGXi8a3q+p6rof7PvgbRFvNLs1U3l7fXa7zCmB9xWcEk9BXwLrv7UXj/xMdc+3+KNUuv8AhJbm3vNU3y5+3S2+3yWf1KbRj6VZsf2tviLp3jnWPEkXizVxrPiGNIdSuTMSb5VVVUSA8NgKAM9Kdwuew/t1fs6+C/hD+zX8F/FGiaLqPhzxB4/h1G9vNNu5d7Q28Nx5ML+oL4LfiK+V66r4o/G3xV8aZtOk8Ua1eay2kwG2s/PbP2ePJO1R2H+FcrUCbCiiigkKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAK/Qv/AIN2v3Xxt+KP/Ys23/pfFX56V93f8EF/iTofw9+NPxFGuarZaSL7w3BHbvcSBBIy3sbEDPfFduC+KS/uy/IuDtLmZ+vImKnpQ05HtXM6x8TvD/h+S5S+1/SbWSytvtk0b3Sb1hIBD4znGCK5H4Z/tffDn4wXd1b6L4r02W5swTJFLJ5bYH8Qz1FcqhJq6R388d7nqfn01pOc968h+JP7bHwx+FOu
+WWm6v4w0lb2/AMaxSiRVGcfMRwK9Ci8Xadd6bFdwajYzWlwiyRXCTL5Uit0IbOKbpTWvKwU4vqbRuSeo4pPNrFfxJbKR/pETBhkbWB3fT1rO8W/FXQvAHh281jWtVstL0vT1LXFxcShVjPZfdvYc03GSV7Dun1Oq8wJ9cgYrN8VeONF8Cac95rur6dotrGMtJdzBN3+6OpP0r4e+Jf8AwVa1v4pa7N4c+DWkRIglEN34l1chIrYE43Ip4HB6mu3+GfwA8DeCdPTxp8YPHVp4511pQVuLu83adasRuCoucGq9nUUeZohyjtc9dg/bBsPHWtf2b4C8N654rIHF60X2Wzb1w7da6zRNY8atdxPfRaHYBnA8iFWmZM9ix4zWZB8Y/BGl2NhJZ6/oEVlN+7txBcRqjDHAABraj+Iej6sv+iapYXEkZBZEmVmH60lCT6ApxWlzpL3VLlbP78RaJSdwjC5wTnirVprjGBGMVu/mIBkr1z3rnP8AhK9PvtMkK3cDxuChKyAkZpqeKNPsLSMPdxIqAJvdwB7DPrVKnNuyQ+ePc6a2121vN3n6fHneVzGxUmpok0nUJRGl3NZzY4Eo3IfbNcKnxJ0NL14W1XT0mRd7xG4Xeq+pGajHxM0JYXuv7VsPsmM+cZl2AfXOK5/qMu7H7aJ3mt6HqOh25mMH260Az5lqd5Ue461m22uwXMm2OQZ9DwR+FZL/ABQ0/wANWEN9HrNra286gxSm4URsfrnBqze/Enwn4rtoE1h7SG5nQyR3lrMqOw67xg8gVLpV4LRaD9rB9TTF1hsZxj2pVugx6j8qx7NpU0xLqwvrXxBphyUuLZw8gX/aAqr/AMJ3ZOh2tkg4xjBzWlKak+XqOVormZ0bzZ6VG8hrkW+K+mrdNCLiEyocNGsq7gfpmkl+J1mG2ebGrsMgsw/QdTXX7Gd7WMHVh3OoutQSzhJY89h3NfCH/Ba79sXUPh54EsPhX4e1A2OqeKYTe69Lbvia
+2tCf3cGR0MmNx9iK+wD8V9C8MaXqXiDVJli0zQLSbUbtpGHKRqWwf94gAD3FfhJ8bPixrP7Tnxo1zxLOXn1bxbqLvaxMc7BI+2GMewBUY9qXsmp6oPaRte59f/8ABC/9ku28efEDWvirrlgsmkeEWOnaCJUzHdXrDMkvPUoCAD61+nlxM0lz5cp8zcdwfPX/AOvXl3wC0XQv2Xv2cfBnw/tfLj/sOxSKd8hPtt3J80sme5LHH4V1kXxAtI7YrKjrIcBVPBb6GlPDyeqQKrC9rne+E9fTfJomos39j6r8kx/55ns6+jD1rg/FPhS8+Efj64tWu2kWJgVkJ/1yHlW96e3xDsre2KyAnsCcbWPoK6jXvI+Lvws+12WbjXfDn+sduS9v1wfp6+1eRmGFnSf1iPQ9HDVozbpvUbYeIvOhR5FKBuvHQ+4/rWgk5nyQRjtXnOkeP0tLAw33zHaDE6dQKuQ/EW3twPM3IegcDhh7ivRwrlWpqcEclVxhJxbO6LkdxTfPxzXHt8WLRQS8bjHGQeD+NN/4WxAwRRbSl2bbtHU/Suj2FS17GftoXtc7GS4+WuZ+LPxi8KfAPwVdeJvG2u2vh/RrZMq0rAz3bf3Ik6sTXz3+27/wVM8Jfsh2Fzpenpb+JfiAyfudNR90GnMRw07Dv/s1+e3gL4Y/Fn/gp78S28T+L9VvG8P/AGrM99NlbSAAgtFbp04HAxWKpuWiCVRLQ+hPi1/wWQ+Jf7SfiqbwL+z94autMi1R/syXxi83UrhTxu3dIh/KvQP2Y/8AgjRp0d/beKPjPqt54q8USyi4uNNNyZIUc84kkPL+4Fe2/sofD3wF+yp4Ci0XwloqQSruFxqEoDXd2xPJZ+v4CvR9Q+MEUMwKW/yk5bLc1pDCyRHtI9Ts9K8M6d4W0SDTtJsLHSdOtVCxW1pEIo0A46CpUGxuACRxkVwtx8aAYflt1yeeW7Uy0+M2+Ml7aPPXAbpTeGkxqrFHfSrwd3Rs
+VNb3vlnbnIArziT45CSJALeMupy53cY9B70+f4zLDIG8iMKRyC1T9TqvZB7eOx6B5eFLjHTrUscu2ME+teby/G58SBIYjlflG7gU2L45bLL95HDuHU54pfVKvYX1qn3PRfMyf1zS3Cl3z/c/WvN9U+OPlRoYUh5xkZyDUcvx+kecbYoFA5Iz1qlgqz6AsTTfU9Mt4weG4UDIA7VIyY6V5VB+0GYruRmSGRM5A6ED0p7/ALRBltTi2iV+xLZFKWAqrdB9ap9Gev6L4rvdFkOyUyR90fn8qs6pp3h3x2N93ALC+/56p8u4/wAjXiNv8e5YLMF44XcnrnHFU/Ef7QEtxpzrFDCJMZHORWTyypPpYcMXCLueo6/4O17wXPm3K6nppOcjl4h796Sy1qK9G3cFlHVCa8/+Hn7WN74ditvtdst1b4PmIzfOv0Pf8a9RtV8MfHrQpLzQLr7Fqqj5kUYdD/tL6e4rlqYKtho8z1RtTr0qmxAZ8NyKdvxXHa9pHi/4ZWuyZBfRDLJM4zn8a4z/AIaPv7TMUkEBljzu3KQfyrrwdN143huFdxo/EfQfwpf/AIul4b4P/IVtf/Ry19z1+YXwI/aEudb+N/gy08mAC61yxhJAOQGuEH9a/T2tqlGVLSZzqtCprE/isf75+tJSv98/WkPWuA5QopAAaXpQ1YfKFFB5pDgenHWhK4cotMPWnZApAhcnAJxycDp/nIqw5RtFGaKAsFFGackbSKSFJCjcSB0HrQFhtFH+GaKBNWCiiigQUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUvh8zDxBceU8isLUcq2P+Win+lJS6N4wTwZ4mEz2S332mAxCIthfvBq6MM5KV47pP8iKkXKNkbWr+Ode13VlvJ9TvJboKIBNLO7HaBgKeeRx0p9t468Q+Hb1Z1uNs4UguGwzKfp2rJtvjFFpN8HT
+w5GZi53CR8qfYeldtpfjCHXfB8upTeGtPiZR8o3FjIf6V7ssQqbtNWV9DkjhdeXm1OVk8TX985kdlkjUcI3Jx6Zro/Dnxb8Yazo66Mmr6zFpcQ/cwLdOI4z1wBniuL1H4tP5kiyeHrAbk8tVViOeuSR3r1j4O+PLHwF4OtvEGtaZYvfXBL6fpjZLXBT7ssv92IE9OrYrSpjJJJJF08Ldu8jtPg94+8X+ALq38ZeLPFOu6JpejRldLslvHa71ZugjjQnAj/vORgdq4r9of9qjxR8dNVgXVriaPSrZt1tYJKxgjJ/iOfvue7H8K5Dxtq/jD4oeLLjX9W828eYmVpiBFb26qeEA6KgGAAK4fXPFepves1pcQzLnAUx7lz0wvrXFGXPPnmjo5GqbUWdha/EXUItC+xWrXCK7FvKRjtJ/vH1P1q14W+JWqpZG0upLiaxYnbC0jMgPfCnisLQPDHji+WGU2F4sUQ8yNxalQp6+nOfep3k8Twas4Oj37O2G3i1I2n1AxitPrsGrIw9n3ZZ/4WJqF3L9ljhuUgSZnjwTgMOhHoa3fA3xT8SWMkws7vVLe4OR5qTvlweoPNc/LqOvae8yJompxJIN7E2zcnuy8cUaHJr97K0VppGsQmYZ3iBzk/3hxxS+tJrYn2TvdM7Pw38VvF0OoO1rq2sboZf3ka3kmG6dea6FPiD408Q+bDf+I9SuLXzGY2321jtI5HeuL0P9l/xVrmJY7q/tY53zMyo3zepNbN3+x5rtrbFbd9UEk3AkUN+8+tc9XMKUdL2+R0Kk2r2LGieMNQu9fl3Xd1NIYSjSm6bco/2jnJHtVOb4h6xpMzafHf3FxYsAJk+1HYoxxxnHeqemfsneJtKRrq4ttQKNkBlR8sPf3qtffs4+I9QIMOkXowegidc/pQsbCXwv8Bey6WNK+8XX+r28VtceILuayUYSM3jlEI7bc4FWD8Sr+1/s9D4knQ2itBbyNev+4jPJB56Gudb9k/xn
+qH+p0W+C7z83kP8A4Vr+FP2QvEdmoXUtGu76B+WRonR4z2Ktj+daTr8sOa/4BTiue0oux1nwB/bQ8cfszeMBqPhvxh9mgaUCa0mnMtpOAcn5SeM+or7i8d/8Fbvgx8dPgTNZeIxd6F4ruIT50+myFIzPsPzIw7E1+efjP9hbXfD+kDXra31D+z43CTpcwFDEx6A+v1FUbr4BpZeB72/Uf6iDznMg4XHX6GvBq18NWktWpHvQw1WNHnUbxOj1r4raNB4iiax8dX7NK7NLcTTyK1vjoCwOCTmqOo/tAT3PieFR431C4dmETXvnybIEHQg5rxw+HLf7KSoAz8wBr0r9nz4IL8VvD1/9ikh+36fPsMD4HnAjKlfevblNUoqdSWh4sEqsmorU6jXvj3BrWjXnhyTxzqpstVkQXkzO7wzIOx55+neuStdQ8N+C/G9rdadrtxefZJllguY7YgQkfxHPTHUVyHxE0uTQ/FdzYtbiGWwfyHjK7SrjrxXXfBj4I+I/iDol5qun6JqF/ZxzC1E0UBaMv6Z6VM4KVpyk9So1nD92onp3xH/avsdeisTd+Nde1b7P/qQA48hxjnPHFa0v7Xt3rWkweX4t1/WHgh8kIhZJIV+vQ/zrkNM/Yx8da0J1t/Bmsubc/vs2p+Unmut0H9hX4h2liDB4L1qI44HkdTUSfLHdjhNuXvRLmjfGXxFoemQm28Ua5PaBi8cLTE7N3Uc19Bf8E7P262+DXxv0K01zxBfvoGv3Y069trptyYl+VXLHoA20Y9zXl1j/AME9viBrOiwm60TVYlA3MoIU59+att/wTj8b3gNt/Y97HvTAuGlUGJuqtnPGDg/hXjV6jnFxk2zrp1VGV0rH6Mf8FAfBMnwo+GOvax4fke1k0bZe7gMl7duuF7gE1+csv/BSDWtMgFjdXNy0MkoAu44wWVO5PbFfq74C8F6x+0T+wxp6eIo0/wCEj07R5NF1ZSN3nyIuwsfY4DfjX5H6t/wT
+f8VXOqNbadbXVzbGaSJVHVCGORk9AP5V5mU1XTqzpVZNWPSxVnTVSMbnqWg/tszfFDR5NJ0jUJIb+6Ihh8uIu8jdtvv/ACrg/wBpT9vjVP2SvDtz4T8NeMZPFPjy/X/T9TID2/h8Hjy4j/FLzyeg4rxf4n/EPTf2P21jwx4O1WHVPGN3F9k1LWFG5NJQ/fhgboZD0LjpXAfBr9k7xB8ZtGn1+5iurfSJHKQTSKTLev3K55Iz3r3PbOhBV6s/df3nnwh7T3aUNerOf+FMsHjzxbcav4pmvr+BpDNcAOTPfOTklm6getfY+gf8FO/D3hDwnp2iW1ja+HNO0mMQxW4BRQO/Hqe57183ataeHv2X4p9OvruDVb9zv/s61cO6eglkHCfQc14n4w1W++Lvi4StY+de3rCG1s7WPJAzhUVRyTnvTwirzm5RfKn+BVV0Irkkrtfifoxpv/BUjwrqm0prNhbyx8sCxG72rWh/4KR6frcgSGW2mDsBG0THaw+tfPnww/4If/EbWNH0/U9fg07TJLlBMdOnnCyxA8gPjofavT7f/glF4/sIGtrA6DYQIdqCOfIbA610v297e1f4HPz0X/y6X4nofiD/AIKI6dYaZbFAglDYcMxK4HWp/wDh4Lo2pW0dxaZVGTMhL4I/CvNI/wDgkr8TWaLdquhAITn9/k81u6b/AMEofGNnaYub3RpJCOAJcKKr9+v+Xz/AL0b29kvxNa6/4KAWeoa1GNOaDaEHmI0mA5+vatzUf+CgmgeYtuQILkIq7HlyJWPXGK48f8EoPFUr7pdQ0dEx/BJ1re0f/gku7x+Zf+ILTzSOGWFiy496V63WqJ+yvpSX4nRy/tq6T/YyTC4jtpYk2vHI33j7VlWv7bNvNb5byZELEhklGQPQ+9Wbn/glZaX9mI7jxHvCj5CLduPr61lL/wAEjNPhnLf8JXc7CSQBakDPtV+0q/zi5KP8po6t+2zpM/2WKw+eXcfMEkgGPoKtRfto
+6Elq3mGRJQNu7cNpes21/wCCTuj28iH/AISO7YoS3mC3O/35rZX/AIJX+CJjbvNqWuTtBhnXAVJ/97mn7XEWspr7hRhQ/kf3nL3v7YeoRCRrK2tn8zlS78OD0xSD9s3VI9CDS6an2qNxyr/I4/xr021/4J2eALOwMJi1jeDmKQ3H/Hv7LWmv7CHw/l02C2ms9akKr8zi6I8w+uMcU3isVH7SfyI9hhuqZ4voP7Z/iGe9QzWFrNZSHkg7XRf8RW7L+2Jav4jCx2NzLp2MGQ/fB9h3r0+w/YP8B6Ym21ttaijwVK/aNxf868W+NH/BMzxdcw3P/Cu/Ev2TZLm3gvz+8nUjJDN0GD0qfr+MWit9x0U8NhOXW/3mxrP7ZNtZywm20u7fdkSoT930xU3hr9uLV/DOuw6jptjPZTw8pLFKQ30YdxX51fHfUPjH+zP4um0vxZYavbXEDnE5TMLL6q4GDmuQj/bP8YKyq9zc+WflwVFZ/wBpYq3LJRL/ALPw0v4fMfvv+zd/wVs8M/Fyy/4R/wAdaWdK1ZiEjnI/0W5GPvMf4TWJ8Vfip8NfGE80sOuWWm3ltIQ+5spKDnBRh976V+G99+1l8RNDhhm0/ULKWCcbstAMp7Gqjftn/EJ4z5z2JkPPmLHyfavJlRxMp+3paeh2zeGhH2NS9z9mv2fvjjp2l/thfDPSo1N7Bf8AizTIIbqFgVYtdxKCR25NfuXX8f3/AATI/aj8T+Kv+Ck3wLsNTuYLa31Lx/oUTBF+Q/8AEwg+XHYt0/Gv7Aa9J4irU92r9k89UacFzU+p/FY/3z9aa5IHAzX9UZ/4IYfsnH/mi3hz/wACrz/49R/w4w/ZN/6It4c/8Crz/wCPVz+zZj7Nn4A/s4aB+z1r/wAIrGTx1ql3pXiW7SbSJEQEi1cyebHftjquweWV9Wrf+Hcf7MPjG01m61tr/QWu7270XTrYOXNrE7qbe/c45CIHVh6sK/d7/hxd+yb/ANEV8Oc/
+9PV5/wDHqVv+CGH7Jrf80W8OdMf8fV5/8equRlckj8Hfh4v7MXioeIJtbe/0dTqVxo2lxq5YrbymJIL9+P8AlkFlZl77lrk/h/ovwbl+POuX+oahZx+DhFKmm2krsZZRG8Malj0BdfMcZ96/oN/4cW/smD/mivhz/wACrz/49S/8OMP2Tv8Aoi3hz/wKvP8A49RySFySPw8PgD9nbSfhhPq89xZyWWpa94gtYX+1E3i20UERsWjjA5zI/frg1i6brPwM0LSrZ9PbSDdap4SmtZ7K8kLLBfK1qyu8gGPmKykY54IOK/dxf+CF/wCyahGPgt4d46D7XeYH/kahv+CF37JrDH/ClfDf/gVef/HqOSQ+SR/O/aaH8IB+0g17JeQf8Id5XlLaGZtv2z7FuzuxnyPtPy59K6jQofge/h+J9U/slL6e4uTrQt7pm+zRiBPs/wBlGPmJkMmfcAV+/H/Diz9kw/8ANFfDn/gVef8Ax6j/AIcWfsmD/mivhv8A8Crz/wCPUcjDkkfgt4a8Sfs62Hgu2jvdIWfU7WLw8vmNcODPJOrDVGYAY/d8FR6msf8AZY1n4WfD34g/FZNYu9I1HRdd8O6jYeHEvicJOL+3NuWYD5SYlfBHbNf0AH/ghZ+yYT/yRXw5/wCBV5/8epV/4IXfsmqoA+Cvhzjp/pV5/wDHqORhySP52/2gtc+EWkeFfEtv4H00Xt/qOtIlpcSzN/oNqtrbs5jGPmBuPPAz/DXz9X9Un/Diz9kzdn/hSvhz/wACrz/49S/8OLf2TP8Aoivhz/wLvP8A49RyMXs2fytUV/VL/wAOLf2TP+iK+HP/AALvP/j1H/Di39kz/oivhz/wLvP/AI9T5GL2TP5WqK/ql/4cW/smf9EV8Of+Bd5/8eo/4cW/smf9EV8Of+Bd5/8AHqORh7Jn8rVFf1S/8OLf2TP+iK+HP/Au8/8Aj1H/AA4t/ZM/6Ir4c/8AAu8/+PUcjD2TP5WqK/ql/wCH
+Fv7Jn/RFfDn/AIF3n/x6j/hxb+yZ/wBEV8Of+Bd5/wDHqORh7Jn8rVFf1S/8OLf2TP8Aoivhz/wLvP8A49R/w4t/ZM/6Ir4c/wDAu8/+PUcjD2TP5WqK/ql/4cW/smf9EV8Of+Bd5/8AHqP+HFv7Jn/RFfDn/gXef/HqORh7Jn8rVFf1S/8ADi39kz/oivhz/wAC7z/49R/w4t/ZM/6Ir4c/8C7z/wCPUcjD2TP5WqK/ql/4cW/smf8ARFfDn/gXef8Ax6j/AIcW/smf9EV8Of8AgXef/HqORh7Jn8rVFf1S/wDDi39kz/oivhz/AMC7z/49R/w4t/ZM/wCiK+HP/Au8/wDj1HIw9kz+Vqiv6pf+HFv7Jn/RFfDn/gXef/HqP+HFv7Jn/RFfDn/gXef/AB6jkYeyZ/K1RX9Uv/Di39kz/oivhz/wLvP/AI9R/wAOLf2TP+iK+HP/AALvP/j1HIw9kz+Vqiv6pf8Ahxb+yZ/0RXw5/wCBd5/8eo/4cW/smf8ARFfDn/gXef8Ax6jkYeyZ/K1RX9Uv/Di39kz/AKIr4c/8C7z/AOPUf8OLf2TP+iK+HP8AwLvP/j1HIw9kz+Vqiv6pf+HFv7Jn/RFfDn/gXef/AB6j/hxb+yZ/0RXw5/4F3n/x6jkYeyZ/K1RX9Uv/AA4t/ZM/6Ir4c/8AAu8/+PUf8OLf2TP+iK+HP/Au8/8Aj1HIw9kz+Vqiv6pf+HFv7Jn/AERXw5/4F3n/AMeo/wCHFv7Jn/RFfDn/AIF3n/x6jkYeyZ/K1X1j/wAEkf2XvCP7SnxJ8cr4vsmvrPQdFguIIEbbuZ7qOPO7twa/fT/hxb+yZ/0RXw5/4F3n/wAersvg1/wSw/Z//Z8vtSufBvwz0bQZ9XgW2vHguLljPGrh1U7pD0YA8eldGGn7Jyb6xa+9D9k+p+UFx/wSQ+B7SBjoGrllbJP9oHk/lXS2P/BO34UaL4TuNGttCeKzuQVkIkzJj/eNfrqf2Svh
+0VI/4Raywf8AppL/APFU1v2Rfhw558K2X/f2X/4qj2jfxalxgo6o/F+1/wCCRXwRtdVN2mj6mJfRrvfGD67SKtXX/BKn4PX2pxXkum6o1xbjZG5vCR7ZXGMDGAK/ZUfshfDcf8yrZf8Af2X/AOLpR+yL8OAuP+EVssf9dJf/AIqj2jDkR+JPxF/4JF/D7xrALd9a8SwQA7lhWYbM/wC70/OsTwv/AMEgPAngu9iubS5vbqeGRZENzhtpX9K/dKT9kb4cSkFvCticcD95L/8AFUz/AIY/+G2f+RUsf+/kv/xVUqzSsJwu7n5J6R+zq2jZVZLTZ1A8qtO0+CvzE5tAR62yHj8q/Vg/se/DVlx/wiljj/rrL/8AF0p/Y++Grf8AMqWP/f2X/wCLrP3Hug9mup+V83wkm2jElnuxgH7JH0/Kki+E1/GgWG8tIsf9OceP/Qa/VL/hkH4bAD/ilLHjp+9l/wDi6P8AhkL4b/8AQqWP/fyX/wCKoVl8IciPyysvh1qFo5/023AY5OLVP/iasf8ACE6wQD/aFqCPu/6MmAP++a/UU/sg/Ddh/wAipY/9/Jf/AIqg/sg/DY/8ypY/9/Jf/iqG0+g+Vn5ef8IZr4QY1S0Ht9nUj+VIvg7xMrj/AIntpt7f6IuR+lfqGP2QPhsB/wAipY/9/Jf/AIqgfsffDUKR/wAInY4PX95L/wDF0+boHIfmAmheJVfB1i3kBHJEQAx+VQTaL4lQN5eo25GM5aIHP6V+ocf7HHwzij2L4SsQvp5sv/xdK/7HXw0eLYfCdjtPbzZf/i6Oe2w2m1Y/If4r/Dnxp8TfBlxoMmtWUFnekCbMGScdMen1rxHU/wDgmTdax4Mv9IufEs0iXj7nONufT/64r95D+xp8MT/zKNh/39l/+LoP7Gvwyb/mUbD/AL+y/wDxdRKNOT5nHU1VWqocilofzfan/wAETdZkZzB47UqG+UNbHgds16H+z9/wSnl+DV7Pfv4gkvdR
+nXy2eNjGm3/d9fev38T9i74Xxg48IWAz1/ey/wDxdIP2LfheMf8AFIWHHI/ey/8Axdb1KqmrSWhz06bhsfzsfHL/AIJCT+NNTk1bS9blsNQmcyTGeQy+c3dvXNd1+zn4O+J37Kfw3HhGzv7S60m0uDcQqIcHcTliT3JJNfvZL+xX8LpiC3g/Tzjp+9l/+Lqtc/sI/CS8/wBZ4J01/rLN/wDF0vaK1hOlrzLc/HDwx8c/ic1xcmQ2pM7KVzGfkwPrzXaWnxb8fXPL21ixfHAB+Wv1XX9gn4Qp08D6YPpLN/8AF1PH+w38KIR8vgzTx/21m/8Ai6hy7GkYtbn5QP47+Ic155otdNaAjYYtvJ981PpuufECRl/cabhMb8jiX/Cv1dT9if4WR9PB2nj/ALazf/F09P2LvhenTwhYDH/TWX/4usp87VkzSLS3Pgn4a/HrXPgz4Z1PYLW5fV0DSWqjKpJtwSD7j+VfIfx5i+LnxH8N3mmaFqtl4curx5ib23XbhHz8g7hiON1ftjJ+xX8LpvveD7A9v9bL/wDF1Xf9hf4TSdfBWnH/ALazf/F1yLAwdT2tR3Zq8RLl5Fsfy8Wv/BKH4p2niNbi6n0vUoFkEsv77mY5yc98E9a9P+OXwv8Aj5e/Dix0HRooNG0+yj8vFlxLIBxgMPuj2H51/R1H+w58KIungvThxj/Wzf8AxdLL+w/8KZj83gvTTj/ppL/8XXTXw9GrOM5xu47GdCrOlFqJ/JNqH7B3xVMvmvo7O+Sx3t8znuSe5r179hb4SeOf2Uvjja+MNT8GWniG5t4THbxznixc/wDLRR0LgdD2r+nKT9gj4QSn5vA2ln/tpN/8XUbf8E/fg4zZPgPSs+vmTf8AxddPtNLIw5Ly5pH5E6b+2xrmqsz3Pgq5jdzlj9pDZP1resv2pr2WNS3he9Geo81ev1r9V0/4J+fBuPp4D0of9tZv/i6l/wCGCfhDgf8AFD6Zx/01m/8Ai6XOi7WZ
++VUf7T920mH8MaggH8XmqRRJ+1LJaswPhzUH7DDLX6s/8MI/CQDH/CEaZ/38m/8Ai6Z/wwX8IdoH/CD6Zgcj97N/8XS5h6XPyof9q7aPm8N6qMcHG3AqKX9qgIGI8PasQemAvzV+ri/sF/CFengfTOf+ms3/AMXTj+wh8I2P/IkaZ/38m/8Ai6fOuwpJt3R+UC/tYxmMb9B1ZGU85QdKE/azs7i4G/SNXiXPzN5OQtfq+f2EPhGR/wAiRpnP/TSb/wCLoT9g74RR9PA+l8/9NJf/AIulzIZ+UE37V1jFcMradquF4BEWM1Dbftc6S0ojksNVi9WMBP0r9YpP2B/g/K5ZvAulEnr+8l/+LpjfsA/B102nwHpOP9+X/wCLqU7AflM/7W+jwr89vqC8f88DwajT9rfRSmTDf55wvkHNfqvcf8E8PgtdFd/w/wBIbbyP3k3/AMXUo/4J+fBoNn/hAdH/AO+pf/i6XNIND8qh+1ToLW2/dcZx93yj1qza/tN6JdpvLzR8ZwYyAK/UmX/gnr8F5jlvh9oh/GX/AOLqG5/4JzfBK7XEnw90Yj0DzD+T0c0yvc7H5L/E79or4Y+NdFfTPFS6fqdi8bB1uLfeB7A4yD9K/ND9t3Qvgl4b8Xwj4fy6hcRSI0l1biElLV+yqe4r+oHUf+CVv7Pmrx7bj4X6FKuc4Mk/X/v5WUv/AAR1/ZlWV3/4U94WZ3GGZvOYn8TJXFVwvO7nTSxc6fwn8j3jspD4Os3trG7RS+d7JyVx3Fed3OvNGHAgdnyQOOK/siu/+CNn7MV9GFl+D3hl1HRS9xgf+RKxo/8AghX+yTFcPKPgf4U3yElj5tzzn/trXThYOjDkObFzdeftLI/lS/4JbTzXn/BTj9nvdG8h/wCFmeGy2Bwg/tS2r+2Cvlv4c/8ABFP9lr4R+PNJ8T+HPg34b0nXtCvodTsLyKe6L21zFIskcgBlIyrqpGRjjpX1JWrdyelj/9k=</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>19d14b43-860f-45ee-afe5-d19ae6d9c96c</rd:ReportID>
+</Report>
