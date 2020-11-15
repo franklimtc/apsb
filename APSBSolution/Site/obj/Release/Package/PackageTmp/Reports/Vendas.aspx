@@ -51,11 +51,11 @@
 
                     <asp:BoundField DataField="cvNF" HeaderText="Nota Fiscal" SortExpression="cvNF" />
 
-                    <asp:BoundField DataField="cvDesconto" HeaderText="Desconto (%)" SortExpression="cvDesconto" DataFormatString="{0:P}" />
+                    <asp:BoundField DataField="cvDesconto" HeaderText="Desconto (%)" SortExpression="cvDesconto" ControlStyle-CssClass="percent" />
                     <asp:BoundField DataField="cvDescontoValor" HeaderText="Valor Desconto" SortExpression="cvDescontoValor" DataFormatString="{0:C}" />
 
                     <asp:BoundField DataField="ccIssRetido" HeaderText="ISS Retido" />
-                    <asp:BoundField DataField="cvISS" HeaderText="ISS(%)" SortExpression="cvISS" DataFormatString="{0:P}" />
+                    <asp:BoundField DataField="cvISS" HeaderText="ISS(%)" SortExpression="cvISS" ControlStyle-CssClass="percent"/>
                     <asp:BoundField DataField="cvISSValor" HeaderText="Valor ISS" SortExpression="cvISSValor" DataFormatString="{0:C}" />
 
                     <asp:BoundField DataField="observacao" HeaderText="observacao" SortExpression="observacao" Visible="false" />

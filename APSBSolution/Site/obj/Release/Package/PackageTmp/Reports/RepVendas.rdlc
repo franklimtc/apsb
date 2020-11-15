@@ -831,14 +831,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="cvValorPago1">
+                        <Textbox Name="cvValor">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cvValorPago.Value</Value>
+                                  <Value>=Fields!cvValor.Value</Value>
                                   <Style>
                                     <Format>'R$' #,0.00</Format>
                                   </Style>
@@ -847,7 +847,7 @@
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>cvValorPago1</rd:DefaultName>
+                          <rd:DefaultName>cvValor</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -860,6 +860,7 @@
                             <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1099,7 +1100,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cvDesconto.Value</Value>
+                                  <Value>=Fields!cvDesconto.Value/100</Value>
                                   <Style>
                                     <Format>0.00%</Format>
                                   </Style>
@@ -1198,7 +1199,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!cvISS.Value</Value>
+                                  <Value>=Fields!cvISS.Value/100</Value>
                                   <Style>
                                     <Format>0.00%</Format>
                                   </Style>
