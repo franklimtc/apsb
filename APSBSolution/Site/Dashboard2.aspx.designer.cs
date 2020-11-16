@@ -11,7 +11,7 @@ namespace Site
 {
 
 
-    public partial class Dashboard
+    public partial class Dashboard2
     {
     }
 }

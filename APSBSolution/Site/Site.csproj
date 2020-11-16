@@ -189,6 +189,7 @@
     <Content Include="Content\Bancos\748.png" />
     <Content Include="Content\Bancos\756.png" />
     <Content Include="Content\Bancos\77.png" />
+    <Content Include="Content\Icons\brazil-real-symbol.svg" />
     <Content Include="Content\Icons\danger.jpg" />
     <Content Include="Content\Icons\danger.png" />
     <Content Include="Account\Forgot.aspx" />
@@ -462,7 +463,7 @@
     <Content Include="Content\Icons\trash-outline.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="Dash2.aspx" />
+    <Content Include="Dashboard2.aspx" />
     <Content Include="Datatables.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -1310,12 +1311,12 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dash2.aspx.cs">
-      <DependentUpon>Dash2.aspx</DependentUpon>
+    <Compile Include="Dashboard2.aspx.cs">
+      <DependentUpon>Dashboard2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dash2.aspx.designer.cs">
-      <DependentUpon>Dash2.aspx</DependentUpon>
+    <Compile Include="Dashboard2.aspx.designer.cs">
+      <DependentUpon>Dashboard2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Datatables.aspx.cs">
       <DependentUpon>Datatables.aspx</DependentUpon>

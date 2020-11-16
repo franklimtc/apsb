@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:24</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>11/15/2020 11:34:31</publishTime>
+      <publishTime>11/16/2020 08:11:57</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>11/15/2020 11:34:31</publishTime>
+      <publishTime>11/16/2020 08:11:57</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>11/14/2020 18:20:24</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:36</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>11/15/2020 11:34:04</publishTime>
+      <publishTime>11/16/2020 08:11:37</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>11/15/2020 11:34:04</publishTime>
+      <publishTime>11/16/2020 08:11:37</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>11/14/2020 18:20:03</publishTime>
@@ -1852,6 +1852,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Content/Icons/battery-half-outline.svg">
       <publishTime>11/14/2020 18:20:02</publishTime>
     </File>
+    <File Include="Content/Icons/brazil-real-symbol.svg">
+      <publishTime>11/16/2020 07:59:45</publishTime>
+    </File>
     <File Include="Content/Icons/build-outline.svg">
       <publishTime>11/14/2020 18:20:02</publishTime>
     </File>
@@ -1941,6 +1944,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     </File>
     <File Include="Dashboard.aspx">
       <publishTime>11/14/2020 18:20:02</publishTime>
+    </File>
+    <File Include="Dashboard2.aspx">
+      <publishTime>11/16/2020 08:10:08</publishTime>
     </File>
     <File Include="Datatables.aspx">
       <publishTime>11/14/2020 18:20:02</publishTime>
@@ -2036,7 +2042,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:02</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/15/2020 11:34:11</publishTime>
+      <publishTime>11/16/2020 08:11:41</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -3062,7 +3068,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:02</publishTime>
     </File>
     <File Include="Site.Master">
-      <publishTime>11/14/2020 18:20:02</publishTime>
+      <publishTime>11/15/2020 12:05:03</publishTime>
     </File>
     <File Include="Site.Mobile.Master">
       <publishTime>11/14/2020 18:20:02</publishTime>
