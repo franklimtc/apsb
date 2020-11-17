@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ReportRedirect.aspx.cs" Inherits="Site.Reports.ReportRedirect" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Geral.aspx.cs" Inherits="Site.Reports.ReportRedirect" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
      
     <%--DataSources--%>
@@ -11,7 +11,7 @@
     <%--DataSources--%>
 
     <div class="row col center">
-        <h4>Emissão de Relatórios</h4>
+        <h4>Relatório Geral</h4>
     </div>
     <br />
     <hr />

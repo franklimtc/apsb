@@ -492,10 +492,11 @@
     <Content Include="Reports\Despesas.aspx" />
     <Content Include="Reports\Profissionais.aspx" />
     <Content Include="Reports\Clinicas.aspx" />
+    <Content Include="Reports\Rentabilidade.aspx" />
     <Content Include="Reports\Repasses.aspx" />
     <Content Include="Reports\Report.aspx" />
     <Content Include="Reports\Report2.aspx" />
-    <Content Include="Reports\ReportRedirect.aspx" />
+    <Content Include="Reports\Geral.aspx" />
     <Content Include="Reports\Vendas.aspx" />
     <Content Include="Reports\Rep01.rdlc" />
     <Content Include="Reports\RepDespesas.rdlc" />
@@ -566,6 +567,17 @@
     </Content>
     <Content Include="DS_SEL_Despesas.xsc">
       <DependentUpon>DS_SEL_Despesas.xsd</DependentUpon>
+    </Content>
+    <Content Include="DBRentabilidade.xsc">
+      <DependentUpon>DBRentabilidade.xsd</DependentUpon>
+    </Content>
+    <None Include="DBRentabilidade.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBRentabilidade.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="DBRentabilidade.xss">
+      <DependentUpon>DBRentabilidade.xsd</DependentUpon>
     </Content>
     <None Include="DS_SEL_Despesas.xsd">
       <Generator>MSDataSetGenerator</Generator>
@@ -970,6 +982,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Operacoes\Dashboard.js" />
+    <Content Include="Scripts\Operacoes\Dashboard2.js" />
     <Content Include="Scripts\Operacoes\Medico.js" />
     <Content Include="Scripts\Operacoes\Operacoes.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -1350,6 +1363,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DBRelatorioGeral1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DBRentabilidade.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBRentabilidade.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1482,6 +1500,13 @@
     <Compile Include="Reports\Clinicas.aspx.designer.cs">
       <DependentUpon>Clinicas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Rentabilidade.aspx.cs">
+      <DependentUpon>Rentabilidade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Rentabilidade.aspx.designer.cs">
+      <DependentUpon>Rentabilidade.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Repasses.aspx.cs">
       <DependentUpon>Repasses.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1503,12 +1528,12 @@
     <Compile Include="Reports\Report2.aspx.designer.cs">
       <DependentUpon>Report2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\ReportRedirect.aspx.cs">
-      <DependentUpon>ReportRedirect.aspx</DependentUpon>
+    <Compile Include="Reports\Geral.aspx.cs">
+      <DependentUpon>Geral.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\ReportRedirect.aspx.designer.cs">
-      <DependentUpon>ReportRedirect.aspx</DependentUpon>
+    <Compile Include="Reports\Geral.aspx.designer.cs">
+      <DependentUpon>Geral.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Vendas.aspx.cs">
       <DependentUpon>Vendas.aspx</DependentUpon>
@@ -1577,6 +1602,7 @@
     <EmbeddedResource Include="Reports\Mod_ficha.rdlc" />
     <Content Include="Reports\Rel_repasse.rdlc" />
     <Content Include="Reports\Rel_geral.rdlc" />
+    <Content Include="Reports\Rel_rentabilidade.rdlc" />
     <EmbeddedResource Include="Reports\Repasse.rdlc" />
   </ItemGroup>
   <PropertyGroup>

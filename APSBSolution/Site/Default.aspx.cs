@@ -11,7 +11,7 @@ namespace Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect(@"~\Dashboard");
+            Response.Redirect(@"~\Dashboard2");
         }
     }
 }
