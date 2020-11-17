@@ -761,10 +761,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:24</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>11/16/2020 22:29:48</publishTime>
+      <publishTime>11/16/2020 22:57:27</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>11/16/2020 22:29:48</publishTime>
+      <publishTime>11/16/2020 22:57:27</publishTime>
     </File>
     <File Include="bin/AspNet.ScriptManager.bootstrap.dll">
       <publishTime>11/14/2020 18:20:24</publishTime>
@@ -1223,10 +1223,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:36</publishTime>
     </File>
     <File Include="bin/Site.dll">
-      <publishTime>11/16/2020 22:29:31</publishTime>
+      <publishTime>11/16/2020 22:57:11</publishTime>
     </File>
     <File Include="bin/Site.pdb">
-      <publishTime>11/16/2020 22:29:31</publishTime>
+      <publishTime>11/16/2020 22:57:11</publishTime>
     </File>
     <File Include="bin/SqlServerTypes/x64/msvcr120.dll">
       <publishTime>11/14/2020 18:20:03</publishTime>
@@ -2048,7 +2048,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:02</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>11/16/2020 22:29:34</publishTime>
+      <publishTime>11/16/2020 22:57:15</publishTime>
     </File>
     <File Include="Reports/Acordo.rdlc">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -2768,7 +2768,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>11/14/2020 18:20:02</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Dashboard2.js">
-      <publishTime>11/16/2020 21:35:29</publishTime>
+      <publishTime>11/16/2020 22:54:56</publishTime>
     </File>
     <File Include="Scripts/Operacoes/Medico.js">
       <publishTime>11/14/2020 18:20:02</publishTime>

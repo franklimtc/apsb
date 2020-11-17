@@ -1,7 +1,9 @@
-﻿$(document).ready(function () {
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawVisualization);
+﻿google.charts.load('current', { 'packages': ['corechart'] });
+google.charts.setOnLoadCallback(drawVisualization);
 
+var data = null;
+
+$(document).ready(function () {
     $.ajax({
         type: "POST",
         url: "Dashboard2.aspx/GetChartGeral",
@@ -12,35 +14,18 @@
             alert("Request: " + XMLHttpRequest.toString() + "\n\nStatus: " + textStatus + "\n\nError: " + errorThrown);
         },
         success: function (result) {
-           
-            //var data = google.visualization.arrayToDataTable(result.d);
-            drawVisualization(result.d);
+
+            data = result.d;
+            drawVisualization();
         }
     });
 }
-)
+);
 
 
-function drawVisualization(data) {
-    // Some raw data (not necessarily accurate)
-    //var data = google.visualization.arrayToDataTable(
-    //[
-    //    ['Mês', 'Fat Bruto', 'Fat Liquido', 'Rec Bruta', 'Rec Liquida'],
-    //    ['Jan', 100000, 80000, 20000, 19000],
-    //    ['Fev', 150000, 120000, 20000, 19000],
-    //    ['Mar', 100000, 80000, 20000, 19000],
-    //    ['Mai', 150000, 120000, 20000, 19000],
-    //    ['Jun', 100000, 80000, 20000, 19000],
-    //    ['Jul', 150000, 120000, 20000, 19000],
-    //    ['Ago', 100000, 80000, 20000, 19000],
-    //    ['Set', 150000, 120000, 20000, 19000],
-    //    ['Out', 100000, 80000, 20000, 19000],
-    //    ['Nov', 150000, 120000, 20000, 19000],
-    //    ['Dez', 100000, 80000, 20000, 19000]
-    //]
-    //);
-
-    var data = google.visualization.arrayToDataTable(data);
+function drawVisualization() {
+   
+    var dados = google.visualization.arrayToDataTable(data);
 
     var options = {
         title: 'Faturamento Mensal',
@@ -52,5 +37,5 @@ function drawVisualization(data) {
     };
 
     var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-    chart.draw(data, options);
-}
+    chart.draw(dados, options);
+};
