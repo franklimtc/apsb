@@ -854,7 +854,7 @@
                                 <TextRun>
                                   <Value>=Fields!faturamento.Value</Value>
                                   <Style>
-                                    <Format>'R$' #,0,.00;('R$' #,0,.00)</Format>
+                                    <Format>'R$' #,0.00;('R$' #,0.00)</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -874,6 +874,7 @@
                             <rd:FormatSymbolCulture>pt-BR</rd:FormatSymbolCulture>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
