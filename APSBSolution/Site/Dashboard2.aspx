@@ -73,16 +73,31 @@
 
     <%--Faturamento Histórico--%>
 
+    <%--Gráfico Geral com todos os parâmetros
     <div class="row">
         <div class="col">
             <div class="card">
                 <div class="card-header">
                     <div id="chart_div" style="width: 100%; height: 400px;"></div>
-
                 </div>
             </div>
         </div>
     </div>
+    --Gráfico Geral com todos os parâmetros--%>
+
+    <%--Gráficos Individuais--%>
+
+    <div class="row">
+        <div class="col"><div id="chart_FatBruto" style="width: 100%; height: 300px;"></div></div>
+        <div class="col"><div id="chart_FatLiquido" style="width: 100%; height: 300px;"></div></div>
+    </div>
+    <p></p>
+    <div class="row">
+        <div class="col"><div id="chart_RecBruta" style="width: 100%; height: 300px;"></div></div>
+        <div class="col"><div id="chart_RecLiquida" style="width: 100%; height: 300px;"></div></div>
+    </div>
+     <%--Gráficos Individuais--%>
+
 
      <div class="row">
         <div class="col-lg-6 col-md-12">
@@ -172,6 +187,7 @@
    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="Scripts/Operacoes/Dashboard2.js"></script>
+    <script src="Scripts/jquery.number.js"></script>
     
     <script>
         $(document).ready(function () {
