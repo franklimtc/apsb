@@ -25,6 +25,7 @@ namespace Site.Models
         public Nullable<System.DateTime> cdCriacao { get; set; }
         public string ccUsuario { get; set; }
         public Nullable<bool> cbStatus { get; set; }
+        public Nullable<int> idCategoriaPai { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbDespesaTipo> tbDespesaTipo { get; set; }

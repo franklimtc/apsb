@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\APSBSolution"
+    "\\APSBSolution",
+    "\\APSBSolution\\WebJob"
   ],
-  "SelectedNode": "\\APSBSolution",
+  "SelectedNode": "\\APSBSolution\\WebJob\\WebJob.sln",
   "PreviewInSolutionExplorer": false
 }

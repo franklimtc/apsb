@@ -43,6 +43,17 @@
                         </div>
                         <div class="row">
                             <div class="col">
+                                <asp:TreeView runat="server" ID="tvCategoriasDespesas">
+                                    <HoverNodeStyle ForeColor="Red" />
+                                    <SelectedNodeStyle ForeColor="Green" />
+                                    <NodeStyle ForeColor="Pink" />
+                                    <Nodes>
+                                    </Nodes>
+                                </asp:TreeView>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <h4>Tipos de Despesas</h4>
                                 <hr />
                                 <br />
@@ -107,7 +118,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label>Categoria:</label>
+                    <label>Categoria Pai:</label>
+                    <asp:DropDownList runat="server" ID="dpCategoriaPai" CssClass="form-control" DataSourceID="DSCategorias">
+                    </asp:DropDownList>
+                    <asp:SqlDataSource ID="DSCategorias" runat="server" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SELECT [idCategoria], [ccCategoria] FROM [tbDespesasCategoria] WHERE ([idCategoriaPai] = @idCategoriaPai)">
+                        <SelectParameters>
+                            <asp:Parameter DefaultValue="0" Name="idCategoriaPai" Type="Int32" />
+                        </SelectParameters>
+                    </asp:SqlDataSource>
+
+                    <br />
+
+                    <label>Nova Categoria:</label>
                     <asp:DropDownList runat="server" ID="dpCategorias" CssClass="form-control" DataTextField="ccCategoria" DataValueField="idCategoria">
                     </asp:DropDownList>
                     <br />

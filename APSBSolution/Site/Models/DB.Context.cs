@@ -12,11 +12,13 @@ namespace Site.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class dbapsbEntities : DbContext
+    public partial class entity : DbContext
     {
-        public dbapsbEntities()
-            : base("name=dbapsbEntities")
+        public entity()
+            : base("name=entity")
         {
         }
     
@@ -25,8 +27,1528 @@ namespace Site.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<tbBancos> tbBancos { get; set; }
+        public virtual DbSet<tbClinicaProfissional> tbClinicaProfissional { get; set; }
+        public virtual DbSet<tbClinicas> tbClinicas { get; set; }
+        public virtual DbSet<tbDescontoVariavelClinicas> tbDescontoVariavelClinicas { get; set; }
         public virtual DbSet<tbDespesas> tbDespesas { get; set; }
         public virtual DbSet<tbDespesasCategoria> tbDespesasCategoria { get; set; }
         public virtual DbSet<tbDespesaTipo> tbDespesaTipo { get; set; }
+        public virtual DbSet<tbDocumentos> tbDocumentos { get; set; }
+        public virtual DbSet<tbEndereco> tbEndereco { get; set; }
+        public virtual DbSet<tbEspecialidade> tbEspecialidade { get; set; }
+        public virtual DbSet<tbFormacao> tbFormacao { get; set; }
+        public virtual DbSet<tbLogErro> tbLogErro { get; set; }
+        public virtual DbSet<tbLogJobs> tbLogJobs { get; set; }
+        public virtual DbSet<tbObservacoes> tbObservacoes { get; set; }
+        public virtual DbSet<tbParentes> tbParentes { get; set; }
+        public virtual DbSet<tbProfissionais> tbProfissionais { get; set; }
+        public virtual DbSet<tbProfissionaisBancos> tbProfissionaisBancos { get; set; }
+        public virtual DbSet<tbProfissionaisDados> tbProfissionaisDados { get; set; }
+        public virtual DbSet<tbProfissionalArquivo> tbProfissionalArquivo { get; set; }
+        public virtual DbSet<tbReceitas> tbReceitas { get; set; }
+        public virtual DbSet<tbTelefones> tbTelefones { get; set; }
+        public virtual DbSet<tbImport01> tbImport01 { get; set; }
+        public virtual DbSet<tbImport02> tbImport02 { get; set; }
+        public virtual DbSet<tbParametros> tbParametros { get; set; }
+        public virtual DbSet<tbProfissionalRepasse> tbProfissionalRepasse { get; set; }
+        public virtual DbSet<vwReceitas> vwReceitas { get; set; }
+        public virtual DbSet<vwResumoReceitas> vwResumoReceitas { get; set; }
+    
+        public virtual ObjectResult<Nullable<bool>> ARQ_Operacao(string userName, Nullable<int> idOperacao, string tipo)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idOperacaoParameter = idOperacao.HasValue ?
+                new ObjectParameter("idOperacao", idOperacao) :
+                new ObjectParameter("idOperacao", typeof(int));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("ARQ_Operacao", userNameParameter, idOperacaoParameter, tipoParameter);
+        }
+    
+        public virtual int ARQ_Operacoes(Nullable<System.DateTime> dtFim)
+        {
+            var dtFimParameter = dtFim.HasValue ?
+                new ObjectParameter("dtFim", dtFim) :
+                new ObjectParameter("dtFim", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ARQ_Operacoes", dtFimParameter);
+        }
+    
+        public virtual ObjectResult<ARQ_Receitas_Result> ARQ_Receitas(Nullable<System.DateTime> dtFim)
+        {
+            var dtFimParameter = dtFim.HasValue ?
+                new ObjectParameter("dtFim", dtFim) :
+                new ObjectParameter("dtFim", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ARQ_Receitas_Result>("ARQ_Receitas", dtFimParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> ATV_ProfissionalAuto(string userName, string token)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("Token", token) :
+                new ObjectParameter("Token", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("ATV_ProfissionalAuto", userNameParameter, tokenParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_Clinica(string userName, Nullable<int> idClinica)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("idClinica", idClinica) :
+                new ObjectParameter("idClinica", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_Clinica", userNameParameter, idClinicaParameter);
+        }
+    
+        public virtual int EXC_ClinicaDetinitivo(Nullable<int> idClinica)
+        {
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("idClinica", idClinica) :
+                new ObjectParameter("idClinica", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EXC_ClinicaDetinitivo", idClinicaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_ClinicaProfissional(string userName, Nullable<int> idClinicaProfissional)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idClinicaProfissionalParameter = idClinicaProfissional.HasValue ?
+                new ObjectParameter("idClinicaProfissional", idClinicaProfissional) :
+                new ObjectParameter("idClinicaProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_ClinicaProfissional", userNameParameter, idClinicaProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_Despesa(Nullable<int> idDespesa, string userName)
+        {
+            var idDespesaParameter = idDespesa.HasValue ?
+                new ObjectParameter("idDespesa", idDespesa) :
+                new ObjectParameter("idDespesa", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_Despesa", idDespesaParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_Operacao(string userName, Nullable<int> idOperacao, string tipo)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idOperacaoParameter = idOperacao.HasValue ?
+                new ObjectParameter("idOperacao", idOperacao) :
+                new ObjectParameter("idOperacao", typeof(int));
+    
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_Operacao", userNameParameter, idOperacaoParameter, tipoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_Profissional(string userName, Nullable<int> idProfissional)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_Profissional", userNameParameter, idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_ProfissionalArquivo(string userName, Nullable<int> idArquivo)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idArquivoParameter = idArquivo.HasValue ?
+                new ObjectParameter("idArquivo", idArquivo) :
+                new ObjectParameter("idArquivo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_ProfissionalArquivo", userNameParameter, idArquivoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_ProfissionalAuto(string userName, string token)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("Token", token) :
+                new ObjectParameter("Token", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_ProfissionalAuto", userNameParameter, tokenParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_ProfissionalBanco(string userName, Nullable<int> idProfissionalBanco)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idProfissionalBancoParameter = idProfissionalBanco.HasValue ?
+                new ObjectParameter("IdProfissionalBanco", idProfissionalBanco) :
+                new ObjectParameter("IdProfissionalBanco", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_ProfissionalBanco", userNameParameter, idProfissionalBancoParameter);
+        }
+    
+        public virtual int EXC_ProfissionalDetinitivo(Nullable<int> idProfisional)
+        {
+            var idProfisionalParameter = idProfisional.HasValue ?
+                new ObjectParameter("idProfisional", idProfisional) :
+                new ObjectParameter("idProfisional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("EXC_ProfissionalDetinitivo", idProfisionalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> EXC_Repasse(Nullable<int> idRepasse, string userName)
+        {
+            var idRepasseParameter = idRepasse.HasValue ?
+                new ObjectParameter("idRepasse", idRepasse) :
+                new ObjectParameter("idRepasse", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("EXC_Repasse", idRepasseParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetIDProfissionalByName(string ccNome)
+        {
+            var ccNomeParameter = ccNome != null ?
+                new ObjectParameter("ccNome", ccNome) :
+                new ObjectParameter("ccNome", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetIDProfissionalByName", ccNomeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_Clinica(string userName, string ccApelido, string ccRazaoSocial, string ccNomeFantasia, string ccEmail, Nullable<decimal> cvISS, Nullable<decimal> cvDescontos, Nullable<int> idBanco, Nullable<int> cvPgtoDias, Nullable<bool> cbDescontoVariavel, string observacoes, Nullable<long> cvCNPJ, Nullable<decimal> cvValorCorte, Nullable<decimal> cvValorMenor, Nullable<decimal> cvValorMaior)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var ccApelidoParameter = ccApelido != null ?
+                new ObjectParameter("ccApelido", ccApelido) :
+                new ObjectParameter("ccApelido", typeof(string));
+    
+            var ccRazaoSocialParameter = ccRazaoSocial != null ?
+                new ObjectParameter("ccRazaoSocial", ccRazaoSocial) :
+                new ObjectParameter("ccRazaoSocial", typeof(string));
+    
+            var ccNomeFantasiaParameter = ccNomeFantasia != null ?
+                new ObjectParameter("ccNomeFantasia", ccNomeFantasia) :
+                new ObjectParameter("ccNomeFantasia", typeof(string));
+    
+            var ccEmailParameter = ccEmail != null ?
+                new ObjectParameter("ccEmail", ccEmail) :
+                new ObjectParameter("ccEmail", typeof(string));
+    
+            var cvISSParameter = cvISS.HasValue ?
+                new ObjectParameter("cvISS", cvISS) :
+                new ObjectParameter("cvISS", typeof(decimal));
+    
+            var cvDescontosParameter = cvDescontos.HasValue ?
+                new ObjectParameter("cvDescontos", cvDescontos) :
+                new ObjectParameter("cvDescontos", typeof(decimal));
+    
+            var idBancoParameter = idBanco.HasValue ?
+                new ObjectParameter("idBanco", idBanco) :
+                new ObjectParameter("idBanco", typeof(int));
+    
+            var cvPgtoDiasParameter = cvPgtoDias.HasValue ?
+                new ObjectParameter("cvPgtoDias", cvPgtoDias) :
+                new ObjectParameter("cvPgtoDias", typeof(int));
+    
+            var cbDescontoVariavelParameter = cbDescontoVariavel.HasValue ?
+                new ObjectParameter("cbDescontoVariavel", cbDescontoVariavel) :
+                new ObjectParameter("cbDescontoVariavel", typeof(bool));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var cvCNPJParameter = cvCNPJ.HasValue ?
+                new ObjectParameter("cvCNPJ", cvCNPJ) :
+                new ObjectParameter("cvCNPJ", typeof(long));
+    
+            var cvValorCorteParameter = cvValorCorte.HasValue ?
+                new ObjectParameter("cvValorCorte", cvValorCorte) :
+                new ObjectParameter("cvValorCorte", typeof(decimal));
+    
+            var cvValorMenorParameter = cvValorMenor.HasValue ?
+                new ObjectParameter("cvValorMenor", cvValorMenor) :
+                new ObjectParameter("cvValorMenor", typeof(decimal));
+    
+            var cvValorMaiorParameter = cvValorMaior.HasValue ?
+                new ObjectParameter("cvValorMaior", cvValorMaior) :
+                new ObjectParameter("cvValorMaior", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_Clinica", userNameParameter, ccApelidoParameter, ccRazaoSocialParameter, ccNomeFantasiaParameter, ccEmailParameter, cvISSParameter, cvDescontosParameter, idBancoParameter, cvPgtoDiasParameter, cbDescontoVariavelParameter, observacoesParameter, cvCNPJParameter, cvValorCorteParameter, cvValorMenorParameter, cvValorMaiorParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_ClinicaProfissional(string userName, Nullable<int> idClinica, Nullable<int> idProfissional, Nullable<decimal> cvTaxaProfissional, string observacoes)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("idClinica", idClinica) :
+                new ObjectParameter("idClinica", typeof(int));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            var cvTaxaProfissionalParameter = cvTaxaProfissional.HasValue ?
+                new ObjectParameter("cvTaxaProfissional", cvTaxaProfissional) :
+                new ObjectParameter("cvTaxaProfissional", typeof(decimal));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_ClinicaProfissional", userNameParameter, idClinicaParameter, idProfissionalParameter, cvTaxaProfissionalParameter, observacoesParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_Despesa(Nullable<int> idTipo, Nullable<double> cvValor, Nullable<System.DateTime> cdData, string observacoes, string userName)
+        {
+            var idTipoParameter = idTipo.HasValue ?
+                new ObjectParameter("idTipo", idTipo) :
+                new ObjectParameter("idTipo", typeof(int));
+    
+            var cvValorParameter = cvValor.HasValue ?
+                new ObjectParameter("cvValor", cvValor) :
+                new ObjectParameter("cvValor", typeof(double));
+    
+            var cdDataParameter = cdData.HasValue ?
+                new ObjectParameter("cdData", cdData) :
+                new ObjectParameter("cdData", typeof(System.DateTime));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_Despesa", idTipoParameter, cvValorParameter, cdDataParameter, observacoesParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_DespesaTipo(string tipo, string userName)
+        {
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_DespesaTipo", tipoParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_Especialidade(string userName, string especialidade)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var especialidadeParameter = especialidade != null ?
+                new ObjectParameter("Especialidade", especialidade) :
+                new ObjectParameter("Especialidade", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_Especialidade", userNameParameter, especialidadeParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_Profissional(string ccNome, string ccSexo, string ccNaturalUF, string ccNaturalCidade, string ccEstadoCivil, string ccEmail, string userName, string observacoes, string rGNum, string rGEmissor, Nullable<System.DateTime> rGdtEmissao, string cPFNum, Nullable<long> cvTelefone, Nullable<long> cvCelular, string nomePai, string nomeMae, string nomeConjuge, Nullable<System.DateTime> cdDataNascimento, Nullable<System.DateTime> cdFiliacao, Nullable<System.DateTime> cdPgtoTaxa, Nullable<System.DateTime> cdRegCartorio, Nullable<long> cvCNH)
+        {
+            var ccNomeParameter = ccNome != null ?
+                new ObjectParameter("ccNome", ccNome) :
+                new ObjectParameter("ccNome", typeof(string));
+    
+            var ccSexoParameter = ccSexo != null ?
+                new ObjectParameter("ccSexo", ccSexo) :
+                new ObjectParameter("ccSexo", typeof(string));
+    
+            var ccNaturalUFParameter = ccNaturalUF != null ?
+                new ObjectParameter("ccNaturalUF", ccNaturalUF) :
+                new ObjectParameter("ccNaturalUF", typeof(string));
+    
+            var ccNaturalCidadeParameter = ccNaturalCidade != null ?
+                new ObjectParameter("ccNaturalCidade", ccNaturalCidade) :
+                new ObjectParameter("ccNaturalCidade", typeof(string));
+    
+            var ccEstadoCivilParameter = ccEstadoCivil != null ?
+                new ObjectParameter("ccEstadoCivil", ccEstadoCivil) :
+                new ObjectParameter("ccEstadoCivil", typeof(string));
+    
+            var ccEmailParameter = ccEmail != null ?
+                new ObjectParameter("ccEmail", ccEmail) :
+                new ObjectParameter("ccEmail", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var rGNumParameter = rGNum != null ?
+                new ObjectParameter("RGNum", rGNum) :
+                new ObjectParameter("RGNum", typeof(string));
+    
+            var rGEmissorParameter = rGEmissor != null ?
+                new ObjectParameter("RGEmissor", rGEmissor) :
+                new ObjectParameter("RGEmissor", typeof(string));
+    
+            var rGdtEmissaoParameter = rGdtEmissao.HasValue ?
+                new ObjectParameter("RGdtEmissao", rGdtEmissao) :
+                new ObjectParameter("RGdtEmissao", typeof(System.DateTime));
+    
+            var cPFNumParameter = cPFNum != null ?
+                new ObjectParameter("CPFNum", cPFNum) :
+                new ObjectParameter("CPFNum", typeof(string));
+    
+            var cvTelefoneParameter = cvTelefone.HasValue ?
+                new ObjectParameter("cvTelefone", cvTelefone) :
+                new ObjectParameter("cvTelefone", typeof(long));
+    
+            var cvCelularParameter = cvCelular.HasValue ?
+                new ObjectParameter("cvCelular", cvCelular) :
+                new ObjectParameter("cvCelular", typeof(long));
+    
+            var nomePaiParameter = nomePai != null ?
+                new ObjectParameter("nomePai", nomePai) :
+                new ObjectParameter("nomePai", typeof(string));
+    
+            var nomeMaeParameter = nomeMae != null ?
+                new ObjectParameter("nomeMae", nomeMae) :
+                new ObjectParameter("nomeMae", typeof(string));
+    
+            var nomeConjugeParameter = nomeConjuge != null ?
+                new ObjectParameter("nomeConjuge", nomeConjuge) :
+                new ObjectParameter("nomeConjuge", typeof(string));
+    
+            var cdDataNascimentoParameter = cdDataNascimento.HasValue ?
+                new ObjectParameter("cdDataNascimento", cdDataNascimento) :
+                new ObjectParameter("cdDataNascimento", typeof(System.DateTime));
+    
+            var cdFiliacaoParameter = cdFiliacao.HasValue ?
+                new ObjectParameter("cdFiliacao", cdFiliacao) :
+                new ObjectParameter("cdFiliacao", typeof(System.DateTime));
+    
+            var cdPgtoTaxaParameter = cdPgtoTaxa.HasValue ?
+                new ObjectParameter("cdPgtoTaxa", cdPgtoTaxa) :
+                new ObjectParameter("cdPgtoTaxa", typeof(System.DateTime));
+    
+            var cdRegCartorioParameter = cdRegCartorio.HasValue ?
+                new ObjectParameter("cdRegCartorio", cdRegCartorio) :
+                new ObjectParameter("cdRegCartorio", typeof(System.DateTime));
+    
+            var cvCNHParameter = cvCNH.HasValue ?
+                new ObjectParameter("cvCNH", cvCNH) :
+                new ObjectParameter("cvCNH", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_Profissional", ccNomeParameter, ccSexoParameter, ccNaturalUFParameter, ccNaturalCidadeParameter, ccEstadoCivilParameter, ccEmailParameter, userNameParameter, observacoesParameter, rGNumParameter, rGEmissorParameter, rGdtEmissaoParameter, cPFNumParameter, cvTelefoneParameter, cvCelularParameter, nomePaiParameter, nomeMaeParameter, nomeConjugeParameter, cdDataNascimentoParameter, cdFiliacaoParameter, cdPgtoTaxaParameter, cdRegCartorioParameter, cvCNHParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_ProfissionalArquivo(string userName, Nullable<int> idProfissional, string ccNomeArquivo, byte[] binaryFile)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            var ccNomeArquivoParameter = ccNomeArquivo != null ?
+                new ObjectParameter("ccNomeArquivo", ccNomeArquivo) :
+                new ObjectParameter("ccNomeArquivo", typeof(string));
+    
+            var binaryFileParameter = binaryFile != null ?
+                new ObjectParameter("binaryFile", binaryFile) :
+                new ObjectParameter("binaryFile", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_ProfissionalArquivo", userNameParameter, idProfissionalParameter, ccNomeArquivoParameter, binaryFileParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_ProfissionalAuto(string ccNome, string ccEmail, string userName)
+        {
+            var ccNomeParameter = ccNome != null ?
+                new ObjectParameter("ccNome", ccNome) :
+                new ObjectParameter("ccNome", typeof(string));
+    
+            var ccEmailParameter = ccEmail != null ?
+                new ObjectParameter("ccEmail", ccEmail) :
+                new ObjectParameter("ccEmail", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_ProfissionalAuto", ccNomeParameter, ccEmailParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_Receita(string userName, Nullable<int> idClinica, Nullable<double> cvValor, Nullable<float> cvDesconto, string observacoes, Nullable<bool> cbIssRetido)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("IdClinica", idClinica) :
+                new ObjectParameter("IdClinica", typeof(int));
+    
+            var cvValorParameter = cvValor.HasValue ?
+                new ObjectParameter("cvValor", cvValor) :
+                new ObjectParameter("cvValor", typeof(double));
+    
+            var cvDescontoParameter = cvDesconto.HasValue ?
+                new ObjectParameter("cvDesconto", cvDesconto) :
+                new ObjectParameter("cvDesconto", typeof(float));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var cbIssRetidoParameter = cbIssRetido.HasValue ?
+                new ObjectParameter("cbIssRetido", cbIssRetido) :
+                new ObjectParameter("cbIssRetido", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_Receita", userNameParameter, idClinicaParameter, cvValorParameter, cvDescontoParameter, observacoesParameter, cbIssRetidoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> INS_Repasse(Nullable<int> idReceita, Nullable<int> idProfissional, Nullable<float> cvValor, string observacoes, string userName, Nullable<System.DateTime> dataRepasse)
+        {
+            var idReceitaParameter = idReceita.HasValue ?
+                new ObjectParameter("idReceita", idReceita) :
+                new ObjectParameter("idReceita", typeof(int));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("IdProfissional", idProfissional) :
+                new ObjectParameter("IdProfissional", typeof(int));
+    
+            var cvValorParameter = cvValor.HasValue ?
+                new ObjectParameter("cvValor", cvValor) :
+                new ObjectParameter("cvValor", typeof(float));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var dataRepasseParameter = dataRepasse.HasValue ?
+                new ObjectParameter("dataRepasse", dataRepasse) :
+                new ObjectParameter("dataRepasse", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("INS_Repasse", idReceitaParameter, idProfissionalParameter, cvValorParameter, observacoesParameter, userNameParameter, dataRepasseParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> PGR_Repasse(Nullable<int> idRepasse, string userName, Nullable<System.DateTime> dtRepasse)
+        {
+            var idRepasseParameter = idRepasse.HasValue ?
+                new ObjectParameter("idRepasse", idRepasse) :
+                new ObjectParameter("idRepasse", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var dtRepasseParameter = dtRepasse.HasValue ?
+                new ObjectParameter("dtRepasse", dtRepasse) :
+                new ObjectParameter("dtRepasse", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("PGR_Repasse", idRepasseParameter, userNameParameter, dtRepasseParameter);
+        }
+    
+        public virtual ObjectResult<PROC_RelatorioGeral_Result> PROC_RelatorioGeral(Nullable<System.DateTime> dtInicial, Nullable<System.DateTime> dtFinal)
+        {
+            var dtInicialParameter = dtInicial.HasValue ?
+                new ObjectParameter("dtInicial", dtInicial) :
+                new ObjectParameter("dtInicial", typeof(System.DateTime));
+    
+            var dtFinalParameter = dtFinal.HasValue ?
+                new ObjectParameter("dtFinal", dtFinal) :
+                new ObjectParameter("dtFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PROC_RelatorioGeral_Result>("PROC_RelatorioGeral", dtInicialParameter, dtFinalParameter);
+        }
+    
+        public virtual int ProcessarImport01()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ProcessarImport01");
+        }
+    
+        public virtual ObjectResult<REL_FichaCadastral_Result> REL_FichaCadastral()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REL_FichaCadastral_Result>("REL_FichaCadastral");
+        }
+    
+        public virtual ObjectResult<REL_Rentabilidade_Result> REL_Rentabilidade(Nullable<System.DateTime> dtInicial, Nullable<System.DateTime> dtFinal)
+        {
+            var dtInicialParameter = dtInicial.HasValue ?
+                new ObjectParameter("dtInicial", dtInicial) :
+                new ObjectParameter("dtInicial", typeof(System.DateTime));
+    
+            var dtFinalParameter = dtFinal.HasValue ?
+                new ObjectParameter("dtFinal", dtFinal) :
+                new ObjectParameter("dtFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<REL_Rentabilidade_Result>("REL_Rentabilidade", dtInicialParameter, dtFinalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> RNV_ProfissionalAuto(string userName, string token)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var tokenParameter = token != null ?
+                new ObjectParameter("Token", token) :
+                new ObjectParameter("Token", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("RNV_ProfissionalAuto", userNameParameter, tokenParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Bancos_Result> SEL_Bancos(Nullable<bool> cvStatus)
+        {
+            var cvStatusParameter = cvStatus.HasValue ?
+                new ObjectParameter("cvStatus", cvStatus) :
+                new ObjectParameter("cvStatus", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Bancos_Result>("SEL_Bancos", cvStatusParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ChartDespesas_Result> SEL_ChartDespesas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ChartDespesas_Result>("SEL_ChartDespesas");
+        }
+    
+        public virtual ObjectResult<SEL_ChartFatBruto_Result> SEL_ChartFatBruto()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ChartFatBruto_Result>("SEL_ChartFatBruto");
+        }
+    
+        public virtual ObjectResult<SEL_ChartFatEfetivo_Result> SEL_ChartFatEfetivo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ChartFatEfetivo_Result>("SEL_ChartFatEfetivo");
+        }
+    
+        public virtual ObjectResult<SEL_ChartGeral_Result> SEL_ChartGeral(Nullable<int> mes)
+        {
+            var mesParameter = mes.HasValue ?
+                new ObjectParameter("mes", mes) :
+                new ObjectParameter("mes", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ChartGeral_Result>("SEL_ChartGeral", mesParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ChartReceitaBruta_Result> SEL_ChartReceitaBruta()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ChartReceitaBruta_Result>("SEL_ChartReceitaBruta");
+        }
+    
+        public virtual ObjectResult<SEL_ChartReceitaLiquida_Result> SEL_ChartReceitaLiquida()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ChartReceitaLiquida_Result>("SEL_ChartReceitaLiquida");
+        }
+    
+        public virtual ObjectResult<SEL_ClinicaCNPJ_Result> SEL_ClinicaCNPJ(Nullable<long> cnpj)
+        {
+            var cnpjParameter = cnpj.HasValue ?
+                new ObjectParameter("cnpj", cnpj) :
+                new ObjectParameter("cnpj", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ClinicaCNPJ_Result>("SEL_ClinicaCNPJ", cnpjParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ClinicaProfissional_Result> SEL_ClinicaProfissional(Nullable<int> idClinica, Nullable<int> idProfissional)
+        {
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("idClinica", idClinica) :
+                new ObjectParameter("idClinica", typeof(int));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ClinicaProfissional_Result>("SEL_ClinicaProfissional", idClinicaParameter, idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Clinicas_Result> SEL_Clinicas(Nullable<bool> status, Nullable<int> idClinica)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("IdClinica", idClinica) :
+                new ObjectParameter("IdClinica", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Clinicas_Result>("SEL_Clinicas", statusParameter, idClinicaParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ClinicasByApelido_Result> SEL_ClinicasByApelido(string ccApelido)
+        {
+            var ccApelidoParameter = ccApelido != null ?
+                new ObjectParameter("ccApelido", ccApelido) :
+                new ObjectParameter("ccApelido", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ClinicasByApelido_Result>("SEL_ClinicasByApelido", ccApelidoParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Dashboard_Result> SEL_Dashboard()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Dashboard_Result>("SEL_Dashboard");
+        }
+    
+        public virtual ObjectResult<SEL_DespesaByName_Result> SEL_DespesaByName(string ccTipo)
+        {
+            var ccTipoParameter = ccTipo != null ?
+                new ObjectParameter("ccTipo", ccTipo) :
+                new ObjectParameter("ccTipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_DespesaByName_Result>("SEL_DespesaByName", ccTipoParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Despesas_Result> SEL_Despesas(Nullable<bool> cbArquivado, Nullable<bool> cbStatus, Nullable<System.DateTime> dtInicial, Nullable<System.DateTime> dtFinal, Nullable<int> idDespesa)
+        {
+            var cbArquivadoParameter = cbArquivado.HasValue ?
+                new ObjectParameter("cbArquivado", cbArquivado) :
+                new ObjectParameter("cbArquivado", typeof(bool));
+    
+            var cbStatusParameter = cbStatus.HasValue ?
+                new ObjectParameter("cbStatus", cbStatus) :
+                new ObjectParameter("cbStatus", typeof(bool));
+    
+            var dtInicialParameter = dtInicial.HasValue ?
+                new ObjectParameter("dtInicial", dtInicial) :
+                new ObjectParameter("dtInicial", typeof(System.DateTime));
+    
+            var dtFinalParameter = dtFinal.HasValue ?
+                new ObjectParameter("dtFinal", dtFinal) :
+                new ObjectParameter("dtFinal", typeof(System.DateTime));
+    
+            var idDespesaParameter = idDespesa.HasValue ?
+                new ObjectParameter("idDespesa", idDespesa) :
+                new ObjectParameter("idDespesa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Despesas_Result>("SEL_Despesas", cbArquivadoParameter, cbStatusParameter, dtInicialParameter, dtFinalParameter, idDespesaParameter);
+        }
+    
+        public virtual ObjectResult<SEL_DespesaTipo_Result> SEL_DespesaTipo(string tipo)
+        {
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_DespesaTipo_Result>("SEL_DespesaTipo", tipoParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Endereco_Result> SEL_Endereco(Nullable<int> idProfissional)
+        {
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Endereco_Result>("SEL_Endereco", idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Especialidades_Result> SEL_Especialidades()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Especialidades_Result>("SEL_Especialidades");
+        }
+    
+        public virtual ObjectResult<SEL_Faturamento10_Result> SEL_Faturamento10(Nullable<bool> cbAcumulado)
+        {
+            var cbAcumuladoParameter = cbAcumulado.HasValue ?
+                new ObjectParameter("cbAcumulado", cbAcumulado) :
+                new ObjectParameter("cbAcumulado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Faturamento10_Result>("SEL_Faturamento10", cbAcumuladoParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Formacoes_Result> SEL_Formacoes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Formacoes_Result>("SEL_Formacoes");
+        }
+    
+        public virtual ObjectResult<SEL_LastError_Result> SEL_LastError()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_LastError_Result>("SEL_LastError");
+        }
+    
+        public virtual ObjectResult<SEL_OperacaoByID_Result> SEL_OperacaoByID(string tipo, Nullable<int> idOperacao)
+        {
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+    
+            var idOperacaoParameter = idOperacao.HasValue ?
+                new ObjectParameter("idOperacao", idOperacao) :
+                new ObjectParameter("idOperacao", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_OperacaoByID_Result>("SEL_OperacaoByID", tipoParameter, idOperacaoParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Operacoes_Result> SEL_Operacoes(Nullable<bool> cbArquivado, Nullable<bool> cbStatus, Nullable<System.DateTime> dtInicio, Nullable<System.DateTime> dtFim)
+        {
+            var cbArquivadoParameter = cbArquivado.HasValue ?
+                new ObjectParameter("cbArquivado", cbArquivado) :
+                new ObjectParameter("cbArquivado", typeof(bool));
+    
+            var cbStatusParameter = cbStatus.HasValue ?
+                new ObjectParameter("cbStatus", cbStatus) :
+                new ObjectParameter("cbStatus", typeof(bool));
+    
+            var dtInicioParameter = dtInicio.HasValue ?
+                new ObjectParameter("dtInicio", dtInicio) :
+                new ObjectParameter("dtInicio", typeof(System.DateTime));
+    
+            var dtFimParameter = dtFim.HasValue ?
+                new ObjectParameter("dtFim", dtFim) :
+                new ObjectParameter("dtFim", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Operacoes_Result>("SEL_Operacoes", cbArquivadoParameter, cbStatusParameter, dtInicioParameter, dtFimParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Profissionais_Result> SEL_Profissionais(Nullable<bool> status, Nullable<int> idProfissional)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("IdProfissional", idProfissional) :
+                new ObjectParameter("IdProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Profissionais_Result>("SEL_Profissionais", statusParameter, idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionaisDados_Result> SEL_ProfissionaisDados(Nullable<int> idProfissional)
+        {
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("IdProfissional", idProfissional) :
+                new ObjectParameter("IdProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionaisDados_Result>("SEL_ProfissionaisDados", idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionaisDP_Result> SEL_ProfissionaisDP()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionaisDP_Result>("SEL_ProfissionaisDP");
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionaisGrid_Result> SEL_ProfissionaisGrid(Nullable<bool> status, Nullable<bool> ultimosRegistros, string ccNome)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            var ultimosRegistrosParameter = ultimosRegistros.HasValue ?
+                new ObjectParameter("ultimosRegistros", ultimosRegistros) :
+                new ObjectParameter("ultimosRegistros", typeof(bool));
+    
+            var ccNomeParameter = ccNome != null ?
+                new ObjectParameter("ccNome", ccNome) :
+                new ObjectParameter("ccNome", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionaisGrid_Result>("SEL_ProfissionaisGrid", statusParameter, ultimosRegistrosParameter, ccNomeParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionaisGrid2_Result> SEL_ProfissionaisGrid2(Nullable<bool> status, Nullable<int> offset, Nullable<int> rows)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            var offsetParameter = offset.HasValue ?
+                new ObjectParameter("offset", offset) :
+                new ObjectParameter("offset", typeof(int));
+    
+            var rowsParameter = rows.HasValue ?
+                new ObjectParameter("rows", rows) :
+                new ObjectParameter("rows", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionaisGrid2_Result>("SEL_ProfissionaisGrid2", statusParameter, offsetParameter, rowsParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionaisRel_Result> SEL_ProfissionaisRel()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionaisRel_Result>("SEL_ProfissionaisRel");
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalArquivo_Result> SEL_ProfissionalArquivo(Nullable<int> idProfissional)
+        {
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalArquivo_Result>("SEL_ProfissionalArquivo", idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalArquivoBinary_Result> SEL_ProfissionalArquivoBinary(Nullable<int> idArquivo)
+        {
+            var idArquivoParameter = idArquivo.HasValue ?
+                new ObjectParameter("idArquivo", idArquivo) :
+                new ObjectParameter("idArquivo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalArquivoBinary_Result>("SEL_ProfissionalArquivoBinary", idArquivoParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalAuto_Result> SEL_ProfissionalAuto()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalAuto_Result>("SEL_ProfissionalAuto");
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalBanco_Result> SEL_ProfissionalBanco(Nullable<int> idProfissional)
+        {
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalBanco_Result>("SEL_ProfissionalBanco", idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<string> SEL_ProfissionalbyCPF(Nullable<long> cPF)
+        {
+            var cPFParameter = cPF.HasValue ?
+                new ObjectParameter("CPF", cPF) :
+                new ObjectParameter("CPF", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("SEL_ProfissionalbyCPF", cPFParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalClinicaDP_Result> SEL_ProfissionalClinicaDP(Nullable<int> idOperacao)
+        {
+            var idOperacaoParameter = idOperacao.HasValue ?
+                new ObjectParameter("idOperacao", idOperacao) :
+                new ObjectParameter("idOperacao", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalClinicaDP_Result>("SEL_ProfissionalClinicaDP", idOperacaoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SEL_ProfissionalCristalina(Nullable<int> idProfissional)
+        {
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SEL_ProfissionalCristalina", idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalEndereco_Result> SEL_ProfissionalEndereco(Nullable<int> idProfissional)
+        {
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalEndereco_Result>("SEL_ProfissionalEndereco", idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SEL_ProfissionalIDByReceita(Nullable<int> idReceita, string ccNome)
+        {
+            var idReceitaParameter = idReceita.HasValue ?
+                new ObjectParameter("idReceita", idReceita) :
+                new ObjectParameter("idReceita", typeof(int));
+    
+            var ccNomeParameter = ccNome != null ?
+                new ObjectParameter("ccNome", ccNome) :
+                new ObjectParameter("ccNome", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SEL_ProfissionalIDByReceita", idReceitaParameter, ccNomeParameter);
+        }
+    
+        public virtual ObjectResult<SEL_ProfissionalRepasses_Result> SEL_ProfissionalRepasses(Nullable<int> year, Nullable<System.DateTime> dtInicial, Nullable<System.DateTime> dtFinal)
+        {
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            var dtInicialParameter = dtInicial.HasValue ?
+                new ObjectParameter("dtInicial", dtInicial) :
+                new ObjectParameter("dtInicial", typeof(System.DateTime));
+    
+            var dtFinalParameter = dtFinal.HasValue ?
+                new ObjectParameter("dtFinal", dtFinal) :
+                new ObjectParameter("dtFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_ProfissionalRepasses_Result>("SEL_ProfissionalRepasses", yearParameter, dtInicialParameter, dtFinalParameter);
+        }
+    
+        public virtual ObjectResult<SEL_QtdNotas_Result> SEL_QtdNotas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_QtdNotas_Result>("SEL_QtdNotas");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SEL_QtdProfissioais(Nullable<bool> status)
+        {
+            var statusParameter = status.HasValue ?
+                new ObjectParameter("Status", status) :
+                new ObjectParameter("Status", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SEL_QtdProfissioais", statusParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Receitas_Result> SEL_Receitas(Nullable<bool> cbArquivado, Nullable<bool> cbStatus, Nullable<System.DateTime> dtInicial, Nullable<System.DateTime> dtFinal, Nullable<int> idReceita)
+        {
+            var cbArquivadoParameter = cbArquivado.HasValue ?
+                new ObjectParameter("cbArquivado", cbArquivado) :
+                new ObjectParameter("cbArquivado", typeof(bool));
+    
+            var cbStatusParameter = cbStatus.HasValue ?
+                new ObjectParameter("cbStatus", cbStatus) :
+                new ObjectParameter("cbStatus", typeof(bool));
+    
+            var dtInicialParameter = dtInicial.HasValue ?
+                new ObjectParameter("dtInicial", dtInicial) :
+                new ObjectParameter("dtInicial", typeof(System.DateTime));
+    
+            var dtFinalParameter = dtFinal.HasValue ?
+                new ObjectParameter("dtFinal", dtFinal) :
+                new ObjectParameter("dtFinal", typeof(System.DateTime));
+    
+            var idReceitaParameter = idReceita.HasValue ?
+                new ObjectParameter("idReceita", idReceita) :
+                new ObjectParameter("idReceita", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Receitas_Result>("SEL_Receitas", cbArquivadoParameter, cbStatusParameter, dtInicialParameter, dtFinalParameter, idReceitaParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Repasse_Result> SEL_Repasse(Nullable<int> idReceita, Nullable<bool> cbArquivado, Nullable<bool> cbStatus, Nullable<System.DateTime> dtInicio, Nullable<System.DateTime> dtFim)
+        {
+            var idReceitaParameter = idReceita.HasValue ?
+                new ObjectParameter("idReceita", idReceita) :
+                new ObjectParameter("idReceita", typeof(int));
+    
+            var cbArquivadoParameter = cbArquivado.HasValue ?
+                new ObjectParameter("cbArquivado", cbArquivado) :
+                new ObjectParameter("cbArquivado", typeof(bool));
+    
+            var cbStatusParameter = cbStatus.HasValue ?
+                new ObjectParameter("cbStatus", cbStatus) :
+                new ObjectParameter("cbStatus", typeof(bool));
+    
+            var dtInicioParameter = dtInicio.HasValue ?
+                new ObjectParameter("dtInicio", dtInicio) :
+                new ObjectParameter("dtInicio", typeof(System.DateTime));
+    
+            var dtFimParameter = dtFim.HasValue ?
+                new ObjectParameter("dtFim", dtFim) :
+                new ObjectParameter("dtFim", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Repasse_Result>("SEL_Repasse", idReceitaParameter, cbArquivadoParameter, cbStatusParameter, dtInicioParameter, dtFimParameter);
+        }
+    
+        public virtual ObjectResult<SEL_Repasse10_Result> SEL_Repasse10(Nullable<bool> cbAcumulado)
+        {
+            var cbAcumuladoParameter = cbAcumulado.HasValue ?
+                new ObjectParameter("cbAcumulado", cbAcumulado) :
+                new ObjectParameter("cbAcumulado", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SEL_Repasse10_Result>("SEL_Repasse10", cbAcumuladoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SEL_RepasseObs(Nullable<int> idRepasse)
+        {
+            var idRepasseParameter = idRepasse.HasValue ?
+                new ObjectParameter("idRepasse", idRepasse) :
+                new ObjectParameter("idRepasse", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SEL_RepasseObs", idRepasseParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> SEL_Token(string token)
+        {
+            var tokenParameter = token != null ?
+                new ObjectParameter("Token", token) :
+                new ObjectParameter("Token", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SEL_Token", tokenParameter);
+        }
+    
+        public virtual int SPImport03()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SPImport03");
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_Clinica(string userName, string ccApelido, string ccRazaoSocial, string ccNomeFantasia, string ccEmail, Nullable<decimal> cvISS, Nullable<decimal> cvDescontos, Nullable<int> idBanco, Nullable<int> cvPgtoDias, Nullable<bool> cbDescontoVariavel, string observacoes, Nullable<int> idClinica, Nullable<long> cvCNPJ, Nullable<decimal> cvValorCorte, Nullable<decimal> cvValorMenor, Nullable<decimal> cvValorMaior)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var ccApelidoParameter = ccApelido != null ?
+                new ObjectParameter("ccApelido", ccApelido) :
+                new ObjectParameter("ccApelido", typeof(string));
+    
+            var ccRazaoSocialParameter = ccRazaoSocial != null ?
+                new ObjectParameter("ccRazaoSocial", ccRazaoSocial) :
+                new ObjectParameter("ccRazaoSocial", typeof(string));
+    
+            var ccNomeFantasiaParameter = ccNomeFantasia != null ?
+                new ObjectParameter("ccNomeFantasia", ccNomeFantasia) :
+                new ObjectParameter("ccNomeFantasia", typeof(string));
+    
+            var ccEmailParameter = ccEmail != null ?
+                new ObjectParameter("ccEmail", ccEmail) :
+                new ObjectParameter("ccEmail", typeof(string));
+    
+            var cvISSParameter = cvISS.HasValue ?
+                new ObjectParameter("cvISS", cvISS) :
+                new ObjectParameter("cvISS", typeof(decimal));
+    
+            var cvDescontosParameter = cvDescontos.HasValue ?
+                new ObjectParameter("cvDescontos", cvDescontos) :
+                new ObjectParameter("cvDescontos", typeof(decimal));
+    
+            var idBancoParameter = idBanco.HasValue ?
+                new ObjectParameter("idBanco", idBanco) :
+                new ObjectParameter("idBanco", typeof(int));
+    
+            var cvPgtoDiasParameter = cvPgtoDias.HasValue ?
+                new ObjectParameter("cvPgtoDias", cvPgtoDias) :
+                new ObjectParameter("cvPgtoDias", typeof(int));
+    
+            var cbDescontoVariavelParameter = cbDescontoVariavel.HasValue ?
+                new ObjectParameter("cbDescontoVariavel", cbDescontoVariavel) :
+                new ObjectParameter("cbDescontoVariavel", typeof(bool));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("idClinica", idClinica) :
+                new ObjectParameter("idClinica", typeof(int));
+    
+            var cvCNPJParameter = cvCNPJ.HasValue ?
+                new ObjectParameter("cvCNPJ", cvCNPJ) :
+                new ObjectParameter("cvCNPJ", typeof(long));
+    
+            var cvValorCorteParameter = cvValorCorte.HasValue ?
+                new ObjectParameter("cvValorCorte", cvValorCorte) :
+                new ObjectParameter("cvValorCorte", typeof(decimal));
+    
+            var cvValorMenorParameter = cvValorMenor.HasValue ?
+                new ObjectParameter("cvValorMenor", cvValorMenor) :
+                new ObjectParameter("cvValorMenor", typeof(decimal));
+    
+            var cvValorMaiorParameter = cvValorMaior.HasValue ?
+                new ObjectParameter("cvValorMaior", cvValorMaior) :
+                new ObjectParameter("cvValorMaior", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_Clinica", userNameParameter, ccApelidoParameter, ccRazaoSocialParameter, ccNomeFantasiaParameter, ccEmailParameter, cvISSParameter, cvDescontosParameter, idBancoParameter, cvPgtoDiasParameter, cbDescontoVariavelParameter, observacoesParameter, idClinicaParameter, cvCNPJParameter, cvValorCorteParameter, cvValorMenorParameter, cvValorMaiorParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_Despesa(Nullable<int> idDespesa, Nullable<int> idTipo, Nullable<double> cvValor, Nullable<System.DateTime> cdData, string observacoes, string userName)
+        {
+            var idDespesaParameter = idDespesa.HasValue ?
+                new ObjectParameter("idDespesa", idDespesa) :
+                new ObjectParameter("idDespesa", typeof(int));
+    
+            var idTipoParameter = idTipo.HasValue ?
+                new ObjectParameter("idTipo", idTipo) :
+                new ObjectParameter("idTipo", typeof(int));
+    
+            var cvValorParameter = cvValor.HasValue ?
+                new ObjectParameter("cvValor", cvValor) :
+                new ObjectParameter("cvValor", typeof(double));
+    
+            var cdDataParameter = cdData.HasValue ?
+                new ObjectParameter("cdData", cdData) :
+                new ObjectParameter("cdData", typeof(System.DateTime));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_Despesa", idDespesaParameter, idTipoParameter, cvValorParameter, cdDataParameter, observacoesParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_Endereco(string userName, Nullable<int> idEndereco, string ccEndereco, string ccBairro, Nullable<int> cvCEP, string ccUF, string ccCidade, Nullable<int> idProfissional)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idEnderecoParameter = idEndereco.HasValue ?
+                new ObjectParameter("IdEndereco", idEndereco) :
+                new ObjectParameter("IdEndereco", typeof(int));
+    
+            var ccEnderecoParameter = ccEndereco != null ?
+                new ObjectParameter("ccEndereco", ccEndereco) :
+                new ObjectParameter("ccEndereco", typeof(string));
+    
+            var ccBairroParameter = ccBairro != null ?
+                new ObjectParameter("ccBairro", ccBairro) :
+                new ObjectParameter("ccBairro", typeof(string));
+    
+            var cvCEPParameter = cvCEP.HasValue ?
+                new ObjectParameter("cvCEP", cvCEP) :
+                new ObjectParameter("cvCEP", typeof(int));
+    
+            var ccUFParameter = ccUF != null ?
+                new ObjectParameter("ccUF", ccUF) :
+                new ObjectParameter("ccUF", typeof(string));
+    
+            var ccCidadeParameter = ccCidade != null ?
+                new ObjectParameter("ccCidade", ccCidade) :
+                new ObjectParameter("ccCidade", typeof(string));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_Endereco", userNameParameter, idEnderecoParameter, ccEnderecoParameter, ccBairroParameter, cvCEPParameter, ccUFParameter, ccCidadeParameter, idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_ProfissionaisDados(Nullable<int> idDadoProfissional, Nullable<int> idProfissional, string ccFormacao, string ccPosGraduacao, string ccEspecialidade, string ccConselho, Nullable<long> cvNumInscricao, Nullable<long> cvTitulo, Nullable<short> cvTituloZona, Nullable<short> cvTituloSecao, Nullable<long> cvReservista, Nullable<long> cvPIS, string userName)
+        {
+            var idDadoProfissionalParameter = idDadoProfissional.HasValue ?
+                new ObjectParameter("IdDadoProfissional", idDadoProfissional) :
+                new ObjectParameter("IdDadoProfissional", typeof(int));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            var ccFormacaoParameter = ccFormacao != null ?
+                new ObjectParameter("ccFormacao", ccFormacao) :
+                new ObjectParameter("ccFormacao", typeof(string));
+    
+            var ccPosGraduacaoParameter = ccPosGraduacao != null ?
+                new ObjectParameter("ccPosGraduacao", ccPosGraduacao) :
+                new ObjectParameter("ccPosGraduacao", typeof(string));
+    
+            var ccEspecialidadeParameter = ccEspecialidade != null ?
+                new ObjectParameter("ccEspecialidade", ccEspecialidade) :
+                new ObjectParameter("ccEspecialidade", typeof(string));
+    
+            var ccConselhoParameter = ccConselho != null ?
+                new ObjectParameter("ccConselho", ccConselho) :
+                new ObjectParameter("ccConselho", typeof(string));
+    
+            var cvNumInscricaoParameter = cvNumInscricao.HasValue ?
+                new ObjectParameter("cvNumInscricao", cvNumInscricao) :
+                new ObjectParameter("cvNumInscricao", typeof(long));
+    
+            var cvTituloParameter = cvTitulo.HasValue ?
+                new ObjectParameter("cvTitulo", cvTitulo) :
+                new ObjectParameter("cvTitulo", typeof(long));
+    
+            var cvTituloZonaParameter = cvTituloZona.HasValue ?
+                new ObjectParameter("cvTituloZona", cvTituloZona) :
+                new ObjectParameter("cvTituloZona", typeof(short));
+    
+            var cvTituloSecaoParameter = cvTituloSecao.HasValue ?
+                new ObjectParameter("cvTituloSecao", cvTituloSecao) :
+                new ObjectParameter("cvTituloSecao", typeof(short));
+    
+            var cvReservistaParameter = cvReservista.HasValue ?
+                new ObjectParameter("cvReservista", cvReservista) :
+                new ObjectParameter("cvReservista", typeof(long));
+    
+            var cvPISParameter = cvPIS.HasValue ?
+                new ObjectParameter("cvPIS", cvPIS) :
+                new ObjectParameter("cvPIS", typeof(long));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_ProfissionaisDados", idDadoProfissionalParameter, idProfissionalParameter, ccFormacaoParameter, ccPosGraduacaoParameter, ccEspecialidadeParameter, ccConselhoParameter, cvNumInscricaoParameter, cvTituloParameter, cvTituloZonaParameter, cvTituloSecaoParameter, cvReservistaParameter, cvPISParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_Profissional(string ccNome, string ccSexo, string ccNaturalUF, string ccNaturalCidade, string ccEstadoCivil, string ccEmail, string userName, string observacoes, string rGNum, string rGEmissor, Nullable<System.DateTime> rGdtEmissao, string cPFNum, Nullable<long> cvTelefone, Nullable<long> cvCelular, string nomePai, string nomeMae, string nomeConjuge, Nullable<int> idProfissional, Nullable<System.DateTime> cdDataNascimento, Nullable<System.DateTime> cdFiliacao, Nullable<System.DateTime> cdPgtoTaxa, Nullable<System.DateTime> cdRegCartorio, Nullable<long> cvCNH)
+        {
+            var ccNomeParameter = ccNome != null ?
+                new ObjectParameter("ccNome", ccNome) :
+                new ObjectParameter("ccNome", typeof(string));
+    
+            var ccSexoParameter = ccSexo != null ?
+                new ObjectParameter("ccSexo", ccSexo) :
+                new ObjectParameter("ccSexo", typeof(string));
+    
+            var ccNaturalUFParameter = ccNaturalUF != null ?
+                new ObjectParameter("ccNaturalUF", ccNaturalUF) :
+                new ObjectParameter("ccNaturalUF", typeof(string));
+    
+            var ccNaturalCidadeParameter = ccNaturalCidade != null ?
+                new ObjectParameter("ccNaturalCidade", ccNaturalCidade) :
+                new ObjectParameter("ccNaturalCidade", typeof(string));
+    
+            var ccEstadoCivilParameter = ccEstadoCivil != null ?
+                new ObjectParameter("ccEstadoCivil", ccEstadoCivil) :
+                new ObjectParameter("ccEstadoCivil", typeof(string));
+    
+            var ccEmailParameter = ccEmail != null ?
+                new ObjectParameter("ccEmail", ccEmail) :
+                new ObjectParameter("ccEmail", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var rGNumParameter = rGNum != null ?
+                new ObjectParameter("RGNum", rGNum) :
+                new ObjectParameter("RGNum", typeof(string));
+    
+            var rGEmissorParameter = rGEmissor != null ?
+                new ObjectParameter("RGEmissor", rGEmissor) :
+                new ObjectParameter("RGEmissor", typeof(string));
+    
+            var rGdtEmissaoParameter = rGdtEmissao.HasValue ?
+                new ObjectParameter("RGdtEmissao", rGdtEmissao) :
+                new ObjectParameter("RGdtEmissao", typeof(System.DateTime));
+    
+            var cPFNumParameter = cPFNum != null ?
+                new ObjectParameter("CPFNum", cPFNum) :
+                new ObjectParameter("CPFNum", typeof(string));
+    
+            var cvTelefoneParameter = cvTelefone.HasValue ?
+                new ObjectParameter("cvTelefone", cvTelefone) :
+                new ObjectParameter("cvTelefone", typeof(long));
+    
+            var cvCelularParameter = cvCelular.HasValue ?
+                new ObjectParameter("cvCelular", cvCelular) :
+                new ObjectParameter("cvCelular", typeof(long));
+    
+            var nomePaiParameter = nomePai != null ?
+                new ObjectParameter("nomePai", nomePai) :
+                new ObjectParameter("nomePai", typeof(string));
+    
+            var nomeMaeParameter = nomeMae != null ?
+                new ObjectParameter("nomeMae", nomeMae) :
+                new ObjectParameter("nomeMae", typeof(string));
+    
+            var nomeConjugeParameter = nomeConjuge != null ?
+                new ObjectParameter("nomeConjuge", nomeConjuge) :
+                new ObjectParameter("nomeConjuge", typeof(string));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("IdProfissional", idProfissional) :
+                new ObjectParameter("IdProfissional", typeof(int));
+    
+            var cdDataNascimentoParameter = cdDataNascimento.HasValue ?
+                new ObjectParameter("cdDataNascimento", cdDataNascimento) :
+                new ObjectParameter("cdDataNascimento", typeof(System.DateTime));
+    
+            var cdFiliacaoParameter = cdFiliacao.HasValue ?
+                new ObjectParameter("cdFiliacao", cdFiliacao) :
+                new ObjectParameter("cdFiliacao", typeof(System.DateTime));
+    
+            var cdPgtoTaxaParameter = cdPgtoTaxa.HasValue ?
+                new ObjectParameter("cdPgtoTaxa", cdPgtoTaxa) :
+                new ObjectParameter("cdPgtoTaxa", typeof(System.DateTime));
+    
+            var cdRegCartorioParameter = cdRegCartorio.HasValue ?
+                new ObjectParameter("cdRegCartorio", cdRegCartorio) :
+                new ObjectParameter("cdRegCartorio", typeof(System.DateTime));
+    
+            var cvCNHParameter = cvCNH.HasValue ?
+                new ObjectParameter("cvCNH", cvCNH) :
+                new ObjectParameter("cvCNH", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_Profissional", ccNomeParameter, ccSexoParameter, ccNaturalUFParameter, ccNaturalCidadeParameter, ccEstadoCivilParameter, ccEmailParameter, userNameParameter, observacoesParameter, rGNumParameter, rGEmissorParameter, rGdtEmissaoParameter, cPFNumParameter, cvTelefoneParameter, cvCelularParameter, nomePaiParameter, nomeMaeParameter, nomeConjugeParameter, idProfissionalParameter, cdDataNascimentoParameter, cdFiliacaoParameter, cdPgtoTaxaParameter, cdRegCartorioParameter, cvCNHParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_ProfissionalBanco(string userName, Nullable<int> idProfissionalBanco, string ccAgencia, string ccConta, string ccOperacao, Nullable<int> idProfissional, Nullable<int> idBanco)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idProfissionalBancoParameter = idProfissionalBanco.HasValue ?
+                new ObjectParameter("IdProfissionalBanco", idProfissionalBanco) :
+                new ObjectParameter("IdProfissionalBanco", typeof(int));
+    
+            var ccAgenciaParameter = ccAgencia != null ?
+                new ObjectParameter("ccAgencia", ccAgencia) :
+                new ObjectParameter("ccAgencia", typeof(string));
+    
+            var ccContaParameter = ccConta != null ?
+                new ObjectParameter("ccConta", ccConta) :
+                new ObjectParameter("ccConta", typeof(string));
+    
+            var ccOperacaoParameter = ccOperacao != null ?
+                new ObjectParameter("ccOperacao", ccOperacao) :
+                new ObjectParameter("ccOperacao", typeof(string));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            var idBancoParameter = idBanco.HasValue ?
+                new ObjectParameter("idBanco", idBanco) :
+                new ObjectParameter("idBanco", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_ProfissionalBanco", userNameParameter, idProfissionalBancoParameter, ccAgenciaParameter, ccContaParameter, ccOperacaoParameter, idProfissionalParameter, idBancoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_ProfissionalEndereco(string userName, Nullable<int> idEndereco, string ccEndereco, string ccBairro, Nullable<int> cvCEP, string ccUF, string ccCidade, Nullable<int> idProfissional)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idEnderecoParameter = idEndereco.HasValue ?
+                new ObjectParameter("IdEndereco", idEndereco) :
+                new ObjectParameter("IdEndereco", typeof(int));
+    
+            var ccEnderecoParameter = ccEndereco != null ?
+                new ObjectParameter("ccEndereco", ccEndereco) :
+                new ObjectParameter("ccEndereco", typeof(string));
+    
+            var ccBairroParameter = ccBairro != null ?
+                new ObjectParameter("ccBairro", ccBairro) :
+                new ObjectParameter("ccBairro", typeof(string));
+    
+            var cvCEPParameter = cvCEP.HasValue ?
+                new ObjectParameter("cvCEP", cvCEP) :
+                new ObjectParameter("cvCEP", typeof(int));
+    
+            var ccUFParameter = ccUF != null ?
+                new ObjectParameter("ccUF", ccUF) :
+                new ObjectParameter("ccUF", typeof(string));
+    
+            var ccCidadeParameter = ccCidade != null ?
+                new ObjectParameter("ccCidade", ccCidade) :
+                new ObjectParameter("ccCidade", typeof(string));
+    
+            var idProfissionalParameter = idProfissional.HasValue ?
+                new ObjectParameter("idProfissional", idProfissional) :
+                new ObjectParameter("idProfissional", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_ProfissionalEndereco", userNameParameter, idEnderecoParameter, ccEnderecoParameter, ccBairroParameter, cvCEPParameter, ccUFParameter, ccCidadeParameter, idProfissionalParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_Receita(string userName, Nullable<int> idReceita, Nullable<int> idClinica, Nullable<double> cvValor, Nullable<double> cvValorPago, Nullable<System.DateTime> cdEmissao, Nullable<System.DateTime> cdPagamento, Nullable<System.DateTime> cdRepasse, Nullable<float> cvDesconto, string observacoes, Nullable<int> cvNF, Nullable<bool> cbIssRetido)
+        {
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            var idReceitaParameter = idReceita.HasValue ?
+                new ObjectParameter("idReceita", idReceita) :
+                new ObjectParameter("idReceita", typeof(int));
+    
+            var idClinicaParameter = idClinica.HasValue ?
+                new ObjectParameter("IdClinica", idClinica) :
+                new ObjectParameter("IdClinica", typeof(int));
+    
+            var cvValorParameter = cvValor.HasValue ?
+                new ObjectParameter("cvValor", cvValor) :
+                new ObjectParameter("cvValor", typeof(double));
+    
+            var cvValorPagoParameter = cvValorPago.HasValue ?
+                new ObjectParameter("cvValorPago", cvValorPago) :
+                new ObjectParameter("cvValorPago", typeof(double));
+    
+            var cdEmissaoParameter = cdEmissao.HasValue ?
+                new ObjectParameter("cdEmissao", cdEmissao) :
+                new ObjectParameter("cdEmissao", typeof(System.DateTime));
+    
+            var cdPagamentoParameter = cdPagamento.HasValue ?
+                new ObjectParameter("cdPagamento", cdPagamento) :
+                new ObjectParameter("cdPagamento", typeof(System.DateTime));
+    
+            var cdRepasseParameter = cdRepasse.HasValue ?
+                new ObjectParameter("cdRepasse", cdRepasse) :
+                new ObjectParameter("cdRepasse", typeof(System.DateTime));
+    
+            var cvDescontoParameter = cvDesconto.HasValue ?
+                new ObjectParameter("cvDesconto", cvDesconto) :
+                new ObjectParameter("cvDesconto", typeof(float));
+    
+            var observacoesParameter = observacoes != null ?
+                new ObjectParameter("observacoes", observacoes) :
+                new ObjectParameter("observacoes", typeof(string));
+    
+            var cvNFParameter = cvNF.HasValue ?
+                new ObjectParameter("cvNF", cvNF) :
+                new ObjectParameter("cvNF", typeof(int));
+    
+            var cbIssRetidoParameter = cbIssRetido.HasValue ?
+                new ObjectParameter("cbIssRetido", cbIssRetido) :
+                new ObjectParameter("cbIssRetido", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_Receita", userNameParameter, idReceitaParameter, idClinicaParameter, cvValorParameter, cvValorPagoParameter, cdEmissaoParameter, cdPagamentoParameter, cdRepasseParameter, cvDescontoParameter, observacoesParameter, cvNFParameter, cbIssRetidoParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_ReceitaByRepasses(Nullable<int> idReceita, string userName)
+        {
+            var idReceitaParameter = idReceita.HasValue ?
+                new ObjectParameter("idReceita", idReceita) :
+                new ObjectParameter("idReceita", typeof(int));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_ReceitaByRepasses", idReceitaParameter, userNameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<bool>> UPD_Repasse(Nullable<int> idRepasse, string ccStatus, string userName)
+        {
+            var idRepasseParameter = idRepasse.HasValue ?
+                new ObjectParameter("idRepasse", idRepasse) :
+                new ObjectParameter("idRepasse", typeof(int));
+    
+            var ccStatusParameter = ccStatus != null ?
+                new ObjectParameter("ccStatus", ccStatus) :
+                new ObjectParameter("ccStatus", typeof(string));
+    
+            var userNameParameter = userName != null ?
+                new ObjectParameter("UserName", userName) :
+                new ObjectParameter("UserName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("UPD_Repasse", idRepasseParameter, ccStatusParameter, userNameParameter);
+        }
     }
 }

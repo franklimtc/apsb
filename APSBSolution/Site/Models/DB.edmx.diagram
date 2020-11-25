@@ -4,12 +4,54 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="88321f2e5ec34234b1f5ae6eb0c38da7" Name="Diagram1">
-        <EntityTypeShape EntityType="dbapsbModel.tbDespesas" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbapsbModel.tbDespesasCategoria" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="dbapsbModel.tbDespesaTipo" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <AssociationConnector Association="dbapsbModel.FK__tbDespesa__idTip__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="dbapsbModel.FK__tbDespesa__idCat__68D28DBC" ManuallyRouted="false" />
+      <Diagram DiagramId="cfee164e3ba0432b860bc2683d75eb86" Name="Diagram1">
+        <EntityTypeShape EntityType="apsbModel.tbBancos" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbClinicaProfissional" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbClinicas" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbDescontoVariavelClinicas" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbDespesas" Width="1.5" PointX="6" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbDespesasCategoria" Width="1.5" PointX="1.5" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbDespesaTipo" Width="1.5" PointX="3.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbDocumentos" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbEndereco" Width="1.5" PointX="5.25" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbEspecialidade" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbFormacao" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbLogErro" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbLogJobs" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbObservacoes" Width="1.5" PointX="0.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbParentes" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbProfissionais" Width="1.5" PointX="3" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbProfissionaisBancos" Width="1.5" PointX="8.25" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbProfissionaisDados" Width="1.5" PointX="5.25" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbProfissionalArquivo" Width="1.5" PointX="5.25" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbReceitas" Width="1.5" PointX="8.25" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbTelefones" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbImport01" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbImport02" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbParametros" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.tbProfissionalRepasse" Width="1.5" PointX="10.5" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.vwReceitas" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="apsbModel.vwResumoReceitas" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="apsbModel.FK__tbClinica__idBan__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__idBan__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbClinica__idCli__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbClinica__idObs__00200768" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbClinica__idPro__01142BA1" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbClinica__idObs__02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbDescont__idCli__467D75B8" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbReceita__IdCli__12FDD1B2" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbDespesa__IdObs__03F0984C" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbDespesa__idTip__04E4BC85" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbDespesa__idCat__68D28DBC" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbEnderec__idPro__05D8E0BE" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__IdObs__06CD04F7" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__IdObs__10216507" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbReceita__idObs__13F1F5EB" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__idPro__08B54D69" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__idPro__09A971A2" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__idPro__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__IdPro__11158940" ManuallyRouted="false" />
+        <AssociationConnector Association="apsbModel.FK__tbProfiss__idRec__1209AD79" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

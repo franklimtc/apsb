@@ -9,21 +9,44 @@ namespace Site.Cadastros
 {
     public partial class Configurações : System.Web.UI.Page
     {
-        static Models.dbapsbEntities db;
+        static Models.entity db;
 
         
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                CarregarTreeView();
                 CarregarCategoriaDespesas();
-                db =  new Models.dbapsbEntities();
+                db =  new Models.entity();
             }
+        }
+
+        private void CarregarTreeView()
+        {
+            var listaMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai == 0).ToList();
+            var listaSubMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai > 0).ToList();
+            foreach (var menu in listaMenus)
+            {
+                var node = new TreeNode(menu.ccCategoria);
+
+                foreach (var submenu in listaSubMenus)
+                {
+                    if (menu.idCategoria == submenu.idCategoriaPai)
+                    {
+                        node.ChildNodes.Add(new TreeNode(submenu.ccCategoria));
+                    }
+                }
+
+                tvCategoriasDespesas.Nodes.Add(node);
+
+            }
+
+            //db.tbDespesasCategoria.Where(x => x.)
+            //tvCategoriasDespesas
         }
         private void CarregarCategoriaDespesas()
         {
-            Models.dbapsbEntities db = new Models.dbapsbEntities();
-
             var categorias = db.tbDespesasCategoria.Where(x => x.cbStatus == true).ToList();
             gvCategoriasDespesas.DataSource = categorias;
             gvCategoriasDespesas.DataBind();
