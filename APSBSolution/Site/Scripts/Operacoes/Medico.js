@@ -109,14 +109,18 @@ function CarregarModal(_idProfissional) {
 };
 
 function CarregarModalProfissional(_idProfissional) {
+
+    //Limpa os dados do modal
+    $("input.profissionalModal").val("");
+    $("#MainContent_dpFormacao").val("Medicina");
+    $("#MainContent_dpEspecialidade").val($("#MainContent_dpEspecialidade option:contains('Clínico geral')").val());
     $("#MainContent_idHiddenMedico").val(_idProfissional);
+    //Limpa os dados do modal
 
     var url = "Medico.aspx/BuscarDadosID";
-
     var relacaoObj = {
         idProfissional: _idProfissional
     };
-
 
     $.ajax({
         type: "POST",
@@ -130,8 +134,6 @@ function CarregarModalProfissional(_idProfissional) {
         success: function (result) {
             //console.log(result.d);
             if (result.d != null) {
-                ResetForm();
-
                 var IdDadoProfissional = result.d["IdDadoProfissional"];
                 $("#MainContent_idHiddenProfissionalDado").val(IdDadoProfissional);
                 //$("#MainContent_tbFormacao").val(result.d["ccFormacao"]);
@@ -160,7 +162,8 @@ function CarregarModalProfissional(_idProfissional) {
                 $("#rowFormacao").collapse("hide");
 
             } else {
-                ResetForm();
+                //ResetForm();
+               
             }
             $("#profissionalModal").modal("show");
         }
@@ -206,10 +209,10 @@ function CarregarModalEndereco(_idProfissional) {
 };
 
 function CarregarModalBanco(_idProfissional) {
+    $("input.bancoModal").val("");//Limpa os dados do modal
     $("#MainContent_idHiddenMedico").val(_idProfissional);
 
     var url = "Medico.aspx/BuscarBancosID";
-
     var relacaoObj = {
         idProfissional: _idProfissional
     };

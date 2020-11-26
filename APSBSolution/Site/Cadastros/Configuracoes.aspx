@@ -41,17 +41,7 @@
                                 </asp:GridView>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <asp:TreeView runat="server" ID="tvCategoriasDespesas">
-                                    <HoverNodeStyle ForeColor="Red" />
-                                    <SelectedNodeStyle ForeColor="Green" />
-                                    <NodeStyle ForeColor="Pink" />
-                                    <Nodes>
-                                    </Nodes>
-                                </asp:TreeView>
-                            </div>
-                        </div>
+
                         <div class="row">
                             <div class="col">
                                 <h4>Tipos de Despesas</h4>
@@ -96,13 +86,22 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label>Categoria: </label>
+                    <div class="row">
+                        <div class="col">
+                            <span>Categoria Pai</span>
+                            <asp:TreeView runat="server" ID="tvCategoriasDespesas">
+                                <Nodes>
+                                </Nodes>
+                            </asp:TreeView>
+                        </div>
+                    </div>
+                    <label>Nova Categoria </label>
                     <asp:TextBox runat="server" ID="tbNovaCategoria" CssClass="form-control" />
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
                     <%--<button type="button" class="btn btn-primary">Salvar</button>--%>
-                    <asp:Button Text="Salvar" ID="btnSalvarCategoria" runat="server" CssClass="btn btn-primary" OnClick="btnSalvarCategoria_Click" />
+                    <asp:Button Text="Salvar" ID="btnSalvarCategoria" runat="server" CssClass="btn btn-primary" OnClientClick="return ValidarCheckbox()" OnClick="btnSalvarCategoria_Click" />
                 </div>
             </div>
         </div>
@@ -143,4 +142,35 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+import { Boolean } from "../Scripts/DataTables/extensions/pdfmake/pdfmake";
+
+
+        function postBackByObject() {
+            var o = window.event.srcElement;
+
+            var checkboxList = $(":input");
+            for (var i = 0; i < checkboxList.length; i++) {
+                if (checkboxList[i].tagName == "INPUT" && checkboxList[i].type == "checkbox" && o.id != checkboxList[i].id && checkboxList[i].checked == true) {
+                    checkboxList[i].checked = false;
+                }
+            }
+        }
+
+        function ValidarCheckbox() {
+            var checkboxList = $(":input");
+            var selected = false;
+            for (var i = 0; i < checkboxList.length; i++) {
+                if (checkboxList[i].tagName == "INPUT" && checkboxList[i].type == "checkbox" && checkboxList[i].checked == true) {
+                    selected = true;
+                    break;
+                }
+            }
+            if (selected == false) {
+                selected = confirm("Deseja criar uma nova categoria pai?");
+            }
+            return selected;
+        }
+    </script>
 </asp:Content>
