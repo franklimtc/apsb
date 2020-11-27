@@ -24,6 +24,7 @@ namespace Site.Models
         public Nullable<System.DateTime> cdDataCriacao { get; set; }
         public string UserName { get; set; }
     
+        public virtual tbObservacoes tbObservacoes { get; set; }
         public virtual tbDespesaTipo tbDespesaTipo { get; set; }
     }
 }

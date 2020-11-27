@@ -33,6 +33,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.GridView gvtiposDespesas;
 
         /// <summary>
+        /// Controle tvCategoriasDespesas.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TreeView tvCategoriasDespesas;
+
+        /// <summary>
         /// Controle tbNovaCategoria.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,24 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSalvarCategoria;
+
+        /// <summary>
+        /// Controle dpCategoriaPai.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpCategoriaPai;
+
+        /// <summary>
+        /// Controle DSCategorias.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource DSCategorias;
 
         /// <summary>
         /// Controle dpCategorias.

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbLogJobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="JobName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="dtExecucao" Type="datetime" />
+          <Property Name="status" Type="char" MaxLength="1" />
+          <Property Name="logs" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbapsb.dbo.tbParametros' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbParametros">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ArquivarOperacoesEmMeses" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArquivarOperacoesEmMeses" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="ARQ_Operacoes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="dtFim" Type="datetime" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="tbLogJobs" EntityType="Self.tbLogJobs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbParametros" EntityType="Self.tbParametros" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbParametros].[Id] AS [Id], 
+    [tbParametros].[ArquivarOperacoesEmMeses] AS [ArquivarOperacoesEmMeses]
+    FROM [dbo].[tbParametros] AS [tbParametros]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbLogJobs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="JobName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dtExecucao" Type="DateTime" Precision="3" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="logs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="Default" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbLogJobs" EntityType="Self.tbLogJobs" />
+          <FunctionImport Name="ARQ_Operacoes">
+          <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="tbParametros" EntityType="Model.tbParametros" />
+        </EntityContainer>
+        <EntityType Name="tbParametros">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ArquivarOperacoesEmMeses" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArquivarOperacoesEmMeses" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Default">
+          <EntitySetMapping Name="tbLogJobs">
+            <EntityTypeMapping TypeName="Model.tbLogJobs">
+              <MappingFragment StoreEntitySet="tbLogJobs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="JobName" ColumnName="JobName" />
+                <ScalarProperty Name="dtExecucao" ColumnName="dtExecucao" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="logs" ColumnName="logs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ARQ_Operacoes" FunctionName="Model.Store.ARQ_Operacoes" />
+          <EntitySetMapping Name="tbParametros">
+            <EntityTypeMapping TypeName="Model.tbParametros">
+              <MappingFragment StoreEntitySet="tbParametros">
+                <ScalarProperty Name="ArquivarOperacoesEmMeses" ColumnName="ArquivarOperacoesEmMeses" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

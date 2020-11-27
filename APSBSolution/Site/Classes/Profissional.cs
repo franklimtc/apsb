@@ -42,6 +42,20 @@ namespace Site.Classes
         public string StatusCadastro { get; set; }
         public DateTime? cdRegCartorio { get; internal set; }
         public long? cvCNH { get; set; }
+
+        public string ccCNHFormatada
+        {
+            get
+            {
+                string stringTemp = null;
+                if (cvCNH.HasValue)
+                {
+                    stringTemp = cvCNH.Value.ToString().Insert(0, "00000000000");
+                    stringTemp = stringTemp.Substring(stringTemp.Length - 12, 11);
+                }
+                return stringTemp;
+            }
+        }
         #endregion
 
         public Profissional()

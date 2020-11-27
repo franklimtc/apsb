@@ -13,6 +13,7 @@
     $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
     $('.money').mask('000.000.000.000.000,00', { reverse: true });
     $('.money2').mask("#.##0,00", { reverse: true });
+    $(".titulo").mask("0000 0000 00 00", { reverse: true });
     $('.ip_address').mask('0ZZ.0ZZ.0ZZ.0ZZ', {
         translation: {
             'Z': {
@@ -64,6 +65,7 @@ function RemoverMascaras() {
     $('.money').unmask();
     $('.money2').unmask();
     $('.percent').unmask();
+    $('.titulo').unmask();
 };
 
 function AdicionarMascaras() {
@@ -72,6 +74,7 @@ function AdicionarMascaras() {
     $('.cnpj').mask('00.000.000/0000-00', { reverse: true });
     $('.phone_with_ddd').mask('(00) 00000-0000');
     $('.phone_with_ddd2').mask('(00) 0000-0000');
+    $('.titulo').mask('0000 0000 00 00');
     $('.money').mask('000.000.000.000.000,00', { reverse: true });
     $('.money2').mask("#.##0,00", { reverse: true });
     $('.percent').mask('##0,00%', { reverse: true });
