@@ -286,7 +286,7 @@
                             <div class="col">
                                 <label for="tbFormacao">Formação Profissional</label>
                                 <%--<asp:TextBox runat="server" ID="tbFormacao" CssClass="form-control" placeholder="digite..." />--%>
-                                <asp:DropDownList runat="server" ID="dpFormacao" DataSourceID="dsFormacao" CssClass="form-control" DataTextField="ccFormacao" DataValueField="ccFormacao">
+                                <asp:DropDownList runat="server" ID="dpFormacao" DataSourceID="dsFormacao" CssClass="form-control profissionalModal" DataTextField="ccFormacao" DataValueField="ccFormacao">
                                 </asp:DropDownList>
                                 <asp:SqlDataSource runat="server" ID="dsFormacao" ConnectionString="<%$ ConnectionStrings:Dados %>" SelectCommand="SEL_Formacoes" SelectCommandType="StoredProcedure" />
                             </div>
@@ -295,7 +295,7 @@
                     <div class="form-group">
                         <div class="row collapse" id="rowFormacao">
                             <div class="col">
-                                <input runat="server" type="text" id="tbFormProfissional" name="tbFormProfissional" value="" class="form-control" placeholder="Nova Formação" />
+                                <input runat="server" type="text" id="tbFormProfissional" name="tbFormProfissional" value="" class="form-control profissionalModal" placeholder="Nova Formação" />
                             </div>
                         </div>
                     </div>
@@ -303,20 +303,20 @@
                     <div class="row">
                         <div class="col">
                             <label for="dpEspecialidade">Especialidade</label>
-                            <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
+                            <asp:DropDownList runat="server" ID="dpEspecialidade" DataSourceID="dsEspecialidades" CssClass="form-control profissionalModal" DataTextField="ccEspecialidade" DataValueField="idEspecialidade">
                             </asp:DropDownList>
                             <asp:ObjectDataSource runat="server" ID="dsEspecialidades" SelectMethod="Listar" TypeName="Site.Classes.Especialidade" />
                         </div>
 
                         <div class="col">
                             <label for="tbPosGraduacao">Pós-Graduação</label>
-                            <asp:TextBox runat="server" ID="tbPosGraduacao" CssClass="form-control" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbPosGraduacao" CssClass="form-control profissionalModal" placeholder="digite..." />
                         </div>
                     </div>
                     <div class="row collapse" id="colNovaEspecialidade">
                         <div class="col">
                             <label for="tbEspecialidadeNova">Cadastrar Nova</label>
-                            <asp:TextBox runat="server" ID="tbEspecialidadeNova" CssClass="form-control" />
+                            <asp:TextBox runat="server" ID="tbEspecialidadeNova" CssClass="form-control profissionalModal" />
                         </div>
                     </div>
 
@@ -324,7 +324,7 @@
                         <div class="col">
                             <label>Conselho Regional</label>
                             <%--<asp:TextBox runat="server" ID="tbConselhoRegional" CssClass="form-control" placeholder="digite..." />--%>
-                            <input runat="server" list="dsConselhos" id="dpConselhoRegional" class="form-control" />
+                            <input runat="server" list="dsConselhos" id="dpConselhoRegional" class="form-control profissionalModal" />
                             <datalist id="dsConselhos">
                                 <option value="CRM">
                                 <option value="CRO">
@@ -333,31 +333,31 @@
                         </div>
                         <div class="col">
                             <label for="tbNumInscricaoConselho">Num. Inscrição</label>
-                            <asp:TextBox runat="server" ID="tbNumInscricaoConselho" CssClass="form-control number" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbNumInscricaoConselho" CssClass="form-control number profissionalModal" placeholder="digite..." />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <label for="tbTituloEleitor">Título de Eleitor</label>
-                            <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number profissionalModal titulo" placeholder="digite..." />
                         </div>
                         <div class="col-md-3">
                             <label for="tbZonaEleitor">Zona</label>
-                            <asp:TextBox runat="server" ID="tbZonaEleitor" CssClass="form-control number" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbZonaEleitor" CssClass="form-control number profissionalModal" placeholder="digite..." />
                         </div>
                         <div class="col-md-3">
                             <label for="tbSecaoEleitor">Seção</label>
-                            <asp:TextBox runat="server" ID="tbSecaoEleitor" CssClass="form-control number" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbSecaoEleitor" CssClass="form-control number profissionalModal" placeholder="digite..." />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
                             <label for="tbReservista">Reservista</label>
-                            <asp:TextBox runat="server" ID="tbReservista" CssClass="form-control number" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbReservista" CssClass="form-control number profissionalModal" placeholder="digite..." />
                         </div>
                         <div class="col">
                             <label for="tbPisPasep">PIS/PASEP/NIT</label>
-                            <asp:TextBox runat="server" ID="tbPisPasep" CssClass="form-control number" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbPisPasep" CssClass="form-control number profissionalModal" placeholder="digite..." />
                         </div>
                     </div>
                 </div>
@@ -385,31 +385,30 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbEndereço">Endereço</label>
-                                <asp:TextBox runat="server" ID="tbEndereço" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbEndereço" CssClass="form-control moradiaModal" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="tbBairro">Bairro</label>
-                                <asp:TextBox runat="server" ID="tbBairro" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbBairro" CssClass="form-control moradiaModal" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbCep">CEP</label>
-                                <asp:TextBox runat="server" ID="tbCep" CssClass="form-control cep" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbCep" CssClass="form-control cep moradiaModal" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="dpEnderecoUF">UF</label>
                                 <asp:DropDownList runat="server" ID="dpEnderecoUF" CssClass="form-control">
-                                    <asp:ListItem Text="Selecionar..." Value="00" />
                                     <asp:ListItem Text="Acre" Value="AC" />
                                     <asp:ListItem Text="Alagoas " Value="AL" />
                                     <asp:ListItem Text="Amapá " Value="AP" />
                                     <asp:ListItem Text="Amazonas " Value="AM" />
                                     <asp:ListItem Text="Bahia " Value="BA" />
                                     <asp:ListItem Text="Ceará " Value="CE" />
-                                    <asp:ListItem Text="Distrito Federal " Value="DF" />
+                                    <asp:ListItem Text="Distrito Federal " Value="DF" Selected="True"/>
                                     <asp:ListItem Text="Espírito Santo " Value="ES" />
                                     <asp:ListItem Text="Goiás " Value="GO" />
                                     <asp:ListItem Text="Maranhão " Value="MA" />
@@ -434,7 +433,7 @@
                             </div>
                             <div class="col-md-8">
                                 <label for="tbEnderecoCidade">Cidade</label>
-                                <asp:TextBox runat="server" ID="tbEnderecoCidade" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbEnderecoCidade" CssClass="form-control moradiaModal" placeholder="digite..." />
                             </div>
                         </div>
                     </div>
@@ -472,15 +471,15 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbAgencia">Agência</label>
-                                <asp:TextBox runat="server" ID="tbAgencia" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbAgencia" CssClass="form-control bancoModal" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbConta">Conta</label>
-                                <asp:TextBox runat="server" ID="tbConta" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbConta" CssClass="form-control bancoModal" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbOperacao">Operação</label>
-                                <asp:TextBox runat="server" ID="tbOperacao" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbOperacao" CssClass="form-control bancoModal" placeholder="digite..." />
                             </div>
                         </div>
                     </div>

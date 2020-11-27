@@ -1,6 +1,4 @@
-﻿//import { isUndefined } from "../DataTables/extensions/pdfmake/pdfmake";
-
-function AdicionarBanco() {
+﻿function AdicionarBanco() {
 
 
     var idbanco = $("#MainContent_dpProfissionalBanco").children("option:selected").val();
@@ -89,7 +87,7 @@ function CarregarModal(_idProfissional) {
             $("#MainContent_tbRGdata").val(ConvertDate2(result.d["RGdtEmissao"]));
             $("#MainContent_tbCPF").val(("0000" + result.d["CPFNum"]).slice(-11));
             $("#MainContent_tbCPF").mask("000.000.000-00")
-            $("#MainContent_tbCNH").val(result.d["cvCNH"]);
+            $("#MainContent_tbCNH").val(result.d["ccCNHFormatada"]);
             $("#MainContent_tbEmail").val(result.d["ccEmail"]);
             $("#MainContent_tbFone").val(result.d["cvTelefone"]);
             $("#MainContent_tbCelular").val(result.d["cvCelular"]);
@@ -99,7 +97,6 @@ function CarregarModal(_idProfissional) {
             $("#MainContent_tbdtNascimento").val(ConvertDate2(result.d["dtNascimento"]));
             $("#MainContent_tbObs").val(result.d["Observacoes"]);
             $("#medicoModal").modal("show");
-            $("#MainContent_tbCNH").val(result.d["cvCNH"]);
 
             RemoverMascaras();
             AdicionarMascaras();
@@ -152,12 +149,13 @@ function CarregarModalProfissional(_idProfissional) {
                 $("#MainContent_tbPosGraduacao").val(result.d["ccPosGraduacao"]);
                 $("#MainContent_dpConselhoRegional").val(result.d["ccConselho"]);
                 $("#MainContent_tbNumInscricaoConselho").val(result.d["cvNumInscricao"]);
-                $("#MainContent_tbTituloEleitor").val(result.d["cvTitulo"]);
+                $("#MainContent_tbTituloEleitor").val(result.d["ccTituloFormatado"]);
                 $("#MainContent_tbZonaEleitor").val(result.d["cvTituloZona"]);
                 $("#MainContent_tbSecaoEleitor").val(result.d["cvTituloSecao"]);
                 $("#MainContent_tbReservista").val(result.d["cvReservista"]);
                 $("#MainContent_tbPisPasep").val(result.d["cvPIS"]);
 
+                RemoverMascaras();
                 AdicionarMascaras();
                 $("#rowFormacao").collapse("hide");
 
@@ -173,7 +171,7 @@ function CarregarModalProfissional(_idProfissional) {
 
 function CarregarModalEndereco(_idProfissional) {
     $("#MainContent_idHiddenMedico").val(_idProfissional);
-
+    $("input.moradiaModal").val("");
     var url = "Medico.aspx/BuscarEnderecoID";
 
     var relacaoObj = {
@@ -202,6 +200,8 @@ function CarregarModalEndereco(_idProfissional) {
                 $("#MainContent_tbEnderecoCidade").val(result.d.ccCidade);
                 $("#MainContent_dpEnderecoUF").val(result.d.ccUF).change();
             }
+            RemoverMascaras();
+            AdicionarMascaras();
         }
     });
     $("#moradiaModal").modal("show");

@@ -122,3 +122,4 @@ C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Microsoft.ReportViewer.Co
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Microsoft.ReportViewer.WebForms.dll
 C:\Users\frank\source\repos\APSB\APSBSolution\Site\bin\Microsoft.SqlServer.Types.dll
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Release\Site.csprojAssemblyReference.cache

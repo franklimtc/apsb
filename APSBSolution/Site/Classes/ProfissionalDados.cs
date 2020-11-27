@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Site.Classes
 {
-    public class ProfissionalDados 
+    public class ProfissionalDados
     {
         #region Campos
         public int IdDadoProfissional { get; set; }//IdDadoProfissional int
@@ -23,6 +23,26 @@ namespace Site.Classes
         public long cvPIS { get; set; }//cvPIS   bigint
         public int cvCHN { get; set; }
         public int cvCTPS { get; set; }
+
+        public string ccTituloFormatado
+        {
+            get {
+                var stringTemp = cvTitulo.ToString().Insert(0, "000000000000");
+                stringTemp = stringTemp.Substring(stringTemp.Length - 13, 12);
+                return stringTemp;
+            }
+        }
+        
+            public string ccCNHFormatada
+        {
+            get
+            {
+                var stringTemp = cvCHN.ToString().Insert(0, "00000000000");
+                stringTemp = stringTemp.Substring(stringTemp.Length - 12, 11);
+                return stringTemp;
+            }
+        }
+
         #endregion
 
         public ProfissionalDados()

@@ -339,7 +339,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label for="tbTituloEleitor">Título de Eleitor</label>
-                            <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number profissionalModal" placeholder="digite..." />
+                            <asp:TextBox runat="server" ID="tbTituloEleitor" CssClass="form-control number profissionalModal titulo" placeholder="digite..." />
                         </div>
                         <div class="col-md-3">
                             <label for="tbZonaEleitor">Zona</label>
@@ -385,31 +385,30 @@
                         <div class="row">
                             <div class="col">
                                 <label for="tbEndereço">Endereço</label>
-                                <asp:TextBox runat="server" ID="tbEndereço" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbEndereço" CssClass="form-control moradiaModal" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <label for="tbBairro">Bairro</label>
-                                <asp:TextBox runat="server" ID="tbBairro" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbBairro" CssClass="form-control moradiaModal" placeholder="digite..." />
                             </div>
                             <div class="col">
                                 <label for="tbCep">CEP</label>
-                                <asp:TextBox runat="server" ID="tbCep" CssClass="form-control cep" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbCep" CssClass="form-control cep moradiaModal" placeholder="digite..." />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="dpEnderecoUF">UF</label>
                                 <asp:DropDownList runat="server" ID="dpEnderecoUF" CssClass="form-control">
-                                    <asp:ListItem Text="Selecionar..." Value="00" />
                                     <asp:ListItem Text="Acre" Value="AC" />
                                     <asp:ListItem Text="Alagoas " Value="AL" />
                                     <asp:ListItem Text="Amapá " Value="AP" />
                                     <asp:ListItem Text="Amazonas " Value="AM" />
                                     <asp:ListItem Text="Bahia " Value="BA" />
                                     <asp:ListItem Text="Ceará " Value="CE" />
-                                    <asp:ListItem Text="Distrito Federal " Value="DF" />
+                                    <asp:ListItem Text="Distrito Federal " Value="DF" Selected="True"/>
                                     <asp:ListItem Text="Espírito Santo " Value="ES" />
                                     <asp:ListItem Text="Goiás " Value="GO" />
                                     <asp:ListItem Text="Maranhão " Value="MA" />
@@ -434,7 +433,7 @@
                             </div>
                             <div class="col-md-8">
                                 <label for="tbEnderecoCidade">Cidade</label>
-                                <asp:TextBox runat="server" ID="tbEnderecoCidade" CssClass="form-control" placeholder="digite..." />
+                                <asp:TextBox runat="server" ID="tbEnderecoCidade" CssClass="form-control moradiaModal" placeholder="digite..." />
                             </div>
                         </div>
                     </div>
