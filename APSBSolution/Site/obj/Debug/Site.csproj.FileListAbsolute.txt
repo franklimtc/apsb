@@ -1,7 +1,3 @@
-C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.csprojAssemblyReference.cache
-C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.cache
-C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.compiled
-C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x64\msvcr120.dll
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x64\SqlServerSpatial140.dll
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\SqlServerTypes\x86\msvcr120.dll
@@ -120,6 +116,10 @@ C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Fr
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Core.resources.dll
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.Owin.resources.dll
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\bin\pt-br\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.cache
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\RdlCompile.compiled
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CoreCompileInputs.cache
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.csproj.CopyComplete
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.dll
 C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.pdb
+C:\Users\frank\Source\Repos\APSB\APSBSolution\Site\obj\Debug\Site.csprojAssemblyReference.cache

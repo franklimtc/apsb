@@ -302,7 +302,7 @@ function RemoverBanco(id) {
 };
 
 function SalvarDados() {
-
+    RemoverMascaras();
 
     var url = "Medico.aspx/SalvarDados";
     var formacao;
@@ -349,6 +349,7 @@ function SalvarDados() {
             } else {
                 alert("Falha ao salvar o registro!");
             }
+            AdicionarMascaras();
         }
     });
 };
