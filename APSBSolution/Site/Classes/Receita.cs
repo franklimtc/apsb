@@ -18,8 +18,35 @@ namespace Site.Classes
         public float? cvValorDisponivel { get; set; }
 
         public DateTime? cdEmissao { get; set; }//cdEmissao   datetime
+        public string cdEmissaoFormat {
+            get
+            {
+                if (cdEmissao.HasValue)
+                    return cdEmissao.Value.ToString("yyyy-MM-dd");
+                else
+                    return null;
+            }
+        }
         public DateTime? cdPagamento { get; set; }//cdPagamento datetime
+        public string cdPagamentoFormat
+        {
+            get
+            {
+                if (cdPagamento.HasValue)
+                    return cdPagamento.Value.ToString("yyyy-MM-dd");
+                else
+                    return null;
+            }
+        }
         public DateTime? cdRepasse { get; set; }//cdRepasse   datetime
+        public string cdRepasseFormat {
+            get {
+                if (cdRepasse.HasValue)
+                    return cdRepasse.Value.ToString("yyyy-MM-dd");
+                else
+                    return null;
+            } 
+        }
         public float? cvDesconto { get; set; }//cvDesconto  real
         public bool cbArquivado { get; set; }//cbArquivado bit
         public bool cbStatus { get; set; }//cbStatus    bit

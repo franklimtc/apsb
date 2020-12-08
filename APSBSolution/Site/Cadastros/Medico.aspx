@@ -145,6 +145,7 @@
                                     <option value="BA">Bahia</option>
                                     <option value="CE">Ceará</option>
                                     <option value="DF" selected="selected">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
                                     <option value="GO">Goiás</option>
                                     <option value="MA">Maranhão</option>
                                     <option value="MT">Mato Grosso</option>

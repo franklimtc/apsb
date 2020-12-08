@@ -109,8 +109,8 @@ function EditReceita(id) {
             $("#idHiddenOperacao2").val(result.d[0].idReceita);
             $("#MainContent_tbValorOperacao").val(formatMoney(result.d[0].cvValor, ".", ",", "."));
 
-            $("#MainContent_tbReceitaDataNF").val(ConvertDate2(result.d[0].cdEmissao));
-            $("#MainContent_tbReceitaDataPgtoNF").val(ConvertDate2(result.d[0].cdPagamento));
+            $("#MainContent_tbReceitaDataNF").val(result.d[0].cdEmissaoFormat);
+            $("#MainContent_tbReceitaDataPgtoNF").val(result.d[0].cdPagamentoFormat);
 
             $("#MainContent_dpSearchClinicas").val(result.d[1].ccDescricao);
 
