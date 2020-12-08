@@ -17,7 +17,7 @@ namespace Site.Cadastros
         {
             if (!IsPostBack)
             {
-                CarregarTreeView();
+                //CarregarTreeView();
                 CarregarCategoriaDespesas();
             }
         }
@@ -44,55 +44,52 @@ namespace Site.Cadastros
 
             return Lista;
         }
-        private void CarregarTreeView()
-        {
-            //var listaMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai == 0).ToList();
-            //var listaSubMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai > 0).ToList();
+        //private void CarregarTreeView()
+        //{
+        //    //var listaMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai == 0).ToList();
+        //    //var listaSubMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai > 0).ToList();
 
-            var listaMenus = ListarMenus();
-            var listaSubMenus = ListarSubMenus();
+        //    var listaMenus = ListarMenus();
+        //    var listaSubMenus = ListarSubMenus();
 
-            foreach (var menu in listaMenus)
-            {
-                var node = new TreeNode(menu.ccCategoria,menu.idCategoria.ToString());
-                node.SelectAction = TreeNodeSelectAction.None;
-                node.Expanded = false;
+        //    foreach (var menu in listaMenus)
+        //    {
+        //        var node = new TreeNode(menu.ccCategoria,menu.idCategoria.ToString());
+        //        node.SelectAction = TreeNodeSelectAction.None;
+        //        node.Expanded = false;
 
-                int countNode = 0;
+        //        int countNode = 0;
 
-                foreach (var submenu in listaSubMenus)
-                {
-                    if (menu.idCategoria == submenu.idCategoriaPai)
-                    {
-                        TreeNode _submenu = new TreeNode(submenu.ccCategoria, submenu.idCategoria.ToString());
-                        _submenu.ShowCheckBox = true;
-                        _submenu.SelectAction = TreeNodeSelectAction.None;
-                        node.ChildNodes.Add(_submenu);
-                        countNode++;
-                    }
-                }
+        //        foreach (var submenu in listaSubMenus)
+        //        {
+        //            if (menu.idCategoria == submenu.idCategoriaPai)
+        //            {
+        //                TreeNode _submenu = new TreeNode(submenu.ccCategoria, submenu.idCategoria.ToString());
+        //                _submenu.ShowCheckBox = true;
+        //                _submenu.SelectAction = TreeNodeSelectAction.None;
+        //                node.ChildNodes.Add(_submenu);
+        //                countNode++;
+        //            }
+        //        }
 
-                if (countNode == 0)
-                    node.ShowCheckBox = true;
-                else
-                    node.ShowCheckBox = false;
+        //        if (countNode == 0)
+        //            node.ShowCheckBox = true;
+        //        else
+        //            node.ShowCheckBox = false;
 
 
-                tvCategoriasDespesas.Nodes.Add(node);
-                countNode = 0;
+        //        tvCategoriasDespesas.Nodes.Add(node);
+        //        countNode = 0;
 
-            }
+        //    }
 
-            tvCategoriasDespesas.Attributes.Add("onclick", "postBackByObject()");
-        }
+        //    tvCategoriasDespesas.Attributes.Add("onclick", "postBackByObject()");
+        //}
         private void CarregarCategoriaDespesas()
         {
             var categorias = db.tbDespesasCategoria.Where(x => x.cbStatus == true).ToList();
             gvCategoriasDespesas.DataSource = categorias;
             gvCategoriasDespesas.DataBind();
-
-            dpCategorias.DataSource = categorias;
-            dpCategorias.DataBind();
 
             var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, categoria.ccCategoria }).ToList();
             gvtiposDespesas.DataSource = tiposCategorias;
@@ -101,13 +98,7 @@ namespace Site.Cadastros
 
         protected void btnSalvarCategoria_Click(object sender, EventArgs e)
         {
-            var categoriaPai = tvCategoriasDespesas.CheckedNodes;
-            string idCategoriaPai = "0";
-
-            if (categoriaPai.Count > 0)
-            {
-                idCategoriaPai = categoriaPai[0].Value;
-            }
+            string idCategoriaPai = dpCategoriaPaiNova.SelectedValue;
 
             if (tbNovaCategoria.Text != "")
             {
@@ -123,10 +114,12 @@ namespace Site.Cadastros
                 {
                     db.SaveChanges();
                     CarregarCategoriaDespesas();
+                    tbNovaCategoria.Text = "";
+                    dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
                 }
                 catch (Exception ex)
                 {
-
+                    db.Database.CurrentTransaction.Rollback();
                     ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('Erro ao registrar nova categoria: {ex.Message}')", true);
                 }
 
@@ -138,7 +131,6 @@ namespace Site.Cadastros
             {
                 Models.tbDespesaTipo novoTipo = new Models.tbDespesaTipo();
                 novoTipo.ccTipo = tbNovoTipo.Text;
-                novoTipo.idCategoria = int.Parse(dpCategorias.SelectedValue);
                 novoTipo.cdDataCriacao = DateTime.Now;
                 novoTipo.ccUsuario = User.Identity.Name.Split('@')[0];
                 novoTipo.cbStatus = true;
@@ -191,17 +183,18 @@ namespace Site.Cadastros
         {
             if (gvCategoriasDespesas.Rows.Count > 0)
             {
-                //This replaces <td> with <th> and adds the scope attribute
                 gvCategoriasDespesas.UseAccessibleHeader = true;
-
-                //This will add the <thead> and <tbody> elements
                 gvCategoriasDespesas.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-                //This adds the <tfoot> element. 
-                //Remove if you don't have a footer row
-                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
-      
+
+        protected void gvtiposDespesas_PreRender(object sender, EventArgs e)
+        {
+            if (gvtiposDespesas.Rows.Count > 0)
+            {
+                gvtiposDespesas.UseAccessibleHeader = true;
+                gvtiposDespesas.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
     }
 }

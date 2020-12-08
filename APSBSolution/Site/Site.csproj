@@ -448,6 +448,7 @@
     <Content Include="Content\Icons\cloud-download-outline.svg" />
     <Content Include="Content\Icons\create-outline.svg" />
     <Content Include="Content\Icons\desktop-outline.svg" />
+    <Content Include="Content\Icons\edit-24px.svg" />
     <Content Include="Content\Icons\erro.jpg" />
     <Content Include="Content\Icons\file-tray-full-outline.svg" />
     <Content Include="Content\Icons\filter_alt-24px.svg" />
@@ -983,6 +984,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Operacoes\Configuracoes.js" />
     <Content Include="Scripts\Operacoes\Dashboard.js" />
     <Content Include="Scripts\Operacoes\Dashboard2.js" />
     <Content Include="Scripts\Operacoes\Medico.js" />

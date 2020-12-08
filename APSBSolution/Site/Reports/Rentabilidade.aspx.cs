@@ -14,7 +14,7 @@ namespace Site.Reports
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Redirect("~/Dashboard2.aspx");
         }
 
         protected void gvRentabilidade_PreRender(object sender, EventArgs e)

@@ -33,13 +33,22 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.GridView gvtiposDespesas;
 
         /// <summary>
-        /// Controle tvCategoriasDespesas.
+        /// Controle dpCategoriaPaiNova.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TreeView tvCategoriasDespesas;
+        protected global::System.Web.UI.WebControls.DropDownList dpCategoriaPaiNova;
+
+        /// <summary>
+        /// Controle dsCategoriaPai.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource dsCategoriaPai;
 
         /// <summary>
         /// Controle tbNovaCategoria.
@@ -67,24 +76,6 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dpCategoriaPai;
-
-        /// <summary>
-        /// Controle DSCategorias.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource DSCategorias;
-
-        /// <summary>
-        /// Controle dpCategorias.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpCategorias;
 
         /// <summary>
         /// Controle tbNovoTipo.
