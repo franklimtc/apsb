@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Configuracoes.aspx.cs" Inherits="Site.Cadastros.Configurações" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <%--Hidden fields--%>
+    <asp:HiddenField runat="server" ClientIDMode="Static" ID="idCategoria" Value="" />
+    <asp:HiddenField runat="server" ClientIDMode="Static" ID="idTipo" Value="" />
+    <%--Hidden fields--%>
+
     <div class="row">
         <div class="col">
             <h2 style="text-align: center" id="configTitle">Configurações</h2>
@@ -32,7 +37,7 @@
                         <div class="row">
                             <div class="col">
                                 <br />
-                                <asp:GridView runat="server" ID="gvCategoriasDespesas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvCategoriasDespesas_PreRender">
+                                <asp:GridView runat="server" ID="gvCategoriasDespesas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvCategoriasDespesas_PreRender" OnRowCommand="gvCategoriasDespesas_RowCommand">
                                     <Columns>
                                         <asp:BoundField HeaderText="ID" DataField="idCategoria" ItemStyle-CssClass="rowID" />
                                         <asp:BoundField HeaderText="Categoria" DataField="ccCategoria" />
@@ -40,12 +45,12 @@
                                         <asp:BoundField HeaderText="Criado por" DataField="ccUsuario" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <input type="image" id="btnEditEategoria" src="../Content/Icons/edit-24px.svg" title="Editar" class="imgButton" data-toggle="modal" data-target="#categoriaModal" data-id="<%# ((GridViewRow) Container).RowIndex %>" />
+                                                <input type="image" class="imgButton btn-editar" src="../Content/Icons/edit-24px.svg" data-tipo="categoria" title="Editar" data-id="<%# ((GridViewRow) Container).RowIndex %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoriaPai")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccCategoria")%>'/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
+                                                <asp:ImageButton ID="btnDelCategoria" ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -67,7 +72,7 @@
                         <div class="row">
                             <div class="col">
                                 <br />
-                                <asp:GridView runat="server" ID="gvtiposDespesas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvtiposDespesas_PreRender">
+                                <asp:GridView runat="server" ID="gvtiposDespesas" CssClass="table table-hover table-striped table-sm" AutoGenerateColumns="false" OnPreRender="gvtiposDespesas_PreRender" OnRowCommand="gvtiposDespesas_RowCommand">
                                     <Columns>
                                         <asp:BoundField HeaderText="ID" DataField="idTipo" ItemStyle-CssClass="rowID" />
                                         <asp:BoundField HeaderText="Categoria" DataField="ccCategoria" />
@@ -75,12 +80,12 @@
                                         <asp:BoundField HeaderText="Criado em" DataField="cdDataCriacao" DataFormatString="{0:d}" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <input type="image" src="../Content/Icons/edit-24px.svg" title="Editar" class="imgButton" onclick="return false;" data-toggle="modal" data-target="#tipoModal"/>
+                                                <input type="image"  class="imgButton btn-editar"  src="../Content/Icons/edit-24px.svg" data-tipo="tipo" title="Editar" data-id="<%# ((GridViewRow) Container).RowIndex %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoria")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccTipo")%>'/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:ImageButton ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
+                                                <asp:ImageButton ID="btnDelTipo" ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')"/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>

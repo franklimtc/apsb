@@ -91,7 +91,7 @@ namespace Site.Cadastros
             gvCategoriasDespesas.DataSource = categorias;
             gvCategoriasDespesas.DataBind();
 
-            var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, categoria.ccCategoria }).ToList();
+            var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria }).ToList();
             gvtiposDespesas.DataSource = tiposCategorias;
             gvtiposDespesas.DataBind();
         }
@@ -104,12 +104,22 @@ namespace Site.Cadastros
             {
 
                 Models.tbDespesasCategoria novaCategoria = new Models.tbDespesasCategoria();
+                if (idCategoria.Value != "")
+                {
+                    int id = int.Parse(idCategoria.Value);
+                    novaCategoria = db.tbDespesasCategoria.Where(x => x.idCategoria == id).FirstOrDefault();
+
+                }
+
                 novaCategoria.ccCategoria = tbNovaCategoria.Text;
                 novaCategoria.cdCriacao = DateTime.Now;
                 novaCategoria.ccUsuario = User.Identity.Name.Split('@')[0];
                 novaCategoria.cbStatus = true;
                 novaCategoria.idCategoriaPai = int.Parse(idCategoriaPai);
-                db.tbDespesasCategoria.Add(novaCategoria);
+
+                if (idCategoria.Value == "")
+                    db.tbDespesasCategoria.Add(novaCategoria);
+
                 try
                 {
                     db.SaveChanges();
@@ -130,12 +140,21 @@ namespace Site.Cadastros
             if (tbNovoTipo.Text != "")
             {
                 Models.tbDespesaTipo novoTipo = new Models.tbDespesaTipo();
+
+                if (idTipo.Value != "")
+                {
+                    int id = int.Parse(idTipo.Value);
+                    novoTipo = db.tbDespesaTipo.Where(x => x.idTipo == id).FirstOrDefault();
+                }
+
                 novoTipo.ccTipo = tbNovoTipo.Text;
                 novoTipo.cdDataCriacao = DateTime.Now;
                 novoTipo.ccUsuario = User.Identity.Name.Split('@')[0];
                 novoTipo.cbStatus = true;
 
-                db.tbDespesaTipo.Add(novoTipo);
+                if (idTipo.Value == "")
+                    db.tbDespesaTipo.Add(novoTipo);
+
                 try
                 {
                     db.SaveChanges();
@@ -194,6 +213,30 @@ namespace Site.Cadastros
             {
                 gvtiposDespesas.UseAccessibleHeader = true;
                 gvtiposDespesas.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
+
+        protected void gvtiposDespesas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Excluir")
+            {
+                int idTipo = int.Parse(gvtiposDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+                var despesaTipo = db.tbDespesaTipo.Where(x => x.idTipo == idTipo).FirstOrDefault();
+                despesaTipo.cbStatus = false;
+                db.SaveChanges();
+                CarregarCategoriaDespesas();
+            }
+        }
+
+        protected void gvCategoriasDespesas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Excluir")
+            {
+                int idCategoria = int.Parse(gvCategoriasDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+                var despesaCategoria = db.tbDespesasCategoria.Where(x => x.idCategoria == idCategoria).FirstOrDefault();
+                despesaCategoria.cbStatus = false;
+                db.SaveChanges();
+                CarregarCategoriaDespesas();
             }
         }
     }
