@@ -45,7 +45,7 @@
                                         <asp:BoundField HeaderText="Criado por" DataField="ccUsuario" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <input type="image" class="imgButton btn-editar" src="../Content/Icons/edit-24px.svg" data-tipo="categoria" title="Editar" data-id="<%# ((GridViewRow) Container).RowIndex %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoriaPai")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccCategoria")%>'/>
+                                                <input type="image" class="imgButton btn-editar" src="../Content/Icons/edit-24px.svg" data-tipo="categoria" title="Editar" data-id="<%# DataBinder.Eval(Container.DataItem, "idCategoria") %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoriaPai")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccCategoria")%>'/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
@@ -80,7 +80,7 @@
                                         <asp:BoundField HeaderText="Criado em" DataField="cdDataCriacao" DataFormatString="{0:d}" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <input type="image"  class="imgButton btn-editar"  src="../Content/Icons/edit-24px.svg" data-tipo="tipo" title="Editar" data-id="<%# ((GridViewRow) Container).RowIndex %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoria")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccTipo")%>'/>
+                                                <input type="image"  class="imgButton btn-editar"  src="../Content/Icons/edit-24px.svg" data-tipo="tipo" title="Editar" data-id="<%# DataBinder.Eval(Container.DataItem, "idTipo") %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoria")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccTipo")%>'/>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>

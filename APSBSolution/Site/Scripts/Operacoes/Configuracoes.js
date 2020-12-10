@@ -3,9 +3,7 @@
         var index = $(this).data("id");
 
         if ($(this).data("tipo") == "categoria") {
-            var table = $('#MainContent_gvCategoriasDespesas tbody');
-            var row = table.find('tr').eq(index);
-            var idElemento = row[0].cells[0].textContent;
+            var idElemento = $(this).data("id");
             var ccIdPai = $(this).data("pai");
             var categoria = $(this).data("categoria");
 
@@ -13,9 +11,7 @@
             console.log(idElemento);
         }
         else {
-            var table = $('#MainContent_gvtiposDespesas tbody');
-            var row = table.find('tr').eq(index);
-            var idElemento = row[0].cells[0].textContent;
+            var idElemento = $(this).data("id");
             var IdCategoria = $(this).data("pai");
             var tipo = $(this).data("categoria");
             EditarTipo(idElemento, IdCategoria, tipo);

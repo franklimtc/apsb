@@ -91,8 +91,17 @@ namespace Site.Cadastros
             gvCategoriasDespesas.DataSource = categorias;
             gvCategoriasDespesas.DataBind();
 
-            var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria }).ToList();
-            gvtiposDespesas.DataSource = tiposCategorias;
+            var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList();
+            //var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria }).ToList();
+            List<object> lista = new List<object>();
+
+            foreach (var tipo in tiposCategorias)
+            {
+                var categoria = categorias.SingleOrDefault(x => x.idCategoria == tipo.idCategoria);
+                lista.Add(new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria });
+            }
+
+            gvtiposDespesas.DataSource = lista;
             gvtiposDespesas.DataBind();
         }
 
@@ -125,11 +134,11 @@ namespace Site.Cadastros
                     db.SaveChanges();
                     CarregarCategoriaDespesas();
                     tbNovaCategoria.Text = "";
-                    dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
+                    //dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
                 }
                 catch (Exception ex)
                 {
-                    db.Database.CurrentTransaction.Rollback();
+                    //db.Database.CurrentTransaction.Rollback();
                     ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('Erro ao registrar nova categoria: {ex.Message}')", true);
                 }
 
@@ -151,7 +160,7 @@ namespace Site.Cadastros
                 novoTipo.cdDataCriacao = DateTime.Now;
                 novoTipo.ccUsuario = User.Identity.Name.Split('@')[0];
                 novoTipo.cbStatus = true;
-
+                novoTipo.idCategoria = int.Parse(dpCategoriaPai.SelectedValue);
                 if (idTipo.Value == "")
                     db.tbDespesaTipo.Add(novoTipo);
 
@@ -220,10 +229,13 @@ namespace Site.Cadastros
         {
             if (e.CommandName == "Excluir")
             {
-                int idTipo = int.Parse(gvtiposDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
-                var despesaTipo = db.tbDespesaTipo.Where(x => x.idTipo == idTipo).FirstOrDefault();
-                despesaTipo.cbStatus = false;
-                db.SaveChanges();
+                using (entity dbContext = new entity())
+                {
+                    int idTipo = int.Parse(gvtiposDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+                    var despesaTipo = dbContext.tbDespesaTipo.SingleOrDefault(x => x.idTipo == idTipo);
+                    despesaTipo.cbStatus = false;
+                    db.SaveChanges();
+                }
                 CarregarCategoriaDespesas();
             }
         }
@@ -232,10 +244,13 @@ namespace Site.Cadastros
         {
             if (e.CommandName == "Excluir")
             {
-                int idCategoria = int.Parse(gvCategoriasDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
-                var despesaCategoria = db.tbDespesasCategoria.Where(x => x.idCategoria == idCategoria).FirstOrDefault();
-                despesaCategoria.cbStatus = false;
-                db.SaveChanges();
+                using (entity dbContext = new entity())
+                {
+                    int idCategoria = int.Parse(gvCategoriasDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+                    tbDespesasCategoria despesaCategoria = dbContext.tbDespesasCategoria.SingleOrDefault(x => x.idCategoria == idCategoria);
+                    despesaCategoria.cbStatus = false;
+                    var result = dbContext.SaveChanges();
+                }
                 CarregarCategoriaDespesas();
             }
         }
