@@ -232,9 +232,9 @@ namespace Site.Cadastros
                 using (entity dbContext = new entity())
                 {
                     int idTipo = int.Parse(gvtiposDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
-                    var despesaTipo = dbContext.tbDespesaTipo.SingleOrDefault(x => x.idTipo == idTipo);
+                    tbDespesaTipo despesaTipo = dbContext.tbDespesaTipo.SingleOrDefault(x => x.idTipo == idTipo);
                     despesaTipo.cbStatus = false;
-                    db.SaveChanges();
+                    var result = dbContext.SaveChanges();
                 }
                 CarregarCategoriaDespesas();
             }
