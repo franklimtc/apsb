@@ -1764,6 +1764,11 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="SiteClasses2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiteClasses2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
@@ -1783,6 +1788,17 @@
     <Content Include="Scripts\jquery-3.5.1.min.map" />
     <Content Include="Scripts\moment.min.js.map" />
     <Content Include="Scripts\moment-with-locales.min.js.map" />
+    <Content Include="SiteClasses2.xsc">
+      <DependentUpon>SiteClasses2.xsd</DependentUpon>
+    </Content>
+    <None Include="SiteClasses2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SiteClasses2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SiteClasses2.xss">
+      <DependentUpon>SiteClasses2.xsd</DependentUpon>
+    </Content>
     <None Include="Web.apsdf.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
