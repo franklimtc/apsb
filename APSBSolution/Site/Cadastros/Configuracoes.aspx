@@ -4,6 +4,7 @@
     <%--Hidden fields--%>
     <asp:HiddenField runat="server" ClientIDMode="Static" ID="idCategoria" Value="" />
     <asp:HiddenField runat="server" ClientIDMode="Static" ID="idTipo" Value="" />
+    <asp:HiddenField runat="server" ID="HiddenUser" Value="" />
     <%--Hidden fields--%>
 
     <div class="row">
@@ -45,7 +46,7 @@
                                         <asp:BoundField HeaderText="Criado por" DataField="ccUsuario" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <input type="image" class="imgButton btn-editar" src="../Content/Icons/edit-24px.svg" data-tipo="categoria" title="Editar" data-id="<%# DataBinder.Eval(Container.DataItem, "idCategoria") %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoriaPai")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccCategoria")%>'/>
+                                                <input type="image" class="imgButton btn-editar" src="../Content/Icons/edit-24px.svg" data-tipo="categoria" title="Editar" data-id="<%# DataBinder.Eval(Container.DataItem, "idCategoria") %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoriaPai")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccCategoria")%>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
@@ -80,12 +81,12 @@
                                         <asp:BoundField HeaderText="Criado em" DataField="cdDataCriacao" DataFormatString="{0:d}" />
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <input type="image"  class="imgButton btn-editar"  src="../Content/Icons/edit-24px.svg" data-tipo="tipo" title="Editar" data-id="<%# DataBinder.Eval(Container.DataItem, "idTipo") %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoria")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccTipo")%>'/>
+                                                <input type="image" class="imgButton btn-editar" src="../Content/Icons/edit-24px.svg" data-tipo="tipo" title="Editar" data-id="<%# DataBinder.Eval(Container.DataItem, "idTipo") %>" data-pai='<%# DataBinder.Eval(Container.DataItem, "idCategoria")%>' data-categoria='<%# DataBinder.Eval(Container.DataItem, "ccTipo")%>' />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField>
                                             <ItemTemplate>
-                                                <asp:ImageButton ID="btnDelTipo" ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')"/>
+                                                <asp:ImageButton ID="btnDelTipo" ImageUrl="~/Content/Icons/trash-outline.svg" Height="1.5em" runat="server" ToolTip="Excluir" CommandName="Excluir" CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" OnClientClick="return confirm('Deseja excluir este registro')" />
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                     </Columns>
@@ -93,9 +94,38 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="tab-pane fade" id="v-pills-receitas" role="tabpanel" aria-labelledby="v-pills-receitas-tab">Receitas</div>
+                <div class="tab-pane fade" id="v-pills-receitas" role="tabpanel" aria-labelledby="v-pills-receitas-tab">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <h4>Arquivar Receitas</h4>
+                                <hr />
+                                <br />
+                                <br />
+                                <div class="form-inline">
+                                    <div class="form-group">
+                                        <label for="tbArquivar">Data:&nbsp&nbsp</label>
+                                        <input runat="server" type="date" id="tbArquivar" name="tbArquivar" value="" class="form-control" />&nbsp&nbsp
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="button" name="btArquivar" id="btArquivar" value="Arquivar" class="btn btn-primary" onclick="ArquivarRegistros()" />&nbsp&nbsp
+                                        <%--<asp:Button Text="Arquivar" runat="server" ID="btArquivar" CssClass="btn btn-primary" OnClientClick="return ValidaData()" />--%>&nbsp&nbsp
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="button" name="btArquivarHistorico" id="btArquivarHistorico" value="Histórico" class="btn btn-secondary" onclick="CarregarHistoricoArquivamento()" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="tab-pane fade" id="v-pills-clinicas" role="tabpanel" aria-labelledby="v-pills-clinicas-tab">Clínicas</div>
                 <div class="tab-pane fade" id="v-pills-medicos" role="tabpanel" aria-labelledby="v-pills-medicos-tab">Médicos</div>
             </div>
@@ -160,6 +190,40 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Histórico Arquivamento -->
+    <div class="modal fade" id="historicoModal" tabindex="-1" role="dialog" aria-labelledby="historicoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="historicoModalLabel">Histórico de Arquivamentos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-hover table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>Usuário</th>
+                                <th>Registros</th>
+                                <th>Data de Corte</th>
+                                <th>Data de Execução</th>
+                            </tr>
+                        </thead> 
+                        <tbody id="tbHistoricoBody">
+                           
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="../Scripts/DataTables/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="../Scripts/jquery.mask.js"></script>
     <script type="text/javascript" src="../Scripts/Site.js"></script>
@@ -191,6 +255,77 @@
             });
 
         })
+
+        function ArquivarRegistros() {
+            let dataOk = ValidaData();
+            var _user = $("#MainContent_HiddenUser").val().substring(0, $("#MainContent_HiddenUser").val().indexOf("@"));
+
+            if (dataOk) {
+                var relacaoObj = {
+                    data: $("#MainContent_tbArquivar").val(),
+                    user: _user
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: "Configuracoes.aspx/ArquivaOperacoes",
+                    data: JSON.stringify(relacaoObj),
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
+                    error: function () {
+                        alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+                    },
+                    success: function (result) {
+                        alert("Operações arquivadas com sucesso!");
+                    }
+                });
+            }
+        }
+
+        function ValidaData() {
+            let dtValida = false;
+            let dtArquivar = $("#MainContent_tbArquivar").val();
+            if (dtArquivar == "") {
+                alert("Informe uma data válida!");
+            }
+            else {
+                dtValida = true;
+            }
+            return dtValida;
+        }
+
+        function CarregarHistoricoArquivamento() {
+            //$("#tbHistoricoBody").append("<tr><td>Usuario</td><td>Data</td><td>Data</td><td>Teste</td></tr>");
+            //$("#tbHistoricoBody").append("<tr><td>Usuario</td><td>Data</td><td>Data</td><td>Teste</td></tr>");
+            //$("#tbHistoricoBody").append("<tr><td>Usuario</td><td>Data</td><td>Data</td><td>Teste</td></tr>");
+            //$("#tbHistoricoBody").append("<tr><td>Usuario</td><td>Data</td><td>Data</td><td>Teste</td></tr>");
+            $("#tbHistoricoBody").empty();
+
+            $.ajax({
+                type: "POST",
+                url: "Configuracoes.aspx/ListarHistoricoArquivamento",
+                //data: JSON.stringify(relacaoObj),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                error: function () {
+                    alert("Falha na operação! Informe os dados a seguir para o administrador: " + JSON.stringify(relacaoObj));
+                },
+                success: function (result) {
+                    console.log(result.d);
+                    console.log(result.d.length);
+                    if (result.d.length > 0) {
+                        for (var i = 0; i < result.d.length; i++) {
+                            console.log(result.d[i].UserName);
+                            var row = "<tr><td>" + result.d[i].UserName + "</td><td>" + result.d[i].qtdRegistros + "</td><td>" + result.d[i].dtCorte + "</td><td>" + result.d[i].dtExecucao +"</td></tr>";
+                            $("#tbHistoricoBody").append(row);
+                        }
+                    }
+                }
+            });
+
+            $("#historicoModal").modal("show");
+        }
+
     </script>
 
 </asp:Content>

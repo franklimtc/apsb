@@ -33,6 +33,15 @@ namespace Site.Cadastros
         protected global::System.Web.UI.WebControls.HiddenField idTipo;
 
         /// <summary>
+        /// Controle HiddenUser.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenUser;
+
+        /// <summary>
         /// Controle gvCategoriasDespesas.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace Site.Cadastros
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvtiposDespesas;
+
+        /// <summary>
+        /// Controle tbArquivar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl tbArquivar;
 
         /// <summary>
         /// Controle dpCategoriaPaiNova.

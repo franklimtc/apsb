@@ -1634,6 +1634,9 @@
     <Compile Include="Models\tbImport02.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tbLogArquivamento.cs">
+      <DependentUpon>DB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tbLogErro.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>

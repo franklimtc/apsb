@@ -126,6 +126,7 @@
           <Property Name="ccCidade" Type="varchar" MaxLength="50" />
           <Property Name="idProfissional" Type="int" Nullable="false" />
           <Property Name="cdDataCriacao" Type="datetime" />
+          <Property Name="cbStatus" Type="bit" />
         </EntityType>
         <EntityType Name="tbEspecialidade">
           <Key>
@@ -177,6 +178,18 @@ warning 6002: The table/view 'dbapsb.dbo.tbImport02' does not have a primary key
           <Property Name="CPF" Type="nvarchar" MaxLength="50" />
           <Property Name="T_TULO_DE_ELEITOR" Type="nvarchar" MaxLength="50" />
           <Property Name="OBSERVA_O" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbapsb.dbo.tbLogArquivamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbLogArquivamento">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="qtdRegistros" Type="int" />
+          <Property Name="dtCorte" Type="datetime" />
+          <Property Name="dtExecucao" Type="datetime" />
         </EntityType>
         <EntityType Name="tbLogErro">
           <Key>
@@ -642,6 +655,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
         </Function>
         <Function Name="ARQ_Operacoes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dtFim" Type="datetime" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ARQ_Receitas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dtFim" Type="datetime" Mode="In" />
@@ -1153,6 +1167,15 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
     [tbImport02].[OBSERVA_O] AS [OBSERVA_O]
     FROM [dbo].[tbImport02] AS [tbImport02]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="tbLogArquivamento" EntityType="Self.tbLogArquivamento" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbLogArquivamento].[idLog] AS [idLog], 
+    [tbLogArquivamento].[UserName] AS [UserName], 
+    [tbLogArquivamento].[qtdRegistros] AS [qtdRegistros], 
+    [tbLogArquivamento].[dtCorte] AS [dtCorte], 
+    [tbLogArquivamento].[dtExecucao] AS [dtExecucao]
+    FROM [dbo].[tbLogArquivamento] AS [tbLogArquivamento]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="tbParametros" EntityType="Self.tbParametros" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tbParametros].[Id] AS [Id], 
@@ -1429,6 +1452,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <Property Name="idProfissional" Type="Int32" Nullable="false" />
           <Property Name="cdDataCriacao" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbProfissionais" Relationship="Self.FK__tbEnderec__idPro__05D8E0BE" FromRole="tbEndereco" ToRole="tbProfissionais" />
+          <Property Name="cbStatus" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbEspecialidade">
           <Key>
@@ -2063,7 +2087,8 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="tipo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ARQ_Operacoes">
-          <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+            <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+            <Parameter Name="User" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ARQ_Receitas" ReturnType="Collection(apsbModel.ARQ_Receitas_Result)">
           <Parameter Name="dtFim" Mode="In" Type="DateTime" />
@@ -2481,6 +2506,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="ccStatus" Mode="In" Type="String" />
             <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="tbLogArquivamento" EntityType="apsbModel.tbLogArquivamento" />
         </EntityContainer>
         <ComplexType Name="ARQ_Receitas_Result">
           <Property Type="Int32" Name="idReceita" Nullable="false" />
@@ -2992,6 +3018,16 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <Property Type="Decimal" Name="cvValor" Nullable="true" Precision="10" Scale="2" />
           <Property Type="DateTime" Name="UltimoRepasse" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="tbLogArquivamento">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="qtdRegistros" Type="Int32" />
+          <Property Name="dtCorte" Type="DateTime" Precision="3" />
+          <Property Name="dtExecucao" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3117,6 +3153,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <EntitySetMapping Name="tbEndereco">
             <EntityTypeMapping TypeName="apsbModel.tbEndereco">
               <MappingFragment StoreEntitySet="tbEndereco">
+                <ScalarProperty Name="cbStatus" ColumnName="cbStatus" />
                 <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
                 <ScalarProperty Name="ccEndereco" ColumnName="ccEndereco" />
                 <ScalarProperty Name="ccBairro" ColumnName="ccBairro" />
@@ -4122,6 +4159,17 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <FunctionImportMapping FunctionImportName="UPD_Receita" FunctionName="apsbModel.Store.UPD_Receita" />
           <FunctionImportMapping FunctionImportName="UPD_ReceitaByRepasses" FunctionName="apsbModel.Store.UPD_ReceitaByRepasses" />
           <FunctionImportMapping FunctionImportName="UPD_Repasse" FunctionName="apsbModel.Store.UPD_Repasse" />
+          <EntitySetMapping Name="tbLogArquivamento">
+            <EntityTypeMapping TypeName="apsbModel.tbLogArquivamento">
+              <MappingFragment StoreEntitySet="tbLogArquivamento">
+                <ScalarProperty Name="dtExecucao" ColumnName="dtExecucao" />
+                <ScalarProperty Name="dtCorte" ColumnName="dtCorte" />
+                <ScalarProperty Name="qtdRegistros" ColumnName="qtdRegistros" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

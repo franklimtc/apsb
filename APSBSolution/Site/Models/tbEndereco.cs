@@ -22,6 +22,7 @@ namespace Site.Models
         public string ccCidade { get; set; }
         public int idProfissional { get; set; }
         public Nullable<System.DateTime> cdDataCriacao { get; set; }
+        public Nullable<bool> cbStatus { get; set; }
     
         public virtual tbProfissionais tbProfissionais { get; set; }
     }

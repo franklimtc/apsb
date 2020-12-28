@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -20,6 +21,7 @@ namespace Site.Cadastros
                 //CarregarTreeView();
                 CarregarCategoriaDespesas();
             }
+            HiddenUser.Value = User.Identity.Name;
         }
 
         public static List<tbDespesasCategoria> ListarMenus()
@@ -98,7 +100,10 @@ namespace Site.Cadastros
             foreach (var tipo in tiposCategorias)
             {
                 var categoria = categorias.SingleOrDefault(x => x.idCategoria == tipo.idCategoria);
-                lista.Add(new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria });
+                if (categoria != null)
+                {
+                    lista.Add(new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria });
+                }
             }
 
             gvtiposDespesas.DataSource = lista;
@@ -254,5 +259,56 @@ namespace Site.Cadastros
                 CarregarCategoriaDespesas();
             }
         }
+
+        [WebMethod]
+        public static bool ArquivaOperacoes(string data, string user)
+        {
+            Models.entity entity = new Models.entity();
+            bool result = false;
+            DateTime dtArquivo = DateTime.Parse(data);
+            int qtd = entity.ARQ_Operacoes(dtArquivo, user);
+            entity.SaveChanges();
+            if (qtd > 0)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        [WebMethod]
+        public static List<logHistorico> ListarHistoricoArquivamento()
+        {
+            Models.entity entity = new Models.entity();
+
+            var listaTemp = entity.tbLogArquivamento.OrderBy(x => x.idLog).Take(10).AsQueryable();
+            List<logHistorico> lista = new List<logHistorico>();
+
+            foreach (var x in listaTemp)
+            {
+                lista.Add(
+                     new logHistorico()
+                     {
+                         UserName = x.UserName
+                   ,
+                         dtCorte = x.dtCorte.HasValue ? x.dtCorte.Value.ToString("dd/MM/yyyy") : null
+                   ,
+                         dtExecucao = x.dtExecucao.HasValue ? x.dtExecucao.Value.ToString("dd/MM/yyyy") : null
+                   ,
+                         qtdRegistros = x.qtdRegistros.HasValue ? x.qtdRegistros.Value : 0
+                     }
+                    );
+            }
+
+            return lista;
+        }
+    }
+
+    public class logHistorico
+    {
+        public string UserName { get; set; }
+        public int qtdRegistros { get; set; }
+        public string dtCorte { get; set; }
+        public string dtExecucao { get; set; }
     }
 }

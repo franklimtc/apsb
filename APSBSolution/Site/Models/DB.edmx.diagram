@@ -52,6 +52,7 @@
         <AssociationConnector Association="apsbModel.FK__tbProfiss__idPro__0A9D95DB" ManuallyRouted="false" />
         <AssociationConnector Association="apsbModel.FK__tbProfiss__IdPro__11158940" ManuallyRouted="false" />
         <AssociationConnector Association="apsbModel.FK__tbProfiss__idRec__1209AD79" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="apsbModel.tbLogArquivamento" Width="1.5" PointX="11.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
