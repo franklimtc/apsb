@@ -60,6 +60,7 @@
 
                     <asp:BoundField DataField="observacao" HeaderText="observacao" SortExpression="observacao" Visible="false" />
                     <asp:BoundField DataField="Status" HeaderText="Status" SortExpression="Status" />
+                    <asp:BoundField DataField="UserName" HeaderText="Usuário" SortExpression="UserName" />
 
                 </Columns>
             </asp:GridView>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cfee164e3ba0432b860bc2683d75eb86" Name="Diagram1">
+      <Diagram DiagramId="cfee164e3ba0432b860bc2683d75eb86" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="apsbModel.tbBancos" Width="1.5" PointX="0.75" PointY="12.625" IsExpanded="true" />
         <EntityTypeShape EntityType="apsbModel.tbClinicaProfissional" Width="1.5" PointX="5.25" PointY="22.5" IsExpanded="true" />
         <EntityTypeShape EntityType="apsbModel.tbClinicas" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
@@ -52,6 +52,7 @@
         <AssociationConnector Association="apsbModel.FK__tbProfiss__idPro__0A9D95DB" ManuallyRouted="false" />
         <AssociationConnector Association="apsbModel.FK__tbProfiss__IdPro__11158940" ManuallyRouted="false" />
         <AssociationConnector Association="apsbModel.FK__tbProfiss__idRec__1209AD79" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="apsbModel.tbLogArquivamento" Width="1.5" PointX="11.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

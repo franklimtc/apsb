@@ -31,7 +31,7 @@ namespace Site.Reports
 
             // Setup the report viewer object and get the array of bytes  
             ReportViewer viewer = new ReportViewer();
-            ReportDataSource DataSet1 = new ReportDataSource("DataSet1", Profissional.Listar());
+            ReportDataSource DataSet1 = new ReportDataSource("DataSet1", DAO.RetornaDT("SEL_ProfissionaisRel", null, true));
 
             viewer.ProcessingMode = ProcessingMode.Local;
             viewer.LocalReport.ReportPath = @"Reports\Rep01.rdlc";

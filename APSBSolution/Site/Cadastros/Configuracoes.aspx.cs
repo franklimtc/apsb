@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -17,9 +18,10 @@ namespace Site.Cadastros
         {
             if (!IsPostBack)
             {
-                CarregarTreeView();
+                //CarregarTreeView();
                 CarregarCategoriaDespesas();
             }
+            HiddenUser.Value = User.Identity.Name;
         }
 
         public static List<tbDespesasCategoria> ListarMenus()
@@ -44,89 +46,104 @@ namespace Site.Cadastros
 
             return Lista;
         }
-        private void CarregarTreeView()
-        {
-            //var listaMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai == 0).ToList();
-            //var listaSubMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai > 0).ToList();
+        //private void CarregarTreeView()
+        //{
+        //    //var listaMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai == 0).ToList();
+        //    //var listaSubMenus = db.tbDespesasCategoria.Where(x => x.idCategoriaPai > 0).ToList();
 
-            var listaMenus = ListarMenus();
-            var listaSubMenus = ListarSubMenus();
+        //    var listaMenus = ListarMenus();
+        //    var listaSubMenus = ListarSubMenus();
 
-            foreach (var menu in listaMenus)
-            {
-                var node = new TreeNode(menu.ccCategoria,menu.idCategoria.ToString());
-                node.SelectAction = TreeNodeSelectAction.None;
-                node.Expanded = false;
+        //    foreach (var menu in listaMenus)
+        //    {
+        //        var node = new TreeNode(menu.ccCategoria,menu.idCategoria.ToString());
+        //        node.SelectAction = TreeNodeSelectAction.None;
+        //        node.Expanded = false;
 
-                int countNode = 0;
+        //        int countNode = 0;
 
-                foreach (var submenu in listaSubMenus)
-                {
-                    if (menu.idCategoria == submenu.idCategoriaPai)
-                    {
-                        TreeNode _submenu = new TreeNode(submenu.ccCategoria, submenu.idCategoria.ToString());
-                        _submenu.ShowCheckBox = true;
-                        _submenu.SelectAction = TreeNodeSelectAction.None;
-                        node.ChildNodes.Add(_submenu);
-                        countNode++;
-                    }
-                }
+        //        foreach (var submenu in listaSubMenus)
+        //        {
+        //            if (menu.idCategoria == submenu.idCategoriaPai)
+        //            {
+        //                TreeNode _submenu = new TreeNode(submenu.ccCategoria, submenu.idCategoria.ToString());
+        //                _submenu.ShowCheckBox = true;
+        //                _submenu.SelectAction = TreeNodeSelectAction.None;
+        //                node.ChildNodes.Add(_submenu);
+        //                countNode++;
+        //            }
+        //        }
 
-                if (countNode == 0)
-                    node.ShowCheckBox = true;
-                else
-                    node.ShowCheckBox = false;
+        //        if (countNode == 0)
+        //            node.ShowCheckBox = true;
+        //        else
+        //            node.ShowCheckBox = false;
 
 
-                tvCategoriasDespesas.Nodes.Add(node);
-                countNode = 0;
+        //        tvCategoriasDespesas.Nodes.Add(node);
+        //        countNode = 0;
 
-            }
+        //    }
 
-            tvCategoriasDespesas.Attributes.Add("onclick", "postBackByObject()");
-        }
+        //    tvCategoriasDespesas.Attributes.Add("onclick", "postBackByObject()");
+        //}
         private void CarregarCategoriaDespesas()
         {
             var categorias = db.tbDespesasCategoria.Where(x => x.cbStatus == true).ToList();
             gvCategoriasDespesas.DataSource = categorias;
             gvCategoriasDespesas.DataBind();
 
-            dpCategorias.DataSource = categorias;
-            dpCategorias.DataBind();
+            var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList();
+            //var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria }).ToList();
+            List<object> lista = new List<object>();
 
-            var tiposCategorias = db.tbDespesaTipo.Where(x => x.cbStatus == true).ToList().Join(categorias, tipo => tipo.idCategoria, categoria => categoria.idCategoria, (tipo, categoria) => new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, categoria.ccCategoria }).ToList();
-            gvtiposDespesas.DataSource = tiposCategorias;
+            foreach (var tipo in tiposCategorias)
+            {
+                var categoria = categorias.SingleOrDefault(x => x.idCategoria == tipo.idCategoria);
+                if (categoria != null)
+                {
+                    lista.Add(new { tipo.idTipo, tipo.ccTipo, tipo.cdDataCriacao, tipo.idCategoria, categoria.ccCategoria });
+                }
+            }
+
+            gvtiposDespesas.DataSource = lista;
             gvtiposDespesas.DataBind();
         }
 
         protected void btnSalvarCategoria_Click(object sender, EventArgs e)
         {
-            var categoriaPai = tvCategoriasDespesas.CheckedNodes;
-            string idCategoriaPai = "0";
-
-            if (categoriaPai.Count > 0)
-            {
-                idCategoriaPai = categoriaPai[0].Value;
-            }
+            string idCategoriaPai = dpCategoriaPaiNova.SelectedValue;
 
             if (tbNovaCategoria.Text != "")
             {
 
                 Models.tbDespesasCategoria novaCategoria = new Models.tbDespesasCategoria();
+                if (idCategoria.Value != "")
+                {
+                    int id = int.Parse(idCategoria.Value);
+                    novaCategoria = db.tbDespesasCategoria.Where(x => x.idCategoria == id).FirstOrDefault();
+
+                }
+
                 novaCategoria.ccCategoria = tbNovaCategoria.Text;
                 novaCategoria.cdCriacao = DateTime.Now;
                 novaCategoria.ccUsuario = User.Identity.Name.Split('@')[0];
                 novaCategoria.cbStatus = true;
                 novaCategoria.idCategoriaPai = int.Parse(idCategoriaPai);
-                db.tbDespesasCategoria.Add(novaCategoria);
+
+                if (idCategoria.Value == "")
+                    db.tbDespesasCategoria.Add(novaCategoria);
+
                 try
                 {
                     db.SaveChanges();
                     CarregarCategoriaDespesas();
+                    tbNovaCategoria.Text = "";
+                    //dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
                 }
                 catch (Exception ex)
                 {
-
+                    //db.Database.CurrentTransaction.Rollback();
                     ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('Erro ao registrar nova categoria: {ex.Message}')", true);
                 }
 
@@ -137,13 +154,21 @@ namespace Site.Cadastros
             if (tbNovoTipo.Text != "")
             {
                 Models.tbDespesaTipo novoTipo = new Models.tbDespesaTipo();
+
+                if (idTipo.Value != "")
+                {
+                    int id = int.Parse(idTipo.Value);
+                    novoTipo = db.tbDespesaTipo.Where(x => x.idTipo == id).FirstOrDefault();
+                }
+
                 novoTipo.ccTipo = tbNovoTipo.Text;
-                novoTipo.idCategoria = int.Parse(dpCategorias.SelectedValue);
                 novoTipo.cdDataCriacao = DateTime.Now;
                 novoTipo.ccUsuario = User.Identity.Name.Split('@')[0];
                 novoTipo.cbStatus = true;
+                novoTipo.idCategoria = int.Parse(dpCategoriaPai.SelectedValue);
+                if (idTipo.Value == "")
+                    db.tbDespesaTipo.Add(novoTipo);
 
-                db.tbDespesaTipo.Add(novoTipo);
                 try
                 {
                     db.SaveChanges();
@@ -191,17 +216,99 @@ namespace Site.Cadastros
         {
             if (gvCategoriasDespesas.Rows.Count > 0)
             {
-                //This replaces <td> with <th> and adds the scope attribute
                 gvCategoriasDespesas.UseAccessibleHeader = true;
-
-                //This will add the <thead> and <tbody> elements
                 gvCategoriasDespesas.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-                //This adds the <tfoot> element. 
-                //Remove if you don't have a footer row
-                //gvClinicas.FooterRow.TableSection = TableRowSection.TableFooter;
             }
         }
-      
+
+        protected void gvtiposDespesas_PreRender(object sender, EventArgs e)
+        {
+            if (gvtiposDespesas.Rows.Count > 0)
+            {
+                gvtiposDespesas.UseAccessibleHeader = true;
+                gvtiposDespesas.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
+        }
+
+        protected void gvtiposDespesas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Excluir")
+            {
+                using (entity dbContext = new entity())
+                {
+                    int idTipo = int.Parse(gvtiposDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+                    tbDespesaTipo despesaTipo = dbContext.tbDespesaTipo.SingleOrDefault(x => x.idTipo == idTipo);
+                    despesaTipo.cbStatus = false;
+                    var result = dbContext.SaveChanges();
+                }
+                CarregarCategoriaDespesas();
+            }
+        }
+
+        protected void gvCategoriasDespesas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Excluir")
+            {
+                using (entity dbContext = new entity())
+                {
+                    int idCategoria = int.Parse(gvCategoriasDespesas.Rows[int.Parse(e.CommandArgument.ToString())].Cells[0].Text);
+                    tbDespesasCategoria despesaCategoria = dbContext.tbDespesasCategoria.SingleOrDefault(x => x.idCategoria == idCategoria);
+                    despesaCategoria.cbStatus = false;
+                    var result = dbContext.SaveChanges();
+                }
+                CarregarCategoriaDespesas();
+            }
+        }
+
+        [WebMethod]
+        public static bool ArquivaOperacoes(string data, string user)
+        {
+            Models.entity entity = new Models.entity();
+            bool result = false;
+            DateTime dtArquivo = DateTime.Parse(data);
+            int qtd = entity.ARQ_Operacoes(dtArquivo, user);
+            entity.SaveChanges();
+            if (qtd > 0)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        [WebMethod]
+        public static List<logHistorico> ListarHistoricoArquivamento()
+        {
+            Models.entity entity = new Models.entity();
+
+            var listaTemp = entity.tbLogArquivamento.OrderBy(x => x.idLog).Take(10).AsQueryable();
+            List<logHistorico> lista = new List<logHistorico>();
+
+            foreach (var x in listaTemp)
+            {
+                lista.Add(
+                     new logHistorico()
+                     {
+                         UserName = x.UserName
+                   ,
+                         dtCorte = x.dtCorte.HasValue ? x.dtCorte.Value.ToString("dd/MM/yyyy") : null
+                   ,
+                         dtExecucao = x.dtExecucao.HasValue ? x.dtExecucao.Value.ToString("dd/MM/yyyy") : null
+                   ,
+                         qtdRegistros = x.qtdRegistros.HasValue ? x.qtdRegistros.Value : 0
+                     }
+                    );
+            }
+
+            return lista;
+        }
+    }
+
+    public class logHistorico
+    {
+        public string UserName { get; set; }
+        public int qtdRegistros { get; set; }
+        public string dtCorte { get; set; }
+        public string dtExecucao { get; set; }
     }
 }

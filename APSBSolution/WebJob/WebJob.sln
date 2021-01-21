@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArquivarOperacoes", "ArquivarOperacoes\ArquivarOperacoes.csproj", "{0D6C42B5-6531-46B5-90B1-F4D7F2FA7EF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJobArq_Operacoes", "WebJobArq_Operacoes\WebJobArq_Operacoes.csproj", "{2CDBAD15-271B-4FBC-B13A-1DD5712843F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0D6C42B5-6531-46B5-90B1-F4D7F2FA7EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D6C42B5-6531-46B5-90B1-F4D7F2FA7EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D6C42B5-6531-46B5-90B1-F4D7F2FA7EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D6C42B5-6531-46B5-90B1-F4D7F2FA7EF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CDBAD15-271B-4FBC-B13A-1DD5712843F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CDBAD15-271B-4FBC-B13A-1DD5712843F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CDBAD15-271B-4FBC-B13A-1DD5712843F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CDBAD15-271B-4FBC-B13A-1DD5712843F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

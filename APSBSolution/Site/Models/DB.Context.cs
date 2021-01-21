@@ -54,6 +54,7 @@ namespace Site.Models
         public virtual DbSet<tbProfissionalRepasse> tbProfissionalRepasse { get; set; }
         public virtual DbSet<vwReceitas> vwReceitas { get; set; }
         public virtual DbSet<vwResumoReceitas> vwResumoReceitas { get; set; }
+        public virtual DbSet<tbLogArquivamento> tbLogArquivamento { get; set; }
     
         public virtual ObjectResult<Nullable<bool>> ARQ_Operacao(string userName, Nullable<int> idOperacao, string tipo)
         {
@@ -72,13 +73,17 @@ namespace Site.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<bool>>("ARQ_Operacao", userNameParameter, idOperacaoParameter, tipoParameter);
         }
     
-        public virtual int ARQ_Operacoes(Nullable<System.DateTime> dtFim)
+        public virtual int ARQ_Operacoes(Nullable<System.DateTime> dtFim, string user)
         {
             var dtFimParameter = dtFim.HasValue ?
                 new ObjectParameter("dtFim", dtFim) :
                 new ObjectParameter("dtFim", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ARQ_Operacoes", dtFimParameter);
+            var userParameter = user != null ?
+                new ObjectParameter("User", user) :
+                new ObjectParameter("User", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ARQ_Operacoes", dtFimParameter, userParameter);
         }
     
         public virtual ObjectResult<ARQ_Receitas_Result> ARQ_Receitas(Nullable<System.DateTime> dtFim)

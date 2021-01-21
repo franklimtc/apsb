@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="apsbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="apsbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbBancos">
           <Key>
             <PropertyRef Name="IdBanco" />
@@ -126,6 +126,7 @@
           <Property Name="ccCidade" Type="varchar" MaxLength="50" />
           <Property Name="idProfissional" Type="int" Nullable="false" />
           <Property Name="cdDataCriacao" Type="datetime" />
+          <Property Name="cbStatus" Type="bit" />
         </EntityType>
         <EntityType Name="tbEspecialidade">
           <Key>
@@ -179,34 +180,17 @@ warning 6002: The table/view 'dbapsb.dbo.tbImport02' does not have a primary key
           <Property Name="OBSERVA_O" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'dbapsb.dbo.tbImport03' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="tbImport03">
-          <Property Name="CLÍNICA" Type="nvarchar" MaxLength="100" />
-          <Property Name="VALOR_DA_NF" Type="nvarchar" MaxLength="100" />
-          <Property Name="NF" Type="nvarchar" MaxLength="100" />
-          <Property Name="DATA_NF" Type="nvarchar" MaxLength="100" />
-          <Property Name="RECEITA_DESPESA" Type="nvarchar" MaxLength="100" />
-          <Property Name="DATA_DEPÓSITO" Type="nvarchar" MaxLength="100" />
-          <Property Name="VALOR_PAGO" Type="nvarchar" MaxLength="100" />
-          <Property Name="DT_PAGAMENTO" Type="nvarchar" MaxLength="100" />
-          <Property Name="PROFISSIONAL" Type="nvarchar" MaxLength="100" />
-          <Property Name="DESCONTO" Type="nvarchar" MaxLength="100" />
-          <Property Name="ISS" Type="nvarchar" MaxLength="100" />
-          <Property Name="VALOR_ISS" Type="nvarchar" MaxLength="100" />
-          <Property Name="OBSERVAÇÃO" Type="nvarchar" MaxLength="4000" />
-          <Property Name="LÍQUIDO_MÉDICO" Type="nvarchar" MaxLength="100" />
-          <Property Name="TX_ASSOC" Type="nvarchar" MaxLength="100" />
-          <Property Name="BANCO" Type="nvarchar" MaxLength="100" />
-          <Property Name="AGÊNCIA" Type="nvarchar" MaxLength="100" />
-          <Property Name="CONTA" Type="nvarchar" MaxLength="100" />
-          <Property Name="CPF" Type="nvarchar" MaxLength="100" />
-          <Property Name="DESC ASSOCIADO" Type="nvarchar" MaxLength="100" />
-          <Property Name="RECEITALÍQUIDAAPSB" Type="nvarchar" MaxLength="100" />
-          <Property Name="idClinica" Type="int" />
-          <Property Name="idProfissional" Type="int" />
-          <Property Name="qtdRepasse" Type="int" />
-          <Property Name="idOrdemNF" Type="int" />
-        </EntityType>-->
+warning 6002: The table/view 'dbapsb.dbo.tbLogArquivamento' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbLogArquivamento">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="qtdRegistros" Type="int" />
+          <Property Name="dtCorte" Type="datetime" />
+          <Property Name="dtExecucao" Type="datetime" />
+        </EntityType>
         <EntityType Name="tbLogErro">
           <Key>
             <PropertyRef Name="idErro" />
@@ -384,13 +368,6 @@ warning 6002: The table/view 'dbapsb.dbo.tbProfissionalRepasse' does not have a 
           <Property Name="ccTipo" Type="char" MaxLength="1" />
           <Property Name="cdDataCriacao" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'dbapsb.dbo.vw_ChartFatBruto' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="vw_ChartFatBruto">
-          <Property Name="label" Type="int" />
-          <Property Name="dw" Type="int" />
-          <Property Name="data" Type="int" />
-        </EntityType>-->
         <!--Errors Found During Generation:
 warning 6002: The table/view 'dbapsb.dbo.vwReceitas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwReceitas">
@@ -678,6 +655,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
         </Function>
         <Function Name="ARQ_Operacoes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dtFim" Type="datetime" Mode="In" />
+          <Parameter Name="User" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ARQ_Receitas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="dtFim" Type="datetime" Mode="In" />
@@ -1189,6 +1167,15 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
     [tbImport02].[OBSERVA_O] AS [OBSERVA_O]
     FROM [dbo].[tbImport02] AS [tbImport02]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="tbLogArquivamento" EntityType="Self.tbLogArquivamento" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbLogArquivamento].[idLog] AS [idLog], 
+    [tbLogArquivamento].[UserName] AS [UserName], 
+    [tbLogArquivamento].[qtdRegistros] AS [qtdRegistros], 
+    [tbLogArquivamento].[dtCorte] AS [dtCorte], 
+    [tbLogArquivamento].[dtExecucao] AS [dtExecucao]
+    FROM [dbo].[tbLogArquivamento] AS [tbLogArquivamento]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="tbParametros" EntityType="Self.tbParametros" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [tbParametros].[Id] AS [Id], 
@@ -1323,8 +1310,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <End Role="tbReceitas" EntitySet="tbReceitas" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="apsbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1466,6 +1452,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <Property Name="idProfissional" Type="Int32" Nullable="false" />
           <Property Name="cdDataCriacao" Type="DateTime" Precision="3" />
           <NavigationProperty Name="tbProfissionais" Relationship="Self.FK__tbEnderec__idPro__05D8E0BE" FromRole="tbEndereco" ToRole="tbProfissionais" />
+          <Property Name="cbStatus" Type="Boolean" />
         </EntityType>
         <EntityType Name="tbEspecialidade">
           <Key>
@@ -2101,9 +2088,10 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           </FunctionImport>
           <FunctionImport Name="ARQ_Operacoes">
             <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+            <Parameter Name="User" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="ARQ_Receitas" ReturnType="Collection(apsbModel.ARQ_Receitas_Result)">
-            <Parameter Name="dtFim" Mode="In" Type="DateTime" />
+          <Parameter Name="dtFim" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="ATV_ProfissionalAuto" ReturnType="Collection(Boolean)">
             <Parameter Name="UserName" Mode="In" Type="String" />
@@ -2114,7 +2102,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="idClinica" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EXC_ClinicaDetinitivo">
-            <Parameter Name="idClinica" Mode="In" Type="Int32" />
+          <Parameter Name="idClinica" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EXC_ClinicaProfissional" ReturnType="Collection(Boolean)">
             <Parameter Name="UserName" Mode="In" Type="String" />
@@ -2146,14 +2134,14 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="IdProfissionalBanco" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EXC_ProfissionalDetinitivo">
-            <Parameter Name="idProfisional" Mode="In" Type="Int32" />
+          <Parameter Name="idProfisional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="EXC_Repasse" ReturnType="Collection(Boolean)">
             <Parameter Name="idRepasse" Mode="In" Type="Int32" />
             <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="GetIDProfissionalByName" ReturnType="Collection(Int32)">
-            <Parameter Name="ccNome" Mode="In" Type="String" />
+          <Parameter Name="ccNome" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="INS_Clinica" ReturnType="Collection(Boolean)">
             <Parameter Name="UserName" Mode="In" Type="String" />
@@ -2265,18 +2253,18 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="Token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SEL_Bancos" ReturnType="Collection(apsbModel.SEL_Bancos_Result)">
-            <Parameter Name="cvStatus" Mode="In" Type="Boolean" />
+          <Parameter Name="cvStatus" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SEL_ChartDespesas" ReturnType="Collection(apsbModel.SEL_ChartDespesas_Result)" />
           <FunctionImport Name="SEL_ChartFatBruto" ReturnType="Collection(apsbModel.SEL_ChartFatBruto_Result)" />
           <FunctionImport Name="SEL_ChartFatEfetivo" ReturnType="Collection(apsbModel.SEL_ChartFatEfetivo_Result)" />
           <FunctionImport Name="SEL_ChartGeral" ReturnType="Collection(apsbModel.SEL_ChartGeral_Result)">
-            <Parameter Name="mes" Mode="In" Type="Int32" />
+          <Parameter Name="mes" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ChartReceitaBruta" ReturnType="Collection(apsbModel.SEL_ChartReceitaBruta_Result)" />
           <FunctionImport Name="SEL_ChartReceitaLiquida" ReturnType="Collection(apsbModel.SEL_ChartReceitaLiquida_Result)" />
           <FunctionImport Name="SEL_ClinicaCNPJ" ReturnType="Collection(apsbModel.SEL_ClinicaCNPJ_Result)">
-            <Parameter Name="cnpj" Mode="In" Type="Int64" />
+          <Parameter Name="cnpj" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="SEL_ClinicaProfissional" ReturnType="Collection(apsbModel.SEL_ClinicaProfissional_Result)">
             <Parameter Name="idClinica" Mode="In" Type="Int32" />
@@ -2287,11 +2275,11 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="IdClinica" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ClinicasByApelido" ReturnType="Collection(apsbModel.SEL_ClinicasByApelido_Result)">
-            <Parameter Name="ccApelido" Mode="In" Type="String" />
+          <Parameter Name="ccApelido" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SEL_Dashboard" ReturnType="Collection(apsbModel.SEL_Dashboard_Result)" />
           <FunctionImport Name="SEL_DespesaByName" ReturnType="Collection(apsbModel.SEL_DespesaByName_Result)">
-            <Parameter Name="ccTipo" Mode="In" Type="String" />
+          <Parameter Name="ccTipo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SEL_Despesas" ReturnType="Collection(apsbModel.SEL_Despesas_Result)">
             <Parameter Name="cbArquivado" Mode="In" Type="Boolean" />
@@ -2301,14 +2289,14 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="idDespesa" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_DespesaTipo" ReturnType="Collection(apsbModel.SEL_DespesaTipo_Result)">
-            <Parameter Name="tipo" Mode="In" Type="String" />
+          <Parameter Name="tipo" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SEL_Endereco" ReturnType="Collection(apsbModel.SEL_Endereco_Result)">
-            <Parameter Name="idProfissional" Mode="In" Type="Int32" />
+          <Parameter Name="idProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_Especialidades" ReturnType="Collection(apsbModel.SEL_Especialidades_Result)" />
           <FunctionImport Name="SEL_Faturamento10" ReturnType="Collection(apsbModel.SEL_Faturamento10_Result)">
-            <Parameter Name="cbAcumulado" Mode="In" Type="Boolean" />
+          <Parameter Name="cbAcumulado" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SEL_Formacoes" ReturnType="Collection(apsbModel.SEL_Formacoes_Result)" />
           <FunctionImport Name="SEL_LastError" ReturnType="Collection(apsbModel.SEL_LastError_Result)" />
@@ -2327,7 +2315,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="IdProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionaisDados" ReturnType="Collection(apsbModel.SEL_ProfissionaisDados_Result)">
-            <Parameter Name="IdProfissional" Mode="In" Type="Int32" />
+          <Parameter Name="IdProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionaisDP" ReturnType="Collection(apsbModel.SEL_ProfissionaisDP_Result)" />
           <FunctionImport Name="SEL_ProfissionaisGrid" ReturnType="Collection(apsbModel.SEL_ProfissionaisGrid_Result)">
@@ -2342,26 +2330,26 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionaisRel" ReturnType="Collection(apsbModel.SEL_ProfissionaisRel_Result)" />
           <FunctionImport Name="SEL_ProfissionalArquivo" ReturnType="Collection(apsbModel.SEL_ProfissionalArquivo_Result)">
-            <Parameter Name="idProfissional" Mode="In" Type="Int32" />
+          <Parameter Name="idProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalArquivoBinary" ReturnType="Collection(apsbModel.SEL_ProfissionalArquivoBinary_Result)">
-            <Parameter Name="idArquivo" Mode="In" Type="Int32" />
+          <Parameter Name="idArquivo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalAuto" ReturnType="Collection(apsbModel.SEL_ProfissionalAuto_Result)" />
           <FunctionImport Name="SEL_ProfissionalBanco" ReturnType="Collection(apsbModel.SEL_ProfissionalBanco_Result)">
-            <Parameter Name="idProfissional" Mode="In" Type="Int32" />
+          <Parameter Name="idProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalbyCPF" ReturnType="Collection(String)">
-            <Parameter Name="CPF" Mode="In" Type="Int64" />
+          <Parameter Name="CPF" Mode="In" Type="Int64" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalClinicaDP" ReturnType="Collection(apsbModel.SEL_ProfissionalClinicaDP_Result)">
-            <Parameter Name="idOperacao" Mode="In" Type="Int32" />
+          <Parameter Name="idOperacao" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalCristalina" ReturnType="Collection(Int32)">
-            <Parameter Name="idProfissional" Mode="In" Type="Int32" />
+          <Parameter Name="idProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalEndereco" ReturnType="Collection(apsbModel.SEL_ProfissionalEndereco_Result)">
-            <Parameter Name="idProfissional" Mode="In" Type="Int32" />
+          <Parameter Name="idProfissional" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_ProfissionalIDByReceita" ReturnType="Collection(Int32)">
             <Parameter Name="idReceita" Mode="In" Type="Int32" />
@@ -2374,7 +2362,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           </FunctionImport>
           <FunctionImport Name="SEL_QtdNotas" ReturnType="Collection(apsbModel.SEL_QtdNotas_Result)" />
           <FunctionImport Name="SEL_QtdProfissioais" ReturnType="Collection(Int32)">
-            <Parameter Name="Status" Mode="In" Type="Boolean" />
+          <Parameter Name="Status" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SEL_Receitas" ReturnType="Collection(apsbModel.SEL_Receitas_Result)">
             <Parameter Name="cbArquivado" Mode="In" Type="Boolean" />
@@ -2391,13 +2379,13 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="dtFim" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="SEL_Repasse10" ReturnType="Collection(apsbModel.SEL_Repasse10_Result)">
-            <Parameter Name="cbAcumulado" Mode="In" Type="Boolean" />
+          <Parameter Name="cbAcumulado" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="SEL_RepasseObs" ReturnType="Collection(Int32)">
-            <Parameter Name="idRepasse" Mode="In" Type="Int32" />
+          <Parameter Name="idRepasse" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="SEL_Token" ReturnType="Collection(Int32)">
-            <Parameter Name="Token" Mode="In" Type="String" />
+          <Parameter Name="Token" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="SPImport03" />
           <FunctionImport Name="UPD_Clinica" ReturnType="Collection(Boolean)">
@@ -2518,6 +2506,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
             <Parameter Name="ccStatus" Mode="In" Type="String" />
             <Parameter Name="UserName" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="tbLogArquivamento" EntityType="apsbModel.tbLogArquivamento" />
         </EntityContainer>
         <ComplexType Name="ARQ_Receitas_Result">
           <Property Type="Int32" Name="idReceita" Nullable="false" />
@@ -3029,6 +3018,16 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <Property Type="Decimal" Name="cvValor" Nullable="true" Precision="10" Scale="2" />
           <Property Type="DateTime" Name="UltimoRepasse" Nullable="true" Precision="23" />
         </ComplexType>
+        <EntityType Name="tbLogArquivamento">
+          <Key>
+            <PropertyRef Name="idLog" />
+          </Key>
+          <Property Name="idLog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="qtdRegistros" Type="Int32" />
+          <Property Name="dtCorte" Type="DateTime" Precision="3" />
+          <Property Name="dtExecucao" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3154,6 +3153,7 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <EntitySetMapping Name="tbEndereco">
             <EntityTypeMapping TypeName="apsbModel.tbEndereco">
               <MappingFragment StoreEntitySet="tbEndereco">
+                <ScalarProperty Name="cbStatus" ColumnName="cbStatus" />
                 <ScalarProperty Name="IdEndereco" ColumnName="IdEndereco" />
                 <ScalarProperty Name="ccEndereco" ColumnName="ccEndereco" />
                 <ScalarProperty Name="ccBairro" ColumnName="ccBairro" />
@@ -4159,6 +4159,17 @@ warning 6002: The table/view 'dbapsb.dbo.vwResumoReceitas' does not have a prima
           <FunctionImportMapping FunctionImportName="UPD_Receita" FunctionName="apsbModel.Store.UPD_Receita" />
           <FunctionImportMapping FunctionImportName="UPD_ReceitaByRepasses" FunctionName="apsbModel.Store.UPD_ReceitaByRepasses" />
           <FunctionImportMapping FunctionImportName="UPD_Repasse" FunctionName="apsbModel.Store.UPD_Repasse" />
+          <EntitySetMapping Name="tbLogArquivamento">
+            <EntityTypeMapping TypeName="apsbModel.tbLogArquivamento">
+              <MappingFragment StoreEntitySet="tbLogArquivamento">
+                <ScalarProperty Name="dtExecucao" ColumnName="dtExecucao" />
+                <ScalarProperty Name="dtCorte" ColumnName="dtCorte" />
+                <ScalarProperty Name="qtdRegistros" ColumnName="qtdRegistros" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="idLog" ColumnName="idLog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
