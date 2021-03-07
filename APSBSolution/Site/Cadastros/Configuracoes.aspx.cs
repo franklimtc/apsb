@@ -131,22 +131,27 @@ namespace Site.Cadastros
                 novaCategoria.cbStatus = true;
                 novaCategoria.idCategoriaPai = int.Parse(idCategoriaPai);
 
-                if (idCategoria.Value == "")
-                    db.tbDespesasCategoria.Add(novaCategoria);
-
-                try
+                if (!db.tbDespesasCategoria.Where(x => x.ccCategoria.Equals(tbNovaCategoria.Text)).Any())
                 {
-                    db.SaveChanges();
-                    CarregarCategoriaDespesas();
-                    tbNovaCategoria.Text = "";
-                    //dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
-                }
-                catch (Exception ex)
-                {
-                    //db.Database.CurrentTransaction.Rollback();
-                    ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('Erro ao registrar nova categoria: {ex.Message}')", true);
-                }
+                    if (idCategoria.Value == "")
+                    {
+                        db.tbDespesasCategoria.Add(novaCategoria);
+                        try
+                        {
+                            db.SaveChanges();
+                            CarregarCategoriaDespesas();
+                            tbNovaCategoria.Text = "";
+                            //dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
+                            dpCategoriaPai.DataBind();
+                        }
+                        catch (Exception ex)
+                        {
+                            //db.Database.CurrentTransaction.Rollback();
+                            ScriptManager.RegisterStartupScript(this.Page, GetType(), "", $"alert('Erro ao registrar nova categoria: {ex.Message}')", true);
+                        }
+                    }
 
+                }
             }
         }
         protected void btnSalvarTipo_Click(object sender, EventArgs e)
@@ -205,6 +210,8 @@ namespace Site.Cadastros
             {
                 db.SaveChanges();
                 CarregarCategoriaDespesas();
+                dpCategoriaPai.DataBind();
+
             }
             catch (Exception ex)
             {
