@@ -1,5 +1,5 @@
 ﻿{
   "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
   "webJobName": "webjob",
-  "runMode": "OnDemand"
+  "runMode": "Continuous"
 }
