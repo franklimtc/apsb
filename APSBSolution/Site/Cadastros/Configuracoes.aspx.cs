@@ -108,6 +108,11 @@ namespace Site.Cadastros
 
             gvtiposDespesas.DataSource = lista;
             gvtiposDespesas.DataBind();
+
+            dsCategoriaPai.DataBind();
+            dpCategoriaPai.DataBind();
+            dpCategoriaPaiNova.DataBind();
+
         }
 
         protected void btnSalvarCategoria_Click(object sender, EventArgs e)
@@ -142,7 +147,7 @@ namespace Site.Cadastros
                             CarregarCategoriaDespesas();
                             tbNovaCategoria.Text = "";
                             //dpCategoriaPaiNova.Items.FindByValue("0").Selected = true;
-                            dpCategoriaPai.DataBind();
+                          
                         }
                         catch (Exception ex)
                         {
